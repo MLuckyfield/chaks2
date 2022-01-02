@@ -1,0 +1,32 @@
+
+$first : rgba(128,0,0,1);
+$second : rgba(188,151,151,1);
+$third : rgba(89,89,89,1);
+$four : #7C878F;
+$five : #8696A3;
+
+$colors: ('first':$first, 'second':$second, 'third':$third, 'four':$four, 'five':$five);
+$shades: ('light': 10%, 'lightest' :20%, 'dark':-10%, 'darkest':-20%);
+
+@each $name, $color in $colors{
+
+  //create classes for buttons
+    .solid-#{$name} {
+      background-color: $color;
+      color: white;
+    }
+
+    .outline-#{$name} {
+      border: 1px solid $color;
+      background-color: white;
+      color: $color;
+
+      transition: background-color 0.1s ease-in-out,color 0.1s ease-in-out;
+
+      &:hover{
+        background-color: $color;
+        color:white;
+      }
+    }
+
+}

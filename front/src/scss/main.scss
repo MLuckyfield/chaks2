@@ -1,0 +1,92 @@
+@import 'colors';
+@import 'unique';
+@import 'fonts';
+@import 'forms';
+@import 'variables';
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+
+
+body{
+  margin: 0;
+  padding: 0;
+  line-height: 2;
+
+}
+.msg{
+  height:30px;
+  border-radius:50px;
+  border:none !important;
+  background: rgba(0,255,0,0.2);
+  text-align:center;
+  &:hover{
+    box-shadow: none !important;
+  }
+  .input{
+    pointer-events:none;
+  }
+}
+.bad{
+  background: rgba(204,51,0,0.2);
+}
+h1, h2, h3{
+  letter-spacing: 0.2em;
+  font-weight:10px;
+  line-height:1;
+}
+.material-icons{
+  font-size:100px;
+}
+.container{
+  height: $max-height;
+  width: $max-width;
+  //background-color: white;
+
+  display: inline-flex;
+}
+.master-row{
+  padding:0;
+  margin:0;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+}
+.border{
+    border: 1px solid $first;
+}
+.row{
+  margin: 0;
+  width: 100%;
+  //border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.slim{
+  @extend .col;
+  width:50% !important;
+  line-height: 3;
+  align-items: center;
+}
+.center{
+  text-align: center;
+}
+.mid{
+  background-color: #F1EDED;
+  color: #595959;
+}
+.dark{
+  background-color: #BC9797;
+  color: white;
+}
+.col{
+  padding: $unit;
+  margin: $unit;
+  width: 96%;
+  //border: 1px solid blue;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
