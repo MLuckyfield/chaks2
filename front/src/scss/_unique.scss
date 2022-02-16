@@ -1,27 +1,29 @@
 #header{
-  height: 80vh;
+  height: 65vh;
   width: 100%;
+  margin-top:5%;
   background-image: url('https://www.thespiritsbusiness.com/content/uploads/2017/06/Paradiso.png');
   background-size:cover;
 }
-#overlay {
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 80vh;
-  background-color: rgba(188,151,151,0.8);
-  // border: 1px solid red;
-  z-index: 2;
-}
+// #overlay {
+//   position: absolute;
+//   display: block;
+//   width: 100%;
+//   height: 80vh;
+//   background-color: rgba(188,151,151,0.8);
+//   // border: 1px solid red;
+//   z-index: 2;
+// }
 
-#text{
-  position: absolute;
-  top: 10%;
-  left: 20%;
-  font-size: 75px;
+#overlay{
+  // position: absolute;
+  // top: 10%;
+  // left: 20%;
   color: white;
-  line-height: .9;
-  padding: 1% 5%;
+  height:65vh;
+  width:100%;
+  font-size: 3em;
+  // margin: 3%;
   // border: 1px solid $first;
   background: rgba(128,0,0,0.7)
 }
@@ -30,4 +32,176 @@
   font-size: 30px;
   color: white;
   z-index: 3;
+}
+#logo{
+  height:400px;
+  width:400px;
+}
+.logo-basic{
+  line-height: .9;
+  font-weight: bold;
+  color:white;
+  margin-top:6%;
+  font-size:2em;
+}
+nav {
+  background-color: #1E1E23;
+  height: 65px;
+  position: fixed;
+  top:0;
+  width: 100%;
+}
+//large screen navbar
+@media (min-width:801px){
+  ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  li {
+    float: right;
+    &:first-child{
+      float:left;
+      display: flex;
+      flex-direction: row;
+    }
+    a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      &:hover {
+        background-color: #111;
+      }
+    }
+  }
+  }
+
+  #menuToggle {
+    input{
+      display:none;
+    }
+  }
+  #nav-logo{
+    height:100px;
+    width:100px;
+    border: 1px solid black;
+  }
+}
+//mobile navbar
+@media (max-width:800px){
+  a {
+  text-decoration: none;
+  color: white;
+  opacity:1;
+  font-family: 'work sans', sans serif;
+  font-size: 1.5em;
+  font-weight: 400;
+  transition: 200ms;
+  }
+  a:hover {
+    opacity:0.5;
+  }
+  ul {
+    padding: 0;
+    list-style-type: none;
+    li{
+      &:first-child{
+        display:right;
+      }
+    }
+  }
+
+  #menuToggle {
+    display: flex;
+    flex-direction: column;
+    position:relative;
+    top: 25px;
+    left: 25px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  #menuToggle input
+  {
+    display: flex;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  #menuToggle span
+  {
+    display: flex;
+    width: 29px;
+    height: 2px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #ffffff;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 5px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+  }
+
+  #menuToggle span:first-child
+  {
+    transform-origin: 0% 0%;
+  }
+
+  #menuToggle span:nth-last-child(2)
+  {
+    transform-origin: 0% 100%;
+  }
+
+  #menuToggle input:checked ~ span
+  {
+    opacity: 1;
+    transform: rotate(45deg) translate(-3px, -1px);
+    background: #36383F;
+  }
+  #menuToggle input:checked ~ span:nth-last-child(3)
+  {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+
+  #menuToggle input:checked ~ span:nth-last-child(2)
+  {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+
+  #menu
+  {
+    width: 100%;
+    height: 100vh;
+    box-shadow: 0 0 10px #85888C;
+    margin: -50px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+    background: black;
+
+    -webkit-font-smoothing: antialiased;
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    text-align:  center;
+    li  {
+      padding: 10px 0;
+      transition-delay: 2s;
+    }
+  }
+
+  #menuToggle input:checked ~ ul
+  {
+    transform: none;
+  }
 }

@@ -9,7 +9,7 @@ form{
     // width: 100%;
     // margin: 15%;
     // @extend .form-control;
-    margin: 18% auto;
+    margin: 18% 0;
     padding: 10%;
     }
     .form-control
@@ -36,7 +36,15 @@ form{
     }
   // }
 }
-
+@media (max-width:800px){
+form{
+  .form-group{
+    padding:0;
+    .form-control{
+    }
+  }
+}
+}
 
 button{
   width: 100%;

@@ -11,7 +11,7 @@ body{
   margin: 0;
   padding: 0;
   line-height: 2;
-
+  scroll-behavior: smooth;
 }
 .msg{
   height:30px;
@@ -33,9 +33,12 @@ h1, h2, h3{
   letter-spacing: 0.2em;
   font-weight:10px;
   line-height:1;
+  text-align: center;
 }
 .material-icons{
   font-size:100px;
+  vertical-align: middle;
+
 }
 .container{
   height: $max-height;
@@ -50,6 +53,7 @@ h1, h2, h3{
   width:100%;
   display: flex;
   flex-direction: column;
+  // border: 1px solid yellow;
 }
 .border{
     border: 1px solid $first;
@@ -57,15 +61,28 @@ h1, h2, h3{
 .row{
   margin: 0;
   width: 100%;
-  //border: 1px solid red;
+  // border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
 }
+@media (max-width:800px){
+  .row{
+    flex-wrap:wrap;
+  }
+  .col{
+    flex-direction:column;
+    margin:0;
+    padding:0;
+  }
+  .slim{
+    width:100%;
+  }
+}
 .slim{
   @extend .col;
-  width:50% !important;
+  width:100%;
   line-height: 3;
   align-items: center;
 }
@@ -80,11 +97,30 @@ h1, h2, h3{
   background-color: #BC9797;
   color: white;
 }
+.darker{
+  background-color: #595959;
+  color: white;
+}
+.avatar{
+  height: 200px;
+  width:200px;
+  border-radius: 200px;
+  margin: 5%;
+}
+.subtitle{
+  font-size:20px;
+  color:white;
+  height: 100%;
+  // border: 1px solid $first;
+  padding: 3%;
+  margin:10% 0 10% 0;
+  background: black;
+}
 .col{
   padding: $unit;
   margin: $unit;
   width: 96%;
-  //border: 1px solid blue;
+  // border: 1px solid blue;
 
   display: flex;
   align-items: center;

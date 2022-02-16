@@ -6,114 +6,95 @@ const passport = require('passport')
 const ADMIN = 'admin';
 const USER = 'user';
 
-//LOGIN
-const login = async (req, res) =>{
-    let {email, password} = req;
-    //check if exists
-    const user = await User.findOne({email});
-    if(!user){
-      return res.status(401).json({
-        message: 'Email not found',
-        success: false
-      });
-    }
+const validatePass=(actual,proposed)=>{
+  return bcrypt.compare(actual, proposed);
+}
+const newPass = (password)=>{
+  return bcrypt.hash(password, 12);
+}
+const createToken=(user)=>{
+  //sign and issue token
+  let token = jwt.sign({
+      user_id: user._id,
+      role: user.role,
+      name: user.name,
+      email: user.email
+    },
+    process.env.SECRET,
+    {expiresIn: '7 days'}
+  );
 
-    //check password
-    let isMatch = await bcrypt.compare(password, user.password);
-    if(isMatch){
-      //sign and issue token
-      let token = jwt.sign({
-          user_id: user._id,
-          role: user.role,
-          name: user.name,
-          email: user.email
-        },
-        process.env.SECRET,
-        {expiresIn: '7 days'}
-      );
-
-      let result = {
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        token: `Bearer ${token}`,
-        expiresIn: 168
-      };
-
-      return res.status(200).json({
-        result,
-        message: 'Welcome back',
-        success: true
-      });
-
-    }else{
-      return res.status(403).json({
-        message: 'Password incorrect',
-        success: false
-      });
-    }
-};
-
-//REGISTER
-const register = async (req, res) =>{
-    //check if exists
-    let taken = await(exists(req.email));
-    if (taken){
-      return res.status(400).json({
-        message:"You're already subscribed!",
-        success: false
-      });
-    }
-
-    //encrypt password
-    // const password = await bcrypt.hash(req.password, 12);
-
-    try{
-      await new User({
-        ...req,
-        role: USER
-      }).save();
-      return res.status(201).json({
-        message: 'Subscribed!',
-        success: true
-      });
-    }catch(err){
-      return res.status(500).json({
-        message: `user creation unsuccessful: ${err}`,
-        success: false
-      });
-    }
-
-};
-
-//GATEKEEP
-const auth = passport.authenticate('jwt',{session: false});
-
-//
-const checkRole = roles => (req, res, next) =>
-  !roles.includes(req.user.role)
-    ? res.status(401).json("Unauthorized")
-    : next();
-
-//Specify exposed data
-const serialize = user => {
-  return{
-    _id: user._id,
+  let result = {
     name: user.name,
-    email: user.email
+    email: user.email,
+    role: user.role,
+    token: token,
+    expiresIn: 168
   };
-};
 
-//Check if user exists by email
-const exists = async(email) => {
-  let user = await User.findOne({email});
-  return user ? true:false;
-};
+  return result
+}
 
+const auth = (req,res,next)=>{
+  console.log('auth check')
+  const proposal = req.headers.authorization.split(' ')
+  if(proposal[0]=='Token'){
+    let token = proposal[1]
+    if(token){
+
+        jwt.verify(token,process.env.SECRET, (err, decoded)=>{
+          if (err){
+            console.log(err)
+            reject(res)
+          }else{
+            req.user=decoded
+            // console.log('decoded '+decoded)
+            next()
+          }
+        })
+    }
+    else{
+      reject(res)
+    }
+  }else if(proposal[0]=='api'){
+    let token = proposal[1]
+    if(token && token==process.env.API_KEY){
+        req.script=true
+        next()
+    }
+    else{
+      reject(res)
+    }
+  }
+}
+const permission = (access)=>{
+  return (req,res,next)=>{
+    console.log('permission check')
+    if(req.user){
+      // console.log('user agent')
+      if(req.user.role == access){
+        // console.log('access granted')
+        next()
+      }else{
+        reject(res)
+      }
+    }else if(req.script && req.script==true){
+      // console.log('script agent')
+      next()
+    }
+    else{reject(res)}
+  }
+}
+const reject = (res)=>{
+  return res.status(403).json({
+    message: 'There was a problem with access',
+    success: false
+  });
+}
 module.exports = {
-  register,
-  login,
+  createToken,
+  newPass,
+  validatePass,
   auth,
-  serialize,
-  checkRole
+  permission
 }
