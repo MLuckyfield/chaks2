@@ -4,6 +4,7 @@ const MongoStore = require('connect-mongo');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const path = require("path")//heroku deployment
 
 
 require('dotenv').config();
