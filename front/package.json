@@ -1,6 +1,5 @@
 {
   "name": "japanese_app",
-  "homepage":"https://chatshack.jp/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
