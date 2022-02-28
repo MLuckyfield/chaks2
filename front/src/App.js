@@ -67,10 +67,10 @@ const App = () => {
         //     </AuthDataProvider>
         // </Router>
         <div>
-              
+
               <nav>
                   <div class="logo">
-                      <h4>The Nav</h4>
+                      <h4>CHATSHACK</h4>
                   </div>
                   <ul class="nav-links">
                       <li><a href="#">Home</a></li>
