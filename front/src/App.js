@@ -85,7 +85,9 @@ const App = () => {
 
               <nav>
                   <div class="logo">
-                      <img class='avatar' id='nav-logo' src={logo} alt="Avatar"></img><div class='logo-basic'>CHATSHACK</div>
+                    <div class='row'>
+                        <img class='avatar' id='nav-logo' src={logo} alt="Avatar"></img><div class='logo-basic'>CHATSHACK</div>
+                    </div>
                   </div>
                   <ul class="nav-links">
                       <li><a href="#intro">Intro</a></li>
