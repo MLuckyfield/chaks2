@@ -49,6 +49,7 @@ h1, h2, h3{
 }
 .master-row{
   padding:0;
+  padding-top:5%;
   margin:0;
   width:100%;
   display: flex;
@@ -164,7 +165,7 @@ nav {
 }
 
 .nav-links a {
-    color: rgb(226, 226, 226);
+    color: white;
     text-decoration: none;
     letter-spacing: 3px;
     font-weight: bold;
