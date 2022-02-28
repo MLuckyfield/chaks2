@@ -53,6 +53,13 @@ nav {
 }
 //large screen navbar
 @media (min-width:801px){
+  .logo-basic{
+    line-height: .9;
+    font-weight: bold;
+    color:white;
+    margin-top:6%;
+    font-size:0.8em;
+  }
   ul {
   list-style-type: none;
   margin: 0;
@@ -117,6 +124,9 @@ nav {
     height:50px;
     width:50px;
     border: 1px solid black;
+  }
+  #nav-row{
+    @extend .row
   }
   #menuToggle {
     display: flex;
