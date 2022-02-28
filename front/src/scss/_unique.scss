@@ -113,7 +113,11 @@ nav {
       }
     }
   }
-
+  #nav-logo{
+    height:50px;
+    width:50px;
+    border: 1px solid black;
+  }
   #menuToggle {
     display: flex;
     flex-direction: column;
