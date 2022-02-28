@@ -52,9 +52,10 @@ app.disable('x-powered-by');
 app.use('/user',require('./models/user/api'));
 
 //heroku deployment
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/front/build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "/front/build", "index.html"));
+// });
+app.use(express.static(__dirname+"/front/build"))
 
 //start listening
 app.listen(port,() => {
