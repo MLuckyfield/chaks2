@@ -92,10 +92,20 @@ nav {
     }
   }
   #nav-logo{
-    height:100px;
-    width:100px;
+    height:50px;
+    width:50px;
     border: 1px solid black;
   }
+}
+
+#nav-row{
+  margin: 0;
+  width: 70%;
+  // border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 //mobile navbar
 @media (max-width:800px){
@@ -120,20 +130,7 @@ nav {
       }
     }
   }
-  #nav-logo{
-    height:50px;
-    width:50px;
-    border: 1px solid black;
-  }
-  #nav-row{
-    margin: 0;
-    width: 70%;
-    // border: 1px solid red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
+
   #menuToggle {
     display: flex;
     flex-direction: column;

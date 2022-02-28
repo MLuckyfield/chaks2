@@ -91,10 +91,10 @@ const App = () => {
                     </div>
                   </div>
                   <ul class="nav-links">
-                      <li><a onClick={navSlide} href="#intro">Intro</a></li>
-                      <li><a onClick={navSlide} href="#concept">Concept</a></li>
-                      <li><a onClick={navSlide} href="#merit">Merit</a></li>
-                      <li><a onClick={navSlide} href="#team">Team</a></li>
+                      <li><a onClick={navSlide} href="#intro">INTRO</a></li>
+                      <li><a onClick={navSlide} href="#concept">CONCEPT</a></li>
+                      <li><a onClick={navSlide} href="#merit">MERIT</a></li>
+                      <li><a onClick={navSlide} href="#team">TEAM</a></li>
                   </ul>
                   <div class="burger" onClick={navSlide}>
                       <div class="line1"></div>
