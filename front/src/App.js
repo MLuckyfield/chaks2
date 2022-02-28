@@ -85,15 +85,15 @@ const App = () => {
 
               <nav>
                   <div class="logo">
-                    <div class='row'>
+                    <div class='nav-row'>
                         <img class='avatar' id='nav-logo' src={logo} alt="Avatar"></img><div class='logo-basic'>CHATSHACK</div>
                     </div>
                   </div>
                   <ul class="nav-links">
-                      <li><a href="#intro">Intro</a></li>
-                      <li><a href="#concept">Concept</a></li>
-                      <li><a href="#merit">Merit</a></li>
-                      <li><a href="#team">Team</a></li>
+                      <li><a onClick={navSlide} href="#intro">Intro</a></li>
+                      <li><a onClick={navSlide} href="#concept">Concept</a></li>
+                      <li><a onClick={navSlide} href="#merit">Merit</a></li>
+                      <li><a onClick={navSlide} href="#team">Team</a></li>
                   </ul>
                   <div class="burger" onClick={navSlide}>
                       <div class="line1"></div>
