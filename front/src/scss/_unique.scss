@@ -125,9 +125,7 @@ nav {
     width:50px;
     border: 1px solid black;
   }
-  #nav-row{
-    @extend .row
-  }
+  
   #menuToggle {
     display: flex;
     flex-direction: column;
