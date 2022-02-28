@@ -125,7 +125,15 @@ nav {
     width:50px;
     border: 1px solid black;
   }
-  
+  #nav-row{
+    margin: 0;
+    width: 100%;
+    // border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
   #menuToggle {
     display: flex;
     flex-direction: column;

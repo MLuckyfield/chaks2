@@ -67,9 +67,7 @@ h1, h2, h3{
   align-items: center;
   flex-direction: row;
 }
-#nav-row{
-  @extend .row
-}
+
 @media (max-width:800px){
   .row{
     flex-wrap:wrap;
