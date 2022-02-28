@@ -55,7 +55,7 @@ app.use('/user',require('./models/user/api'));
 // app.get("*", (req, res) => {
 //     res.sendFile(path.join(__dirname, "/front/build", "index.html"));
 // });
-// app.use(express.static(__dirname+"/front/build"))
+app.use(express.static(__dirname+"/front/build"))
 
 //start listening
 app.listen(port,() => {
