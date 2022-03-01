@@ -18,13 +18,13 @@ const User = mongoose.model('User', new Schema({
     type: String,
     required: true,
     maxLength: 30,
-    minLength: 2,
+    minLength: 1,
   },
   last: {
     type: String,
     required: true,
     maxLength: 30,
-    minLength: 2,
+    minLength: 1,
   },
   role: {
     type: String,
