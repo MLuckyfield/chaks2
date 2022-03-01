@@ -48,7 +48,6 @@ h1, h2, h3{
   display: inline-flex;
 }
 .master-row{
-  padding:0;
   padding-top:5%;
   margin:0;
   width:100%;
@@ -70,6 +69,9 @@ h1, h2, h3{
 }
 
 @media (max-width:800px){
+  .master-row{
+    padding-top:10%;
+  }
   .row{
     flex-wrap:wrap;
   }

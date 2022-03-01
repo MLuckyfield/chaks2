@@ -24,7 +24,7 @@ const App = () => {
       const onSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:5000/user/new',
+        axios.post('user/new',
           {
             email: email.current.value,
             first:first.current.value,
