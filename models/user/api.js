@@ -17,13 +17,12 @@ const User = require('./model')
       }
 
       //encrypt password
-      const password = await auth.newPass(req.password)
+      // const password = await auth.newPass(req.password)
 
 
       try{
         await new User({
           ...req,
-          password,
           role: 'user'
         }).save();
         return res.status(201).json({
