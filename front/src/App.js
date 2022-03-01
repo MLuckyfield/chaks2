@@ -189,6 +189,11 @@ const App = () => {
                   </form>
                 </div>
               </div>
+              <div id='access' class='row'>
+                <div class='col'>
+                    <Map/>
+                </div>
+              </div>
               <div id='team' class='row dark'>
                 <div class='master-row slim'>
                     <h1 class='col'>TEAM</h1>
@@ -214,7 +219,25 @@ const App = () => {
           </div>
       )
   }
+const Map = ()=>{
+  useEffect(() => {
+        // The location of Uluru
+        const uluru = { lat: -25.344, lng: 131.036 };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 12,
+          center: uluru,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+    },[])
 
+    return <div id="map"></div>
+
+}
 const SentryRoute = ({ access, success, fail, ...options }) => {
   //const { user } = useAuthDataContext();
 
