@@ -3,6 +3,7 @@ import React, { useState, useEffect ,useRef} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Redirect } from 'react-router'
 import axios from 'axios';
+import GoogleMapReact from 'google-map-react'
 //import styles
 import './scss/main.scss'
 import logo from './chatshack.jpeg'
@@ -191,7 +192,7 @@ const App = () => {
               </div>
               <div id='access' class='row'>
                 <div class='col'>
-                    <div id="map"></div>
+                    <Map/>
                 </div>
               </div>
               <div id='team' class='row dark'>
@@ -219,7 +220,22 @@ const App = () => {
           </div>
       )
   }
+const Map = ()=>{
+  const location = {
+    address:'',
+    lat:'',
+    lng:''
+  }
+return (
+  <GoogleMapReact defaultCenter={location}>
+      <LocationPin lat={location.lat} lng={location.lng} text='ChatShack'/>
+  </GoogleMapReact>
+)
 
+}
+const LocationPin=()=>{
+  return <span class='material-icons'>school</span>
+}
 const SentryRoute = ({ access, success, fail, ...options }) => {
   //const { user } = useAuthDataContext();
 
