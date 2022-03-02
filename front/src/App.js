@@ -192,7 +192,7 @@ const App = () => {
               </div>
               <div id='access' class='row'>
                 <div class='col'>
-                    <div id='map'><Map/></div>
+                    <div id='map'>test<Map/></div>
                 </div>
               </div>
               <div id='team' class='row dark'>
