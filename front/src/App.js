@@ -192,7 +192,7 @@ const App = () => {
               </div>
               <div id='access' class='row'>
                 <div class='col'>
-                    <div id='map'>test<Map/></div>
+                  <Map/>
                 </div>
               </div>
               <div id='team' class='row dark'>
@@ -235,9 +235,11 @@ const Map = ()=>{
     })
   },[])
   return (
-    <GoogleMapReact bootstrapURLKeys={{key:'AIzaSyBX-HH0dhkemDet_G5TTZsR__uphcOEI6k'}} defaultCenter={location}>
-        <LocationPin lat={location.lat} lng={location.lng} text='ChatShack'/>
-    </GoogleMapReact>
+    <div id='map'>
+        {location?<GoogleMapReact bootstrapURLKeys={{key:'AIzaSyBX-HH0dhkemDet_G5TTZsR__uphcOEI6k'}} defaultCenter={location} defaultZoom={12}>
+            <LocationPin lat={location.lat} lng={location.lng} text='ChatShack'/>
+        </GoogleMapReact>:'loading'}
+    </div>
   )
 
 }
