@@ -244,7 +244,7 @@ const Map = ()=>{
 
 }
 const LocationPin=({text})=>{
-  return <span class='material-icons'>{text}</span>
+  return <span class='material-icons'>location_on</span>
 }
 const SentryRoute = ({ access, success, fail, ...options }) => {
   //const { user } = useAuthDataContext();
