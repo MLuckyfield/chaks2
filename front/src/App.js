@@ -192,7 +192,7 @@ const App = () => {
               </div>
               <div id='access' class='row'>
                 <div class='col'>
-                    <Map/>
+                    <div id='map'><Map/></div>
                 </div>
               </div>
               <div id='team' class='row dark'>
@@ -222,19 +222,19 @@ const App = () => {
   }
 const Map = ()=>{
   const location = {
-    address:'',
-    lat:'',
-    lng:''
+    address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
+    lat:35.693535294891284,
+    lng:139.744438614119
   }
-return (
-  <GoogleMapReact defaultCenter={location}>
-      <LocationPin lat={location.lat} lng={location.lng} text='ChatShack'/>
-  </GoogleMapReact>
-)
+  return (
+    <GoogleMapReact bootstrapURLKeys={{key:'AIzaSyBX-HH0dhkemDet_G5TTZsR__uphcOEI6k'}} defaultCenter={location}>
+        <LocationPin lat={location.lat} lng={location.lng} text='ChatShack'/>
+    </GoogleMapReact>
+  )
 
 }
-const LocationPin=()=>{
-  return <span class='material-icons'>school</span>
+const LocationPin=({text})=>{
+  return <span class='material-icons'>{text}</span>
 }
 const SentryRoute = ({ access, success, fail, ...options }) => {
   //const { user } = useAuthDataContext();
