@@ -71,11 +71,11 @@ nav {
   width: 100%;
   li {
     float: right;
-    &:first-child{
-      float:left;
-      display: flex;
-      flex-direction: row;
-    }
+    // &:first-child{
+    //   float:left;
+    //   display: flex;
+    //   flex-direction: row;
+    // }
     a {
       disvhplay: block;
       color: white;
