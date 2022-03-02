@@ -223,8 +223,8 @@ const App = () => {
 const Map = ()=>{
   const location = {
     address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
-    lat:35.693535294891284,
-    lng:139.744438614119
+    lat:35.693535,
+    lng:139.744438
   }
   return (
     <GoogleMapReact bootstrapURLKeys={{key:'AIzaSyBX-HH0dhkemDet_G5TTZsR__uphcOEI6k'}} defaultCenter={location}>
