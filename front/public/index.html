@@ -29,23 +29,6 @@
     <title>ChatShack</title>
   </head>
   <body>
-    <script>
-        const uluru = { lat: -25.344, lng: 131.036 };
-        // The map, centered at Uluru
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 12,
-          center: uluru,
-        });
-        // The marker, positioned at Uluru
-        const marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-        });
-    </script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX-HH0dhkemDet_G5TTZsR__uphcOEI6k&callback=initMap&libraries=&v=weekly"
-      async
-    ></script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
