@@ -40,7 +40,7 @@ h1, h2, h3{
   border: 1px solid red;
 }
 .map-marker{
-  @extend .material-icons
+  @extend .material-icons;
   position: absolute;
   width: 40px;
   height: 40px;
