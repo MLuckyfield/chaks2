@@ -150,6 +150,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 10;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -167,6 +168,7 @@ nav {
 .nav-links {
     display: flex;
     width: 30%;
+    z-index: 10;
 }
 
 .nav-links li {
