@@ -36,7 +36,7 @@ h1, h2, h3{
   text-align: center;
 }
 .material-icons{
-  font-size:100px;
+  font-size:10px;
   border: 1px solid red;
 }
 .map-marker{
@@ -46,6 +46,7 @@ h1, h2, h3{
   height: 40px;
   left: -40/2;
   top:-40/2;
+  text-align: center;
 }
 .container{
   height: $max-height;
