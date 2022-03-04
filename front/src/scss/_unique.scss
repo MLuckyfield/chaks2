@@ -1,4 +1,6 @@
 #header{
+  position: absolute;
+  top: 8vh;
   height: 65vh;
   width: 100%;
   margin-top:5%;
@@ -19,9 +21,8 @@
   height:30vh;
 }
 #overlay{
-  // position: absolute;
-  // top: 10%;
-  // left: 20%;
+  position: absolute;
+  top: 8vh;
   color: white;
   height:65vh;
   width:100%;
