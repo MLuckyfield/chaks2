@@ -236,7 +236,7 @@ const Map = ()=>{
   },[])
   return (
     <div id='map'>
-        {location?<GoogleMapReact bootstrapURLKeys={{key:'AIzaSyBX-HH0dhkemDet_G5TTZsR__uphcOEI6k'}} defaultCenter={location} defaultZoom={19}>
+        {location?<GoogleMapReact bootstrapURLKeys={{key:'AIzaSyBX-HH0dhkemDet_G5TTZsR__uphcOEI6k'}} defaultCenter={location} defaultZoom={15}>
             <LocationPin lat={location.lat} lng={location.lng} text='ChatShack'/>
         </GoogleMapReact>:'loading'}
     </div>
