@@ -39,6 +39,14 @@ h1, h2, h3{
   font-size:100px;
   border: 1px solid red;
 }
+.map-marker{
+  @extend .material-icons
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: -40/2
+  top:-40/2
+}
 .container{
   height: $max-height;
   width: $max-width;
