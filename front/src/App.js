@@ -229,7 +229,7 @@ const Map = ()=>{
 
   useEffect(()=>{
     setLocation({
-      address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
+      // address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
       lat:35.693535,
       lng:139.744438
     })
