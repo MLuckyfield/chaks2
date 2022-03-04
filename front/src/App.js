@@ -92,7 +92,6 @@ const App = () => {
                     </div>
                   </div>
                   <ul class="nav-links">
-                      <li><a onClick={navSlide} href="#intro">INTRO</a></li>
                       <li><a onClick={navSlide} href="#concept">CONCEPT</a></li>
                       <li><a onClick={navSlide} href="#merit">MERIT</a></li>
                       <li><a onClick={navSlide} href="#access">ACCESS</a></li>
@@ -108,8 +107,7 @@ const App = () => {
                     <div id='overlay'>
                         <div class='row'>
                           <div class='col'>
-                            <img class='avatar' id='logo' src={logo} alt="Avatar"></img>
-                            <h1 class='logo-basic'>CHAT SHACK</h1>
+                            <h1 class='logo-basic'>６月初旬にオープン予定！</h1>
                           </div>
                         </div>
                     </div>
@@ -174,11 +172,12 @@ const App = () => {
                   <form onSubmit={onSubmit}>
                     <div class="master-row form-group border">
                         <div class='row'>
-                            <h1 class='col'>SUBSCRIBE</h1>
+                            <div class='col'><h1>SUBSCRIBE</h1></div>
+                            <div class='col'>Chatshackの最新情報を知りたい方はこちら！プレオープンの招待、特別割引、キャンペーン情報、イベント招待など、お届けします！</div>
                         </div>
                         <div class='row'>
-                          <input ref={first} class='form-control' minlength='1' placeholder='First Name'/>
-                          <input ref={last} class='form-control' minlength='1' placeholder='Family Name'/>
+                          <input ref={first} class='form-control' minlength='1' placeholder='名'/>
+                          <input ref={last} class='form-control' minlength='1' placeholder='姓'/>
                         </div>
                         <div class='row'>
                           <input ref={email} class='form-control' type='email' placeholder='Email'/>
@@ -201,7 +200,10 @@ const App = () => {
                     Email: support@chatshack.jp
                   </div>
                   <div class='col'>
-
+                    九段下駅から徒歩７分
+                    市ヶ谷駅から徒歩８分
+                    半蔵門駅から徒歩１０分
+                    飯田橋駅から徒歩１３分
                   </div>
                 </div>
                 <div class='row'>
