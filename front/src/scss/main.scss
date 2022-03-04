@@ -157,7 +157,11 @@ nav {
     min-height: 8vh;
     background-color: black;
 }
-
+#nav-filler{
+  position: absolute;
+  top: 0;
+  height:8vh;
+}
 .logo {
     color: rgb(226, 226, 226);
     text-transform: uppercase;

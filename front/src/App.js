@@ -103,6 +103,10 @@ const App = () => {
                       <div class="line3"></div>
                   </div>
               </nav>
+              <div id='nav-filler'>
+                  <img class='avatar' id='nav-logo' src={logo} alt="Avatar"></img>
+                  <div class='logo-basic'>CHATSHACK</div>
+              </div>
               <div id='header' class='transparent'>
                     <div id='overlay'>
                         <div class='row'>
