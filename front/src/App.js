@@ -174,7 +174,11 @@ const App = () => {
                         <div class='row'>
                           <div class='col'>
                             <div class='row'><h1>SUBSCRIBE</h1></div>
-                            <div class='row'>Chatshackの最新情報を知りたい方はこちら！プレオープンの招待、特別割引、キャンペーン情報、イベント招待など、お届けします！</div>
+                            <div class='row'>
+                              <div class='col'>
+                                  Chatshackの最新情報を知りたい方はこちら！プレオープンの招待、特別割引、キャンペーン情報、イベント招待など、お届けします！
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class='row'>
@@ -220,7 +224,7 @@ const App = () => {
                             <img class='avatar' src={shunsuke}></img>
                             <h2>SHUNSUKE</h2>
                             <h3>CO-FOUNDER</h3>
-                            <span class='subtitle'>Legal, Supply Chain, Food & Beverage, Funding, External Communications</span>
+                            <span class='subtitle'>Legal, Supply Chain, Food & Beverage, Funding, Communications</span>
                             Born in Japan. Speaks 3 language. Lived in Canada and China. Likes travelling and has friends all over the world!
                         </div>
                         <div class='col slim'>
