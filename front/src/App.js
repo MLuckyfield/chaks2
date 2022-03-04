@@ -172,8 +172,10 @@ const App = () => {
                   <form onSubmit={onSubmit}>
                     <div class="master-row form-group border">
                         <div class='row'>
+                          <div class='col'>
                             <div class='row'><h1>SUBSCRIBE</h1></div>
                             <div class='row'>Chatshackの最新情報を知りたい方はこちら！プレオープンの招待、特別割引、キャンペーン情報、イベント招待など、お届けします！</div>
+                          </div>
                         </div>
                         <div class='row'>
                           <input ref={first} class='form-control' minlength='1' placeholder='名'/>
