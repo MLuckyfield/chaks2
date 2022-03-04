@@ -45,8 +45,8 @@ h1, h2, h3{
   left: (-100/2)*1px;
   top:(-100)*1px;
   text-align: center;
-  border: 1px solid red;
-
+  // border: 1px solid red;
+  color:black;
 }
 .container{
   height: $max-height;
@@ -151,7 +151,7 @@ nav {
     top: 0;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
     align-items: center;
     min-height: 8vh;
     background-color: black;
@@ -211,6 +211,7 @@ nav {
         top: 8vh;
         background-color: black;
         display: flex;
+        text-align: center;
         flex-direction: column;
         width: 50%;
         transform: translateX(100%);
