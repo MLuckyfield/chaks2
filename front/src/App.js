@@ -172,8 +172,8 @@ const App = () => {
                   <form onSubmit={onSubmit}>
                     <div class="master-row form-group border">
                         <div class='row'>
-                            <div class='col'><h1>SUBSCRIBE</h1></div>
-                            <div class='col'>Chatshackの最新情報を知りたい方はこちら！プレオープンの招待、特別割引、キャンペーン情報、イベント招待など、お届けします！</div>
+                            <div class='row'><h1>SUBSCRIBE</h1></div>
+                            <div class='row'>Chatshackの最新情報を知りたい方はこちら！プレオープンの招待、特別割引、キャンペーン情報、イベント招待など、お届けします！</div>
                         </div>
                         <div class='row'>
                           <input ref={first} class='form-control' minlength='1' placeholder='名'/>
@@ -200,10 +200,10 @@ const App = () => {
                     Email: support@chatshack.jp
                   </div>
                   <div class='col'>
-                    九段下駅から徒歩７分
-                    市ヶ谷駅から徒歩８分
-                    半蔵門駅から徒歩１０分
-                    飯田橋駅から徒歩１３分
+                    九段下駅から徒歩７分<br/>
+                    市ヶ谷駅から徒歩８分<br/>
+                    半蔵門駅から徒歩１０分<br/>
+                    飯田橋駅から徒歩１３分<br/>
                   </div>
                 </div>
                 <div class='row'>
@@ -225,7 +225,7 @@ const App = () => {
                             <img class='avatar' src={matt}></img>
                             <h2>MATT</h2>
                             <h3>CO-FOUNDER</h3>
-                            <span class='subtitle'> Research, Product, Branding & Marketing, Finance, HR, Tech</span>
+                            <span class='subtitle'> Research, Product, Branding & Marketing, Finance, HR, Technology</span>
                             Born in Canada. Speaks 1.5 languages. Lived in 5 countries. Has too many hobbies & interests - at least 5!
                         </div>
                     </div>
