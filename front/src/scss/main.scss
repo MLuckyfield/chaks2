@@ -43,7 +43,7 @@ h1, h2, h3{
   width: 100px;
   height: 100px;
   left: (-100/2)*1px;
-  top:(-100)*1px;
+  top:(-98)*1px;
   text-align: center;
   // border: 1px solid red;
   color:black;
@@ -151,7 +151,7 @@ nav {
     top: 0;
     width: 100%;
     display: flex;
-    // justify-content: space-around;
+    justify-content: space-around;
     align-items: center;
     min-height: 8vh;
     background-color: black;
