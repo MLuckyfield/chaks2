@@ -40,13 +40,13 @@ h1, h2, h3{
 }
 .map-marker{
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   left: -100/2;
   top:-100/2;
   text-align: center;
   border: 1px solid red;
-  
+
 }
 .container{
   height: $max-height;
