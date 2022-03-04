@@ -36,16 +36,16 @@ h1, h2, h3{
   text-align: center;
 }
 .material-icons{
-  font-size:10px;
+  font-size:100px;
   border: 1px solid red;
 }
 .map-marker{
   @extend .material-icons;
   position: absolute;
-  width: 40px;
-  height: 40px;
-  left: -40/2;
-  top:-40/2;
+  // width: 40px;
+  // height: 40px;
+  left: -100/2;
+  top:-100/2;
   text-align: center;
 }
 .container{
@@ -166,7 +166,7 @@ nav {
 
 .nav-links {
     display: flex;
-    justify-content: space-around;
+    flex-direction:column;
     width: 30%;
 }
 

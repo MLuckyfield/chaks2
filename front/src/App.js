@@ -95,6 +95,7 @@ const App = () => {
                       <li><a onClick={navSlide} href="#intro">INTRO</a></li>
                       <li><a onClick={navSlide} href="#concept">CONCEPT</a></li>
                       <li><a onClick={navSlide} href="#merit">MERIT</a></li>
+                      <li><a onClick={navSlide} href="#access">ACCESS</a></li>
                       <li><a onClick={navSlide} href="#team">TEAM</a></li>
                   </ul>
                   <div class="burger" onClick={navSlide}>
@@ -190,8 +191,17 @@ const App = () => {
                   </form>
                 </div>
               </div>
-              <div id='access' class='row'>
-                <div class='col'>
+              <div id='access' class='master-row mid'>
+                <div class='row'>
+                  <h1 class='col'>ACCESS</h1>
+                </div>
+                <div class='row'>
+                  <div class='col'>
+                    Kudanminami 2-chōme-4-12<br/> Chiyoda City<br/> Tokyo, Japan <br/>102-0074<br/>
+                    <b>Email: </b>support@chatshack.jp
+                  </div>
+                </div>
+                <div class='row'>
                   <Map/>
                 </div>
               </div>
@@ -244,7 +254,7 @@ const Map = ()=>{
 
 }
 const LocationPin=({text})=>{
-  return <span class='material-icons'>location_on</span>
+  return <span class='map-marker'>location_on</span>
 }
 const SentryRoute = ({ access, success, fail, ...options }) => {
   //const { user } = useAuthDataContext();
