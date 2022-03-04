@@ -200,9 +200,12 @@ const App = () => {
                     Kudanminami 2-chōme-4-12<br/> Chiyoda City<br/> Tokyo, Japan <br/>102-0074<br/>
                     <b>Email: </b>support@chatshack.jp
                   </div>
+                  <div class='col'>
+
+                  </div>
                 </div>
                 <div class='row'>
-                  <Map/>
+                    <Map/>
                 </div>
               </div>
               <div id='team' class='row dark'>
@@ -254,7 +257,7 @@ const Map = ()=>{
 
 }
 const LocationPin=({text})=>{
-  return <span class='map-marker'>location_on</span>
+  return <div class='map-marker'><span class='material-icons'>location_on</span></div>
 }
 const SentryRoute = ({ access, success, fail, ...options }) => {
   //const { user } = useAuthDataContext();
