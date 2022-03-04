@@ -198,7 +198,7 @@ const App = () => {
                 <div class='row'>
                   <div class='col'>
                     Kudanminami 2-chōme-4-12<br/> Chiyoda City<br/> Tokyo, Japan <br/>102-0074<br/>
-                    <b>Email: </b>support@chatshack.jp
+                    Email: support@chatshack.jp
                   </div>
                   <div class='col'>
 
