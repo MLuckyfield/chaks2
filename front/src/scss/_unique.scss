@@ -3,7 +3,7 @@
   // top: 8vh;
   height: 65vh;
   width: 100%;
-  margin-top:5%;
+  margin-top:8vh;
   background-image: url('https://www.thespiritsbusiness.com/content/uploads/2017/06/Paradiso.png');
   background-size:cover;
 }
@@ -50,13 +50,13 @@
   color:white;
   font-size:0.8em;
 }
-nav {
-  background-color: #1E1E23;
-  height: 65px;
-  position: fixed;
-  top:0;
-  width: 100%;
-}
+// nav {
+//   background-color: #1E1E23;
+//   height: 65px;
+//   position: fixed;
+//   top:0;
+//   width: 100%;
+// }
 //large screen navbar
 @media (min-width:801px){
   .logo-basic{
