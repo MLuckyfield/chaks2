@@ -147,7 +147,7 @@ const App = () => {
                         <p/>季節のクラフトビールや、自家製のソーセージをつまみながら英会話を楽しめます！外国のバーにいるような雰囲気で楽しくインストラクターがあなたの英語をレベルアップしてくれます。
                         <p/>FREE! 1 drink
                         <p/>2500yen/UNLIMITED
-                        <p/>6PM - 12AM
+                        <p/>6PM - 11PM
                     </div>
                 </div>
                 <div class='row'><p/></div>
@@ -167,6 +167,9 @@ const App = () => {
                             <span class='material-icons'>savings</span>
                             <div class='col'>入会費、テキスト代などの費用が要らない！他社英会話教室などには入会金やテキスト代等ございますが、当店は入場料のお支払のみでご参加いただけます！</div>
                         </div>
+                  </div>
+                  <div class='row'>
+                    *月曜日は休みでございます
                   </div>
               </div>
               <div class='row'>
@@ -227,7 +230,7 @@ const App = () => {
                             <h2>SHUNSUKE</h2>
                             <h3>CO-FOUNDER</h3>
                             <span class='subtitle'>Legal, Supply Chain, Food & Beverage, Funding, Communications</span>
-                            Born in Japan. Speaks 3 language. Lived in Canada and China. Likes travelling and has friends all over the world!
+                            Born in Japan. Speaks 3 languages. Lived in Canada and China. Likes travelling and has friends all over the world!
                         </div>
                         <div class='col slim'>
                             <img class='avatar' src={matt}></img>
