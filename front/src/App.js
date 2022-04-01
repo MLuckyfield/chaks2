@@ -150,6 +150,9 @@ const App = () => {
                         <p/>6PM - 11PM
                     </div>
                 </div>
+                <div class='row'>
+                  *月曜日は休みでございます
+                </div>
                 <div class='row'><p/></div>
               </div>
               <div id='merit' class='master-row mid'>
@@ -167,9 +170,6 @@ const App = () => {
                             <span class='material-icons'>savings</span>
                             <div class='col'>入会費、テキスト代などの費用が要らない！他社英会話教室などには入会金やテキスト代等ございますが、当店は入場料のお支払のみでご参加いただけます！</div>
                         </div>
-                  </div>
-                  <div class='row'>
-                    *月曜日は休みでございます
                   </div>
               </div>
               <div class='row'>
