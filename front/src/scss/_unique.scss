@@ -23,15 +23,14 @@
 #accordion{
   display: flex;
   flex-direction: column;
-  #accordion-item{
-    text-align: left;
-    margin-bottom: 2%;
-    #accordion-title{
-      margin-bottom: 3%;
-    }
-  }
 }
-
+#accordion-item{
+  text-align: left;
+  margin-bottom: 2%;
+}
+#accordion-title{
+  margin-bottom: 3%;
+}
 
 #overlay{
   // position: absolute;
