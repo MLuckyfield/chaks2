@@ -291,7 +291,7 @@ const App = () => {
 
 
     return (
-        <div className="accordion">
+        <div class="accordion">
         {accordionData.map(({ title, content }) => (
         <AccordionItem title={title} content={content} />
       ))}
@@ -301,11 +301,11 @@ const App = () => {
   const AccordionItem=({ title, content })=>{
     const [isActive, setIsActive] = useState(false);
     return (
-      <div className="accordion-item">
-        <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
+      <div class="accordion-item">
+        <div class="accordion-title" onClick={() => setIsActive(!isActive)}>
           <h2>{title}</h2>
         </div>
-        {isActive && <div className="accordion-content">{content}</div>}
+        {isActive && <div class="accordion-content">{content}</div>}
       </div>
 
     )
