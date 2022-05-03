@@ -255,7 +255,33 @@ const App = () => {
           </div>
       )
   }
+  const Accordion =()=>{
+    const accordionData = {
+      title: '普通の英会話教室と何が違うの？',
+      content: `普通の英会話教室と違うポイントたくさんありますがその中でも以下の３点が特徴となります。
+  1.実際の会話中に英語を教えたり、気軽に英語の質問ができる雰囲気を提供します。
+  2.入会が不必要な為、レッスン予約やテキスト代など必要ありません。来たいときに来れて帰りたいときに帰れます！
+  3.安い！安くて知りたいことを知れるそんな環境を提供しています！入会金やテキスト代もなく気軽にご利用いただけます。`
+    };
 
+    const { title, content } = accordionData;
+    const [isActive, setIsActive] = useState(false);
+
+    return (
+      <React.Fragment>
+        <h1>React Accordion Demo</h1>
+        <div className="accordion">
+          <div className="accordion-item">
+            <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
+              <div>{title}</div>
+              <div>{isActive ? '-' : '+'}</div>
+            </div>
+            {isActive && <div className="accordion-content">{content}</div>}
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
 const Map = ()=>{
   const [location, setLocation] = useState({
     address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
