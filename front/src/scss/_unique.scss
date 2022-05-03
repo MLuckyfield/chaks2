@@ -20,9 +20,10 @@
   width:100%;
   height:30vh;
 }
-#accordion-ite{
+#accordion-item{
   text-align: left;
 }
+
 #overlay{
   // position: absolute;
   // top: 8vh;
@@ -94,7 +95,9 @@
     }
   }
   }
-
+  #accordion-content{
+    width:80%;
+  }
   #menuToggle {
     input{
       display:none;
@@ -118,6 +121,9 @@
 }
 //mobile navbar
 @media (max-width:800px){
+  #accordion-content{
+    width:80%;
+  }
   #nav-logo{
     height:50px;
     width:50px;
