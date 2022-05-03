@@ -291,13 +291,11 @@ const App = () => {
 
 
     return (
-      <React.Fragment>
         <div className="accordion">
         {accordionData.map(({ title, content }) => (
         <AccordionItem title={title} content={content} />
       ))}
         </div>
-      </React.Fragment>
     );
   }
   const AccordionItem=({ title, content })=>{
