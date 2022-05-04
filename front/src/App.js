@@ -6,7 +6,7 @@ import axios from 'axios';
 import GoogleMapReact from 'google-map-react'
 //import styles
 import './scss/main.scss'
-import logo from './chatshack.jpeg'
+import logo from './chatshack.jpg'
 import shunsuke from './shunsuke.jpg'
 import matt from './matt.jpg'
 
