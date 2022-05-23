@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import {useAuthDataContext} from "./components/auth-provider";
 
  const Sidebar =()=> {
 
