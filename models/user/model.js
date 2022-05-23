@@ -10,10 +10,10 @@ const User = mongoose.model('User', new Schema({
     lowercase: true,
     unique: true
   },
-  // password: {
-  //   type: String,
-  //   required: true
-  // },
+  password: {
+    type: String,
+    required: true
+  },
   first: {
     type: String,
     required: true,
@@ -29,7 +29,7 @@ const User = mongoose.model('User', new Schema({
   role: {
     type: String,
     default: 'user',
-    enum: ['user','admin','super']
+    enum: ['user','teacher','manager','admin']
   },
 },{
   timestamps: true,

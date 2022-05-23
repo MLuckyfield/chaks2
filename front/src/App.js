@@ -4,6 +4,10 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Redirect } from 'react-router'
 import axios from 'axios';
 import GoogleMapReact from 'google-map-react'
+//
+import Login from './components/user/Login'
+import Signup from './components/user/Signup'
+import AdminDash from './components/nav/AdminDash'
 //import styles
 import './scss/main.scss'
 import logo from './chatshack.jpg'
@@ -12,9 +16,25 @@ import matt from './matt.jpg'
 
 const App = () => {
 
+    return (
+      <Router>
+          <Route path="/" component={Front}/>
+          <Route path="/signup" component={Signup}/>
+          <Route path="/login" component={Login}/>
+          <AuthDataProvider>
+            <SentryRoute path="/dash" access='user' success={AdminDash} fail={Login}/>
+          </AuthDataProvider>
+      </Router>
+
+    )
+
+};
+
+const Front = ()=>{
+
       const [text, setText] = useState([
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-  'このような悩みありませんか？高校や大学で英語を学んでも、高い英会話スクールに通っていたとしても、英語を話すことに自信を持つのは難しいでしょう。また、英語の読み書きには自信があっても、リスニングとスピーキングが苦手な方が多いかと思います。きっとそれは、気軽に楽しく英語を話す機会が少ないからなのではないでしょうか？語学交流アプリなどを利用して外国人の友人を作り、英語を話す機会を作ったとしても、きっと彼らはあなたの英語の間違いを１つ１つ丁寧に指摘や修正はしてくれないでしょう。'
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    'このような悩みありませんか？高校や大学で英語を学んでも、高い英会話スクールに通っていたとしても、英語を話すことに自信を持つのは難しいでしょう。また、英語の読み書きには自信があっても、リスニングとスピーキングが苦手な方が多いかと思います。きっとそれは、気軽に楽しく英語を話す機会が少ないからなのではないでしょうか？語学交流アプリなどを利用して外国人の友人を作り、英語を話す機会を作ったとしても、きっと彼らはあなたの英語の間違いを１つ１つ丁寧に指摘や修正はしてくれないでしょう。'
       ])
 
       const email = useRef('');
@@ -130,7 +150,7 @@ const App = () => {
                 <div class='row'>
                   <div class='col slim center'>
                   CHATSHACKでは、これらの問題を解決することができます。
-会話はインストラクターがリードし、分からない英語については１つ１つ説明し、お客様が理解した上で、会話を続けます。なので、英会話に自信がない人や、正しく自然な英語を学びたい人は是非ともお試しください。
+    会話はインストラクターがリードし、分からない英語については１つ１つ説明し、お客様が理解した上で、会話を続けます。なので、英会話に自信がない人や、正しく自然な英語を学びたい人は是非ともお試しください。
                   </div>
                 </div>
                 <div class='row'>
@@ -254,39 +274,39 @@ const App = () => {
           </div>
           </div>
       )
-  }
-  const Accordion =()=>{
+    }
+    const Accordion =()=>{
     const accordionData = [{
       title: '普通の英会話教室と何が違うの？',
       content: `普通の英会話教室と違うポイントたくさんありますがその中でも以下の３点が特徴となります。
-  1.実際の会話中に英語を教えたり、気軽に英語の質問ができる雰囲気を提供します。
-  2.入会が不必要な為、レッスン予約やテキスト代など必要ありません。来たいときに来れて帰りたいときに帰れます！
-  3.安い！安くて知りたいことを知れるそんな環境を提供しています！入会金やテキスト代もなく気軽にご利用いただけます。`,
-  },
-  {
+    1.実際の会話中に英語を教えたり、気軽に英語の質問ができる雰囲気を提供します。
+    2.入会が不必要な為、レッスン予約やテキスト代など必要ありません。来たいときに来れて帰りたいときに帰れます！
+    3.安い！安くて知りたいことを知れるそんな環境を提供しています！入会金やテキスト代もなく気軽にご利用いただけます。`,
+    },
+    {
     title: '英会話バーでも英語が学べるの？',
     content: `もちろん英語力を向上していただけます。
-英語を学ぶ場所の提供が私たちの一番の役目です。CHTASHACKでの英会話は自由テーマで行われます。
-なので、英語に関する質問はいつでもできるし、インストラクターも例文や絵などで説明をしてくれます。
-また、バーといっても英会話を楽しむことを大事としているので、音の大きい音楽を流すなどはしません。`,
-},
-{
-  title: '他にも安い英会話はありますが、割引などありますか？',
-  content: `もちろん私たちより安い英会話教室は存在します！ただ、私たちはより自由に話しやすい環境を提供している自信があります。また、CHATSHACKには入会金や月謝などをお客様から頂戴しておりません。
-割引に関しては今後条件付きで行う予定ではあります！
-最新情報としてお客様へ共有する予定ですのでHPよりメールアドレスの登録をよろしくお願いいたします。`,
-},
-{
-  title: '英会話中に飲食をすることは可能ですか？',
-  content: `もちろんです！海外のカフェやバーを意識したメニューを提供しております！
-アルコール類はクラフトビールをメインとしハイボールやソフトドリンクもご用意しています。
-食べ物もナチョスやポテトフライなどの食べやすくて美味しいものを提供しています。
-英会話中にはぜひ食べ物や飲み物もお楽しみください！`,
-},
-{
-  title: '予約は必要ですか？',
-  content: `必要ありません！直接お越しください！`,
-}];
+    英語を学ぶ場所の提供が私たちの一番の役目です。CHTASHACKでの英会話は自由テーマで行われます。
+    なので、英語に関する質問はいつでもできるし、インストラクターも例文や絵などで説明をしてくれます。
+    また、バーといっても英会話を楽しむことを大事としているので、音の大きい音楽を流すなどはしません。`,
+    },
+    {
+    title: '他にも安い英会話はありますが、割引などありますか？',
+    content: `もちろん私たちより安い英会話教室は存在します！ただ、私たちはより自由に話しやすい環境を提供している自信があります。また、CHATSHACKには入会金や月謝などをお客様から頂戴しておりません。
+    割引に関しては今後条件付きで行う予定ではあります！
+    最新情報としてお客様へ共有する予定ですのでHPよりメールアドレスの登録をよろしくお願いいたします。`,
+    },
+    {
+    title: '英会話中に飲食をすることは可能ですか？',
+    content: `もちろんです！海外のカフェやバーを意識したメニューを提供しております！
+    アルコール類はクラフトビールをメインとしハイボールやソフトドリンクもご用意しています。
+    食べ物もナチョスやポテトフライなどの食べやすくて美味しいものを提供しています。
+    英会話中にはぜひ食べ物や飲み物もお楽しみください！`,
+    },
+    {
+    title: '予約は必要ですか？',
+    content: `必要ありません！直接お越しください！`,
+    }];
 
 
 
@@ -297,8 +317,8 @@ const App = () => {
       ))}
         </div>
     );
-  }
-  const AccordionItem=({ title, content })=>{
+    }
+    const AccordionItem=({ title, content })=>{
     const [isActive, setIsActive] = useState(false);
     return (
       <div class='accordion-item'>
@@ -309,47 +329,46 @@ const App = () => {
       </div>
 
     )
-  }
-const Map = ()=>{
-  const [location, setLocation] = useState({
+    }
+    const Map = ()=>{
+    const [location, setLocation] = useState({
     address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
     lat:35.693535,
     lng:139.744438
-  })
+    })
 
-  useEffect(()=>{
+    useEffect(()=>{
     setLocation({
       // address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
       lat:35.69344,
       lng:139.74439
     })
-  },[])
-  return (
+    },[])
+    return (
     <div id='map'>
         {location?<GoogleMapReact bootstrapURLKeys={{key:'AIzaSyBX-HH0dhkemDet_G5TTZsR__uphcOEI6k'}} defaultCenter={location} defaultZoom={14}>
             <LocationPin lat={location.lat} lng={location.lng} text='ChatShack'/>
         </GoogleMapReact>:'loading'}
     </div>
-  )
+    )
 
-}
-const LocationPin=({text})=>{
-  return <div class='map-marker'><span class='material-icons'>location_on</span></div>
-}
-const SentryRoute = ({ access, success, fail, ...options }) => {
-  //const { user } = useAuthDataContext();
+    }
+    const LocationPin=({text})=>{
+    return <div class='map-marker'><span class='material-icons'>location_on</span></div>
+    }
+    const SentryRoute = ({ access, success, fail, ...options }) => {
+    //const { user } = useAuthDataContext();
 
-  let user = localStorage.getItem('user');
-  if(user == '' || null){
+    let user = localStorage.getItem('user');
+    if(user == '' || null){
     return <Route {...options} component={fail} />;
-  }else{
+    }else{
     user = JSON.parse(localStorage.getItem('user'));
     const finalComponent = (user && user.role==access? success : fail);
     return <Route {...options} component={finalComponent} />;
-  }
+    }
 
 
-
-};
+}
 
 export default App;
