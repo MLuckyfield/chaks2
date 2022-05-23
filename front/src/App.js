@@ -21,8 +21,8 @@ const App = () => {
       <Router>
           <Route path="/" component={Front}/>
           <Route path="/signup" component={Signup}/>
-          <Route path="/login" component={Login}/>
           <AuthDataProvider>
+            <SentryRoute path="/login" access='user' success={AdminDash} fail={Login}/>
             <SentryRoute path="/dash" access='user' success={AdminDash} fail={Login}/>
           </AuthDataProvider>
       </Router>
