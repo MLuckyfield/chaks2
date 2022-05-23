@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
-import {useAuthDataContext} from "./components/auth-provider";
+import {useAuthDataContext} from "../auth-provider";
 
 const Login = () => {
 
