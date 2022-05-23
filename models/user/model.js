@@ -11,8 +11,7 @@ const User = mongoose.model('User', new Schema({
     unique: true
   },
   password: {
-    type: String,
-    required: true
+    type: String
   },
   first: {
     type: String,

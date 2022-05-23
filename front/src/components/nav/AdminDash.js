@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 // import {axios} from "../../utilities/axios";
 import Sidebar from './Sidebar'
 import DashNav from './DashNav'
-import ApplicationManagement from './ApplicationManagement'
-import ApplicationApproval from './ApplicationApproval'
 import Table from '../utilities/table'
 // import { useEffect, useState} from 'react';
 import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
@@ -25,9 +23,7 @@ const Admin = () => {
         <div id='admindash'>
             <DashNav/>
             <Switch>
-              <Route path='/dash/application_management' component={ApplicationManagement}/>
-              <Route path='/dash/application_approval' component={ApplicationApproval}/>
-              <Route path='/dash' component={customTable}/>
+              <Route path='/dash' component={StudentTable}/>
             </Switch>
 
         </div>
@@ -37,7 +33,31 @@ const Admin = () => {
 
 
 }
-const customTable = ()=>{
-  return <Table name='Jobs' api='/job/all' fields="-__v -tags -source"/>
+
+const StaffTable = ()=>{
+  const filter = {role: 'teacher'}
+  return <Table name='Teachers' api='/user/all' filter={filter} fields="-__v -tags -source"/>
+}
+const StudentTable = ()=>{
+  const filter = {role: 'user'}
+  return <Table name='Students' api='/user/all' filter={filter} fields="-__v -tags -source"/>
+}
+
+const Dash = ()=>{
+  const user = localStorage.getItem('user')
+  if (user.role=='user'){
+    return <div>Hi student</div>
+  }else if (user.role=='teacher')
+  {
+    return StudentTable
+  }else if (user.role=='manager'){
+    return(
+      <div>
+        <StaffTable/>
+        <StudentTable/>
+      </div>
+    )
+  }
+
 }
 export default Admin;

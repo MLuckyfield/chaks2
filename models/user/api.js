@@ -81,6 +81,18 @@ const User = require('./model')
             }
         })
 
+    //Get
+    router.get('/all', async (req, res) => {
+      let data = await Job.find(req.body.filter).select(req.body.fields?req.body.fields:req.query.fields)
+      console.log(req.body.fields)
+      console.log(data.length)
+      return res.status(201).json({
+        data: data,
+        message: 'Job saved',
+        success: true
+      });
+    });
+
     router.get('/dash',auth.auth,auth.permission('user'),async (req,res)=>{
       console.log('hi')
       // console.log(req)
