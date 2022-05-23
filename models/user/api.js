@@ -82,7 +82,7 @@ const User = require('./model')
         })
 
     //Get
-    router.get('/all', async (req, res) => {
+    router.get('/all', auth.auth, auth.permission('teacher'),auth.permission('manager'), async (req, res) => {
       let data = await Job.find(req.body.filter).select(req.body.fields?req.body.fields:req.query.fields)
       console.log(req.body.fields)
       console.log(data.length)
@@ -93,7 +93,7 @@ const User = require('./model')
       });
     });
 
-    router.get('/dash',auth.auth,auth.permission('user'),async (req,res)=>{
+    router.get('/dash',auth.auth,auth.permission('user'),auth.permission('teacher'),auth.permission('manager'),async (req,res)=>{
       console.log('hi')
       // console.log(req)
       return res.status(200).json({
