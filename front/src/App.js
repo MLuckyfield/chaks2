@@ -8,6 +8,7 @@ import GoogleMapReact from 'google-map-react'
 import Login from './components/user/Login'
 import Signup from './components/user/Signup'
 import AdminDash from './components/nav/AdminDash'
+import AuthDataProvider from "./components/auth-provider";
 //import styles
 import './scss/main.scss'
 import logo from './chatshack.jpg'
