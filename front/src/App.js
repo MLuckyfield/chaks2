@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Redirect } from 'react-router'
 import axios from 'axios';
 import GoogleMapReact from 'google-map-react'
-//
+//import components
 import Login from './components/user/Login'
 import Signup from './components/user/Signup'
 import AdminDash from './components/nav/AdminDash'
