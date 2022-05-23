@@ -18,7 +18,7 @@ app.use(cors({
     credentials: true,
     exposedHeaders: ['Authorization']
   }));
-  app.use(express.static(__dirname+"/front/build"))
+app.use(express.static(path.join(__dirname, "/front/build")))//heroku deployment
 //connect to Mongodb
 const uri = process.env.MONGO_URI;
 mongoose.connect(uri);
@@ -54,10 +54,8 @@ app.use('/user',require('./models/user/api'));
 
 //heroku deployment
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/front/build"));
+    res.sendFile(path.join(__dirname, "/front/build", "index.html"));
 });
-
-
 //start listening
 app.listen(port,() => {
   console.log(`Server is running on port: ${port}`)
