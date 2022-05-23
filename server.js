@@ -18,7 +18,7 @@ app.use(cors({
     credentials: true,
     exposedHeaders: ['Authorization']
   }));
-  // app.use(express.static(__dirname+"/front/build"))
+  app.use(express.static(__dirname+"/front/build"))
 //connect to Mongodb
 const uri = process.env.MONGO_URI;
 mongoose.connect(uri);
