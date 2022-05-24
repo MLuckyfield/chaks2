@@ -7,7 +7,7 @@ import React, { Component } from 'react';
     return (
       <div class='sidebar'>
         <div class='col'>
-            Welcome {user.first}<p>
+            Welcome {user.first}
             {user.role}
         </div>
           <a href='#'>Dashboard</a>

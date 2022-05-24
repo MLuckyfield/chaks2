@@ -1,5 +1,6 @@
 import React, { useState, useEffect ,useRef} from 'react';
 import {useAuthDataContext} from "../auth-provider";
+import logo from './chatshack.jpg'
 
 const Navbar = ()=>{
   const [user, setUser] = useState(localStorage.getItem('user'))
