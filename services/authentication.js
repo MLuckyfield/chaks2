@@ -77,7 +77,7 @@ const permission = (requirements)=>{
     console.log('permission check')
     console.log(req.user)
     if(req.user){
-      let v = false
+      let access = false
       console.log(access)
       requirements.forEach((item, i) => {
         if (req.user.role==item){access=true}
