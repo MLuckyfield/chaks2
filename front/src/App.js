@@ -19,7 +19,7 @@ const App = () => {
 
     return (
       <Router>
-          <Route path="/" component={Front}/>
+          <Route exact path="/" component={Front}/>
           <Route path="/signup" component={Signup}/>
           <AuthDataProvider>
             <SentryRoute path="/login" access='user' success={AdminDash} fail={Login}/>
