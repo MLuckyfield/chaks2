@@ -35,22 +35,23 @@ const Navbar = ()=>{
           <div id='nav-row'>
               <img class='avatar' id='nav-logo' src={logo} alt="Avatar"></img>
               <div class='logo-basic'>CHATSHACK</div>
-              {user!==''||user!==null||user!==undefined?(<div class='col'>
+              {user==''||user==null||user==undefined?'':
+              (<div class='col'>
               <span>Welcome {user.first}</span>
-              <span>{user.role}</span></div>):''}
+              <span>{user.role}</span></div>)}
           </div>
         </div>
-        {user!==''||user!==null||user!==undefined?(
-          <ul class="nav-links">
-              <li><a href='#' onClick={logout}><span class="material-icons">logout</span></a></li>
-          </ul>
-        ):(
+        {user==''||user==null||user==undefined?(
           <ul class="nav-links">
               <li><a onClick={navSlide} href="#concept">CONCEPT</a></li>
               <li><a onClick={navSlide} href="#merit">MERIT</a></li>
               <li><a onClick={navSlide} href="#access">ACCESS</a></li>
               <li><a onClick={navSlide} href="#faq">FAQ</a></li>
               <li><a onClick={navSlide} href="#team">TEAM</a></li>
+          </ul>
+        ):(
+          <ul class="nav-links">
+              <li><a href='#' onClick={logout}><span class="material-icons">logout</span></a></li>
           </ul>
         )}
         <div class="burger" onClick={navSlide}>
