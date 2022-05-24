@@ -38,6 +38,7 @@ const createToken=(user)=>{
 const auth = (req,res,next)=>{
   console.log('auth check')
   const proposal = req.headers.authorization.split(' ')
+  console.log(proposal)
   if(proposal[0]=='Token'){
     let token = proposal[1]
     if(token){
