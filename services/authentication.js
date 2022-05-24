@@ -72,15 +72,17 @@ const auth = (req,res,next)=>{
     }
   }
 }
-const permission = (access)=>{
+const permission = (requirements)=>{
   return (req,res,next)=>{
     console.log('permission check')
     console.log(req)
     console.log(req.user)
     if(req.user){
-      // console.log('user agent')
-      if(req.user.role == access){
-        // console.log('access granted')
+      let access = false
+      requirements.forEach((item, i) => {
+        if (req.user.role==item){access=true}
+      });
+      if(access == true){
         next()
       }else{
         reject(res)
