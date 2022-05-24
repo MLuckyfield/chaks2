@@ -5,22 +5,29 @@ export default class Signup extends Component {
   constructor(props) {
     super(props);
 
-    this.updateName = this.updateName.bind(this);
+    this.updatefirst = this.updatefirst.bind(this);
+    this.updatelast = this.updatelast.bind(this);
     this.updateEmail = this.updateEmail.bind(this);
     this.updatePw = this.updatePw.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      name: '',
+      first: '',
+      last: '',
       email:'',
       password:'',
       feedback:''
     }
   }
 
-  updateName(e) {
+  updatefirst(e) {
     this.setState({
-      name: e.target.value
+      first: e.target.value
+    })
+  }
+  updatelast(e) {
+    this.setState({
+      last: e.target.value
     })
   }
   updateEmail(e) {
@@ -39,7 +46,8 @@ export default class Signup extends Component {
     e.preventDefault();
     axios.post('/user/new',
       {
-        name: this.state.name,
+        first: this.state.first,
+        last: this.state.last,
         email: this.state.email,
         password: this.state.password
       })
@@ -47,7 +55,8 @@ export default class Signup extends Component {
       .catch(error => this.setState({feedback: error.response.data.message}));
 
     this.setState({
-      name: '',
+      first: '',
+      last: '',
       email: '',
       password: '',
       feedback:''
@@ -61,7 +70,10 @@ export default class Signup extends Component {
   <form class='login' onSubmit={this.onSubmit}>
           <h2>Join Now!</h2>
               <div class="form-group">
-                <input value={this.state.name} onChange={this.updateName} type="text" class="form-control" placeholder="Name" required/>
+                <input value={this.state.first} onChange={this.updatefirst} type="text" class="form-control" placeholder="first" required/>
+              </div>
+              <div class="form-group">
+                <input value={this.state.last} onChange={this.updatelast} type="text" class="form-control" placeholder="last" required/>
               </div>
               <div class="form-group">
                 <input value={this.state.email} onChange={this.updateEmail} type="email" class="form-control" placeholder="Email" required/>
