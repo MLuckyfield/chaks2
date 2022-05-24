@@ -361,8 +361,9 @@ const Front = ()=>{
     //const { user } = useAuthDataContext();
 
     let user = localStorage.getItem('user');
+    console.log('active user is '+user)
     if(user == '' || null || undefined){
-      console.log('active user is '+user)
+
       return <Route {...options} component={fail} />;
     }else{
       user = JSON.parse(localStorage.getItem('user'));
