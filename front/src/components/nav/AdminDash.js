@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Sidebar from './Sidebar'
 import DashNav from './DashNav'
 import Table from '../utilities/table'
+import Navbar from './Navbar'
 // import { useEffect, useState} from 'react';
 import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -19,9 +20,9 @@ const Admin = () => {
 
     return (
       <div class='container'>
-        
+
         <div id='admindash'>
-            <DashNav/>
+            <Navbar/>
             <Switch>
               <Route path='/dash' component={Dash}/>
             </Switch>
