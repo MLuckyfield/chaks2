@@ -89,7 +89,7 @@ const Front = ()=>{
         <div>
 
               <Navbar/>
-              <div id='nav-filler'>
+              <div class='nav-filler'>
               </div>
               <div id='header' class='transparent'>
                     <div id='overlay'>

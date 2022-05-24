@@ -21,6 +21,8 @@ const Admin = () => {
     return (
       <div class='container'>
             <Navbar/>
+            <div class='nav-filler'>
+            </div>
         <div id='admindash'>
             <Switch>
               <Route path='/dash' component={Dash}/>
