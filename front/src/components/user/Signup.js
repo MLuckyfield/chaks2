@@ -37,7 +37,7 @@ export default class Signup extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    axios.post('http://localhost:5000/user/new',
+    axios.post('/user/new',
       {
         name: this.state.name,
         email: this.state.email,

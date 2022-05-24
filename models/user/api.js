@@ -7,7 +7,7 @@ const User = require('./model')
     //user
     router.post('/new', async (req, res) => {
       req=req.body
-
+      
       //check if exists
       let taken = await(exists(req.email));
       if (taken){
