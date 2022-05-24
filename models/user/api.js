@@ -67,7 +67,7 @@ const User = require('./model')
             if(await auth.validatePass(password, user.password)){
 
               let result = auth.createToken(user)
-              console.log('acces granted')
+              
               return res.status(200).json({
                 result,
                 message: 'Welcome back',
