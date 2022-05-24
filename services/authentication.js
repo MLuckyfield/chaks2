@@ -38,7 +38,7 @@ const createToken=(user)=>{
 const auth = (req,res,next)=>{
   console.log('auth check')
   console.log(req.headers)
-  const proposal = ''
+  let proposal = ''
   if(req.headers.authorization){
     proposal = req.headers.authorization.split(' ')
   }else{reject(res)}
