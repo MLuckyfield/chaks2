@@ -1,10 +1,15 @@
 import React, { useState, useEffect ,useRef} from 'react';
-import {useAuthDataContext} from "../auth-provider";
+// import {useAuthDataContext} from "../auth-provider";
 import logo from '../../chatshack.jpg'
 
 const Navbar = ()=>{
   const [user, setUser] = useState(localStorage.getItem('user'))
-  const { onLogout } = useAuthDataContext();
+  // const { onLogout } = useAuthDataContext();
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.setItem('user','');
+    window.location='/';
+  }
   const navSlide=()=>{
     const burger = document.querySelector(".burger");
     const nav = document.querySelector(".nav-links");
@@ -37,7 +42,7 @@ const Navbar = ()=>{
         </div>
         {user!==''||user!==null||user!==undefined?(
           <ul class="nav-links">
-              <li><a href='#' onClick={onLogout}><span class="material-icons">logout</span></a></li>
+              <li><a href='#' onClick={logout}><span class="material-icons">logout</span></a></li>
           </ul>
         ):(
           <ul class="nav-links">
