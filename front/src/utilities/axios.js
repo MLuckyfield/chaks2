@@ -4,7 +4,7 @@ export const axios = lib.create({})
 axios.interceptors.request.use(
   config => {
     const token = localStorage.getItem('user').token;
-
+    console.log(token)
     if (token) {
       console.log('Setting headers');
       config.headers.Authorization = `Token ${token}`;
