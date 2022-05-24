@@ -20,9 +20,8 @@ const Admin = () => {
 
     return (
       <div class='container'>
-
-        <div id='admindash'>
             <Navbar/>
+        <div id='admindash'>
             <Switch>
               <Route path='/dash' component={Dash}/>
             </Switch>
@@ -58,6 +57,8 @@ const Dash = ()=>{
         <StudentTable/>
       </div>
     )
+  }else{
+    return <div></div>
   }
 
 }
