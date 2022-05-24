@@ -19,11 +19,11 @@ const Admin = () => {
 
     return (
       <div class='container'>
-        <Sidebar/>
+        
         <div id='admindash'>
             <DashNav/>
             <Switch>
-              <Route path='/dash' component={StudentTable}/>
+              <Route path='/dash' component={Dash}/>
             </Switch>
 
         </div>

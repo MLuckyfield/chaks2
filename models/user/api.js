@@ -62,12 +62,10 @@ const User = require('./model')
             }
 
             //check password
-            console.log(user)
-            console.log(password)
             if(await auth.validatePass(password, user.password)){
 
               let result = auth.createToken(user)
-              
+
               return res.status(200).json({
                 result,
                 message: 'Welcome back',
