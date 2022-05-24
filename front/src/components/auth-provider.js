@@ -15,13 +15,14 @@ const AuthDataProvider = props => {
 
   const onLogout = () => {
     setUser(initialAuthData)
-    localStorage.setItem('user','');
+    localStorage.clear()
     window.location='/';
   };
 
   const onLogin = (newAuthData) => {
     setUser(newAuthData);
     localStorage.setItem('user', JSON.stringify(newAuthData));
+    window.location='/dash';
   };
 
   useEffect(

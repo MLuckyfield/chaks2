@@ -23,7 +23,6 @@ const Login = () => {
       })
       .then((res) => {
           onLogin(res.data.result);
-          window.location='/dash';
           })
       .catch((err) => {
         console.log(err);
