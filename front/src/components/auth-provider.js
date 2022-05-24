@@ -13,7 +13,11 @@ const AuthDataProvider = props => {
    * the localStorage.
    */
 
-  const onLogout = () => setUser(initialAuthData);
+  const onLogout = () => {
+    setUser(initialAuthData)
+    localStorage.setItem('user','');
+    window.location='/';
+  };
 
   const onLogin = (newAuthData) => {
     setUser(newAuthData);

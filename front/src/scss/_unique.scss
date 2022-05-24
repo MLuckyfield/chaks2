@@ -253,3 +253,21 @@
     transform: none;
   }
 }
+#admindash{
+  width: 88%;
+
+  //border: 1px solid green;
+}
+#dashnav{
+  height: 5%;
+  padding: 0 5%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  box-shadow: 0 4px 16px 0 rgba(167, 175, 183, 0.33);
+  a{
+    margin: 0.5%;
+  }
+}

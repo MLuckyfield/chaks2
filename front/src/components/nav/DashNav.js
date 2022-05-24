@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {useAuthDataContext} from "../auth-provider";
 
 const DashNav = ()=> {
 
@@ -9,12 +10,12 @@ const DashNav = ()=> {
     localStorage.setItem('user','');
     window.location='/';
   }
-
+  const { onLogout } = useAuthDataContext();
 
 
   return (
     <div id='dashnav'>
-      <a href='#' onClick={logout}><span class="material-icons">logout</span></a>
+      <a href='#' onClick={onLogout}><span class="material-icons">logout</span></a>
       <a href='#'><span class="material-icons">settings</span></a>
       <a href='#'><span class="material-icons">apps</span></a>
     </div>
