@@ -36,13 +36,13 @@ const createToken=(user)=>{
 }
 
 const auth = (req,res,next)=>{
-  console.log('auth check')
-  console.log(req.headers)
+  // console.log('auth check')
+  // console.log(req.headers)
   let proposal = ''
   if(req.headers.authorization){
     proposal = req.headers.authorization.split(' ')
   }else{reject(res)}
-  console.log(proposal)
+  // console.log(proposal)
   if(proposal[0]=='Token'){
     let token = proposal[1]
     if(token){
@@ -75,6 +75,8 @@ const auth = (req,res,next)=>{
 const permission = (access)=>{
   return (req,res,next)=>{
     console.log('permission check')
+    console.log(req)
+    console.log(req.user)
     if(req.user){
       // console.log('user agent')
       if(req.user.role == access){
