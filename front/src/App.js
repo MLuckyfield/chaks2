@@ -10,7 +10,6 @@ import Signup from './components/user/Signup'
 import Navbar from './components/nav/Navbar'
 import AdminDash from './components/nav/AdminDash'
 import AuthDataProvider from "./components/auth-provider";
-import {useAuthDataContext} from "../auth-provider";
 //import styles
 import './scss/main.scss'
 import logo from './chatshack.jpg'
