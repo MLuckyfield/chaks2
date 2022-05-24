@@ -361,7 +361,7 @@ const Front = ()=>{
     //const { user } = useAuthDataContext();
 
     let user = localStorage.getItem('user');
-    if(user == '' || null){
+    if(user == '' || null || undefined){
       return <Route {...options} component={fail} />;
     }else{
       user = JSON.parse(localStorage.getItem('user'));
