@@ -3,9 +3,9 @@ import lib from 'axios';
 export const axios = lib.create({})
 axios.interceptors.request.use(
   config => {
-    const token = JSON.parse(localStorage.getItem('user')).token;
     // console.log('current token is :'+token)
-    if (token) {
+    if (localStorage.getItem('user')) {
+      const token = JSON.parse(localStorage.getItem('user')).token
       console.log('Setting headers');
       config.headers.Authorization = `Token ${token}`;
       axios.defaults.headers.common['Authorization'] = `Token ${token}`;
