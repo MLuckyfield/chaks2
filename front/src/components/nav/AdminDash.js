@@ -49,7 +49,7 @@ const Dash = ()=>{
     return <div>Hi student</div>
   }else if (user.role=='teacher')
   {
-    return StudentTable
+    return <StudentTable/>
   }else if (user.role=='manager'){
     return(
       <div>
@@ -58,7 +58,7 @@ const Dash = ()=>{
       </div>
     )
   }else{
-    return <div></div>
+    return <div>none</div>
   }
 
 }

@@ -3,7 +3,7 @@ import React, { useState, useEffect ,useRef} from 'react';
 import logo from '../../chatshack.jpg'
 
 const Navbar = ()=>{
-  const [user, setUser] = useState(localStorage.getItem('user'))
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
   // const { onLogout } = useAuthDataContext();
   const logout = (e) => {
     e.preventDefault();
