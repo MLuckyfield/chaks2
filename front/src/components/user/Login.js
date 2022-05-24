@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import axios from 'axios';
+import {axios} from "../../utilities/axios";
 import {useAuthDataContext} from "../auth-provider";
 
 const Login = () => {
@@ -16,18 +16,18 @@ const Login = () => {
     e.preventDefault();
 
 
-    axios.post('http://localhost:5000/user/login',
+    axios.post('/user/login',
       {
         email: email.current.value,
         password: password.current.value
       })
       .then((res) => {
           onLogin(res.data.result);
-          //window.location='/dash';
+          window.location='/dash';
           })
       .catch((err) => {
         console.log(err);
-        setFeedback(err.response.data.message);
+        // setFeedback(err.response.data.message);
         });
   }
 

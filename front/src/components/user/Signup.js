@@ -51,7 +51,10 @@ export default class Signup extends Component {
         email: this.state.email,
         password: this.state.password
       })
-      .then(res => this.setState({feedback: res.data.message}))
+      .then(res => {this.setState({feedback: res.data.message})
+                    window.location='/dash';
+
+          })
       .catch(error => this.setState({feedback: error.response.data.message}));
 
     this.setState({
