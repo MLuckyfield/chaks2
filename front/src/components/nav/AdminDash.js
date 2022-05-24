@@ -44,7 +44,7 @@ const StudentTable = ()=>{
 }
 
 const Dash = ()=>{
-  const user = localStorage.getItem('user')
+  const user = JSON.parse(localStorage.getItem('user'))
   if (user.role=='user'){
     return <div>Hi student</div>
   }else if (user.role=='teacher')
