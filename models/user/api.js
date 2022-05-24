@@ -56,7 +56,7 @@ const User = require('./model')
             const user = await User.findOne({email});
             if(!user){
               return res.status(401).json({
-                message: 'Email not found',
+                message: 'Password incorrect',
                 success: false
               });
             }

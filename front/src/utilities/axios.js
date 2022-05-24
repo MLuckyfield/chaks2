@@ -3,7 +3,7 @@ import lib from 'axios';
 export const axios = lib.create({})
 axios.interceptors.request.use(
   config => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('user');
 
     if (token) {
       console.log('Setting headers');
