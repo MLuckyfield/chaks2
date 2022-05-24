@@ -75,7 +75,7 @@ const User = require('./model')
                 success: true
               });
 
-            }else{
+            }else{console.log('password rejected')
               return res.status(403).json({
                 message: 'Password incorrect',
                 success: false
