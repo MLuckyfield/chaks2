@@ -15,7 +15,7 @@ const AuthDataProvider = props => {
 
   const onLogout = () => {
     setUser(initialAuthData)
-    localStorage.clear()
+    localStorage.setItem('user','');
     window.location='/';
   };
 
