@@ -362,7 +362,7 @@ const Front = ()=>{
 
     let user = localStorage.getItem('user');
     console.log('active user is '+user)
-    if(user == '' || null || undefined){
+    if(user == '' || user == null || user == undefined){
 
       return <Route {...options} component={fail} />;
     }else{
