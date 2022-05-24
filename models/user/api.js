@@ -24,6 +24,7 @@ const User = require('./model')
       try{
         await new User({
           ...req,
+          password: password,
           role: 'user'
         }).save();
         return res.status(201).json({
