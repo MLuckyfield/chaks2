@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import {Redirect} from 'react-router-dom';
-
+import StudentComments from "../user/StudentComments";
 const Table = (props)=> {
 
   const [data, setData] = useState(null);
@@ -21,7 +21,7 @@ const Table = (props)=> {
 
 const makeComment = (target)=>{
     localStorage.setItem('student',target)
-    return <Redirect to='/student'/>
+    return <Popup/>
 }
   return (
     <div class='master-row'>
@@ -59,5 +59,7 @@ const makeComment = (target)=>{
   )
 
 }
-
+const Popup=()=>{
+    return <StudentComments/>
+}
 export default Table;
