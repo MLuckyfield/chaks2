@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom';
 
 const Table = (props)=> {
 
-
+  const [target, setTarget] = useState();
   const [data, setData] = useState(null);
   const [message, setMessage] = useState();
 
@@ -19,9 +19,9 @@ const Table = (props)=> {
 
   },[])
 
-  const makeComment = (item)=>{
-      localStorage.setItem('student',item)
-      return <Redirect to='/student'/>
+  if(target){
+    localStorage.setItem('student',target)
+    return <Redirect to='/student'/>
   }
   return (
     <div class='master-row'>
@@ -41,7 +41,7 @@ const Table = (props)=> {
               }
               //console.log('item is: '+JSON.stringify(item.slice(1)))
               return (
-                <tr onClick={() => makeComment(item)}>
+                <tr onClick={setTarget(item)}>
                   {Object.keys(item).map((key, y) => {
                     return <td>{item[key]}</td>
                   })}
