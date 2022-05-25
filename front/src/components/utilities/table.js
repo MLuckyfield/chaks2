@@ -65,10 +65,5 @@ const makeComment = (item)=>{
   )
 
 }
-const Popup=()=>{
-    return (
-      <div class=''>
-          <StudentComments/>
-      </div>)
-}
+
 export default Table;
