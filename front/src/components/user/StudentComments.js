@@ -7,7 +7,12 @@ const StudentComments = (props) => {
   const [comments, setComments] = useState(null);
 
   useEffect(() => {
-    axios.get('/comment/all', {params:{filter:props.student}})
+    let target = ''
+    if (localStorage.getItem('student')){
+      target = localStorage.getItem('student')
+    }else{target=JSON.parse(localStorage.getItem('user'))}
+    
+    axios.get('/comment/all', {params:{filter:target}})
       .then((res) => {
           setComments(res.data.data);
         })

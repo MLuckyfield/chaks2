@@ -21,7 +21,7 @@ const Table = (props)=> {
 
   const makeComment = (item)=>{
       localStorage.setItem('student',item)
-      window.location='/comment';
+      window.location='/student';
   }
   return (
     <div class='master-row'>

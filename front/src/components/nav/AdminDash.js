@@ -29,7 +29,7 @@ const Admin = () => {
         <div id='admindash'>
             <Switch>
               <Route path='/dash' component={Dash}/>
-              <SecureRoute path="/comment" access={['teacher','manager']} success={Comment} fail={Dash}/>
+              <SecureRoute path="/student" access={['teacher','manager']} success={StudentComments} fail={Dash}/>
             </Switch>
 
         </div>
@@ -50,7 +50,7 @@ const StudentTable = ()=>{
 const Dash = ()=>{
   const user = JSON.parse(localStorage.getItem('user'))
   if (user.role=='user'){
-    return <StudentComments student={user}/>
+    return <StudentComments/>
   }else if (user.role=='teacher')
   {
     return <StudentTable/>

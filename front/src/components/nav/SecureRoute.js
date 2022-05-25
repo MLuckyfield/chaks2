@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-const SentryRoute = ({ access, success, fail, ...options }) => {
+const SecureRoute = ({ access, success, fail, ...options }) => {
 //const { user } = useAuthDataContext();
 
 let user = localStorage.getItem('user');
@@ -20,3 +20,4 @@ if(user == '' || user == null || user == undefined){
 
 
 }
+export default SecureRoute;
