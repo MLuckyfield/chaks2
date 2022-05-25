@@ -21,6 +21,7 @@ const Table = (props)=> {
 
   const makeComment = (item)=>{
       localStorage.setItem('student',item)
+      console.log(localStorage.getItem('student'))
       window.location='/student';
   }
   return (

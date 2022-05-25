@@ -96,7 +96,7 @@ const Front = ()=>{
                     <div id='overlay'>
                         <div class='row'>
                           <div class='col'>
-                            <h1 class='logo-basic'>６月初旬にオープン予定！</h1>
+                            <h1 class='logo-basic'>６月7日にオープン予定！</h1>
                           </div>
                         </div>
                     </div>

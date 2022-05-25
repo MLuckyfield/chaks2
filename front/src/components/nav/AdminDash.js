@@ -6,7 +6,6 @@ import Table from '../utilities/table'
 import Navbar from './Navbar'
 import SecureRoute from './SecureRoute'
 import StudentComments from '../user/StudentComments'
-import Comment from '../comment/Comment'
 // import { useEffect, useState} from 'react';
 import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -41,10 +40,10 @@ const Admin = () => {
 }
 
 const StaffTable = ()=>{
-  return <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -tags -source -_id -password -createdAt -updatedAt"/>
+  return <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -tags -source -_id -password -createdAt -updatedAt -role"/>
 }
 const StudentTable = ()=>{
-  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -tags -source -_id -password -createdAt -updatedAt"/>
+  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -tags -source -_id -password -createdAt -updatedAt -role"/>
 }
 
 const Dash = ()=>{
