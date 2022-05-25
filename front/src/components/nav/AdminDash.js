@@ -37,11 +37,11 @@ const Admin = () => {
 }
 
 const StaffTable = ()=>{
-  const filter = {role: 'teacher'}
+  const filter = JSON.parse({role: 'teacher'})
   return <Table name='Teachers' api='/user/all' filter={filter} fields="-__v -tags -source -_id -password -createdAt -updatedAt"/>
 }
 const StudentTable = ()=>{
-  const filter = {role: 'user'}
+  const filter = JSON.parse({role: 'teacher'})
   return <Table name='Students' api='/user/all' filter={filter} fields="-__v -tags -source -_id -password -createdAt -updatedAt"/>
 }
 
