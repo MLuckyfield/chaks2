@@ -4,7 +4,9 @@ import Sidebar from './Sidebar'
 import DashNav from './DashNav'
 import Table from '../utilities/table'
 import Navbar from './Navbar'
+import SecureRoute from './SecureRoute'
 import StudentComments from '../user/StudentComments'
+import Comment from '../comment/Comment'
 // import { useEffect, useState} from 'react';
 import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -27,6 +29,7 @@ const Admin = () => {
         <div id='admindash'>
             <Switch>
               <Route path='/dash' component={Dash}/>
+              <SecureRoute path="/comment" access={['teacher','manager']} success={Comment} fail={Dash}/>
             </Switch>
 
         </div>

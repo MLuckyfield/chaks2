@@ -2,16 +2,15 @@ import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import {useAuthDataContext} from "../auth-provider";
 
-const Comment = (props) => {
+const Comment = () => {
 
   //const [comment, setcomment] = useState();
   //const [password, setPassword] = useState();
   const comment = useRef('');
-  const student = useRef(props.student);
-  const author = useRef(props.author);
+  const student = useRef(localStorage.getItem('student'));
+  const author = useRef(localStorage.getItem('user'));
 
   const [feedback, setFeedback] = useState();
-  const { onComment } = useAuthDataContext();
 
   const onSubmit = (e) => {
     e.preventDefault();

@@ -19,7 +19,10 @@ const Table = (props)=> {
 
   },[])
 
-
+  const makeComment = (item)=>{
+      localStorage.setItem('student',item)
+      window.location='/comment';
+  }
   return (
     <div class='master-row'>
       <h1>{props.name}</h1>
@@ -38,11 +41,12 @@ const Table = (props)=> {
               }
               //console.log('item is: '+JSON.stringify(item.slice(1)))
               return (
-                  <tr>
+                <tr onClick={() => makeComment(item)}>
                   {Object.keys(item).map((key, y) => {
                     return <td>{item[key]}</td>
                   })}
                   </tr>
+
                 )
 
                   })): 'No data to display'}

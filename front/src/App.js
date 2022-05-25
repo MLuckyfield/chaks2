@@ -9,6 +9,7 @@ import Login from './components/user/Login'
 import Signup from './components/user/Signup'
 import Navbar from './components/nav/Navbar'
 import AdminDash from './components/nav/AdminDash'
+import SecureRoute from './components/nav/SecureRoute'
 import AuthDataProvider from "./components/auth-provider";
 //import styles
 import './scss/main.scss'
@@ -23,8 +24,8 @@ const App = () => {
           <Route exact path="/" component={Front}/>
           <Route path="/signup" component={Signup}/>
           <AuthDataProvider>
-            <SentryRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
-            <SentryRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
+            <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
+            <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
           </AuthDataProvider>
       </Router>
 
@@ -321,25 +322,6 @@ const Front = ()=>{
     const LocationPin=({text})=>{
     return <div class='map-marker'><span class='material-icons'>location_on</span></div>
     }
-    const SentryRoute = ({ access, success, fail, ...options }) => {
-    //const { user } = useAuthDataContext();
 
-    let user = localStorage.getItem('user');
-    if(user == '' || user == null || user == undefined){
-
-      return <Route {...options} component={fail} />;
-    }else{
-      user = JSON.parse(localStorage.getItem('user'));
-      let okay = false
-      access.forEach((item, i) => {
-        if (user.role==item){okay=true}
-      });
-
-      const finalComponent = (okay? success : fail);
-      return <Route {...options} component={finalComponent} />;
-    }
-
-
-}
 
 export default App;
