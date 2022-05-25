@@ -17,7 +17,7 @@ const Table = (props)=> {
           })
         .catch(error => console.log("error"+error))
     }
-    if(target!==null){
+    if(target!=null){
       localStorage.setItem('student',target)
       return <Redirect to='/student'/>
     }
