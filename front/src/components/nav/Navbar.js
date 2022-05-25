@@ -14,7 +14,7 @@ const Navbar = ()=>{
   const logout = (e) => {
     e.preventDefault();
     // localStorage.setItem('user','');
-    window.location='/student';
+    window.location='/';
   }
   const navSlide=()=>{
     const burger = document.querySelector(".burger");

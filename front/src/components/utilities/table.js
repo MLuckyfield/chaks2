@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
-import {Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 const Table = (props)=> {
 
@@ -21,7 +21,7 @@ const Table = (props)=> {
 
   const makeComment = (item)=>{
       localStorage.setItem('student',item)
-      window.location='/student';
+      return <Redirect to='/student'/>
   }
   return (
     <div class='master-row'>
