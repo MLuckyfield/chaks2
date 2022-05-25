@@ -8,7 +8,6 @@ const Navbar = ()=>{
       let current = localStorage.getItem('user')
       if(current){
         setUser(JSON.parse(current))
-        console.log('front: '+user.first)
       }
   },[])
   // const { onLogout } = useAuthDataContext();
