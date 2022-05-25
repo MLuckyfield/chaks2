@@ -5,7 +5,7 @@ import DashNav from './DashNav'
 import Table from '../utilities/table'
 import Navbar from './Navbar'
 import SecureRoute from './SecureRoute'
-import StudentComments from '../user/StudentComments'
+
 // import { useEffect, useState} from 'react';
 import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
 import AuthDataProvider from "../auth-provider";
@@ -29,8 +29,6 @@ const Admin = () => {
         <div id='admindash'>
             <Router>
                 <Route path='/dash' component={Dash}/>
-                <Route path='/student' component={StudentComments}/>
-                
             </Router>
         </div>
       </div>

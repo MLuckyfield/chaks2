@@ -22,7 +22,10 @@ const Table = (props)=> {
 
 const makeComment = (item)=>{
     localStorage.setItem('student',JSON.stringify(item))
-    setTarget(item)
+    window.location='/student';
+    // setTarget(item)
+    // console.log(target)
+
 }
   return (
     <div class='master-row'>

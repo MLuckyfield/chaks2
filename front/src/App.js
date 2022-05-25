@@ -11,6 +11,7 @@ import Navbar from './components/nav/Navbar'
 import AdminDash from './components/nav/AdminDash'
 import SecureRoute from './components/nav/SecureRoute'
 import AuthDataProvider from "./components/auth-provider";
+import StudentComments from './components/user/StudentComments'
 //import styles
 import './scss/main.scss'
 import logo from './chatshack.jpg'
@@ -26,6 +27,7 @@ const App = () => {
           <AuthDataProvider>
             <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
+            <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={Login}/>
           </AuthDataProvider>
       </Router>
 
