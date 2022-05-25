@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 import StudentComments from "../user/StudentComments";
 const Table = (props)=> {
 
+  const [target, setTarget] = useState(null);
   const [data, setData] = useState(null);
   const [message, setMessage] = useState();
 
@@ -19,16 +20,16 @@ const Table = (props)=> {
 
   },[])
 
-const makeComment = (target)=>{
-    localStorage.setItem('student',target)
-    return <Popup/>
+const makeComment = (item)=>{
+    localStorage.setItem('student',JSON.stringify(item))
+    setTarget(item)
 }
   return (
     <div class='master-row'>
       <h1>{props.name}</h1>
       <div class='row'>
         <table>
-
+          {target?<Popup/>:''}
           {data ? (data.map(function(item, i){
               if(i==0){
                 return (
