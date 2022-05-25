@@ -17,7 +17,7 @@ const createToken=(user)=>{
   let token = jwt.sign({
       user_id: user._id,
       role: user.role,
-      name: user.name,
+      first: user.first,
       email: user.email
     },
     process.env.SECRET,
@@ -25,7 +25,7 @@ const createToken=(user)=>{
   );
 
   let result = {
-    name: user.name,
+    first: user.first,
     email: user.email,
     role: user.role,
     token: token,
