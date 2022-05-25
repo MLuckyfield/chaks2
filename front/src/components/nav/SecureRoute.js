@@ -5,14 +5,12 @@ const SecureRoute = ({ access, success, fail, ...options }) => {
 
 let user = localStorage.getItem('user');
 if(user == '' || user == null || user == undefined){
-  console.log('route denied')
   return <Route {...options} component={fail} />;
 }else{
   user = JSON.parse(localStorage.getItem('user'));
   let okay = false
   access.forEach((item, i) => {
     if (user.role==item){okay=true}
-    console.log('route approved')
   });
 
   const finalComponent = (okay? success : fail);

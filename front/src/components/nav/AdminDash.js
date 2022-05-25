@@ -8,6 +8,7 @@ import SecureRoute from './SecureRoute'
 import StudentComments from '../user/StudentComments'
 // import { useEffect, useState} from 'react';
 import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
+import AuthDataProvider from "../auth-provider";
 
 const Admin = () => {
 
@@ -26,11 +27,12 @@ const Admin = () => {
             <div class='nav-filler'>
             </div>
         <div id='admindash'>
-            <Switch>
-              <Route path='/dash' component={Dash}/>
-              <SecureRoute path="/student" access={['teacher','manager']} success={StudentComments} fail={Dash}/>
-            </Switch>
-
+            <Router>
+                <Route path='/dash' component={Dash}/>
+                <AuthDataProvider>
+                  <SecureRoute path="/student" access={['teacher','manager']} success={StudentComments} fail={Dash}/>
+                </AuthDataProvider>
+            </Router>
         </div>
       </div>
 
