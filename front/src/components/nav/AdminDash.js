@@ -4,6 +4,7 @@ import Sidebar from './Sidebar'
 import DashNav from './DashNav'
 import Table from '../utilities/table'
 import Navbar from './Navbar'
+import StudentComments from '../user/StudentComments'
 // import { useEffect, useState} from 'react';
 import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -46,7 +47,7 @@ const StudentTable = ()=>{
 const Dash = ()=>{
   const user = JSON.parse(localStorage.getItem('user'))
   if (user.role=='user'){
-    return <div>Hi student</div>
+    return <StudentComments student={user}/>
   }else if (user.role=='teacher')
   {
     return <StudentTable/>
