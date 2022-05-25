@@ -40,7 +40,7 @@ const StaffTable = ()=>{
   return <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -tags -source -_id -password -createdAt -updatedAt"/>
 }
 const StudentTable = ()=>{
-  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields=`-__v -tags -source -_id -password -createdAt -updatedAt ${JSON.parse(localStorage.getItem('user')).role=='teacher'?'-email':''}`/>
+  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -tags -source -_id -password -createdAt -updatedAt"/>
 }
 
 const Dash = ()=>{
