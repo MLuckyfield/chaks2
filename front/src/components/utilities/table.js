@@ -28,11 +28,8 @@ const makeComment = (item)=>{
     <div class='master-row'>
       <h1>{props.name}</h1>
       <div class='row'>
-        {target!==null?
-            <div class=''>
-                <button onClick={setTarget(null)} class="outline-first">Back</button>
-                <StudentComments/>
-            </div>
+        {target?
+            <Popup/>
           :(<table>
             {data ? (data.map(function(item, i){
                 if(i==0){
@@ -64,5 +61,8 @@ const makeComment = (item)=>{
     </div>
   )
 
+}
+const Popup=()=>{
+    return <StudentComments/>
 }
 export default Table;
