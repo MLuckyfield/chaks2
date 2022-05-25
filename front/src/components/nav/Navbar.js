@@ -13,8 +13,8 @@ const Navbar = ()=>{
   // const { onLogout } = useAuthDataContext();
   const logout = (e) => {
     e.preventDefault();
-    localStorage.setItem('user','');
-    window.location='/';
+    // localStorage.setItem('user','');
+    window.location='/student';
   }
   const navSlide=()=>{
     const burger = document.querySelector(".burger");
