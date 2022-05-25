@@ -21,7 +21,7 @@ const Table = (props)=> {
       localStorage.setItem('student',target)
       return <Redirect to='/student'/>
     }
-  },[target])
+  },[])
 
   return (
     <div class='master-row'>
