@@ -4,25 +4,25 @@ import {Redirect} from 'react-router-dom';
 
 const Table = (props)=> {
 
-  const [target, setTarget] = useState();
+  const [target, setTarget] = useState(null);
   const [data, setData] = useState(null);
   const [message, setMessage] = useState();
 
   useEffect(() => {
-    axios.get(props.api, {params:{filter:props.filter,fields:props.fields}})
-      .then((res) => {
-          console.log(res.data.data)
-          setData(res.data.data);
-        })
-      .catch(error => console.log("error"+error))
+    if(!data){
+      axios.get(props.api, {params:{filter:props.filter,fields:props.fields}})
+        .then((res) => {
+            console.log(res.data.data)
+            setData(res.data.data);
+          })
+        .catch(error => console.log("error"+error))
+    }
+    if(target){
+      localStorage.setItem('student',target)
+      return <Redirect to='/student'/>
+    }
+  },[target])
 
-
-  },[])
-
-  if(target){
-    localStorage.setItem('student',target)
-    return <Redirect to='/student'/>
-  }
   return (
     <div class='master-row'>
       <h1>{props.name}</h1>
