@@ -39,9 +39,8 @@ const Navbar = ()=>{
     <nav>
         <div class="logo">
           <div id='nav-row'>
-              <img class='avatar' id='nav-logo' src={logo} alt="Avatar"></img>              
-              {user==''||user==null||user==undefined?'':
-              <div class='logo-basic'>CHATSHACK</div>}
+              <img class='avatar' id='nav-logo' src={logo} alt="Avatar"></img>
+              {user==''||user==null||user==undefined?<div class='logo-basic'>CHATSHACK</div>:''}
               {user==''||user==null||user==undefined?'':
               (<div class='col'>
               <span>Welcome {user.first}</span>

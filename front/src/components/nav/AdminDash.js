@@ -37,12 +37,10 @@ const Admin = () => {
 }
 
 const StaffTable = ()=>{
-  const filter = {role: 'teacher'}
-  return <Table name='Teachers' api='/user/all' filter={filter} fields="-__v -tags -source -_id -password -createdAt -updatedAt"/>
+  return <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -tags -source -_id -password -createdAt -updatedAt"/>
 }
 const StudentTable = ()=>{
-  const filter = {role: 'user'}
-  return <Table name='Students' api='/user/all' filter={filter} fields="-__v -tags -source -_id -password -createdAt -updatedAt"/>
+  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields=`-__v -tags -source -_id -password -createdAt -updatedAt ${JSON.parse(localStorage.getItem('user')).role=='teacher'?'-email':''}`/>
 }
 
 const Dash = ()=>{
