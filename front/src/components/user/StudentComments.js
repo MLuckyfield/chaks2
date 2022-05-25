@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import {useAuthDataContext} from "../auth-provider";
 
-const StudentComments = (props) => {
+const StudentComments = () => {
 
   const [comments, setComments] = useState(null);
 
@@ -11,17 +11,17 @@ const StudentComments = (props) => {
     if (localStorage.getItem('student')){
       target = localStorage.getItem('student')
     }else{target=JSON.parse(localStorage.getItem('user'))}
-    
+
     axios.get('/comment/all', {params:{filter:target}})
       .then((res) => {
           setComments(res.data.data);
         })
       .catch(error => console.log("error"+error))
-  },[props.student])
+  },[])
 
   return(
     <div class='master-row'>
-      <h1>{props.name}</h1>
+      <h1>Feedback</h1>
       <div class='row'>
         <table>
 
