@@ -28,30 +28,35 @@ const makeComment = (item)=>{
     <div class='master-row'>
       <h1>{props.name}</h1>
       <div class='row'>
-        <table>
-          {target?<Popup/>:''}
-          {data ? (data.map(function(item, i){
-              if(i==0){
+        {target?
+            <div class=''>
+                <button onClick={setTarget(null)} class="outline-first">Back</button>
+                <StudentComments/>
+            </div>
+          :(<table>
+            {data ? (data.map(function(item, i){
+                if(i==0){
+                  return (
+                      <tr>
+                        {Object.keys(item).map((key, y) => {
+                              return <th>{key}</th>
+                        })}
+                      </tr>
+                  )
+                }
+                //console.log('item is: '+JSON.stringify(item.slice(1)))
                 return (
-                    <tr>
-                      {Object.keys(item).map((key, y) => {
-                            return <th>{key}</th>
-                      })}
+                  <tr onClick={()=>makeComment(item)}>
+                    {Object.keys(item).map((key, y) => {
+                      return <td>{item[key]}</td>
+                    })}
                     </tr>
-                )
-              }
-              //console.log('item is: '+JSON.stringify(item.slice(1)))
-              return (
-                <tr onClick={()=>makeComment(item)}>
-                  {Object.keys(item).map((key, y) => {
-                    return <td>{item[key]}</td>
-                  })}
-                  </tr>
 
-                )
+                  )
 
-                  })): 'No data to display'}
-        </table>
+                    })): 'No data to display'}
+          </table>)
+        }
       </div>
       <div class='row'>
 
@@ -59,8 +64,5 @@ const makeComment = (item)=>{
     </div>
   )
 
-}
-const Popup=()=>{
-    return <StudentComments/>
 }
 export default Table;
