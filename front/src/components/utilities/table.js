@@ -9,7 +9,7 @@ const Table = (props)=> {
   const [message, setMessage] = useState();
 
   useEffect(() => {
-    if(data!=null){
+    if(data!==null){
       axios.get(props.api, {params:{filter:props.filter,fields:props.fields}})
         .then((res) => {
             console.log(res.data.data)
@@ -17,7 +17,7 @@ const Table = (props)=> {
           })
         .catch(error => console.log("error"+error))
     }
-    if(target!=null){
+    if(target!==null){
       localStorage.setItem('student',target)
       return <Redirect to='/student'/>
     }
