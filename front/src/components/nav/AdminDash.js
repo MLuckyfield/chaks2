@@ -5,7 +5,7 @@ import DashNav from './DashNav'
 import Table from '../utilities/table'
 import Navbar from './Navbar'
 import SecureRoute from './SecureRoute'
-
+import StudentComments from '../user/StudentComments'
 // import { useEffect, useState} from 'react';
 import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
 import AuthDataProvider from "../auth-provider";
