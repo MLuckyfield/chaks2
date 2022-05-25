@@ -210,7 +210,9 @@ nav {
     body {
         overflow-x: hidden;
     }
-
+    .profile_display{
+      font-size: 12px;
+    }
     .nav-links {
         position: fixed;
         right: 0px;
@@ -292,4 +294,32 @@ nav {
       width: 86%;
     }
   }
+}
+
+table {
+  display:block;
+  height:80%;
+	width:80%;
+	border:1px solid grey;
+}
+.cell_highlight{
+  background:$first;
+  display:flex;
+  width:100%;
+  color:white;
+  text-align: center;
+  padding:0;
+}
+tr{
+	display:flex;
+	width:100%;
+	padding:$unit 0;
+
+	&:nth-of-type(odd) {
+		background:lighten($third,40%);
+	}
+}
+td, th {
+	flex: 1 1 20%;
+	text-align:center;
 }

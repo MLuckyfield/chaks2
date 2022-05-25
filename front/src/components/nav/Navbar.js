@@ -42,7 +42,7 @@ const Navbar = ()=>{
               <img class='avatar' id='nav-logo' src={logo} alt="Avatar"></img>
               {user==''||user==null||user==undefined?<div class='logo-basic'>CHATSHACK</div>:''}
               {user==''||user==null||user==undefined?'':
-              (<div class='col'>
+              (<div class='col profile_display'>
               <span>Welcome {user.first}</span>
               <span>{user.role}</span></div>)}
           </div>
