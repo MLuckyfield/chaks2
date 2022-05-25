@@ -29,9 +29,8 @@ const Admin = () => {
         <div id='admindash'>
             <Router>
                 <Route path='/dash' component={Dash}/>
-                <AuthDataProvider>
-                  <SecureRoute path="/student" access={['teacher','manager']} success={StudentComments} fail={Dash}/>
-                </AuthDataProvider>
+                <Route path='/student' component={StudentComments}/>
+                
             </Router>
         </div>
       </div>
