@@ -28,7 +28,7 @@ const makeComment = (item)=>{
     <div class='master-row'>
       <h1>{props.name}</h1>
       <div class='row'>
-        {target?
+        {target!==null?
             <div class=''>
                 <button onClick={setTarget(null)} class="outline-first">Back</button>
                 <StudentComments/>
