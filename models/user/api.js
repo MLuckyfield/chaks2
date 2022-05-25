@@ -82,6 +82,7 @@ const User = require('./model')
 
     //Get
     router.get('/all', auth.auth, auth.permission(['teacher','manager']), async (req, res) => {
+      console.log(req.body)
       let data = await User.find(req.body.filter).select(req.body.fields?req.body.fields:req.query.fields)
       console.log(req.body.fields)
       console.log(data.length)
