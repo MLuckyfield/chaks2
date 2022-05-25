@@ -83,9 +83,7 @@ const User = require('./model')
     //Get
     router.get('/all', auth.auth, auth.permission(['teacher','manager']), async (req, res) => {
       console.log(req.query)
-      let data = await User.find(req.body.filter?req.body.filter:req.query.filter).select(req.body.fields?req.body.fields:req.query.fields)
-      console.log(req.body.fields)
-      console.log(data.length)
+      let data = await User.find({req.body.filter?req.body.filter:req.query.filter}).select(req.body.fields?req.body.fields:req.query.fields)
       return res.status(201).json({
         data: data,
         message: 'Job saved',
