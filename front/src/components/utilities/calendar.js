@@ -34,12 +34,12 @@ const Booking = ()=>{
               {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
               <form onSubmit={onSubmit}>
                   <div class="form-group row">
-                    <input type="text" class="form-control" placeholder={`${day}`} disabled/>
+                    <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
 
                   </div>
                   <button type="submit" class="solid-first">Reserve!</button>
               </form>
-              <DateTimePicker onChange={setDay} value={day}/>
+              <DateTimePicker onChange={setDay} value={day} format='MM-dd h:mm' disableClock='true' minDate={new Date()}/>
           </div>
       </div>
   )
