@@ -22,7 +22,7 @@ const StudentComments = () => {
 
   return(
     <div class='master-row'>
-    <Comment/>
+    {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
       <h1>Feedback</h1>
       <div class='row'>
         <table>
