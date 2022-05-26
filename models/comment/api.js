@@ -48,7 +48,7 @@ router.post('/new', async (req, res) => {
 //Get
 router.get('/all', async (req, res) => {
   console.log(req.query)
-  let data = await Comment.find({student:req.query.filter})
+  let data = await Comment.find({student:req.query.filter}).populate('User')
   return res.status(201).json({
     data: data,
     message: 'Comment saved',
