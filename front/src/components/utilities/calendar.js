@@ -35,11 +35,10 @@ const Booking = ()=>{
               <form class='login' onSubmit={onSubmit}>
                   <div class="form-group">
                     <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
-
+                    <DateTimePicker onChange={setDay} value={day} format='MM-dd h:mm' maxDetail='minute' disableClock='true' minDate={new Date()}/>
                   </div>
                   <button type="submit" class="solid-first">Reserve!</button>
               </form>
-              <DateTimePicker onChange={setDay} value={day} format='MM-dd h:mm' disableClock='true' minDate={new Date()}/>
           </div>
       </div>
   )
