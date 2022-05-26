@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import Comment from "../comment/Comment";
 import {useAuthDataContext} from "../auth-provider";
+import moment from "moment"
 
 const StudentComments = () => {
 
@@ -32,7 +33,7 @@ const StudentComments = () => {
 
                     <div class=''>{item.comment}</div>
                     <div class=''>{item.author.first} {item.author.last}</div>
-                    <div class=''>{item.createdAt.slice(0,-14)}</div>
+                    <div class=''>{moment(item.createdAt).format('dddd MMM-DD')}</div>
                 </div>
               )
 

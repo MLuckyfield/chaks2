@@ -13,21 +13,29 @@ const Booking = ()=>{
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    axios.post('/booking/new',
-      {
-        student: student,
-        date: day,
-      })
-      .then((res) => {
-          setMsg([res.data.message,res.data.success]);
-          })
-      .catch((err) => {
-        setMsg([err.message,err.success]);
-        // setFeedback(err.response.data.message);
-        });
+    if(day.slice(0,3)=="Mon"){
+      setMsg(['Monday is a holiday.',false])
+    }else{
+      axios.post('/booking/new',
+        {
+          student: student,
+          date: day,
+        })
+        .then((res) => {
+            setMsg([res.data.message,res.data.success]);
+            })
+        .catch((err) => {
+          setMsg([err.message,err.success]);
+          // setFeedback(err.response.data.message);
+          });
+    }
   }
   const prepBooking=(data)=>{
-    setDay(data.slice(0,-12))
+      if(day.slice(0,3)=="Mon"){
+        setMsg(['Monday is a holiday.',false])
+      }else{
+        setDay(data)
+      }
   }
   useEffect(()=>{
     axios.get('/booking/all', {params:{filter:student}})
@@ -44,7 +52,7 @@ const Booking = ()=>{
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim feedback'>
-                        <div class=''>{moment(item.date).format('MM-DD, h:mm')}</div>
+                        <div class=''>{moment(item.date).format('dddd MMM-DD, h:mm a')}</div>
                     </div>
                   )
 
