@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
+import Comment from "../comment/Comment";
 import {useAuthDataContext} from "../auth-provider";
 
 const StudentComments = () => {
@@ -21,6 +22,7 @@ const StudentComments = () => {
 
   return(
     <div class='master-row'>
+    <Comment/>
       <h1>Feedback</h1>
       <div class='row'>
         <table>

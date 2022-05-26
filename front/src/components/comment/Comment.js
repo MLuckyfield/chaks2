@@ -35,7 +35,7 @@ const Comment = () => {
   return(
       <div class='row'>
         <form class='Comment' onSubmit={onSubmit}>
-                <h2>Lesson Feedback</h2>
+                <h2>New Comment</h2>
                     <div class="form-group">
                       <input ref={comment} type="text" class="form-control" placeholder="comment" required/>
 
