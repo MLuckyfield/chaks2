@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react'
-import Calendar from 'react-calendar'
+import DateTimePicker from 'react-datetime-picker'
 import 'react-calendar/dist/Calendar.css'
 import {axios} from "../../utilities/axios";
 
@@ -39,7 +39,7 @@ const Booking = ()=>{
                   </div>
                   <button type="submit" class="solid-first">Reserve!</button>
               </form>
-              <Calendar onChange={setDay} value={day}/>
+              <DateTimePicker onChange={setDay} value={day}/>
           </div>
       </div>
   )
