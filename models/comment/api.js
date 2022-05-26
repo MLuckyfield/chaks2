@@ -4,7 +4,7 @@ const User = require('../user/model')
 //Create
 router.post('/new', async (req, res) => {
   req = req.body
-  console.log('recieved: '+JSON.sringify(req))
+  console.log('recieved: '+JSON.stringify(req))
 
   await Comment.insertMany({
       comment: req.comment,
