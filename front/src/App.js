@@ -187,7 +187,7 @@ const Front = ()=>{
                         </div>
                           {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                           <div class='row'>
-                              <button class='form-control' type="submit">Sign Up</button>
+                              <button class='form-control solid-first' type="submit">Sign Up</button>
                           </div>
                     </div>
                   </form>
@@ -240,7 +240,20 @@ const Front = ()=>{
                             Born in Canada. Speaks 1.5 languages. Lived in 5 countries. Has too many hobbies & interests - at least 5!
                         </div>
                     </div>
-                    
+                    <div class='row center'>
+                        <div class='col slim'>
+                            <img class='avatar' src={nerea}></img>
+                            <h2>NEREA</h2>
+                            <h3>INSTRUCTOR</h3>
+                            Born in Spain. 12 years of English teaching experience with a Masters in Education and exceptional knowledge of grammar/vocab.
+                        </div>
+                        <div class='col slim'>
+                            <img class='avatar' src={sonja}></img>
+                            <h2>SONJA</h2>
+                            <h3>INSTRUCTOR</h3>
+                            Born in the US. 2 years of English teaching experience. Avid Youtuber. Loves karaoke, dancing, cosplay and more!
+                        </div>
+                    </div>
                 </div>
             </div>
           </div>

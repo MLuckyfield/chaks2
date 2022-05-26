@@ -14,8 +14,6 @@ const Comment = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-
     axios.post('/comment/new',
       {
         comment: comment.current.value,
