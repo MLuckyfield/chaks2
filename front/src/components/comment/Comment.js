@@ -8,7 +8,7 @@ const Comment = () => {
   //const [password, setPassword] = useState();
   const comment = useRef('');
   const [student, setStudent] = useState(JSON.parse(localStorage.getItem('student')));
-  const author = useRef(JSON.parse(localStorage.getItem('user')));
+  const [author, setAuthor] = useState(JSON.parse(localStorage.getItem('user')));
 
   const [feedback, setFeedback] = useState();
 
@@ -20,7 +20,7 @@ const Comment = () => {
       {
         comment: comment.current.value,
         student: student,
-        author: author.current.value,
+        author: author,
       })
       .then((res) => {
           setFeedback(res.data.message);

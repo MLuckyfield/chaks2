@@ -21,7 +21,10 @@ import matt from './matt.jpg'
 const App = () => {
 
     return (
-      <Router><Navbar/>
+      <Router>
+        <Navbar/>
+        <div class='nav-filler'>
+        </div>
           <Route exact path="/" component={Front}/>
           <Route path="/signup" component={Signup}/>
           <AuthDataProvider>
@@ -92,8 +95,6 @@ const Front = ()=>{
         <div>
 
 
-              <div class='nav-filler'>
-              </div>
               <div id='header' class='transparent'>
                     <div id='overlay'>
                         <div class='row'>

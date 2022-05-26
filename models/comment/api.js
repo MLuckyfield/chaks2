@@ -6,7 +6,11 @@ router.post('/new', async (req, res) => {
   req = req.body
   console.log('recieved: '+req)
 
-  await Comment.insertMany(req)
+  await Comment.insertMany({
+      comment: req.comment,
+      student: req.student,
+      author: req.author
+  })
       .then(()=>{
         return res.status(201).json({
           message: 'Feedback uploaded!',
