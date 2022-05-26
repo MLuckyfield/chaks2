@@ -306,7 +306,7 @@ const Front = ()=>{
     const AccordionItem=({ title, content })=>{
     const [isActive, setIsActive] = useState(false);
     return (
-      <div class='accordion-item'>
+      <div class='accordion_item'>
         <div class='accordion-title' onClick={() => setIsActive(!isActive)}>
           <h2>{title}</h2>
         </div>
