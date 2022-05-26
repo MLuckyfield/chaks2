@@ -32,7 +32,7 @@ const Comment = () => {
 
   return(
       <div class='row'>
-        <form class='Comment' onSubmit={onSubmit}>
+        <form class='login' onSubmit={onSubmit}>
                 <h2>New Comment</h2>
                     <div class="form-group">
                       <textarea ref={comment} type="text" class="form-control" placeholder="comment" required/>

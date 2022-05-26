@@ -32,7 +32,7 @@ const Booking = ()=>{
       <h1>Reservations</h1>
           <div class='col'>
               {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
-              <form onSubmit={onSubmit}>
+              <form class='login' onSubmit={onSubmit}>
                   <div class="form-group">
                     <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
 
