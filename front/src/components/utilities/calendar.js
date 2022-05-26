@@ -10,7 +10,7 @@ const CalendarView = ()=>{
   const [bookings, setBookings]=useState()
 
   useEffect(()=>{
-    axios.get('/booking/all', {params:{filter:{date:day}}})
+    axios.get('/booking/all', {params:{filter:{date:{$gte:day}}}})
       .then((res) => {
           setBookings(res.data.data.reverse());
         })
