@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Booking = require('./model')
 const User = require('../user/model')
 const jwt = require('jsonwebtoken')
+const auth= require('../../services/authentication');
 
 //Create
 router.post('/new', async (req, res) => {
@@ -47,7 +48,7 @@ router.post('/new', async (req, res) => {
 //Get
 router.get('/all', async (req, res) => {
   console.log(req.query)
-  let data = await Booking.find({student:req.query.filter}).populate('author')
+  let data = await Booking.find({student:req.query.filter})
   return res.status(201).json({
     data: data,
     message: 'Booking saved',

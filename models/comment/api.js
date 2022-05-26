@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Comment = require('./model')
 const User = require('../user/model')
 const jwt = require('jsonwebtoken')
-
+const auth= require('../../services/authentication');
 //Create
 router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
   req = req.body
