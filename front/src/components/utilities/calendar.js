@@ -13,7 +13,7 @@ const CalendarView = ()=>{
     axios.get('/booking/all', {params:{filter:{date:day}}})
       .then((res) => {
           setBookings(res.data.data.reverse());
-          bookings.forEach((item, i) => {
+          res.data.data.reverse().forEach((item, i) => {
             console.log(JSON.stringify(item))
           });
 
