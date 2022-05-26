@@ -9,19 +9,18 @@ router.post('/new', async (req, res) => {
   console.log('recieved: '+JSON.stringify(req))
 
   await Booking.insertMany({
-      Booking: req.Booking,
       student: req.student._id,
-      author: req.author._id
+      date: req.date
   })
       .then(()=>{
         return res.status(201).json({
-          message: 'Feedback uploaded!',
+          message: 'Done! See you soon :)',
           success: true
         });
       })
       .catch((err)=>{
         return res.status(500).json({
-          message: `Upload failure: ${err}`,
+          message: `Error. Please call if this error persists.`,
           success: false
         });
       })

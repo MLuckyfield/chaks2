@@ -4,7 +4,7 @@ const User = require('../user/model')
 const jwt = require('jsonwebtoken')
 
 //Create
-router.post('/new', async (req, res) => {
+router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
   req = req.body
   console.log('recieved: '+JSON.stringify(req))
 

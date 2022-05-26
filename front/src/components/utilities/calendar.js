@@ -35,9 +35,9 @@ const Booking = ()=>{
               <form onSubmit={onSubmit}>
                   <div class="form-group row">
                     <input type="text" class="form-control" placeholder={`${day}`} disabled/>
-                    <button type="submit" class="solid-first">Reserve!</button>
-                  </div>
 
+                  </div>
+                  <button type="submit" class="solid-first">Reserve!</button>
               </form>
               <Calendar onChange={setDay} value={day}/>
           </div>

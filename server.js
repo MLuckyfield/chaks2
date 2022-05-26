@@ -51,7 +51,8 @@ app.disable('x-powered-by');
 //app.use('/exercises',exercisesRouter);
 //app.use('/users',usersRouter);
 app.use('/user',require('./models/user/api'));
-app.use('/comment',require('./models/comment/api'));
+app.use('/comment',auth.auth,require('./models/comment/api'));
+app.use('/booking',auth.auth,require('./models/comment/api'));
 //heroku deployment
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "/front/build", "index.html"));
