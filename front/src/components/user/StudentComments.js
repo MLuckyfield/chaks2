@@ -10,10 +10,10 @@ const StudentComments = () => {
   useEffect(() => {
     let target = ''
     if (localStorage.getItem('student')){
-      target = localStorage.getItem('student')
+      target = JSON.parse(localStorage.getItem('student'))
     }else{target=JSON.parse(localStorage.getItem('user'))}
 
-    axios.get('/comment/all', {params:{filter:target}})
+    axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data);
         })

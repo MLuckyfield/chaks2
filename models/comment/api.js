@@ -47,9 +47,8 @@ router.post('/new', async (req, res) => {
 // });
 //Get
 router.get('/all', async (req, res) => {
-  let student = await User.find({email:req.query.filter.email}).select('_id')
-  console.log('comments for: '+student)
-  let data = await Comment.find({student:student})
+  console.log(req.body)
+  let data = await Comment.find({student:req.body.filter})
   return res.status(201).json({
     data: data,
     message: 'Comment saved',
