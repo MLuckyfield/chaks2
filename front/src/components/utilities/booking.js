@@ -13,7 +13,7 @@ const Booking = ()=>{
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    if(day.slice(0,3)=="Mon"){
+    if(moment(day).format('dddd')=='Monday'){
       setMsg(['Monday is a holiday.',false])
     }else{
       axios.post('/booking/new',
@@ -31,7 +31,7 @@ const Booking = ()=>{
     }
   }
   const prepBooking=(data)=>{
-      if(day.slice(0,3)=="Mon"){
+      if(moment(data).format('dddd')=='Monday'){
         setMsg(['Monday is a holiday.',false])
       }else{
         setDay(data)
