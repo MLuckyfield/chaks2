@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const Comment = require('./model')
 const User = require('../user/model')
+const jwt = require('jsonwebtoken')
+
 //Create
 router.post('/new', async (req, res) => {
   req = req.body
@@ -9,7 +11,7 @@ router.post('/new', async (req, res) => {
   await Comment.insertMany({
       comment: req.comment,
       student: req.student,
-      author: req.author
+      author: req.author._id
   })
       .then(()=>{
         return res.status(201).json({

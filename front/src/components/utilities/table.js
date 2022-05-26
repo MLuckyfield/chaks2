@@ -43,7 +43,9 @@ const makeComment = (item)=>{
                 return (
                     <tr>
                       {Object.keys(item).map((key, y) => {
-                            return <th>{key}</th>
+                            if(key!='_id'){
+                              return <th>{key}</th>
+                            }else{return ''}
                       })}
                     </tr>
                 )
@@ -52,7 +54,10 @@ const makeComment = (item)=>{
               return (
                 <tr onClick={()=>makeComment(item)}>
                   {Object.keys(item).map((key, y) => {
-                    return <td>{item[key]}</td>
+                    if(key!='_id'){
+                      return <td>{item[key]}</td>
+                    }else{return ''}
+
                   })}
                   </tr>
 
