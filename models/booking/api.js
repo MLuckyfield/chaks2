@@ -48,7 +48,7 @@ router.post('/new', async (req, res) => {
 //Get
 router.get('/all', auth.permission(['user','manager']),async (req, res) => {
   console.log(req.query)
-  let data = await Booking.find({req.query.filter}).populate('student')
+  let data = await Booking.find(req.query.filter).populate('student')
   return res.status(201).json({
     data: data,
     message: 'Booking saved',

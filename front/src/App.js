@@ -229,14 +229,14 @@ const Front = ()=>{
                             <img class='avatar' src={shunsuke}></img>
                             <h2>SHUNSUKE</h2>
                             <h3>CO-FOUNDER</h3>
-                            <span class='subtitle'>Legal, Supply Chain, Food & Beverage, Funding, Communications</span>
+                            <span class='subtitle'>Legal, Supply Chain, Funding, Communications</span>
                             Born in Japan. Speaks 3 languages. Lived in Canada and China. Likes travelling and has friends all over the world!
                         </div>
                         <div class='col slim'>
                             <img class='avatar' src={matt}></img>
                             <h2>MATT</h2>
                             <h3>CO-FOUNDER</h3>
-                            <span class='subtitle'> Research, Product, Branding & Marketing, Finance, HR, Technology</span>
+                            <span class='subtitle'> Research, Product, Branding, Finance, HR, IT</span>
                             Born in Canada. Went to 11 schools within 12 years in 5 countries. Has too many hobbies & interests - ask me!
                         </div>
                     </div>
