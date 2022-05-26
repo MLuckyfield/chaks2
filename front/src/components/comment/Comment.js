@@ -7,7 +7,7 @@ const Comment = () => {
   //const [comment, setcomment] = useState();
   //const [password, setPassword] = useState();
   const comment = useRef('');
-  const student = useRef(JSON.parse(localStorage.getItem('student')));
+  const [student, setStudent] = useState(JSON.parse(localStorage.getItem('student')));
   const author = useRef(JSON.parse(localStorage.getItem('user')));
 
   const [feedback, setFeedback] = useState();
@@ -19,7 +19,7 @@ const Comment = () => {
     axios.post('/comment/new',
       {
         comment: comment.current.value,
-        student: student.current.value,
+        student: student,
         author: author.current.value,
       })
       .then((res) => {
@@ -37,7 +37,7 @@ const Comment = () => {
         <form class='Comment' onSubmit={onSubmit}>
                 <h2>New Comment</h2>
                     <div class="form-group">
-                      <input ref={comment} type="text" class="form-control" placeholder="comment" required/>
+                      <textarea ref={comment} type="text" class="form-control" placeholder="comment" required/>
 
                     </div>
                     <div class="form-group">
