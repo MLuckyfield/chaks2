@@ -45,7 +45,7 @@ const Navbar = ()=>{
               {user==''||user==null||user==undefined?'':
               (<div class='col profile_display'>
               <span>Welcome {user.first}</span>
-              <span>{user.role}</span></div>)}
+              <span>{user.role!='user'?user.role:'student'}</span></div>)}
           </div>
         </div>
         {user==''||user==null||user==undefined?(
@@ -59,7 +59,7 @@ const Navbar = ()=>{
         ):(
           <ul class="nav-links">
               {user.role!='user'?(<li><a href='/dash'><span class="material-icons">group</span></a></li>):''}
-              <li><a href='#' onClick={logout}><span class="material-icons">logout</span></a></li>              
+              <li><a href='#' onClick={logout}><span class="material-icons">logout</span></a></li>
           </ul>
         )}
         <div class="burger" onClick={navSlide}>

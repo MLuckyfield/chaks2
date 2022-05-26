@@ -17,6 +17,8 @@ import './scss/main.scss'
 import logo from './chatshack.jpg'
 import shunsuke from './shunsuke.jpg'
 import matt from './matt.jpg'
+import nerea from './nerea.jpg'
+import sonja from './sonja.jpg'
 
 const App = () => {
 
@@ -238,6 +240,7 @@ const Front = ()=>{
                             Born in Canada. Speaks 1.5 languages. Lived in 5 countries. Has too many hobbies & interests - at least 5!
                         </div>
                     </div>
+                    
                 </div>
             </div>
           </div>

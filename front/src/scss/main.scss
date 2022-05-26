@@ -16,6 +16,13 @@ body{
 .feedback{
   border: 1px solid $second;
 }
+.react-calendar__navigation{
+  button{
+    display:inline-block;
+    border:none;
+    background-color: white;
+  }
+}
 .msg{
   height:30px;
   border-radius:50px;
