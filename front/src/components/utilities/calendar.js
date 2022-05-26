@@ -4,6 +4,11 @@ import Calendar from 'react-calendar'
 const Calendar = ()=>{
 
   return (
-    <Calendar/>
+    <div class='master-row'>
+      <h1>Reservations</h1>
+          <div class='col'>
+              <Calendar/>
+          </div>
+      </div>
   )
 }
