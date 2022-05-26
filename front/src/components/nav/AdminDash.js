@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Sidebar from './Sidebar'
 import DashNav from './DashNav'
 import Table from '../utilities/table'
-import Calendar from '../utilities/calendar'
+import Booking from '../utilities/calendar'
 import Navbar from './Navbar'
 import SecureRoute from './SecureRoute'
 import StudentComments from '../user/StudentComments'
@@ -49,7 +49,7 @@ const Dash = ()=>{
   if (user.role=='user'){
     return(
       <div>
-        <Calendar/>
+        <Booking/>
         <StudentComments/>
       </div>
     )

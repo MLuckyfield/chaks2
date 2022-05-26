@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Calendar from 'react-calendar'
 
-const Calendar = ()=>{
+const Booking = ()=>{
 
   return (
     <div class='master-row'>
@@ -12,3 +12,5 @@ const Calendar = ()=>{
       </div>
   )
 }
+
+export default Booking;
