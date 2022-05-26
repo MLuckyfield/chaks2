@@ -6,17 +6,13 @@ import moment from "moment"
 
 const CalendarView = ()=>{
 
-  const [day, setDay] = useState()
+  const [day, setDay] = useState(new Date())
   const [bookings, setBookings]=useState()
 
   useEffect(()=>{
     axios.get('/booking/all', {params:{filter:{date:day}}})
       .then((res) => {
           setBookings(res.data.data.reverse());
-          res.data.data.reverse().forEach((item, i) => {
-            console.log(JSON.stringify(item))
-          });
-
         })
       .catch(error => console.log("error"+error))
   },[day])
@@ -25,7 +21,7 @@ const CalendarView = ()=>{
     <div class='master-row'>
       <h1>Reservations</h1>
           <div class='col'>
-          <DateTimePicker onChange={setDay} value={day?day:new Date()} format='MM-dd' maxDetail='minute' disableClock='true' minDate={new Date()}/>
+          <DateTimePicker onChange={setDay} value={day} format='MM-dd' maxDetail='minute' disableClock='true' minDate={new Date()}/>
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim'>
