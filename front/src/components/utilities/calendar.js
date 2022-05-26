@@ -25,11 +25,11 @@ const CalendarView = ()=>{
     <div class='master-row'>
       <h1>Reservations</h1>
           <div class='col'>
-          <DateTimePicker onChange={setDay} value={day} format='MM-dd' maxDetail='minute' disableClock='true' minDate={new Date()}/>
+          <DateTimePicker onChange={setDay} value={day?day:new Date()} format='MM-dd' maxDetail='minute' disableClock='true' minDate={new Date()}/>
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim'>
-                        <div class=''>`{moment(item.date).format('dddd, MMM DD @ h:mm a')} `</div>
+                        <div class=''>{moment(item.date).format('dddd, MMM DD @ h:mm a')} | {item.student.first} {item.student.last}</div>
                     </div>
                   )
 
