@@ -15,7 +15,7 @@ const StudentComments = () => {
 
     axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
-          setComments(res.data.data);
+          setComments(res.data.data.reverse());
         })
       .catch(error => console.log("error"+error))
   },[])
