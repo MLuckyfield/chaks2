@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react'
 import DateTimePicker from 'react-datetime-picker'
 import 'react-calendar/dist/Calendar.css'
 import {axios} from "../../utilities/axios";
+import moment from "moment"
 
 const Booking = ()=>{
 
@@ -43,7 +44,7 @@ const Booking = ()=>{
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim feedback'>
-                        <div class=''>{item.date.slice(0,-14)}</div>
+                        <div class=''>{moment(item.date).format('MM-DD, h:mm')}</div>
                     </div>
                   )
 
