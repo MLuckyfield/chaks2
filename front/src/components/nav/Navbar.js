@@ -59,6 +59,7 @@ const Navbar = ()=>{
         ):(
           <ul class="nav-links">
               <li><a href='#' onClick={logout}><span class="material-icons">logout</span></a></li>
+              {user.role!='user'?(<li><a href='/dash'><span class="material-icons">group</span></a></li>):''}
           </ul>
         )}
         <div class="burger" onClick={navSlide}>
