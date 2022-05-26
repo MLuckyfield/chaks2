@@ -52,7 +52,7 @@ const Booking = ()=>{
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim feedback'>
-                        <div class=''>{moment(item.date).format('dddd MMM-DD, h:mm a')}</div>
+                        <div class=''>{moment(item.date).format('dddd, MMM DD @ h:mm a')}</div>
                     </div>
                   )
 
