@@ -60,6 +60,7 @@ const Dash = ()=>{
   }else if (user.role=='manager'){
     return(
       <div>
+        <Calendar/>
         <StaffTable/>
         <StudentTable/>
       </div>

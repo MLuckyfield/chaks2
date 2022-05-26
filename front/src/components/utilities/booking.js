@@ -38,7 +38,7 @@ const Booking = ()=>{
       }
   }
   useEffect(()=>{
-    axios.get('/booking/all', {params:{filter:student}})
+    axios.get('/booking/all', {params:{filter:{student:student}}})
       .then((res) => {
           setBookings(res.data.data.reverse());
         })
