@@ -26,8 +26,7 @@ const Booking = ()=>{
         });
   }
   const prepBooking=(data)=>{
-
-    setDay(data)
+    setDay(data.slice(0,-12))
   }
   useEffect(()=>{
     axios.get('/booking/all', {params:{filter:student}})
@@ -43,8 +42,8 @@ const Booking = ()=>{
           <div class='col'>
               {bookings ? (bookings.map(function(item, i){
                   return (
-                    <div class='col feedback'>
-                        <div class=''>{item.date}</div>
+                    <div class='col slim feedback'>
+                        <div class=''>{item.date.slice(0,-14)}</div>
                     </div>
                   )
 

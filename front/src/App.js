@@ -237,7 +237,7 @@ const Front = ()=>{
                             <h2>MATT</h2>
                             <h3>CO-FOUNDER</h3>
                             <span class='subtitle'> Research, Product, Branding & Marketing, Finance, HR, Technology</span>
-                            Born in Canada. Speaks 1.5 languages. Lived in 5 countries. Has too many hobbies & interests - at least 5!
+                            Born in Canada. Went to 11 schools within 12 years in 5 countries. Has too many hobbies & interests - ask me!
                         </div>
                     </div>
                     <div class='row center'>
@@ -245,7 +245,7 @@ const Front = ()=>{
                             <img class='avatar' src={nerea}></img>
                             <h2>NEREA</h2>
                             <h3>INSTRUCTOR</h3>
-                            Born in Spain. 12 years of English teaching experience with a Masters in Education and exceptional knowledge of grammar/vocab.
+                            Born in Spain. Lived in 4 countries. 12 years of English teaching experience with a Masters in Education. Loves travel, photography, wearing kimonos, and more!
                         </div>
                         <div class='col slim'>
                             <img class='avatar' src={sonja}></img>
