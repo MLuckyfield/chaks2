@@ -22,6 +22,9 @@ body{
   button{
     display:inline-block;
     border:none;
+    abbr{
+      color:black
+    }
   }
   .react-calendar__tile--now{
     background-color: $second;
