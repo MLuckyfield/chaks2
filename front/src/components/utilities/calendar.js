@@ -25,7 +25,7 @@ const CalendarView = ()=>{
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim'>
-                        <div class=''>`{moment(item.date).format('dddd, MMM DD @ h:mm a')} | ${item.student.first} ${item.student.last}`</div>
+                        <div class=''>`{moment(item.date).format('dddd, MMM DD @ h:mm a')} | ${item.student} ${item.student}`</div>
                     </div>
                   )
 
