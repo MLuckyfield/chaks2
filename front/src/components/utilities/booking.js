@@ -23,6 +23,10 @@ const Booking = ()=>{
         // setFeedback(err.response.data.message);
         });
   }
+  const prepBooking=(data)=>{
+    
+    setDay(data)
+  }
   useEffect(()=>{
 
   },[])
@@ -31,11 +35,11 @@ const Booking = ()=>{
     <div class='master-row'>
       <h1>Reservations</h1>
           <div class='col'>
-              {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
               <form class='login' onSubmit={onSubmit}>
                   <div class="form-group">
+                  {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                     <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
-                    <DateTimePicker onChange={setDay} value={day} format='MM-dd h:mm' maxDetail='minute' disableClock='true' minDate={new Date()}/>
+                    <DateTimePicker onChange={prepBooking} value={day} format='MM-dd h:mm' maxDetail='minute' disableClock='true' minDate={new Date()}/>
                   </div>
                   <button type="submit" class="solid-first">Reserve!</button>
               </form>

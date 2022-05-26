@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Sidebar from './Sidebar'
 import DashNav from './DashNav'
 import Table from '../utilities/table'
-import Booking from '../utilities/calendar'
+import Booking from '../utilities/booking'
 import Navbar from './Navbar'
 import SecureRoute from './SecureRoute'
 import StudentComments from '../user/StudentComments'
