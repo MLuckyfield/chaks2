@@ -24,19 +24,18 @@ const StudentComments = () => {
     <div class='master-row'>
     {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
       <h1>Feedback</h1>
-      <div class='row'>
-        <table>
+      <div class='col'>
 
           {comments ? (comments.map(function(item, i){
               return (
-                <tr>
-                  <td>{item.author}</td>
-                  <td>{item.comment}</td>
-                </tr>
+                <div class='col'>
+                    <div class='col'>{item.createdAt}</div>
+                    <div class='col'>{item.comment}</div>
+                    <div class='col'>{item.author.first} {item.author.last}</div>
+                </div>
               )
 
                   })): 'No data to display'}
-        </table>
       </div>
       </div>
 )
