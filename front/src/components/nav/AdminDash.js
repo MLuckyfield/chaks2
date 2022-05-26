@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Sidebar from './Sidebar'
 import DashNav from './DashNav'
 import Table from '../utilities/table'
+import Calendar from '../utilities/calendar'
 import Navbar from './Navbar'
 import SecureRoute from './SecureRoute'
 import StudentComments from '../user/StudentComments'
@@ -46,7 +47,12 @@ const StudentTable = ()=>{
 const Dash = ()=>{
   const user = JSON.parse(localStorage.getItem('user'))
   if (user.role=='user'){
-    return <StudentComments/>
+    return(
+      <div>
+        <Calendar/>
+        <StudentComments/>
+      </div>
+    )
   }else if (user.role=='teacher')
   {
     return <StudentTable/>
