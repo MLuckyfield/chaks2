@@ -29,9 +29,9 @@ const StudentComments = () => {
           {comments ? (comments.map(function(item, i){
               return (
                 <div class='col'>
-                    <div class='col'>{item.createdAt}</div>
-                    <div class='col'>{item.comment}</div>
-                    <div class='col'>{item.author.first} {item.author.last}</div>
+                    <div class=''>{item.createdAt}</div>
+                    <div class=''>{item.comment}</div>
+                    <div class=''>{item.author.first} {item.author.last}</div>
                 </div>
               )
 
