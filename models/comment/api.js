@@ -10,7 +10,7 @@ router.post('/new', async (req, res) => {
 
   await Comment.insertMany({
       comment: req.comment,
-      student: req.student,
+      student: req.student._id,
       author: req.author._id
   })
       .then(()=>{
