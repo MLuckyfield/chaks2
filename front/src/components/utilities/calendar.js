@@ -39,7 +39,7 @@ const Booking = ()=>{
                   </div>
                   <button type="submit" class="solid-first">Reserve!</button>
               </form>
-              <DateTimePicker onChange={setDay} value={day} format='MM-dd h:mm' minDate={new Date()}/>
+              <DateTimePicker onChange={setDay} value={day} format='MM-dd h:mm' disableClock='true' minDate={new Date()}/>
           </div>
       </div>
   )

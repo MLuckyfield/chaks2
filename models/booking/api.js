@@ -46,7 +46,7 @@ router.post('/new', async (req, res) => {
 //
 // });
 //Get
-router.get('/all', async (req, res) => {
+router.get('/all', auth.permission(['user','manager']),async (req, res) => {
   console.log(req.query)
   let data = await Booking.find({student:req.query.filter})
   return res.status(201).json({
