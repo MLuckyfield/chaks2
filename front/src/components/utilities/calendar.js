@@ -13,6 +13,10 @@ const CalendarView = ()=>{
     axios.get('/booking/all', {params:{filter:{date:day}}})
       .then((res) => {
           setBookings(res.data.data.reverse());
+          bookings.forEach((item, i) => {
+            console.log(JSON.stringify(item))
+          });
+
         })
       .catch(error => console.log("error"+error))
   },[day])
@@ -25,7 +29,7 @@ const CalendarView = ()=>{
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim'>
-                        <div class=''>`{moment(item.date).format('dddd, MMM DD @ h:mm a')} | ${item.student} ${item.student}`</div>
+                        <div class=''>`{moment(item.date).format('dddd, MMM DD @ h:mm a')} `</div>
                     </div>
                   )
 
