@@ -23,15 +23,16 @@ const StudentComments = () => {
   return(
     <div class='master-row'>
     {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
-      <h1>Feedback</h1>
+      <h1>Feedback ({comments?comments.length:'None Yet!'})</h1>
       <div class='col'>
 
           {comments ? (comments.map(function(item, i){
               return (
-                <div class='col'>
-                    <div class=''>{item.createdAt}</div>
+                <div class='col feedback'>
+
                     <div class=''>{item.comment}</div>
                     <div class=''>{item.author.first} {item.author.last}</div>
+                    <div class=''>{item.createdAt.slice(0,-14)}</div>
                 </div>
               )
 

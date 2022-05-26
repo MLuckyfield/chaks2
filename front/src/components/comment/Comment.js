@@ -44,7 +44,7 @@ const Comment = () => {
                       <input type="text" class="form-control" placeholder={`${student.first} ${student.last}`} disabled/>
                     </div>
                     <label>{feedback}</label>
-                    <button type="submit" class="outline-first">Comment</button>
+                    <button type="submit" class="solid-first">Comment</button>
 
                   </form>
                 </div>
