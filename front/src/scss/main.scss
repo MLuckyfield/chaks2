@@ -17,10 +17,16 @@ body{
   border: 1px solid $second;
 }
 .react-calendar__navigation{
+  color:black;
+  background: white;
   button{
     display:inline-block;
     border:none;
-    background-color: white;
+  }
+  .react-calendar__tile--now{
+    background-color: $second;
+  }
+  .react-calendar__tile{
   }
 }
 .msg{
