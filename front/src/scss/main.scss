@@ -17,7 +17,7 @@ body{
   border: 1px solid $second;
 }
 .react-calendar__navigation{
-  color:black;
+  color:black !important;
   background: white;
   button{
     display:inline-block;
@@ -30,6 +30,7 @@ body{
     background-color: $second;
   }
   .react-calendar__tile{
+    color:black;
   }
 }
 .msg{

@@ -4,11 +4,15 @@ import 'react-calendar/dist/Calendar.css'
 
 const Booking = ()=>{
 
+  const [day, setDay]=useState(new Date())
+
+  
+
   return (
     <div class='master-row'>
       <h1>Reservations</h1>
           <div class='col'>
-              <Calendar/>
+              <Calendar onChange={setDay} value={day}/>
           </div>
       </div>
   )
