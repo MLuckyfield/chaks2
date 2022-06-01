@@ -98,7 +98,7 @@ const Front = ()=>{
         <div>
 
 
-              <div id='header' class='transparent' style={{backgroundImage: url(banner)}}>
+              <div id='header' class='transparent' style={{backgroundImage: 'url('+banner+')'}}>
                     <div id='overlay'>
                         <div class='row'>
                           <div class='col'>
