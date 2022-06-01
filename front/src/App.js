@@ -15,6 +15,7 @@ import StudentComments from './components/user/StudentComments'
 //import styles
 import './scss/main.scss'
 import logo from './chatshack.jpg'
+import banner from './banner.jpg'
 import shunsuke from './shunsuke.jpg'
 import matt from './matt.jpg'
 import nerea from './nerea.jpg'
@@ -97,7 +98,7 @@ const Front = ()=>{
         <div>
 
 
-              <div id='header' class='transparent'>
+              <div id='header' class='transparent' style={{backgroundImage: url(banner)}}>
                     <div id='overlay'>
                         <div class='row'>
                           <div class='col'>
@@ -173,7 +174,7 @@ const Front = ()=>{
                             <div class='row'><h1>SUBSCRIBE</h1></div>
                             <div class='row'>
                               <div class='col'>
-                                  Chatshackの最新情報を知りたい方はこちら！プレオープンの招待、特別割引、キャンペーン情報、イベント招待など、お届けします！
+                                  CHATSHACKの最新情報を知りたい方はこちら！プレオープンの招待、特別割引、キャンペーン情報、イベント招待など、お届けします！
                               </div>
                             </div>
                           </div>
