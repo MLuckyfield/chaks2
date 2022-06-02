@@ -203,12 +203,15 @@ nav {
 
 .nav-links {
     display: flex;
-    width: 30%;
+    width: 50%;
     z-index: 10;
 }
 
 .nav-links li {
     list-style: none;
+    align-items: center;
+    align-content: center;
+    vertical-align: middle;
 }
 
 .nav-links a {
