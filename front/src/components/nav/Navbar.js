@@ -55,7 +55,7 @@ const Navbar = ()=>{
               <li><a onClick={navSlide} href="#access">ACCESS</a></li>
               <li><a onClick={navSlide} href="#faq">FAQ</a></li>
               <li><a onClick={navSlide} href="#team">TEAM</a></li>
-              <li class='form-control solid-first' onClick={()=>window.location('/login')}>Log In</li>
+              <li><a onClick={navSlide} href="#team">LOG IN</a></li>
           </ul>
         ):(
           <ul class="nav-links">
