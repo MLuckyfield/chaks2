@@ -41,6 +41,7 @@ const makeComment = (item)=>{
           {data ? (data.map(function(item, i){
               if(i==0){
                 return (
+                    <span>
                     <tr>
                       {Object.keys(item).map((key, y) => {
                             if(key!='_id'){
@@ -48,6 +49,15 @@ const makeComment = (item)=>{
                             }else{return ''}
                       })}
                     </tr>
+                    <tr onClick={()=>makeComment(item)}>
+                      {Object.keys(item).map((key, y) => {
+                        if(key!='_id'){
+                          return <td>{item[key]}</td>
+                        }else{return ''}
+
+                      })}
+                      </tr>
+                    </span>
                 )
               }
               //console.log('item is: '+JSON.stringify(item.slice(1)))
