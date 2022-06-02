@@ -51,6 +51,7 @@ const Front = ()=>{
       const email = useRef('');
       const first = useRef('');
       const last = useRef('');
+      const password = useRef('');
       const [msg,setMsg] = useState()
 
       const onSubmit = (e) => {
@@ -60,6 +61,7 @@ const Front = ()=>{
           {
             email: email.current.value,
             first:first.current.value,
+            password:password.current.value,
             last:last.current.value,
           })
           .then((res) => {
@@ -185,6 +187,9 @@ const Front = ()=>{
                         </div>
                         <div class='row'>
                           <input ref={email} class='form-control' type='email' placeholder='Email'/>
+                        </div>
+                        <div class='row'>
+                          <input ref={password} class='form-control' type='Password' placeholder='Password'/>
                         </div>
                           {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                           <div class='row'>
