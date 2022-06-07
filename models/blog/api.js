@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const auth= require('../../services/authentication');
 
 //Create
-router.post('/new', async (req, res) => {
+router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
   req = req.body
   console.log('recieved: '+JSON.stringify(req))
 

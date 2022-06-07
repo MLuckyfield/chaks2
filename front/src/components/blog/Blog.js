@@ -25,7 +25,7 @@ const Blog = () => {
       })
       .then((res) => {
           setFeedback(res.data.message);
-          window.location='/dash';
+          window.location='/blog';
           })
       .catch((err) => {
         console.log(err);

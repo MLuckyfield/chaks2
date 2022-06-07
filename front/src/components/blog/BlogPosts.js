@@ -20,7 +20,7 @@ const BlogPosts = () => {
     <div class='master-row'>
       <h1>Blog Posts ({comments?comments.length:'None Yet!'})</h1>
       <div class='col'>
-
+        <button onClick={()=>window.location='/new/blog'} class="solid-first">New Blog Post</button>
           {comments ? (comments.map(function(item, i){
               return (
                 <div class='col feedback'>

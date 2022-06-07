@@ -13,6 +13,7 @@ import SecureRoute from './components/nav/SecureRoute'
 import AuthDataProvider from "./components/auth-provider";
 import StudentComments from './components/user/StudentComments'
 import BlogPosts from './components/blog/BlogPosts'
+import Blog from './components/blog/Blog'
 //import styles
 import './scss/main.scss'
 import logo from './chatshack.jpg'
@@ -35,7 +36,8 @@ const App = () => {
             <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={Login}/>
-            <SecureRoute path="/blog" access={['teacher','manager','admin']} success={BlogPosts} fail={Login}/>
+            <SecureRoute path="/blogs" access={['teacher','manager','admin']} success={BlogPosts} fail={Login}/>
+            <SecureRoute path="/new/blog" access={['teacher','manager','admin']} success={Blog} fail={Login}/>
           </AuthDataProvider>
       </Router>
 
