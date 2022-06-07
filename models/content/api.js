@@ -13,7 +13,7 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
     title: req.title,
     preview: req.preview,
     content: req.content,
-    author: req.author._id,
+    author: JSON.parse(req.author)._id,
     date: req.date,
   })
       .then(()=>{
