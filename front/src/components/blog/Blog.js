@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import {useAuthDataContext} from "../auth-provider";
-import {Editor} from 'draft-js'
+import {Editor, EditorState} from 'draft-js'
 
 const Blog = () => {
 
@@ -11,7 +11,7 @@ const Blog = () => {
   const preview = useRef('');
   const [content,setContent] = useState('')
   const [author, setAuthor] = useState(JSON.parse(localStorage.getItem('user')));
-
+  const [editorState,setEditorState]=useState(EditorState.creatEmpty())
   const [feedback, setFeedback] = useState();
 
   const onSubmit = (e) => {
@@ -46,7 +46,7 @@ const Blog = () => {
                     </div>
 
                     <div class="form-group">
-                      <Editor editorState={content} onChange={(x)=>setContent(x)}/>
+                      <Editor editorState={editorState} />
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder={`${author.first}`} disabled/>
