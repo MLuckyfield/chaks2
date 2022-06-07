@@ -34,6 +34,9 @@ const Blog = () => {
   }
 
   return(
+    <div>
+    <div class='nav-filler'>
+    </div>
       <div class='row'>
         <form class='login make_blog' onSubmit={onSubmit}>
                 <h2>New Blog</h2>
@@ -57,6 +60,7 @@ const Blog = () => {
 
                   </form>
                 </div>
+            </div>
 )
 }
 
