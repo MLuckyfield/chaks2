@@ -12,10 +12,11 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
     title: req.title,
     preview: req.preview,
     content: req.content,
-    author: JSON.parse(req.author)._id,
+    author: req.author._id,
     date: req.date,
   }
-  console.log(JSON.stringify(target))
+  console.log(target)
+  console.log('to be saved:'+JSON.stringify(target))
   await Blog.insertMany(target)
       .then(()=>{
         return res.status(201).json({
