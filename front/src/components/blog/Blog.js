@@ -46,7 +46,7 @@ const Blog = () => {
                     </div>
 
                     <div class="form-group">
-                      <Editor editorState={editorState} />
+                      <Editor editorState={editorState} onChange={setEditorState} />
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder={`${author.first}`} disabled/>

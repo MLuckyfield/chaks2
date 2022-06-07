@@ -16,6 +16,11 @@ body{
 .feedback{
   border: 1px solid $second;
 }
+.blog_thumbnail{
+  width:100%;
+  min-height: 30vh;
+  
+}
 .react-calendar__navigation{
   color:black !important;
   background: white;

@@ -18,11 +18,11 @@ const BlogPosts = () => {
   return(
     <div class='master-row'>
       <h1>Blog Posts ({comments?comments.length:'None Yet!'})</h1>
-      <div class='col'>
+      <div class='row'>
         <button onClick={()=>window.location='/new-blog'} class="solid-first">New Blog Post</button>
           {comments ? (comments.map(function(item, i){
               return (
-                <div class='col feedback'>
+                <div class='col blog'>
                     <div class=''><h3>{item.title}</h3></div>
                     <div class=''>{item.author.first} {item.author.last}</div>
                     <div class=''>{moment(item.createdAt).format('dddd MMM-DD')}</div>
