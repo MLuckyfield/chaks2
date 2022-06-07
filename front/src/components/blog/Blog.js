@@ -9,7 +9,6 @@ const Blog = () => {
   //const [password, setPassword] = useState();
   const title = useRef('');
   const preview = useRef('');
-  const [content,setContent] = useState('')
   const [author, setAuthor] = useState(JSON.parse(localStorage.getItem('user')));
   const [editorState,setEditorState]=useState(()=> EditorState.createEmpty())
   const [feedback, setFeedback] = useState();
@@ -20,7 +19,7 @@ const Blog = () => {
       {
         title: title.current.value,
         preview: preview.current.value,
-        content: content.current.value,
+        content: editorState,
         author: author,
         date: new Date(),
       })
@@ -46,7 +45,9 @@ const Blog = () => {
                     </div>
 
                     <div class="form-group">
+                      <div class='editor'>
                       <Editor editorState={editorState} onChange={setEditorState} />
+                      </div>
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder={`${author.first}`} disabled/>

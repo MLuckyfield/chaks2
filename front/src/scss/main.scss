@@ -16,10 +16,16 @@ body{
 .feedback{
   border: 1px solid $second;
 }
+.editor, .DraftEditor-root{
+  border: 1px solid black;
+  min-height: 6em;
+  cursor: text;
+
+}
 .blog_thumbnail{
   width:100%;
   min-height: 30vh;
-  
+
 }
 .react-calendar__navigation{
   color:black !important;
