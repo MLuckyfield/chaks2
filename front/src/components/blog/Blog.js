@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import {useAuthDataContext} from "../auth-provider";
-import {Editor, EditorState} from 'draft-js'
+import {Editor, EditorState, convertToRaw, RichUtils} from 'draft-js'
 
 const Blog = () => {
 
@@ -19,7 +19,7 @@ const Blog = () => {
       {
         title: title.current.value,
         preview: preview.current.value,
-        content: editorState,
+        content: convertToRaw(editorState),
         author: author,
         date: new Date(),
       })
@@ -31,6 +31,15 @@ const Blog = () => {
         console.log(err.response.data.message);
         // setFeedback(err.response.data.message);
         });
+  }
+
+  const handleKeyCommand = (command, editorState)=>{
+    const newState = RichUtils.handleKeyCommand(editorState, command);
+    if (newState) {
+      this.onChange(newState);
+      return 'handled';
+    }
+    return 'not-handled';
   }
 
   return(
@@ -49,7 +58,7 @@ const Blog = () => {
 
                     <div class="form-group">
                       <div class='editor'>
-                      <Editor editorState={editorState} onChange={setEditorState} />
+                      <Editor editorState={editorState} onChange={setEditorState} handleKeyCommand={handleKeyCommand}/>
                       </div>
                     </div>
                     <div class="form-group">

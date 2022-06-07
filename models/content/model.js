@@ -18,10 +18,7 @@ const Blog = mongoose.model('Blog', new Schema({
     type: String,
     required: true,
   },
-  content: {
-    type:String,
-    required:true
-  },
+  content: [],
   tags:[{
     type: String,
     enum:['','']
