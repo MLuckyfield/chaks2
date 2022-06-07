@@ -34,6 +34,7 @@ const App = () => {
             <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={Login}/>
+            <SecureRoute path="/blog" access={['teacher','manager','admin']} success={StudentComments} fail={Login}/>
           </AuthDataProvider>
       </Router>
 
