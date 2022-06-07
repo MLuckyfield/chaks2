@@ -24,7 +24,7 @@ const BlogFront = () => {
         <div class='col'>
             {comments ? (comments.map(function(item, i){
                 return (
-                  <div class='col feedback'>
+                  <div class='col blog_thumbnail'>
                       <div class=''><h3>{item.title}</h3></div>
                       <div class=''>{moment(item.createdAt).format('dddd MMM-DD')}</div>
                   </div>
