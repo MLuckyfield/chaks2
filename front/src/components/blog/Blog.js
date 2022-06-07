@@ -15,7 +15,7 @@ const Blog = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios.post('/blog/new',
+    axios.post('/content/new',
       {
         title: title.current.value,
         preview: preview.current.value,
