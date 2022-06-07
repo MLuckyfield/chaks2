@@ -8,8 +8,7 @@ const Blog = mongoose.model('Blog', new Schema({
     ref: 'User'
   },
   preview: {//opinions from others
-    type: Schema.Types.ObjectId,
-    ref: 'User'
+    type: String,
   },
   date: {
     type: Date,
