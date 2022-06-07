@@ -25,7 +25,7 @@ const Blog = () => {
       })
       .then((res) => {
           setFeedback(res.data.message);
-          window.location='/blog';
+          window.location='/manage-blog';
           })
       .catch((err) => {
         console.log(err.response.data.message);
@@ -35,7 +35,7 @@ const Blog = () => {
 
   return(
       <div class='row'>
-        <form class='login' onSubmit={onSubmit}>
+        <form class='login make_blog' onSubmit={onSubmit}>
                 <h2>New Blog</h2>
                     <div class="form-group">
                       <input ref={title} type="text" class="form-control" placeholder="Title" required/>

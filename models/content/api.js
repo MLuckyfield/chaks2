@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const auth= require('../../services/authentication');
 
 //Create
-router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
+router.post('/new', auth.auth, auth.permission(['teacher','manager']),async (req, res) => {
   req = req.body
   console.log('recieved: '+JSON.stringify(req))
   const target = {
@@ -51,7 +51,7 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
 //
 // });
 //Get
-router.get('/all', auth.permission(['teacher','manager']),async (req, res) => {
+router.get('/all',async (req, res) => {
   console.log(req.query)
   let data = await Blog.find(req.query.filter?JSON.parse(req.query.filter):{}).populate('author')
   return res.status(201).json({

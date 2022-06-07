@@ -14,6 +14,7 @@ import AuthDataProvider from "./components/auth-provider";
 import StudentComments from './components/user/StudentComments'
 import BlogPosts from './components/blog/BlogPosts'
 import Blog from './components/blog/Blog'
+import BlogFront from './components/blog/BlogFront'
 //import styles
 import './scss/main.scss'
 import logo from './chatshack.jpg'
@@ -32,11 +33,12 @@ const App = () => {
         </div>
           <Route exact path="/" component={Front}/>
           <Route path="/signup" component={Signup}/>
+          <Route path="/blog" component={BlogFront}/>
           <AuthDataProvider>
             <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={Login}/>
-            <SecureRoute path="/blog" access={['teacher','manager','admin']} success={BlogPosts} fail={Login}/>
+            <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts} fail={Login}/>
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={Login}/>
           </AuthDataProvider>
       </Router>
@@ -180,14 +182,14 @@ const Front = ()=>{
                             <div class='row'><h1>SUBSCRIBE</h1></div>
                             <div class='row'>
                               <div class='col'>
-                                  CHATSHACKの最新情報を知りたい方はこちら！プレオープンの招待、特別割引、キャンペーン情報、イベント招待など、お届けします！
+                                  CHATSHACKの最新情報を知りたい方はこちら！特別割引、キャンペーン情報、イベント招待など、お届けします！登録することで先生からのフィードバックが見れたり、予約システムの利用も可能になります！
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class='row'>
-                          <input ref={first} class='form-control' minlength='1' placeholder='名'/>
-                          <input ref={last} class='form-control' minlength='1' placeholder='姓'/>
+                          <input ref={first} class='form-control' minlength='1' placeholder='First Name'/>
+                          <input ref={last} class='form-control' minlength='1' placeholder='Last Name'/>
                         </div>
                         <div class='row'>
                           <input ref={email} class='form-control' type='email' placeholder='Email'/>

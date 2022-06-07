@@ -3,7 +3,7 @@ import {axios} from "../../utilities/axios";
 import {useAuthDataContext} from "../auth-provider";
 import moment from "moment"
 
-const BlogPosts = () => {
+const BlogFront = () => {
 
   const [comments, setComments] = useState(null);
 
@@ -17,22 +17,20 @@ const BlogPosts = () => {
 
   return(
     <div class='master-row'>
-      <h1>Blog Posts ({comments?comments.length:'None Yet!'})</h1>
+      <h1>Blog</h1>
       <div class='col'>
-        <button onClick={()=>window.location='/new-blog'} class="solid-first">New Blog Post</button>
           {comments ? (comments.map(function(item, i){
               return (
                 <div class='col feedback'>
                     <div class=''><h3>{item.title}</h3></div>
-                    <div class=''>{item.author.first} {item.author.last}</div>
                     <div class=''>{moment(item.createdAt).format('dddd MMM-DD')}</div>
                 </div>
               )
 
-                  })): 'No data to display'}
+            })): 'Loading...'}
       </div>
       </div>
 )
 }
 
-export default BlogPosts;
+export default BlogFront;
