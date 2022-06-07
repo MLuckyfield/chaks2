@@ -38,7 +38,7 @@ const Blog = () => {
     <div class='nav-filler'>
     </div>
       <div class='row'>
-        <form class='login make_blog' onSubmit={onSubmit}>
+        <form class='make_blog' onSubmit={onSubmit}>
                 <h2>New Blog</h2>
                     <div class="form-group">
                       <input ref={title} type="text" class="form-control" placeholder="Title" required/>
