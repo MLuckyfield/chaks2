@@ -38,16 +38,16 @@ const Blog = () => {
         <form class='login' onSubmit={onSubmit}>
                 <h2>New Blog</h2>
                     <div class="form-group">
-                      <textarea ref={title} type="text" class="form-control" placeholder="content" required/>
+                      <textarea ref={title} type="text" class="form-control" placeholder="Title" required/>
                     </div>
                     <div class="form-group">
-                      <textarea ref={preview} type="text" class="form-control" placeholder="content" required/>
+                      <textarea ref={preview} type="text" class="form-control" placeholder="Description" required/>
                     </div>
                     <div class="form-group">
-                      <textarea ref={content} type="text" class="form-control" placeholder="content" required/>
+                      <textarea ref={content} type="text" class="form-control" placeholder="Content" required/>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder={`${author.first} ${author.last}`} disabled/>
+                      <input type="text" class="form-control" placeholder={`${author.first}`} disabled/>
                     </div>
                     <label>{feedback}</label>
                     <button type="submit" class="solid-first">Blog</button>

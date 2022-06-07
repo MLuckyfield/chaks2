@@ -10,8 +10,11 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
   console.log('recieved: '+JSON.stringify(req))
 
   await Blog.insertMany({
-      student: req.student,
-      date: req.date
+    title: req.title,
+    preview: req.preview,
+    content: req.content,
+    author: req.author._id,
+    date: date,
   })
       .then(()=>{
         return res.status(201).json({
