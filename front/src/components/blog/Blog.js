@@ -19,7 +19,7 @@ const Blog = () => {
       {
         title: title.current.value,
         preview: preview.current.value,
-        content: convertToRaw(editorState),
+        content: convertToRaw(editorState.content.getCurrentContent()),
         author: author,
         date: new Date(),
       })
