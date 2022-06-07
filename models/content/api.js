@@ -8,14 +8,15 @@ const auth= require('../../services/authentication');
 router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
   req = req.body
   console.log('recieved: '+JSON.stringify(req))
-
-  await Blog.insertMany({
+  const target = {
     title: req.title,
     preview: req.preview,
     content: req.content,
     author: JSON.parse(req.author)._id,
     date: req.date,
-  })
+  }
+  console.log(JSON.stringify(target))
+  await Blog.insertMany(target)
       .then(()=>{
         return res.status(201).json({
           message: 'Done! See you soon :)',
