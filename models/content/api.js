@@ -14,7 +14,7 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
     preview: req.preview,
     content: req.content,
     author: req.author._id,
-    date: date,
+    date: req.date,
   })
       .then(()=>{
         return res.status(201).json({
