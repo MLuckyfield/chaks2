@@ -49,19 +49,19 @@ const Blog = () => {
       <div class='row'>
         <form class='make_blog' onSubmit={onSubmit}>
                 <h2>New Blog</h2>
-                    <div class="form-group">
+                    <div class="form-group make_blog">
                       <input ref={title} type="text" class="form-control" placeholder="Title" required/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group make_blog">
                       <textarea ref={preview} type="text" class="form-control" placeholder="Description" required/>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group make_blog">
                       <div class='editor'>
                       <Editor editorState={editorState} onChange={setEditorState} handleKeyCommand={handleKeyCommand}/>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group make_blog">
                       <input type="text" class="form-control" placeholder={`${author.first}`} disabled/>
                     </div>
                     <label>{feedback}</label>
