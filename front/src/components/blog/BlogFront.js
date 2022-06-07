@@ -17,6 +17,8 @@ const BlogFront = () => {
 
   return(
     <div class='master-row'>
+    <div class='nav-filler'>
+    </div>
       <h1>Blog</h1>
       <div class='col'>
           {comments ? (comments.map(function(item, i){
