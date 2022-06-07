@@ -7,6 +7,10 @@ const Blog = mongoose.model('Blog', new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+  preview: {//opinions from others
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   date: {
     type: Date,
     required: true,

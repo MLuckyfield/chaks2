@@ -7,6 +7,7 @@ const Blog = () => {
   //const [Blog, setBlog] = useState();
   //const [password, setPassword] = useState();
   const title = useRef('');
+  const preview = useRef('');
   const content = useRef('');
   const [author, setAuthor] = useState(JSON.parse(localStorage.getItem('user')));
 
@@ -17,6 +18,7 @@ const Blog = () => {
     axios.post('/blog/new',
       {
         title: title.current.value,
+        preview: preview.current.value,
         content: content.current.value,
         author: author,
         date: new Date(),
@@ -37,6 +39,9 @@ const Blog = () => {
                 <h2>New Blog</h2>
                     <div class="form-group">
                       <textarea ref={title} type="text" class="form-control" placeholder="content" required/>
+                    </div>
+                    <div class="form-group">
+                      <textarea ref={preview} type="text" class="form-control" placeholder="content" required/>
                     </div>
                     <div class="form-group">
                       <textarea ref={content} type="text" class="form-control" placeholder="content" required/>
