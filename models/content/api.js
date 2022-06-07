@@ -24,7 +24,7 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
       })
       .catch((err)=>{
         return res.status(500).json({
-          message: `Error. Please call if this error persists.`,
+          message: `Error. Please call if this error persists.${err}`,
           success: false
         });
       })

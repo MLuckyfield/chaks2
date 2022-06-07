@@ -28,7 +28,7 @@ const Blog = () => {
           window.location='/blog';
           })
       .catch((err) => {
-        console.log(err);
+        console.log(err.data.message);
         // setFeedback(err.response.data.message);
         });
   }
