@@ -28,7 +28,7 @@ const Blog = () => {
           window.location='/blog';
           })
       .catch((err) => {
-        console.log(err.data.message);
+        console.log(err.response.data.message);
         // setFeedback(err.response.data.message);
         });
   }
@@ -38,7 +38,7 @@ const Blog = () => {
         <form class='login' onSubmit={onSubmit}>
                 <h2>New Blog</h2>
                     <div class="form-group">
-                      <textarea ref={title} type="text" class="form-control" placeholder="Title" required/>
+                      <input ref={title} type="text" class="form-control" placeholder="Title" required/>
                     </div>
                     <div class="form-group">
                       <textarea ref={preview} type="text" class="form-control" placeholder="Description" required/>

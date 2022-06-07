@@ -1,5 +1,8 @@
 @import 'variables';
 
+textarea{
+  min-height: 30vh;
+}
 form{
   margin:0;
   .form-group{
