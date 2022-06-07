@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import {useAuthDataContext} from "../auth-provider";
+import {Editor} from 'draft-js'
 
 const Blog = () => {
 
@@ -8,7 +9,7 @@ const Blog = () => {
   //const [password, setPassword] = useState();
   const title = useRef('');
   const preview = useRef('');
-  const content = useRef('');
+  const [content,setContent] = useState('')
   const [author, setAuthor] = useState(JSON.parse(localStorage.getItem('user')));
 
   const [feedback, setFeedback] = useState();
@@ -43,8 +44,9 @@ const Blog = () => {
                     <div class="form-group">
                       <textarea ref={preview} type="text" class="form-control" placeholder="Description" required/>
                     </div>
+
                     <div class="form-group">
-                      <textarea ref={content} type="text" class="form-control" placeholder="Content" required/>
+                      <Editor editorState={content} onChange={(x)=>setContent(x)}/>
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder={`${author.first}`} disabled/>
