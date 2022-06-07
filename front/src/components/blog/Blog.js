@@ -11,7 +11,7 @@ const Blog = () => {
   const preview = useRef('');
   const [content,setContent] = useState('')
   const [author, setAuthor] = useState(JSON.parse(localStorage.getItem('user')));
-  const [editorState,setEditorState]=useState(EditorState.creatEmpty())
+  const [editorState,setEditorState]=useState()
   const [feedback, setFeedback] = useState();
 
   const onSubmit = (e) => {
