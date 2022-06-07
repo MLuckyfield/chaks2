@@ -10,7 +10,7 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
   console.log('recieved: '+JSON.stringify(req))
   const target = {
     title: req.title,
-    preview: req.preview,
+    preview: 'hello',
     content: req.content,
     author: req.author._id,
     date: req.date,
