@@ -37,7 +37,7 @@ const createToken=(user)=>{
 }
 
 const auth = (req,res,next)=>{
-  // console.log('auth check')
+  console.log('auth check')
   // console.log(req.headers)
   let proposal = ''
   if(req.headers.authorization){
@@ -75,15 +75,13 @@ const auth = (req,res,next)=>{
 }
 const permission = (requirements)=>{
   return (req,res,next)=>{
-    console.log('permission check')
-    console.log(req.user)
+    console.log('permission check for '+req.first+' '+req.email)
     if(req.user){
       let access = false
-      console.log(access)
       requirements.forEach((item, i) => {
         if (req.user.role==item){access=true}
       });
-      console.log(access)
+      console.log(access?'permission approved':'permission declined')
       if(access == true){
         next()
       }else{
