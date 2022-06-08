@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import {useAuthDataContext} from "../auth-provider";
+import {Editor, EditorState, convertFromRaw, RichUtils} from 'draft-js'
 import moment from "moment"
 
 const BlogDisplay = () => {
@@ -10,7 +11,7 @@ const BlogDisplay = () => {
   useEffect(() => {
     axios.get('/content/all',{params:{filter:blog}})
       .then((res) => {
-          setBlog(res.data.data);
+          setBlog(EditorState.createWithContent(convertFromRaw(res.data.data)));
         })
       .catch(error => console.log("error"+error))
   },[])
