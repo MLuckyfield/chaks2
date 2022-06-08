@@ -28,18 +28,18 @@ import sonja from './sonja.jpg'
 
 const App = () => {
 
-    useEffect(() => {
-    const script = document.createElement('script');
-
-    script.src = microsoft_clarity;
-    script.async = true;
-
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    }
-  }, []);
+  //   useEffect(() => {
+  //   const script = document.createElement('script');
+  //
+  //   script.src = microsoft_clarity;
+  //   script.async = true;
+  //
+  //   document.head.appendChild(script);
+  //
+  //   return () => {
+  //     document.head.removeChild(script);
+  //   }
+  // }, []);
 
 
     return (
