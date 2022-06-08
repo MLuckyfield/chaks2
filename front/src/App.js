@@ -16,6 +16,7 @@ import BlogPosts from './components/blog/BlogPosts'
 import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
+import microsoft_clarity from './components/microsoft_clarity'
 //import styles
 import './scss/main.scss'
 import logo from './chatshack.jpg'
@@ -30,13 +31,13 @@ const App = () => {
     useEffect(() => {
     const script = document.createElement('script');
 
-    script.src = "https://use.typekit.net/foobar.js";
+    script.src = microsoft_clarity;
     script.async = true;
 
-    document.body.appendChild(script);
+    document.head.appendChild(script);
 
     return () => {
-      document.body.removeChild(script);
+      document.head.removeChild(script);
     }
   }, []);
 
