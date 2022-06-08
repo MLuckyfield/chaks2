@@ -17,7 +17,7 @@ const BlogFront = () => {
 
   const loadBlog=(blog)=>{
       localStorage.setItem('blog',blog._id)
-      const url = '/blog/'+blog._id+'/'+blog.title
+      const url = '/blog/*'+blog._id+'/'+blog.title
       window.location=url
   }
 
@@ -34,7 +34,6 @@ const BlogFront = () => {
                       <div class=''><h3>{item.title}</h3></div>
                   </div>
                 )
-
               })): 'Loading...'}
         </div>
         </div>
