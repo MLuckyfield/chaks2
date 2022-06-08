@@ -17,7 +17,7 @@ const BlogFront = () => {
 
   const loadBlog=(blog)=>{
       localStorage.setItem('blog',blog._id)
-      const url = '/blog/'+blog.id+blog.title
+      const url = '/blog/'+blog._id+'/'+blog.title
       window.location=url
   }
 
@@ -31,7 +31,7 @@ const BlogFront = () => {
             {comments ? (comments.map(function(item, i){
                 return (
                   <div onClick={()=>{loadBlog(item)}} class='col blog_thumbnail'>
-                      <div class=''><h3>{item.title}</h3></div>                      
+                      <div class=''><h3>{item.title}</h3></div>
                   </div>
                 )
 
