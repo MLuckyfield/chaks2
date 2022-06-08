@@ -16,7 +16,7 @@ import BlogPosts from './components/blog/BlogPosts'
 import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
-import microsoft_clarity from './components/microsoft_clarity'
+// import microsoft_clarity from './components/microsoft_clarity'
 //import styles
 import './scss/main.scss'
 import logo from './chatshack.jpg'
