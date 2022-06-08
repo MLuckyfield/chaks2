@@ -12,6 +12,7 @@ const BlogDisplay = () => {
     axios.get('/content/all',{params:{filter:{_id:blog}}})
       .then((res) => {
           let item = res.data.data
+          console.log(res.data.data)
           item.content = EditorState.createWithContent(convertFromRaw(item.content))
           console.log(item)
           // console.log(res)
@@ -33,7 +34,7 @@ const BlogDisplay = () => {
             </div>
             <div class='row'>
               <div class='editor'>
-                
+
               </div>
             </div>
           </div>
