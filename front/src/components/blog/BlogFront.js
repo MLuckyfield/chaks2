@@ -15,6 +15,12 @@ const BlogFront = () => {
       .catch(error => console.log("error"+error))
   },[])
 
+  const loadBlog=(blog)=>{
+      localStorage.setItem('blog',blog._id)
+      const url = '/blog/'+blog.id+blog.title
+      window.location=url
+  }
+
   return(
     <div>
       <div class='nav-filler'>
@@ -24,9 +30,8 @@ const BlogFront = () => {
         <div class='col'>
             {comments ? (comments.map(function(item, i){
                 return (
-                  <div class='col blog_thumbnail'>
-                      <div class=''><h3>{item.title}</h3></div>
-                      <div class=''>{moment(item.createdAt).format('dddd MMM-DD')}</div>
+                  <div onClick={()=>{loadBlog(item)}} class='col blog_thumbnail'>
+                      <div class=''><h3>{item.title}</h3></div>                      
                   </div>
                 )
 

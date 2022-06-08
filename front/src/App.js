@@ -15,6 +15,7 @@ import StudentComments from './components/user/StudentComments'
 import BlogPosts from './components/blog/BlogPosts'
 import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'
+import BlogDisplay from './components/blog/BlogDisplay'
 //import styles
 import './scss/main.scss'
 import logo from './chatshack.jpg'
@@ -33,7 +34,8 @@ const App = () => {
         </div>
           <Route exact path="/" component={Front}/>
           <Route path="/signup" component={Signup}/>
-          <Route path="/blog" component={BlogFront}/>
+          <Route exact path="/blog" component={BlogFront}/>
+          <Route path="/blog/" component={BlogDisplay}/>
           <AuthDataProvider>
             <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
