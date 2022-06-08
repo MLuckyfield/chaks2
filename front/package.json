@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.22.0",
     "bootstrap": "^5.1.1",
+    "dash-js": "^1.3.5",
     "draft-js": "^0.11.7",
     "google-map-react": "^2.1.10",
     "jquery": "^3.6.0",
