@@ -33,7 +33,7 @@ const BlogDisplay = () => {
             </div>
             <div class='row'>
               <div class='editor'>
-                <Editor editorState={blog.content} readOnly={true}/>
+                
               </div>
             </div>
           </div>

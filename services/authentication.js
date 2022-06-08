@@ -75,7 +75,7 @@ const auth = (req,res,next)=>{
 }
 const permission = (requirements)=>{
   return (req,res,next)=>{
-    console.log('permission check for '+req.first+' '+req.email)
+    console.log('permission check for '+req.user.first+' '+req.user.email)
     if(req.user){
       let access = false
       requirements.forEach((item, i) => {
