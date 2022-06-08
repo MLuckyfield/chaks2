@@ -53,7 +53,7 @@ router.post('/new', auth.auth, auth.permission(['teacher','manager']),async (req
 //Get
 router.get('/all',async (req, res) => {
   console.log(req.query)
-  let data = await Blog.find(req.query.filter?JSON.parse(req.query.filter):{})
+  let data = await Blog.find(req.query.filter?req.query.filter:{})
   return res.status(201).json({
     data: data,
     message: 'Blog saved',
