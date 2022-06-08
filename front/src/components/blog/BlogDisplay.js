@@ -11,11 +11,11 @@ const BlogDisplay = () => {
   useEffect(() => {
     axios.get('/content/all',{params:{filter:{_id:blog}}})
       .then((res) => {
-          // res = EditorState.createWithContent(convertFromRaw(res.data.data))
+          res = EditorState.createWithContent(convertFromRaw(res.data.data))
           console.log(res.data.data)
           // console.log(convertFromRaw(res.data.data))
           // console.log(res)
-          // setBlog(res);
+          setBlog(res);
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -32,7 +32,9 @@ const BlogDisplay = () => {
               {blog.preview}
             </div>
             <div class='row'>
-              {blog.content}
+              <div class='editor'>
+                <Editor editorState={blog} readOnly={true}/>
+              </div>
             </div>
           </div>
         ):'Sorry there was a problem!'}
