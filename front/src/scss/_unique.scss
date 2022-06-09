@@ -1,3 +1,11 @@
+.header{
+  // position: absolute;
+  // top: 8vh;
+  height: 65vh;
+  width: 100%;
+  // margin-top:8vh;
+  background-size:cover;
+}
 #header{
   // position: absolute;
   // top: 8vh;
@@ -34,7 +42,7 @@
   margin-bottom: 3%;
 }
 
-#overlay{
+.overlay{
   // position: absolute;
   // top: 8vh;
   display:flex;
@@ -131,7 +139,7 @@
 }
 //mobile navbar
 @media (max-width:800px){
-  #header{
+  .header{
     background-position: 47%;
   }
   .accordion-content{

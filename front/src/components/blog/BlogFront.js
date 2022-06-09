@@ -30,8 +30,14 @@ const BlogFront = () => {
         <div class='col'>
             {comments ? (comments.map(function(item, i){
                 return (
-                  <div onClick={()=>{loadBlog(item)}} class='col blog_thumbnail'>
-                      <div class=''><h1 style={{fontSize:'2em'}}>{item.title}</h1></div>
+                    <div class='header transparent blog_thumbnail' onClick={()=>{loadBlog(item)}} style={{backgroundImage: 'url('+banner+')'}}>
+                        <div class='overlay'>
+                            <div class='row'>
+                              <div class='col'>
+                                <h1 class='logo-basic'>{item.title}</h1>
+                              </div>
+                            </div>
+                        </div>
                   </div>
                 )
               })): 'Loading...'}

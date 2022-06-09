@@ -127,15 +127,15 @@ const Front = ()=>{
         <div>
 
 
-              <div id='header' class='transparent' style={{backgroundImage: 'url('+banner+')'}}>
-                    <div id='overlay'>
-                        <div class='row'>
-                          <div class='col'>
-                            <h1 class='logo-basic'>６月7日にオープン予定！</h1>
-                          </div>
+            <div id='header' class='transparent' style={{backgroundImage: 'url('+banner+')'}}>
+                  <div class='overlay'>
+                      <div class='row'>
+                        <div class='col'>
+                          <h1 class='logo-basic'>６月7日にオープン予定！</h1>
                         </div>
-                    </div>
-              </div>
+                      </div>
+                  </div>
+            </div>
               <div id='intro' class='master-row'>
               <div class='row '>
                 <div class='col slim center'>
