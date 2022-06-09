@@ -224,10 +224,10 @@ const Front = ()=>{
                     </div>
                   </form>
                 </div>
-                <div class='col'>
-                  <img class='avatar nav-logo' onClick={()=>window.location='/'} src={instagram} alt="English education and event information!"></img>
-                  <img class='avatar nav-logo' onClick={()=>window.location='/'} src={twitter} alt="Newest event and schedule information here!"></img>
-                  <img class='avatar nav-logo' onClick={()=>window.location='/'} src={youtube} alt="English entertainment!"></img>
+                <div class='row'>
+                  <img class='nav-logo' onClick={()=>window.location='/'} src={instagram} alt="English education and event information!"></img>
+                  <img class='nav-logo' onClick={()=>window.location='/'} src={twitter} alt="Newest event and schedule information here!"></img>
+                  <img class='nav-logo' onClick={()=>window.location='/'} src={youtube} alt="English entertainment!"></img>
                 </div>
               </div>
               <AccessDisplay/>
