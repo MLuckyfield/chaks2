@@ -191,8 +191,7 @@ const Front = ()=>{
                   <div class='row'>
                         <div class='col slim'>
                             <span class='material-icons'>school</span>
-                            <div class='col'>生の英会話を楽しめる！テキストを使わず、自由な会話をベースとしたスタイルなので、
-　　あなたの知りたいことや話したいことをテーマにして生の英会話を楽しめます。</div>
+                            <div class='col'>生の英会話を楽しめる！テキストを使わず、自由な会話をベースとしたスタイルなので、あなたの知りたいことや話したいことをテーマにして生の英会話を楽しめます。</div>
                         </div>
                         <div class='col slim'>
                             <span class='material-icons'>more_time</span>
