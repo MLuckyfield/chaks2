@@ -34,7 +34,9 @@ body{
   text-align: left;
 }
 .blog{
-  margin:10% 0;
+  .row{
+    margin-top: 10%;
+  }
 }
 .react-calendar__navigation{
   color:black !important;
