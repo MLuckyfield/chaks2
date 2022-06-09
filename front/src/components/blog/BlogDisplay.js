@@ -11,7 +11,7 @@ const BlogDisplay = () => {
   useEffect(() => {
     axios.get('/content/all',{params:{filter:{_id:blog}}})
       .then((res) => {
-          let res = res.data.data[0]
+          res = res.data.data[0]
           let item = {}
           item.title = res.title
           item.preview = res.preview
