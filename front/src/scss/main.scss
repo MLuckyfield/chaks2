@@ -31,7 +31,7 @@ body{
 .blog_thumbnail{
   display:flex;
   width:100%;
-  min-height: 30vh;
+  height: 30vh;
   text-align: left;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
@@ -140,6 +140,9 @@ h1, h2, h3{
   @extend .row
 }
 @media (max-width:800px){
+  .blog_thumbnail{
+    height:20vh;
+  }
   .w20{
     width:85% !important;
   }
