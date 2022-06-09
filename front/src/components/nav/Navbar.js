@@ -54,7 +54,6 @@ const Navbar = ()=>{
               <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#merit">MERIT</a>:<a onClick={navSlide} href="#merit">MERIT</a>}</li>
               <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#faq">FAQ</a>:<a onClick={navSlide} href="#faq">FAQ</a>}</li>
               <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#team">TEAM</a>:<a onClick={navSlide} href="#team">TEAM</a>}</li>
-
               <button class='form-control solid-first' onClick={()=>window.location='/login'}>Log In</button>
           </ul>
         ):(

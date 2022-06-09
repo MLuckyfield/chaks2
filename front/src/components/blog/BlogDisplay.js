@@ -34,9 +34,9 @@ const BlogDisplay = () => {
     <div class='nav-filler'>
     </div>
     <div class='row'>
-        <div class='col'>
+        <div class='col w80'>
         {blog?(
-          <div class='col w80'>
+          <div class='col'>
             <h1>{blog.title}</h1>
             <div class='row'>
               {blog.preview}
