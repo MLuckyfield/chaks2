@@ -139,6 +139,9 @@ h1, h2, h3{
   .master-row{
     padding-top:10%;
   }
+  .fixed-row{
+    flex-wrap: nowrap;
+  }
   .row{
     flex-wrap:wrap;
   }
@@ -192,7 +195,6 @@ h1, h2, h3{
 .nav-logo{
   height:70px;
   width:70px;
-  border-radius: 200px;
 }
 .col{
   padding: $unit;
