@@ -7,11 +7,12 @@ import AccessDisplay from '../nav/AccessDisplay'
 
 const BlogDisplay = () => {
 
-  const [blog, setBlog] = useState(localStorage.getItem('blog')?localStorage.getItem('blog'):window.location.pathname.slice(6,30));
+  const [blog, setBlog] = useState(window.location.pathname.slice(0,5)==='/blog'?window.location.pathname.slice(6,30):localStorage.getItem('blog'));
   const [editorState,setEditorState] = useState()
   useEffect(() => {
     axios.get('/content/all',{params:{filter:{_id:blog}}})
       .then((res) => {
+        window.location.pathname.slice(0,5)
           res = res.data.data[0]
           let item = {}
             item.title = res.title
