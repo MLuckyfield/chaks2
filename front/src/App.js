@@ -2,6 +2,7 @@
 import React, { useState, useEffect ,useRef} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Redirect } from 'react-router'
+import Carousel from 'react-responsive-carousel'
 import axios from 'axios';
 
 //import components

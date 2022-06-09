@@ -50,7 +50,7 @@ const BlogDisplay = () => {
           </div>
         ):'Sorry there was a problem!'}
         </div>
-        <div class='col w20'>
+        <div class='col w20 border'>
             <h3>FREE LEARNING RESOURCES</h3>
             Welcome to the CHATSHACK blog! You can find free advice and resources for learning English.
         </div>
