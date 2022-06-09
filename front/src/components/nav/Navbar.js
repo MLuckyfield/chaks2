@@ -50,7 +50,7 @@ const Navbar = ()=>{
         </div>
         {user==''||user==null||user==undefined?(
           <ul class="nav-links">
-              <li><a onClick={navSlide} href="#concept">CONCEPT</a></li>
+              <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="chatshack.jp/#concept">CONCEPT</a>:<a onClick={navSlide} href="#concept">CONCEPT</a>}</li>
               <li><a onClick={navSlide} href="#merit">MERIT</a></li>
               <li><a onClick={navSlide} href="#access">ACCESS</a></li>
               <li><a onClick={navSlide} href="#faq">FAQ</a></li>
