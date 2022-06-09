@@ -50,7 +50,7 @@ const App = () => {
           <Route exact path="/" component={Front}/>
           <Route path="/signup" component={Signup}/>
           <Route exact path="/blog" component={BlogFront}/>
-          <Route path="/blog/*" component={BlogDisplay}/>
+          <Route exact path="/blog/*" component={BlogDisplay}/>
           <AuthDataProvider>
             <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
