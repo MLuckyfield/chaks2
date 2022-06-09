@@ -12,8 +12,9 @@ const BlogDisplay = () => {
     axios.get('/content/all',{params:{filter:{_id:blog}}})
       .then((res) => {
           let item = res.data.data[0]
-          console.log(item)
-          item.content = EditorState.createWithContent(convertFromRaw(item.content))
+          console.log('1'+item.content)
+          console.log('2'+item['content'])
+          item.content = EditorState.createWithContent(convertFromRaw(item['content']))
           console.log(item)
           // console.log(res)
           setBlog(item);
