@@ -13,7 +13,7 @@ const BlogDisplay = () => {
       .then((res) => {
           let item = res.data.data
           console.log(res.data.data)
-          item.content = EditorState.createWithContent(convertFromRaw(item.content.0))
+          item.content = EditorState.createWithContent(convertFromRaw(item.content[0]))
           console.log(item)
           // console.log(res)
           setBlog(item);
