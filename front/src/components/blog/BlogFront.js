@@ -31,7 +31,7 @@ const BlogFront = () => {
             {comments ? (comments.map(function(item, i){
                 return (
                   <div onClick={()=>{loadBlog(item)}} class='col blog_thumbnail'>
-                      <div class=''><h3>{item.title}</h3></div>
+                      <div class=''><h1 style={{fontSize:'2em'}}>{item.title}</h1></div>
                   </div>
                 )
               })): 'Loading...'}
