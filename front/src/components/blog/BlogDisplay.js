@@ -38,7 +38,7 @@ const BlogDisplay = () => {
         <div class='col w80'>
         {blog?(
           <div class='col'>
-            <h1>{blog.title}</h1>
+            <h1 style={{fontSize:'4em',color:'#BC9797'}}>{blog.title}</h1>
             <div class='row'>
               {blog.preview}
             </div>
