@@ -16,7 +16,7 @@ body{
 .feedback{
   border: 1px solid $second;
 }
-.editor, .DraftEditor-root{
+.editor{
   border: 1px solid black;
   min-height: 6em;
   cursor: text;
@@ -26,6 +26,12 @@ body{
   width:100%;
   min-height: 30vh;
   text-align: left;
+}
+.blog{
+  margin:10% 5%;
+}
+.blog > * {
+  margin: 5% 5%;
 }
 .react-calendar__navigation{
   color:black !important;

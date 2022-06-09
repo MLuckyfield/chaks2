@@ -32,7 +32,7 @@ const BlogDisplay = () => {
     <div>
     <div class='nav-filler'>
     </div>
-    <div class='master-row'>
+    <div class='master-row blog'>
         {blog?(
           <div class='col'>
             <h1>{blog.title}</h1>
@@ -40,7 +40,7 @@ const BlogDisplay = () => {
               {blog.preview}
             </div>
             <div class='row'>
-              {editorState?(<div class='editor'>
+              {editorState?(<div>
                   <Editor editorState={editorState} readOnly={true}/>
               </div>):''}
             </div>
