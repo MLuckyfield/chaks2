@@ -4,6 +4,7 @@ import {useAuthDataContext} from "../auth-provider";
 import {Editor, EditorState, convertFromRaw, RichUtils} from 'draft-js'
 import moment from "moment"
 import AccessDisplay from '../nav/AccessDisplay'
+import Social from '../../utilities/social'
 
 const BlogDisplay = () => {
 
@@ -50,6 +51,7 @@ const BlogDisplay = () => {
           </div>
         ):'Sorry there was a problem!'}
         </div>
+        <Social data={'tiny-logo'}/>
         <div class='col w20 border'>
             <h3>FREE LEARNING RESOURCES</h3>
             Welcome to the CHATSHACK blog! You can find free advice and resources for learning English.

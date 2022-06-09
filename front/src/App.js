@@ -18,6 +18,7 @@ import BlogPosts from './components/blog/BlogPosts'
 import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
+import Social from '../utilities/social'
 import microsoft_clarity from './components/microsoft_clarity'
 //import styles
 import './scss/main.scss'
@@ -235,11 +236,7 @@ const Front = ()=>{
                     </div>
                   </form>
                 </div>
-                <div class='fixed-row'>
-                  <div class='col'><img class='nav-logo' onClick={()=>window.location.href='https://instagram.com/chatshack/'} src={instagram} alt="English education and event information!"></img></div>
-                  <div class='col'><img class='nav-logo' onClick={()=>window.location.href='https://twitter.com/CHATSHACK_Tokyo'} src={twitter} alt="Newest event and schedule information here!"></img></div>
-                  <div class='col'><img class='nav-logo' onClick={()=>window.location.href='https://www.youtube.com/channel/UCjGUSfvKKj72blxyqusTRRg'} src={youtube} alt="English entertainment!"></img></div>
-                </div>
+                <Social data='nav-logo'/>
               </div>
               <AccessDisplay/>
               <div id='faq'  class='master-row'>
