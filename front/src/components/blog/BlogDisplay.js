@@ -54,7 +54,7 @@ const BlogDisplay = () => {
         <Social data={'tiny-logo'}/>
         <div class='col w20 border'>
             <h3>FREE LEARNING RESOURCES</h3>
-            Welcome to the CHATSHACK blog! You can find free advice and resources for learning English.
+            <p/>Welcome to the CHATSHACK blog! You can find free advice and resources for learning English.
         </div>
       </div>
       <AccessDisplay/>
