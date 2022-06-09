@@ -132,7 +132,9 @@ h1, h2, h3{
   align-items: center;
   flex-direction: row;
 }
-
+.fixed-row{
+  @extend .row
+}
 @media (max-width:800px){
   .master-row{
     padding-top:10%;
