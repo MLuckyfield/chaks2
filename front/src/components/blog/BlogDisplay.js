@@ -15,8 +15,10 @@ const BlogDisplay = () => {
           let item = {}
           item.title = res.title
           item.preview = res.preview
-          console.log('2'+JSON.stringify(res.content[0]))
-          item.content = EditorState.createWithContent(convertFromRaw(res.content[0]))
+          console.log('res is: '+JSON.stringify(res))
+          console.log('res.content is: '+JSON.stringify(res.content))
+          const contentState = convertFromRaw(res.content[0])
+          item.content = EditorState.createWithContent(contentState)
           console.log(item)
           // console.log(res)
           setBlog(item);
