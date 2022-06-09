@@ -3,13 +3,14 @@ import React, { useState, useEffect ,useRef} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Redirect } from 'react-router'
 import axios from 'axios';
-import GoogleMapReact from 'google-map-react'
+
 //import components
 import Login from './components/user/Login'
 import Signup from './components/user/Signup'
 import Navbar from './components/nav/Navbar'
 import AdminDash from './components/nav/AdminDash'
 import SecureRoute from './components/nav/SecureRoute'
+import AccessDisplay from './components/nav/AccessDisplay'
 import AuthDataProvider from "./components/auth-provider";
 import StudentComments from './components/user/StudentComments'
 import BlogPosts from './components/blog/BlogPosts'
@@ -222,26 +223,7 @@ const Front = ()=>{
                   </form>
                 </div>
               </div>
-              <div id='access' class='master-row mid'>
-                <div class='row'>
-                  <h1 class='col'>ACCESS</h1>
-                </div>
-                <div class='row'>
-                  <div class='col'>
-                    Kudanminami 2-chōme-4-12<br/> Chiyoda City<br/> Tokyo, Japan <br/>102-0074<br/>
-                    Email: support@chatshack.jp
-                  </div>
-                  <div class='col'>
-                    九段下駅から徒歩７分<br/>
-                    市ヶ谷駅から徒歩８分<br/>
-                    半蔵門駅から徒歩１０分<br/>
-                    飯田橋駅から徒歩１３分<br/>
-                  </div>
-                </div>
-                <div class='row'>
-                    <Map/>
-                </div>
-              </div>
+              <AccessDisplay/>
               <div id='faq'  class='master-row'>
                 <div class='row'><h1 class='col'>FAQ</h1></div>
                   <div class='row'>
@@ -344,32 +326,7 @@ const Front = ()=>{
 
     )
     }
-    const Map = ()=>{
-    const [location, setLocation] = useState({
-    address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
-    lat:35.693535,
-    lng:139.744438
-    })
 
-    useEffect(()=>{
-    setLocation({
-      // address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
-      lat:35.69344,
-      lng:139.74439
-    })
-    },[])
-    return (
-    <div id='map'>
-        {location?<GoogleMapReact bootstrapURLKeys={{key:'AIzaSyBX-HH0dhkemDet_G5TTZsR__uphcOEI6k'}} defaultCenter={location} defaultZoom={14}>
-            <LocationPin lat={location.lat} lng={location.lng} text='ChatShack'/>
-        </GoogleMapReact>:'loading'}
-    </div>
-    )
-
-    }
-    const LocationPin=({text})=>{
-    return <div class='map-marker'><span class='material-icons'>location_on</span></div>
-    }
 
 
 export default App;
