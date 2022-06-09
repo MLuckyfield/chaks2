@@ -17,7 +17,6 @@ form{
     width: 100%;
     // margin: 15%;
     // @extend .form-control;
-    margin: 18% 0;
     padding: 10%;
     }
     .form-control
@@ -50,6 +49,7 @@ form{
 @media (max-width:800px){
 form{
   .form-group{
+    margin: 18% 0;
     padding:0;
     .form-control{
     }
