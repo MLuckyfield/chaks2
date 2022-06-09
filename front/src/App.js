@@ -229,8 +229,6 @@ const Front = ()=>{
                   <div class='col'><img class='nav-logo' onClick={()=>window.location.href='https://twitter.com/CHATSHACK_Tokyo'} src={twitter} alt="Newest event and schedule information here!"></img></div>
                   <div class='col'><img class='nav-logo' onClick={()=>window.location.href='https://www.youtube.com/channel/UCjGUSfvKKj72blxyqusTRRg'} src={youtube} alt="English entertainment!"></img></div>
                 </div>
-
-                </div>
               </div>
               <AccessDisplay/>
               <div id='faq'  class='master-row'>
@@ -241,6 +239,7 @@ const Front = ()=>{
                     </div>
                   </div>
                 </div>
+
               <div id='team' class='row dark'>
                 <div class='master-row slim'>
                     <h1 class='col'>TEAM</h1>
