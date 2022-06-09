@@ -32,7 +32,8 @@ const BlogDisplay = () => {
     <div>
     <div class='nav-filler'>
     </div>
-    <div class='master-row blog'>
+    <div class='row'>
+        <div class='col'>
         {blog?(
           <div class='col'>
             <h1>{blog.title}</h1>
@@ -46,6 +47,11 @@ const BlogDisplay = () => {
             </div>
           </div>
         ):'Sorry there was a problem!'}
+        </div>
+        <div class='col'>
+            <h3>FREE LEARNING RESOURCES</h3>
+            Welcome to the CHATSHACK blog! You can find free advice and resources for learning English.
+        </div>
       </div>
       </div>
 )
