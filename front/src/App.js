@@ -18,7 +18,7 @@ import BlogPosts from './components/blog/BlogPosts'
 import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
-import Social from '../utilities/social'
+import Social from './utilities/social'
 import microsoft_clarity from './components/microsoft_clarity'
 //import styles
 import './scss/main.scss'
