@@ -40,7 +40,7 @@ const Navbar = ()=>{
     <nav>
         <div class="logo">
           <div id='nav-row'>
-              <img class='avatar' id='nav-logo' onClick={()=>window.location='/'} src={logo} alt="Avatar"></img>
+              <img class='avatar nav-logo' onClick={()=>window.location='/'} src={logo} alt="Avatar"></img>
               {user==''||user==null||user==undefined?<div class='logo-basic'>CHATSHACK</div>:''}
               {user==''||user==null||user==undefined?'':
               (<div class='col profile_display'>

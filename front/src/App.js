@@ -20,7 +20,9 @@ import BlogDisplay from './components/blog/BlogDisplay'
 // import microsoft_clarity from './components/microsoft_clarity'
 //import styles
 import './scss/main.scss'
-import logo from './chatshack.jpg'
+import twitter from './sns_logos/twitter_dark.png'
+import youtube from './sns_logos/yt_dark.png'
+import instagram from './sns_logos/insta_dark.jpg'
 import banner from './banner.jpg'
 import shunsuke from './shunsuke.jpg'
 import matt from './matt.jpg'
@@ -191,7 +193,7 @@ const Front = ()=>{
                         </div>
                   </div>
               </div>
-              <div class='row'>
+              <div class='col'>
                 <div class='col'>
                   <form onSubmit={onSubmit}>
                     <div class="master-row form-group border">
@@ -221,6 +223,11 @@ const Front = ()=>{
                           </div>
                     </div>
                   </form>
+                </div>
+                <div class='col'>
+                  <img class='avatar nav-logo' onClick={()=>window.location='/'} src={instagram} alt="English education and event information!"></img>
+                  <img class='avatar nav-logo' onClick={()=>window.location='/'} src={twitter} alt="Newest event and schedule information here!"></img>
+                  <img class='avatar nav-logo' onClick={()=>window.location='/'} src={youtube} alt="English entertainment!"></img>
                 </div>
               </div>
               <AccessDisplay/>
