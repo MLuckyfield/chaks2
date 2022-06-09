@@ -140,7 +140,7 @@ h1, h2, h3{
     padding-top:10%;
   }
   .fixed-row{
-    flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
   }
   .row{
     flex-wrap:wrap;
