@@ -4,7 +4,6 @@ import GoogleMapReact from 'google-map-react'
  const AccessDisplay =()=> {
 
   //const { user } = useAuthDataContext();
-  const user = JSON.parse(localStorage.getItem('user'));
     return (
       <div id='access' class='master-row mid'>
         <div class='row'>

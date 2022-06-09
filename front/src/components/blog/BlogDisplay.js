@@ -3,6 +3,7 @@ import {axios} from "../../utilities/axios";
 import {useAuthDataContext} from "../auth-provider";
 import {Editor, EditorState, convertFromRaw, RichUtils} from 'draft-js'
 import moment from "moment"
+import AccessDisplay from '../nav/AccessDisplay'
 
 const BlogDisplay = () => {
 
@@ -53,6 +54,7 @@ const BlogDisplay = () => {
             Welcome to the CHATSHACK blog! You can find free advice and resources for learning English.
         </div>
       </div>
+      <AccessDisplay/>
       </div>
 )
 }
