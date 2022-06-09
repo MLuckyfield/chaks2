@@ -11,9 +11,9 @@ const BlogDisplay = () => {
   useEffect(() => {
     axios.get('/content/all',{params:{filter:{_id:blog}}})
       .then((res) => {
-          let item = res.data.data
+          let item = res.data.data[0]
           console.log(res.data.data)
-          item.content = EditorState.createWithContent(convertFromRaw(item[0].content))
+          item.content = EditorState.createWithContent(convertFromRaw(item.content))
           console.log(item)
           // console.log(res)
           setBlog(item);
