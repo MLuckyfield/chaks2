@@ -13,7 +13,7 @@ const BlogDisplay = () => {
     axios.get('/content/all',{params:{filter:{_id:blog}}})
       .then((res) => {
           console.log(window.location.pathname)
-          console.log(window.location.pathname.slice(6,24))
+          console.log(window.location.pathname.slice(6,30))
 
           res = res.data.data[0]
           let item = {}
