@@ -50,8 +50,8 @@ const BlogDisplay = () => {
             </div>
           </div>
         ):'Sorry there was a problem!'}
-        </div>
         <Social data={'tiny-logo'}/>
+        </div>
         <div class='col w20 border'>
             <h3>FREE LEARNING RESOURCES</h3>
             <p/>Welcome to the CHATSHACK blog! You can find free advice and resources for learning English.
