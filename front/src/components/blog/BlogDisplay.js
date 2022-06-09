@@ -36,7 +36,7 @@ const BlogDisplay = () => {
     <div class='nav-filler'>
     </div>
     <div class='row'>
-        <div class='col w80'>
+        <div class='col w80 blog'>
         {blog?(
           <div class='col'>
             <h1 style={{fontSize:'4em',color:'#BC9797'}}>{blog.title}</h1>
