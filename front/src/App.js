@@ -225,9 +225,9 @@ const Front = ()=>{
                   </form>
                 </div>
                 <div class='row'>
-                  <img class='nav-logo' onClick={()=>window.location='/'} src={instagram} alt="English education and event information!"></img>
-                  <img class='nav-logo' onClick={()=>window.location='/'} src={twitter} alt="Newest event and schedule information here!"></img>
-                  <img class='nav-logo' onClick={()=>window.location='/'} src={youtube} alt="English entertainment!"></img>
+                  <img class='nav-logo' onClick={()=>window.location.href='instagram.com/chatshack/'} src={instagram} alt="English education and event information!"></img>
+                  <img class='nav-logo' onClick={()=>window.location.href='https://twitter.com/CHATSHACK_Tokyo'} src={twitter} alt="Newest event and schedule information here!"></img>
+                  <img class='nav-logo' onClick={()=>window.location.href='https://www.youtube.com/channel/UCjGUSfvKKj72blxyqusTRRg'} src={youtube} alt="English entertainment!"></img>
                 </div>
               </div>
               <AccessDisplay/>
