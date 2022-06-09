@@ -13,8 +13,8 @@ const BlogDisplay = () => {
       .then((res) => {
           let item = res.data.data[0]
           console.log('1'+JSON.stringify(item.content))
-          console.log('2'+JSON.stringify(item['content']))
-          item.content = EditorState.createWithContent(convertFromRaw(item['content']))
+          console.log('2'+JSON.stringify(item.content[0]))
+          item.content = EditorState.createWithContent(convertFromRaw(item.content[0]))
           console.log(item)
           // console.log(res)
           setBlog(item);
