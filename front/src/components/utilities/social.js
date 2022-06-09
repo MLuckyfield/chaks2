@@ -1,8 +1,6 @@
-import React, {useState,useEffect} from 'react'
-import DateTimePicker from 'react-datetime-picker'
-import 'react-calendar/dist/Calendar.css'
-import {axios} from "../../utilities/axios";
-import moment from "moment"
+import twitter from './sns_logos/twitter_dark.png'
+import youtube from './sns_logos/yt_dark.png'
+import instagram from './sns_logos/insta_dark.jpg'
 
 const Social = (props)=>{
 

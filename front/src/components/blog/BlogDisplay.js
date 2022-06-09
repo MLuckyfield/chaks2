@@ -4,7 +4,7 @@ import {useAuthDataContext} from "../auth-provider";
 import {Editor, EditorState, convertFromRaw, RichUtils} from 'draft-js'
 import moment from "moment"
 import AccessDisplay from '../nav/AccessDisplay'
-import Social from '../../utilities/social'
+import Social from '../utilities/social'
 
 const BlogDisplay = () => {
 
