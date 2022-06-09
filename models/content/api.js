@@ -15,7 +15,7 @@ router.post('/new', auth.auth, auth.permission(['teacher','manager']),async (req
     author: req.author._id,
     date: req.date,
   }
-  console.log(target)
+  // console.log(target)
   console.log('to be saved:'+JSON.stringify(target))
   await Blog.insertMany(target)
       .then(()=>{
@@ -52,7 +52,7 @@ router.post('/new', auth.auth, auth.permission(['teacher','manager']),async (req
 // });
 //Get
 router.get('/all',async (req, res) => {
-  console.log(req.query)
+  // console.log(req.query)
   let data = await Blog.find(req.query.filter?JSON.parse(req.query.filter):{})
   return res.status(201).json({
     data: data,

@@ -13,13 +13,14 @@ const BlogDisplay = () => {
       .then((res) => {
           res = res.data.data[0]
           let item = {}
-          item.title = res.title
-          item.preview = res.preview
-          item.content = res.content[0]
-          // console.log('res is: '+JSON.stringify(res))
-          console.log('res.content is: '+JSON.stringify(item.content))
+            item.title = res.title
+            item.preview = res.preview
+            let adjusted = res.content[0]
+              adjusted['entityMap']={}
+            // item.content = adjusted
           // const contentState = convertFromRaw(res.content[0])
-          // item.content = EditorState.createWithContent(contentState)
+          console.log(adjusted)
+          item.content = EditorState.createWithContent(convertFromRaw(adjusted))
           console.log(item)
           // console.log(res)
           setBlog(item);
