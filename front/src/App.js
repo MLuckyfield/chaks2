@@ -17,7 +17,7 @@ import BlogPosts from './components/blog/BlogPosts'
 import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
-// import microsoft_clarity from './components/microsoft_clarity'
+import microsoft_clarity from './components/microsoft_clarity'
 //import styles
 import './scss/main.scss'
 import twitter from './sns_logos/twitter_dark.png'
@@ -31,18 +31,20 @@ import sonja from './sonja.jpg'
 
 const App = () => {
 
-  //   useEffect(() => {
-  //   const script = document.createElement('script');
-  //
-  //   script.src = microsoft_clarity;
-  //   script.async = true;
-  //
-  //   document.head.appendChild(script);
-  //
-  //   return () => {
-  //     document.head.removeChild(script);
-  //   }
-  // }, []);
+    useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-KSPWEELDL9";
+    script.async = true;
+    document.head.appendChild(script);
+
+    const script2 = document.createElement('script');
+    script2.src = "microsoft_clarity";
+    // script2.async = true;
+    document.head.appendChild(script2);
+    // return () => {
+    //   document.head.removeChild(script);
+    // }
+  }, []);
 
 
     return (
