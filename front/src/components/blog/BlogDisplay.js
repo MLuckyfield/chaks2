@@ -7,7 +7,7 @@ import moment from "moment"
 const BlogDisplay = () => {
 
   const [blog, setBlog] = useState(localStorage.getItem('blog'));
-
+  const [editorState,setEditorState] = useState()
   useEffect(() => {
     axios.get('/content/all',{params:{filter:{_id:blog}}})
       .then((res) => {
@@ -20,7 +20,7 @@ const BlogDisplay = () => {
             // item.content = adjusted
           // const contentState = convertFromRaw(res.content[0])
           console.log(adjusted)
-          item.content = EditorState.createWithContent(convertFromRaw(adjusted))
+          setEditorState(EditorState.createWithContent(convertFromRaw(adjusted)))
           console.log(item)
           // console.log(res)
           setBlog(item);
@@ -40,9 +40,9 @@ const BlogDisplay = () => {
               {blog.preview}
             </div>
             <div class='row'>
-              <div class='editor'>
-                  <Editor editorState={blog.content} readOnly={true}/>
-              </div>
+              {editorState?(<div class='editor'>
+                  <Editor editorState={editorState} readOnly={true}/>
+              </div>):''}
             </div>
           </div>
         ):'Sorry there was a problem!'}
