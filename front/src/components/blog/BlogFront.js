@@ -8,9 +8,9 @@ const BlogFront = () => {
 
   const [comments, setComments] = useState(null);
   const [items, setItems] = useState([{
-    picture: {},
-    text:{},
-    link:{}
+    picture: banner,
+    text:'Welcome to the CHATSHACK learning center',
+    link:'/'
   }]);
 
   useEffect(() => {
