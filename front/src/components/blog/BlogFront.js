@@ -26,15 +26,8 @@ const BlogFront = () => {
       <div class='nav-filler'>
       </div>
       <Carousel showArrows={true}>
-                <div id='header' class='transparent' style={{backgroundImage: 'url('+banner+')'}}>
-                    <div class='overlay'>
-                        <div class='row'>
-                          <div class='col'>
-                            <h1 class='logo-basic'>６月7日にオープン予定！</h1>
-                          </div>
-                        </div>
-                    </div>
-              </div>
+                <img src={banner}></img>
+                <p>Welcome to the CHATSHACK Learning Center</p>
         </Carousel>
       <div class='master-row'>
         <h1>BLOG</h1>
