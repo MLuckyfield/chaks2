@@ -28,7 +28,7 @@ const BlogFront = () => {
       </div>
       <div class='carousel-wrapper'>
           <Carousel>
-                    <img src='../../banner.jpg'></img>
+                    <img src={banner}></img>
                     <p class='legend'>Welcome to the CHATSHACK Learning Center</p>
           </Carousel>
       </div>
