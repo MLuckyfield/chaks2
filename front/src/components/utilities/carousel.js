@@ -10,7 +10,7 @@ const Carousel = (props)=>{
       {items ? (items.map(function(item, i){
 
           let style={backgroundImage: 'url('+item.picture+')'}
-          if(item.active){style['hidden']=true}
+          if(item.active){style['display']='none'}
 
           return (
             <div id='header' class='transparent' style={style}>
