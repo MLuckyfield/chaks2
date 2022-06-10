@@ -1,8 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
-import {useAuthDataContext} from "../auth-provider";
-import moment from "moment"
 import banner from '../../banner.jpg'
+import Carousel from 'react-responsive-carousel'
+
 const BlogFront = () => {
 
   const [comments, setComments] = useState(null);
@@ -25,6 +25,17 @@ const BlogFront = () => {
     <div>
       <div class='nav-filler'>
       </div>
+      <Carousel showArrows={true}>
+                <div id='header' class='transparent' style={{backgroundImage: 'url('+banner+')'}}>
+                    <div class='overlay'>
+                        <div class='row'>
+                          <div class='col'>
+                            <h1 class='logo-basic'>６月7日にオープン予定！</h1>
+                          </div>
+                        </div>
+                    </div>
+              </div>
+        </Carousel>
       <div class='master-row'>
         <h1>BLOG</h1>
         <div class='col'>
