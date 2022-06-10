@@ -7,6 +7,7 @@ const Carousel = (props)=>{
   const [current,setCurrent]=useState(0)
 
   const timer = (callback)=>{
+    setTimeout(callback,3000)
       items.every(item=>{
         for(let i=0;i<items.length;i++){
           if(items[i].active){
@@ -18,7 +19,6 @@ const Carousel = (props)=>{
         }
         return false
       })
-      setTimeout(callback,3000)
   }
 const next=(position,length)=>{
   if(position==length-1){
