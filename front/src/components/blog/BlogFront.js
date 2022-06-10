@@ -36,6 +36,10 @@ const BlogFront = () => {
                     <img src={banner}></img>
                     <p class='legend'>Welcome to the CHATSHACK Learning Center</p>
                 </div>
+                <div>
+                    <img src={banner}></img>
+                    <p class='legend'>Welcome to the CHATSHACK Learning Center</p>
+                </div>
           </Carousel>
       </div>
       <div class='master-row'>
