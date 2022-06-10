@@ -25,9 +25,9 @@ const BlogFront = () => {
     <div>
       <div class='nav-filler'>
       </div>
-      <Carousel showArrows={true}>
+      <Carousel>
                 <img src={banner}></img>
-                <p>Welcome to the CHATSHACK Learning Center</p>
+                <p class='legend'>Welcome to the CHATSHACK Learning Center</p>
         </Carousel>
       <div class='master-row'>
         <h1>BLOG</h1>
