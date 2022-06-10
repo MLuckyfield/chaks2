@@ -27,7 +27,7 @@ const BlogFront = () => {
       <div class='nav-filler'>
       </div>
       <div class='carousel-wrapper'>
-          <Carousel showArrows='false'>
+          <Carousel infiniteLoop='true' showArrows='false' showThumbs='false'>
                 <div>
                     <img src={banner}></img>
                     <p class='legend'>Welcome to the CHATSHACK Learning Center</p>
