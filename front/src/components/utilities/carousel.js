@@ -21,6 +21,7 @@ const Carousel = (props)=>{
                         <h3>{item.subtext}</h3>
                       </div>
                     </div>
+                    <div class='indicator'>next</div>
                 </div>
             </div>
           )

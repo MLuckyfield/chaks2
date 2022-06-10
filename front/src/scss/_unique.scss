@@ -55,7 +55,12 @@
   vertical-align: middle;
   // margin: 3%;
   // border: 1px solid $first;
-  background: rgba(128,0,0,0.7)
+  background: rgba(128,0,0,0.7);
+  .indicator{
+      position: absolute;
+      bottom: 20px;
+
+  }
 }
 #nav{
   float: right;
