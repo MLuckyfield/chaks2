@@ -1,6 +1,4 @@
-import twitter from '../../sns_logos/twitter_dark.png'
-import youtube from '../../sns_logos/yt_dark.png'
-import instagram from '../../sns_logos/insta_dark.jpg'
+import banner from '../../banner.jpg'
 
 const Carousel = (props)=>{
 
