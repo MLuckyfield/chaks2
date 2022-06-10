@@ -7,6 +7,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const BlogFront = () => {
 
   const [comments, setComments] = useState(null);
+  const [items, setItems] = useState([{
+    picture: {},
+    text:{},
+    link:{}
+  }]);
 
   useEffect(() => {
     axios.get('/content/all')
@@ -27,20 +32,7 @@ const BlogFront = () => {
       <div class='nav-filler'>
       </div>
       <div class='carousel-wrapper'>
-          <Carousel infiniteLoop='true' showArrows='false' showThumbs='false'>
-                <div>
-                    <img src={banner}></img>
-                    <p class='legend'>Welcome to the CHATSHACK Learning Center</p>
-                </div>
-                <div>
-                    <img src={banner}></img>
-                    <p class='legend'>Welcome to the CHATSHACK Learning Center</p>
-                </div>
-                <div>
-                    <img src={banner}></img>
-                    <p class='legend'>Welcome to the CHATSHACK Learning Center</p>
-                </div>
-          </Carousel>
+          <Carousel items={items}/>
       </div>
       <div class='master-row'>
         <h1>BLOG</h1>
