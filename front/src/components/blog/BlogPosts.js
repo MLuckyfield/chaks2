@@ -22,7 +22,6 @@ const BlogPosts = () => {
     <div class='master-row'>
         <div class='col'>
           <h1>Blog Posts ({comments?comments.length:'None Yet!'})</h1>
-          <div class='row'>
             <button onClick={()=>window.location='/new-blog'} class="solid-first">New Blog Post</button>
               {comments ? (comments.map(function(item, i){
                   return (
@@ -34,7 +33,6 @@ const BlogPosts = () => {
                   )
 
                       })): 'No data to display'}
-          </div>
         </div>
       </div>
       </div>

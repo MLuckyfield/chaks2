@@ -37,6 +37,9 @@ body{
   text-align: center;
   vertical-align: middle;
   justify-content: center;
+  .overlay{
+    height:35vh !important;
+  }
 }
 .blog{
   .row{
