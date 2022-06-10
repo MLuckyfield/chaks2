@@ -6,12 +6,12 @@ const Carousel = (props)=>{
   const [items, setItems] = useState(props.items);
 
   return (
-    <div>
+    <span>
       {items ? (items.map(function(item, i){
 
           let style={backgroundImage: 'url('+item.picture+')'}
           if(item.active){style['hidden']=true}
-          
+
           return (
             <div id='header' class='transparent' style={style}>
                 <div class='overlay' onClick={()=>window.location=item.link}>
@@ -25,7 +25,7 @@ const Carousel = (props)=>{
             </div>
           )
         })): 'Loading...'}
-    </div>
+    </span>
   )
 }
 
