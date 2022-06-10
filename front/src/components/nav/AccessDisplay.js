@@ -11,7 +11,8 @@ import GoogleMapReact from 'google-map-react'
         </div>
         <div class='row'>
           <div class='col'>
-            Kudanminami 2-chōme-4-12<br/> Chiyoda City<br/> Tokyo, Japan <br/>102-0074<br/>
+          〒102-0074<br/>
+          東京都千代田区九段南２－４－１２<br/>
             Email: support@chatshack.jp
           </div>
           <div class='col'>
