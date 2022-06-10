@@ -1,7 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import banner from '../../banner.jpg'
-import Carousel from 'react-responsive-carousel'
+import {Carousel} from 'react-responsive-carousel'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const BlogFront = () => {
 
@@ -25,10 +26,12 @@ const BlogFront = () => {
     <div>
       <div class='nav-filler'>
       </div>
-      <Carousel>
-                <img src={banner}></img>
-                <p class='legend'>Welcome to the CHATSHACK Learning Center</p>
-        </Carousel>
+      <div class='carousel-wrapper'>
+          <Carousel>
+                    <img src='../../banner.jpg'></img>
+                    <p class='legend'>Welcome to the CHATSHACK Learning Center</p>
+          </Carousel>
+      </div>
       <div class='master-row'>
         <h1>BLOG</h1>
         <div class='col'>

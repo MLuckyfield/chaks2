@@ -30,6 +30,18 @@ const User = mongoose.model('User', new Schema({
     default: 'user',
     enum: ['user','teacher','manager','admin']
   },
+  profile:{
+    type:String,
+  },
+  plan:{
+    type:String,
+    enum:['standard','unlimited'],
+    default:'standard'
+  },
+  statistics:[{
+    start:{type:Date},
+    end:{type:Date}
+  }]
 },{
   timestamps: true,
 }));
