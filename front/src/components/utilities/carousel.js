@@ -14,16 +14,17 @@ const Carousel = (props)=>{
             items[i].active=false
             items[next(i,items.length)].active=true
             setItems(items)
-            break;
+            return false
           }
         }
-        return false
       })
   }
 const next=(position,length)=>{
   if(position==length-1){
+    console.log('back to start')
     return 0
   }else{
+    console.log('next')
     return position+1
   }
 }
