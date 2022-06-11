@@ -12,6 +12,7 @@ $shades: ('light': 10%, 'lightest' :20%, 'dark':-10%, 'darkest':-20%);
 
   //create classes for buttons
     .solid-#{$name} {
+      border: 1px solid $color;
       background-color: $color;
       color: white;
 
@@ -20,6 +21,7 @@ $shades: ('light': 10%, 'lightest' :20%, 'dark':-10%, 'darkest':-20%);
       &:hover{
         background-color: white;
         color:$color;
+        border: 1px solid $color;
       }
     }
 
