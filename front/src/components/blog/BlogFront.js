@@ -19,6 +19,13 @@ const BlogFront = () => {
     subtext:'Coming Soon',
     link:'/',
     active:false
+  },
+  {
+    picture: banner,
+    text:'BLOG',
+    subtext:'Free!',
+    link:'/',
+    active:false
   }]);
 
   useEffect(() => {
