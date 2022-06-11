@@ -44,8 +44,6 @@ const BlogFront = () => {
 
   return(
     <div>
-      <div class='nav-filler'>
-      </div>
           <Carousel items={items}/>
       <div class='master-row'>
         <h1>BLOG</h1>

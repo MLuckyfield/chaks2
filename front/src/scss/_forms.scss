@@ -1,5 +1,11 @@
 @import 'variables';
-
+button{
+  width: 100%;
+  height:  40px;
+  background-color: $first;
+  color:black;
+  font-size: 1.3em;
+}
 textarea{
   min-height: 30vh;
 }
@@ -55,14 +61,6 @@ form{
     }
   }
 }
-}
-
-button{
-  width: 100%;
-  height:  40px;
-  background-color: $first;
-  color:black;
-  font-size: 1.3em;
 }
 
 .login{

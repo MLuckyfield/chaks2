@@ -125,8 +125,6 @@ const Front = ()=>{
         //     </AuthDataProvider>
         // </Router>
         <div>
-
-
             <div id='header' class='transparent' style={{backgroundImage: 'url('+banner+')'}}>
                   <div class='overlay'>
                       <div class='row'>

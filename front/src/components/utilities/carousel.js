@@ -71,11 +71,10 @@ const Carousel = (props)=>{
                           <div class='row'>
                             <div class='col'>
                               <h1 class='logo-basic'>{item.text}</h1>
-                              <h3>{item.subtext}</h3>
+                              <p>{item.subtext}</p>
                               <button onClick={()=>window.location=item.link} class="solid-first">More</button>
                             </div>
                           </div>
-                          <div class='indicator'>next</div>
                       </div>
                   </div>
                 )
