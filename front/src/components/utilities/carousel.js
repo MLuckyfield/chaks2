@@ -2,7 +2,7 @@ import banner from '../../banner.jpg'
 import React, { useEffect,useState} from 'react';
 
 const Carousel = (props)=>{
-// 
+//
 //   const [items, setItems] = useState(props.items);
 //   let revolutions = 0
 //   const timer = (callback)=>{
@@ -61,9 +61,25 @@ const Carousel = (props)=>{
           <div class="carousel-wrapper">
         <div class="carousel-container">
           <div class="carousel">
-            <div class="image-one"></div>
-            <div class="image-two"></div>
-            <div class="image-three"></div>
+          {props.items ? (props.items.map(function(item, i){
+
+                let style={backgroundImage: 'url('+item.picture+')'}
+
+                return (
+                  <div id='header' class='transparent' style={style}>
+                      <div class='overlay'>
+                          <div class='row'>
+                            <div class='col'>
+                              <h1 class='logo-basic'>{item.text}</h1>
+                              <h3>{item.subtext}</h3>
+                              <button onClick={()=>window.location=item.link} class="solid-first">More</button>
+                            </div>
+                          </div>
+                          <div class='indicator'>next</div>
+                      </div>
+                  </div>
+                )
+              })): 'Loading...'}
           </div>
         </div>
       </div>
