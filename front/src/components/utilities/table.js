@@ -63,7 +63,7 @@ const makeComment = (item)=>{
               //console.log('item is: '+JSON.stringify(item.slice(1)))
               return (
                 <tr onClick={()=>makeComment(item)}>
-                  {Object.keys(item).map((key, y) => {
+                  {Object.keys(item).sort().map((key, y) => {
                     if(key!='_id'){
                       return <td>{item[key]}</td>
                     }else{return ''}
