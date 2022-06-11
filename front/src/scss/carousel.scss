@@ -7,6 +7,7 @@ $size-height: 65vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  vertical-align: middle;
   // box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
   // border-radius: 20px;
   margin-top:8vh;
@@ -23,6 +24,7 @@ $size-height: 65vh;
   display: flex;
   width: $size-width * 3;
   animation: sliding 12s infinite;
+  vertical-align: middle;
   div {
     width: $size-width;
     height: $size-height;
