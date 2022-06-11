@@ -39,9 +39,7 @@ const BlogFront = () => {
     <div>
       <div class='nav-filler'>
       </div>
-      <div class='carousel-wrapper'>
           <Carousel items={items}/>
-      </div>
       <div class='master-row'>
         <h1>BLOG</h1>
         <div class='col'>
