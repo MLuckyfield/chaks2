@@ -44,14 +44,14 @@ const makeComment = (item)=>{
                     <span>
                     <tr>
                       {Object.keys(item).sort().map((key, y) => {
-                            if(key!='_id'||key!='email'){
+                            if(key!='_id'&&key!='email'){
                               return <th>{key}</th>
                             }else{return ''}
                       })}
                     </tr>
                     <tr onClick={()=>makeComment(item)}>
                       {Object.keys(item).sort().map((key, y) => {
-                        if(key!='_id'||key!='email'){
+                        if(key!='_id'&&key!='email'){
                           return <td>{item[key]}</td>
                         }else{return ''}
 
@@ -64,7 +64,7 @@ const makeComment = (item)=>{
               return (
                 <tr onClick={()=>makeComment(item)}>
                   {Object.keys(item).sort().map((key, y) => {
-                    if(key!='_id'||key!='email'){
+                    if(key!='_id'&&key!='email'){
                       return <td>{item[key]}</td>
                     }else{return ''}
 
