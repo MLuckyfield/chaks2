@@ -10,7 +10,7 @@ const Carousel = (props)=>{
     console.log('timer called')
     for(let i=0;i<items.length-1;i++){
       console.log('testing '+i)
-      if(items[i].active){
+      if(items[i].active==true){
         console.log(items[i].text + ' is active')
         items[i].active=false
         items[next(i,items.length)].active=true
