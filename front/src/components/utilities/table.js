@@ -12,7 +12,7 @@ const Table = (props)=> {
     if(data==null){
       axios.get(props.api, {params:{filter:props.filter,fields:props.fields}})
         .then((res) => {
-            console.log(res.data.data)
+            console.log(res.data.data.reverse())
             setData(res.data.data);
           })
         .catch(error => console.log("error"+error))
@@ -43,14 +43,14 @@ const makeComment = (item)=>{
                 return (
                     <span>
                     <tr>
-                      {Object.keys(item).map((key, y) => {
+                      {Object.keys(item).sort().map((key, y) => {
                             if(key!='_id'){
                               return <th>{key}</th>
                             }else{return ''}
                       })}
                     </tr>
                     <tr onClick={()=>makeComment(item)}>
-                      {Object.keys(item).map((key, y) => {
+                      {Object.keys(item).sort().map((key, y) => {
                         if(key!='_id'){
                           return <td>{item[key]}</td>
                         }else{return ''}
