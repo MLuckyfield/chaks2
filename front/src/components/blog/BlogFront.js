@@ -51,7 +51,7 @@ const BlogFront = () => {
             {comments ? (comments.map(function(item, i){
                 if(i==0){
                   return (
-                      <div class='header transparent blog_thumbnail' onClick={()=>{loadBlog(item)}} style={{backgroundImage: 'url('+banner+')'}}>
+                      <div id='header' class='transparent blog_thumbnail' onClick={()=>{loadBlog(item)}} style={{backgroundImage: 'url('+banner+')'}}>
                           <div class='overlay'>
                               <div class='row'>
                                 <div class='col'>
