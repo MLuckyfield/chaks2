@@ -8,16 +8,14 @@ const Carousel = (props)=>{
 
   const timer = (callback)=>{
     setTimeout(timer(callback),3000)
-      items.every(item=>{
-        for(let i=0;i<items.length;i++){
-          if(items[i].active){
-            items[i].active=false
-            items[next(i,items.length)].active=true
-            setItems(items)
-            return false
-          }
-        }
-      })
+    for(let i=0;i<items.length;i++){
+      if(items[i].active){
+        items[i].active=false
+        items[next(i,items.length)].active=true
+        setItems(items)
+        break
+      }
+    }
   }
 const next=(position,length)=>{
   if(position==length-1){
