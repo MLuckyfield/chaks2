@@ -69,7 +69,7 @@ const Carousel = (props)=>{
                   <div class='transparent' style={style}>
                       <div class='overlay'>
                           <div class='row'>
-                            <div class='col'>
+                            <div class='col' style={{display:'flex',verticalAlign:'middle'}}>
                               <h1 class='logo-basic'>{item.text}</h1>
                               <p>{item.subtext}</p>
                               <button onClick={()=>window.location=item.link} class="solid-first carousel_button">More</button>
