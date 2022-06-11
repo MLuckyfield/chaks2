@@ -4,16 +4,17 @@ import React, { useEffect,useState} from 'react';
 const Carousel = (props)=>{
 
   const [items, setItems] = useState(props.items);
-  const [current,setCurrent]=useState(0)
   let revolutions = 0
   const timer = (callback)=>{
     console.log('timer called')
     for(let i=0;i<items.length-1;i++){
-      console.log('testing '+i)
+      console.log('testing '+i+' which is currently '+items[i].active)
       if(items[i].active==true){
         console.log(items[i].text + ' is active')
         items[i].active=false
+        console.log(i + 'is now '+items[i].active)
         items[next(i,items.length)].active=true
+        console.log(JSON.stringify(items))
         setItems(items)
         break
       }else{console.log(items[i].text+' is not active')}
@@ -25,7 +26,7 @@ const next=(position,length)=>{
     console.log('back to start')
     return 0
   }else{
-    console.log('next')
+    console.log('setting next' )
     return position+1
   }
 }
