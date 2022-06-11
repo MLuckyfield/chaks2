@@ -58,7 +58,11 @@ const Booking = ()=>{
 
                 })): 'No reservations. Why not make one? :)'}
                   {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
-                    <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
+                    <form>
+                      <div class='form-group'>
+                        <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
+                      </div>
+                    </form>
                     <DateTimePicker onChange={prepBooking} value={day} format='MM-dd h:mm' maxDetail='minute' disableClock='true' minDate={new Date()}/>
 
                   <button onClick={onSubmit} class="solid-first">Reserve!</button>

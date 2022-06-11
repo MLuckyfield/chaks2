@@ -14,6 +14,7 @@ import GoogleMapReact from 'google-map-react'
           〒102-0074<br/>
           東京都千代田区九段南２－４－１２<br/>
             Email: support@chatshack.jp
+            050 3395 1280
           </div>
           <div class='col'>
             九段下駅から徒歩７分<br/>
