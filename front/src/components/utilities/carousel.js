@@ -22,7 +22,7 @@ const Carousel = (props)=>{
                             </div>
                           </div>
                           <div class='carousel_counter'>
-                              {i}/{props.items.length}
+                              {i+1}/{props.items.length}
                           </div>
                       </div>
                   </div>
