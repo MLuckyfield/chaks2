@@ -7,7 +7,7 @@ const Carousel = (props)=>{
   const [current,setCurrent]=useState(0)
   const revolutions = 100
   const timer = (callback)=>{
-    setInterval(timer(callback),3000)
+    setInterval(callback,3000)
     for(let i=0;i<items.length-1;i++){
       if(items[i].active){
         items[i].active=false
