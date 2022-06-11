@@ -21,9 +21,9 @@ const Carousel = (props)=>{
                               <button onClick={()=>window.location=item.link} class="solid-first carousel_button">More</button>
                             </div>
                           </div>
-                      </div>
-                      <div class='carousel_counter'>
-                          {i}/{props.items.length}
+                          <div class='carousel_counter'>
+                              {i}/{props.items.length}
+                          </div>
                       </div>
                   </div>
                 )
