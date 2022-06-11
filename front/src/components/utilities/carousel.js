@@ -12,8 +12,8 @@ const Carousel = (props)=>{
                 let style={backgroundImage: 'url('+item.picture+')'}
 
                 return (
-                  <div class='transparent' style={style}>
-                      <div class='overlay' style={{display:'flex',verticalAlign:'middle'}}>
+                  <div class='header transparent' style={style}>
+                      <div class='overlay'>
                           <div class='row'>
                             <div class='col'>
                               <h1 class='logo-basic'>{item.text}</h1>
