@@ -2,9 +2,9 @@
 .carousel_button{
   width: 30%;
   height:  40px;
-  background-color: rgba(215,215,0);
-  color:white
-  font-size: 1em;
+  background-color: rgba(215,215,0) !important;
+  color:white !important;
+  font-size: 1em !important;
 }
 textarea{
   min-height: 30vh;
