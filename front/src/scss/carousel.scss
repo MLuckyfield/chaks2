@@ -1,20 +1,20 @@
-$size-width: 100%;
+$size-width: 100vw;
 $size-height: 30vh;
 
 .carousel-wrapper {
-  width: $size-width * 1.3;
-  height: $size-height * 1.4;
+  width: $size-width;
+  height: $size-height;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
-  border-radius: 20px;
-  margin: 100px auto 20px;
+  // box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
+  // border-radius: 20px;
+  // margin: 100px auto 20px;
 }
 
 .carousel-container {
-  // width: $size-width;
-  // height: $size-height;
+  width: $size-width;
+  height: $size-height;
   overflow: hidden;
   margin: 0 auto;
 }
