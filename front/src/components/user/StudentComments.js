@@ -24,8 +24,10 @@ const StudentComments = () => {
 
   return(
     <div class='master-row'>
-    {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
-    {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='admin'?<Profile/>:''}
+      <div class='row'>
+        {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
+        {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='admin'?<Profile/>:''}
+      </div>
       <h1>Feedback ({comments?comments.length:'None Yet!'})</h1>
       <div class='col'>
           {comments ? (comments.map(function(item, i){
