@@ -44,17 +44,26 @@ const BlogFront = () => {
         <h1>BLOG</h1>
         <div class='col'>
             {comments ? (comments.map(function(item, i){
-                return (
-                    <div class='header transparent blog_thumbnail' onClick={()=>{loadBlog(item)}} style={{backgroundImage: 'url('+banner+')'}}>
-                        <div class='overlay'>
-                            <div class='row'>
-                              <div class='col'>
-                                <h1 class='logo-basic'>{item.title}</h1>
+                if(i==0){
+                  return (
+                      <div class='header transparent blog_thumbnail' onClick={()=>{loadBlog(item)}} style={{backgroundImage: 'url('+banner+')'}}>
+                          <div class='overlay'>
+                              <div class='row'>
+                                <div class='col'>
+                                  <h1 class='logo-basic'>{item.title}</h1>
+                                </div>
                               </div>
-                            </div>
-                        </div>
-                  </div>
-                )
+                          </div>
+                    </div>
+                  )
+                }else{
+                  return (
+                    <div class='col'>
+                      <h1>{item.title}</h1>
+                      <h3>{item.preview}</h3>
+                    </div>
+                  )
+                }
               })): 'Loading...'}
         </div>
         </div>
