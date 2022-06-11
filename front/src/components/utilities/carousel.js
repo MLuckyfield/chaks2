@@ -5,9 +5,8 @@ const Carousel = (props)=>{
 
   const [items, setItems] = useState(props.items);
   const [current,setCurrent]=useState(0)
-  const revolutions = 100
+  let revolutions = 0
   const timer = (callback)=>{
-    // setInterval(callback,3000)
     for(let i=0;i<items.length-1;i++){
       if(items[i].active){
         items[i].active=false
@@ -16,6 +15,7 @@ const Carousel = (props)=>{
         break
       }
     }
+    if(revolutions<100){setInterval(timer,3000);revolutions++}
   }
 const next=(position,length)=>{
   if(position==length-1){
@@ -28,8 +28,8 @@ const next=(position,length)=>{
 }
 
   useEffect(()=>{
-    setTimeout(timer(timer),5000)
-  },[items])
+    timer(timer)
+  },[])
 
   return (
     <span>
