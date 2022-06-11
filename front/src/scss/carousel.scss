@@ -30,6 +30,8 @@ $size-height: 65vh;
   height: $size-height;
   overflow: hidden;
   margin: 0 auto;
+  display:flex;
+  vertical-align: middle;
 }
 
 .carousel {

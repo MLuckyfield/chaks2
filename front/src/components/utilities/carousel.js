@@ -60,6 +60,26 @@ const Carousel = (props)=>{
     // </span>
           <div class="carousel-wrapper">
         <div class="carousel-container">
+        <div class='carousel__navigation'>
+          <ol class="carousel__navigation-list">
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide1"
+                 class="carousel__navigation-button">Go to slide 1</a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide2"
+                 class="carousel__navigation-button">Go to slide 2</a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide3"
+                 class="carousel__navigation-button">Go to slide 3</a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide4"
+                 class="carousel__navigation-button">Go to slide 4</a>
+            </li>
+          </ol>
+        </div>
           <div class="carousel">
           {props.items ? (props.items.map(function(item, i){
 
@@ -79,26 +99,6 @@ const Carousel = (props)=>{
                   </div>
                 )
               })): 'Loading...'}
-              <div class='carousel__navigation'>
-                <ol class="carousel__navigation-list">
-                  <li class="carousel__navigation-item">
-                    <a href="#carousel__slide1"
-                       class="carousel__navigation-button">Go to slide 1</a>
-                  </li>
-                  <li class="carousel__navigation-item">
-                    <a href="#carousel__slide2"
-                       class="carousel__navigation-button">Go to slide 2</a>
-                  </li>
-                  <li class="carousel__navigation-item">
-                    <a href="#carousel__slide3"
-                       class="carousel__navigation-button">Go to slide 3</a>
-                  </li>
-                  <li class="carousel__navigation-item">
-                    <a href="#carousel__slide4"
-                       class="carousel__navigation-button">Go to slide 4</a>
-                  </li>
-                </ol>
-              </div>
           </div>
         </div>
       </div>
