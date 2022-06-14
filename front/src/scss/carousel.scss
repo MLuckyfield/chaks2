@@ -21,12 +21,18 @@ $size-height: 65vh;
   // margin-top:8vh;
 }
 @media (max-width:800px){
-  // .carousel-wrapper{margin-top:8vh;}
+  // .carousel-wrapper{margin-top:auto;}
   .carousel_button{
     font-size: 0.4em !important;
   }
+  .carousel-container{
+    height:auto;
+  }
   .carousel_counter{
     right:40%;
+  }
+  .carousel-wrapper{
+    height:35vh;
   }
 }
 .carousel-container {
