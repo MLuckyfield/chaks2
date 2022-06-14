@@ -13,7 +13,7 @@ const Profile = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios.post('/user/new',
+    axios.post('/email/internal_reservation',
       {
         profile: profile.current.value,
         student: student,

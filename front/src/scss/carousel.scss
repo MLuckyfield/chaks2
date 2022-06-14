@@ -21,7 +21,7 @@ $size-height: 65vh;
   margin-top:8vh;
 }
 @media (max-width:800px){
-  .carousel-wrapper{margin-top:0px;}
+  .carousel-wrapper{margin-top:8vh;}
   .carousel_button{
     font-size: 0.4em !important;
   }
@@ -43,6 +43,9 @@ $size-height: 65vh;
   width: $size-width * 3;
   animation: sliding 9s infinite;
   vertical-align: middle;
+  .col{
+    height:auto;
+  }
   div {
     width: $size-width;
     height: $size-height;
