@@ -38,26 +38,31 @@
   margin-bottom: 3%;
 }
 //
-// .overlay{
-//   // position: absolute;
-//   // top: 8vh;
-//   display:flex;
-//   color: white;
-//   height:65vh;
-//   width:100%;
-//   font-size: 3em;
-//   align-items: center;
-//   align-content: center;
-//   vertical-align: middle;
-//   // margin: 3%;
-//   // border: 1px solid $first;
-//   background: rgba(128,0,0,0.7);
-//   .indicator{
-//       position: absolute;
-//       bottom: 20px;
-//
-//   }
-// }
+.overlay{
+  // position: absolute;
+  // top: 8vh;
+  display:flex;
+  color: white;
+  height:65vh;
+  width:100%;
+  font-size: 3em;
+  align-items: center;
+  align-content: center;
+  vertical-align: middle;
+  // margin: 3%;
+  // border: 1px solid $first;
+  background: rgba(128,0,0,0.7);
+  .indicator{
+      position: absolute;
+      bottom: 20px;
+
+  }
+}
+@media (max-width:800px){  
+    .overlay{
+      height:35vh !important;
+    }
+}
 #nav{
   float: right;
   font-size: 30px;

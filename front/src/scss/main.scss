@@ -151,7 +151,7 @@ h1, h2, h3{
 .fixed-row{
   @extend .row
 }
-@media (max-width:800px){
+@const (max-width:800px){
   .blog_thumbnail{
     height:20vh;
   }
@@ -297,13 +297,13 @@ nav {
     transition: all 0.3s ease;
 }
 
-// @media screen and (max-width: 1024px) {
+// @const screen and (max-width: 1024px) {
 //     .nav-links {
 //         width: 60%;
 //     }
 // }
 
-@media screen and (max-width: 800px) {
+@const screen and (max-width: 800px) {
     body {
         overflow-x: hidden;
     }
