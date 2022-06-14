@@ -24,6 +24,9 @@ $size-height: 65vh;
   .carousel_button{
     font-size: 0.4em !important;
   }
+  .carousel_counter{
+    right:20%;
+  }
 }
 .carousel-container {
   width: $size-width;
