@@ -32,10 +32,4 @@ router.post('/internal_reservation'), async (req, res)=>{
 }
 
 
-module.exports = {
-  createToken,
-  newPass,
-  validatePass,
-  auth,
-  permission
-}
+module.exports = router;
