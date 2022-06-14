@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import {useAuthDataContext} from "../auth-provider";
+import moment from "moment"
 
 const Profile = () => {
 
@@ -8,6 +9,7 @@ const Profile = () => {
   //const [password, setPassword] = useState();
 
   const [student, setStudent] = useState(JSON.parse(localStorage.getItem('student')));
+  const [hours, setHours] = useState();
   const profile = useRef(student.profile?student.profile:'');
   const [feedback, setFeedback] = useState();
 
@@ -34,6 +36,15 @@ const Profile = () => {
         <h2>{student.first}'s Profile</h2>
             <div class="form-group">
               <textarea ref={profile} type="text" class="form-control" required/>
+            </div>
+            <div class="form-group">
+              <input value={student.plan} type="text" class="form-control" disabled required/>
+            </div>
+            <div class="form-group">
+                {student?student.statistics.map(function(item,i)=>{
+                  setHours(hours+moment(item.start).subtract(item.end))
+                }):''}
+                {hours?hours:''}
             </div>
             <label>{feedback}</label>
             <button type="submit" class="solid-first">Profile</button>
