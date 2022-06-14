@@ -39,6 +39,8 @@ body{
   justify-content: center;
   .overlay{
     height:65vh !important;
+    display: flex;
+    vertical-align: middle;
   }
 }
 .blog{
