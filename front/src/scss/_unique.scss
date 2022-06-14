@@ -15,11 +15,8 @@
   background-size:cover;
 }
 @media (max-width:800px){
-  #header, .header{
+  #header, .header, .overlay{
     height:35vh;
-  }
-  .overlay{
-    height: 35vh;
   }
 }
 // #overlay {
