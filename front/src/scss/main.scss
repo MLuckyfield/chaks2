@@ -28,6 +28,13 @@ body{
   cursor: text;
 
 }
+@media (max-width:800px){
+  .blog_thumbnail{
+    .overlay{
+      height:35vh !important;
+    }
+  }
+}
 .blog_thumbnail{
   display:flex;
   width:100%;
@@ -38,7 +45,7 @@ body{
   vertical-align: middle;
   justify-content: center;
   .overlay{
-    height:65vh !important;
+    height:65vh;
     display: flex;
     vertical-align: middle;
   }

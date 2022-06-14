@@ -15,19 +15,10 @@
   background-size:cover;
 }
 @media (max-width:800px){
-  #header, .header, .overlay{
-    height:35vh;
+  #header, .header{
+    height:35vh !important;
   }
 }
-// #overlay {
-//   position: absolute;
-//   display: block;
-//   width: 100%;
-//   height: 80vh;
-//   background-color: rgba(188,151,151,0.8);
-//   // border: 1px solid red;
-//   z-index: 2;
-// }
 #map{
   width:100%;
   height:30vh;
@@ -46,27 +37,27 @@
 .accordion-title{
   margin-bottom: 3%;
 }
-
-.overlay{
-  // position: absolute;
-  // top: 8vh;
-  display:flex;
-  color: white;
-  height:65vh;
-  width:100%;
-  font-size: 3em;
-  align-items: center;
-  align-content: center;
-  vertical-align: middle;
-  // margin: 3%;
-  // border: 1px solid $first;
-  background: rgba(128,0,0,0.7);
-  .indicator{
-      position: absolute;
-      bottom: 20px;
-
-  }
-}
+//
+// .overlay{
+//   // position: absolute;
+//   // top: 8vh;
+//   display:flex;
+//   color: white;
+//   height:65vh;
+//   width:100%;
+//   font-size: 3em;
+//   align-items: center;
+//   align-content: center;
+//   vertical-align: middle;
+//   // margin: 3%;
+//   // border: 1px solid $first;
+//   background: rgba(128,0,0,0.7);
+//   .indicator{
+//       position: absolute;
+//       bottom: 20px;
+//
+//   }
+// }
 #nav{
   float: right;
   font-size: 30px;

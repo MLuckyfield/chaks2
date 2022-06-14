@@ -54,6 +54,7 @@ app.use('/user',require('./models/user/api'));
 app.use('/comment',auth.auth,require('./models/comment/api'));
 app.use('/booking',auth.auth,require('./models/booking/api'));
 app.use('/content',require('./models/content/api'));
+app.use('/email',require('./services/email'));
 //heroku deployment
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "/front/build", "index.html"));
