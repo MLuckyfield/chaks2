@@ -18,7 +18,7 @@ router.post('/internal_reservation', async (req, res)=>{
   addDataJson = JSON.stringify(addData);
 
   const options = {
-      url: "https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5",
+      url: "https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members",
       method: "POST",
       headers: {
           Authorization: `auth ${process.env.MAILCHIMP_AUTH}`
