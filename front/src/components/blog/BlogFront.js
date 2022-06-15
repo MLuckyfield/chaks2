@@ -60,14 +60,14 @@ const BlogFront = () => {
             <div class='row'>
             {comments ? (comments.map(function(item, i){
                   if(i!=0 && i%3!=0){return (
-                    <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',maxHeight: '15vh',overflow:'hidden'}}>
+                    <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',maxHeight: '15vh',overflow:'hidden',paddingTop:'5%'}}>
                       <h1>{item.title}</h1>
                       <h3>{item.preview}</h3>
                     </div>
                   )}
                   return (
                       <div class='row'>
-                        <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',maxHeight: '15vh',overflow:'hidden'}}>
+                        <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',maxHeight: '15vh',overflow:'hidden',paddingTop:'5%'}}>
                           <h1>{item.title}</h1>
                           <h3>{item.preview}</h3>
                         </div>

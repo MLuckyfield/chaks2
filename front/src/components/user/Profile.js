@@ -9,7 +9,12 @@ const Profile = () => {
   //const [password, setPassword] = useState();
 
   const [student, setStudent] = useState(JSON.parse(localStorage.getItem('student')));
-  const [hours, setHours] = useState();
+  const [hours, setHours] = useState(()=>{
+    let counter=0
+    JSON.parse(localStorage.getItem('student')).statistics.map(function(item,i){
+      counter+=moment(item.start).diff(moment(item.end), 'hours')
+    })
+  });
   const profile = useRef(student.profile?student.profile:'');
   const [feedback, setFeedback] = useState();
 
@@ -38,7 +43,13 @@ const Profile = () => {
               <textarea ref={profile} type="text" class="form-control" required/>
             </div>
             <div class="form-group">
-              <input value={student.plan} type="text" class="form-control" disabled required/>
+              Plan: {student.plan}
+            </div>
+            <div class="form-group">
+              Email: {student.email}
+            </div>
+            <div class="form-group">
+              Study Time: {hours?hours:'No study time recorded'}
             </div>
             <label>{feedback}</label>
             <button type="submit" class="solid-first">Profile</button>
