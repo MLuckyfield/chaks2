@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const auth= require('../../services/authentication');
 const User = require('./model')
+const request = require('request')
 
 //Registration
 
@@ -27,6 +28,36 @@ const User = require('./model')
           password: password,
           role: 'user'
         }).save();
+        //SEND TO MAILCHIMP
+        const {email} = req.body;
+        const addData = {
+            members: [
+               {
+                  email_address: req.email,
+                  status: "subscribed"
+               }
+            ]
+        }
+        addDataJson = JSON.stringify(addData);
+
+        const options = {
+            url: "https://us6.api.mailchimp.com/3.0/lists/cb86e9b6f5",
+            method: "POST",
+            headers: {
+                Authorization: `auth ${process.env.MAILCHIMP_AUTH}`
+            },
+            body: addDataJson
+        }
+
+        request (options, (error, response, body) => {
+            body = JSON.parse(body)
+            if(body.errors) {
+                res.sendStatus(400) // error :(
+            } else {
+                res.sendStatus(200); //successful :)
+            }
+         })
+        //
         return res.status(201).json({
           message: 'User created',
           success: true
