@@ -1,8 +1,10 @@
 const User = require('../models/user/model')
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
+const request = require('request')
 
-router.post('/internal_reservation'), async (req, res)=>{
+router.post('/internal_reservation', async (req, res)=>{
+  console.log('starting email service')
   //SEND TO MAILCHIMP
   const {email} = 'support@chatshack.jp';
   const addData = {
@@ -71,7 +73,7 @@ router.post('/internal_reservation'), async (req, res)=>{
   //     });
   //   }
   // });
-}
+})
 
 
 module.exports = router;
