@@ -52,8 +52,9 @@ const request = require('request')
         }
         console.log('mailchimo request ready')
         request (options, (error, response, body) => {
+          console.log('sending to mailchimp: '+body)
+          
             body = JSON.parse(body)
-            console.log('sending to mailchimp')
 
             if(body.errors) {
                 console.log(req.email+' saved to Mailchimp') // error :(
