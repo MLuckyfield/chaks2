@@ -9,6 +9,13 @@ const Comment = () => {
   const comment = useRef('');
   const [student, setStudent] = useState(JSON.parse(localStorage.getItem('student')));
   const [author, setAuthor] = useState(JSON.parse(localStorage.getItem('user')));
+  const [hours, setHours] = useState(()=>{
+    let counter=0
+    JSON.parse(localStorage.getItem('student')).statistics.map(function(item,i){
+      counter+=moment(item.start).diff(moment(item.end), 'hours')
+    })
+    return counter
+  });
 
   const [feedback, setFeedback] = useState();
 
@@ -33,7 +40,11 @@ const Comment = () => {
   return(
       <div class='row'>
         <form class='login' onSubmit={onSubmit}>
-                <h2>New Comment</h2>
+                <h2>New Comment for {student.first}</h2>
+                  {student.profile}
+                  {student.plan}
+                  {student.email}
+                  {student.hours}
                     <div class="form-group">
                       <textarea ref={comment} type="text" class="form-control" placeholder="comment" required/>
 
