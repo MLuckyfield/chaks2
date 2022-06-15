@@ -28,6 +28,8 @@ const request = require('request')
           password: password,
           role: 'user'
         }).save();
+        console.log('user saved, website okay')
+
         //SEND TO MAILCHIMP
         const {email} = req.body;
         const addData = {
@@ -48,9 +50,11 @@ const request = require('request')
             },
             body: addDataJson
         }
-
+        console.log('mailchimo request ready')
         request (options, (error, response, body) => {
             body = JSON.parse(body)
+            console.log('sending to mailchimp')
+
             if(body.errors) {
                 console.log(req.email+' saved to Mailchimp') // error :(
                   return res.status(201).json({
