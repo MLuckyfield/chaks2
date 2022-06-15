@@ -6,7 +6,7 @@ const request = require('request')
 router.post('/internal_reservation', async (req, res)=>{
   console.log('starting email service')
   //SEND TO MAILCHIMP
-  const {email} = 'support@chatshack.jp';
+  const email = 'support@chatshack.jp';
   const addData = {
       members: [
          {
