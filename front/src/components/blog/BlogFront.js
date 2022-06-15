@@ -41,10 +41,10 @@ const BlogFront = () => {
       const url = '/blog/'+blog._id+'/'+blog.title
       window.location=url
   }
-
+//<Carousel items={items}/>
   return(
     <div>
-          <Carousel items={items}/>
+
       <div class='master-row'>
         <h1>BLOG</h1>
         <div class='col'>
