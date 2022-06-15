@@ -52,9 +52,10 @@ const request = require('request')
         request (options, (error, response, body) => {
             body = JSON.parse(body)
             if(body.errors) {
-                res.sendStatus(400) // error :(
+                console.log(req.email+' saved to Mailchimp') // error :(
             } else {
-                res.sendStatus(200); //successful :)
+              console.log(req.email+' failed to save to Mailchimp') // error :(
+; //successful :)
             }
          })
         //
