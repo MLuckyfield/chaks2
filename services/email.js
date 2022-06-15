@@ -21,7 +21,10 @@ router.post('/internal_reservation'), async (req, res)=>{
   console.log(mailOptions)
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
-      console.log('email attempt failed:' +error);
+      return res.status(403).json({
+        message: 'email attempt failed:' +error,
+        success: false
+      });
     } else {
       console.log('Email sent: ' + info.response);
       return res.status(200).json({
