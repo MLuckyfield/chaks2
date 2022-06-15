@@ -27,8 +27,9 @@ router.post('/internal_reservation', async (req, res)=>{
   }
   console.log('mailchimo request ready')
   request (options, (error, response, body) => {
+    console.log(body)
+    
       body = JSON.parse(body)
-      console.log(body)
       if(body.errors) {
           console.log(email+' saved to Mailchimp') // error :(
             return res.status(201).json({
