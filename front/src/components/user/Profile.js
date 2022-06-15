@@ -27,7 +27,7 @@ const Profile = () => {
       })
       .then((res) => {
           setFeedback(res.data.message);
-          window.location='/dash';
+          // window.location='/dash';
           })
       .catch((err) => {
         console.log('front error:'+err);
