@@ -42,10 +42,12 @@ const Comment = () => {
       <div class='row'>
         <form class='login' onSubmit={onSubmit}>
                 <h2>New Comment for {student.first}</h2>
-                  {student.profile}<br/>
-                  Plan: {student.plan}<br/>
-                  Email: {student.email}<br/>
-                  Total Hours: {student.hours}<br/>
+                    <div class='col' style={{background: 'solid 1px black'}}>
+                    {student.profile}<br/>
+                    Plan: {student.plan}<br/>
+                    Email: {student.email}<br/>
+                    Total Hours: {student.hours}<br/>
+                    </div>
                     <div class="form-group">
                       <textarea ref={comment} type="text" class="form-control" placeholder="comment" required/>
                     </div>
