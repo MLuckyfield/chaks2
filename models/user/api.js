@@ -29,7 +29,10 @@ const request = require('request')
           role: 'user'
         }).save();
         console.log('user saved, website okay ready')
-
+        return res.status(201).json({
+          message: `Success!`,
+          success: success
+        });
       }catch(err){
         console.log(req)
         return res.status(500).json({
