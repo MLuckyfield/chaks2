@@ -26,10 +26,11 @@ $size-height: 65vh;
     font-size: 0.4em !important;
   }
   .carousel-container{
-    height:auto;
+    height:auto !important;
   }
   .carousel_counter{
     right:40%;
+    bottom:-100%;
   }
   .carousel-wrapper{
     height:35vh;

@@ -59,12 +59,13 @@ const BlogFront = () => {
             </div>
             <div class='row'>
             {comments ? (comments.map(function(item, i){
-                  return (
+                  if(i!=0){return (
                     <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black'}}>
                       <h1>{item.title}</h1>
                       <h3>{item.preview}</h3>
                     </div>
-                  )
+                  )}
+                  return <div></div>
               })): 'Loading...'}
               </div>
         </div>
