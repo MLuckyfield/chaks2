@@ -42,7 +42,7 @@ const Comment = () => {
       <div class='row'>
         <form class='login' onSubmit={onSubmit}>
                 <h2>New Comment for {student.first}</h2>
-                    <div class='col' style={{background: 'solid 1px black'}}>
+                    <div class='col' style={{background: '1px solid black'}}>
                     {student.profile}<br/>
                     Plan: {student.plan}<br/>
                     Email: {student.email}<br/>
