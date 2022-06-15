@@ -30,8 +30,6 @@ const request = require('request')
         }).save();
         console.log('user saved, website okay ready')
 
-        
-
       }catch(err){
         console.log(req)
         return res.status(500).json({
