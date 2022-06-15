@@ -48,14 +48,14 @@ const BlogFront = () => {
       <div class='master-row'>
         <h1>BLOG</h1>
         <div class='col'>
-            <div id='header' class='transparent blog_thumbnail' onClick={()=>{loadBlog(comments[0])}} style={{backgroundImage: 'url('+banner+')', verticalAlign:'middle',display:'flex'}}>
+            <div id='header' class='transparent blog_thumbnail' onClick={comments?()=>{loadBlog(comments[0])}:''} style={{backgroundImage: 'url('+banner+')', verticalAlign:'middle',display:'flex'}}>
                 <div class='overlay'>
                     <div class='row'>
                       <div class='col'>
-                        <h1 class='logo-basic'>{comments[0].title}</h1>
+                        <h1 class='logo-basic'>{comments?comments[0].title:''}</h1>
                       </div>
                     </div>
-                </div>
+            </div>
             </div>
             <div class='row'>
             {comments ? (comments.map(function(item, i){
