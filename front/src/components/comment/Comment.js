@@ -42,13 +42,12 @@ const Comment = () => {
       <div class='row'>
         <form class='login' onSubmit={onSubmit}>
                 <h2>New Comment for {student.first}</h2>
-                  {student.profile}
-                  {student.plan}
-                  {student.email}
-                  {student.hours}
+                  {student.profile}<br/>
+                  {student.plan}<br/>
+                  {student.email}<br/>
+                  {student.hours}<br/>
                     <div class="form-group">
                       <textarea ref={comment} type="text" class="form-control" placeholder="comment" required/>
-
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder={`${student.first} ${student.last}`} disabled/>
