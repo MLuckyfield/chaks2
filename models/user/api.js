@@ -41,7 +41,7 @@ const request = require('request')
         addDataJson = JSON.stringify(addData);
 
         const options = {
-            url: "https://us6.api.mailchimp.com/3.0/lists/cb86e9b6f5",
+            url: "https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5",
             method: "POST",
             headers: {
                 Authorization: `auth ${process.env.MAILCHIMP_AUTH}`
@@ -53,16 +53,19 @@ const request = require('request')
             body = JSON.parse(body)
             if(body.errors) {
                 console.log(req.email+' saved to Mailchimp') // error :(
+                  return res.status(201).json({
+                    message: 'User created',
+                    success: true
+                  });
             } else {
               console.log(req.email+' failed to save to Mailchimp') // error :(
-; //successful :)
+                return res.status(500).json({
+                  message: `user creation unsuccessful: ${err}`,
+                  success: false
+                });
             }
          })
-        //
-        return res.status(201).json({
-          message: 'User created',
-          success: true
-        });
+
       }catch(err){
         console.log(req)
         return res.status(500).json({
