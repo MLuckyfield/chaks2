@@ -30,7 +30,7 @@ const Profile = () => {
           window.location='/dash';
           })
       .catch((err) => {
-        console.log('front error:'+err);
+        console.log('front error:'+err.response.data.message);
         // setFeedback(err.response.data.message);
         });
   }
