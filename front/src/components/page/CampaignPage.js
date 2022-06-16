@@ -7,7 +7,7 @@ const CampaignPage = () => {
 
   return(
     <div>
-      <div id='concept'  class='master-row' style={{backgroundColor:'#EECB1',color:'white'}}>
+      <div id='concept'  class='master-row' style={{backgroundColor:'#EEBC21',color:'white'}}>
         <div class='row'><h1 class='col'>1. 初回無料！！</h1></div>
         <div class='row'>
             <div class='col slim'>

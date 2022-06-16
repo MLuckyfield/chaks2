@@ -25,7 +25,7 @@ const EventsPage = () => {
                     <div class='row'>
                       <div class='col'>
                         このパーティーに来るべき理由🎉
-                        <ul>
+                        <ul class='normal'>
                           <li>外国人の友達が作れます！</li>
                           <li>クラフトビールを楽しめます！</li>
                           <li>英語がもっと上手になります！</li>
@@ -33,7 +33,7 @@ const EventsPage = () => {
                         </ul>
                       </div>
                       <div class='col'>
-                        <ul>
+                        <ul class='normal'>
                           <li>すべてのビールが何杯飲んでも150円引き！</li>
                           <li>最大で９種類のビールを提供しています。</li>
                           <li>途中参加途中退場可能です！</li>
@@ -48,10 +48,10 @@ const EventsPage = () => {
                     <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
                     <div class='col'>
                       割引後のビール料金:
-                      <ul>
+                      <ul class='normal'>
                         <li>M size 700円</li>
                         <li>S size 350円</li>
-                      </ul>               
+                      </ul>
                     ◆5000円で飲み放題も可能です。
                     </div>
                 </div>

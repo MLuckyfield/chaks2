@@ -58,7 +58,7 @@
 
   }
 }
-@media (max-width:800px){  
+@media (max-width:800px){
     .overlay{
       height:35vh !important;
     }
@@ -93,6 +93,10 @@
     font-weight: bold;
     color:white;
     font-size:2em;
+  }
+  ul .normal{
+    list-style-type: circle;
+    float:left;
   }
   ul {
   list-style-type: none;
