@@ -29,6 +29,7 @@ const User = require('./model')
         }).save(()=>
           {
             //--MAILCHIMP
+            console.log('starting mail service')
             request({
               url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
               json: {
@@ -46,6 +47,9 @@ const User = require('./model')
                   'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
               }
           }, function(error, response, body){
+            console.log('mail service complete')
+            console.log(response)
+            console.log(body)          
                 if (error) {
                   console.log('user saved, not loaded to mailchimp: '+req.email)
                   return res.status(500).json({
