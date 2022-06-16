@@ -27,11 +27,36 @@ const User = require('./model')
           password: password,
           role: 'user'
         }).save();
-        console.log('user saved, website okay ready')
-        return res.status(201).json({
-          message: `Success!`,
-          success: success
-        });
+        //--MAILCHIMPrequest({
+          url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
+          json: {
+              'email_address': req.email,
+              'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
+              'status': 'subscribed',
+              'merge_fields': {
+                  'FNAME': req.first,
+                  'LNAME': req.last
+              }
+          },
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
+          }
+      }, function(error, response, body){
+            if (error) {
+              console.log('user saved, not loaded to mailchimp: '+req.email)
+
+              } else {
+                console.log('user saved, website okay ready')
+                return res.status(201).json({
+                  message: `Success!`,
+                  success: true
+                });
+              }
+          });
+          //==mialchimp finished
+
       }catch(err){
         console.log(req)
         return res.status(500).json({
