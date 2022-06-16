@@ -1,35 +1,7 @@
-import React, { useRef, useState } from 'react';
-import {axios} from "../../utilities/axios";
-import {useAuthDataContext} from "../auth-provider";
 import banner from '../../banner.jpg'
 
 const EventsPage = () => {
 
-  //const [email, setEmail] = useState();
-  //const [password, setPassword] = useState();
-  const email = useRef('');
-  const password = useRef('');
-
-  const [feedback, setFeedback] = useState();
-  const { onEventsPage } = useAuthDataContext();
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-
-    // axios.post('/user/EventsPage',
-    //   {
-    //     email: email.current.value,
-    //     password: password.current.value
-    //   })
-    //   .then((res) => {
-    //       onEventsPage(res.data.result);
-    //       })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     // setFeedback(err.response.data.message);
-    //     });
-  }
 
   return(
     <div>

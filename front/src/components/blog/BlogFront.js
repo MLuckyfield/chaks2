@@ -67,7 +67,7 @@ const BlogFront = () => {
                   )}
                   return (
                       <div class='row'>
-                        <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',maxHeight: '15vh',overflow:'hidden',paddingTop:'5%'}}>
+                        <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
                           <h1>{item.title}</h1>
                           <h3>{item.preview}</h3>
                         </div>
