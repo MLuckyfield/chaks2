@@ -26,39 +26,43 @@ const User = require('./model')
           ...req,
           password: password,
           role: 'user'
-        }).save(
+        }).save(()=>
+          {return res.status(201).json({
+                      message: `Success!`,
+                      success: true
+                    });}
           //--MAILCHIMP
-          request({
-            url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
-            json: {
-                'email_address': req.email,
-                'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
-                'status': 'subscribed',
-                'merge_fields': {
-                    'FNAME': req.first,
-                    'LNAME': req.last
-                }
-            },
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
-            }
-        }, function(error, response, body){
-              if (error) {
-                console.log('user saved, not loaded to mailchimp: '+req.email)
-                return res.status(500).json({
-                  message: `user saved but mailchimp failed: ${err}`,
-                  success: false
-                });
-                } else {
-                  console.log('user saved, website okay ready')
-                  return res.status(201).json({
-                    message: `Success!`,
-                    success: true
-                  });
-                }
-            });
+        //   request({
+        //     url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
+        //     json: {
+        //         'email_address': req.email,
+        //         'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
+        //         'status': 'subscribed',
+        //         'merge_fields': {
+        //             'FNAME': req.first,
+        //             'LNAME': req.last
+        //         }
+        //     },
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
+        //     }
+        // }, function(error, response, body){
+        //       if (error) {
+        //         console.log('user saved, not loaded to mailchimp: '+req.email)
+        //         return res.status(500).json({
+        //           message: `user saved but mailchimp failed: ${err}`,
+        //           success: false
+        //         });
+        //         } else {
+        //           console.log('user saved, website okay ready')
+        //           return res.status(201).json({
+        //             message: `Success!`,
+        //             success: true
+        //           });
+        //         }
+        //     });
             //==mialchimp finished
         );
 
