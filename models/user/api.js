@@ -37,10 +37,10 @@ const request = require('request')
                   'email_address': req.email,
                   'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
                   'status': 'subscribed',
-                  // 'merge_fields': {
-                  //     'FNAME': req.first,
-                  //     'LNAME': req.last
-                  // }
+                  'merge_fields': {
+                      'FNAME': req.first,
+                      'LNAME': req.last
+                  }
               },
               method: 'POST',
               headers: {
