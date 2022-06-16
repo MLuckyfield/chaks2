@@ -234,10 +234,10 @@ h1, h2, h3{
   align-items: center;
   flex-direction: column;
 }
-.col_up{
-  @extend .col;
-  vertical-align: top;
-}
+// .col_up{
+//   @extend .col;
+//   vertical-align: top;
+// }
 * {
     margin: 0;
     padding: 0;

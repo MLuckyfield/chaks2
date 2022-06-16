@@ -7,8 +7,8 @@ const CampaignPage = () => {
 
   return(
     <div>
-      <div id='concept'  class='master-row' style={{background:'#EECB1',color:'white'}}>
-        <div class='row'><h1 class='col'>初回無料！！</h1></div>
+      <div id='concept'  class='master-row' style={{backgroundColor:'#EECB1',color:'white'}}>
+        <div class='row'><h1 class='col'>1. 初回無料！！</h1></div>
         <div class='row'>
             <div class='col slim'>
               <ol>
@@ -22,7 +22,7 @@ const CampaignPage = () => {
         </div>
       </div>
       <div id='concept'  class='master-row dark'>
-        <div class='row'><h1 class='col'>INSTAGRAM</h1></div>
+        <div class='row'><h1 class='col'>2. INSTAGRAM</h1></div>
         <div class='row'>
             <div class='col slim'>
               <ol>
@@ -35,7 +35,7 @@ const CampaignPage = () => {
             </div>
         </div>
       </div>
-      <div class='row'><h1 class='col'>REFERRAL</h1></div>
+      <div class='row'><h1 class='col'>3. REFERRAL</h1></div>
       <div class='row'>
         <div class='col slim'>
           <ol>
