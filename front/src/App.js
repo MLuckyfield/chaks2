@@ -19,6 +19,8 @@ import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
 import Social from './components/utilities/social'
+import Profile from './components/user/Profile'
+
 import microsoft_clarity from './components/microsoft_clarity'
 //import pages
 import EventsPage from './components/page/EventsPage'
@@ -68,6 +70,7 @@ const App = () => {
             <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={Login}/>
             <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts} fail={Login}/>
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={Login}/>
+            <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile} fail={Login}/>
           </AuthDataProvider>
       </Router>
 

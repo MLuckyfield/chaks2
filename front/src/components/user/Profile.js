@@ -20,18 +20,16 @@ const Profile = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios.post('/email/internal_reservation',
+    axios.post('/user/update',
       {
-        profile: profile.current.value,
-        student: student,
+        filter: {_id:student._id},
+        data: {profile:profile.current.value},
       })
       .then((res) => {
           setFeedback(res.data.message);
           // window.location='/dash';
           })
       .catch((err) => {
-        console.log('front error:'+JSON.stringify(err.response.data.message));
-        console.log('front error: '+err)
         setFeedback(err.response.data.message);
         });
   }

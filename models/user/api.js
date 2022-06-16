@@ -117,6 +117,23 @@ const request = require('request')
             }
         })
 
+    //Update
+    router.post('/update', async (req, res) => {
+      await User.findOneAndUpdate(req.body.filter,req.body.data)
+          .then(()=>{
+            return res.status(201).json({
+              message: 'User update',
+              success: true
+            });
+          })
+          .catch((err)=>{
+            return res.status(500).json({
+              message: `User updated: ${err}`,
+              success: false
+            });
+          })
+        });
+
     //Get
     router.get('/all', auth.auth, auth.permission(['teacher','manager']), async (req, res) => {
       console.log(req.query)
