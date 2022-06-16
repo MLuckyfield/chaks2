@@ -128,7 +128,7 @@ const request = require('request')
           })
           .catch((err)=>{
             return res.status(500).json({
-              message: `User updated: ${err}`,
+              message: `User failed to update: ${err}`,
               success: false
             });
           })

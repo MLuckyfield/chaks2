@@ -177,7 +177,7 @@ h1, h2, h3{
     vertical-align:middle;
   }
   .col_up{
-    @extend .col
+    @extend .col;
     vertical-align: top;
   }
   .slim{
