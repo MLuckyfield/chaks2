@@ -176,10 +176,6 @@ h1, h2, h3{
     padding:0;
     vertical-align:middle;
   }
-  .col_up{
-    @extend .col;
-    vertical-align: top;
-  }
   .slim{
     width:100%;
   }
@@ -237,6 +233,10 @@ h1, h2, h3{
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+.col_up{
+  @extend .col;
+  vertical-align: top;
 }
 * {
     margin: 0;
