@@ -17,8 +17,7 @@ const EventsPage = () => {
                 </div>
             </div>
       </div>
-      <div id='merit' class='master-row mid'>
-          <div class='row'>
+          <div class='col'>
                 <div class='col slim'>
                     <h1 class='col'>CONCEPT</h1>
                     <div class='col'>
@@ -53,7 +52,6 @@ const EventsPage = () => {
                     </div>
                 </div>
           </div>
-      </div>
       <AccessDisplay/>
     </div>
 )

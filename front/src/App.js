@@ -22,6 +22,8 @@ import Social from './components/utilities/social'
 import microsoft_clarity from './components/microsoft_clarity'
 //import pages
 import EventsPage from './components/page/EventsPage'
+import CampaignPage from './components/page/CampaignPage'
+
 //import styles
 import './scss/main.scss'
 import banner from './banner.jpg'
@@ -56,7 +58,7 @@ const App = () => {
           <Route exact path="/" component={Front}/>
           <Route path="/signup" component={Signup}/>
           <Route path="/events" component={EventsPage}/>
-          <Route path="/campaigns" component={Signup}/>
+          <Route path="/campaigns" component={CampaignPage}/>
           <Route path="/system" component={Signup}/>
           <Route exact path="/blog" component={BlogFront}/>
           <Route exact path="/blog/*" component={BlogDisplay}/>
