@@ -7,7 +7,7 @@ const User = require('./model')
     //user
     router.post('/new', async (req, res) => {
       req=req.body
-
+      console.log(req)
       //check if exists
       let taken = await(exists(req.email));
       if (taken){
@@ -36,10 +36,10 @@ const User = require('./model')
                   'email_address': req.email,
                   'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
                   'status': 'subscribed',
-                  'merge_fields': {
-                      'FNAME': req.first,
-                      'LNAME': req.last
-                  }
+                  // 'merge_fields': {
+                  //     'FNAME': req.first,
+                  //     'LNAME': req.last
+                  // }
               },
               method: 'POST',
               headers: {
@@ -49,7 +49,7 @@ const User = require('./model')
           }, function(error, response, body){
             console.log('mail service complete')
             console.log(response)
-            console.log(body)          
+            console.log(body)
                 if (error) {
                   console.log('user saved, not loaded to mailchimp: '+req.email)
                   return res.status(500).json({
@@ -70,7 +70,7 @@ const User = require('./model')
 
 
       }catch(err){
-        console.log(req)
+        console.log('there was a problem')
         return res.status(500).json({
           message: `user creation unsuccessful: ${err}`,
           success: false
