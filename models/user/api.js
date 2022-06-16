@@ -27,7 +27,8 @@ const User = require('./model')
           password: password,
           role: 'user'
         }).save();
-        //--MAILCHIMPrequest({
+        //--MAILCHIMP
+        request({
           url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
           json: {
               'email_address': req.email,
