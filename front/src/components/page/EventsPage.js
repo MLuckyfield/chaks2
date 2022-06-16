@@ -21,8 +21,9 @@ const EventsPage = () => {
           <div class='row'>
                 <div class='col slim'>
                     <h1 class='col'>CONCEPT</h1>
-                    <div class='col'>クラフトビールを片手に英語を話して、国際交流を楽しみましょう！
-国際色豊かなファストフードの提供もしています！<br/>
+                    <div class='col'>
+                    クラフトビールを片手に英語を話して、国際交流を楽しみましょう！
+                    国際色豊かなファストフードの提供もしています！<br/>
                     <p>このパーティーに来るべき理由🎉<br/>
                     ・外国人の友達が作れます！<br/>
                     ・クラフトビールを楽しめます！<br/>
@@ -35,14 +36,20 @@ const EventsPage = () => {
                     *ワンドリンクオーダー制<br/>
                     *ビール以外にもハイボールやゆず蜜サワーなどご用意あります
                     </div>
-                    <div class='col slim'>
-                        <h1 class='col'>DETAILS</h1>
-                        <div class='col'>
-                        割引後のビール料金:
-                        <p>M size 700円<br/>
-                        S size 350円<br/>
-                        ◆5000円で飲み放題も可能です。</p>
-                        </div>
+                </div>
+                <div class='col slim'>
+                    <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
+                    <div class='col'>
+                    割引後のビール料金:
+                    <p>M size 700円<br/>
+                    S size 350円<br/>
+                    ◆5000円で飲み放題も可能です。</p>
+                    </div>
+                </div>
+                <div class='col slim'>
+                    <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
+                    <div class='col'>
+                    LADIES NIGHT! Stay tuned for more information!
                     </div>
                 </div>
           </div>
