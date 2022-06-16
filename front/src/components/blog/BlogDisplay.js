@@ -1,8 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
-import {useAuthDataContext} from "../auth-provider";
 import {Editor, EditorState, convertFromRaw, RichUtils} from 'draft-js'
-import moment from "moment"
+// import moment from "moment"
 import AccessDisplay from '../nav/AccessDisplay'
 import Social from '../utilities/social'
 
@@ -52,7 +51,7 @@ const BlogDisplay = () => {
         ):'Sorry there was a problem!'}
         <Social data={'tiny-logo'}/>
         </div>
-        <div class='col w20 border'>
+        <div class='col_up w20 border'>
             <h3>FREE LEARNING RESOURCES</h3>
             <p/>Welcome to the CHATSHACK blog! You can find free advice and resources for learning English.
         </div>

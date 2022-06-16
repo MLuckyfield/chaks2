@@ -36,7 +36,7 @@ const EventsPage = () => {
                     *ビール以外にもハイボールやゆず蜜サワーなどご用意あります
                     </div>
                 </div>
-                <div class='col slim'>
+                <div class='col_up slim'>
                     <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
                     <div class='col'>
                     割引後のビール料金:
@@ -45,7 +45,7 @@ const EventsPage = () => {
                     ◆5000円で飲み放題も可能です。</p>
                     </div>
                 </div>
-                <div class='col slim'>
+                <div class='col_up slim'>
                     <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
                     <div class='col'>
                     LADIES NIGHT! Stay tuned for more information!
