@@ -26,7 +26,6 @@ const StudentComments = () => {
     <div class='master-row'>
       <div class='row'>
         {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
-        {JSON.parse(localStorage.getItem('user')).role=='manager'?<Profile/>:''}
       </div>
       <h1>Feedback ({comments?comments.length:'None Yet!'})</h1>
       <div class='col'>

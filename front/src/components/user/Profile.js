@@ -39,7 +39,7 @@ const Profile = () => {
         <form class='login' onSubmit={onSubmit}>
         <h2>{student.first}'s Profile</h2>
             <div class="form-group">
-              <textarea ref={profile} type="text" class="form-control" required/>
+              <textarea ref={profile} type="text" class="form-control" value={student.profile?student.profile:'Add comments about hobbies, personality, family, plans, etc'} required/>
             </div>
             <label>{feedback}</label>
             <button type="submit" class="solid-first">Profile</button>

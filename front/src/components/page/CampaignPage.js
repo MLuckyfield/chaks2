@@ -35,6 +35,7 @@ const CampaignPage = () => {
             </div>
         </div>
       </div>
+      <div class='row'><h1 class='col'>REFERRAL</h1></div>
       <div class='row'>
         <div class='col slim'>
           <ol>
