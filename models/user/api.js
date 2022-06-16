@@ -49,8 +49,6 @@ const request = require('request')
               }
           }, function(error, response, body){
             console.log('mail service complete')
-            console.log(response)
-            console.log(body)
                 if (error) {
                   console.log('user saved, not loaded to mailchimp: '+req.email)
                   return res.status(500).json({
