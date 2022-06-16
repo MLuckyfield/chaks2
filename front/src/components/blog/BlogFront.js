@@ -60,7 +60,7 @@ const BlogFront = () => {
             <div class='row'>
             {comments ? (comments.map(function(item, i){
                 if(i!=0){
-                  if(i!=0 && i%3==0){return (
+                  if(i%3==0){return (
                     <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
                       <h1>{item.title}</h1>
                       <h3>{item.preview.slice(0,20)}</h3>
@@ -74,7 +74,7 @@ const BlogFront = () => {
                         </div>
                       </div>
                   )
-                }  else{return <div></div>}                
+                }  else{return <div></div>}
               })): 'Loading...'}
               </div>
         </div>
