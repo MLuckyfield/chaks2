@@ -79,7 +79,26 @@ const Front = ()=>{
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     'このような悩みありませんか？高校や大学で英語を学んでも、高い英会話スクールに通っていたとしても、英語を話すことに自信を持つのは難しいでしょう。また、英語の読み書きには自信があっても、リスニングとスピーキングが苦手な方が多いかと思います。きっとそれは、気軽に楽しく英語を話す機会が少ないからなのではないでしょうか？語学交流アプリなどを利用して外国人の友人を作り、英語を話す機会を作ったとしても、きっと彼らはあなたの英語の間違いを１つ１つ丁寧に指摘や修正はしてくれないでしょう。'
       ])
-
+      const [items, setItems] = useState([{
+        picture: banner,
+        text:'INTERNATIONAL BEER PARTY!',
+        subtext:'Japanese X English 6/24',
+        link:'/events',
+        active:true
+      },{
+        picture: banner,
+        text:'NEW CAMPAIGNS',
+        subtext:'6/17~9/1',
+        link:'/campaigns',
+        active:false
+      },
+      {
+        picture: banner,
+        text:'BLOG',
+        subtext:'Free!',
+        link:'/system',
+        active:false
+      }]);
       const email = useRef('');
       const first = useRef('');
       const last = useRef('');
