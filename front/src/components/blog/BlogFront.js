@@ -62,7 +62,7 @@ const BlogFront = () => {
                   if(i!=0 && i%3==0){return (
                     <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
                       <h1>{item.title}</h1>
-                      <h3>{item.preview.slice(0,20}</h3>
+                      <h3>{item.preview.slice(0,20)}</h3>
                     </div>
                   )}
                   return (
