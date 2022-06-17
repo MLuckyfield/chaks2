@@ -44,7 +44,6 @@ const BlogFront = () => {
 //<Carousel items={items}/>
   return(
     <div>
-    <Carousel items={items}/>
       <div class='master-row'>
         <h1>BLOG</h1>
         <div class='col'>

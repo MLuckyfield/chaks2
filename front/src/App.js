@@ -129,32 +129,9 @@ const Front = ()=>{
           });
       }
 
-      // <nav role="navigation">
-      //   <div id="menuToggle">
-      //     <input type="checkbox" />
-      //     <span></span>
-      //     <span></span>
-      //     <span></span>
-      //       <ul id="menu">
-      //         <li><img class='avatar' id='nav-logo' src={logo} alt="Avatar"></img><div class='logo-basic'>CHATSHACK</div></li>
-      //         <li><a href="#intro">Intro</a></li>
-      //         <li><a href="#concept">Concept</a></li>
-      //         <li><a href="#merit">Merit</a></li>
-      //         <li><a href="#team">Team</a></li>
-      //       </ul>
-      //   </div>
-      // </nav>
       return (
-        // <Router>
-        //     <Route path="/" component={Navbar}/>
-        //     <Route path="/signup" component={Signup}/>
-        //     <AuthDataProvider>
-        //       <SentryRoute path="/login" access='user' success={AdminDash} fail={Login}/>
-        //       <SentryRoute path="/dash" access='user' success={AdminDash} fail={Login}/>
-        //     </AuthDataProvider>
-        // </Router>
         <div>
-            
+          <Carousel items={items}/>
               <div id='intro' class='master-row'>
               <div class='row '>
                 <div class='col slim center'>
