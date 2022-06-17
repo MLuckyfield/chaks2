@@ -85,9 +85,7 @@ const makeComment = (item)=>{
                   {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
                   (<th><button onClick={()=>makeComment(item)}>Go</button></th>):''}
                   </tr>
-
                 )
-
                   })): 'No data to display'}
         </table>
       </div>
