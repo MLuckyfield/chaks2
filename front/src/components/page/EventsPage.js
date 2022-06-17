@@ -62,7 +62,7 @@ const EventsPage = () => {
                     <div class='col'>
                         LADIES NIGHT! Stay tuned for more information!
                         <div class='fixed-row'>
-                          <div class='col' style={{backgroundImage: 'url('+girlsnight+')'}}></div>
+                          <img class='avatar' src={girlsnight}></img>
                           <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
 
                             <h3>Coming Soon!</h3>
