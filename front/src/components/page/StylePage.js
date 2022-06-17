@@ -8,15 +8,14 @@ const CampaignPage = () => {
   return(
     <div>
       <div id='concept'  class='master-row dark'>
-        <div class='row'><h1 class='col'>THEME</h1></div>
+        <div class='row'><h1 class='col'>MISSION</h1></div>
         <div class='row'>
             <div class='col slim'>
-              英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く
+              英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く。<br/>英会話を楽しく、身近で、達成感のあるものにすること
             </div>
         </div>
       </div>
-      <div class='row mid'><h1 class='col'>WHAT MAKES US DIFFERENT </h1></div>
-      <div class='row'>
+      <div class='col mid'><h1 class='col'>WHAT MAKES US DIFFERENT </h1>
         <div class='col slim'>
           <ol>
             <li>発音、リスニング、会話等伸ばしたいものを伸ばせる幅広いオリジナルエクササイズメニュー</li>
@@ -35,15 +34,7 @@ const CampaignPage = () => {
             <li>たまに大きな努力をするより、継続している方が良い。</li>
           </ol>
         </div>
-      </div>
-      <div id='concept'  class='master-row dark'>
-        <div class='row'><h1 class='col'>MISSION</h1></div>
-        <div class='row'>
-            <div class='col slim'>
-              英会話を楽しく、身近で、達成感のあるものにすること
-            </div>
-        </div>
-      </div>
+      </div>      
       <AccessDisplay/>
     </div>
 )

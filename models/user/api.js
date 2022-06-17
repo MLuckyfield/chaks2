@@ -134,15 +134,12 @@ const request = require('request')
     })
     //Start and End session
     router.post('/clock', async (req, res) => {
-      console.log(req.body)
-      console.log(req.body.filter)
-
-      console.log(req.body.data)
+      req=req.body.params
       let session = {}
       //1. If session started
-      if (req.body.data==true){
+      if (req.data){
         session['start'] = new Date()
-        await User.findOne(req.body.filter)
+        await User.findOne(req.filter)
           .then((user)=>{
             user.statistics.push(session)
             User.findOneAndUpdate(user,{statistics:user.statistics})
@@ -162,8 +159,8 @@ const request = require('request')
       }
       else{
         //2. if session ended
-        console.log('considered false: '+req.body.data)
-        await User.findOne(req.body.filter)
+        console.log('considered false: '+req.data)
+        await User.findOne(req.filter)
           .then((user)=>{
             user.statistics[user.statistics.length].end = new Date()
             User.findOneAndUpdate(user,{statistics:user.statistics})
