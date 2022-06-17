@@ -154,7 +154,7 @@ const Front = ()=>{
         //     </AuthDataProvider>
         // </Router>
         <div>
-            <Carousel items={items}/>
+            
               <div id='intro' class='master-row'>
               <div class='row '>
                 <div class='col slim center'>
