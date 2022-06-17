@@ -159,7 +159,7 @@ const request = require('request')
       }
       else{
         //2. if session ended
-        console.log('considered false: '+req.body.date)
+        console.log('considered false: '+req.body.data)
         await User.findOne(req.body.filter)
           .then((user)=>{
             user.statistics[user.statistics.length].end = new Date()
