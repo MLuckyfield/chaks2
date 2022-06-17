@@ -87,7 +87,7 @@ const Front = ()=>{
       const [items, setItems] = useState([{
         picture: banner,
         text:'イベント',
-        subtext:'国際交流パーティーやLadies night英会話などの最新情報!',
+        subtext:'国際交流パーティーやLADIES NIGHT英会話などの最新情報!',
         link:'/events',
         active:true
       },{
