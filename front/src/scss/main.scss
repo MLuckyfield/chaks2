@@ -31,6 +31,13 @@ body{
 .preview{
   text-align: center;
 }
+ul .normal{
+  list-style-type: circle;
+  overflow: auto;
+  li{
+    float:left;
+  }
+}
 @media (max-width:800px){
   .blog_thumbnail{
     .overlay{
