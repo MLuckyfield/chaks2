@@ -283,7 +283,6 @@ const Front = ()=>{
                 </div>
             </div>
           </div>
-          </div>
       )
     }
     const Accordion =()=>{
