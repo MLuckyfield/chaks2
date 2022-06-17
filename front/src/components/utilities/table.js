@@ -16,7 +16,7 @@ const Table = (props)=> {
             console.log(res.data.data.reverse())
             setData(res.data.data);
           })
-        .catch(error => console.log("error"+error.response.data.message))
+        .catch(error => console.log("error"+error))
     }
 
   },[])
@@ -25,7 +25,7 @@ const clockin=(item,status)=>{
     .then((res) => {
         setInClass(status)
       })
-    .catch(error => console.log("error"+error.response.data.message))
+    .catch(error => console.log("error"+error))
 }
 const makeComment = (item)=>{
     localStorage.setItem('student',JSON.stringify(item))
@@ -75,6 +75,9 @@ const makeComment = (item)=>{
                 <tr>
                   {Object.keys(item).sort().map((key, y) => {
                     if(key!='_id'&&key!='email'&&key!='profile'){
+                      if(key=='statistics'){
+                        
+                      }
                       return <td>{item[key]}</td>
                     }else{return ''}
 
