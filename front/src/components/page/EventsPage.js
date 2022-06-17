@@ -1,4 +1,6 @@
 import banner from '../../banner.jpg'
+import girlsnight from '../../event_girlsnight.jpg'
+
 import AccessDisplay from '../nav/AccessDisplay'
 
 
@@ -58,7 +60,14 @@ const EventsPage = () => {
                 <div class='col_up slim'>
                     <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
                     <div class='col'>
-                    LADIES NIGHT! Stay tuned for more information!
+                        LADIES NIGHT! Stay tuned for more information!
+                        <div class='fixed-row'>
+                          <div class='col' style={{backgroundImage: 'url('+girlsnight+')'}}></div>
+                          <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
+                            <h1>{item.title}</h1>
+                            <h3>{item.preview.slice(0,20)}</h3>
+                          </div>
+                        </div>
                     </div>
                 </div>
           </div>
