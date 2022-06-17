@@ -159,6 +159,7 @@ const request = require('request')
       }
       else{
         //2. if session ended
+        console.log('considered false: '+req.body.date)
         await User.findOne(req.body.filter)
           .then((user)=>{
             user.statistics[user.statistics.length].end = new Date()
@@ -171,7 +172,7 @@ const request = require('request')
                   })
                   .catch((err)=>{
                     return res.status(500).json({
-                      message: `User failed to update: ${err}`,
+                      message: `Could not find user: ${err}`,
                       success: false
                     });
                   })

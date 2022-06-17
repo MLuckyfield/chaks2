@@ -16,7 +16,7 @@ const Table = (props)=> {
             console.log(res.data.data.reverse())
             setData(res.data.data);
           })
-        .catch(error => console.log("error"+error))
+        .catch(error => console.log("error"+error.response.data.message))
     }
 
   },[])
@@ -72,7 +72,7 @@ const makeComment = (item)=>{
               }
               //console.log('item is: '+JSON.stringify(item.slice(1)))
               return (
-                <tr onClick={()=>makeComment(item)}>
+                <tr>
                   {Object.keys(item).sort().map((key, y) => {
                     if(key!='_id'&&key!='email'&&key!='profile'){
                       return <td>{item[key]}</td>
