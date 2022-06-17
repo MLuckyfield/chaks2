@@ -1,7 +1,7 @@
 $size-width: 100vw;
 $size-height: 65vh;
 .carousel_button{
-  width: 30%;
+  width: 10%;
   height:  40px;
   background-color: rgba(238,188,33,1) !important;
   color:white !important;
@@ -51,6 +51,7 @@ $size-height: 65vh;
   // .carousel-wrapper{margin-top:auto;}
   .carousel_button{
     font-size: 0.4em !important;
+    width:30%;
   }
   .carousel-container{
     height:auto !important;
