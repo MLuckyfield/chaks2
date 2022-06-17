@@ -64,8 +64,8 @@ const EventsPage = () => {
                         <div class='fixed-row'>
                           <div class='col' style={{backgroundImage: 'url('+girlsnight+')'}}></div>
                           <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
-                            <h1>{item.title}</h1>
-                            <h3>{item.preview.slice(0,20)}</h3>
+
+                            <h3>Coming Soon!</h3>
                           </div>
                         </div>
                     </div>
