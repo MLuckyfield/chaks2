@@ -57,7 +57,7 @@ const makeComment = (item)=>{
                       })}
                       <th></th>
                     </tr>
-                    <tr onClick={()=>makeComment(item)}>
+                    <tr>
                       {Object.keys(item).sort().map((key, y) => {
                         if(key!='_id'&&key!='email'&&key!='profile'){
                           return <td>{item[key]}</td>
@@ -65,6 +65,8 @@ const makeComment = (item)=>{
                       })}
                       {JSON.parse(localStorage.getItem('user')).role=='manager'?
                       (<th><button onClick={clockin(item._id,true)}>{inClass?'End':'Start'}</button></th>):''}
+                      {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
+                      (<th><button onClick={()=>makeComment(item)}>Go</button></th>):''}
                       </tr>
                     </span>
                 )
@@ -80,6 +82,8 @@ const makeComment = (item)=>{
                   })}
                   {JSON.parse(localStorage.getItem('user')).role=='manager'?
                   (<th><button onClick={clockin(item._id,true)}>{inClass?'End':'Start'}</button></th>):''}
+                  {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
+                  (<th><button onClick={()=>makeComment(item)}>Go</button></th>):''}
                   </tr>
 
                 )
