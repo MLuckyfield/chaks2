@@ -32,7 +32,7 @@ $size-height: 65vh;
 .carousel {
   display: flex;
   width: $size-width * 3;
-  animation: sliding 9s infinite;
+  animation: sliding 6s infinite;
   vertical-align: middle;
   .col{
     height:auto;
