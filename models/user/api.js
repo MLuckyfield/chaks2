@@ -117,8 +117,7 @@ const request = require('request')
             }
         })
 
-    //Update
-    router.post('/update', async (req, res) => {
+    router.post('/update', async (req,res)=>{
       await User.findOneAndUpdate(req.body.filter,req.body.data)
           .then(()=>{
             return res.status(201).json({
@@ -132,7 +131,54 @@ const request = require('request')
               success: false
             });
           })
-        });
+    })
+    //Start and End session
+    router.post('/clock', async (req, res) => {
+      let session = {}
+      //1. If session started
+      if (req.body.data){
+        session['start'] = new Date()
+        await User.findOne(req.body.filter)
+          .then((user)=>{
+            user.statistics.push(session)
+            await User.findOneAndUpdate(user,{statistics:user.statistics})
+                  .then(()=>{
+                    return res.status(201).json({
+                      message: 'User update',
+                      success: true
+                    });
+                  })
+                  .catch((err)=>{
+                    return res.status(500).json({
+                      message: `User failed to update: ${err}`,
+                      success: false
+                    });
+                  })
+          })
+      }
+      else{
+        //2. if session ended
+        await User.findOne(req.body.filter)
+          .then((user)=>{
+            user.statistics[user.statistics.length].end = new Date()
+            await User.findOneAndUpdate(user,{statistics:user.statistics})
+                  .then(()=>{
+                    return res.status(201).json({
+                      message: 'User update',
+                      success: true
+                    });
+                  })
+                  .catch((err)=>{
+                    return res.status(500).json({
+                      message: `User failed to update: ${err}`,
+                      success: false
+                    });
+                  })
+          })
+      }
+      //2. If session ended
+
+    });
 
     //Get
     router.get('/all', auth.auth, auth.permission(['teacher','manager']), async (req, res) => {

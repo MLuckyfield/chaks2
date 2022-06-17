@@ -21,7 +21,7 @@ const Table = (props)=> {
 
   },[])
 const clockin=(item,status)=>{
-  axios.post('/user/update', {params:{filter:item,data:status}})
+  axios.post('/user/clock', {params:{filter:{_id:item},data:status}})
     .then((res) => {
         setInClass(status)
       })
@@ -64,7 +64,7 @@ const makeComment = (item)=>{
                         }else{return ''}
                       })}
                       {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                      (inClass?<th><button onClick={clockin(item._id,true)}>Start</button></th>:<div>End</div>):''}
+                      (<th><button onClick={clockin(item._id,true)}>{inClass?'End':'Start'}</button></th>):''}
                       </tr>
                     </span>
                 )
@@ -79,7 +79,7 @@ const makeComment = (item)=>{
 
                   })}
                   {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                  (inClass?<th><button onClick={clockin(item._id,true)}>Start</button></th>:<div>End</div>):''}
+                  (<th><button onClick={clockin(item._id,true)}>{inClass?'End':'Start'}</button></th>):''}
                   </tr>
 
                 )
