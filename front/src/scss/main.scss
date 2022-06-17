@@ -28,6 +28,11 @@ body{
   cursor: text;
 
 }
+.preview{
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
 @media (max-width:800px){
   .blog_thumbnail{
     .overlay{
@@ -35,7 +40,7 @@ body{
     }
   }
   .preview{
-    font-size: 0.5em; 
+    font-size: 0.5em;
   }
 }
 .blog_thumbnail{
@@ -132,7 +137,7 @@ h1, h2, h3{
   display: inline-flex;
 }
 .master-row{
-  padding-top:10%;
+  // padding-top:10%;
   margin:0;
   width:100%;
   display: flex;

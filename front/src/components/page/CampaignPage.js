@@ -14,7 +14,7 @@ const CampaignPage = () => {
               <ol>
                 <li>CHATSHACKのSNSをフォロー</li>
                 <li>HPにてメールアドレスを登録</li>
-                <li>間無制限のFREEトライアル！</li>
+                <li>時間無制限のFREEトライアル！</li>
                 ※飲食物の注文は別途費用が掛かります
                 ※１回のみ利用可能
               </ol>
