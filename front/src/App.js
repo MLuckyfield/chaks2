@@ -33,7 +33,6 @@ import shunsuke from './shunsuke.jpg'
 import matt from './matt.jpg'
 import nerea from './nerea.jpg'
 import sonja from './sonja.jpg'
-import party from './event_party.jpg'
 import blog_header from './blog_header.jpg'
 import campaign_header from './campaign_header.jpg'
 
@@ -91,7 +90,7 @@ const Front = ()=>{
     'このような悩みありませんか？高校や大学で英語を学んでも、高い英会話スクールに通っていたとしても、英語を話すことに自信を持つのは難しいでしょう。また、英語の読み書きには自信があっても、リスニングとスピーキングが苦手な方が多いかと思います。きっとそれは、気軽に楽しく英語を話す機会が少ないからなのではないでしょうか？語学交流アプリなどを利用して外国人の友人を作り、英語を話す機会を作ったとしても、きっと彼らはあなたの英語の間違いを１つ１つ丁寧に指摘や修正はしてくれないでしょう。'
       ])
       const [items, setItems] = useState([{
-        picture: party,
+        picture: banner,
         text:'イベント',
         subtext:'国際交流パーティーやLADIES NIGHT英会話などの最新情報!',
         link:'/events',

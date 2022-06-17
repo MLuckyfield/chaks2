@@ -1,5 +1,5 @@
-import banner from '../../banner.jpg'
 import girlsnight from '../../event_girlsnight.jpg'
+import party from '../../event_party.jpg'
 
 import AccessDisplay from '../nav/AccessDisplay'
 
@@ -9,7 +9,7 @@ const EventsPage = () => {
 
   return(
     <div>
-      <div id='header' class='transparent' style={{backgroundImage: 'url('+banner+')'}}>
+      <div id='header' class='transparent' style={{backgroundImage: 'url('+party+')'}}>
             <div class='overlay'>
                 <div class='row'>
                   <div class='col'>
