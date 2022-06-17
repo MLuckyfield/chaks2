@@ -35,7 +35,7 @@ body{
   list-style-type: circle;
   overflow: auto;
   li{
-    float:left;
+    float: left !important;
   }
 }
 @media (max-width:800px){
