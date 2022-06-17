@@ -7,44 +7,41 @@ const CampaignPage = () => {
 
   return(
     <div>
-      <div id='concept'  class='master-row' style={{backgroundColor:'#EEBC21',color:'white',paddingTop:'10%'}}>
-        <div class='row'><h1 class='col'>1. 初回無料！！</h1></div>
-        <div class='row'>
-            <div class='col slim'>
-              <ol>
-                <li>CHATSHACKのSNSをフォロー</li>
-                <li>HPにてメールアドレスを登録</li>
-                <li>時間無制限のFREEトライアル！</li>
-                ※飲食物の注文は別途費用が掛かります
-                ※１回のみ利用可能
-              </ol>
-            </div>
-        </div>
-      </div>
       <div id='concept'  class='master-row dark'>
-        <div class='row'><h1 class='col'>2. INSTAGRAM</h1></div>
+        <div class='row'><h1 class='col'>THEME</h1></div>
         <div class='row'>
             <div class='col slim'>
-              <ol>
-                <li>@chatshackをフォロー</li>
-                <li>@chatshackのタグを付けて投稿</li>
-                <li>お好きなドリンクを１杯プレゼント！</li>
-                ※クラフトビールはSサイズに限ります
-                ※１回のみ利用可能
-              </ol>
+              英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く
             </div>
         </div>
       </div>
-      <div class='row'><h1 class='col'>3. REFERRAL</h1></div>
+      <div class='row mid'><h1 class='col'>WHAT MAKES US DIFFERENT </h1></div>
       <div class='row'>
         <div class='col slim'>
           <ol>
-            <li>入店時に友人と来たことを知らせる</li>
-            <li>次回の注文時に使えるカードをもらう</li>
-            <li>カードとお好きなドリンクを交換！</li>
-            ※クラフトビールはSサイズに限ります
-　　         ※１回のみ利用可能
+            <li>発音、リスニング、会話等伸ばしたいものを伸ばせる幅広いオリジナルエクササイズメニュー</li>
+            <li>オリジナルのレッスンスタイルで、気になる文法や表現を分かりやすく楽しく学べます！ホワイトボードを用いて文法や表現など細かく講師が説明します！</li>
+            <li>いつ来て、何を学んだのかオンラインで分かるので、成長を可視化できる！</li>
+            <li>オンラインで先生からフィードバックがもらえる！毎回レッスン後は担当講師からのフィードバックがもらえます！</li>
           </ol>
+        </div>
+      </div>
+      <div class='row'><h1 class='col'>私たちの英語学習に関する考え</h1></div>
+      <div class='row'>
+        <div class='col slim'>
+          <ol>
+            <li>新しいことを学ぶには、反復と挑戦が重要である。</li>
+            <li>速く雑に学ぶより、遅くて正確に学ぶの方がよい。</li>
+            <li>たまに大きな努力をするより、継続している方が良い。</li>
+          </ol>
+        </div>
+      </div>
+      <div id='concept'  class='master-row dark'>
+        <div class='row'><h1 class='col'>MISSION</h1></div>
+        <div class='row'>
+            <div class='col slim'>
+              英会話を楽しく、身近で、達成感のあるものにすること
+            </div>
         </div>
       </div>
       <AccessDisplay/>
