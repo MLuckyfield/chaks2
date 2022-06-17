@@ -177,8 +177,6 @@ const request = require('request')
                   })
           })
       }
-      //2. If session ended
-
     });
 
     //Get

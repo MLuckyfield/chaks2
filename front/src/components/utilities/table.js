@@ -32,7 +32,6 @@ const makeComment = (item)=>{
     window.location='/student';
     // setTarget(item)
     // console.log(target)
-
 }
   return (
     <div class='master-row'>
@@ -66,7 +65,7 @@ const makeComment = (item)=>{
                       {JSON.parse(localStorage.getItem('user')).role=='manager'?
                       (<th><button onClick={()=>clockin(item._id,true)}>{inClass?'End':'Start'}</button></th>):''}
                       {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
-                      (<th><button onClick={()=>makeComment(item)}>Go</button></th>):''}
+                      (<th><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></th>):''}
                       </tr>
                     </span>
                 )
