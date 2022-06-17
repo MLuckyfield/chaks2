@@ -25,6 +25,8 @@ import microsoft_clarity from './components/microsoft_clarity'
 //import pages
 import EventsPage from './components/page/EventsPage'
 import CampaignPage from './components/page/CampaignPage'
+import StylePage from './components/page/StylePage'
+
 
 //import styles
 import './scss/main.scss'
@@ -66,7 +68,7 @@ const App = () => {
           <Route path="/signup" component={Signup}/>
           <Route path="/events" component={EventsPage}/>
           <Route path="/campaigns" component={CampaignPage}/>
-          <Route path="/system" component={Signup}/>
+          <Route path="/about" component={StylePage}/>
           <Route exact path="/blog" component={BlogFront}/>
           <Route exact path="/blog/*" component={BlogDisplay}/>
           <AuthDataProvider>
@@ -138,8 +140,7 @@ const Front = ()=>{
         <div>
           <Carousel items={items}/>
               <div id='intro' class='master-row'>
-              <div class='row '>
-                <div class='col slim center'>
+                <div class='col'>
                     <div class='col slim center'>
                     <p/>こんな悩みはありませんか？
                     <h2>英語を話す自信がない, 正しい発音が分からない, 英語を話す機会が欲しい</h2>

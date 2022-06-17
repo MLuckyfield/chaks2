@@ -25,7 +25,7 @@ const clockin=(item,status)=>{
     .then((res) => {
         setInClass(status)
       })
-    .catch(error => console.log("error"+error))
+    .catch(error => console.log("error"+error.response.data.message))
 }
 const makeComment = (item)=>{
     localStorage.setItem('student',JSON.stringify(item))
