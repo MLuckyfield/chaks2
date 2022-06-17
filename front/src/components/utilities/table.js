@@ -63,7 +63,7 @@ const makeComment = (item)=>{
                         }else{return ''}
                       })}
                       {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                      (<th><button onClick={()=>clockin(item._id,true)}>{inClass?'End':'Start'}</button></th>):''}
+                      (<th><button onClick={()=>clockin(item._id,true)} style={inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{inClass?'End':'Start'}</button></th>):''}
                       {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
                       (<th><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></th>):''}
                       </tr>
@@ -80,7 +80,7 @@ const makeComment = (item)=>{
 
                   })}
                   {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                  (<th><button onClick={()=>clockin(item._id,true)}>{inClass?'End':'Start'}</button></th>):''}
+                  (<th><button onClick={()=>clockin(item._id,true)} style={inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{inClass?'End':'Start'}</button></th>):''}
                   {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
                   (<th><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></th>):''}
                   </tr>

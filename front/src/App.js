@@ -153,6 +153,7 @@ const Front = ()=>{
 
 これらはきっと、気軽に楽しく英語を話す機会があれば解決できると私たちは思っています。
 私たちは、そんな場所を提供しています。
+                    
                 </div>
               </div>
               <div id='concept'  class='master-row dark'>
