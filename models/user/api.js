@@ -141,7 +141,7 @@ const request = require('request')
         await User.findOne(req.body.filter)
           .then((user)=>{
             user.statistics.push(session)
-            await User.findOneAndUpdate(user,{statistics:user.statistics})
+            User.findOneAndUpdate(user,{statistics:user.statistics})
                   .then(()=>{
                     return res.status(201).json({
                       message: 'User update',
@@ -161,7 +161,7 @@ const request = require('request')
         await User.findOne(req.body.filter)
           .then((user)=>{
             user.statistics[user.statistics.length].end = new Date()
-            await User.findOneAndUpdate(user,{statistics:user.statistics})
+            User.findOneAndUpdate(user,{statistics:user.statistics})
                   .then(()=>{
                     return res.status(201).json({
                       message: 'User update',
