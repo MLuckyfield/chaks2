@@ -135,6 +135,7 @@ const request = require('request')
     //Start and End session
     router.post('/clock', async (req, res) => {
       console.log(req.body)
+      console.log(req.body.data)
       let session = {}
       //1. If session started
       if (req.body.data==true){
