@@ -48,6 +48,7 @@ const makeComment = (item)=>{
                               return <th>{key}</th>
                             }else{return ''}
                       })}
+                      {JSON.parse(localStorage.getItem('user')).role=='manager'?<th><button>Test</button></th>:''}
                     </tr>
                     <tr onClick={()=>makeComment(item)}>
                       {Object.keys(item).sort().map((key, y) => {
@@ -56,7 +57,7 @@ const makeComment = (item)=>{
                         }else{return ''}
 
                       })}
-                      </tr>
+                      </tr>{JSON.parse(localStorage.getItem('user')).role=='manager'?<th><button>Test</button></th>:''}
                     </span>
                 )
               }
