@@ -137,7 +137,7 @@ const request = require('request')
       console.log(req.body)
       let session = {}
       //1. If session started
-      if (req.body.data){
+      if (req.body.data==true){
         session['start'] = new Date()
         await User.findOne(req.body.filter)
           .then((user)=>{
