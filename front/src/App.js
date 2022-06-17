@@ -86,22 +86,22 @@ const Front = ()=>{
       ])
       const [items, setItems] = useState([{
         picture: banner,
-        text:'INTERNATIONAL BEER PARTY!',
-        subtext:'Japanese X English 6/24',
+        text:'イベント',
+        subtext:'国際交流パーティーやLadies night英会話など今の最新情報!',
         link:'/events',
         active:true
       },{
         picture: banner,
-        text:'NEW CAMPAIGNS',
-        subtext:'6/17~9/1',
+        text:'キャンペーン',
+        subtext:'お得に英会話を楽しめるキャンペーン情報',
         link:'/campaigns',
         active:false
       },
       {
         picture: banner,
-        text:'BLOG',
-        subtext:'Free!',
-        link:'/system',
+        text:'ブログ',
+        subtext:'あなたの英語学習をより効率的にする情報を無料で!',
+        link:'/blog',
         active:false
       }]);
       const email = useRef('');
@@ -154,15 +154,7 @@ const Front = ()=>{
         //     </AuthDataProvider>
         // </Router>
         <div>
-            <div id='header' class='transparent' style={{backgroundImage: 'url('+banner+')'}}>
-                  <div class='overlay'>
-                      <div class='row'>
-                        <div class='col'>
-                          <h1 class='logo-basic'>６月7日にオープン予定！</h1>
-                        </div>
-                      </div>
-                  </div>
-            </div>
+            <Carousel items={items}/>
               <div id='intro' class='master-row'>
               <div class='row '>
                 <div class='col slim center'>
