@@ -87,10 +87,12 @@ const displayable=(key)=>{
                           return <td>{item[key]}</td>
                         }else{return ''}
                       })}
-                      {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                      (<td><button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button></td>):''}
-                      {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
-                      (<td><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>):''}
+                      <td>
+                        {JSON.parse(localStorage.getItem('user')).role=='manager'?
+                        (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
+                        {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
+                        (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
+                      </td>
                       </tr>
                     </span>
                 )
@@ -104,7 +106,7 @@ const displayable=(key)=>{
                         if(item[key]){
                           let counter=0
                           item[key].forEach((part, i) => {
-                            counter+=moment(part.start).diff(moment(part.end), 'hours')
+                            counter+=moment(part.start).diff(moment(part.end), 'minutes')
                           });
                           return <td>{counter}</td>}else{return <td></td>}
                       }
@@ -112,10 +114,12 @@ const displayable=(key)=>{
                     }else{return ''}
 
                   })}
-                  {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                  (<td><button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button></td>):''}
-                  {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
-                  (<td><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>):''}
+                  <td>
+                    {JSON.parse(localStorage.getItem('user')).role=='manager'?
+                    (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
+                    {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
+                    (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
+                  </td>
                   </tr>
                 )
                   })): 'No data to display'}

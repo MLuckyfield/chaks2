@@ -14,7 +14,7 @@ const Comment = () => {
     if(JSON.parse(localStorage.getItem('student')).statistics){
       let counter=0
       JSON.parse(localStorage.getItem('student')).statistics.forEach((item, i) => {
-        counter+=moment(item.start).diff(moment(item.end), 'hours')
+        counter+=moment(item.start).diff(moment(item.end), 'minutes')
       });
       return counter}else{return ''}
   });
