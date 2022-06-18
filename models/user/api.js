@@ -142,12 +142,15 @@ const request = require('request')
 
       //1. If session started
       if (req.data){
+        console.log('creating new session')
         session['start'] = new Date()
         await User.findOne(req.filter)
           .then((user)=>{
+            console.log('found '+user.first)
             user.statistics.push(session)
             User.findOneAndUpdate(user,{statistics:user.statistics})
                   .then(()=>{
+                    console.log('updated')
                     return res.status(201).json({
                       message: 'User update',
                       success: true

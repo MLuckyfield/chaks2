@@ -20,8 +20,8 @@ const Table = (props)=> {
             res.data.data.forEach((item, i) => {
               item['inClass']=false
             });
-
-            setData(res.data.data);
+            console.log(res.data.data)
+            setData(res.data.data.reverse());
           })
         .catch(error => console.log("error"+error))
     }
@@ -31,6 +31,7 @@ const clockin=(item,status)=>{
   axios.post('/user/clock', {params:{filter:{_id:item._id},data:status}})
     .then((res) => {
         item['inClass']=status
+        setData(data)
       })
     .catch(error => console.log("error"+error))
 }
