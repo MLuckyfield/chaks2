@@ -79,7 +79,7 @@ const makeComment = (item)=>{
                         }else{return ''}
                       })}
                       {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                      (<td><button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{inClass?'End':'Start'}</button></td>):''}
+                      (<td><button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button></td>):''}
                       {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
                       (<td><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>):''}
                       </tr>
