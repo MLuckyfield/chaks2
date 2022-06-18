@@ -32,6 +32,7 @@ const clockin=(item,status)=>{
     .then((res) => {
         item['inClass']=status
         setData(data)
+        console.log(data)
       })
     .catch(error => console.log("error"+error))
 }
@@ -104,7 +105,7 @@ const makeComment = (item)=>{
 
                   })}
                   {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                  (<td><button onClick={inClass?()=>clockin(item._id,false):()=>clockin(item._id,true)} style={inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{inClass?'End':'Start'}</button></td>):''}
+                  (<td><button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button></td>):''}
                   {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
                   (<td><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>):''}
                   </tr>
