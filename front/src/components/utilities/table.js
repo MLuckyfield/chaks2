@@ -45,6 +45,11 @@ const makeComment = (item)=>{
     // setTarget(item)
     // console.log(target)
 }
+const displayable=(key)=>{
+  if(key!='_id'&&key!='email'&&key!='profile'&&key!='inClass'){
+    return true
+  }else{return false}
+}
   return (
     <div class='master-row'>
       <h1>{props.name}</h1>
@@ -62,7 +67,7 @@ const makeComment = (item)=>{
                     <span>
                     <tr>
                       {Object.keys(item).sort().map((key, y) => {
-                            if(key!='_id'&&key!='email'&&key!='profile'){
+                            if(displayable(key)){
                               return <th>{key}</th>
                             }else{return ''}
                       })}
@@ -70,7 +75,7 @@ const makeComment = (item)=>{
                     </tr>
                     <tr>
                       {Object.keys(item).sort().map((key, y) => {
-                        if(key!='_id'&&key!='email'&&key!='profile'){
+                        if(displayable(key)){
                           if(key=='statistics'){
                             if(item[key]){
                               let counter=0
@@ -94,7 +99,7 @@ const makeComment = (item)=>{
               return (
                 <tr>
                   {Object.keys(item).sort().map((key, y) => {
-                    if(key!='_id'&&key!='email'&&key!='profile'){
+                    if(displayable(key)){
                       if(key=='statistics'){
                         if(item[key]){
                           let counter=0
