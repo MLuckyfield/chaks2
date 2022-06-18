@@ -137,10 +137,9 @@ const request = require('request')
       // console.log(req)
       req=req.query
       let session = {}
-      console.log(req.data)
+      console.log(typeof req.data)
       console.log(req.data==true)
       console.log(req.data===true)
-
       console.log(req.filter)
 
       //1. If session started
