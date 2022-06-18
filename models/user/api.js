@@ -117,7 +117,7 @@ const request = require('request')
             }
         })
 
-    router.post('/update', async (req,res)=>{
+    router.post('/update', auth.auth, auth.permission(['teacher','manager']), async (req,res)=>{
       await User.findOneAndUpdate(req.body.filter,req.body.data)
           .then(()=>{
             return res.status(201).json({
@@ -133,22 +133,22 @@ const request = require('request')
           })
     })
     //Start and End session
-    router.get('/clock', async (req, res) => {
+    router.get('/clock', auth.auth, auth.permission(['admin','manager']), async (req, res) => {
       // console.log(req)
       req=req.query
       let session = {}
       console.log(req.data)
-      console.log(req.filter._id)
+      console.log(req.filter)
 
       //1. If session started
       if (req.data){
         console.log('creating new session')
         session['start'] = new Date()
-        await User.findById(req.filter._id)
+        await User.findById(req.filter)
           .then((user)=>{
             console.log('found '+user.first)
             user.statistics.push(session)
-            User.findByIdAndUpdate(req.filter._id,{statistics:user.statistics,inClass:true})
+            User.findByIdAndUpdate(req.filter,{statistics:user.statistics,inClass:true})
                   .then((result)=>{
                     console.log('updated')
                     return res.status(201).json({
@@ -168,10 +168,10 @@ const request = require('request')
       else{
         //2. if session ended
         console.log('considered false: '+req.data)
-        await User.findById(req.filter._id)
+        await User.findById(req.filter)
           .then((user)=>{
             user.statistics.sort()[0].end=new Date()
-            User.findByIdAndUpdate(req.filter._id,{statistics:user.statistics,inClass:false})
+            User.findByIdAndUpdate(req.filter,{statistics:user.statistics,inClass:false})
                   .then((result)=>{
                     return res.status(201).json({
                       data:result,

@@ -52,7 +52,6 @@ const Dash = ()=>{
   if (user.role=='user'){
     return(
       <div>
-        <Booking/>
         <StudentComments/>
       </div>
     )

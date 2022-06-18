@@ -25,6 +25,7 @@ const Table = (props)=> {
 
   },[])
 const clockin=(item,status)=>{
+  console.log('will send '+JSON.stringify(item))
   axios.get('/user/clock', {params:{filter:item._id,data:status}})
     .then((res) => {
         // item['inClass']=status
