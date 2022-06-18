@@ -63,7 +63,7 @@ const displayable=(key)=>{
                 return (
                     <span>
                     <tr>
-                      {Object.keys(item).sort().map((key, y) => {
+                      {Object.keys(item).sort().push(Object.keys(item).splice(Object.keys(item).indexOf('inClass'))).map((key, y) => {
                         console.log(key)
                             if(displayable(key)){
                               return <th>{key}</th>
