@@ -134,6 +134,7 @@ const request = require('request')
     })
     //Start and End session
     router.get('/clock', async (req, res) => {
+      console.log(req)
       req=req.query.params
       let session = {}
       console.log(req.data)
