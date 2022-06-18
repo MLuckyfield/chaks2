@@ -150,7 +150,7 @@ const request = require('request')
             user.statistics.push(session)
             User.findByIdAndUpdate(req.filter,{statistics:user.statistics,inClass:true})
                   .then((result)=>{
-                    console.log('updated')
+                    console.log('updated '+JSON.stringify(result))
                     return res.status(201).json({
                       data:result,
                       message: 'User update',

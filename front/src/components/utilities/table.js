@@ -28,7 +28,7 @@ const clockin=(item,status)=>{
   console.log('will send '+JSON.stringify(item))
   axios.get('/user/clock', {params:{filter:item._id,data:status}})
     .then((res) => {
-        // item['inClass']=status
+        console.log(JSON.stringify(res));
         setData(data.map(x=>{
           if(x._id!==res.data.data._id){return x}
           return {...x,inClass:res.data.data.inClass}
@@ -44,7 +44,7 @@ const makeComment = (item)=>{
     // console.log(target)
 }
 const displayable=(key)=>{
-  if(key!='_id'&&key!='email'&&key!='profile'){
+  if(key!='_id'&&key!='email'&&key!='profile'&&key!='statistics'){
     return true
   }else{return false}
 }
@@ -70,6 +70,7 @@ const displayable=(key)=>{
                               return <th>{key}</th>
                             }else{return ''}
                       })}
+                      <th></th>
                     </tr>
                     <tr>
                       {Object.keys(item).sort().map((key, y) => {
