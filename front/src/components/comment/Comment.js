@@ -11,11 +11,12 @@ const Comment = () => {
   const [student, setStudent] = useState(JSON.parse(localStorage.getItem('student')));
   const [author, setAuthor] = useState(JSON.parse(localStorage.getItem('user')));
   const [hours, setHours] = useState(()=>{
-    let counter=0
-    JSON.parse(localStorage.getItem('student')).statistics.forEach((item, i) => {
-      counter+=moment(item.start).diff(moment(item.end), 'hours')
-    });
-    return counter
+    if(JSON.parse(localStorage.getItem('student')).statistics){
+      let counter=0
+      JSON.parse(localStorage.getItem('student')).statistics.forEach((item, i) => {
+        counter+=moment(item.start).diff(moment(item.end), 'hours')
+      });
+      return counter}else{return ''}
   });
 
   const [feedback, setFeedback] = useState();
@@ -46,7 +47,7 @@ const Comment = () => {
                     Summary: {student.profile}<br/>
                     Plan: {student.plan}<br/>
                     Email: {student.email}<br/>
-                    Total Hours: {student.hours}<br/>
+                    Total Hours: {hours}<br/>
                     </div>
                     <div class="form-group">
                       <textarea ref={comment} type="text" class="form-control" placeholder="Comment: make sure to include 1) encouragement (1+ things they did well) 2) key topics you discussed 3) improvement points/English things you explained" required/>
