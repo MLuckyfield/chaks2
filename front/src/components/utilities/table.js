@@ -66,6 +66,14 @@ const makeComment = (item)=>{
                     <tr>
                       {Object.keys(item).sort().map((key, y) => {
                         if(key!='_id'&&key!='email'&&key!='profile'){
+                          if(key=='statistics'){
+                            if(item[key]){
+                              let counter=0
+                              item[key].forEach((part, i) => {
+                                counter+=moment(part.start).diff(moment(part.end), 'hours')
+                              });
+                              return <td>counter</td>}else{return <td></td>}
+                          }
                           return <td>{item[key]}</td>
                         }else{return ''}
                       })}
