@@ -136,6 +136,10 @@ const request = require('request')
     router.post('/clock', async (req, res) => {
       req=req.body.params
       let session = {}
+      console.log(req.data)
+      console.log(req.data==true)
+      console.log(req.data===true)
+
       //1. If session started
       if (req.data){
         session['start'] = new Date()

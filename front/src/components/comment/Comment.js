@@ -57,7 +57,6 @@ const Comment = () => {
                     </div>
                     <label>{feedback}</label>
                     <button type="submit" class="solid-first">Comment</button>
-
                   </form>
                 </div>
 )

@@ -63,9 +63,9 @@ const makeComment = (item)=>{
                         }else{return ''}
                       })}
                       {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                      (<th><button onClick={inClass?()=>clockin(item._id,false):()=>clockin(item._id,true)} style={inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{inClass?'End':'Start'}</button></th>):''}
+                      (<td><button onClick={inClass?()=>clockin(item._id,false):()=>clockin(item._id,true)} style={inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{inClass?'End':'Start'}</button></td>):''}
                       {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
-                      (<th><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></th>):''}
+                      (<td><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>):''}
                       </tr>
                     </span>
                 )
@@ -76,16 +76,16 @@ const makeComment = (item)=>{
                   {Object.keys(item).sort().map((key, y) => {
                     if(key!='_id'&&key!='email'&&key!='profile'){
                       if(key=='statistics'){
-                        
+
                       }
                       return <td>{item[key]}</td>
                     }else{return ''}
 
                   })}
                   {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                  (<th><button onClick={inClass?()=>clockin(item._id,false):()=>clockin(item._id,true)} style={inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{inClass?'End':'Start'}</button></th>):''}
+                  (<td><button onClick={inClass?()=>clockin(item._id,false):()=>clockin(item._id,true)} style={inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{inClass?'End':'Start'}</button></td>):''}
                   {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
-                  (<th><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></th>):''}
+                  (<td><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>):''}
                   </tr>
                 )
                   })): 'No data to display'}
