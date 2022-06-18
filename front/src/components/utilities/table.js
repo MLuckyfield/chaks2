@@ -30,8 +30,11 @@ const Table = (props)=> {
 const clockin=(item,status)=>{
   axios.post('/user/clock', {params:{filter:{_id:item._id},data:status}})
     .then((res) => {
-        item['inClass']=status
-        setData(data)
+        // item['inClass']=status
+        setData(data.map(x=>{
+          if(x._id!==item._id){return x}
+          return {...x,inClass:status}
+        }))
         console.log(data)
       })
     .catch(error => console.log("error"+error))
