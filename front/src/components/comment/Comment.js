@@ -44,10 +44,10 @@ const Comment = () => {
         <form class='login' onSubmit={onSubmit}>
                 <h2>New Comment for {student.first}</h2>
                     <div class='col' style={{background: '1px solid black'}} onClick={()=>{window.location='/update_profile'}}>
-                    Summary: {student.profile}<br/>
-                    Plan: {student.plan}<br/>
-                    Email: {student.email}<br/>
-                    Total Hours: {hours}<br/>
+                    <b>Summary:</b> {student.profile}<br/>
+                    <b>Plan:</b> {student.plan}<br/>
+                    <b>Email:</b> {student.email}<br/>
+                    <b>Total Hours:</b> {hours}<br/>
                     </div>
                     <div class="form-group">
                       <textarea ref={comment} type="text" class="form-control" placeholder="Comment: make sure to include 1) encouragement (1+ things they did well) 2) key topics you discussed 3) improvement points/English things you explained" required/>
