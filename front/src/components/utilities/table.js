@@ -72,7 +72,7 @@ const makeComment = (item)=>{
                               item[key].forEach((part, i) => {
                                 counter+=moment(part.start).diff(moment(part.end), 'hours')
                               });
-                              return <td>counter</td>}else{return <td></td>}
+                              return <td>{counter}</td>}else{return <td></td>}
                           }
                           return <td>{item[key]}</td>
                         }else{return ''}
@@ -96,7 +96,7 @@ const makeComment = (item)=>{
                           item[key].forEach((part, i) => {
                             counter+=moment(part.start).diff(moment(part.end), 'hours')
                           });
-                          return <td>counter</td>}else{return <td></td>}
+                          return <td>{counter}</td>}else{return <td></td>}
                       }
                       return <td>{item[key]}</td>
                     }else{return ''}
