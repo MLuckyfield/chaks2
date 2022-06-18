@@ -44,6 +44,7 @@ const User = mongoose.model('User', new Schema({
   }],
   inClass:{
     type:Boolean,
+    default:false
   }
 },{
   timestamps: true,

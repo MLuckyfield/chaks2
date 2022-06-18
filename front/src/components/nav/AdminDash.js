@@ -62,8 +62,9 @@ const Dash = ()=>{
   }else if (user.role=='manager'){
     return(
       <div>
-        <Popup/>
+
         <Calendar/>
+        <Popup/>
         <StaffTable/>
         <StudentTable/>
       </div>
