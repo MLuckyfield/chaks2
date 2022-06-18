@@ -41,7 +41,10 @@ const User = mongoose.model('User', new Schema({
   statistics:[{
     start:{type:Date},
     end:{type:Date}
-  }]
+  }],
+  inClass:{
+    type:Boolean,
+  }
 },{
   timestamps: true,
 }));

@@ -16,10 +16,9 @@ const Table = (props)=> {
     if(data==null){
       axios.get(props.api, {params:{filter:props.filter,fields:props.fields}})
         .then((res) => {
-            // console.log(res.data.data.reverse())
-            res.data.data.forEach((item, i) => {
-              item['inClass']=false
-            });
+            // res.data.data.forEach((item, i) => {
+            //   item['inClass']=false
+            // });
             console.log(res.data.data)
             setData(res.data.data.reverse());
           })
@@ -28,12 +27,12 @@ const Table = (props)=> {
 
   },[])
 const clockin=(item,status)=>{
-  axios.post('/user/clock', {params:{filter:{_id:item._id},data:status}})
+  axios.get('/user/clock', {params:{filter:{_id:item._id},data:status}})
     .then((res) => {
         // item['inClass']=status
         setData(data.map(x=>{
-          if(x._id!==item._id){return x}
-          return {...x,inClass:status}
+          if(x._id!==res.data.data._id){return x}
+          return {...x,inClass:res.data.data.inClass}
         }))
         console.log(data)
       })
@@ -118,7 +117,7 @@ const displayable=(key)=>{
                     {JSON.parse(localStorage.getItem('user')).role=='manager'?
                     (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
                     {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
-                    (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
+                    (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}><span class='material-icons'>arrow forward</span></button>):''}
                   </td>
                   </tr>
                 )

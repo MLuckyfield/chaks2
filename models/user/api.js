@@ -133,8 +133,8 @@ const request = require('request')
           })
     })
     //Start and End session
-    router.post('/clock', async (req, res) => {
-      req=req.body.params
+    router.get('/clock', async (req, res) => {
+      req=req.query.params
       let session = {}
       console.log(req.data)
       console.log(req.data==true)
@@ -148,10 +148,11 @@ const request = require('request')
           .then((user)=>{
             console.log('found '+user.first)
             user.statistics.push(session)
-            User.findByIdAndUpdate(req.filter._id,{statistics:user.statistics})
-                  .then(()=>{
+            User.findByIdAndUpdate(req.filter._id,{statistics:user.statistics,inClass:true})
+                  .then((result)=>{
                     console.log('updated')
                     return res.status(201).json({
+                      data:result,
                       message: 'User update',
                       success: true
                     });
@@ -170,9 +171,10 @@ const request = require('request')
         await User.findById(req.filter._id)
           .then((user)=>{
             user.statistics.sort()[0].end=new Date()
-            User.findByIdAndUpdate(req.filter._id,{statistics:user.statistics})
-                  .then(()=>{
+            User.findByIdAndUpdate(req.filter._id,{statistics:user.statistics,inClass:false})
+                  .then((result)=>{
                     return res.status(201).json({
+                      data:result,
                       message: 'User update',
                       success: true
                     });
