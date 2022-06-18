@@ -144,11 +144,11 @@ const request = require('request')
       if (req.data){
         console.log('creating new session')
         session['start'] = new Date()
-        await User.findOne(req.filter)
+        await User.findById(req.filter._id)
           .then((user)=>{
             console.log('found '+user.first)
             user.statistics.push(session)
-            User.findOneAndUpdate(user,{statistics:user.statistics})
+            User.findByIdAndUpdate(req.filter._id,{statistics:user.statistics})
                   .then(()=>{
                     console.log('updated')
                     return res.status(201).json({
@@ -167,10 +167,10 @@ const request = require('request')
       else{
         //2. if session ended
         console.log('considered false: '+req.data)
-        await User.findOne(req.filter)
+        await User.findById(req.filter._id)
           .then((user)=>{
             user.statistics[user.statistics.length].end = new Date()
-            User.findOneAndUpdate(user,{statistics:user.statistics})
+            User.findByIdAndUpdate(req.filter._id,{statistics:user.statistics})
                   .then(()=>{
                     return res.status(201).json({
                       message: 'User update',
