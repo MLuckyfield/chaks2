@@ -81,6 +81,7 @@ const displayable=(key)=>{
                               return <td>{counter}</td>}else{return <td></td>}
                           }
                           if(key=='inClass'){
+                            console.log(key+' was triggered')
                             return (
                               <td>
                                 {JSON.parse(localStorage.getItem('user')).role=='manager'?

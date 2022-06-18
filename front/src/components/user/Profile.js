@@ -15,7 +15,7 @@ const Profile = () => {
   //     counter+=moment(item.start).diff(moment(item.end), 'hours')
   //   })
   // });
-  const profile = useRef(student.profile?student.profile:'');
+  const profile = useRef(JSON.parse(localStorage.getItem('student')).profile?JSON.parse(localStorage.getItem('student')).profile:'');
   const [feedback, setFeedback] = useState();
 
   const onSubmit = (e) => {
