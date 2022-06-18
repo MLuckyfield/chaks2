@@ -63,7 +63,7 @@ const displayable=(key)=>{
                 return (
                     <span>
                     <tr>
-                      {Object.keys(item).sort().push(Object.keys(item).splice(Object.keys(item).indexOf('inClass'))).map((key, y) => {
+                      {Object.keys(item).sort().map((key, y) => {
                         console.log(key)
                             if(displayable(key)){
                               return <th>{key}</th>
@@ -81,20 +81,21 @@ const displayable=(key)=>{
                               });
                               return <td>{counter}</td>}else{return <td></td>}
                           }
-                          if(key=='inClass'){
-                            console.log(key+' was triggered')
-                            return (
-                              <td>
-                                {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                                (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
-                                {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
-                                (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
-                              </td>
-                            )
-                          }
+                          // if(key=='inClass'){
+                          //   console.log(key+' was triggered')
+                          //   return (
+                          //
+                          //   )
+                          // }
                           return <td>{item[key]}</td>
                         }else{return ''}
                       })}
+                      <td>
+                        {JSON.parse(localStorage.getItem('user')).role=='manager'?
+                        (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
+                        {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
+                        (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
+                      </td>
                       </tr>
                     </span>
                 )
@@ -112,20 +113,21 @@ const displayable=(key)=>{
                           });
                           return <td>{counter}</td>}else{return <td></td>}
                       }
-                      if(key=='inClass'){
-                        return (
-                          <td>
-                            {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                            (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
-                            {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
-                            (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
-                          </td>
-                        )
-                      }
+                      // if(key=='inClass'){
+                      //   return (
+                      //
+                      //   )
+                      // }
                       return <td>{item[key]}</td>
                     }else{return ''}
 
                   })}
+                  <td>
+                    {JSON.parse(localStorage.getItem('user')).role=='manager'?
+                    (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
+                    {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
+                    (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
+                  </td>
                   </tr>
                 )
                   })): 'No data to display'}
