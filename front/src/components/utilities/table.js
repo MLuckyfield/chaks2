@@ -9,8 +9,6 @@ const Table = (props)=> {
 
   const [target, setTarget] = useState(null);
   const [data, setData] = useState(null);
-  const [message, setMessage] = useState();
-  const [inClass,setInClass] = useState(false)
 
   useEffect(() => {
     if(data==null){
@@ -70,7 +68,6 @@ const displayable=(key)=>{
                               return <th>{key}</th>
                             }else{return ''}
                       })}
-                      <th></th>
                     </tr>
                     <tr>
                       {Object.keys(item).sort().map((key, y) => {
