@@ -27,7 +27,7 @@ const Table = (props)=> {
 
   },[])
 const clockin=(item,status)=>{
-  axios.get('/user/clock', {params:{filter:{_id:item._id},data:status}})
+  axios.get('/user/clock', {params:{filter:item._id,data:status}})
     .then((res) => {
         // item['inClass']=status
         setData(data.map(x=>{
@@ -45,7 +45,7 @@ const makeComment = (item)=>{
     // console.log(target)
 }
 const displayable=(key)=>{
-  if(key!='_id'&&key!='email'&&key!='profile'&&key!='inClass'){
+  if(key!='_id'&&key!='email'&&key!='profile'){
     return true
   }else{return false}
 }
@@ -83,15 +83,19 @@ const displayable=(key)=>{
                               });
                               return <td>{counter}</td>}else{return <td></td>}
                           }
+                          if(key=='inClass'){
+                            return (
+                              <td>
+                                {JSON.parse(localStorage.getItem('user')).role=='manager'?
+                                (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
+                                {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
+                                (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
+                              </td>
+                            )
+                          }
                           return <td>{item[key]}</td>
                         }else{return ''}
                       })}
-                      <td>
-                        {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                        (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
-                        {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
-                        (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
-                      </td>
                       </tr>
                     </span>
                 )
@@ -109,16 +113,20 @@ const displayable=(key)=>{
                           });
                           return <td>{counter}</td>}else{return <td></td>}
                       }
+                      if(key=='inClass'){
+                        return (
+                          <td>
+                            {JSON.parse(localStorage.getItem('user')).role=='manager'?
+                            (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
+                            {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
+                            (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
+                          </td>
+                        )
+                      }
                       return <td>{item[key]}</td>
                     }else{return ''}
 
                   })}
-                  <td>
-                    {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                    (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
-                    {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
-                    (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
-                  </td>
                   </tr>
                 )
                   })): 'No data to display'}
