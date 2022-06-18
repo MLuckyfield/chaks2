@@ -143,7 +143,7 @@ const request = require('request')
       console.log(req.filter)
 
       //1. If session started
-      if (req.data==true){
+      if (req.data=='true'){
         console.log('creating new session')
         session['start'] = new Date()
         await User.findById(req.filter)
