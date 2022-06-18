@@ -12,9 +12,9 @@ const Comment = () => {
   const [author, setAuthor] = useState(JSON.parse(localStorage.getItem('user')));
   const [hours, setHours] = useState(()=>{
     let counter=0
-    JSON.parse(localStorage.getItem('student')).statistics.map(function(item,i){
+    JSON.parse(localStorage.getItem('student')).statistics.forEach((item, i) => {
       counter+=moment(item.start).diff(moment(item.end), 'hours')
-    })
+    });
     return counter
   });
 
