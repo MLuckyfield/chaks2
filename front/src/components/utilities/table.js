@@ -117,7 +117,7 @@ const displayable=(key)=>{
                     {JSON.parse(localStorage.getItem('user')).role=='manager'?
                     (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
                     {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
-                    (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}><span class='material-icons'>arrow forward</span></button>):''}
+                    (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
                   </td>
                   </tr>
                 )
