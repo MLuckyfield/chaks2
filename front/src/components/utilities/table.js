@@ -2,6 +2,9 @@ import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import {Redirect} from 'react-router-dom';
 import StudentComments from "../user/StudentComments";
+import moment from "moment"
+
+
 const Table = (props)=> {
 
   const [target, setTarget] = useState(null);
@@ -13,7 +16,11 @@ const Table = (props)=> {
     if(data==null){
       axios.get(props.api, {params:{filter:props.filter,fields:props.fields}})
         .then((res) => {
-            console.log(res.data.data.reverse())
+            // console.log(res.data.data.reverse())
+            res.data.data.forEach((item, i) => {
+              item['inClass']=false
+            });
+
             setData(res.data.data);
           })
         .catch(error => console.log("error"+error))
@@ -21,9 +28,9 @@ const Table = (props)=> {
 
   },[])
 const clockin=(item,status)=>{
-  axios.post('/user/clock', {params:{filter:{_id:item},data:status}})
+  axios.post('/user/clock', {params:{filter:{_id:item._id},data:status}})
     .then((res) => {
-        setInClass(status)
+        item['inClass']=status
       })
     .catch(error => console.log("error"+error))
 }
@@ -63,7 +70,7 @@ const makeComment = (item)=>{
                         }else{return ''}
                       })}
                       {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                      (<td><button onClick={inClass?()=>clockin(item._id,false):()=>clockin(item._id,true)} style={inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{inClass?'End':'Start'}</button></td>):''}
+                      (<td><button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{inClass?'End':'Start'}</button></td>):''}
                       {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
                       (<td><button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>):''}
                       </tr>
@@ -76,7 +83,12 @@ const makeComment = (item)=>{
                   {Object.keys(item).sort().map((key, y) => {
                     if(key!='_id'&&key!='email'&&key!='profile'){
                       if(key=='statistics'){
-
+                        if(item[key]){
+                          let counter=0
+                          item[key].forEach((part, i) => {
+                            counter+=moment(part.start).diff(moment(part.end), 'hours')
+                          });
+                          return <td>counter</td>}else{return <td></td>}
                       }
                       return <td>{item[key]}</td>
                     }else{return ''}
