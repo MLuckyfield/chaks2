@@ -65,7 +65,7 @@ const displayable=(key)=>{
                     <span>
                     <tr>
                       {Object.keys(item).sort().map((key, y) => {
-                        console.log(key)
+                        // console.log(key)
                             if(displayable(key)){
                               return <th>{key}</th>
                             }else{return ''}

@@ -150,7 +150,7 @@ const request = require('request')
           .then((user)=>{
             console.log('found '+user.first)
             user.statistics.push(session)
-            User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:true}})
+            User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:true}},{new:true})
                   .then((result)=>{
                     console.log('updated '+JSON.stringify(result))
                     return res.status(201).json({
@@ -173,7 +173,7 @@ const request = require('request')
         await User.findById(req.filter)
           .then((user)=>{
             user.statistics.sort()[0].end=new Date()
-            User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:false}})
+            User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:false}},{new:true})
                   .then((result)=>{
                     return res.status(201).json({
                       data:result,
