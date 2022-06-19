@@ -128,13 +128,15 @@ $size-height: 65vh;
 .pop .modal__inner {
   -webkit-transform: translate(-50%, -50%) scale(0.75);
           transform: translate(-50%, -50%) scale(0.75);
-  top: 50%;
+  top: 60%;
   left: 50%;
   width: 50%;
   background: white;
   padding: 30px;
   position: absolute;
   color: black;
+  overflow: scroll;
+  height:80vh;
 }
 @media (max-width: 640px) {
   .pop .modal__inner {
