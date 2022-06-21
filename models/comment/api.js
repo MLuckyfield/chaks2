@@ -20,6 +20,8 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
         Comment.find({student:req.student._id}).then((result)=>{
           console.log(result)
           let mailchimp_hash = encrypt(req.student.email.toLowerCase())
+          console.log(req.student.email)
+          console.log(encrypt(req.student.email))
           if (result.length=1){
             request({
               url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members/'+encrypt+'/tags',
