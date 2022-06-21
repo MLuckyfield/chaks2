@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const auth= require('../../services/authentication');
 const encrypt = require('crypto-js/md5')
 const request = require('request')
-const mailchimp = require("@mailchimp/mailchimp-marketing");
+const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 //Create
 router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
