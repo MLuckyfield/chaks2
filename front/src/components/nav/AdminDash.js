@@ -6,7 +6,6 @@ import Table from '../utilities/table'
 import Booking from '../utilities/booking'
 import Calendar from '../utilities/calendar'
 import Popup from '../utilities/popup'
-
 import Navbar from './Navbar'
 import SecureRoute from './SecureRoute'
 import StudentComments from '../user/StudentComments'
@@ -61,7 +60,7 @@ const Dash = ()=>{
   }else if (user.role=='manager'){
     return(
       <div>
-        <Calendar/>
+        <Booking/>
         <StaffTable/>
         <StudentTable/>
       </div>
