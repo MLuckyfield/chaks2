@@ -10,6 +10,7 @@ const Booking = ()=>{
   const [day, setDay]=useState(new Date())
   const [msg,setMsg] = useState()
   const [bookings, setBookings]=useState()
+  const [available,setAvailable]=useState()
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
 
   const onSubmit=(e)=>{
@@ -32,8 +33,12 @@ const Booking = ()=>{
     }
   }
   const updateView=(e)=>{
-    console.log('activated:')
-    console.log(e)
+    setDay(e)
+    axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
+      .then((res) => {
+          setAvailable(res.data.data.reverse());
+        })
+      .catch(error => console.log("error"+error))
   }
   const prepBooking=(data)=>{
       if(moment(data).format('dddd')=='Monday'){
