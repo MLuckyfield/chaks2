@@ -16,7 +16,7 @@ const Booking = ()=>{
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    console.log(moment(day+' '+appointment.slot))
+    console.log(moment(appointment.slot))
     console.log(appointment.teacher)
     // if(moment(day).format('dddd')=='Monday'){
     //   setMsg(['Monday is a holiday.',false])
@@ -40,7 +40,7 @@ const Booking = ()=>{
     axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
       .then((res) => {
           let schedule = [{
-            slot: moment('07:00').format('','HH:mm'),
+            slot: moment(day).add(7,'hours'),
             teacher:'Canadian'
           }]
           console.log(schedule)
@@ -79,7 +79,7 @@ const Booking = ()=>{
                     <Calendar onChange={updateView} value={day}/>
                     {available?available.map(function(item,i){
                       return <div class='col slim feedback' onClick={(item)=>{setAppointment(item)}}>
-                          <div class=''>{moment(new Date(moment(day).format('MMMM-Do-YYYY'+item.slot))).format('dddd','HH-MM')} {item.teacher}</div>
+                          <div class=''>{item.slot} {item.teacher}</div>
                       </div>
                     }):''}
                   <button onClick={onSubmit} class="solid-first">Reserve!</button>
