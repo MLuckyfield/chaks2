@@ -31,7 +31,7 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
             });
 
 
-              const response = await mailchimp.lists.updateListMemberTags(
+              const response = mailchimp.lists.updateListMemberTags(
                 "cb86e9b6f5",
                 mailchimp_hash,
                 { tags: [{ name: "finished_trial", status: "active" }] }
