@@ -36,17 +36,18 @@ const Booking = ()=>{
     // }
   }
   const updateView=(e)=>{
-    setDay(e)
-    axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
-      .then((res) => {
-          let schedule = [{
-            slot: moment(day).add(7,'hours'),
-            teacher:'Canadian'
-          }]
-          console.log(schedule)
-          setAvailable(schedule);
-        })
-      .catch(error => console.log("error"+error))
+    setDay(e).then(()=>{
+      axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
+        .then((res) => {
+            let schedule = [{
+              slot: moment(day).add(7,'hours'),
+              teacher:'Canadian'
+            }]
+            console.log(schedule)
+            setAvailable(schedule);
+          })
+        .catch(error => console.log("error"+error))
+    })
   }
   const prepBooking=(data)=>{
       if(moment(data).format('dddd')=='Monday'){
@@ -79,7 +80,7 @@ const Booking = ()=>{
                     <Calendar onChange={updateView} value={day}/>
                     {available?available.map(function(item,i){
                       return <div class='col slim feedback' onClick={(item)=>{setAppointment(item)}}>
-                          <div class=''>{item.slot} {item.teacher}</div>
+                          <div class=''>{moment(item.slot).format('MMMM Do, h:mm')} {item.teacher}</div>
                       </div>
                     }):''}
                   <button onClick={onSubmit} class="solid-first">Reserve!</button>

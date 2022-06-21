@@ -62,8 +62,12 @@ const Profile = () => {
               <textarea ref={personal} type="text" class="form-control" required/>
             </div>
             <div class="form-group">
-            <label>Level</label>            
-              <textarea ref={level} type="text" class="form-control" required/>
+            <label>Level</label>
+              <select class='form-control' ref={level}>
+                <option value="volvo">beginner</option>
+                <option value="saab">intermediate</option>
+                <option value="mercedes">advanced</option>
+              </select>
             </div>
             <label>{feedback}</label>
             <button type="submit" class="solid-first">Profile</button>
