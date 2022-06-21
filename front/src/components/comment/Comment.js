@@ -44,7 +44,11 @@ const Comment = () => {
         <form class='login' onSubmit={onSubmit}>
                 <h2>New Comment for {student.first}</h2>
                     <div class='col' style={{background: '1px solid black'}} onClick={()=>{window.location='/update_profile'}}>
-                    <b>Summary:</b> {student.profile}<br/>
+                    <b>Likes:</b> {student.profile.likes}<br/>
+                    <b>Goals:</b> {student.profile.goals}<br/>
+                    <b>Personal:</b> {student.profile.personal}<br/>
+                    <b>Level:</b> {student.profile.level}<br/>
+                    <br/>
                     <b>Plan:</b> {student.plan}<br/>
                     <b>Email:</b> {student.email}<br/>
                     <b>Total Hours:</b> {hours}<br/>

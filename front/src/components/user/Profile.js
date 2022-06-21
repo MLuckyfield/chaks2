@@ -15,7 +15,11 @@ const Profile = () => {
   //     counter+=moment(item.start).diff(moment(item.end), 'hours')
   //   })
   // });
-  const profile = useRef(JSON.parse(localStorage.getItem('student')).profile?JSON.parse(localStorage.getItem('student')).profile:'');
+  const likes = useRef();
+  const goals = useRef();
+  const personal = useRef();
+  const level = useRef();
+
   const [feedback, setFeedback] = useState();
 
   const onSubmit = (e) => {
@@ -23,7 +27,14 @@ const Profile = () => {
     axios.post('/user/update',
       {
         filter: {_id:student._id},
-        data: {profile:profile.current.value},
+        data: {
+            profile:{
+            likes:likes.current.value,
+            goals:goals.current.value,
+            personal:personal.current.value,
+            level:level.current.value,
+          }
+        },
       })
       .then((res) => {
           setFeedback(res.data.message);
@@ -39,7 +50,16 @@ const Profile = () => {
         <form class='login' onSubmit={onSubmit}>
         <h2>{student.first}'s Profile</h2>
             <div class="form-group">
-              <textarea ref={profile} type="text" class="form-control" required/>
+              <textarea ref={likes} type="text" class="form-control" required/>
+            </div>
+            <div class="form-group">
+              <textarea ref={goals} type="text" class="form-control" required/>
+            </div>
+            <div class="form-group">
+              <textarea ref={personal} type="text" class="form-control" required/>
+            </div>
+            <div class="form-group">
+              <textarea ref={level} type="text" class="form-control" required/>
             </div>
             <label>{feedback}</label>
             <button type="submit" class="solid-first">Profile</button>

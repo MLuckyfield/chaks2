@@ -31,7 +31,13 @@ const User = mongoose.model('User', new Schema({
     enum: ['user','teacher','manager','admin']
   },
   profile:{
-    type:String,
+    likes:{type:String},
+    goals:{type:String},
+    personal:{type:String},
+    level:{type:String,
+          enum:['beginner','intermediate','advanced']
+    },
+    details:{type:String}
   },
   plan:{
     type:String,
