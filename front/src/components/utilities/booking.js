@@ -10,30 +10,30 @@ const Booking = ()=>{
   const [day, setDay]=useState(new Date())
   const [msg,setMsg] = useState()
   const [bookings, setBookings]=useState()
+  const [appointment,setAppointment]=useState()
   const [available,setAvailable]=useState()
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    if(moment(day).format('dddd')=='Monday'){
-      setMsg(['Monday is a holiday.',false])
-    }else{
-      axios.post('/booking/new',
-        {
-          student: student,
-          date: day,
-        })
-        .then((res) => {
-            setMsg([res.data.message,res.data.success]);
-            })
-        .catch((err) => {
-          setMsg([err.message,err.success]);
-          // setFeedback(err.response.data.message);
-          });
-    }
-  }
-  const bookSlot=(item)=>{
-      console.log(item.slot,item.teacher)
+    console.log(moment(day+' '+appointment.slot))
+    console.log(appointment.teacher)
+    // if(moment(day).format('dddd')=='Monday'){
+    //   setMsg(['Monday is a holiday.',false])
+    // }else{
+    //   axios.post('/booking/new',
+    //     {
+    //       student: student,
+    //       date: day,
+    //     })
+    //     .then((res) => {
+    //         setMsg([res.data.message,res.data.success]);
+    //         })
+    //     .catch((err) => {
+    //       setMsg([err.message,err.success]);
+    //       // setFeedback(err.response.data.message);
+    //       });
+    // }
   }
   const updateView=(e)=>{
     setDay(e)
@@ -76,7 +76,7 @@ const Booking = ()=>{
                 })): 'No reservations. Why not make one? :)'}
                 {available?available.map(function(item,i){
                   return <div class='col slim feedback'>
-                      <div class='' onClick={(item)=>{bookSlot(item)}}>{moment(item.slot).format('HH-MM')} {item.teacher}</div>
+                      <div class='' onClick={(item)=>{setAppointment(item)}}>{moment(item.slot).format('HH-MM')} {item.teacher}</div>
                   </div>
                 }):''}
                   {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
