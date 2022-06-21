@@ -7,6 +7,10 @@ const Booking = mongoose.model('Booking', new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+  teacher:{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   date: {
     type: Date,
     required: true,
