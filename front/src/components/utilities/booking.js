@@ -74,7 +74,7 @@ const Booking = ()=>{
                   )
                 })): 'No reservations. Why not make one? :)'}
                 {available?available.map(function(item,i){
-                  <div class='col slim feedback'>
+                  return <div class='col slim feedback'>
                       <div class='' onClick={(item)=>{bookSlot(item.slot,item.teacher)}}>{moment(item.slot).format('MM DD @ h:mm a')} {item.teacher}</div>
                   </div>
                 }):''}
