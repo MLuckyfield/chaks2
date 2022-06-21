@@ -172,7 +172,7 @@ const request = require('request')
         console.log('considered false: '+req.data)
         await User.findById(req.filter)
           .then((user)=>{
-            user.statistics.sort()[0].end=new Date()
+            user.statistics.reverse()[0].end=new Date()
             User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:false}},{new:true})
                   .then((result)=>{
                     return res.status(201).json({
