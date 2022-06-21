@@ -43,6 +43,7 @@ const Booking = ()=>{
             slot: moment('7-00','HH-MM'),
             teacher:'Canadian'
           }]
+          console.log(schedule)
           setAvailable(schedule);
         })
       .catch(error => console.log("error"+error))
@@ -75,7 +76,7 @@ const Booking = ()=>{
                 })): 'No reservations. Why not make one? :)'}
                 {available?available.map(function(item,i){
                   return <div class='col slim feedback'>
-                      <div class='' onClick={(item)=>{bookSlot(item)}}>{item.slot} {item.teacher}</div>
+                      <div class='' onClick={(item)=>{bookSlot(item)}}>{moment(item.slot).format('HH-MM')} {item.teacher}</div>
                   </div>
                 }):''}
                   {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
