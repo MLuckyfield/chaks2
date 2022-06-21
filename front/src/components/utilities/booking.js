@@ -36,7 +36,7 @@ const Booking = ()=>{
     // }
   }
   const updateView=(e)=>{
-    setDay(e).then(()=>{
+    setDay(e)
       axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
         .then((res) => {
             let schedule = [{
@@ -47,7 +47,7 @@ const Booking = ()=>{
             setAvailable(schedule);
           })
         .catch(error => console.log("error"+error))
-    })
+
   }
   const prepBooking=(data)=>{
       if(moment(data).format('dddd')=='Monday'){
