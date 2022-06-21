@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import DateTimePicker from 'react-datetime-picker'
 import 'react-calendar/dist/Calendar.css'
+import Calendar from 'react-calendar'
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 
@@ -63,7 +64,7 @@ const Booking = ()=>{
                         <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
                       </div>
                     </form>
-                    <DateTimePicker onChange={prepBooking} value={day} format='MM-dd h:mm' maxDetail='minute' disableClock='true' minDate={new Date()}/>
+                    <Calendar/>
 
                   <button onClick={onSubmit} class="solid-first">Reserve!</button>
 
