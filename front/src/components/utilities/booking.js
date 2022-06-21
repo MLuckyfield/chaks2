@@ -80,10 +80,10 @@ const Booking = ()=>{
                     <Calendar onChange={updateView} value={day}/>
                     {available?available.map(function(item,i){
                       return <div class='col slim feedback' onClick={(item)=>{setAppointment(item)}}>
-                          <div class=''>{moment(item.slot).format('MMMM Do, h:mm')} {item.teacher}</div>
+                          <div class=''>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}</div>
                       </div>
                     }):''}
-                  <button onClick={onSubmit} class="solid-first">Reserve!</button>
+                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
       </div>
   )
