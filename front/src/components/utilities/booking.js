@@ -16,50 +16,58 @@ const Booking = ()=>{
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    console.log(moment(appointment.slot))
+    console.log(appointment.slot)
     console.log(appointment.teacher)
-    // if(moment(day).format('dddd')=='Monday'){
-    //   setMsg(['Monday is a holiday.',false])
-    // }else{
-    //   axios.post('/booking/new',
-    //     {
-    //       student: student,
-    //       date: day,
-    //     })
-    //     .then((res) => {
-    //         setMsg([res.data.message,res.data.success]);
-    //         })
-    //     .catch((err) => {
-    //       setMsg([err.message,err.success]);
-    //       // setFeedback(err.response.data.message);
-    //       });
-    // }
+      // axios.post('/booking/new',
+      //   {
+      //     teacher:appointment.teacher,
+      //     student: student,
+      //     date: appointment.slot,
+      //   })
+      //   .then((res) => {
+      //       setMsg([res.data.message,res.data.success]);
+      //       })
+      //   .catch((err) => {
+      //     setMsg([err.message,err.success]);
+      //     // setFeedback(err.response.data.message);
+      //     });
   }
   const updateView=(e)=>{
-    setDay(e)
-      axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
-        .then((res) => {
-            let schedule = [{
-              slot: moment(e).add(7,'hours'),
-              teacher:'Canadian'
-            },
-            {
-              slot: moment(e).add(7,'hours'),
-              teacher:'Japanese'
-            },
-            {
-              slot: moment(e).add(7,'hours').add(45,'minutes'),
-              teacher:'Canadian'
-            },
-            {
-              slot: moment(e).add(7,'hours').add(45,'minutes'),
-              teacher:'Japanese'
-            }]
-            console.log(schedule)
-            setAvailable(schedule);
-          })
-        .catch(error => console.log("error"+error))
-
+    if(moment(e).format('dddd')=='Monday'){
+      setMsg(['Monday is a holiday.',false])
+    }else{
+      setDay(e)
+        axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
+          .then((res) => {
+              let schedule = [{
+                slot: moment(e).add(7,'hours'),
+                teacher:'Canadian'
+              },
+              {
+                slot: moment(e).add(7,'hours'),
+                teacher:'Japanese'
+              },
+              {
+                slot: moment(e).add(8,'hours'),
+                teacher:'Canadian'
+              },
+              {
+                slot: moment(e).add(8,'hours'),
+                teacher:'Japanese'
+              },
+              {
+                slot: moment(e).add(9,'hours'),
+                teacher:'Canadian'
+              },
+              {
+                slot: moment(e).add(9,'hours'),
+                teacher:'Japanese'
+              }]
+              console.log(schedule)
+              setAvailable(schedule);
+            })
+          .catch(error => console.log("error"+error))
+    }
   }
   const updateAppointment=(item)=>{
     setAppointment(item)

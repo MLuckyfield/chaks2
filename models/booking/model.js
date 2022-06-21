@@ -8,8 +8,7 @@ const Booking = mongoose.model('Booking', new Schema({
     ref: 'User'
   },
   teacher:{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
+    type:String
   },
   date: {
     type: Date,
