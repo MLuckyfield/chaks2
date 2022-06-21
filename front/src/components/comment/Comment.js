@@ -43,7 +43,7 @@ const Comment = () => {
       <div class='row'>
         <form class='login' onSubmit={onSubmit}>
                 <h2>New Comment for {student.first}</h2>
-                    <div class='col' style={{background: '1px solid black'}} onClick={()=>{window.location='/update_profile'}}>
+                  {student.profile?  <div class='col' style={{background: '1px solid black'}} onClick={()=>{window.location='/update_profile'}}>
                     <b>Likes:</b> {student.profile.likes}<br/>
                     <b>Goals:</b> {student.profile.goals}<br/>
                     <b>Personal:</b> {student.profile.personal}<br/>
@@ -52,7 +52,7 @@ const Comment = () => {
                     <b>Plan:</b> {student.plan}<br/>
                     <b>Email:</b> {student.email}<br/>
                     <b>Total Hours:</b> {hours}<br/>
-                    </div>
+                    </div> :''}
                     <div class="form-group">
                       <textarea ref={comment} type="text" class="form-control" placeholder="Comment: make sure to include 1) encouragement (1+ things they did well) 2) key topics you discussed 3) improvement points/English things you explained" required/>
                     </div>
