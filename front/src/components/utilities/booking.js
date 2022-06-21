@@ -40,7 +40,7 @@ const Booking = ()=>{
     axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
       .then((res) => {
           let schedule = [{
-            slot: moment('7-00','HH-MM'),
+            slot: '07:00',
             teacher:'Canadian'
           }]
           console.log(schedule)
@@ -75,8 +75,8 @@ const Booking = ()=>{
                   )
                 })): 'No reservations. Why not make one? :)'}
                 {available?available.map(function(item,i){
-                  return <div class='col slim feedback'>
-                      <div class='' onClick={(item)=>{setAppointment(item)}}>{moment(item.slot).format('HH-MM')} {item.teacher}</div>
+                  return <div class='col slim feedback' onClick={(item)=>{setAppointment(item)}}>
+                      <div class=''>{moment(item.slot).format('HH-MM')} {item.teacher}</div>
                   </div>
                 }):''}
                   {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}

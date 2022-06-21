@@ -51,7 +51,7 @@ const Comment = () => {
                       <br/>
                       <b>Plan:</b> {student.plan}<br/>
                       <b>Email:</b> {student.email}<br/>
-                      <b>Total Hours:</b> {hours}<br/></span>:''}
+                      <b>Total Hours:</b> {hours}<br/></span>:'No profile added! Click here to add'}
                     </div>
                     <div class="form-group">
                       <textarea ref={comment} type="text" class="form-control" placeholder="Comment: make sure to include 1) encouragement (1+ things they did well) 2) key topics you discussed 3) improvement points/English things you explained" required/>
