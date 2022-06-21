@@ -31,6 +31,10 @@ const Booking = ()=>{
           });
     }
   }
+  const updateView=(e)=>{
+    console.log('activated:')
+    console.log(e)
+  }
   const prepBooking=(data)=>{
       if(moment(data).format('dddd')=='Monday'){
         setMsg(['Monday is a holiday.',false])
@@ -63,7 +67,7 @@ const Booking = ()=>{
                         <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
                       </div>
                     </form>
-                    <Calendar onChange={setDay} value={day}/>
+                    <Calendar onChange={updateView} value={day}/>
 
                   <button onClick={onSubmit} class="solid-first">Reserve!</button>
           </div>

@@ -33,7 +33,6 @@ const Admin = () => {
             </Router>
         </div>
       </div>
-
     )
 
 
