@@ -30,13 +30,16 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
               server: 'us9',
             });
 
-
-              const response = mailchimp.lists.updateListMemberTags(
-                "cb86e9b6f5",
-                mailchimp_hash,
-                { tags: [{ name: "finished_trial", status: "active" }] }
-              );
-              console.log(response);
+            const response = mailchimp.lists.updateListMemberTags(
+              "cb86e9b6f5",
+              mailchimp_hash,
+              { tags: [{ name: "finished_trial", status: "active" }] }
+            ).then(()=>{
+              return res.status(201).json({
+                      message: `Success!`,
+                      success: true
+                    });
+            })
 
 
             // request({
