@@ -63,11 +63,9 @@ const Booking = ()=>{
                         <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
                       </div>
                     </form>
-                    <Calendar onChange={setDay} value={day} />
-                    {console.log(day)}
+                    <Calendar onChange={setDay} value={day}/>
 
                   <button onClick={onSubmit} class="solid-first">Reserve!</button>
-
           </div>
       </div>
   )
