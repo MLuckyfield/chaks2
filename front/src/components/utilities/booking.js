@@ -40,8 +40,20 @@ const Booking = ()=>{
       axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
         .then((res) => {
             let schedule = [{
-              slot: moment(day).add(7,'hours'),
+              slot: moment(e).add(7,'hours'),
               teacher:'Canadian'
+            },
+            {
+              slot: moment(e).add(7,'hours'),
+              teacher:'Japanese'
+            },
+            {
+              slot: moment(e).add(7,'hours').add(45,'minutes'),
+              teacher:'Canadian'
+            },
+            {
+              slot: moment(e).add(7,'hours').add(45,'minutes'),
+              teacher:'Japanese'
             }]
             console.log(schedule)
             setAvailable(schedule);
@@ -83,7 +95,7 @@ const Booking = ()=>{
 
                     <Calendar onChange={updateView} value={day} />
                     {available?available.map(function(item,i){
-                      return <div class='col slim feedback' onClick={(item)=>{updateAppointment(item)}}>
+                      return <div class='col slim feedback' onClick={(item)=>{updateAppointment(available[i])}}>
                           <div class=''>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}</div>
                       </div>
                     }):''}
