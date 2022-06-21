@@ -3,6 +3,8 @@ const Comment = require('./model')
 const User = require('../user/model')
 const jwt = require('jsonwebtoken')
 const auth= require('../../services/authentication');
+const encrypt = require('crypto-js/md5')
+
 //Create
 router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
   req = req.body
@@ -13,12 +15,42 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
       student: req.student._id,
       author: req.author._id
   })
-      .then((result)=>{
-        console.log(result)
-        return res.status(201).json({
-          message: 'Feedback uploaded!',
-          success: true
-        });
+      .then(()=>{
+        Comment.find({student:req.student._id}).then((result)=>{
+          console.log(result)
+          let mailchimp_hash = encrypt(req.student.email.toLowerCase())
+          if (result.length=1){
+            request({
+              url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members/'+encrypt+'/tags',
+              json: {
+                'tags':[{'name':'finished_trial'}]
+              },
+              method:'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
+              }
+            },(error,response,body)=>{
+              if (error) {
+                console.log('user saved, not loaded to mailchimp: '+req.email)
+                return res.status(500).json({
+                  message: `comment saved but mailchimp failed: ${err}`,
+                  success: false
+                });
+                } else {
+                  console.log('comment saved, website okay ready')
+                  return res.status(201).json({
+                    message: `Success!`,
+                    success: true
+                  });
+                }
+            })
+          }
+        })
+        // return res.status(201).json({
+        //   message: 'Feedback uploaded!',
+        //   success: true
+        // });
       })
       .catch((err)=>{
         return res.status(500).json({
