@@ -32,11 +32,18 @@ const Booking = ()=>{
           });
     }
   }
+  const bookSlot=(slot,teacher)=>{
+      console.log(slot,teacher)
+  }
   const updateView=(e)=>{
     setDay(e)
     axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
       .then((res) => {
-          setAvailable(res.data.data.reverse());
+          let schedule = [{
+            slot: moment('7-00','HH-MM'),
+            teacher:'Canadian'
+          }]
+          setAvailable(schedule);
         })
       .catch(error => console.log("error"+error))
   }
@@ -66,6 +73,11 @@ const Booking = ()=>{
                     </div>
                   )
                 })): 'No reservations. Why not make one? :)'}
+                {available?available.map(function(item,i){
+                  <div class='col slim feedback'>
+                      <div class='' onClick={(item.slot,item.teacher)=>{bookSlot(item.slot,item.teacher)}}>{moment(item.slot).format('MM DD @ h:mm a')} {item.teacher}</div>
+                  </div>
+                }):''}
                   {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                     <form style={{width:'100%',border:'solid 1px black'}}>
                       <div class='form-group'>
