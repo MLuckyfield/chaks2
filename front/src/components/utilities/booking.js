@@ -25,6 +25,11 @@ const Booking = ()=>{
       date: appointment.slot,
     })
     axios.post('/booking/new',
+    {
+      teacher:appointment.teacher,
+      student: student,
+      date: appointment.slot,
+    }
       )
       .then((res) => {
           setMsg([res.data.message,res.data.success]);
