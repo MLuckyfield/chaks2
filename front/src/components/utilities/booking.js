@@ -36,7 +36,7 @@ const Booking = ()=>{
     // }
   }
   const updateView=(e)=>{
-    setDay(moment(e).format('MMMM Do'))
+    setDay(e)
     axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
       .then((res) => {
           let schedule = [{
@@ -79,7 +79,7 @@ const Booking = ()=>{
                     <Calendar onChange={updateView} value={day}/>
                     {available?available.map(function(item,i){
                       return <div class='col slim feedback' onClick={(item)=>{setAppointment(item)}}>
-                          <div class=''>{moment(day+item.slot).format('dddd','HH-MM')} {item.teacher}</div>
+                          <div class=''>{moment(new Date(moment(day).format('MMMM-Do-YYYY'+item.slot)).format('dddd','HH-MM')} {item.teacher}</div>
                       </div>
                     }):''}
                   <button onClick={onSubmit} class="solid-first">Reserve!</button>
