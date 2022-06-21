@@ -64,9 +64,9 @@ const Profile = () => {
             <div class="form-group">
             <label>Level</label>
               <select class='form-control' ref={level}>
-                <option value="volvo">beginner</option>
-                <option value="saab">intermediate</option>
-                <option value="mercedes">advanced</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
               </select>
             </div>
             <label>{feedback}</label>

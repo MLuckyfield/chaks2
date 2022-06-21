@@ -49,6 +49,10 @@ const Booking = ()=>{
         .catch(error => console.log("error"+error))
 
   }
+  const updateAppointment=(item)=>{
+    setAppointment(item)
+    console.log(item)
+  }
   const prepBooking=(data)=>{
       if(moment(data).format('dddd')=='Monday'){
         setMsg(['Monday is a holiday.',false])
@@ -79,7 +83,7 @@ const Booking = ()=>{
 
                     <Calendar onChange={updateView} value={day}/>
                     {available?available.map(function(item,i){
-                      return <div class='col slim feedback' onClick={(item)=>{setAppointment(item)}}>
+                      return <div class='col slim feedback' onClick={(item)=>{updateAppointment(item)}}>
                           <div class=''>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}</div>
                       </div>
                     }):''}
