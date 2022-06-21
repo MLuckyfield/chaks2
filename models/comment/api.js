@@ -4,6 +4,7 @@ const User = require('../user/model')
 const jwt = require('jsonwebtoken')
 const auth= require('../../services/authentication');
 const encrypt = require('crypto-js/md5')
+const request = require('request')
 
 //Create
 router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
