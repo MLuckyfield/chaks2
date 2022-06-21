@@ -50,15 +50,19 @@ const Profile = () => {
         <form class='login' onSubmit={onSubmit}>
         <h2>{student.first}'s Profile</h2>
             <div class="form-group">
+              <label>Likes</label>
               <textarea ref={likes} type="text" class="form-control" required/>
             </div>
             <div class="form-group">
+            <label>Goals</label>
               <textarea ref={goals} type="text" class="form-control" required/>
             </div>
             <div class="form-group">
+            <label>Personal</label>
               <textarea ref={personal} type="text" class="form-control" required/>
             </div>
             <div class="form-group">
+            <label>Level</label>            
               <textarea ref={level} type="text" class="form-control" required/>
             </div>
             <label>{feedback}</label>

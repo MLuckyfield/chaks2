@@ -36,7 +36,7 @@ const Booking = ()=>{
     // }
   }
   const updateView=(e)=>{
-    setDay(e)
+    setDay(moment(e).format('MMMM Do'))
     axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
       .then((res) => {
           let schedule = [{
