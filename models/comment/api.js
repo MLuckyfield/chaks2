@@ -13,7 +13,8 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
       student: req.student._id,
       author: req.author._id
   })
-      .then(()=>{
+      .then((result)=>{
+        console.log(result)
         return res.status(201).json({
           message: 'Feedback uploaded!',
           success: true
