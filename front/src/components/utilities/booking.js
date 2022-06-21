@@ -32,8 +32,8 @@ const Booking = ()=>{
           });
     }
   }
-  const bookSlot=(slot,teacher)=>{
-      console.log(slot,teacher)
+  const bookSlot=(item)=>{
+      console.log(item.slot,item.teacher)
   }
   const updateView=(e)=>{
     setDay(e)
@@ -75,7 +75,7 @@ const Booking = ()=>{
                 })): 'No reservations. Why not make one? :)'}
                 {available?available.map(function(item,i){
                   return <div class='col slim feedback'>
-                      <div class='' onClick={(item)=>{bookSlot(item.slot,item.teacher)}}>{moment(item.slot).format('MM DD @ h:mm a')} {item.teacher}</div>
+                      <div class='' onClick={(item)=>{bookSlot(item)}}>{item.slot} {item.teacher}</div>
                   </div>
                 }):''}
                   {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
