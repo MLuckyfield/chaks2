@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 const auth= require('../../services/authentication');
 const encrypt = require('crypto-js/md5')
 const request = require('request')
+const mailchimp = require("@mailchimp/mailchimp-marketing");
 
 //Create
 router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
@@ -23,31 +24,46 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
           console.log(req.student.email)
           console.log(encrypt(req.student.email).toString())
           if (result.length=1){
-            request({
-              url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members/'+encrypt+'/tags',
-              json: {
-                'tags':[{'name':'finished_trial'}]
-              },
-              method:'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
-              }
-            },(error,response,body)=>{
-              if (error) {
-                console.log('user saved, not loaded to mailchimp: '+req.email)
-                return res.status(500).json({
-                  message: `comment saved but mailchimp failed: ${err}`,
-                  success: false
-                });
-                } else {
-                  console.log('comment saved, website okay ready')
-                  return res.status(201).json({
-                    message: `Success!`,
-                    success: true
-                  });
-                }
-            })
+
+            mailchimp.setConfig({
+              apiKey: process.env.MAILCHIMP_AUTH,
+              server: 'us9',
+            });
+
+
+              const response = await mailchimp.lists.updateListMemberTags(
+                "cb86e9b6f5",
+                mailchimp_hash,
+                { tags: [{ name: "finished_trial", status: "active" }] }
+              );
+              console.log(response);
+
+
+            // request({
+            //   url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members/'+encrypt+'/tags',
+            //   json: {
+            //     'tags':[{'name':'finished_trial'}]
+            //   },
+            //   method:'POST',
+            //   headers: {
+            //       'Content-Type': 'application/json',
+            //       'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
+            //   }
+            // },(error,response,body)=>{
+            //   if (error) {
+            //     console.log('user saved, not loaded to mailchimp: '+req.email)
+            //     return res.status(500).json({
+            //       message: `comment saved but mailchimp failed: ${err}`,
+            //       success: false
+            //     });
+            //     } else {
+            //       console.log('comment saved, website okay ready')
+            //       return res.status(201).json({
+            //         message: `Success!`,
+            //         success: true
+            //       });
+            //     }
+            // })
           }
         })
         // return res.status(201).json({
