@@ -56,7 +56,6 @@ const Booking = ()=>{
                         <div class=''>{moment(item.date).format('dddd, MMM DD @ h:mm a')}</div>
                     </div>
                   )
-
                 })): 'No reservations. Why not make one? :)'}
                   {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                     <form style={{width:'100%',border:'solid 1px black'}}>
@@ -64,7 +63,8 @@ const Booking = ()=>{
                         <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
                       </div>
                     </form>
-                    <Calendar/>
+                    <Calendar onChange={setDay} value={day} />
+                    {console.log(day)}
 
                   <button onClick={onSubmit} class="solid-first">Reserve!</button>
 
