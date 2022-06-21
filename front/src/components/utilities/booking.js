@@ -19,19 +19,20 @@ const Booking = ()=>{
     console.log(appointment.slot)
     console.log(moment(appointment.slot).format('MMMM Do, h:mm a'))
     console.log(appointment.teacher)
-      // axios.post('/booking/new',
-      //   {
-      //     teacher:appointment.teacher,
-      //     student: student,
-      //     date: appointment.slot,
-      //   })
-      //   .then((res) => {
-      //       setMsg([res.data.message,res.data.success]);
-      //       })
-      //   .catch((err) => {
-      //     setMsg([err.message,err.success]);
-      //     // setFeedback(err.response.data.message);
-      //     });
+    console.log({
+      teacher:appointment.teacher,
+      student: student,
+      date: appointment.slot,
+    })
+    axios.post('/booking/new',
+      )
+      .then((res) => {
+          setMsg([res.data.message,res.data.success]);
+          })
+      .catch((err) => {
+        setMsg([err.message,err.success]);
+        // setFeedback(err.response.data.message);
+        });
   }
   const updateView=(e)=>{
     if(moment(e).format('dddd')=='Monday'){
