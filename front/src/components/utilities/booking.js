@@ -17,6 +17,7 @@ const Booking = ()=>{
   const onSubmit=(e)=>{
     e.preventDefault();
     console.log(appointment.slot)
+    console.log(moment(appointment.slot).format('MMMM Do, h:mm a'))
     console.log(appointment.teacher)
       // axios.post('/booking/new',
       //   {
@@ -63,7 +64,16 @@ const Booking = ()=>{
                 slot: moment(e).add(9,'hours'),
                 teacher:'Japanese'
               }]
-              console.log(schedule)
+              res.data.data.forEach((booking, i) => {
+                  schedule.forEach((slot, y) => {
+                      if (booking.slot==schedule.slot){
+                        if(booking.teacher==schedule.teacher){
+                          schedule.splice(y,1)
+                        }
+                      }
+                  });
+
+              });
               setAvailable(schedule);
             })
           .catch(error => console.log("error"+error))
