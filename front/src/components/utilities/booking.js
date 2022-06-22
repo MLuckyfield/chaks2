@@ -24,6 +24,7 @@ const Booking = ()=>{
     }
       )
       .then((res) => {
+          window.location.refresh()
           setMsg([res.data.message,res.data.success]);
           })
       .catch((err) => {
@@ -35,10 +36,10 @@ const Booking = ()=>{
     if(moment(e).format('dddd')=='Monday'){
       setMsg(['Monday is a holiday.',false])
     }else{
-      setDay(e)
         axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
           .then((res) => {
               console.log('length '+res.data.data.length)
+              console.log(res.data.data)
               let schedule = [{
                 slot: moment(e).add(7,'hours'),
                 teacher:'Canadian'
@@ -87,6 +88,7 @@ const Booking = ()=>{
               setAvailable(schedule);
             })
           .catch(error => console.log("error"+error))
+          setDay(e)
     }
   }
   const updateAppointment=(item)=>{
@@ -121,12 +123,12 @@ const Booking = ()=>{
                 })): 'No reservations. Why not make one? :)'}
                   {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
 
-                    <Calendar onChange={updateView} value={day} />
+                    <Calendar onChange={updateView} value={day} minDate={new Date().setDate(new Date()+1)}/>
                     {available?available.map(function(item,i){
                       return <div class='col slim feedback' onClick={(item)=>{updateAppointment(available[i])}}>
                           <div class=''>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}</div>
                       </div>
-                    }):''}
+                    }):}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
       </div>
