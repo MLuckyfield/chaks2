@@ -69,13 +69,15 @@ const Booking = ()=>{
                       console.log(x)
                       console.log(z)
                       console.log(x==z)
+                      console.log(booking.teacher)
+                      console.log(schedule.teacher)
+                      
                       if (x==z){
                         if(booking.teacher==schedule.teacher){
                           schedule.splice(y,1)
                         }
                       }
                   });
-
               });
               setAvailable(schedule);
             })
