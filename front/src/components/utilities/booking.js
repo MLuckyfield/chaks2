@@ -128,7 +128,7 @@ const Booking = ()=>{
                       return <div class='col slim feedback' onClick={(item)=>{updateAppointment(available[i])}}>
                           <div class=''>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}</div>
                       </div>
-                    }):}
+                    }):'No timeslots available!'}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
       </div>
