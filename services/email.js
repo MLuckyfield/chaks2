@@ -1,7 +1,5 @@
 const User = require('../models/user/model')
-const router = require('express').Router();
 const nodemailer = require('nodemailer');
-const request = require('request')
 const moment = require ('moment')
 
 const sendBooking = (booking)=>{
