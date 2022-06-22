@@ -2,8 +2,9 @@ const User = require('../models/user/model')
 const nodemailer = require('nodemailer');
 const moment = require ('moment')
 
-const sendBooking = (booking)=>{
-
+const sendBooking = (teacher, student, date)=>{
+    console.log('email service starting')
+    console.log(booking)
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -15,8 +16,8 @@ const sendBooking = (booking)=>{
     const mailOptions = {
       from: 'support@chatshack.jp',
       to: 'support@chatshack.jp',
-      subject: 'NEW booking: ' + booking.teacher+': '+moment(booking.date).format('dddd, MM DD @ h:mm a'),
-      text: booking.student.first+' '+booking.student.last
+      subject: 'NEW booking: ' + teacher+': '+moment(date).format('dddd, MM DD @ h:mm a'),
+      text: student.first+' '+student.last
     };
 
     transporter.sendMail(mailOptions, function(error, info){

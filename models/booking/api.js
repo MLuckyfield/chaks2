@@ -15,6 +15,7 @@ router.post('/new', async (req, res) => {
       date: req.date
   })
       .then((result)=>{
+        //use req.teach directly?
         console.log(result)
         email.sendBooking(result)
       })
