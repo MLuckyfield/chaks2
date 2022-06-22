@@ -38,7 +38,7 @@ const Booking = ()=>{
       setDay(e)
         axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
           .then((res) => {
-              console.log(res.data.data.length)
+              console.log('length '+res.data.data.length)
               let schedule = [{
                 slot: moment(e).add(7,'hours'),
                 teacher:'Canadian'
@@ -70,8 +70,8 @@ const Booking = ()=>{
                       console.log(x)
                       console.log(z)
                       console.log(x==z)
-                      console.log(booking.teacher)
-                      console.log(schedule.teacher)
+                      console.log('booking teacher'+booking.teacher)
+                      console.log('schedule teacher'+schedule.teacher)
 
                       if (x==z){
                         if(booking.teacher==schedule.teacher){
