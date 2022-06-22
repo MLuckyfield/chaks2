@@ -65,11 +65,11 @@ const Booking = ()=>{
               res.data.data.forEach((booking, i) => {
                   schedule.forEach((slot, y) => {
                       let x = moment(booking.slot).format('dddd, MMM DD @ h:mm a')
-                      let y = moment(schedule.slot).format('dddd, MMM DD @ h:mm a')
+                      let z = moment(schedule.slot).format('dddd, MMM DD @ h:mm a')
                       console.log(x)
-                      console.log(y)
-                      console.log(x==y)
-                      if (x==y){
+                      console.log(z)
+                      console.log(x==z)
+                      if (x==z){
                         if(booking.teacher==schedule.teacher){
                           schedule.splice(y,1)
                         }
