@@ -72,7 +72,7 @@ const Booking = ()=>{
               }]
               res.data.data.forEach((booking, i) => {
                   schedule.forEach((slot, y) => {
-                      if (booking.slot==schedule.slot){
+                      if (moment(booking.slot).format('dddd, MMM DD @ h:mm a')==moment(schedule.slot).format('dddd, MMM DD @ h:mm a')){
                         if(booking.teacher==schedule.teacher){
                           schedule.splice(y,1)
                         }
@@ -111,7 +111,7 @@ const Booking = ()=>{
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim feedback'>
-                        <div class=''>{moment(item.date).format('dddd, MMM DD @ h:mm a')}</div>
+                        <div class=''>{moment(item.date).format('dddd, MMM DD @ h:mm a')} {item.teacher}</div>
                     </div>
                   )
                 })): 'No reservations. Why not make one? :)'}
