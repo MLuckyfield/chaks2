@@ -36,7 +36,7 @@ const Booking = ()=>{
     if(moment(e).format('dddd')=='Monday'){
       setMsg(['Monday is a holiday.',false])
     }else{
-        console.log(day)
+      setDay(e)
         axios.get('/booking/all', {params:{filter:{date:{$gte:day,$lte:moment(day).add(24,'hours')}}}})
           .then((res) => {
               console.log('length '+res.data.data.length)
@@ -89,7 +89,6 @@ const Booking = ()=>{
               setAvailable(schedule);
             })
           .catch(error => console.log("error"+error))
-          setDay(e)
     }
   }
   const updateAppointment=(item)=>{
