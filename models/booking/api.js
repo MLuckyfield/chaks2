@@ -3,7 +3,7 @@ const Booking = require('./model')
 const User = require('../user/model')
 const jwt = require('jsonwebtoken')
 const auth= require('../../services/authentication');
-
+const email = require('../../services/email')
 //Create
 router.post('/new', async (req, res) => {
   req = req.body
@@ -14,11 +14,9 @@ router.post('/new', async (req, res) => {
       student: req.student,
       date: req.date
   })
-      .then(()=>{
-        return res.status(201).json({
-          message: 'Done! See you soon :)',
-          success: true
-        });
+      .then((result)=>{
+        console.log(result)
+        email.sendBooking(result)
       })
       .catch((err)=>{
         return res.status(500).json({
