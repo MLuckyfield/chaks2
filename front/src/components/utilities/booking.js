@@ -71,14 +71,14 @@ const Booking = ()=>{
                       let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
                       // console.log(x)
                       // console.log(z)
-                      // console.log(x==z)
+                      console.log(x==z)
                       // console.log('booking teacher'+booking.teacher)
                       // console.log('schedule teacher'+slot.teacher)
 
                       if (x==z){
-                        if(booking.teacher==schedule.teacher){
+                        if(booking.teacher==slot.teacher){
                           console.log('removing')
-                          console.log(slot)                          
+                          console.log(slot)
                           schedule.splice(y,1)
                         }
                       }
