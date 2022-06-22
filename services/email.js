@@ -22,17 +22,18 @@ const sendBooking = (booking)=>{
     };
 
     transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      return res.status(201).json({
-        message: 'Error - confirmation not sent',
-        success: false
-      });
-    } else {
-      return res.status(201).json({
-        message: 'Done! See you soon :)',
-        success: true
-      });
-    }
+        if (error) {
+          return res.status(201).json({
+            message: 'Error - confirmation not sent',
+            success: false
+          });
+        } else {
+          return res.status(201).json({
+            message: 'Done! See you soon :)',
+            success: true
+          });
+        }
+  })
 }
 
 module.exports={sendBooking}
