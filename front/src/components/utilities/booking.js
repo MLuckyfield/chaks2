@@ -66,8 +66,8 @@ const Booking = ()=>{
               res.data.data.forEach((booking, i) => {
                   schedule.forEach((slot, y) => {
                     console.log(booking)
-                    console.log(booking.slot)
-                      let x = moment(booking.slot).format('dddd, MMM DD @ h:mm a')
+                    console.log(booking.date)
+                      let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
                       let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
                       console.log(x)
                       console.log(z)
