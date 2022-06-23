@@ -1,5 +1,5 @@
 const User = require('../models/user/model')
-const stripe = require('stripe')('sk_test_09l3shTSTKHYCzzZZsiLl2vA');
+const stripe = require('@stripe')('sk_test_09l3shTSTKHYCzzZZsiLl2vA');
 const moment = require ('moment')
 
 //Create
