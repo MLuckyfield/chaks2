@@ -21,8 +21,8 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
         Comment.find({student:req.student._id}).then((result)=>{
           console.log(result)
           // let mailchimp_hash = encrypt(req.student.email.toLowerCase()).toString()
-          console.log(req.student.email)
-          console.log(encrypt(req.student.email).toString())
+          // console.log(req.student.email)
+          // console.log(encrypt(req.student.email).toString())
           if (result.length==1){
             console.log('sending feedback email...')
             let mailchimp_hash = encrypt(req.student.email.toLowerCase()).toString()

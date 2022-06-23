@@ -4,7 +4,7 @@ const moment = require ('moment')
 
 const sendBooking = (teacher, student, date)=>{
     console.log('email service starting')
-    console.log(booking)
+    // console.log(booking)
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {

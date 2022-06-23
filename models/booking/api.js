@@ -16,8 +16,7 @@ router.post('/new', async (req, res) => {
   })
       .then((result)=>{
         //use req.teach directly?
-        console.log(result)
-        email.sendBooking(result)
+        email.sendBooking(req.teacher,req.student,req.date)
       })
       .catch((err)=>{
         return res.status(500).json({
