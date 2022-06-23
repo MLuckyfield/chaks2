@@ -119,8 +119,8 @@ const Booking = ()=>{
       <h1>Reservations</h1>
           {appointment?
             <div class='col'>
-                <Payment/>
-                <a href='' onClick={()=>{setAppointment('')}}>Cancel<a/>
+            <Payment/>
+            <a onClick={()=>setAppointment('')} href="">Cancel</a>
             </div>
                 :
             <div class='col'>
