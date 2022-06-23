@@ -20,7 +20,7 @@ router.post('/getId', async (req, res) => {
   console.log(price)
   const paymentIntent = await stripe.paymentIntents.create({
     amount: price,
-    currency: 'yen',
+    currency: 'jpy',
     payment_method_types: ['card'],
   });
   console.log('and returned '+paymentIntent)
