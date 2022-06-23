@@ -53,7 +53,7 @@ app.use('/user',require('./models/user/api'));
 app.use('/comment',auth.auth,require('./models/comment/api'));
 app.use('/booking',auth.auth,require('./models/booking/api'));
 app.use('/content',require('./models/content/api'));
-app.use('/payment',require('./services/payment'));
+app.use('/payment',auth.auth,require('./services/payment'));
 
 //heroku deployment
 app.get("*", (req, res) => {
