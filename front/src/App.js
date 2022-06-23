@@ -65,7 +65,6 @@ const App = () => {
         <div class='nav-filler'>
         </div>
           <Route exact path="/" component={Front}/>
-          // <Route path="/signup" component={Signup}/>
           <Route path="/events" component={EventsPage}/>
           <Route path="/campaigns" component={CampaignPage}/>
           <Route path="/about" component={StylePage}/>
