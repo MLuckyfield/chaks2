@@ -118,12 +118,7 @@ const Booking = ()=>{
   return (
     <div class='master-row'>
       <h1>Reservations</h1>
-          {showPayment?
-            <div class='col'>
-            <Payment appointment={appointment} product={'private_lesson'}/>
-            <a onClick={()=>setShowPayment(false)} href="#">Cancel</a>
-            </div>
-                :
+
             <div class='col'>
               {bookings ? (bookings.map(function(item, i){
                   return (
@@ -140,7 +135,7 @@ const Booking = ()=>{
                       </div>
                     }):'No timeslots available!'}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
-          </div>}
+          </div>
       </div>
   )
 }
@@ -149,4 +144,10 @@ const Booking = ()=>{
 //     <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
 //   </div>
 // </form>
+// {showPayment?
+//   <div class='col'>
+//   <Payment appointment={appointment} product={'private_lesson'}/>
+//   <a onClick={()=>setShowPayment(false)} href="#">Cancel</a>
+//   </div>
+//       :}
 export default Booking;
