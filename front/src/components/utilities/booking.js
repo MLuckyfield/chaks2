@@ -117,7 +117,7 @@ const Booking = ()=>{
   return (
     <div class='master-row'>
       <h1>Reservations</h1>
-          {setAppointment?<Payment/>:
+          {appointment?<Payment/>:
             <div class='col'>
               {bookings ? (bookings.map(function(item, i){
                   return (
