@@ -18,7 +18,7 @@ const Booking = ()=>{
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    axios.post('/payment/new',
+    axios.post('/payment/getId',
     {
       teacher:appointment.teacher,
       student: student,

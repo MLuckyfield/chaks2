@@ -5,7 +5,7 @@ const router = require('express').Router();
 
 //Create
 router.post('/getId', async (req, res) => {
-  // req=req.body
+  req=req.body
   console.log('getID was called')
   console.log(req)
   //determine price based on product
