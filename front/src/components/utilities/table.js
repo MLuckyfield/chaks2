@@ -79,7 +79,8 @@ const displayable=(key)=>{
                             if(item[key]){
                               let counter=0
                               item[key].forEach((part, i) => {
-                                counter+=moment(part.end).diff(moment(part.start), 'hours')
+                                if(part.end && part.start){
+                                counter+=moment(part.end).diff(moment(part.start), 'hours')}
                               });
                               return <td>{counter}</td>}else{return <td></td>}
                           }
