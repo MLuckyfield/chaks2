@@ -80,7 +80,13 @@ const displayable=(key)=>{
                               let counter=0
                               item[key].forEach((part, i) => {
                                 if(part.end && part.start){
-                                counter+=moment(part.end).diff(moment(part.start), 'hours')}
+                                  console.log('at least 1 full session')
+                                  counter+=moment(part.end).diff(moment(part.start), 'hours')
+                                }
+                                else{
+                                  console.log('session in progress')                                  
+                                  counter+=moment(new Date()).diff(moment(part.start), 'hours')
+                                }
                               });
                               return <td>{counter}</td>}else{return <td></td>}
                           }
