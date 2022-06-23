@@ -25,7 +25,7 @@ router.post('/getId', async (req, res) => {
   });
   console.log('and returned '+paymentIntent)
   return res.status(201).json({
-    data: paymentIntent.client_secret,
+    data: paymentIntent,
     message: 'Booking saved',
     success: true
   });

@@ -11,7 +11,12 @@ const Payment = (props)=>{
     const [options,setOptions]=useState(()=>{
       axios.post('/payment/getId',{product:props.product})
         .then((res) => {
-            return res.data.data
+                return {
+                    // passing the client secret obtained in step 2
+                    clientSecret: res.data.data.client_secret,
+                    // Fully customizable with appearance API.
+                    appearance: {/*...*/},
+                }
             })
         .catch((err) => {
           return null
