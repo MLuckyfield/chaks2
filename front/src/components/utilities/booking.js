@@ -18,22 +18,23 @@ const Booking = ()=>{
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    axios.post('/payment/getId',
-    {
-      teacher:appointment.teacher,
-      student: student,
-      date: appointment.slot,
-      product:'private_lesson'
-    }
-      )
-      .then((res) => {
-          window.location.refresh()
-          setMsg([res.data.message,res.data.success]);
-          })
-      .catch((err) => {
-        setMsg([err.message,err.success]);
-        // setFeedback(err.response.data.message);
-        });
+    setShowPayment(true)
+    // axios.post('/payment/getId',
+    // {
+    //   teacher:appointment.teacher,
+    //   student: student,
+    //   date: appointment.slot,
+    //   product:'private_lesson'
+    // }
+    //   )
+    //   .then((res) => {
+    //       window.location.refresh()
+    //       setMsg([res.data.message,res.data.success]);
+    //       })
+    //   .catch((err) => {
+    //     setMsg([err.message,err.success]);
+    //     // setFeedback(err.response.data.message);
+    //     });
   }
   const updateView=(e)=>{
     if(moment(e).format('dddd')=='Monday'){
@@ -117,10 +118,10 @@ const Booking = ()=>{
   return (
     <div class='master-row'>
       <h1>Reservations</h1>
-          {appointment?
+          {showPayment?
             <div class='col'>
-            <Payment appointment={appointment}/>
-            <a onClick={()=>setAppointment('')} href="#">Cancel</a>
+            <Payment appointment={appointment} product={'private_lesson'}/>
+            <a onClick={()=>setShowPayment(false)} href="#">Cancel</a>
             </div>
                 :
             <div class='col'>

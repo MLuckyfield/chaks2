@@ -9,7 +9,7 @@ import {axios} from "../../utilities/axios";
 const Payment = (props)=>{
     const stripePromise = loadStripe('pk_test_46zswMCbz39W2KAqKj43vDRu');
     const [options,setOptions]=useState(()=>{
-      axios.post('/payment/getId')
+      axios.post('/payment/getId',{product:props.product})
         .then((res) => {
             return res.data.data
             })
