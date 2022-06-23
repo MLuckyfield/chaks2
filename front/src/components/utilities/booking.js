@@ -117,7 +117,12 @@ const Booking = ()=>{
   return (
     <div class='master-row'>
       <h1>Reservations</h1>
-          {appointment?<Payment/>:
+          {appointment?
+            <div class='col'>
+                <Payment/>
+                <a href=# onClick={()=>{setAppointment('')}}>Cancel<a/>
+            </div>
+                :
             <div class='col'>
               {bookings ? (bookings.map(function(item, i){
                   return (
