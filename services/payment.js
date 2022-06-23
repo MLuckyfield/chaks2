@@ -1,5 +1,5 @@
 const User = require('../models/user/model')
-const stripe = require('stripe')('pk_test_51LDejeBVAfieqaobDlqJ0hETYO86YCnk0E2Y3RvLSE3pDcLPRJJ5dTp4WG7R24GSaCLwiTrYqP6TmxDk90TRercM00jmASWHNR');
+const stripe = require('stripe')(process.env.STRIPE);
 const moment = require ('moment')
 const router = require('express').Router();
 
