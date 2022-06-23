@@ -14,11 +14,11 @@ const Booking = ()=>{
   const [appointment,setAppointment]=useState()
   const [available,setAvailable]=useState()
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
-  const [showPayment, setShowPayment]=useState(false)
+  const [showPayment, setShowPayment]=useState(true)
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    setShowPayment(true)
+    window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
     // axios.post('/payment/getId',
     // {
     //   teacher:appointment.teacher,

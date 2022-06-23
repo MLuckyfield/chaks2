@@ -7,29 +7,33 @@ import {axios} from "../../utilities/axios";
 
 
 const Payment = (props)=>{
-    const stripePromise = loadStripe('pk_test_46zswMCbz39W2KAqKj43vDRu');
-    const [options,setOptions]=useState(()=>{
-      axios.post('/payment/getId',{product:props.product})
-        .then((res) => {
-            console.log(res)
-                return {
-                    // passing the client secret obtained in step 2
-                    clientSecret: res.data.data.client_secret,
-                    // Fully customizable with appearance API.
-                    appearance: {/*...*/},
-                }
-            })
-        .catch((err) => {
-          return null
-          // setFeedback(err.response.data.message);
-          });
-    })
-
-    return (
-      <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm />
-    </Elements>
-    );
+  //CUSTOM STRIPE WORKFLOW
+    // const stripePromise = loadStripe('pk_test_46zswMCbz39W2KAqKj43vDRu');
+    // const [options,setOptions]=useState(()=>{
+    //   axios.post('/payment/getId',{product:props.product})
+    //     .then((res) => {
+    //         console.log(res)
+    //             return {
+    //                 // passing the client secret obtained in step 2
+    //                 clientSecret: res.data.data.client_secret,
+    //                 // Fully customizable with appearance API.
+    //                 appearance: {/*...*/},
+    //             }
+    //         })
+    //     .catch((err) => {
+    //       return null
+    //       // setFeedback(err.response.data.message);
+    //       });
+    // })
+    //
+    // return (
+    //   <Elements stripe={stripePromise} options={options}>
+    //   <CheckoutForm />
+    // </Elements>
+    // );
+    return(
+      <div>Complete!</div>
+    )
 }
 const CheckoutForm = () => {
 

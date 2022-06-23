@@ -19,6 +19,7 @@ import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
 import Social from './components/utilities/social'
+import Payment from './components/utilities/payment'
 import Profile from './components/user/Profile'
 
 import microsoft_clarity from './components/microsoft_clarity'
@@ -66,6 +67,7 @@ const App = () => {
         </div>
           <Route exact path="/" component={Front}/>
           <Route path="/events" component={EventsPage}/>
+          <Route path="/payment" component={Payment}/>          
           <Route path="/campaigns" component={CampaignPage}/>
           <Route path="/about" component={StylePage}/>
           <Route exact path="/blog" component={BlogFront}/>
