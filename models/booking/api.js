@@ -8,21 +8,31 @@ const email = require('../../services/email')
 router.post('/new', async (req, res) => {
   req = req.body
   console.log('recieved: '+JSON.stringify(req))
-  await Booking.insertMany({
-      teacher:req.teacher,
-      student: req.student,
-      date: req.date
+  await User.findById(req.student._id).then((user)=>{
+      console.log(user.first+' has '+user.points)
+      if(user.points>=100){
+        await Booking.insertMany({
+            teacher:req.teacher,
+            student: req.student,
+            date: req.date
+        })
+            .then((result)=>{
+              //use req.teach directly?
+              email.sendBooking(req)
+            })
+            .catch((err)=>{
+              return res.status(500).json({
+                message: `Error. Please call if this error persists.`,
+                success: false
+              });
+            })
+      }
+      return res.status(300).json({
+        message: `Not enough points. You need at least 100!`,
+        success: false
+      });
   })
-      .then((result)=>{
-        //use req.teach directly?
-        email.sendBooking(req)
-      })
-      .catch((err)=>{
-        return res.status(500).json({
-          message: `Error. Please call if this error persists.`,
-          success: false
-        });
-      })
+
 });
 // //Update
 // router.post('/update', async (req, res) => {
