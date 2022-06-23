@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react'
 import ReactDOM from 'react-dom';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
-
-import {PaymentElement} from '@stripe/react-stripe-js';
+import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
 
 const CheckoutForm = () => {
 
