@@ -16,6 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.75",
+    "@stripe/react-stripe-js": "^1.9.0",
+    "@stripe/stripe-js": "^1.32.0",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^4.6.0",

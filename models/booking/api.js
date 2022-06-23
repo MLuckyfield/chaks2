@@ -8,7 +8,6 @@ const email = require('../../services/email')
 router.post('/new', async (req, res) => {
   req = req.body
   console.log('recieved: '+JSON.stringify(req))
-
   await Booking.insertMany({
     teacher:req.teacher,
       student: req.student,
@@ -16,7 +15,7 @@ router.post('/new', async (req, res) => {
   })
       .then((result)=>{
         //use req.teach directly?
-        email.sendBooking(req.teacher,req.student,req.date)
+        email.sendBooking(req)
       })
       .catch((err)=>{
         return res.status(500).json({
@@ -24,7 +23,6 @@ router.post('/new', async (req, res) => {
           success: false
         });
       })
-
 });
 // //Update
 // router.post('/update', async (req, res) => {

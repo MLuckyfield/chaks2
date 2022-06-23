@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react'
 import DateTimePicker from 'react-datetime-picker'
 import 'react-calendar/dist/Calendar.css'
 import Calendar from 'react-calendar'
+import Payment from './payment'
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 
@@ -13,6 +14,7 @@ const Booking = ()=>{
   const [appointment,setAppointment]=useState()
   const [available,setAvailable]=useState()
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
+  const [showPayment, setShowPayment]=useState(false)
 
   const onSubmit=(e)=>{
     e.preventDefault();
@@ -21,6 +23,7 @@ const Booking = ()=>{
       teacher:appointment.teacher,
       student: student,
       date: appointment.slot,
+      // product:'private_lesson`'`
     }
       )
       .then((res) => {
@@ -114,7 +117,8 @@ const Booking = ()=>{
   return (
     <div class='master-row'>
       <h1>Reservations</h1>
-          <div class='col'>
+          {setAppointment?<Payment/>:
+            <div class='col'>
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim feedback'>
@@ -131,7 +135,7 @@ const Booking = ()=>{
                       </div>
                     }):'No timeslots available!'}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
-          </div>
+          </div>}
       </div>
   )
 }
