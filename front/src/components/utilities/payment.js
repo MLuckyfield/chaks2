@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
+import {axios} from "../../utilities/axios";
 
 
 const Payment = (props)=>{
