@@ -23,7 +23,7 @@ router.post('/getId', async (req, res) => {
     payment_method_types: ['card'],
   });
   console.log('getID was called')
-  console.log('and returned '+paymentIntent')
+  console.log('and returned '+paymentIntent)
   return res.status(201).json({
     data: paymentIntent,
     message: 'Booking saved',
