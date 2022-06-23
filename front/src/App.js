@@ -7,7 +7,7 @@ import axios from 'axios';
 
 //import components
 import Login from './components/user/Login'
-import Signup from './components/user/Signup'
+// import Signup from './components/user/Signup'
 import Navbar from './components/nav/Navbar'
 import AdminDash from './components/nav/AdminDash'
 import SecureRoute from './components/nav/SecureRoute'
@@ -65,7 +65,7 @@ const App = () => {
         <div class='nav-filler'>
         </div>
           <Route exact path="/" component={Front}/>
-          <Route path="/signup" component={Signup}/>
+          // <Route path="/signup" component={Signup}/>
           <Route path="/events" component={EventsPage}/>
           <Route path="/campaigns" component={CampaignPage}/>
           <Route path="/about" component={StylePage}/>
