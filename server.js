@@ -25,7 +25,6 @@ mongoose.connect(uri);
 const connection = mongoose.createConnection(uri);
 connection.once('open',() => {
   console.log('MongoDB connected successfully')
-
 })
 //prepare sessions management
 app.use(session({
@@ -54,6 +53,8 @@ app.use('/user',require('./models/user/api'));
 app.use('/comment',auth.auth,require('./models/comment/api'));
 app.use('/booking',auth.auth,require('./models/booking/api'));
 app.use('/content',require('./models/content/api'));
+app.use('/payment',require('./services/payment'));
+
 //heroku deployment
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "/front/build", "index.html"));

@@ -18,12 +18,12 @@ const Booking = ()=>{
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    axios.post('/booking/new',
+    axios.post('/payment/new',
     {
       teacher:appointment.teacher,
       student: student,
       date: appointment.slot,
-      // product:'private_lesson`'`
+      product:'private_lesson'
     }
       )
       .then((res) => {
@@ -119,8 +119,8 @@ const Booking = ()=>{
       <h1>Reservations</h1>
           {appointment?
             <div class='col'>
-            <Payment/>
-            <a onClick={()=>setAppointment('')} href="">Cancel</a>
+            <Payment appointment={appointment}/>
+            <a onClick={()=>setAppointment('')} href="#">Cancel</a>
             </div>
                 :
             <div class='col'>
@@ -132,7 +132,6 @@ const Booking = ()=>{
                   )
                 })): 'No reservations. Why not make one? :)'}
                   {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
-
                     <Calendar onChange={updateView} value={day} minDate={new Date().setDate(new Date()+1)}/>
                     {available?available.map(function(item,i){
                       return <div class='col slim feedback' onClick={(item)=>{updateAppointment(available[i])}}>

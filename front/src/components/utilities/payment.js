@@ -4,6 +4,26 @@ import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
 
+
+const Payment = (props)=>{
+    const stripePromise = loadStripe('pk_test_46zswMCbz39W2KAqKj43vDRu');
+    const [options,setOptions]=useState(()=>{
+      axios.post('/payment/getId')
+        .then((res) => {
+            return res.data.data
+            })
+        .catch((err) => {
+          return null
+          // setFeedback(err.response.data.message);
+          });
+    })
+
+    return (
+      <Elements stripe={stripePromise} options={options}>
+      <CheckoutForm />
+    </Elements>
+    );
+}
 const CheckoutForm = () => {
 
   const stripe = useStripe();
@@ -52,17 +72,4 @@ const CheckoutForm = () => {
     </form>
   )
 };
-const Payment = (props)=>{
-    const stripePromise = loadStripe('pk_test_46zswMCbz39W2KAqKj43vDRu');
-    const options = {
-      // passing the client secret obtained in step 2
-      clientSecret: '{{CLIENT_SECRET}}',
-      // Fully customizable with appearance API.
-      appearance: {/*...*/},
-    };
-    return (
-      <div>payments!</div>
-    );
-}
-
 export default Payment;
