@@ -61,7 +61,7 @@ const Payment = (props)=>{
       appearance: {/*...*/},
     };
     return (
-      payments!
+      <div>payments!</div>
     );
 }
 
