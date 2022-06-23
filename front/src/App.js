@@ -220,14 +220,14 @@ const Front = ()=>{
                           </div>
                         </div>
                         <div class='row'>
-                          <input ref={first} class='form-control' minlength='1' placeholder='First Name'/>
-                          <input ref={last} class='form-control' minlength='1' placeholder='Last Name'/>
+                          <input ref={first} class='form-control' minlength='1' placeholder='First Name'  required/>
+                          <input ref={last} class='form-control' minlength='1' placeholder='Last Name'  required/>
                         </div>
                         <div class='row'>
-                          <input ref={email} class='form-control' type='email' placeholder='Email'/>
+                          <input ref={email} class='form-control' type='email' placeholder='Email'  required/>
                         </div>
                         <div class='row'>
-                          <input ref={password} class='form-control' type='Password' placeholder='Password'/>
+                          <input ref={password} class='form-control' type='Password' placeholder='Password' required/>
                         </div>
                           {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                           <div class='row'>
