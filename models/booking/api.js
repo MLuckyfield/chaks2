@@ -11,7 +11,7 @@ router.post('/new', async (req, res) => {
   await User.findById(req.student._id).then((user)=>{
       console.log(user.first+' has '+user.points)
       if(user.points>=100){
-        await Booking.insertMany({
+        Booking.insertMany({
             teacher:req.teacher,
             student: req.student,
             date: req.date
