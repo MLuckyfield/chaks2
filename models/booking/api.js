@@ -9,7 +9,7 @@ router.post('/new', async (req, res) => {
   req = req.body
   console.log('recieved: '+JSON.stringify(req))
   await Booking.insertMany({
-    teacher:req.teacher,
+      teacher:req.teacher,
       student: req.student,
       date: req.date
   })

@@ -45,6 +45,9 @@ const User = mongoose.model('User', new Schema({
     enum:['standard','unlimited'],
     default:'standard'
   },
+  points:{
+    type:Number
+  }.
   statistics:[{
     start:{type:Date},
     end:{type:Date}
