@@ -24,7 +24,7 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
           console.log(req.student.email)
           console.log(encrypt(req.student.email).toString())
           if (result.length=1){
-
+            console.log('sending feedback email...')
             mailchimp.setConfig({
               apiKey: process.env.MAILCHIMP_AUTH,
               server: 'us9',
