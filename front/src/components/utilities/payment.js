@@ -61,9 +61,7 @@ const Payment = (props)=>{
       appearance: {/*...*/},
     };
     return (
-      <Elements stripe={stripePromise} options={options}>
-        <CheckoutForm />
-      </Elements>
+      payments!
     );
 }
 
