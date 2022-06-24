@@ -9,6 +9,7 @@ import {axios} from "../../utilities/axios";
 const Payment = (props)=>{
   const [transaction, setTransaction] = useState(window.location.pathname.slice(12,window.location.pathname.length-12));
   useEffect(()=>{
+    console.log('payment complete')
     console.log(transaction)
     axios.post('/payment/getTransaction',
     {

@@ -75,7 +75,7 @@ const displayable=(key)=>{
                     <tr>
                       {Object.keys(item).sort().map((key, y) => {
                         if(displayable(key)){
-                          if(key=='statistics'){
+                          if(key=='statistics'){ console.log('displaying statistics...')
                             if(item[key]){
                               let counter=0
                               item[key].forEach((part, i) => {
@@ -84,7 +84,7 @@ const displayable=(key)=>{
                                   counter+=moment(part.end).diff(moment(part.start), 'hours')
                                 }
                                 else{
-                                  console.log('session in progress')                                  
+                                  console.log('session in progress')
                                   counter+=moment(new Date()).diff(moment(part.start), 'hours')
                                 }
                               });
