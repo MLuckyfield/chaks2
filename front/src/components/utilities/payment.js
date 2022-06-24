@@ -7,7 +7,7 @@ import {axios} from "../../utilities/axios";
 
 
 const Payment = (props)=>{
-  const [transaction, setTransaction] = useState(window.location.pathname.slice(12,window.location.pathname.length-12));
+  const [transaction, setTransaction] = useState(window.location.pathname.slice(12,window.location.pathname.length));
   useEffect(()=>{
     console.log('payment complete')
     console.log(transaction)
