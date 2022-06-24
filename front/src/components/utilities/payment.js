@@ -17,10 +17,10 @@ const Payment = (props)=>{
       )
       .then((res) => {
           console.log(res.data.data)
-          setMsg([res.data.message,res.data.success]);
+          // setMsg([res.data.message,res.data.success]);
           })
       .catch((err) => {
-        setMsg([err.message,err.success]);
+        // setMsg([err.message,err.success]);
         // setFeedback(err.response.data.message);
         });
   },[])
