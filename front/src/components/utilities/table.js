@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import {Redirect} from 'react-router-dom';
 import StudentComments from "../user/StudentComments";
+import Search from "./search";
 import moment from "moment"
 
 
@@ -59,6 +60,8 @@ const displayable=(key)=>{
                 <StudentComments/>
             </div>
           ):''}
+          {data?<Search function={setData}/>:''}
+
           {data ? (data.map(function(item, i){
               if(i==0){
                 return (
