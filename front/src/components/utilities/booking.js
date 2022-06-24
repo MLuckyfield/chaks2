@@ -18,23 +18,23 @@ const Booking = ()=>{
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
-    axios.post('/booking/new',
-    {
-      teacher:appointment.teacher,
-      student: student,
-      date: appointment.slot,
-      // product:'private_lesson'
-    }
-      )
-      .then((res) => {
-          window.location.refresh()
-          setMsg([res.data.message,res.data.success]);
-          })
-      .catch((err) => {
-        setMsg([err.message,err.success]);
-        // setFeedback(err.response.data.message);
-        });
+    window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
+    // axios.post('/booking/new',
+    // {
+    //   teacher:appointment.teacher,
+    //   student: student,
+    //   date: appointment.slot,
+    //   // product:'private_lesson'
+    // }
+    //   )
+    //   .then((res) => {
+    //       window.location.refresh()
+    //       setMsg([res.data.message,res.data.success]);
+    //       })
+    //   .catch((err) => {
+    //     setMsg([err.message,err.success]);
+    //     // setFeedback(err.response.data.message);
+    //     });
   }
   const updateView=(e)=>{
     if(moment(e).format('dddd')=='Monday'){
