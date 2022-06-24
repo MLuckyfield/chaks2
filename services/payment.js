@@ -36,7 +36,7 @@ router.post('/getTransaction', async (req, res) => {
   // req=req.body
   console.log('acuiring transaction...')
   const session = await stripe.checkout.sessions.retrieve(
-    req.body.transaction
+    req.body.transaction, {expand:['data.price.product']}
   );
   console.log(session)
   // console.log('and returned '+paymentIntent)
