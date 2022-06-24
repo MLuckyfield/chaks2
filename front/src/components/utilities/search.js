@@ -6,9 +6,9 @@ const Search = (props)=>{
   const [input, setInput] = useRef()
   const search = (data)=> {
     return data.filter(
-      (data) =>
+      (item) =>
         ['first','last'].some((parameter) =>
-          data[parameter].toString().toLowerCase().includes(input.current.value)
+          item[parameter].toString().toLowerCase().includes(input.current.value)
         )
     );
   }
