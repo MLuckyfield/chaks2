@@ -60,7 +60,7 @@ const displayable=(key)=>{
                 <StudentComments/>
             </div>
           ):''}
-          {data?<Search function={setData}/>:''}
+          
 
           {data ? (data.map(function(item, i){
               if(i==0){
