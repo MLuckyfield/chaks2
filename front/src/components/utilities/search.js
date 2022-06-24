@@ -14,7 +14,7 @@ const Search = (props)=>{
   }
 
   return (
-    <form class='login' onSubmit={onSubmit}>
+    <form class='login'>
         <div class="form-group">
           <input ref={input} onChange={props.function(search(props.data))} class="form-control" placeholder="Search..."/>
         </div>
