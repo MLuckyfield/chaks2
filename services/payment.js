@@ -23,7 +23,7 @@ router.post('/getId', async (req, res) => {
     currency: 'jpy',
     automatic_payment_methods: {enabled: true},
   });
-  console.log('and returned '+paymentIntent)
+  // console.log('and returned '+paymentIntent)
   return res.status(201).json({
     data: paymentIntent,
     message: 'Booking saved',
@@ -32,7 +32,20 @@ router.post('/getId', async (req, res) => {
 
 });
 
+router.post('/getTransaction', async (req, res) => {
+  // req=req.body
 
+  const session = await stripe.checkout.sessions.retrieve(
+    req.body.transaction
+  );
+  console.log(session)
+  // console.log('and returned '+paymentIntent)
+  return res.status(201).json({
+    data: session,
+    message: 'Booking saved',
+    success: true
+  });
 
+});
 
 module.exports=router;
