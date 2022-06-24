@@ -34,7 +34,7 @@ router.post('/getId', async (req, res) => {
 
 router.post('/getTransaction', async (req, res) => {
   // req=req.body
-  consoel.log('acuiring transaction...')
+  console.log('acuiring transaction...')
   const session = await stripe.checkout.sessions.retrieve(
     req.body.transaction
   );
