@@ -41,7 +41,16 @@ app.use(session({
 }))
 
 
-app.use(express.json());
+// app.use(express.json());
+app.use((req,res,next)=>{
+  if(req.originalUrl==='/payment/complete'){
+      next()
+  }else{
+    express.json()(req,res,next)
+  }
+})
+const express = require('express');
+
 
 app.disable('x-powered-by');
 //backend  routes
