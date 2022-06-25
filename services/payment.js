@@ -61,6 +61,12 @@ router.post('/getTransaction', async (req, res) => {
               message: 'Booking saved',
               success: true
             });
+        }).catch((err)=>{
+            return res.status(501).json({
+              data: err,
+              message: 'Booking saved',
+              success: false
+            });
         })
     })
 });
