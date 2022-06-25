@@ -46,18 +46,18 @@ router.post('/getTransaction', async (req, res) => {
           success: false
         });
       }
-      return res.status(201).json({
-        data: lineItems,
-        message: 'Booking saved',
-        success: true
-      });
+      await User.findByIdAndUpdate(req.body._id,{$inc:{points:lineItems.price.product.metadata}}).then(()=>{
+            return res.status(201).json({
+              data: lineItems.price.product.metadata,
+              message: 'Booking saved',
+              success: true
+            });
+        })
 
     }
   );
   // console.log(session.data.price.product.metadata.points)
- // await User.findByIdAndUpdate().then(()=>{
- //
- //   })
+
 
 
 });

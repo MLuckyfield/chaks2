@@ -9,11 +9,10 @@ import {axios} from "../../utilities/axios";
 const Payment = (props)=>{
   const [transaction, setTransaction] = useState(window.location.pathname.slice(13,window.location.pathname.length));
   useEffect(()=>{
-    console.log('payment complete')
-    console.log(transaction)
     axios.post('/payment/getTransaction',
     {
       transaction:transaction,
+      student:JSON.parse(localStorage.getItem('user'))._id
     }
       )
       .then((res) => {
