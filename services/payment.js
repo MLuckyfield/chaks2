@@ -63,7 +63,7 @@ router.post('/getTransaction', async (req, res) => {
        User.findByIdAndUpdate(req.user.user_id,{$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}},{new:true}).then((result)=>{
          console.log(result)
             return res.status(201).json({
-              data: purchased,
+              data: lineItems,
               message: 'Booking saved',
               success: true
             });
