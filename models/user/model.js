@@ -46,7 +46,8 @@ const User = mongoose.model('User', new Schema({
     default:'standard'
   },
   points:{
-    type:Number
+    type:Number,
+    default:0
   },
   statistics:[{
     start:{type:Date},
