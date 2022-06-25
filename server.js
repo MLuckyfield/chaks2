@@ -49,7 +49,6 @@ app.use((req,res,next)=>{
     express.json()(req,res,next)
   }
 })
-const express = require('express');
 
 
 app.disable('x-powered-by');
