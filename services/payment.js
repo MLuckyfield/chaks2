@@ -35,7 +35,7 @@ router.post('/getId', async (req, res) => {
 router.post('/getTransaction', async (req, res) => {
   // req=req.body
   console.log('acuiring transaction...')
-  console.log(req)
+  // console.log(req)
   // let session='hi'
   await stripe.checkout.sessions.listLineItems(
     req.body.transaction, {expand:['data.price.product']},(err,lineItems)=>{
@@ -57,7 +57,7 @@ router.post('/getTransaction', async (req, res) => {
           purchased = {plan:lineItems.price.product.metadata.plan}
         }
        console.log(purchased)
-       console.log(req.body.student._id)
+       console.log(req.user.user_id)
        // User.findByIdAndUpdate(req.body._id,{purchased}).then(()=>{
        //      return res.status(201).json({
        //        data: lineItems.price.product.metadata,
