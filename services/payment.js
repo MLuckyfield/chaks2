@@ -47,7 +47,7 @@ router.post('/getTransaction', async (req, res) => {
         });
       }
       return res.status(201).json({
-        data: session,
+        data: lineItems,
         message: 'Booking saved',
         success: true
       });
