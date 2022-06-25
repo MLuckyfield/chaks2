@@ -2,9 +2,10 @@ const User = require('../models/user/model')
 const stripe = require('stripe')(process.env.STRIPE);
 const moment = require ('moment')
 const router = require('express').Router();
+const express = require('express');
 
 
-router.post('/complete', async (req, res)=>{
+router.post('/complete', express.raw({type:'application/json'}),async (req, res)=>{
       const sig = req.headers['stripe-signature'];
 
       const endpointSecret = 'whsec_mPoy6PX9sbrSSlSJFOVN2mNMelFUlXro'
@@ -69,7 +70,6 @@ router.post('/complete', async (req, res)=>{
 //   console.log('acquiring transaction...')
 //   // console.log(req)
 //   // let session='hi'
-//   await stripe.checkout.sessions.retrieve(req.body.transaction,(err,item)=>console.log(item))
 //   await stripe.checkout.sessions.listLineItems(
 //     req.body.transaction, {expand:['data.price.product']},(err,lineItems)=>{
 //       if(err){
