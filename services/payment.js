@@ -46,7 +46,14 @@ router.post('/getTransaction', async (req, res) => {
           success: false
         });
       }
-      await User.findByIdAndUpdate(req.body._id,{$inc:{points:lineItems.price.product.metadata}}).then(()=>{
+      let purchased = {}
+      if('points' in lineItems.price.product.metadata){
+        purchased = {$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}}
+      }else if('plan' in lineItems.price.product.metadata){
+        purchased = {plan:lineItems.price.product.metadata.plan}
+
+      }
+       User.findByIdAndUpdate(req.body._id,{purchased}).then(()=>{
             return res.status(201).json({
               data: lineItems.price.product.metadata,
               message: 'Booking saved',
