@@ -48,7 +48,10 @@ router.post('/getTransaction', async (req, res) => {
         });
       }
       console.log('no issues')
+      console.log(lineItems.data)
       console.log(lineItems.data.price)
+      console.log(lineItems.data.price.product)
+
       // let purchased = {}
       // if('points' in lineItems.data.price.product.metadata){
       //   purchased = {$inc:{points:lineItems.data.price.product.metadata.points * lineItems.data.quantity}}
