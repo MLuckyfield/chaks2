@@ -11,8 +11,8 @@ const Payment = ()=>{
   useEffect(()=>{
     axios.post('/payment/getTransaction',
         {
-          transaction:transaction,
-          student:localStorage.getItem('user')._id
+          transaction:{transaction:transaction,student:localStorage.getItem('user')._id},
+
         })
           .then((res) => {
             console.log(res.data.data)
