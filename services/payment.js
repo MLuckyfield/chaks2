@@ -36,10 +36,11 @@ router.post('/getTransaction', async (req, res) => {
   // req=req.body
   console.log('acuiring transaction...')
   console.log(req)
-  const session = await stripe.checkout.sessions.listLineItems(
-    req.body.transaction
-  );
-  console.log(session.data.price.product.metadata.points)
+  let session='hi'
+  // const session = await stripe.checkout.sessions.listLineItems(
+  //   req.body.transaction, {expand:['data.price.product']}
+  // );
+  // console.log(session.data.price.product.metadata.points)
  // await User.findByIdAndUpdate().then(()=>{
  //
  //   })
