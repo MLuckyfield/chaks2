@@ -37,19 +37,28 @@ router.post('/getTransaction', async (req, res) => {
   console.log('acuiring transaction...')
   console.log(req)
   // let session='hi'
-  // const session = await stripe.checkout.sessions.listLineItems(
-  //   req.body.transaction
-  // );
-  // console.log(session.data.price.product.metadata.points)
+  await stripe.checkout.sessions.listLineItems(
+    req.body.transaction, {expand:['data.price.product']},(err,lineItems)=>{
+      if(err){
+        return res.status(501).json({
+          data: err,
+          message: 'Error',
+          success: false
+        });
+      }
+      return res.status(201).json({
+        data: session,
+        message: 'Booking saved',
+        success: true
+      });
+
+    }
+  );
+  console.log(session.data.price.product.metadata.points)
  // await User.findByIdAndUpdate().then(()=>{
  //
  //   })
-  // console.log('and returned '+paymentIntent)
-  return res.status(201).json({
-    data: session,
-    message: 'Booking saved',
-    success: true
-  });
+
 
 });
 
