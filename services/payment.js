@@ -40,19 +40,21 @@ router.post('/getTransaction', async (req, res) => {
   await stripe.checkout.sessions.listLineItems(
     req.body.transaction, {expand:['data.price.product']},(err,lineItems)=>{
       if(err){
+        console.log(err)
         return res.status(501).json({
           data: err,
           message: 'Error',
           success: false
         });
       }
+      console.log('no issues')
       let purchased = {}
       if('points' in lineItems.price.product.metadata){
         purchased = {$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}}
       }else if('plan' in lineItems.price.product.metadata){
         purchased = {plan:lineItems.price.product.metadata.plan}
-
       }
+      console.log(purchased)
        User.findByIdAndUpdate(req.body._id,{purchased}).then(()=>{
             return res.status(201).json({
               data: lineItems.price.product.metadata,
@@ -60,13 +62,7 @@ router.post('/getTransaction', async (req, res) => {
               success: true
             });
         })
-
-    }
-  );
-  // console.log(session.data.price.product.metadata.points)
-
-
-
+    })
 });
 
 module.exports=router;
