@@ -38,7 +38,7 @@ router.post('/getTransaction', async (req, res) => {
   console.log(req.body)
   // let session='hi'
   await stripe.checkout.sessions.listLineItems(
-    req.body.transaction.details, {expand:['data.price.product']},(err,lineItems)=>{
+    req.body.transaction, {expand:['data.price.product']},(err,lineItems)=>{
       if(err){
         console.log(err)
         return res.status(501).json({
@@ -48,26 +48,27 @@ router.post('/getTransaction', async (req, res) => {
         });
       }
       console.log('no issues')
-      let purchased = {}
-      if('points' in lineItems.data.price.product.metadata){
-        purchased = {$inc:{points:lineItems.data.price.product.metadata.points * lineItems.data.quantity}}
-      }else if('plan' in lineItems.data.price.product.metadata){
-        purchased = {plan:lineItems.data.price.product.metadata.plan}
-      }
-      console.log(purchased)
-       User.findByIdAndUpdate(req.body.student._id,{purchased}).then(()=>{
-            return res.status(201).json({
-              data: lineItems.data.price.product.metadata,
-              message: 'Booking saved',
-              success: true
-            });
-        }).catch((err)=>{
-            return res.status(501).json({
-              data: err,
-              message: 'Booking saved',
-              success: false
-            });
-        })
+      console.log(lineItems)
+      // let purchased = {}
+      // if('points' in lineItems.data.price.product.metadata){
+      //   purchased = {$inc:{points:lineItems.data.price.product.metadata.points * lineItems.data.quantity}}
+      // }else if('plan' in lineItems.data.price.product.metadata){
+      //   purchased = {plan:lineItems.data.price.product.metadata.plan}
+      // }
+      // console.log(purchased)
+       // User.findByIdAndUpdate(req.body._id,{purchased}).then(()=>{
+       //      return res.status(201).json({
+       //        data: lineItems.data.price.product.metadata,
+       //        message: 'Booking saved',
+       //        success: true
+       //      });
+       //  }).catch((err)=>{
+       //      return res.status(501).json({
+       //        data: err,
+       //        message: 'Booking saved',
+       //        success: false
+       //      });
+       //  })
     })
 });
 
