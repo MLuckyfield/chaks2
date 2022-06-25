@@ -10,19 +10,19 @@ const Payment = ()=>{
   const [transaction, setTransaction] = useState(window.location.pathname.slice(13,window.location.pathname.length));
   useEffect(()=>{
     axios.post('/payment/getTransaction',
-    {
-      transaction:transaction,
-      student:localStorage.getItem('user')._id
-    }
-      )
-      .then((res) => {
-          console.log(res.data.data)
-          // setMsg([res.data.message,res.data.success]);
-          })
-      .catch((err) => {
-        // setMsg([err.message,err.success]);
-        // setFeedback(err.response.data.message);
-        });
+        {
+          transaction:transaction,
+          student:localStorage.getItem('user')._id
+        }
+          )
+          .then((res) => {
+            console.log(res.data.data)
+
+              })
+          .catch((err) => {
+            // setMsg([err.message,err.success]);
+            // setFeedback(err.response.data.message);
+            });
   },[])
   //CUSTOM STRIPE WORKFLOW
     // const stripePromise = loadStripe('pk_test_46zswMCbz39W2KAqKj43vDRu');
