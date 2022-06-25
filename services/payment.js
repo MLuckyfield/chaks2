@@ -35,10 +35,10 @@ router.post('/getId', async (req, res) => {
 router.post('/getTransaction', async (req, res) => {
   // req=req.body
   console.log('acuiring transaction...')
-  console.log(req)
+  console.log(req.body)
   // let session='hi'
   await stripe.checkout.sessions.listLineItems(
-    req.body.transaction, {expand:['data.price.product']},(err,lineItems)=>{
+    req.body.transaction.details, {expand:['data.price.product']},(err,lineItems)=>{
       if(err){
         console.log(err)
         return res.status(501).json({
@@ -49,15 +49,15 @@ router.post('/getTransaction', async (req, res) => {
       }
       console.log('no issues')
       let purchased = {}
-      if('points' in lineItems.price.product.metadata){
-        purchased = {$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}}
-      }else if('plan' in lineItems.price.product.metadata){
-        purchased = {plan:lineItems.price.product.metadata.plan}
+      if('points' in lineItems.data.price.product.metadata){
+        purchased = {$inc:{points:lineItems.data.price.product.metadata.points * lineItems.data.quantity}}
+      }else if('plan' in lineItems.data.price.product.metadata){
+        purchased = {plan:lineItems.data.price.product.metadata.plan}
       }
       console.log(purchased)
-       User.findByIdAndUpdate(req.body._id,{purchased}).then(()=>{
+       User.findByIdAndUpdate(req.body.student._id,{purchased}).then(()=>{
             return res.status(201).json({
-              data: lineItems.price.product.metadata,
+              data: lineItems.data.price.product.metadata,
               message: 'Booking saved',
               success: true
             });

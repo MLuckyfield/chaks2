@@ -6,13 +6,12 @@ import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
 import {axios} from "../../utilities/axios";
 
 
-const Payment = (props)=>{
+const Payment = ()=>{
   const [transaction, setTransaction] = useState(window.location.pathname.slice(13,window.location.pathname.length));
   useEffect(()=>{
     axios.post('/payment/getTransaction',
     {
-      transaction:transaction,
-      student:JSON.parse(localStorage.getItem('user'))._id
+      transaction:{details:transaction,student:localStorage.getItem('user')._id}
     }
       )
       .then((res) => {
