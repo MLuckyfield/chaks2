@@ -48,22 +48,15 @@ router.post('/getTransaction', async (req, res) => {
         });
       }
       console.log('no issues')
-      console.log(lineItems.data.price)
-      console.log(typeof lineItems)
-      console.log(typeof lineItems.data)
-      console.log(typeof lineItems.data.price)
-      return res.status(201).json({
-             data: lineItems,
-             message: 'Booking saved',
-             success: true
-           });
-      // let purchased = {}
-      // if('points' in lineItems.data.price.product.metadata){
-      //   purchased = {$inc:{points:lineItems.data.price.product.metadata.points * lineItems.data.quantity}}
-      // }else if('plan' in lineItems.data.price.product.metadata){
-      //   purchased = {plan:lineItems.data.price.product.metadata.plan}
-      // }
-      // console.log(purchased)
+      console.log(lineItems.data[0].price.product)
+      // return res.status(201).json({/
+      // // let purchased = {}
+      // // if('points' in lineItems.data.price.product.metadata){
+      // //   purchased = {$inc:{points:lineItems.data.price.product.metadata.points * lineItems.data.quantity}}
+      // // }else if('plan' in lineItems.data.price.product.metadata){
+      // //   purchased = {plan:lineItems.data.price.product.metadata.plan}
+      // // }
+      console.log(purchased)
        // User.findByIdAndUpdate(req.body._id,{purchased}).then(()=>{
        //      return res.status(201).json({
        //        data: lineItems.data.price.product.metadata,
