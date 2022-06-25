@@ -59,7 +59,7 @@ router.post('/getTransaction', async (req, res) => {
         }
        // console.log(purchased)
        // console.log(req.user.user_id)
-       User.findByIdAndUpdate(req.user.user_id,{purchased},{new:true}).then((result)=>{
+       User.findByIdAndUpdate(req.user.user_id,{$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}},{new:true}).then((result)=>{
          console.log(result)
             return res.status(201).json({
               data: purchased,
