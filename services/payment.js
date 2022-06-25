@@ -3,34 +3,37 @@ const stripe = require('stripe')(process.env.STRIPE);
 const moment = require ('moment')
 const router = require('express').Router();
 
-//Create
-router.post('/getId', async (req, res) => {
-  // req=req.body
-  console.log('getID was called')
-  // console.log(req)
-  //determine price based on product
-  let price = ''
-  switch (req.body.product) {
-    case 'private_lesson':
-      price=5000;
-      break;
-    default:
-      price=0;
-  }
-  console.log(price)
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: price,
-    currency: 'jpy',
-    automatic_payment_methods: {enabled: true},
-  });
-  // console.log('and returned '+paymentIntent)
-  return res.status(201).json({
-    data: paymentIntent,
-    message: 'Booking saved',
-    success: true
-  });
-
-});
+// //Create
+// router.post('/getId', async (req, res) => {
+//   // req=req.body
+//   console.log('getID was called')
+//   // console.log(req)
+//   //determine price based on product
+//   const product = await stripe.products.retrieve(
+//   req.body.product
+// );
+//   let price = ''
+//   // switch (req.body.product) {
+//   //   case 'private_lesson':
+//   //     price=5000;
+//   //     break;
+//   //   default:
+//   //     price=0;
+//   // }
+//   console.log(price)
+//   const paymentIntent = await stripe.paymentIntents.create({
+//     amount: price,
+//     currency: 'jpy',
+//     automatic_payment_methods: {enabled: true},
+//   });
+//   // console.log('and returned '+paymentIntent)
+//   return res.status(201).json({
+//     data: paymentIntent,
+//     message: 'Booking saved',
+//     success: true
+//   });
+//
+// });
 
 router.post('/getTransaction', async (req, res) => {
   // req=req.body
@@ -47,10 +50,8 @@ router.post('/getTransaction', async (req, res) => {
           success: false
         });
       }
+      console.log(lineItems)
       lineItems = lineItems.data[0]
-      console.log('no issues')
-      console.log(lineItems.quantity)
-      console.log(lineItems.price.product.metadata.points * lineItems.quantity)
         let purchased = {}
         if('points' in lineItems.price.product.metadata){
           purchased = {$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}}
