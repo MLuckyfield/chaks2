@@ -47,19 +47,20 @@ router.post('/getTransaction', async (req, res) => {
           success: false
         });
       }
-      console.log('no issues')
+      // console.log('no issues')
       console.log(lineItems.data[0].price.product)
-      // return res.status(201).json({/
-      // // let purchased = {}
-      // // if('points' in lineItems.data.price.product.metadata){
-      // //   purchased = {$inc:{points:lineItems.data.price.product.metadata.points * lineItems.data.quantity}}
-      // // }else if('plan' in lineItems.data.price.product.metadata){
-      // //   purchased = {plan:lineItems.data.price.product.metadata.plan}
-      // // }
-      console.log(purchased)
+      lineItems = lineItems.data[0]
+        let purchased = {}
+        if('points' in lineItems.price.product.metadata){
+          purchased = {$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}}
+        }else if('plan' in lineItems.price.product.metadata){
+          purchased = {plan:lineItems.price.product.metadata.plan}
+        }
+       console.log(purchased)
+       console.log(req.body._id)
        // User.findByIdAndUpdate(req.body._id,{purchased}).then(()=>{
        //      return res.status(201).json({
-       //        data: lineItems.data.price.product.metadata,
+       //        data: lineItems.price.product.metadata,
        //        message: 'Booking saved',
        //        success: true
        //      });
