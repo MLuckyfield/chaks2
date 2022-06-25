@@ -36,7 +36,7 @@ router.post('/getTransaction', async (req, res) => {
   // req=req.body
   console.log('acuiring transaction...')
   console.log(req)
-  let session='hi'
+  // let session='hi'
   const session = await stripe.checkout.sessions.listLineItems(
     req.body.transaction
   );
