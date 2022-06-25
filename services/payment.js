@@ -48,9 +48,10 @@ router.post('/getTransaction', async (req, res) => {
         });
       }
       console.log('no issues')
-      console.log(lineItems.data)
-      console.log(JSON.parse(lineItems.data).price)
-      console.log(JSON.stringify(JSON.parse(JSON.parse(lineItems.data).price).product))
+      console.log(lineItems.data.price)
+      console.log(typeof lineItems)
+      console.log(typeof lineItems.data)
+      console.log(typeof lineItems.data.price)
       return res.status(201).json({
              data: lineItems,
              message: 'Booking saved',
