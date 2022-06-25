@@ -54,7 +54,7 @@ router.post('/getTransaction', async (req, res) => {
 
     }
   );
-  console.log(session.data.price.product.metadata.points)
+  // console.log(session.data.price.product.metadata.points)
  // await User.findByIdAndUpdate().then(()=>{
  //
  //   })
