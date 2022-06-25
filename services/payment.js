@@ -40,6 +40,7 @@ router.post('/getTransaction', async (req, res) => {
   console.log('acquiring transaction...')
   // console.log(req)
   // let session='hi'
+  await stripe.checkout.sessions.retrieve(req.body.transaction,(err,item)=>console.log(item))
   await stripe.checkout.sessions.listLineItems(
     req.body.transaction, {expand:['data.price.product']},(err,lineItems)=>{
       if(err){
@@ -63,7 +64,7 @@ router.post('/getTransaction', async (req, res) => {
        User.findByIdAndUpdate(req.user.user_id,{$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}},{new:true}).then((result)=>{
          console.log(result)
             return res.status(201).json({
-              data: lineItems,
+              data: purchased,
               message: 'Booking saved',
               success: true
             });
