@@ -58,7 +58,8 @@ router.post('/getTransaction', async (req, res) => {
         }
        // console.log(purchased)
        // console.log(req.user.user_id)
-       User.findByIdAndUpdate(req.user.user_id,{purchased}).then(()=>{
+       User.findByIdAndUpdate(req.user.user_id,{purchased},{new:true}).then((result)=>{
+         console.log(result)
             return res.status(201).json({
               data: purchased,
               message: 'Booking saved',
