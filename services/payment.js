@@ -34,7 +34,7 @@ router.post('/getId', async (req, res) => {
 
 router.post('/getTransaction', async (req, res) => {
   // req=req.body
-  console.log('acuiring transaction...')
+  console.log('acquiring transaction...')
   // console.log(req)
   // let session='hi'
   await stripe.checkout.sessions.listLineItems(
@@ -56,21 +56,21 @@ router.post('/getTransaction', async (req, res) => {
         }else if('plan' in lineItems.price.product.metadata){
           purchased = {plan:lineItems.price.product.metadata.plan}
         }
-       console.log(purchased)
-       console.log(req.user.user_id)
-       // User.findByIdAndUpdate(req.body._id,{purchased}).then(()=>{
-       //      return res.status(201).json({
-       //        data: lineItems.price.product.metadata,
-       //        message: 'Booking saved',
-       //        success: true
-       //      });
-       //  }).catch((err)=>{
-       //      return res.status(501).json({
-       //        data: err,
-       //        message: 'Booking saved',
-       //        success: false
-       //      });
-       //  })
+       // console.log(purchased)
+       // console.log(req.user.user_id)
+       User.findByIdAndUpdate(req.user.user_id,{purchased}).then(()=>{
+            return res.status(201).json({
+              data: purchased,
+              message: 'Booking saved',
+              success: true
+            });
+        }).catch((err)=>{
+            return res.status(501).json({
+              data: err,
+              message: 'Booking saved',
+              success: false
+            });
+        })
     })
 });
 
