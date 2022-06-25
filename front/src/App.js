@@ -67,7 +67,7 @@ const App = () => {
         </div>
           <Route exact path="/" component={Front}/>
           <Route path="/events" component={EventsPage}/>
-          <Route exact="/transaction/*" component={Payment}/>          
+          <Route exact="/transaction" component={Payment}/>          
           <Route path="/campaigns" component={CampaignPage}/>
           <Route path="/about" component={StylePage}/>
           <Route exact path="/blog" component={BlogFront}/>
