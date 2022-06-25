@@ -13,8 +13,7 @@ const Payment = ()=>{
         {
           transaction:transaction,
           student:localStorage.getItem('user')._id
-        }
-          )
+        })
           .then((res) => {
             console.log(res.data.data)
 
