@@ -64,7 +64,7 @@ router.post('/getId', async (req, res) => {
 
 });
 
-app.post("/create-payment-intent", async (req, res) => {
+router.post("/create-payment-intent", async (req, res) => {
   const { items } = req.body;
 
   // Create a PaymentIntent with the order amount and currency
