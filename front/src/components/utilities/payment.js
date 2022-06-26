@@ -101,7 +101,7 @@ const CheckoutForm = (props) => {
   };
 
   return (
-    <Elements stripe={stripe} options={options}>
+    <Elements stripe={loadStripe(process.env.STRIPE)} options={options}>
         <form onSubmit={handleSubmit}>
           <PaymentElement />
           <button disabled={!stripe}>Submit</button>
