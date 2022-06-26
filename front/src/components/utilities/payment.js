@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {loadStripe} from '@stripe/stripe-js';
 import {useStripe, useElements, PaymentElement, Elements} from '@stripe/react-stripe-js';
 import {axios} from "../../utilities/axios";
-
+import Checkout from "./checkout"
 //
 // const Payment = ()=>{
 //   const [transaction, setTransaction] = useState(window.location.pathname.slice(13,window.location.pathname.length));
@@ -59,26 +59,33 @@ import {axios} from "../../utilities/axios";
 //       console.log(err)
 //     // setFeedback(err.response.data.message);
 //     });
-const CheckoutForm = () => {
-  return (
-    <form>
-      <PaymentElement />
-      <button>Submit</button>
-    </form>
-  );
-};
+const stripePromise = loadStripe("pk_test_46zswMCbz39W2KAqKj43vDRu");
 
-const Form =()=>{
-  const options = {
-    // passing the client secret obtained in step 2
-    clientSecret: '{{CLIENT_SECRET}}',
-    // Fully customizable with appearance API.
-    appearance: {/*...*/},
+const Main=()=> {
+  const [clientSecret, setClientSecret] = useState("");
+
+  useEffect(() => {
+    // Create PaymentIntent as soon as the page loads
+    axios.post("/create-payment-intent",{ items: [{ id: "xl-tshirt" }] })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
+  }, []);
+
+  const appearance = {
+    theme: 'stripe',
   };
-  const stripePromise = loadStripe('pk_test_46zswMCbz39W2KAqKj43vDRu');
+  const options = {
+    clientSecret,
+    appearance,
+  };
+
   return (
-    <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm />
-    </Elements>
+    <div className="App">
+      {clientSecret && (
+        <Elements options={options} stripe={stripePromise}>
+          <CheckoutForm />
+        </Elements>
+      )}
+    </div>
   );
 }
