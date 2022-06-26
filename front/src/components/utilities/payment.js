@@ -83,7 +83,7 @@ const Main=()=> {
     <div className="App">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          <Checkout />
         </Elements>
       )}
     </div>
