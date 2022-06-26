@@ -38,9 +38,9 @@ router.post('/getId', async (req, res) => {
   console.log('getID was called')
   // console.log(req)
   //determine price based on product
-  const product = await stripe.products.retrieve(
-  req.body.product
-);
+//   const product = await stripe.products.retrieve(
+//   req.body.product
+// );
   let price = ''
   switch (req.body.product) {
     case 'private_lesson':
