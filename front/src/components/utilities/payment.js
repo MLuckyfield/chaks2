@@ -66,6 +66,7 @@ const CheckoutForm = (props) => {
               }
           })
       .catch((err) => {
+        console.log(err)
         return null
         // setFeedback(err.response.data.message);
         });
@@ -105,14 +106,7 @@ const CheckoutForm = (props) => {
   };
 
   return (
-    <Elements stripe={stripe} options={options}>
-        <form onSubmit={handleSubmit}>
-          <PaymentElement />
-          <button disabled={!stripe}>Submit</button>
-          {/* Show error message to your customers */}
-          {errorMessage && <div>{errorMessage}</div>}
-        </form>
-    </Elements>
+    <div>payment</div>
   )
 };
 export default CheckoutForm;
