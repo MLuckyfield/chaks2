@@ -9,6 +9,7 @@ export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
+  const [user,setUser]=useState(localStorage.getItem('user'))
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -59,6 +60,10 @@ export default function CheckoutForm() {
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url: "https//chatshack.jp",
+        payment_method_data :
+          {billing_details:{
+              email: user.email
+          }}
       },
     });
 
