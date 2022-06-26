@@ -59,7 +59,7 @@ import Checkout from "./checkout"
 //       console.log(err)
 //     // setFeedback(err.response.data.message);
 //     });
-const stripePromise = loadStripe("pk_test_46zswMCbz39W2KAqKj43vDRu");
+const stripePromise = loadStripe("pk_test_51LDejeBVAfieqaobDlqJ0hETYO86YCnk0E2Y3RvLSE3pDcLPRJJ5dTp4WG7R24GSaCLwiTrYqP6TmxDk90TRercM00jmASWHNR");
 
 const Main=()=> {
   const [clientSecret, setClientSecret] = useState("");
