@@ -137,7 +137,12 @@ const Booking = ()=>{
                     }):'No timeslots available!'}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
-
+          {showPayment?
+            <div class='col'>
+            <Payment appointment={appointment} product={'private_lesson'}/>
+            <a onClick={()=>setShowPayment(false)} href="#">Cancel</a>
+            </div>
+                :'Set an appointment'}
       </div>
   )
 }
@@ -146,10 +151,5 @@ const Booking = ()=>{
 //     <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
 //   </div>
 // </form>
-{showPayment?
-  <div class='col'>
-  <Payment appointment={appointment} product={'private_lesson'}/>
-  <a onClick={()=>setShowPayment(false)} href="#">Cancel</a>
-  </div>
-      :'Set an appointment'}
+
 export default Booking;
