@@ -67,7 +67,7 @@ const Main=()=> {
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     axios.post("/payment/create-payment-intent",{ items: [{ id: "prod_LvVztDbOtK7ZCy" }] })
-      .then((res) => res.json())
+      // .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, []);
 
