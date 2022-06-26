@@ -83,9 +83,7 @@ const Main=()=> {
   return (
     <div className="App">
       {clientSecret? (
-        <Elements options={options} stripe={stripePromise}>
-          <Checkout />
-        </Elements>
+        clientSecret
       ):'no clientSecret'}
     </div>
   );
