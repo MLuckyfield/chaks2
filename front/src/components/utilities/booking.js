@@ -14,11 +14,12 @@ const Booking = ()=>{
   const [appointment,setAppointment]=useState()
   const [available,setAvailable]=useState()
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
-  const [showPayment, setShowPayment]=useState(true)
+  const [showPayment, setShowPayment]=useState(false)
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
+    setShowPayment(true)
+    // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
     // axios.post('/booking/new',
     // {
     //   teacher:appointment.teacher,
@@ -135,17 +136,7 @@ const Booking = ()=>{
                     }):'No timeslots available!'}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
-          <form action="/charge" method="POST">
-            <script
-              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key={process.env.STRIPE}
-              data-name="Stripe.com"
-              data-description="2 widgets"
-              data-amount="2000"
-              data-email="customer@email.com"
-              data-locale="auto">
-            </script>
-          </form>
+
       </div>
   )
 }
@@ -154,10 +145,10 @@ const Booking = ()=>{
 //     <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
 //   </div>
 // </form>
-// {showPayment?
-//   <div class='col'>
-//   <Payment appointment={appointment} product={'private_lesson'}/>
-//   <a onClick={()=>setShowPayment(false)} href="#">Cancel</a>
-//   </div>
-//       :}
+{showPayment?
+  <div class='col'>
+  <Payment appointment={appointment} product={'private_lesson'}/>
+  <a onClick={()=>setShowPayment(false)} href="#">Cancel</a>
+  </div>
+      :}
 export default Booking;
