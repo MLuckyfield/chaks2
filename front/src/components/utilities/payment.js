@@ -68,7 +68,8 @@ const Main=()=> {
     // Create PaymentIntent as soon as the page loads
     axios.post("/payment/create-payment-intent",{ items: [{ id: "prod_LvVztDbOtK7ZCy" }] })
       // .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
+      .then((data) => {console.log(data);setClientSecret(data.clientSecret)})
+      .catch((err)=>console.log('error'));
   }, []);
 
   const appearance = {
