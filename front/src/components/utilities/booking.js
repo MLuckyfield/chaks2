@@ -135,6 +135,17 @@ const Booking = ()=>{
                     }):'No timeslots available!'}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
+          <form action="/charge" method="POST">
+            <script
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key={process.env.STRIPE}
+              data-name="Stripe.com"
+              data-description="2 widgets"
+              data-amount="2000"
+              data-email="customer@email.com"
+              data-locale="auto">
+            </script>
+          </form>
       </div>
   )
 }
