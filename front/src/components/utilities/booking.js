@@ -18,6 +18,7 @@ const Booking = ()=>{
 
   const onSubmit=(e)=>{
     e.preventDefault();
+    console.log('activating...')
     setShowPayment(true)
     // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
     // axios.post('/booking/new',
