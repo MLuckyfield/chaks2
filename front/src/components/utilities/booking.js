@@ -151,5 +151,5 @@ const Booking = ()=>{
   <Payment appointment={appointment} product={'private_lesson'}/>
   <a onClick={()=>setShowPayment(false)} href="#">Cancel</a>
   </div>
-      :}
+      :'Set an appointment'}
 export default Booking;

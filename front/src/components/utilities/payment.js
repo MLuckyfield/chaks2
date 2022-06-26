@@ -50,7 +50,7 @@ import {axios} from "../../utilities/axios";
 //       <div>Complete!</div>
 //     )
 // }
-const CheckoutForm = () => {
+const CheckoutForm = (props) => {
 
   const stripe = useStripe();
   const elements = useElements();
@@ -105,7 +105,7 @@ const CheckoutForm = () => {
   };
 
   return (
-    <Elements stripe={stripePromise} options={options}>
+    <Elements stripe={stripe} options={options}>
         <form onSubmit={handleSubmit}>
           <PaymentElement />
           <button disabled={!stripe}>Submit</button>
