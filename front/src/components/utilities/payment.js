@@ -59,7 +59,6 @@ import Checkout from "./checkout"
 //       console.log(err)
 //     // setFeedback(err.response.data.message);
 //     });
-const stripePromise = loadStripe("pk_test_51LDejeBVAfieqaobDlqJ0hETYO86YCnk0E2Y3RvLSE3pDcLPRJJ5dTp4WG7R24GSaCLwiTrYqP6TmxDk90TRercM00jmASWHNR");
 
 const Main=()=> {
   const [clientSecret, setClientSecret] = useState("");
@@ -83,7 +82,7 @@ const Main=()=> {
   return (
     <div className="App">
       {clientSecret? (
-        <Elements options={options} stripe={stripePromise}>
+        <Elements options={options} stripe={loadStripe("pk_test_51LDejeBVAfieqaobDlqJ0hETYO86YCnk0E2Y3RvLSE3pDcLPRJJ5dTp4WG7R24GSaCLwiTrYqP6TmxDk90TRercM00jmASWHNR")}>
           <Checkout />
         </Elements>
       ):'no clientSecret'}
