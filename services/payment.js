@@ -24,7 +24,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
         case 'checkout.session.completed':
           const session = event.data.object;
           console.log(session)
-          console.log(session.payment_intent)
+          console.log(session.metadata)
           stripe.paymentLinks.retrieve(session.payment_link,(err,paymentIntent)=>{
             console.log(paymentIntent)
             // console.log(paymentIntent.charges)
@@ -62,12 +62,14 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 })
 
 router.post('/new', async (req, res)=>{
+  console.log(req)
+  console.log(req.body.user)
   const paymentLink = await stripe.paymentLinks.create({
     line_items:[{
         price:'price_1LDexPBVAfieqaobsYFR70Im',
         quantity:1,
         adjustable_quantity:{enabled:true,minimum:1}}],
-    metadata:{order:'test'},
+    metadata:{order:req.body.user},
     after_completion: {type: 'redirect', redirect: {url: 'https://chatshack.jp'}},
 
   })
