@@ -23,7 +23,7 @@ const Booking = ()=>{
     // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
     axios.post('/payment/new')
       .then((res) => {
-          console.log(res.data.data)
+          console.log(res.data.data.url)
           setMsg([res.data.message,res.data.success]);
           })
       .catch((err) => {
