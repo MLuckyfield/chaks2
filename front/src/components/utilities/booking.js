@@ -21,7 +21,7 @@ const Booking = ()=>{
     console.log('activating...')
     // setShowPayment(true)
     // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
-    axios.post('/payment/new')
+    axios.post('/payment/new',{user:student._id})
       .then((res) => {
           console.log(res.data.data)
           window.location.href=res.data.data.url

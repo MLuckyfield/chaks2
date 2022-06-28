@@ -22,8 +22,28 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       // Handle the event
       switch (event.type) {
         case 'checkout.session.completed':
-          const session = event.data.object;
-          console.log(event)
+          const session = event.data.object.id;
+          console.log(session)
+          await stripe.checkout.sessions.listLineItems(
+              session, {expand:['data.price.product']},(err,lineItems)=>{
+                if(err){
+                  console.log(err)
+                  return res.status(501).json({
+                    data: err,
+                    message: 'Error',
+                    success: false
+                  });
+                }
+                console.log(lineItems)
+                lineItems = lineItems.data[0]
+                  let purchased = {}
+                  if('points' in lineItems.price.product.metadata){
+                    purchased = {$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}}
+                  }else if('plan' in lineItems.price.product.metadata){
+                    purchased = {plan:lineItems.price.product.metadata.plan}
+                  }
+                 console.log(purchased)
+              })
           break;
         // ... handle other event types
         default:
@@ -36,7 +56,11 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 router.post('/new', async (req, res)=>{
   const paymentLink = await stripe.paymentLinks.create({
     line_items:[{price:'price_1LDexPBVAfieqaobsYFR70Im',quantity:1}],
-    metadata:{order:'hello'}
+    after_completion: {
+      redirect: {
+          url: 'https://chatshack.jp'
+      }},
+    metadata:{order:req.body.user}
   })
   return res.status(201).json({
      data: paymentLink,
