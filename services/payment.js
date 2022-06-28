@@ -36,7 +36,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 router.post('/new', async (req, res)=>{
   const paymentLink = await stripe.paymentLinks.create({
     line_items:[{price:'price_1LDexPBVAfieqaobsYFR70Im',quantity:1}],
-    metadata:'hello'
+    metadata:{order:'hello'}
   })
   return res.status(201).json({
      data: paymentLink,
