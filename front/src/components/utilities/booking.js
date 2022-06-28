@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import DateTimePicker from 'react-datetime-picker'
 import 'react-calendar/dist/Calendar.css'
 import Calendar from 'react-calendar'
-import Payment from './payment'
+// import Payment from './payment'
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 
