@@ -57,10 +57,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 router.post('/new', async (req, res)=>{
   const paymentLink = await stripe.paymentLinks.create({
     line_items:[{price:'price_1LDexPBVAfieqaobsYFR70Im',quantity:1}],
-    after_completion: {
-      redirect: {
-          url: 'https://chatshack.jp'
-      }},
+    after_completion: {type: 'redirect', redirect: {url: 'https://chatshack.jp'}},
     metadata:{order:req.body.user}
   })
   return res.status(201).json({
