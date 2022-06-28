@@ -43,9 +43,11 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     purchased = {plan:lineItems.price.product.metadata.plan}
                   }
                  // console.log(purchased)
-                 const paymentIntent = stripe.paymentIntents.retrieve('pi_1DrN3g2eZvKYlo2Cv264IRdp');
-                 console.log(paymentIntent)
-                 console.log(paymentIntent.metadata)
+                 stripe.paymentIntents.retrieve(stripe.checkout.sessions.retrieve(session.id).payment_intent,(err,paymentIntent)=>{
+                   console.log(paymentIntent)
+                   console.log(paymentIntent.metadata)
+                 });
+
               })
           break;
         // ... handle other event types
