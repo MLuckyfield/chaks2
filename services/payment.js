@@ -50,7 +50,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                  //   console.log(paymentIntent.metadata)
                  // });
 
-              })
+              // })
           break;
         // ... handle other event types
         default:
