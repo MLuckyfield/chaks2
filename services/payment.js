@@ -23,7 +23,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       switch (event.type) {
         case 'checkout.session.completed':
           const session = event.data.object;
-          console.log(session)
+          // console.log(session)
           await stripe.checkout.sessions.listLineItems(
               session.id, {expand:['data.price.product']},(err,lineItems)=>{
                 if(err){
@@ -34,7 +34,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     success: false
                   });
                 }
-                console.log(lineItems)
+                // console.log(lineItems)
                 lineItems = lineItems.data[0]
                   let purchased = {}
                   if('points' in lineItems.price.product.metadata){
@@ -42,8 +42,10 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                   }else if('plan' in lineItems.price.product.metadata){
                     purchased = {plan:lineItems.price.product.metadata.plan}
                   }
-                 console.log(purchased)
-                 console.log(session.metadata)
+                 // console.log(purchased)
+                 const paymentIntent = await stripe.paymentIntents.retrieve('pi_1DrN3g2eZvKYlo2Cv264IRdp');
+                 console.log(paymentIntent)
+                 console.log(paymentIntent.metadata)
               })
           break;
         // ... handle other event types
