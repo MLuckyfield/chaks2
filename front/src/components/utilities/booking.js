@@ -14,29 +14,22 @@ const Booking = ()=>{
   const [appointment,setAppointment]=useState()
   const [available,setAvailable]=useState()
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
-  const [showPayment, setShowPayment]=useState(false)
+  // const [showPayment, setShowPayment]=useState(false)
 
   const onSubmit=(e)=>{
     e.preventDefault();
     console.log('activating...')
-    setShowPayment(true)
+    // setShowPayment(true)
     // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
-    // axios.post('/booking/new',
-    // {
-    //   teacher:appointment.teacher,
-    //   student: student,
-    //   date: appointment.slot,
-    //   // product:'private_lesson'
-    // }
-    //   )
-    //   .then((res) => {
-    //       window.location.refresh()
-    //       setMsg([res.data.message,res.data.success]);
-    //       })
-    //   .catch((err) => {
-    //     setMsg([err.message,err.success]);
-    //     // setFeedback(err.response.data.message);
-    //     });
+    axios.post('/payment/new')
+      .then((res) => {
+          console.log(res.data.data)
+          setMsg([res.data.message,res.data.success]);
+          })
+      .catch((err) => {
+        setMsg([err.message,err.success]);
+        // setFeedback(err.response.data.message);
+        });
   }
   const updateView=(e)=>{
     if(moment(e).format('dddd')=='Monday'){
@@ -137,12 +130,7 @@ const Booking = ()=>{
                     }):'No timeslots available!'}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
-          {showPayment?
-            <div class='col'>
-            <Payment appointment={appointment} product={'private_lesson'}/>
-            <a onClick={()=>setShowPayment(false)} href="#">Cancel</a>
-            </div>
-                :'Set an appointment'}
+
       </div>
   )
 }
@@ -151,5 +139,10 @@ const Booking = ()=>{
 //     <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
 //   </div>
 // </form>
-
+// {showPayment?
+//   <div class='col'>
+//   <Payment appointment={appointment} product={'private_lesson'}/>
+//   <a onClick={()=>setShowPayment(false)} href="#">Cancel</a>
+//   </div>
+//       :'Set an appointment'}
 export default Booking;

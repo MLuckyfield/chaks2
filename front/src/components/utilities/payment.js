@@ -59,41 +59,41 @@ import Checkout from "./checkout"
 //       console.log(err)
 //     // setFeedback(err.response.data.message);
 //     });
-const stripePromise = loadStripe("pk_test_51LDejeBVAfieqaobDlqJ0hETYO86YCnk0E2Y3RvLSE3pDcLPRJJ5dTp4WG7R24GSaCLwiTrYqP6TmxDk90TRercM00jmASWHNR");
-
-const Main=()=> {
-  const [clientSecret, setClientSecret] = useState("");
-
-  useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    axios.post("/payment/create-payment-intent",{ items: [{ id: "prod_LvVztDbOtK7ZCy" }] })
-      // .then((res) => res.json())
-      .then((data) => {console.log(data);setClientSecret(data.data.clientSecret)})
-      .catch((err)=>console.log('error'));
-  }, []);
-
-  const appearance = {
-    theme: 'stripe',
-  };
-  const options = {
-    clientSecret,
-    appearance,
-  };
-
-  return (
-    <div className="App">
-
-      {clientSecret && (
-        <Elements options={options} stripe={stripePromise}>
-          <Checkout />
-        </Elements>
-      )}
-    </div>
-  );
-}
-export default Main;
-// {clientSecret? (
-//   <Elements options={options} stripe={stripePromise}>
-//     <Checkout />
-//   </Elements>
-// ):'no clientSecret'}
+// const stripePromise = loadStripe("pk_test_51LDejeBVAfieqaobDlqJ0hETYO86YCnk0E2Y3RvLSE3pDcLPRJJ5dTp4WG7R24GSaCLwiTrYqP6TmxDk90TRercM00jmASWHNR");
+//
+// const Main=()=> {
+//   const [clientSecret, setClientSecret] = useState("");
+//
+//   useEffect(() => {
+//     // Create PaymentIntent as soon as the page loads
+//     axios.post("/payment/create-payment-intent",{ items: [{ id: "prod_LvVztDbOtK7ZCy" }] })
+//       // .then((res) => res.json())
+//       .then((data) => {console.log(data);setClientSecret(data.data.clientSecret)})
+//       .catch((err)=>console.log('error'));
+//   }, []);
+//
+//   const appearance = {
+//     theme: 'stripe',
+//   };
+//   const options = {
+//     clientSecret,
+//     appearance,
+//   };
+//
+//   return (
+//     <div className="App">
+//
+//       {clientSecret && (
+//         <Elements options={options} stripe={stripePromise}>
+//           <Checkout />
+//         </Elements>
+//       )}
+//     </div>
+//   );
+// }
+// export default Main;
+// // {clientSecret? (
+// //   <Elements options={options} stripe={stripePromise}>
+// //     <Checkout />
+// //   </Elements>
+// // ):'no clientSecret'}

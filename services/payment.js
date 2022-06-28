@@ -4,7 +4,7 @@ const moment = require ('moment')
 const router = require('express').Router();
 const express = require('express');
 
-
+//
 router.post('/complete', express.raw({type:'application/json'}),async (req, res)=>{
       const sig = req.headers['stripe-signature'];
 
@@ -32,55 +32,67 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 
 
 })
-// //Create
-router.post('/getId', async (req, res) => {
-  // req=req.body
-  console.log('getID was called')
-  // console.log(req)
-  //determine price based on product
-//   const product = await stripe.products.retrieve(
-//   req.body.product
-// );
-  let price = ''
-  switch (req.body.product) {
-    case 'private_lesson':
-      price=5000;
-      break;
-    default:
-      price=0;
-  }
-  console.log(price)
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: price,
-    currency: 'jpy',
-    automatic_payment_methods: {enabled: true},
-  });
-  // console.log('and returned '+paymentIntent)
+
+router.post('/new', async (req, res)=>{
+  const paymentLink = await stripe.paymentLinks.create({
+    line_items:[{price:1000,quantity:1}]
+  })
   return res.status(201).json({
-    data: paymentIntent,
-    message: 'Booking saved',
-    success: true
-  });
+     data: paymentLink,
+     message: 'Booking saved',
+     success: true
+   });
+})
 
-});
-
-router.post("/create-payment-intent", async (req, res) => {
-  console.log('creating payment intent')
-  const { items } = req.body;
-
-  // Create a PaymentIntent with the order amount and currency
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: 5000,
-    currency: "jpy",
-    automatic_payment_methods: {
-      enabled: true,
-    },
-  });
-
-  res.send({
-    clientSecret: paymentIntent.client_secret,
-  });
-});
+// // //Create
+// router.post('/getId', async (req, res) => {
+//   // req=req.body
+//   console.log('getID was called')
+//   // console.log(req)
+//   //determine price based on product
+// //   const product = await stripe.products.retrieve(
+// //   req.body.product
+// // );
+//   let price = ''
+//   switch (req.body.product) {
+//     case 'private_lesson':
+//       price=5000;
+//       break;
+//     default:
+//       price=0;
+//   }
+//   console.log(price)
+//   const paymentIntent = await stripe.paymentIntents.create({
+//     amount: price,
+//     currency: 'jpy',
+//     automatic_payment_methods: {enabled: true},
+//   });
+//   // console.log('and returned '+paymentIntent)
+//   return res.status(201).json({
+//     data: paymentIntent,
+//     message: 'Booking saved',
+//     success: true
+//   });
+//
+// });
+//
+// router.post("/create-payment-intent", async (req, res) => {
+//   console.log('creating payment intent')
+//   const { items } = req.body;
+//
+//   // Create a PaymentIntent with the order amount and currency
+//   const paymentIntent = await stripe.paymentIntents.create({
+//     amount: 5000,
+//     currency: "jpy",
+//     automatic_payment_methods: {
+//       enabled: true,
+//     },
+//   });
+//
+//   res.send({
+//     clientSecret: paymentIntent.client_secret,
+//   });
+// });
 //how to get check out session id from front and process
 // router.post('/getTransaction', async (req, res) => {
 //   // req=req.body
