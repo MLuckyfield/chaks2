@@ -43,7 +43,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     purchased = {plan:lineItems.price.product.metadata.plan}
                   }
                  // console.log(purchased)
-                 const paymentIntent = await stripe.paymentIntents.retrieve('pi_1DrN3g2eZvKYlo2Cv264IRdp');
+                 const paymentIntent = stripe.paymentIntents.retrieve('pi_1DrN3g2eZvKYlo2Cv264IRdp');
                  console.log(paymentIntent)
                  console.log(paymentIntent.metadata)
               })
