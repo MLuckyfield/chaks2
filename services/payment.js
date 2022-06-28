@@ -23,30 +23,32 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       switch (event.type) {
         case 'checkout.session.completed':
           const session = event.data.object;
+          console.log(event)
           // console.log(session)
-          await stripe.checkout.sessions.listLineItems(
-              session.id, {expand:['data.price.product']},(err,lineItems)=>{
-                if(err){
-                  console.log(err)
-                  return res.status(501).json({
-                    data: err,
-                    message: 'Error',
-                    success: false
-                  });
-                }
+          // await stripe.checkout.sessions.listLineItems(
+          //     session.id, {expand:['data.price.product']},(err,lineItems)=>{
+          //       if(err){
+          //         console.log(err)
+          //         return res.status(501).json({
+          //           data: err,
+          //           message: 'Error',
+          //           success: false
+          //         });
+          //       }
                 // console.log(lineItems)
-                lineItems = lineItems.data[0]
-                  let purchased = {}
-                  if('points' in lineItems.price.product.metadata){
-                    purchased = {$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}}
-                  }else if('plan' in lineItems.price.product.metadata){
-                    purchased = {plan:lineItems.price.product.metadata.plan}
-                  }
+                // lineItems = lineItems.data[0]
+                //   let purchased = {}
+                //   if('points' in lineItems.price.product.metadata){
+                //     purchased = {$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}}
+                //   }else if('plan' in lineItems.price.product.metadata){
+                //     purchased = {plan:lineItems.price.product.metadata.plan}
+                //   }
                  // console.log(purchased)
-                 stripe.paymentIntents.retrieve(stripe.checkout.sessions.retrieve(session.id).payment_intent,(err,paymentIntent)=>{
-                   console.log(paymentIntent)
-                   console.log(paymentIntent.metadata)
-                 });
+                 // await stripe.checkout.sessions.retrieve(session.id).payment_intent
+                 // stripe.paymentIntents.retrieve(,(err,paymentIntent)=>{
+                 //   console.log(paymentIntent)
+                 //   console.log(paymentIntent.metadata)
+                 // });
 
               })
           break;
