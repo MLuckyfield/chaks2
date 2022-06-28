@@ -24,7 +24,7 @@ const Booking = ()=>{
     axios.post('/payment/new',{user:student._id})
       .then((res) => {
           console.log(res.data.data)
-          window.location.href=res.data.data.url
+          // window.location.href=res.data.data.url
           // setMsg([res.data.message,res.data.success]);
           })
       .catch((err) => {
