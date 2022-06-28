@@ -22,10 +22,10 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       // Handle the event
       switch (event.type) {
         case 'checkout.session.completed':
-          const session = event.data.object.id;
+          const session = event.data.object;
           console.log(session)
           await stripe.checkout.sessions.listLineItems(
-              session, {expand:['data.price.product']},(err,lineItems)=>{
+              session.id, {expand:['data.price.product']},(err,lineItems)=>{
                 if(err){
                   console.log(err)
                   return res.status(501).json({
@@ -43,6 +43,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     purchased = {plan:lineItems.price.product.metadata.plan}
                   }
                  console.log(purchased)
+                 console.log(session.metadata)
               })
           break;
         // ... handle other event types
