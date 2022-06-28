@@ -27,7 +27,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           console.log(session.payment_intent)
           stripe.paymentIntents.retrieve(session.payment_intent,(err,paymentIntent)=>{
             console.log(paymentIntent)
-            console.log(paymentIntent.metadata)
+            console.log(paymentIntent.charges)
           });
 
           // await stripe.checkout.sessions.listLineItems(
