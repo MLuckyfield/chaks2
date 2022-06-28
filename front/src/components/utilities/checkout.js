@@ -60,10 +60,10 @@ export default function CheckoutForm() {
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url: "https//chatshack.jp",
-        payment_method_data :
-          {billing_details:{
-              email: user.email
-          }}
+        // payment_method_data :
+        //   {billing_details:{
+        //       email: user.email
+        //   }}
       },
     });
 
