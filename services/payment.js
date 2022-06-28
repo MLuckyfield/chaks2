@@ -23,9 +23,9 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       switch (event.type) {
         case 'checkout.session.completed':
           const session = event.data.object;
-          console.log(event)
           console.log(session)
-          stripe.paymentIntents.retrieve(session.paymentIntent,(err,paymentIntent)=>{
+          console.log(session.payment_intent)
+          stripe.paymentIntents.retrieve(session.payment_intent,(err,paymentIntent)=>{
             console.log(paymentIntent)
             console.log(paymentIntent.metadata)
           });
@@ -64,6 +64,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 router.post('/new', async (req, res)=>{
   const paymentLink = await stripe.paymentLinks.create({
     line_items:[{price:'price_1LDexPBVAfieqaobsYFR70Im',quantity:1}],
+    adjustable_quantity:{enabled:true,minimum:1},
     after_completion: {type: 'redirect', redirect: {url: 'https://chatshack.jp'}},
     metadata:{order:req.body.user}
   })
