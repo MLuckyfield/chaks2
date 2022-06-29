@@ -13,6 +13,9 @@ body{
   line-height: 2;
   scroll-behavior: smooth
 }
+.cta{
+  width:30%;
+}
 .photo{
   height:200px;
   width:300px;
@@ -49,6 +52,9 @@ body{
     .overlay{
       height:35vh !important;
     }
+  }
+  .cta{
+    width:50%;
   }
   .preview{
     font-size: 0.5em;
