@@ -25,27 +25,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           const session = event.data.object;
           // console.log(session)
           console.log(session.metadata)
-          console.log(session.id)          
-          stripe.checkout.sessions.retrieve(session.id,{expand:['line_items','line_items.data.price.product']},(err,checkout)=>{
-            console.log(checkout)
-            console.log(checkout.line.data.price)
-            console.log(err)
-            // console.log(paymentIntent)
-            // User.findByIdAndUpdate(req.user.user_id,{$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}},{new:true}).then((result)=>{
-            //      console.log(result)
-            //         return res.status(201).json({
-            //           data: purchased,
-            //           message: 'Booking saved',
-            //           success: true
-            //         });
-            //     }).catch((err)=>{
-            //         return res.status(501).json({
-            //           data: err,
-            //           message: 'Booking saved',
-            //           success: false
-            //         });
-            //     })
-          });
+          console.log(session.id)
+          
 
           // await stripe.checkout.sessions.listLineItems(
           //     session.id, {expand:['data.price.product']},(err,lineItems)=>{
