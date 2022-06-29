@@ -28,23 +28,29 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           console.log(session.id)
           stripe.checkout.sessions.retrieve(session.id,{expand:['line_items.data.price.product']},(err,checkout)=>{
             console.log(checkout.line_items.data)
-            console.log(checkout.line_items.data[0].price.product)
-
+            const metadata=checkout.line_items.data[0].price.product.metadata
+            console.log(metadata)
+            let purchased = {}
+            if('points' in metadata){
+              purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
+            }else if('plan' in metadata){
+              purchased = {plan:metadata.plan}
+            }
             // console.log(paymentIntent)
-            // User.findByIdAndUpdate(req.user.user_id,{$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}},{new:true}).then((result)=>{
-            //      console.log(result)
-            //         return res.status(201).json({
-            //           data: purchased,
-            //           message: 'Booking saved',
-            //           success: true
-            //         });
-            //     }).catch((err)=>{
-            //         return res.status(501).json({
-            //           data: err,
-            //           message: 'Booking saved',
-            //           success: false
-            //         });
-            //     })
+            User.findByIdAndUpdate(session.metadata,purchased,{new:true}).then((result)=>{
+                 console.log(result)
+                    return res.status(201).json({
+                      data: result,
+                      message: 'Booking saved',
+                      success: true
+                    });
+                }).catch((err)=>{
+                    return res.status(501).json({
+                      data: err,
+                      message: 'Booking saved',
+                      success: false
+                    });
+                })
           });
 
           // await stripe.checkout.sessions.listLineItems(
