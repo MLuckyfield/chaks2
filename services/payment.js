@@ -29,7 +29,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           stripe.checkout.sessions.retrieve(session.id,{expand:['line_items.data.price.product']},(err,checkout)=>{
             console.log(checkout.line_items.data)
             console.log(checkout.line_items.data.price)
-            console.log(JSON.parse(checkout.line_items.data.price).product)
+            console.log(checkout.line_items.data.id)
 
             // console.log(paymentIntent)
             // User.findByIdAndUpdate(req.user.user_id,{$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}},{new:true}).then((result)=>{
