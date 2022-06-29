@@ -25,7 +25,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           const session = event.data.object;
           // console.log(session)
           console.log(session.metadata)
-          stripe.checkout.sessions.retrieve(session.id,{expand:['line_items','line_items.data.price.product']},(err,checkout)=>{
+          stripe.checkout.sessions.retrieve(session.id,{expand:['line_items','line_items.data']},(err,checkout)=>{
             console.log(checkout)
             // console.log(paymentIntent)
             // User.findByIdAndUpdate(req.user.user_id,{$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}},{new:true}).then((result)=>{
