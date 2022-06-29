@@ -36,8 +36,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             }else if('plan' in metadata){
               purchased = {plan:metadata.plan}
             }
-            // console.log(paymentIntent)
-            User.findByIdAndUpdate(session.metadata,purchased,{new:true}).then((result)=>{
+            console.log(purchase)
+            User.findByIdAndUpdate(session.metadata.order,purchased,{new:true}).then((result)=>{
                  console.log(result)
                     return res.status(201).json({
                       data: result,
