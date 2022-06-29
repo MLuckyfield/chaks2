@@ -40,13 +40,11 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             User.findByIdAndUpdate(session.metadata.order,purchased,{new:true}).then((result)=>{
                  console.log(result)
                     return res.status(201).json({
-                      data: result,
                       message: 'Booking saved',
                       success: true
                     });
                 }).catch((err)=>{
                     return res.status(501).json({
-                      data: err,
                       message: 'Booking saved',
                       success: false
                     });

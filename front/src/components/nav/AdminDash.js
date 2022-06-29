@@ -12,6 +12,7 @@ import StudentComments from '../user/StudentComments'
 // import { useEffect, useState} from 'react';
 import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
 import AuthDataProvider from "../auth-provider";
+import Product_Display from '../utilities/product_display'
 
 const Admin = () => {
 
@@ -59,6 +60,7 @@ const Dash = ()=>{
   }else if (user.role=='manager'){
     return(
       <div>
+        <Product_Display/>
         <Booking/>
         <StaffTable/>
         <StudentTable/>
