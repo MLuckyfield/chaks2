@@ -12,6 +12,9 @@
     .plan{
       width:90%;
     }
+    .plan-inner {
+      border:1px solid #D3D3D3;
+    }
 }
 
 .plan-inner {
@@ -20,7 +23,6 @@
   min-width: 280px;
   max-width: 100%;
   position:relative;
-  border:1px solid grey;
 }
 
 .entry-title {
@@ -63,11 +65,14 @@
   width:100%;
   font-size: 15px;
   bottom: -10px;
-  // left: 30px;
+  // left: 0px;
   font-weight: 400;
 }
 .price{
   padding-top: 10px;
+  span{
+    left:0px;
+  }
 }
 
 .entry-content {
