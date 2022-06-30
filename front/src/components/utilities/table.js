@@ -92,7 +92,13 @@ const displayable=(key)=>{
                                 }
                               });
                               return <td>{counter}</td>}else{return <td></td>}
-                          }                          
+                          }
+                          // if(key=='inClass'){
+                          //   console.log(key+' was triggered')
+                          //   return (
+                          //
+                          //   )
+                          // }
                           return <td>{item[key]}</td>
                         }else{return ''}
                       })}
