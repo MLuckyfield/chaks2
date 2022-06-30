@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import {axios} from "../../utilities/axios";
-const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
-const [msg,setMsg] = useState()
+
 
 const Product_Display = (props)=>{
   const [selected,setSelected]=useState();
-
+  const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
+  const [msg,setMsg] = useState()
+  
   const onSubmit=(e,product)=>{
     e.preventDefault();
     console.log(product)
