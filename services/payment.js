@@ -100,11 +100,9 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
         }
       }
       else{
-        identifier={
-          id:{session.metadata.order}
-        }
+        identifier={_id:session.metadata.order}
       }
-      User.findByIdAndUpdate(identifer,purchased,{new:true}).then((result)=>{
+      User.findOneAndUpdate(identifer,purchased,{new:true}).then((result)=>{
            console.log(result)
               return res.status(201).json({
                 message: 'Booking saved',

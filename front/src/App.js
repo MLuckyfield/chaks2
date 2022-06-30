@@ -177,16 +177,16 @@ const Front = ()=>{
                         <h2>ENGLISH + CAFE</h2>
                         <p/>雰囲気あるカフェスペースにて、英会話を楽しみましょう！会話は講師陣がリードするので、不安な方でも楽しくご利用いただけます！
                         <p/>FREE! coffee or tea
-                        <p/>¥1,000/30分 （最大料金 ¥5,000円）
+                        <p/>¥1,000/30分
                         <p/>10AM - 6PM
                     </div>
                     <div class='col slim center border'>
                     EVENING
                         <h2>ENGLISH + BAR</h2>
                         <p/>国際色豊かなファストフードや季節のクラフトビールを片手に英会話を楽しみましょう！カフェよりもカジュアルで自由な雰囲気なので、気軽に楽しめます！
-                        <p/>FREE! 1 drink （アルコールを含む）
+                        <p/>FREE! 1 drink （アルコールを含む, 最大８５０円）
                         <p/>¥2,500/時間制限なし
-                        <p/>6PM - 11PM
+                        <p/>6PM - 11PM (最終入店時間: 10PM)
                     </div>
                 </div>
                 <div class='row'>
