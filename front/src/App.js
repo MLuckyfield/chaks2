@@ -19,6 +19,8 @@ import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
 import Social from './components/utilities/social'
+import Account from './components/user/account'
+
 // import Payment from './components/utilities/payment'
 import Profile from './components/user/Profile'
 
@@ -74,6 +76,7 @@ const App = () => {
           <AuthDataProvider>
             <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
+            <SecureRoute path="/account" access={['user']} success={Account} fail={Login}/>
             <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={Login}/>
             <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts} fail={Login}/>
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={Login}/>

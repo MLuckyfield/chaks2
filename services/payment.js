@@ -37,8 +37,9 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
               purchased = {
                   plan:metadata.plan,
                   stripe:{
-                    id:session.subscription,
-                    date:new Date()
+                    plan_id:session.subscription,
+                    plan_status:'active',
+                    plan_start_date:new Date()
                   }
               }
             }else if('sub_points'){purchased = {$inc:{points:metadata.sub_points * checkout.line_items.data[0].quantity}}}
@@ -80,12 +81,13 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           //
           //     })
           break;
-        // ... handle other event types
+        case 'customer.subscription.updated':
+          const subscription = event.data.object;
+          console.log(subscription)
+          break;
         default:
           console.log(`Unhandled event type ${event.type}`);
       }
-
-
 })
 
 router.post('/new', async (req, res)=>{

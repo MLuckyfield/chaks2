@@ -46,8 +46,13 @@ const User = mongoose.model('User', new Schema({
     default:'standard',
   },
   stripe:{
-    id:{type:String},
-    date:{type:Date,default:new Date()}
+    plan_id:{type:String},
+    plan_status:{
+      type:String,
+      enum:['active','paused','to_cancel','cancelled']
+    },
+    plan_start_date:{type:Date},
+    customer_id:{type:String}
   },
   points:{
     type:Number,

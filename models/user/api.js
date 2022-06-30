@@ -192,7 +192,7 @@ const request = require('request')
     });
 
     //Get
-    router.get('/all', auth.auth, auth.permission(['teacher','manager']), async (req, res) => {
+    router.get('/all', auth.auth, async (req, res) => {
       console.log(req.query)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
       return res.status(201).json({
