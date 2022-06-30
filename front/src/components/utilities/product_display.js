@@ -6,11 +6,11 @@ const Product_Display = (props)=>{
   const [selected,setSelected]=useState();
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
   const [msg,setMsg] = useState()
-  
-  const onSubmit=(e,product)=>{
+
+  const onSubmit=(e,product,countable)=>{
     e.preventDefault();
     console.log(product)
-    axios.post('/payment/new',{user:student,product:product})
+    axios.post('/payment/new',{user:student,product:product,countable:countable})
       .then((res) => {
           console.log(res.data.data)
           window.location.href=res.data.data.url
@@ -34,9 +34,9 @@ const Product_Display = (props)=>{
                   <ul>
                     <li>予約不要で少人数のグループレッスン！
 入会費、テキスト代はなしで、来たいときに滞在した分だけの支払い！</li>
-                    <li><strong>英会話カフェ</strong>（10時～18時）
+                    <li><strong>英会話カフェ</strong>（10時～18時）<br/>
 ¥1,000/30分（コーヒー、紅茶は飲み放題）</li>
-                    <li><strong>英会話バー</strong>（18時～23時）
+                    <li><strong>英会話バー</strong>（18時～23時）<br/>
 ¥2,500/無制限（ワンドリンク付）</li>
                   </ul>
                 </div>
@@ -58,7 +58,7 @@ const Product_Display = (props)=>{
                     <li style={{fontSize:'10px'}}><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
                   </ul>
                 </div>
-                <div class="btn" onClick={(e)=>{onSubmit(e,'price_1LDexPBVAfieqaobsYFR70Im')}}>購入</div>
+                <div class="btn" onClick={(e)=>{onSubmit(e,'price_1LDexPBVAfieqaobsYFR70Im',true)}}>購入</div>
               </div>
             </div>
             <div class="plan ultimite">
@@ -82,7 +82,7 @@ const Product_Display = (props)=>{
                     <li><strong>レッスン時間</strong> 無制限~</li>
                   </ul>
                 </div>
-                <div class="btn" onClick={(e)=>{onSubmit(e,'price_1LDp5RBVAfieqaob33XKdjl2')}}>購入</div>
+                <div class="btn" onClick={(e)=>{onSubmit(e,'price_1LDp5RBVAfieqaob33XKdjl2',false)}}>購入</div>
               </div>
             </div>
           </div>
