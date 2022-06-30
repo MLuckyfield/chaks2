@@ -6,16 +6,16 @@ const Product_Display = (props)=>{
   const onSubmit=(e,product)=>{
     e.preventDefault();
     console.log(product)
-    // axios.post('/payment/new',{user:student,product:product})
-    //   .then((res) => {
-    //       console.log(res.data.data)
-    //       window.location.href=res.data.data.url
-    //       // setMsg([res.data.message,res.data.success]);
-    //       })
-    //   .catch((err) => {
-    //     setMsg([err.message,err.success]);
-    //     // setFeedback(err.response.data.message);
-    //     });
+    axios.post('/payment/new',{user:student,product:product})
+      .then((res) => {
+          console.log(res.data.data)
+          window.location.href=res.data.data.url
+          // setMsg([res.data.message,res.data.success]);
+          })
+      .catch((err) => {
+        setMsg([err.message,err.success]);
+        // setFeedback(err.response.data.message);
+        });
   }
   return (
           <div id="price">
@@ -36,9 +36,7 @@ const Product_Display = (props)=>{
 ¥2,500/無制限（ワンドリンク付）</li>
                   </ul>
                 </div>
-                <div class="btn">
-                  店頭でのお支払い
-                </div>
+                <div class="border">店頭でのお支払い</div>
               </div>
             </div>
             <div class="plan standard">

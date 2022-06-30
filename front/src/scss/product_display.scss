@@ -20,6 +20,7 @@
   min-width: 280px;
   max-width: 100%;
   position:relative;
+  border:1px solid grey;
 }
 
 .entry-title {
@@ -59,10 +60,14 @@
 
 .price span {
   position: absolute;
+  width:100%;
   font-size: 15px;
   bottom: -10px;
-  left: 30px;
+  // left: 30px;
   font-weight: 400;
+}
+.price{
+  padding-top: 10px;
 }
 
 .entry-content {
@@ -101,6 +106,7 @@
     top: -7px;
     background: #F80;
     color: #fff;
+    width:90px;
     text-transform: uppercase;
     z-index: 2;
     padding: 2px 5px;

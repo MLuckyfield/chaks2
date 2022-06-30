@@ -35,7 +35,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
               purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
             }else if('plan' in metadata){
               purchased = {plan:metadata.plan}
-            }
+            }else if('sub_points'){purchased = {$inc:{points:metadata.sub_points * checkout.line_items.data[0].quantity}}}
             console.log('Order complete for: '+session.metadata.order)
             User.findByIdAndUpdate(session.metadata.order,purchased,{new:true}).then((result)=>{
                  console.log(result)
