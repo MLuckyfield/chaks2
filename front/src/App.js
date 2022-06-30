@@ -154,8 +154,8 @@ const Front = ()=>{
 これらはきっと、気軽に楽しく英語を話す機会があれば解決できると私たちは思っています。
 私たちは、そんな場所を提供しています。
                     <div class='row'>
-                      <button class='solid-first cta' onClick={()=>window.location='/about'}>Mission</button>
-                      <button class='solid-first cta' onClick={()=>window.location='/blog/62bbf3e2f048ac1e59f2856a/私達と他の英会話教室の違いについて'}>他社との違い</button>
+                      <div class='col'><button class='solid-first cta' onClick={()=>window.location='/about'}>Mission</button></div>
+                      <div class='col'><button class='solid-first cta' onClick={()=>window.location='/blog/62bbf3e2f048ac1e59f2856a/私達と他の英会話教室の違いについて'}>他社との違い</button></div>
                     </div>
                 </div>
               </div>
