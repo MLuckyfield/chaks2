@@ -124,7 +124,7 @@ const Booking = ()=>{
                   )
                 })): 'No reservations. Why not make one? :)'}
                   {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
-                    <Calendar onChange={updateView} value={day} minDate={date?date:new Date()} activeStartDate={date?date:new Date()}/>
+                    <Calendar onChange={updateView} value={day} minDate={date?date:new Date()} }/>
                     {available?available.map(function(item,i){
                       return <div class='col slim feedback' onClick={(item)=>{updateAppointment(available[i])}}>
                           <div class=''>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}</div>
@@ -136,6 +136,7 @@ const Booking = ()=>{
       </div>
   )
 }
+// activeStartDate={date?date:new Date()
 // <form style={{width:'100%',border:'solid 1px black'}}>
 //   <div class='form-group'>
 //     <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
