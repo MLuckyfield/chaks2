@@ -9,7 +9,9 @@
   width:33%;
 }
 @media (max-width:800px){
-    width:90%;
+    .plan{
+      width:90%;
+    }
 }
 
 .plan-inner {
@@ -104,7 +106,7 @@
     text-transform: uppercase;
     z-index: 2;
     padding: 2px 5px;
-    font-size: 9px;
+    // font-size: 9px
     border-radius: 2px;
     right: 10px;
     font-weight: 700;

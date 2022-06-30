@@ -21,7 +21,7 @@ const Product_Display = (props)=>{
                   </ul>
                 </div>
                 <div class="btn">
-                  <a href="#">店頭でのお支払い（カード払い可能）</a>
+                  店頭でのお支払い
                 </div>
               </div>
             </div>
@@ -37,11 +37,11 @@ const Product_Display = (props)=>{
                     <li>マンツーマン英会話で朝活をしましょう！ビジネス英語、TOEFL対策などお客様の希望に沿ったレッスンを提供します！</li>
                     <li>利用可能時間：7時～10時</li>
                     <li><strong>レッスン時間</strong>45分~</li>
-                    <li><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
+                    <li style={{fontSize:'10px'}}><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
                   </ul>
                 </div>
                 <div class="btn">
-                  <a href="#">Order Now</a>
+                  <a href="#">購入</a>
                 </div>
               </div>
             </div>
@@ -67,7 +67,7 @@ const Product_Display = (props)=>{
                   </ul>
                 </div>
                 <div class="btn">
-                  <a href="#">Order Now</a>
+                  <a href="#">購入</a>
                 </div>
               </div>
             </div>
