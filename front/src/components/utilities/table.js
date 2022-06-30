@@ -94,7 +94,7 @@ const displayable=(key)=>{
                               return <td>{counter}</td>}else{return <td></td>}
                           }
                           if(key=='plan'){
-                            return <td>{item[key].name}</td>
+                            return <td>{y['name']}</td>
                           }
                           return <td>{item[key]}</td>
                         }else{return ''}
