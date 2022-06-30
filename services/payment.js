@@ -84,10 +84,10 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 
 router.post('/new', async (req, res)=>{
   // console.log(req)
-  // console.log(req.body.user)
+  console.log(req.body.product)
   const paymentLink = await stripe.paymentLinks.create({
     line_items:[{
-        price:'price_1LDexPBVAfieqaobsYFR70Im',
+        price:req.body.product,
         quantity:1,
         adjustable_quantity:{enabled:true,minimum:1}}],
     metadata:{order:req.body.user},

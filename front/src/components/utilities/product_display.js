@@ -1,9 +1,22 @@
-import twitter from '../../sns_logos/twitter_dark.png'
-import youtube from '../../sns_logos/yt_dark.png'
-import instagram from '../../sns_logos/insta_dark.jpg'
+import React, {useState} from 'react'
 
 const Product_Display = (props)=>{
+  const [selected,setSelected]=useState();
 
+  const onSubmit=(e,product)=>{
+    e.preventDefault();
+    console.log(product)
+    // axios.post('/payment/new',{user:student,product:product})
+    //   .then((res) => {
+    //       console.log(res.data.data)
+    //       window.location.href=res.data.data.url
+    //       // setMsg([res.data.message,res.data.success]);
+    //       })
+    //   .catch((err) => {
+    //     setMsg([err.message,err.success]);
+    //     // setFeedback(err.response.data.message);
+    //     });
+  }
   return (
           <div id="price">
             <div class="plan">
@@ -41,7 +54,7 @@ const Product_Display = (props)=>{
                   </ul>
                 </div>
                 <div class="btn">
-                  <a href="#">購入</a>
+                  <a href="#" onClick={(e)=>{setSelected('price_1LDexPBVAfieqaobsYFR70Im');onSubmit(e)}}>購入</a>
                 </div>
               </div>
             </div>
