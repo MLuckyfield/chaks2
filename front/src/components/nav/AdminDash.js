@@ -40,10 +40,10 @@ const Admin = () => {
 }
 
 const StaffTable = ()=>{
-  return <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -tags -source -password -createdAt -updatedAt -role"/>
+  return <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -tags -source -password -createdAt -updatedAt -role -points"/>
 }
 const StudentTable = ()=>{
-  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -tags -source -password -createdAt -updatedAt -role"/>
+  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -tags -source -password -createdAt -updatedAt -role -points"/>
 }
 
 const Dash = ()=>{

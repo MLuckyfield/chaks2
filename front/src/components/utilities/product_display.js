@@ -53,7 +53,7 @@ const Product_Display = (props)=>{
                     <li style={{fontSize:'10px'}}><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
                   </ul>
                 </div>
-                <div class="btn" onClick={(e)=>{setSelected('price_1LDexPBVAfieqaobsYFR70Im');onSubmit(e)}}>購入</div>
+                <div class="btn" onClick={(e)=>{setSelected('price_1LDexPBVAfieqaobsYFR70Im');onSubmit(e,'price_1LDexPBVAfieqaobsYFR70Im')}}>購入</div>
               </div>
             </div>
             <div class="plan ultimite">
