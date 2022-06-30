@@ -6,13 +6,10 @@
   display: inline-flex;
   margin: 10px 1%;
   font-family: 'Lato', Arial, sans-serif;
-  width:33%;
+  width:30%;
 }
 @media (max-width:800px){
     .plan{
-      width:90%;
-    }
-    .entry-content {
       width:90%;
     }
 }
@@ -70,7 +67,7 @@
 
 .entry-content {
   color: #323232;
-  width:32%;
+  width:90%;
 }
 
 .entry-content ul {

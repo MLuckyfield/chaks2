@@ -48,7 +48,7 @@ const Product_Display = (props)=>{
                 <div class="entry-content">
                   <ul>
                     <li>マンツーマン英会話で朝活をしましょう！ビジネス英語、TOEFL対策などお客様の希望に沿ったレッスンを提供します！</li>
-                    <li>利用可能時間：7時～10時</li>
+                    <li><strong>利用可能時間</strong>7時～10時</li>
                     <li><strong>レッスン時間</strong>45分~</li>
                     <li style={{fontSize:'10px'}}><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
                   </ul>
@@ -72,7 +72,7 @@ const Product_Display = (props)=>{
 通常の英会話カフェ＆バーでのグループレッスンを時間制限なしで受講し放題！
 これから留学を考えている方や、外資系への転職を考えている人などへ向けたプランです！</strong></li>
                     <li>
-                        利用可能時間：10時～23時
+                        <strong>利用可能時間</strong>10時～23時
                         <br/>
                         最終入店時間:22時
                     </li>
