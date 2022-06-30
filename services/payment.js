@@ -57,31 +57,12 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     });
                 })
           });
-
-          // await stripe.checkout.sessions.listLineItems(
-          //     session.id, {expand:['data.price.product']},(err,lineItems)=>{
-          //       if(err){
-          //         console.log(err)
-          //         return res.status(501).json({
-          //           data: err,
-          //           message: 'Error',
-          //           success: false
-          //         });
-          //       }
-          //       console.log(lineItems)
-          //       lineItems = lineItems.data[0]
-          //         let purchased = {}
-          //         if('points' in lineItems.price.product.metadata){
-          //           purchased = {$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}}
-          //         }else if('plan' in lineItems.price.product.metadata){
-          //           purchased = {plan:lineItems.price.product.metadata.plan}
-          //         }
-          //        console.log(purchased)
-          //        await stripe.checkout.sessions.retrieve(session.id).payment_intent
-          //
-          //     })
           break;
         case 'customer.subscription.updated':
+          const subscription = event.data.object;
+          console.log(subscription)
+          break;
+        case 'customer.subscription.deleted':
           const subscription = event.data.object;
           console.log(subscription)
           break;
