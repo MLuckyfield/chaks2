@@ -29,7 +29,7 @@ const Product_Display = (props)=>{
               <div class="plan-inner">
                 <div class="entry-title">
                   <h3>マンツーマン</h3>
-                  <div class="price">¥5,000円<span>/45分</span>
+                  <div class="price">¥5,000<span>/45分</span>
                   </div>
                 </div>
                 <div class="entry-content">
@@ -50,22 +50,20 @@ const Product_Display = (props)=>{
               <div class="hot">週3回以上ならお得！</div>
                 <div class="entry-title">
                   <h3>英会話放題</h3>
-                  <div class="price">¥30,000円<span>/月</span>
+                  <div class="price">¥30,000<span>/月</span>
                   </div>
                 </div>
                 <div class="entry-content">
                   <ul>
-                    <li>英語力の飛躍的向上を目指している方は通い放題コース！
+                    <li><strong>英語力の飛躍的向上を目指している方は通い放題コース！
 通常の英会話カフェ＆バーでのグループレッスンを時間制限なしで受講し放題！
-これから留学を考えている方や、外資系への転職を考えている人などへ向けたプランです！</li>
+これから留学を考えている方や、外資系への転職を考えている人などへ向けたプランです！</strong></li>
                     <li>
-                        <ul>
-                            <li>利用可能時間：10時～23時</li>
-                            <li>最終入店時間:22時</li>
-                        </ul>
+                        利用可能時間：10時～23時
+                        <br/>
+                        最終入店時間:22時
                     </li>
                     <li><strong>レッスン時間</strong>無制限~</li>
-                    <li><strong>最終入店時間</strong> 22時</li>
                   </ul>
                 </div>
                 <div class="btn">

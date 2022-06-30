@@ -6,6 +6,10 @@
   display: inline-block;
   margin: 10px 1%;
   font-family: 'Lato', Arial, sans-serif;
+  width:33%;
+}
+@media (max-width:800px){
+    width:90%;
 }
 
 .plan-inner {
@@ -38,13 +42,13 @@
   position: absolute;
   bottom: -25px;
   background: #20BADA;
-  height: 95px;
-  width: 95px;
+  height: 125px;
+  width: 125px;
   margin: 0 auto;
   left: 0;
   right: 0;
   overflow: hidden;
-  border-radius: 50px;
+  border-radius: 50%;
   border: 5px solid #fff;
   line-height: 80px;
   font-size: 28px;
