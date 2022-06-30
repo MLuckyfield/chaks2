@@ -70,8 +70,6 @@ const Product_Display = (props)=>{
                 </div>
               </div>
             </div>
-            <!-- end of price tab-->
-            <!--price tab-->
             <div class="plan ultimite">
               <div class="plan-inner">
                 <div class="entry-title">
