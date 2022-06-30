@@ -91,7 +91,20 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           console.log(`Unhandled event type ${event.type}`);
       }
       //after going through switch statement, update
-      User.findByIdAndUpdate(session.metadata.order,purchased,{new:true}).then((result)=>{
+      let identifier={}
+      if(session.customer){
+        identifier={
+          stripe:{
+            customer_id:session.customer
+          }
+        }
+      }
+      else{
+        identifier={
+          id:{session.metadata.order}
+        }
+      }
+      User.findByIdAndUpdate(identifer,purchased,{new:true}).then((result)=>{
            console.log(result)
               return res.status(201).json({
                 message: 'Booking saved',
