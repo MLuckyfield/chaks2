@@ -10,7 +10,7 @@ const CampaignPage = () => {
       <div id='concept'  class='master-row dark'>
         <div class='row'><h1 class='col'>MISSION</h1>
             <div class='col slim'>
-              英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く。<br/>英会話を楽しく、身近で、達成感のあるものにすること
+              英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く。英会話を楽しく、身近で、達成感のあるものにすること。
             </div>
         </div>
       </div>

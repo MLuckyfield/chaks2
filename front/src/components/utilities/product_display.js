@@ -53,9 +53,7 @@ const Product_Display = (props)=>{
                     <li style={{fontSize:'10px'}}><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
                   </ul>
                 </div>
-                <div class="btn">
-                  <a href="#" onClick={(e)=>{setSelected('price_1LDexPBVAfieqaobsYFR70Im');onSubmit(e)}}>購入</a>
-                </div>
+                <div class="btn" onClick={(e)=>{setSelected('price_1LDexPBVAfieqaobsYFR70Im');onSubmit(e)}}>購入</div>
               </div>
             </div>
             <div class="plan ultimite">
@@ -68,20 +66,18 @@ const Product_Display = (props)=>{
                 </div>
                 <div class="entry-content">
                   <ul>
-                    <li><strong>英語力の飛躍的向上を目指している方は通い放題コース！
+                    <li>英語力の飛躍的向上を目指している方は通い放題コース！
 通常の英会話カフェ＆バーでのグループレッスンを時間制限なしで受講し放題！
-これから留学を考えている方や、外資系への転職を考えている人などへ向けたプランです！</strong></li>
+これから留学を考えている方や、外資系への転職を考えている人などへ向けたプランです！</li>
                     <li>
                         <strong>利用可能時間</strong>10時～23時
                         <br/>
-                        最終入店時間:22時
+                        最終入店時間: 22時
                     </li>
                     <li><strong>レッスン時間</strong>無制限~</li>
                   </ul>
                 </div>
-                <div class="btn">
-                  <a href="#">購入</a>
-                </div>
+                <div class="btn" onClick={(e)=>{setSelected('price_1LDp5RBVAfieqaob33XKdjl2');onSubmit(e)}}>購入</div>
               </div>
             </div>
           </div>
