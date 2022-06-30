@@ -18,11 +18,10 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
         res.status(400).send(`Webhook Error: ${err.message}`);
         return;
       }
-
+      const session = event.data.object;
       // Handle the event
       switch (event.type) {
         case 'checkout.session.completed':
-          const session = event.data.object;
           console.log(session.subscription)
           // console.log(session.metadata)
           // console.log(session.id)
@@ -59,12 +58,10 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           });
           break;
         case 'customer.subscription.updated':
-          const subscription = event.data.object;
-          console.log(subscription)
+          console.log(session)
           break;
         case 'customer.subscription.deleted':
-          const subscription = event.data.object;
-          console.log(subscription)
+          console.log(session)
           break;
         default:
           console.log(`Unhandled event type ${event.type}`);
@@ -73,7 +70,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 
 router.post('/new', async (req, res)=>{
   // console.log(req)
-  console.log(req.body.product)
+  // console.log(req.body.product)
   let line_items={
       price:req.body.product,
       quantity:1
@@ -91,97 +88,5 @@ router.post('/new', async (req, res)=>{
      success: true
    });
 })
-
-// // //Create
-// router.post('/getId', async (req, res) => {
-//   // req=req.body
-//   console.log('getID was called')
-//   // console.log(req)
-//   //determine price based on product
-// //   const product = await stripe.products.retrieve(
-// //   req.body.product
-// // );
-//   let price = ''
-//   switch (req.body.product) {
-//     case 'private_lesson':
-//       price=5000;
-//       break;
-//     default:
-//       price=0;
-//   }
-//   console.log(price)
-//   const paymentIntent = await stripe.paymentIntents.create({
-//     amount: price,
-//     currency: 'jpy',
-//     automatic_payment_methods: {enabled: true},
-//   });
-//   // console.log('and returned '+paymentIntent)
-//   return res.status(201).json({
-//     data: paymentIntent,
-//     message: 'Booking saved',
-//     success: true
-//   });
-//
-// });
-//
-// router.post("/create-payment-intent", async (req, res) => {
-//   console.log('creating payment intent')
-//   const { items } = req.body;
-//
-//   // Create a PaymentIntent with the order amount and currency
-//   const paymentIntent = await stripe.paymentIntents.create({
-//     amount: 5000,
-//     currency: "jpy",
-//     automatic_payment_methods: {
-//       enabled: true,
-//     },
-//   });
-//
-//   res.send({
-//     clientSecret: paymentIntent.client_secret,
-//   });
-// });
-//how to get check out session id from front and process
-// router.post('/getTransaction', async (req, res) => {
-//   // req=req.body
-//   console.log('acquiring transaction...')
-//   // console.log(req)
-//   // let session='hi'
-//   await stripe.checkout.sessions.listLineItems(
-//     req.body.transaction, {expand:['data.price.product']},(err,lineItems)=>{
-//       if(err){
-//         console.log(err)
-//         return res.status(501).json({
-//           data: err,
-//           message: 'Error',
-//           success: false
-//         });
-//       }
-//       console.log(lineItems)
-//       lineItems = lineItems.data[0]
-//         let purchased = {}
-//         if('points' in lineItems.price.product.metadata){
-//           purchased = {$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}}
-//         }else if('plan' in lineItems.price.product.metadata){
-//           purchased = {plan:lineItems.price.product.metadata.plan}
-//         }
-//        // console.log(purchased)
-//        // console.log(req.user.user_id)
-//        User.findByIdAndUpdate(req.user.user_id,{$inc:{points:lineItems.price.product.metadata.points * lineItems.quantity}},{new:true}).then((result)=>{
-//          console.log(result)
-//             return res.status(201).json({
-//               data: purchased,
-//               message: 'Booking saved',
-//               success: true
-//             });
-//         }).catch((err)=>{
-//             return res.status(501).json({
-//               data: err,
-//               message: 'Booking saved',
-//               success: false
-//             });
-//         })
-//     })
-// });
 
 module.exports=router;
