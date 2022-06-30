@@ -63,7 +63,7 @@ const Product_Display = (props)=>{
             </div>
             <div class="plan ultimite">
               <div class="plan-inner">
-              <div class="hot">週3回以上ならお得！</div>
+              <div class="hot">週3回以上なら<br/>お得！</div>
                 <div class="entry-title">
                   <h3>英会話放題</h3>
                   <div class="price">¥30,000<span>/月</span>

@@ -85,13 +85,13 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 router.post('/new', async (req, res)=>{
   // console.log(req)
   console.log(req.body.product)
-  let line_items=[{
+  let line_items={
       price:req.body.product,
       quantity:1
-    }]
+    }
   if(req.body.countable){line_items['adjustable_quantity']={enabled:true,minimum:1}}
   const paymentLink = await stripe.paymentLinks.create({
-    line_items:line_items,
+    line_items:[line_items],
     metadata:{order:req.body.user},
     after_completion: {type: 'redirect', redirect: {url: 'https://chatshack.jp'}},
 
