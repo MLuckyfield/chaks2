@@ -45,6 +45,7 @@ const makeComment = (item)=>{
     // console.log(target)
 }
 const displayable=(key)=>{
+  console.log(key)
   if(key!='_id'&&key!='email'&&key!='profile'&&key!='inClass'){
     return true
   }else{return false}
@@ -77,6 +78,7 @@ const displayable=(key)=>{
                     </tr>
                     <tr>
                       {Object.keys(item).sort().map((key, y) => {
+
                         if(displayable(key)){
                           if(key=='statistics'){ console.log('displaying statistics...')
                             if(item[key]){
