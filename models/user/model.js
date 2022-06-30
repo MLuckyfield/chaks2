@@ -41,10 +41,12 @@ const User = mongoose.model('User', new Schema({
     details:{type:String}
   },
   plan:{
-    name:{type:String,
-      enum:['standard','unlimited'],
-      default:'standard'},
-    stripe_id:{type:String},
+    type:String,
+    enum:['standard','unlimited'],
+    default:'standard',
+  },
+  stripe:{
+    id:{type:String},
     date:{type:Date,default:new Date()}
   },
   points:{

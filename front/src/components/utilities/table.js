@@ -92,14 +92,7 @@ const displayable=(key)=>{
                                 }
                               });
                               return <td>{counter}</td>}else{return <td></td>}
-                          }
-                          if(key=='plan'){
-                            console.log(item[key])
-                            console.log(item[key].name)
-                            console.log(typeof item[key])
-                            console.log(()=>{let temp = item[key];return temp['name']})                            
-                            return <td></td>
-                          }
+                          }                          
                           return <td>{item[key]}</td>
                         }else{return ''}
                       })}
