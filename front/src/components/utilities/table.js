@@ -60,7 +60,7 @@ const displayable=(key)=>{
                 <StudentComments/>
             </div>
           ):''}
-          
+
 
           {data ? (data.map(function(item, i){
               if(i==0){
@@ -93,12 +93,9 @@ const displayable=(key)=>{
                               });
                               return <td>{counter}</td>}else{return <td></td>}
                           }
-                          // if(key=='inClass'){
-                          //   console.log(key+' was triggered')
-                          //   return (
-                          //
-                          //   )
-                          // }
+                          if(key=='plan'){
+                            return <td>{y.name}</td>
+                          }
                           return <td>{item[key]}</td>
                         }else{return ''}
                       })}
