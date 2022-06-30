@@ -5,23 +5,95 @@ import instagram from '../../sns_logos/insta_dark.jpg'
 const Product_Display = (props)=>{
 
   return (
-    <div class="row">
-        <div class='col'>
-          <h2>Group Lessons</h2>
-          <h3>1000/30min</h3>
-          <p>No online payment needed! Join and leave anytime without reservation. Group lessons with max size of 4 people. Pay only for the time you stay!</p>
-        </div>
-        <div class='col'>
-          <h2>Private Lessons</h2>
-          <h3>5000yen/45min lesson</h3>
-          <p>Start your day with personalized 1-to-1 instruction! You can learn about business English or TOEFL preparation, in addition to our usual offering.</p>
-        </div>
-        <div class='col'>
-          <h2>All You Can English</h2>
-          <h3>30,000/month</h3>          
-          <p>Level up significantly with high intensity English study! Come as much as you want to group lessons with no limit. Perfect for people preparing for ryugaku, work transfers or presentations, etc. Practice makes perfect!</p>
-        </div>
-    </div>
+          <div id="price">
+            <div class="plan">
+              <div class="plan-inner">
+                <div class="entry-title">
+                  <h3>Basic Wash</h3>
+                  <div class="price">$25<span>/PER CAR</span>
+                  </div>
+                </div>
+                <div class="entry-content">
+                  <ul>
+                    <li><strong>1x</strong> option 1</li>
+                    <li><strong>2x</strong> option 2</li>
+                    <li><strong>3x</strong> option 3</li>
+                    <li><strong>Free</strong> option 4</li>
+                    <li><strong>Unlimited</strong> option 5</li>
+                  </ul>
+                </div>
+                <div class="btn">
+                  <a href="#">Order Now</a>
+                </div>
+              </div>
+            </div>
+            <div class="plan basic">
+              <div class="plan-inner">
+                <div class="hot">hot</div>
+                <div class="entry-title">
+                  <h3>Express Wash</h3>
+                  <div class="price">$50<span>/PER CAR</span>
+                  </div>
+                </div>
+                <div class="entry-content">
+                  <ul>
+                    <li><strong>1x</strong> option 1</li>
+                    <li><strong>2x</strong> option 2</li>
+                    <li><strong>3x</strong> option 3</li>
+                    <li><strong>Free</strong> option 4</li>
+                    <li><strong>Unlimited</strong> option 5</li>
+                  </ul>
+                </div>
+                <div class="btn">
+                  <a href="#">Order Now</a>
+                </div>
+              </div>
+            </div>
+            <div class="plan standard">
+              <div class="plan-inner">
+                <div class="entry-title">
+                  <h3>Super Wash</h3>
+                  <div class="price">$75<span>/PER CAR</span>
+                  </div>
+                </div>
+                <div class="entry-content">
+                  <ul>
+                    <li><strong>2x</strong> Free Entrance</li>
+                    <li><strong>Free</strong> Snacks</li>
+                    <li><strong>Custom</strong> Swags</li>
+                    <li><strong>2x</strong> Certificate</li>
+                    <li><strong>Free</strong> Wifi</li>
+                  </ul>
+                </div>
+                <div class="btn">
+                  <a href="#">Order Now</a>
+                </div>
+              </div>
+            </div>
+            <!-- end of price tab-->
+            <!--price tab-->
+            <div class="plan ultimite">
+              <div class="plan-inner">
+                <div class="entry-title">
+                  <h3>Unlimited Wash</h3>
+                  <div class="price">$100<span>/PER CAR</span>
+                  </div>
+                </div>
+                <div class="entry-content">
+                  <ul>
+                    <li><strong>1x</strong> option 1</li>
+                    <li><strong>2x</strong> option 2</li>
+                    <li><strong>3x</strong> option 3</li>
+                    <li><strong>Free</strong> option 4</li>
+                    <li><strong>Unlimited</strong> option 5</li>
+                  </ul>
+                </div>
+                <div class="btn">
+                  <a href="#">Order Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
   )
 }
 

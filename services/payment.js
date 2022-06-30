@@ -24,19 +24,19 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
         case 'checkout.session.completed':
           const session = event.data.object;
           // console.log(session)
-          console.log(session.metadata)
-          console.log(session.id)
+          // console.log(session.metadata)
+          // console.log(session.id)
           stripe.checkout.sessions.retrieve(session.id,{expand:['line_items.data.price.product']},(err,checkout)=>{
-            console.log(checkout.line_items.data)
+            // console.log(checkout.line_items.data)
             const metadata=checkout.line_items.data[0].price.product.metadata
-            console.log(metadata)
+            // console.log(metadata)
             let purchased = {}
             if('points' in metadata){
               purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
             }else if('plan' in metadata){
               purchased = {plan:metadata.plan}
             }
-            // console.log(purchased)
+            console.log('Order complete for: '+session.metadata.order)
             User.findByIdAndUpdate(session.metadata.order,purchased,{new:true}).then((result)=>{
                  console.log(result)
                     return res.status(201).json({
