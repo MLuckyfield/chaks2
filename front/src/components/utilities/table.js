@@ -95,8 +95,10 @@ const displayable=(key)=>{
                           }
                           if(key=='plan'){
                             console.log(item[key])
-                            console.log(y['name'])
-                            return <td>{y['name']}</td>
+                            console.log(item[key].name)
+                            console.log(typeof item[key])
+                            console.log(()=>{let temp = item[key];return temp['name']})                            
+                            return <td></td>
                           }
                           return <td>{item[key]}</td>
                         }else{return ''}
