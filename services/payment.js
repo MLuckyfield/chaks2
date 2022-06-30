@@ -23,7 +23,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       switch (event.type) {
         case 'checkout.session.completed':
           const session = event.data.object;
-          // console.log(session)
+          console.log(session)
           // console.log(session.metadata)
           // console.log(session.id)
           stripe.checkout.sessions.retrieve(session.id,{expand:['line_items.data.price.product']},(err,checkout)=>{
@@ -37,19 +37,19 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
               purchased = {plan:metadata.plan}
             }else if('sub_points'){purchased = {$inc:{points:metadata.sub_points * checkout.line_items.data[0].quantity}}}
             console.log('Order complete for: '+session.metadata.order)
-            User.findByIdAndUpdate(session.metadata.order,purchased,{new:true}).then((result)=>{
-                 console.log(result)
-                    return res.status(201).json({
-                      message: 'Booking saved',
-                      success: true
-                    });
-                }).catch((err)=>{
-                    return res.status(501).json({
-                      message: 'Booking saved',
-                      success: false
-                    });
-                })
-          });
+          //   User.findByIdAndUpdate(session.metadata.order,purchased,{new:true}).then((result)=>{
+          //        console.log(result)
+          //           return res.status(201).json({
+          //             message: 'Booking saved',
+          //             success: true
+          //           });
+          //       }).catch((err)=>{
+          //           return res.status(501).json({
+          //             message: 'Booking saved',
+          //             success: false
+          //           });
+          //       })
+          // });
 
           // await stripe.checkout.sessions.listLineItems(
           //     session.id, {expand:['data.price.product']},(err,lineItems)=>{
