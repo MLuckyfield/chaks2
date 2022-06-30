@@ -15,13 +15,16 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       try {
         event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
       } catch (err) {
+        console.log('failed')
         res.status(400).send(`Webhook Error: ${err.message}`);
         return;
       }
       const session = event.data.object;
+      console.log('event recieved from Stripe')
+      let purchased = {}
       // Handle the event
       switch (event.type) {
-        case 'checkout.session.completed':
+        case 'checkout.session.completed': //update account with purchase
           console.log(session.subscription)
           // console.log(session.metadata)
           // console.log(session.id)
@@ -29,7 +32,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             // console.log(checkout.line_items.data)
             const metadata=checkout.line_items.data[0].price.product.metadata
             // console.log(metadata)
-            let purchased = {}
+
             if('points' in metadata){
               purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
             }else if('plan' in metadata){
@@ -43,29 +46,63 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
               }
             }else if('sub_points'){purchased = {$inc:{points:metadata.sub_points * checkout.line_items.data[0].quantity}}}
             console.log('Order complete for: '+session.metadata.order)
-            User.findByIdAndUpdate(session.metadata.order,purchased,{new:true}).then((result)=>{
-                 console.log(result)
-                    return res.status(201).json({
-                      message: 'Booking saved',
-                      success: true
-                    });
-                }).catch((err)=>{
-                    return res.status(501).json({
-                      message: 'Booking saved',
-                      success: false
-                    });
-                })
           });
           break;
         case 'customer.subscription.updated':
           console.log(session)
+          if(session.cancel_at_period_end){ //cancellation expected
+            purchased = {
+                $set:{
+                  stripe:{
+                    plan_status:'to_cancel',
+                }}
+            }
+          }else if(session.pause_collection){ //pause subscription
+            purchased = {
+                $set:{
+                  plan:'standard',
+                  stripe:{
+                    plan_status:'paused',
+                    plan_start_date:session.pause_collection.resumes_at,
+                }}
+            }
+          }else if(!session.pause_collection){ //continue subscription
+            purchased = {
+                $set:{
+                  plan:'unlimited',
+                  stripe:{
+                    plan_status:'active',
+                    plan_start_date:new Date(),
+                }}
+            }
+          }
           break;
         case 'customer.subscription.deleted':
-          console.log(session)
+        purchased = {
+            $set:{
+              plan:'standard',
+              stripe:{
+                plan_status:'cancelled',
+                plan_start_date:new Date(),
+            }}
+        }
           break;
         default:
           console.log(`Unhandled event type ${event.type}`);
       }
+      //after going through switch statement, update
+      User.findByIdAndUpdate(session.metadata.order,purchased,{new:true}).then((result)=>{
+           console.log(result)
+              return res.status(201).json({
+                message: 'Booking saved',
+                success: true
+              });
+          }).catch((err)=>{
+              return res.status(501).json({
+                message: 'Booking saved',
+                success: false
+              });
+          })
 })
 
 router.post('/new', async (req, res)=>{
