@@ -69,6 +69,9 @@
   color: white;
   z-index: 3;
 }
+.nav-links{
+
+}
 #logo{
   height:400px;
   width:400px;
@@ -95,30 +98,32 @@
     font-size:2em;
   }
 
-  ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  width: 100%;
-  li {
-    float: right;
-    // &:first-child{
-    //   float:left;
-    //   display: flex;
-    //   flex-direction: row;
-    // }
-    a {
-      disvhplay: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      &:hover {
-        background-color: #111;
+  .nav-links{
+    ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    li {
+      float: right;
+      // &:first-child{
+      //   float:left;
+      //   display: flex;
+      //   flex-direction: row;
+      // }
+      a {
+        disvhplay: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        &:hover {
+          background-color: #111;
+        }
       }
     }
-  }
+    }
   }
   .accordion-content{
     width:50%;
