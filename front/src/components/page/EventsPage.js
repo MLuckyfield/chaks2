@@ -14,7 +14,7 @@ const EventsPage = () => {
                 <div class='row'>
                   <div class='col'>
                     <h1 class='logo-basic'>GAMES NIGHT!</h1>
-                    <h3>WEDNESDAY 7/6/h3>
+                    <h3>WEDNESDAY 7/6</h3>
                   </div>
                 </div>
             </div>
