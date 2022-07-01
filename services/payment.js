@@ -102,7 +102,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       else{
         identifier={_id:session.metadata.order}
       }
-      console.log(identifer)
+      console.log(identifier)
       console.log(purchased)
       User.findOneAndUpdate(identifer,purchased,{new:true}).then((result)=>{
            console.log(result)
