@@ -22,7 +22,7 @@ const Booking = ()=>{
     console.log('activating...')
     // setShowPayment(true)
     // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
-    axios.post('/payment/new',{user:student})
+    axios.post('/booking/new',{user:student})
       .then((res) => {
           console.log(res.data.data)
           window.location.href=res.data.data.url
@@ -37,34 +37,34 @@ const Booking = ()=>{
     if(moment(e).format('dddd')=='Monday'){
       setMsg(['Monday is a holiday.',false])
     }else{
-      setDay(e)
-      console.log(e)
+      setDay(e.toDate())
+      console.log(e.toDate())
         axios.get('/booking/all', {params:{filter:{date:{$gte:e,$lte:moment(e).add(24,'hours')}}}})
           .then((res) => {
               console.log('length '+res.data.data.length)
               console.log(res.data.data)
               let schedule = [{
-                slot: moment(e).add(7,'hours'),
+                slot: moment(e.toDate()).add(7,'hours'),
                 teacher:'Canadian'
               },
               {
-                slot: moment(e).add(7,'hours'),
+                slot: moment(e.toDate()).add(7,'hours'),
                 teacher:'Japanese'
               },
               {
-                slot: moment(e).add(8,'hours'),
+                slot: moment(e.toDate()).add(8,'hours'),
                 teacher:'Canadian'
               },
               {
-                slot: moment(e).add(8,'hours'),
+                slot: moment(e.toDate()).add(8,'hours'),
                 teacher:'Japanese'
               },
               {
-                slot: moment(e).add(9,'hours'),
+                slot: moment(e.toDate()).add(9,'hours'),
                 teacher:'Canadian'
               },
               {
-                slot: moment(e).add(9,'hours'),
+                slot: moment(e.toDate()).add(9,'hours'),
                 teacher:'Japanese'
               }]
               res.data.data.forEach((booking, i) => {
@@ -127,7 +127,7 @@ const Booking = ()=>{
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     {available?available.map(function(item,i){
                       return <div class='col slim feedback' onClick={(item)=>{updateAppointment(available[i])}}>
-                          <div class=''>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}</div>
+                          <div class=''>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}<br/>test</div>
                       </div>
                     }):'No timeslots available!'}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
