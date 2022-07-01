@@ -29,7 +29,7 @@ const Booking = ()=>{
     })
       .then((res) => {
           console.log(res.data.data)
-          window.location.refresh()
+          window.location.reload(true)
           // setMsg([res.data.message,res.data.success]);
           })
       .catch((err) => {
@@ -49,27 +49,37 @@ const Booking = ()=>{
               // console.log(res.data.data)
               let schedule = [{
                 slot: moment(e).add(7,'hours'),
-                teacher:'Canadian'
+                teacher:'Canadian',
+                level:'Intermediate-Advanced'
               },
               {
                 slot: moment(e).add(7,'hours'),
-                teacher:'Japanese'
+                teacher:'Japanese',
+                level:'Beginner-Intermediate'
               },
               {
                 slot: moment(e).add(8,'hours'),
-                teacher:'Canadian'
+                teacher:'Canadian',
+                level:'Intermediate-Advanced'
+
               },
               {
                 slot: moment(e).add(8,'hours'),
-                teacher:'Japanese'
+                teacher:'Japanese',
+                level:'Beginner-Intermediate'
+
               },
               {
                 slot: moment(e).add(9,'hours'),
-                teacher:'Canadian'
+                teacher:'Canadian',
+                level:'Intermediate-Advanced'
+
               },
               {
                 slot: moment(e).add(9,'hours'),
-                teacher:'Japanese'
+                teacher:'Japanese',
+                level:'Beginner-Intermediate'
+
               }]
               res.data.data.forEach((booking, i) => {
                   schedule.forEach((slot, y) => {
@@ -127,15 +137,15 @@ const Booking = ()=>{
                     </div>
                   )
                 })): 'No reservations. Why not make one? :)'}
-                  {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     {available?available.map(function(item,i){
                       return <div class='col slim feedback' onClick={(item)=>{updateAppointment(available[i])}}>
-                          <div class=''>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}<br/>test</div>
+                          <div class=''>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}<br/>{item.level}</div>
                       </div>
                     }):'No timeslots available!'}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
+          {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
 
       </div>
   )
