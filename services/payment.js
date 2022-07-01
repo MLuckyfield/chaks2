@@ -51,6 +51,20 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 purchased = {$inc:{points:metadata.sub_points * checkout.line_items.data[0].quantity}}
                 console.log('add sub_points')
               }
+              console.log(session.metadata.order)
+            User.findOneAndUpdate(session.metadata.order,purchased,{new:true}).then((result)=>{
+                 console.log(result)
+                    return res.status(201).json({
+                      message: 'Booking saved',
+                      success: true
+                    });
+                }).catch((err)=>{
+                  console.log(err)
+                    return res.status(501).json({
+                      message: 'Booking saved',
+                      success: false
+                    });
+                })
             console.log('Order complete for: '+session.metadata.order)
           });
           break;
