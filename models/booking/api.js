@@ -18,7 +18,7 @@ router.post('/new', async (req, res) => {
         })
           .then((result)=>{
             //update user
-            await User.findOneAndUpdate({_id:req.student},{$inc:{points:-100}})
+            User.findOneAndUpdate({_id:req.student},{$inc:{points:-100}})
                 .then(()=>{
                   return res.status(201).json({
                     message: 'User update',
