@@ -60,7 +60,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           });
           break;
         case 'customer.subscription.updated':
-          console.log(session)
+          console.log(session.pause_collection)
           if(session.cancel_at_period_end){ //cancellation expected
             purchased = {
                 $set:{
