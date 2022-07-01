@@ -17,10 +17,20 @@ router.post('/new', async (req, res) => {
             date: req.date
         })
           .then((result)=>{
-            return res.status(201).json({
-              message: `See you soon!`,
-              success: true
-            });
+            //update user
+            await User.findOneAndUpdate({_id:req.student},{$inc:{points:-100}})
+                .then(()=>{
+                  return res.status(201).json({
+                    message: 'User update',
+                    success: true
+                  });
+                })
+                .catch((err)=>{
+                  return res.status(500).json({
+                    message: `User failed to update: ${err}`,
+                    success: false
+                  });
+                })
             // email.sendBooking(req)
           })
           .catch((err)=>{
