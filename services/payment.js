@@ -21,12 +21,12 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
         return;
       }
       const session = event.data.object;
-      console.log('event recieved from Stripe')
+      console.log('event recieved from Stripe ' + event.type)
       let purchased = {}
       // Handle the event
       switch (event.type) {
         case 'checkout.session.completed': //update account with purchase
-          console.log(session.subscription)
+          // console.log(session.subscription)
           // console.log(session.metadata)
           // console.log(session.id)
           stripe.checkout.sessions.retrieve(session.id,{expand:['line_items.data.price.product']},(err,checkout)=>{
@@ -105,7 +105,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       }
       console.log(identifier)
       console.log(purchased)
-      User.findOneAndUpdate(identifer,purchased,{new:true}).then((result)=>{
+      User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{
            console.log(result)
               return res.status(201).json({
                 message: 'Booking saved',
