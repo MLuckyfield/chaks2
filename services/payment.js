@@ -8,7 +8,7 @@ const express = require('express');
 router.post('/complete', express.raw({type:'application/json'}),async (req, res)=>{
       const sig = req.headers['stripe-signature'];
 
-      const endpointSecret = 'whsec_mPoy6PX9sbrSSlSJFOVN2mNMelFUlXro'
+      const endpointSecret = 'whsec_WMV26QjDzHbLq14UmcbD7mCCEQ2RXvUD'
 
       let event;
 
@@ -102,6 +102,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       else{
         identifier={_id:session.metadata.order}
       }
+      console.log(identifer)
+      console.log(purchased)
       User.findOneAndUpdate(identifer,purchased,{new:true}).then((result)=>{
            console.log(result)
               return res.status(201).json({
