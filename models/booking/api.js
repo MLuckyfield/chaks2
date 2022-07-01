@@ -16,16 +16,19 @@ router.post('/new', async (req, res) => {
             student: req.student,
             date: req.date
         })
-            .then((result)=>{
-              //use req.teach directly?
-              email.sendBooking(req)
-            })
-            .catch((err)=>{
-              return res.status(500).json({
-                message: `Error. Please call if this error persists.`,
-                success: false
-              });
-            })
+          .then((result)=>{
+            return res.status(201).json({
+              message: `See you soon!`,
+              success: success
+            });
+            // email.sendBooking(req)
+          })
+          .catch((err)=>{
+            return res.status(500).json({
+              message: `Error. Please call if this error persists.`,
+              success: false
+            });
+          })
       }
       return res.status(300).json({
         message: `Not enough points. You need at least 100!`,

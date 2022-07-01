@@ -22,10 +22,14 @@ const Booking = ()=>{
     console.log('activating...')
     // setShowPayment(true)
     // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
-    axios.post('/booking/new',{user:student})
+    axios.post('/booking/new',{
+        student:student,
+        teacher:appointment.teacher,
+        date:appointment.slot
+    })
       .then((res) => {
           console.log(res.data.data)
-          window.location.href=res.data.data.url
+          window.location.refresh()
           // setMsg([res.data.message,res.data.success]);
           })
       .catch((err) => {
