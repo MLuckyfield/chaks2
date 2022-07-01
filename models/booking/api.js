@@ -8,7 +8,7 @@ const email = require('../../services/email')
 router.post('/new', async (req, res) => {
   req = req.body
   console.log('recieved: '+JSON.stringify(req))
-  await User.findById(req.student._id).then((user)=>{
+  await User.findById(req.student).then((user)=>{
       console.log(user.first+' has '+user.points)
       if(user.points>=100){
         Booking.insertMany({
