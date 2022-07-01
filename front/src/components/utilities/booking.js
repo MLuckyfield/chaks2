@@ -41,7 +41,7 @@ const Booking = ()=>{
     if(moment(e).format('dddd')=='Monday'){
       setMsg(['Monday is a holiday.',false])
     }else{
-      setDay(moment(e))
+      setDay(e)
       // console.log(moment(e).startOf())
         axios.get('/booking/all', {params:{filter:{date:{$gte:e,$lte:moment(e).add(24,'hours')}}}})
           .then((res) => {
