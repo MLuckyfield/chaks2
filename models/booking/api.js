@@ -19,7 +19,7 @@ router.post('/new', async (req, res) => {
           .then((result)=>{
             return res.status(201).json({
               message: `See you soon!`,
-              success: success
+              success: true
             });
             // email.sendBooking(req)
           })
