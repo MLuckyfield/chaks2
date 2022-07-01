@@ -64,19 +64,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 console.log('add sub_points')
               }
               console.log(session.metadata.order)
-            User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{
-                 console.log(result)
-                    return res.status(201).json({
-                      message: 'Booking saved',
-                      success: true
-                    });
-                }).catch((err)=>{
-                  console.log(err)
-                    return res.status(501).json({
-                      message: 'Booking saved',
-                      success: false
-                    });
-                })
+              updateUser(identifier,purchased)
             console.log('Order complete for: '+session.metadata.order)
           });
           break;
@@ -89,6 +77,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     plan_status:'to_cancel',
                 }}
             }
+            updateUser(identifier,purchased)            
           }else if(session.pause_collection){ //pause subscription
             purchased = {
                 $set:{
@@ -98,6 +87,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     plan_start_date:session.pause_collection.resumes_at,
                 }}
             }
+            updateUser(identifier,purchased)
           }else if(!session.pause_collection){ //continue subscription
             purchased = {
                 $set:{
@@ -107,17 +97,20 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     plan_start_date:new Date(),
                 }}
             }
+            updateUser(identifier,purchased)
           }
           break;
         case 'customer.subscription.deleted':
-        purchased = {
-            $set:{
-              plan:'standard',
-              stripe:{
-                plan_status:'cancelled',
-                plan_start_date:new Date(),
-            }}
-        }
+          purchased = {
+              $set:{
+                plan:'standard',
+                stripe:{
+                  plan_status:'cancelled',
+                  plan_start_date:new Date(),
+              }}
+          }
+          updateUser(identifier,purchased)
+
           break;
         default:
           console.log(`Unhandled event type ${event.type}`);
@@ -125,21 +118,23 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 
       console.log(identifier)
       console.log(purchased)
-      User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{
-           console.log(result)
-              return res.status(201).json({
-                message: 'Booking saved',
-                success: true
-              });
-          }).catch((err)=>{
-            console.log(err)
-              return res.status(501).json({
-                message: 'Booking saved',
-                success: false
-              });
-          })
-})
 
+})
+const updateUser=(user,update)=>{
+  User.findOneAndUpdate(user,update,{new:true}).then((result)=>{
+       console.log(result)
+          return res.status(201).json({
+            message: 'Booking saved',
+            success: true
+          });
+      }).catch((err)=>{
+        console.log(err)
+          return res.status(501).json({
+            message: 'Booking saved',
+            success: false
+          });
+      })
+}
 router.post('/new', async (req, res)=>{
   // console.log(req)
   // console.log(req.body.product)
