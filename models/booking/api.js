@@ -29,11 +29,11 @@ router.post('/new', async (req, res) => {
               success: false
             });
           })
-      }
+      }else{
       return res.status(300).json({
         message: `Not enough points. You need at least 100!`,
         success: false
-      });
+      });}
   })
 
 });
