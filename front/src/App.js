@@ -76,7 +76,7 @@ const App = () => {
           <AuthDataProvider>
             <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
-            <SecureRoute path="/account" access={['user']} success={Account} fail={Login}/>
+            <SecureRoute path="/account" access={['user','manager']} success={Account} fail={Login}/>
             <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={Login}/>
             <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts} fail={Login}/>
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={Login}/>
