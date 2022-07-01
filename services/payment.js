@@ -32,7 +32,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           stripe.checkout.sessions.retrieve(session.id,{expand:['line_items.data.price.product']},(err,checkout)=>{
             // console.log(checkout.line_items.data)
             const metadata=checkout.line_items.data[0].price.product.metadata
-            // console.log(metadata)
+            console.log(metadata)
 
             if('points' in metadata){
               purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
