@@ -41,34 +41,34 @@ const Booking = ()=>{
     if(moment(e).format('dddd')=='Monday'){
       setMsg(['Monday is a holiday.',false])
     }else{
-      setDay(moment(e).startOf())
-      console.log(moment(e).startOf())
+      setDay(moment().startOf(e))
+      // console.log(moment(e).startOf())
         axios.get('/booking/all', {params:{filter:{date:{$gte:e,$lte:moment(e).add(24,'hours')}}}})
           .then((res) => {
               console.log('length '+res.data.data.length)
-              console.log(res.data.data)
+              // console.log(res.data.data)
               let schedule = [{
-                slot: moment(e).startOf().add(7,'hours'),
+                slot: moment().startOf(e).add(7,'hours'),
                 teacher:'Canadian'
               },
               {
-                slot: moment(e).startOf().add(7,'hours'),
+                slot: moment().startOf(e).add(7,'hours'),
                 teacher:'Japanese'
               },
               {
-                slot: moment(e).startOf().add(8,'hours'),
+                slot: moment().startOf(e).add(8,'hours'),
                 teacher:'Canadian'
               },
               {
-                slot: moment(e).startOf().add(8,'hours'),
+                slot: moment().startOf(e).add(8,'hours'),
                 teacher:'Japanese'
               },
               {
-                slot: moment(e).startOf().add(9,'hours'),
+                slot: moment().startOf(e).add(9,'hours'),
                 teacher:'Canadian'
               },
               {
-                slot: moment(e).startOf().add(9,'hours'),
+                slot: moment().startOf(e).add(9,'hours'),
                 teacher:'Japanese'
               }]
               res.data.data.forEach((booking, i) => {
