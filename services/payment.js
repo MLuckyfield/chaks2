@@ -11,9 +11,10 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       const endpointSecret = 'whsec_WMV26QjDzHbLq14UmcbD7mCCEQ2RXvUD'
 
       let event;
-
+      console.log('starting payment...')
       try {
         event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+        console.log('try was successful')
       } catch (err) {
         console.log('failed')
         res.status(400).send(`Webhook Error: ${err.message}`);
