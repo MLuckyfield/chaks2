@@ -30,6 +30,9 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           console.log('updating account with purchase')
           await stripe.checkout.sessions.retrieve(session.id,{expand:['line_items.data.price.product']},(err,checkout)=>{
             const metadata=checkout.line_items.data[0].price.product.metadata
+            console.log('points' in metadata)
+            console.log('plan' in metadata)
+            console.log('sub_points' in metadata)
 
             if('points' in metadata){
               purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
@@ -44,7 +47,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                   }
               }
               console.log('add plan')
-            }else if('sub_points'){
+            }else if('sub_points' in metadata){
                 purchased = {$inc:{points:metadata.sub_points * checkout.line_items.data[0].quantity}}
                 console.log('add sub_points')
               }
