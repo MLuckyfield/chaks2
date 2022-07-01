@@ -64,7 +64,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 console.log('add sub_points')
               }
               console.log(session.metadata.order)
-              updateUser(identifier,purchased)
+              updateUser(identifier,purchased,res)
             console.log('Order complete for: '+session.metadata.order)
           });
           break;
@@ -77,7 +77,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     plan_status:'to_cancel',
                 }}
             }
-            updateUser(identifier,purchased)            
+            updateUser(identifier,purchased,res)
           }else if(session.pause_collection){ //pause subscription
             purchased = {
                 $set:{
@@ -87,7 +87,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     plan_start_date:session.pause_collection.resumes_at,
                 }}
             }
-            updateUser(identifier,purchased)
+            updateUser(identifier,purchased,res)
           }else if(!session.pause_collection){ //continue subscription
             purchased = {
                 $set:{
@@ -97,7 +97,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     plan_start_date:new Date(),
                 }}
             }
-            updateUser(identifier,purchased)
+            updateUser(identifier,purchased,res)
           }
           break;
         case 'customer.subscription.deleted':
@@ -109,7 +109,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                   plan_start_date:new Date(),
               }}
           }
-          updateUser(identifier,purchased)
+          updateUser(identifier,purchased,res)
 
           break;
         default:
@@ -120,7 +120,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       console.log(purchased)
 
 })
-const updateUser=(user,update)=>{
+const updateUser=(user,update,res)=>{
   User.findOneAndUpdate(user,update,{new:true}).then((result)=>{
        console.log(result)
           return res.status(201).json({
