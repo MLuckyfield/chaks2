@@ -48,27 +48,27 @@ const Booking = ()=>{
               console.log('length '+res.data.data.length)
               // console.log(res.data.data)
               let schedule = [{
-                slot: moment().startOf(e).add(7,'hours'),
+                slot: moment(e).add(7,'hours'),
                 teacher:'Canadian'
               },
               {
-                slot: moment().startOf(e).add(7,'hours'),
+                slot: moment(e).add(7,'hours'),
                 teacher:'Japanese'
               },
               {
-                slot: moment().startOf(e).add(8,'hours'),
+                slot: moment(e).add(8,'hours'),
                 teacher:'Canadian'
               },
               {
-                slot: moment().startOf(e).add(8,'hours'),
+                slot: moment(e).add(8,'hours'),
                 teacher:'Japanese'
               },
               {
-                slot: moment().startOf(e).add(9,'hours'),
+                slot: moment(e).add(9,'hours'),
                 teacher:'Canadian'
               },
               {
-                slot: moment().startOf(e).add(9,'hours'),
+                slot: moment(e).add(9,'hours'),
                 teacher:'Japanese'
               }]
               res.data.data.forEach((booking, i) => {
