@@ -24,17 +24,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       console.log('event recieved from Stripe ' + event.type)
       let purchased = {}
       //after going through switch statement, update
-      let identifier={}
-      if(session.customer){
-        identifier={
-          stripe:{
-            customer_id:session.customer
-          }
-        }
-      }
-      else{
-        identifier={_id:session.metadata.order}
-      }
+      let identifier={_id:session.metadata.order}
+
       // Handle the event
       switch (event.type) {
         case 'checkout.session.completed': //update account with purchase
@@ -77,7 +68,6 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     plan_status:'to_cancel',
                 }}
             }
-            updateUser(identifier,purchased,res)
           }else if(session.pause_collection){ //pause subscription
             purchased = {
                 $set:{
@@ -87,7 +77,6 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     plan_start_date:session.pause_collection.resumes_at,
                 }}
             }
-            updateUser(identifier,purchased,res)
           }else if(!session.pause_collection){ //continue subscription
             purchased = {
                 $set:{
@@ -97,8 +86,9 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     plan_start_date:new Date(),
                 }}
             }
-            updateUser(identifier,purchased,res)
           }
+          identifier={stripe:{customer_id:session.customer}}
+          updateUser(identifier,purchased,res)
           break;
         case 'customer.subscription.deleted':
           purchased = {
@@ -109,8 +99,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                   plan_start_date:new Date(),
               }}
           }
+          identifier={stripe:{customer_id:session.customer}}
           updateUser(identifier,purchased,res)
-
           break;
         default:
           console.log(`Unhandled event type ${event.type}`);
