@@ -77,7 +77,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     plan_start_date:session.pause_collection.resumes_at,
                 }}
             }
-          }else if(!session.pause_collection){ //continue subscription
+          }else if(session.pause_collection==null){ //continue subscription
             purchased = {
                 $set:{
                   plan:'unlimited',
