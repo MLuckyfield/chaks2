@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Redirect } from 'react-router'
 import Carousel from './components/utilities/carousel'
 import axios from 'axios';
+import Product_Display from '../utilities/product_display'
 
 //import components
 import Login from './components/user/Login'
@@ -73,6 +74,7 @@ const App = () => {
           <Route path="/about" component={StylePage}/>
           <Route exact path="/blog" component={BlogFront}/>
           <Route exact path="/blog/*" component={BlogDisplay}/>
+          <Route exact path="/product" component={Product_Display}/>          
           <AuthDataProvider>
             <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
