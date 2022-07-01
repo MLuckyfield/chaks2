@@ -23,6 +23,18 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       const session = event.data.object;
       console.log('event recieved from Stripe ' + event.type)
       let purchased = {}
+      //after going through switch statement, update
+      let identifier={}
+      if(session.customer){
+        identifier={
+          stripe:{
+            customer_id:session.customer
+          }
+        }
+      }
+      else{
+        identifier={_id:session.metadata.order}
+      }
       // Handle the event
       switch (event.type) {
         case 'checkout.session.completed': //update account with purchase
@@ -52,7 +64,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 console.log('add sub_points')
               }
               console.log(session.metadata.order)
-            User.findOneAndUpdate(session.metadata.order,purchased,{new:true}).then((result)=>{
+            User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{
                  console.log(result)
                     return res.status(201).json({
                       message: 'Booking saved',
@@ -110,18 +122,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
         default:
           console.log(`Unhandled event type ${event.type}`);
       }
-      //after going through switch statement, update
-      let identifier={}
-      if(session.customer){
-        identifier={
-          stripe:{
-            customer_id:session.customer
-          }
-        }
-      }
-      else{
-        identifier={_id:session.metadata.order}
-      }
+
       console.log(identifier)
       console.log(purchased)
       User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{
