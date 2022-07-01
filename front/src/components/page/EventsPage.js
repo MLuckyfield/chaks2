@@ -13,8 +13,8 @@ const EventsPage = () => {
             <div class='overlay'>
                 <div class='row'>
                   <div class='col'>
-                    <h1 class='logo-basic'>INTERNATIONAL BEER PARTY！</h1>
-                    <h3>FRIDAY 6/24</h3>
+                    <h1 class='logo-basic'>GAMES NIGHT!</h1>
+                    <h3>WEDNESDAY 7/6/h3>
                   </div>
                 </div>
             </div>
@@ -63,8 +63,26 @@ const EventsPage = () => {
                         <div class='fixed-row'>
                           <img class='photo' src={girlsnight}></img>
                           <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
+                            <h3>Beer Party!</h3>
+                            7/15
+                          </div>
+                        </div>
+                    </div>
+                    <div class='col'>
+                        <div class='fixed-row'>
+                          <img class='photo' src={girlsnight}></img>
+                          <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
                             <h3>Ladies Night!</h3>
-                            Coming soon...
+                            7/20
+                          </div>
+                        </div>
+                    </div>
+                    <div class='col'>
+                        <div class='fixed-row'>
+                          <img class='photo' src={girlsnight}></img>
+                          <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
+                            <h3>DJ Night!</h3>
+                            7/29
                           </div>
                         </div>
                     </div>

@@ -20,6 +20,7 @@ import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
 import Social from './components/utilities/social'
+import Booking from './components/utilities/booking'
 import Account from './components/user/account'
 
 // import Payment from './components/utilities/payment'
@@ -83,6 +84,8 @@ const App = () => {
             <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts} fail={Login}/>
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={Login}/>
             <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile} fail={Login}/>
+            <Route exact path="/reservation" component={Booking}/>
+
           </AuthDataProvider>
       </Router>
 
