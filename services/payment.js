@@ -111,6 +111,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 success: true
               });
           }).catch((err)=>{
+            console.log(err)
               return res.status(501).json({
                 message: 'Booking saved',
                 success: false
