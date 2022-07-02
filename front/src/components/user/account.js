@@ -7,7 +7,6 @@ const Account = () => {
 
   //const [Account, setAccount] = useState();
   //const [password, setPassword] = useState();
-  const Account = useRef('');
   const [student, setStudent] = useState(JSON.parse(localStorage.getItem('student')));
   const [account,setAccount]=useState()
   useEffect(()=>{

@@ -27,22 +27,22 @@ const EventsPage = () => {
                     <h1 class='col'>CONCEPT</h1>
                     ゲームを通して国際交流を楽しみましょう🎲
                     イベント中は日本産のクラフトビールや様々な国のファストフードをご提供しています🌭
-                    *ワンドリンクオーダー制
                     *ビール以外にもハイボールやゆず蜜サワーなどご用意あります
-
+                    <br/><br/>
                     ◆このイベントに来るべき理由🎉
                     ・外国人の友達が作れます！
                     ・ダーツやボードゲームを楽しめます！
                     ・ゲームを通して英語がもっと上手になります！
                     ・クラフトビールや美味しい料理も楽しめます！
-
+                    <br/>
                     🌟途中参加途中退場可能です！ お友達と一緒でもおっけい！
 
                 </div>
                 <div class='col_up slim'>
                     <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
-                    19:30時～23時
-                    ⚠️入場料：¥1,000
+                    19:30時～23時<br/>
+                    入場料：¥1,000<br/>
+                    *ワンドリンクオーダー制<br/>
                 </div>
                 <div class='col_up slim'>
                     <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
