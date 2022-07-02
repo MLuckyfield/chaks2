@@ -18,7 +18,7 @@ const Account = () => {
           //   item['inClass']=false
           // });
           console.log(res.data.data)
-          setAccount(res.data.data)
+          setAccount(res.data.data[0])
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -26,15 +26,17 @@ const Account = () => {
 
   }
   return(
-      <div class='col'>
-          <h1>ACCOUNT</h1>
-          {account?
-          <div class='col'>
-            Plan: {account.plan} (since {account.plan?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''})
-            {account.plan?<span>Pause | Cancel</span>:''}
-            Points: {account.points}
+      <div class='master=row'>
+          <div class='col border'>
+              <h1>ACCOUNT</h1>
+              {account?
+              <div class='col'>
+                Plan: {account.plan} (since {account.plan?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''})
+                {account.plan?<span>Pause | Cancel</span>:''}
+                Points: {account.points}
+              </div>
+            :'Loading account...'}
           </div>
-        :'Loading account...'}
       </div>
 )
 }
