@@ -332,20 +332,16 @@ const Front = ()=>{
 
     return (
         <div class='accordion'>
-          <ul>
               {accordionData.map(({ title, content }) => (
-              <li class='accordion_item'>
                 <AccordionItem title={title} content={content} />
-              </li>
-              ))}
-          </ul>
+              ))}          
         </div>
     );
     }
     const AccordionItem=({ title, content })=>{
     const [isActive, setIsActive] = useState(false);
     return (
-      <div>
+      <div class='accordion_item'>
         <div class='accordion-title' onClick={() => setIsActive(!isActive)}>
           <h2>{title}</h2>
         </div>
