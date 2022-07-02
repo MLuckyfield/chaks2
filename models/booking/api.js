@@ -20,10 +20,12 @@ router.post('/new', async (req, res) => {
             //update user
             User.findOneAndUpdate({_id:req.student},{$inc:{points:-100}})
                 .then(()=>{
-                  return res.status(201).json({
-                    message: 'User update',
-                    success: true
-                  });
+                  email.sendBooking(req)
+
+                  // return res.status(201).json({
+                  //   message: 'User update',
+                  //   success: true
+                  // });
                 })
                 .catch((err)=>{
                   return res.status(500).json({
@@ -31,7 +33,6 @@ router.post('/new', async (req, res) => {
                     success: false
                   });
                 })
-            // email.sendBooking(req)
           })
           .catch((err)=>{
             return res.status(500).json({
