@@ -52,13 +52,13 @@ const Navbar = ()=>{
           <ul class="nav-links">
               <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#concept">CONCEPT</a>:<a onClick={navSlide} href="#concept">CONCEPT</a>}</li>
               <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#merit">MERIT</a>:<a onClick={navSlide} href="#merit">MERIT</a>}</li>
-              <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#faq">FAQ</a>:<a onClick={navSlide} href="#faq">FAQ</a>}</li>
-              <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#team">TEAM</a>:<a onClick={navSlide} href="#team">TEAM</a>}</li>
-              <li><button class='form-control solid-first cta' onClick={()=>window.location='/login'}>Log In</button></li>              
+              <li>{window.location.pathname==='/blog'?<a href="/events">EVENTS</a>:<a onClick={navSlide} href="events">EVENTS</a>}</li>
+              <li>{window.location.pathname==='/blog'?<a href="/blog">BLOG</a>:<a onClick={navSlide} href="blog">BLOG</a>}</li>
+              <li><button class='form-control solid-first cta' onClick={()=>window.location='/login'}>LOG IN</button></li>
           </ul>
         ):(
           <ul class="nav-links">
-              {user.role!='user'?(<li><a href='/dash'><span class="material-icons">group</span></a></li>):''}
+              {user.role!='user'?(<li><a href='/dash'>Students</a></li>):''}
               {user.role!='user'?(<li><a href='/manage-blog'><span class="material-icons">edit</span></a></li>):''}
               <li><a href='#' onClick={logout}><span class="material-icons">logout</span></a></li>
           </ul>
