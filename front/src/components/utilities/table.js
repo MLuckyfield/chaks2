@@ -45,7 +45,7 @@ const makeComment = (item)=>{
     // console.log(target)
 }
 const displayable=(key)=>{
-  console.log(key)
+  // console.log(key)
   if(key!='_id'&&key!='email'&&key!='profile'&&key!='inClass'&&key!='stripe'){
     return true
   }else{return false}

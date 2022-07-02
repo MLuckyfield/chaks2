@@ -70,7 +70,7 @@ const EventsPage = () => {
                     </div>
                     <div class='col'>
                         <div class='fixed-row'>
-                          <img class='photo' src={girlsnight}></img>
+                          <img class='photo' src={party}></img>
                           <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
                             <h3>Ladies Night!</h3>
                             7/20
@@ -79,7 +79,7 @@ const EventsPage = () => {
                     </div>
                     <div class='col'>
                         <div class='fixed-row'>
-                          <img class='photo' src={girlsnight}></img>
+                          <img class='photo' src={party}></img>
                           <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
                             <h3>DJ Night!</h3>
                             7/29
