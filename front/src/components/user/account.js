@@ -27,9 +27,13 @@ const Account = () => {
 
   return(
       <div class='row'>
-          Plan: {account.plan}
-          {account.plan?account.stripe.plan_start_date:''}
-          Points: {account.points}
+          {account?
+          <div class='col'>
+            Plan: {account.plan}
+            {account.plan?account.stripe.plan_start_date:''}
+            Points: {account.points}
+          </div>
+        :'Loading account...'}
       </div>
 )
 }

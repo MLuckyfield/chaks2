@@ -22,6 +22,7 @@ const Product_Display = (props)=>{
         });
   }
   return (
+      <div class='master-row'>
           <div id="price">
             <div class="plan">
               <div class="plan-inner">
@@ -86,6 +87,7 @@ const Product_Display = (props)=>{
               </div>
             </div>
           </div>
+        </div>
   )
 }
 
