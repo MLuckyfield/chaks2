@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {axios} from "../../utilities/axios";
-
+import AccessDisplay from '../nav/AccessDisplay'
 
 const Product_Display = (props)=>{
   const [selected,setSelected]=useState();
@@ -22,6 +22,7 @@ const Product_Display = (props)=>{
         });
   }
   return (
+    <div>
       <div class='master-row'>
         <h1 class='col'>SERVICES</h1>
           <div id="price">
@@ -89,6 +90,15 @@ const Product_Display = (props)=>{
             </div>
           </div>
         </div>
+        <div id='concept'  class='master-row dark'>
+          <div class='row'><h1 class='col'>MISSION</h1>
+              <div class='col slim'>
+                英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く。英会話を楽しく、身近で、達成感のあるものにすること。
+              </div>
+          </div>
+        </div>
+        <AccessDisplay/>
+    </div>
   )
 }
 

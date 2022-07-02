@@ -11,8 +11,8 @@ const Account = () => {
   const [account,setAccount]=useState()
 
   useEffect(()=>{
-    console.log('loading account view for '+JSON.stringify(student))
-    axios.get('user/all', {params:{filter:{id:student._id},fields:'stripe'}})
+    // console.log('loading account view for '+JSON.stringify(student))
+    axios.get('user/all', {params:{filter:{_id:student._id},fields:'stripe'}})
       .then((res) => {
           // res.data.data.forEach((item, i) => {
           //   item['inClass']=false
