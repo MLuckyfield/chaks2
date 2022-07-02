@@ -26,7 +26,7 @@ const Account = () => {
 
   }
   return(
-      <div class='row'>
+      <div class='col'>
           <h1>ACCOUNT</h1>
           {account?
           <div class='col'>
