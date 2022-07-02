@@ -12,7 +12,7 @@ const Account = () => {
 
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
-    axios.get('user/all', {params:{filter:{_id:student._id},fields:'stripe plan'}})
+    axios.get('user/all', {params:{filter:{_id:student._id},fields:'stripe plan points'}})
       .then((res) => {
           // res.data.data.forEach((item, i) => {
           //   item['inClass']=false
@@ -31,7 +31,7 @@ const Account = () => {
               <h1>ACCOUNT</h1>
               {account?
               <div class='col'>
-                Plan: {account.plan}  {account.plan!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}           
+                Plan: {account.plan}  {account.plan!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}
                 Points: {account.points}
               </div>
             :'Loading account...'}
