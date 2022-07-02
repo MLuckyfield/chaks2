@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
-import {useAuthDataContext} from "../auth-provider";
+// import {useAuthDataContext} from "../auth-provider";
 import moment from "moment"
 
 const Account = () => {
@@ -9,6 +9,7 @@ const Account = () => {
   //const [password, setPassword] = useState();
   const [student, setStudent] = useState(JSON.parse(localStorage.getItem('student')));
   const [account,setAccount]=useState()
+
   useEffect(()=>{
     console.log('loading account view for '+student)
     axios.get('user/all', {params:{filter:{id:student._id},fields:'stripe'}})
@@ -21,9 +22,6 @@ const Account = () => {
         })
       .catch(error => console.log("error"+error))
   },[])
-
-  const onSubmit = (e) => {
-  }
 
   return(
       <div class='row'>
