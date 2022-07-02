@@ -54,7 +54,7 @@ const Navbar = ()=>{
               <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#merit">MERIT</a>:<a onClick={navSlide} href="#merit">MERIT</a>}</li>
               <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#faq">FAQ</a>:<a onClick={navSlide} href="#faq">FAQ</a>}</li>
               <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#team">TEAM</a>:<a onClick={navSlide} href="#team">TEAM</a>}</li>
-              <button class='form-control solid-first cta' onClick={()=>window.location='/login'}>Log In</button>
+              <li><button class='form-control solid-first cta' onClick={()=>window.location='/login'}>Log In</button></li>              
           </ul>
         ):(
           <ul class="nav-links">

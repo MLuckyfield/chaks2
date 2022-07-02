@@ -22,6 +22,8 @@ const CampaignPage = () => {
             <li>いつ来て、何を学んだのかオンラインで分かるので、成長を可視化できる！</li>
             <li>オンラインで先生からフィードバックがもらえる！毎回レッスン後は担当講師からのフィードバックがもらえます！</li>
           </ol>
+          <div class='col'><button class='solid-first cta' onClick={()=>window.location='/blog/62bbf3e2f048ac1e59f2856a/私達と他の英会話教室の違いについて'}>他社との違い</button></div>
+          
         </div>
       </div>
       <div class='row'><h1 class='col'>私たちの英語学習に関する考え</h1></div>

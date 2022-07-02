@@ -334,9 +334,13 @@ const Front = ()=>{
 
     return (
         <div class='accordion'>
-        {accordionData.map(({ title, content }) => (
-        <AccordionItem title={title} content={content} />
-      ))}
+          <ol>
+              {accordionData.map(({ title, content }) => (
+              <li>
+                <AccordionItem title={title} content={content} />
+              </li>
+              ))}
+          </ol>
         </div>
     );
     }
