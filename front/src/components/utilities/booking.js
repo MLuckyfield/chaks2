@@ -128,6 +128,7 @@ const Booking = ()=>{
 
   return (
     <div class='master-row'>
+      <div class='col slim'>
       <h1>Reservations</h1>
             <div class='col'>
               {bookings ? (bookings.map(function(item, i){
