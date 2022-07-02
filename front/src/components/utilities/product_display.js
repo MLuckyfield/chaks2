@@ -85,7 +85,7 @@ const Product_Display = (props)=>{
                     <li><strong>レッスン時間</strong> 無制限~</li>
                   </ul>
                 </div>
-                {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LDexPBVAfieqaobsYFR70Im',true)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
+                {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LDp5RBVAfieqaob33XKdjl2',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
               </div>
             </div>
           </div>
