@@ -58,7 +58,7 @@ const Navbar = ()=>{
           </ul>
         ):(
           <ul class="nav-links">
-              {user.role!='user'?(<li><a href='/dash'>Students</a></li>):''}
+              {user.role!='user'?(<li><a href='/dash'><span class="material-icons">group</span></a></li>):''}
               {user.role!='user'?(<li><a href='/manage-blog'><span class="material-icons">edit</span></a></li>):''}
               <li><a href='#' onClick={logout}><span class="material-icons">logout</span></a></li>
           </ul>

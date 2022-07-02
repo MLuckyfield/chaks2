@@ -30,8 +30,8 @@ const Account = () => {
           <h1>ACCOUNT</h1>
           {account?
           <div class='col'>
-            Plan: {account.plan}
-            {account.plan?account.stripe.plan_start_date:''}
+            Plan: {account.plan} (since {account.plan?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''})
+            {account.plan?<span>Pause | Cancel</span>:''}
             Points: {account.points}
           </div>
         :'Loading account...'}
