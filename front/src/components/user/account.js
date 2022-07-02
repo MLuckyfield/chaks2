@@ -10,19 +10,21 @@ const Account = () => {
   const [student, setStudent] = useState(JSON.parse(localStorage.getItem('student')));
   const [account,setAccount]=useState()
 
-  useEffect(()=>{
-    console.log('loading account view for '+student)
-    axios.get('user/all', {params:{filter:{id:student._id},fields:'stripe'}})
-      .then((res) => {
-          // res.data.data.forEach((item, i) => {
-          //   item['inClass']=false
-          // });
-          console.log(res.data.data)
-          setAccount(res.data.data)
-        })
-      .catch(error => console.log("error"+error))
-  },[])
-
+  // useEffect(()=>{
+  //   console.log('loading account view for '+student)
+  //   axios.get('user/all', {params:{filter:{id:student._id},fields:'stripe'}})
+  //     .then((res) => {
+  //         // res.data.data.forEach((item, i) => {
+  //         //   item['inClass']=false
+  //         // });
+  //         console.log(res.data.data)
+  //         setAccount(res.data.data)
+  //       })
+  //     .catch(error => console.log("error"+error))
+  // },[])
+  // const onSubmit=(e)=>{
+  //
+  // }
   return(
       <div class='row'>
           <h1>ACCOUNT</h1>
