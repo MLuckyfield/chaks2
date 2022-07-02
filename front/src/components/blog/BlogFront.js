@@ -65,14 +65,16 @@ const BlogFront = () => {
                       <h3>{item.preview.slice(0,20)}</h3>
                     </div>
                   )}
-                  return (
-                      <div class='row'>
-                        <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
-                          <h1>{item.title}</h1>
-                          <h3>{item.preview.slice(0,20)}</h3>
+                  else{
+                    return (
+                        <div class='row'>
+                          <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
+                            <h1>{item.title}</h1>
+                            <h3>{item.preview.slice(0,20)}</h3>
+                          </div>
                         </div>
-                      </div>
-                  )
+                    )
+                  }
                 }  else{return <div></div>}
               })): 'Loading...'}
               </div>

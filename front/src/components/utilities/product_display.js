@@ -4,7 +4,7 @@ import {axios} from "../../utilities/axios";
 
 const Product_Display = (props)=>{
   const [selected,setSelected]=useState();
-  const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
+  const [student, setStudent]=useState(localStorage.getItem('user')?JSON.parse(localStorage.getItem('user'))._id:null)
   const [msg,setMsg] = useState()
 
   const onSubmit=(e,product,countable)=>{
