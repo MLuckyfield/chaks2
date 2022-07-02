@@ -11,7 +11,7 @@ const Account = () => {
   const [student, setStudent] = useState(JSON.parse(localStorage.getItem('student')));
   const [account,setAccount]=useState()
   useEffect(()=>{
-    axios.get('user/all', {params:{filter:{id:student._id},{fields:'stripe'}}})
+    axios.get('user/all', {params:{filter:{id:student._id},fields:'stripe'}})
       .then((res) => {
           // res.data.data.forEach((item, i) => {
           //   item['inClass']=false
