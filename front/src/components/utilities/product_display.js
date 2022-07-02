@@ -23,6 +23,7 @@ const Product_Display = (props)=>{
   }
   return (
       <div class='master-row'>
+        <h1 class='col'>SERVICES</h1>
           <div id="price">
             <div class="plan">
               <div class="plan-inner">
