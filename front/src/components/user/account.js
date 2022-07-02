@@ -31,7 +31,7 @@ const Account = () => {
               <h1>ACCOUNT</h1>
               {account?
               <div class='col'>
-                Plan: {account.plan}  {account.stripe.plan_id?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}           
+                Plan: {account.plan}  {account.plan!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}           
                 Points: {account.points}
               </div>
             :'Loading account...'}
