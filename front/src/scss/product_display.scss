@@ -23,6 +23,7 @@
   min-width: 280px;
   max-width: 100%;
   position:relative;
+  min-height: 80vh;
 }
 
 .entry-title {
@@ -105,7 +106,9 @@
   color: #fff;
   text-transform: uppercase;
   font-weight: 700;
-  // text-decoration: none
+  position: absolute;
+  bottom: 0px;
+  width:100%;
 }
 .hot {
     position: absolute;

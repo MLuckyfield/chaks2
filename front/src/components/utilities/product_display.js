@@ -57,7 +57,7 @@ const Product_Display = (props)=>{
                   <ul>
                     <li>マンツーマン英会話で朝活をしましょう！ビジネス英語、TOEFL対策などお客様の希望に沿ったレッスンを提供します！</li>
                     <li><strong>利用可能時間</strong> 7時～10時</li>
-                    <li><strong>レッスン時間</strong> 45分~</li>
+                    <li><strong>レッスン時間</strong> 45分</li>
                     <li style={{fontSize:'10px'}}><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
                   </ul>
                 </div>
