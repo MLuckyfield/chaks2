@@ -22,11 +22,7 @@ const Product_Display = (props)=>{
         // setFeedback(err.response.data.message);
         });
   }
-  const Content = ()=>{
-    return (
 
-    )
-  }
   return (
     <div>
       <div class='master-row'>
