@@ -83,9 +83,9 @@ const Product_Display = (props)=>{
                     <li><strong>利用可能時間</strong> 7時～10時</li>
                     <li><strong>レッスン時間</strong> 45分</li>
                     <li style={{fontSize:'10px'}}><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
+                    <li><Popup title={"個人情報取り扱いについて"} content={Content}/></li>                    
                   </ul>
                 </div>
-                <div><Popup title={"個人情報取り扱いについて"} content={Content}/></div>
                 {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RfBVAfieqaobHLe2lgTJ',true)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
               </div>
             </div>
@@ -108,9 +108,9 @@ const Product_Display = (props)=>{
                         最終入店時間: 22時
                     </li>
                     <li><strong>レッスン時間</strong> 無制限~</li>
+                    <li><Popup title={"個人情報取り扱いについて"} content={Content}/></li>
                   </ul>
                 </div>
-                <div><Popup title={"個人情報取り扱いについて"} content={Content}/></div>
                 {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RpBVAfieqaobowDgpi3c',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
               </div>
             </div>
