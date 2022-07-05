@@ -106,7 +106,6 @@ const Product_Display = (props)=>{
                         最終入店時間: 22時
                     </li>
                     <li><strong>レッスン時間</strong> 無制限~</li>
-                    <li><Popup title={"個人情報取り扱いについて"} content={Content}/></li>
                   </ul>
                 </div>
                 {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RpBVAfieqaobowDgpi3c',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
