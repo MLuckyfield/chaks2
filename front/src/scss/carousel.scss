@@ -103,14 +103,14 @@ $size-height: 65vh;
   left: 0;
   right: 0;
   bottom: 0;
+  display: inline-block;
+  margin:0;
+  padding:0;
 }
 @media (max-width: 640px) {
   .pop {
     position: relative;
     width: 100%;
-    display: inline-block;
-    margin:0;
-    padding:0;
   }
 }
 .pop .modal {
