@@ -61,27 +61,7 @@ const Product_Display = (props)=>{
                     <li><strong>利用可能時間</strong> 7時～10時</li>
                     <li><strong>レッスン時間</strong> 45分</li>
                     <li style={{fontSize:'10px'}}><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
-                    <li><Popup title={"個人情報取り扱いについて"} content={
-                      <div>
-                        CHATSHACK(以下「当社」)では、お預かりした個人情報について、以下のとおり適正かつ安全に管理・運用することに努めます。
-                        <br/>
-                        <p>１．利用目的
-                        当社は、収集した個人情報について、以下の目的のために利用いたします。
-                        ①サービス実施、およびアフターサービスのため
-                        ②相談・お問い合わせへの回答のため
-                        ③商品・サービス・イベントの案内のため</p>
-                        <br/>
-                        <p>２．第三者提供
-                        当社は、以下の場合を除いて、個人データを第三者へ提供することはしません。
-                        ①法令に基づく場合
-                        ②人の生命・身体・財産を保護するために必要で、本人から同意を得ることが難しい場合
-                        ③公衆衛生の向上・児童の健全な育成のために必要で、本人から同意を得ることが難しい場合
-                        ④国の機関や地方公共団体、その委託者などによる法令事務の遂行にあたって協力する必要があり、かつ本人の同意を得ることで事務遂行に影響が生じる可能性がある場合</p>
-                        <br/>
-                        <p>３．開示請求
-                        貴殿の個人情報について、ご本人には、開示・訂正・削除・利用停止を請求する権利があります。手続きにあたっては、ご本人確認のうえ対応させていただきますが、代理人の場合も可能です。</p>
-                      </div>
-                    }/></li>
+
                   </ul>
                 </div>
                 {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RfBVAfieqaobHLe2lgTJ',true)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
@@ -106,6 +86,18 @@ const Product_Display = (props)=>{
                         最終入店時間: 22時
                     </li>
                     <li><strong>レッスン時間</strong> 無制限~</li>
+                    <li>
+                            <Popup title={"学生割について"} content={
+                              <div>
+                                学生割を希望のお客様はこちらの通常コース(30,000円)へご入会の上、ご来店の際にお名前と学生証の提示をお願い致します。<br/>学生証の確認が取れましたらその場で現金にて5,000円をお返しさせていただきます。
+                              </div>
+                            }/>
+                            <Popup title={"お支払いについて"} content={
+                              <div>
+                              こちらのサービスは自動で毎月継続購入されるサービスとなります。<br/>自動購入を停止されたい場合には大変お手数ではございますが、下記電話番号にお電話もしくは、店頭にてお申し付けくださいますようお願い致します。電話番号：05033951280
+                              </div>
+                            }/>
+                    </li>
                   </ul>
                 </div>
                 {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RpBVAfieqaobowDgpi3c',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
@@ -124,5 +116,4 @@ const Product_Display = (props)=>{
     </div>
   )
 }
-
 export default Product_Display;
