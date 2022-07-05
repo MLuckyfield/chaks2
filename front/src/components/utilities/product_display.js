@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {axios} from "../../utilities/axios";
 import AccessDisplay from '../nav/AccessDisplay'
+import Popup from '../utilities/Popup'
 
 const Product_Display = (props)=>{
   const [selected,setSelected]=useState();
@@ -20,6 +21,29 @@ const Product_Display = (props)=>{
         setMsg([err.message,err.success]);
         // setFeedback(err.response.data.message);
         });
+  }
+  const content = ()=>{
+    return (
+      <div>
+        CHATSHACK(以下「当社」)では、お預かりした個人情報について、以下のとおり適正かつ安全に管理・運用することに努めます。
+        <br/>
+        <p>１．利用目的
+        当社は、収集した個人情報について、以下の目的のために利用いたします。
+        ①サービス実施、およびアフターサービスのため
+        ②相談・お問い合わせへの回答のため
+        ③商品・サービス・イベントの案内のため</p>
+        <br/>
+        <p>２．第三者提供
+        当社は、以下の場合を除いて、個人データを第三者へ提供することはしません。
+        ①法令に基づく場合
+        ②人の生命・身体・財産を保護するために必要で、本人から同意を得ることが難しい場合
+        ③公衆衛生の向上・児童の健全な育成のために必要で、本人から同意を得ることが難しい場合
+        ④国の機関や地方公共団体、その委託者などによる法令事務の遂行にあたって協力する必要があり、かつ本人の同意を得ることで事務遂行に影響が生じる可能性がある場合</p>
+        <br/>
+        <p>３．開示請求
+        貴殿の個人情報について、ご本人には、開示・訂正・削除・利用停止を請求する権利があります。手続きにあたっては、ご本人確認のうえ対応させていただきますが、代理人の場合も可能です。</p>
+      </div>
+    )
   }
   return (
     <div>
@@ -43,7 +67,7 @@ const Product_Display = (props)=>{
 ¥2,500/無制限<br/>（ワンドリンク付,最大８５０円!）</li>
                   </ul>
                 </div>
-                <div class="border">店頭でのお支払い</div>
+                <div class="border" style={{position:'absolute',bottom:'0px',width:'100%',padding:'8px 30px'}}>店頭でのお支払い</div>
               </div>
             </div>
             <div class="plan standard">
@@ -61,6 +85,7 @@ const Product_Display = (props)=>{
                     <li style={{fontSize:'10px'}}><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
                   </ul>
                 </div>
+                <div><Popup title={"個人情報取り扱いについて"} content={content}/></div>
                 {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RfBVAfieqaobHLe2lgTJ',true)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
               </div>
             </div>
@@ -85,6 +110,7 @@ const Product_Display = (props)=>{
                     <li><strong>レッスン時間</strong> 無制限~</li>
                   </ul>
                 </div>
+                <div><Popup title={"個人情報取り扱いについて"} content={content}/></div>
                 {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RpBVAfieqaobowDgpi3c',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
               </div>
             </div>
