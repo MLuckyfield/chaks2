@@ -9,9 +9,10 @@ const Popup = (props)=>{
       <p><center><label for="3" class="open">{props.title}</label></center></p>
       <input type="checkbox" id="3" />
       <div class="modal">
-        <label class="btn-close" for="3">X</label>
         <div class="modal__inner">
                     {props.content}
+                    <label class="btn-close" for="3">X</label>
+                    
         </div>
       </div>
     </div>
