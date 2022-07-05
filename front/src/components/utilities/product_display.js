@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {axios} from "../../utilities/axios";
 import AccessDisplay from '../nav/AccessDisplay'
-import Popup from '../../utilities/Popup'
+import Popup from './Popup'
 
 const Product_Display = (props)=>{
   const [selected,setSelected]=useState();
