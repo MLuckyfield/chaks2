@@ -22,7 +22,7 @@ const Product_Display = (props)=>{
         // setFeedback(err.response.data.message);
         });
   }
-  const content = ()=>{
+  const Content = ()=>{
     return (
       <div>
         CHATSHACK(以下「当社」)では、お預かりした個人情報について、以下のとおり適正かつ安全に管理・運用することに努めます。
@@ -85,7 +85,7 @@ const Product_Display = (props)=>{
                     <li style={{fontSize:'10px'}}><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
                   </ul>
                 </div>
-                <div><Popup title={"個人情報取り扱いについて"} content={content}/></div>
+                <div><Popup title={"個人情報取り扱いについて"} content={Content}/></div>
                 {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RfBVAfieqaobHLe2lgTJ',true)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
               </div>
             </div>
@@ -110,7 +110,7 @@ const Product_Display = (props)=>{
                     <li><strong>レッスン時間</strong> 無制限~</li>
                   </ul>
                 </div>
-                <div><Popup title={"個人情報取り扱いについて"} content={content}/></div>
+                <div><Popup title={"個人情報取り扱いについて"} content={Content}/></div>
                 {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RpBVAfieqaobowDgpi3c',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
               </div>
             </div>
