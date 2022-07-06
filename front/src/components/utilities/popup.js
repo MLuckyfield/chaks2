@@ -6,7 +6,7 @@ const Popup = (props)=>{
 
   return (
     <div class="pop">
-      <p><center><label for={props.num} class="open">{props.title}</label></center></p>
+      {props.button?<p><center><label for={props.num} class="open">{props.title}</label></center></p>:<label for={props.num} class='btn'>購入</label>}
       <input type="checkbox" id={props.num} />
       <div class="modal">
         <div class="modal__inner">
