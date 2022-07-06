@@ -95,15 +95,15 @@ $size-height: 65vh;
 //POPUP css
 .pop {
   // position: absolute;
-  width: 50%;
+  // width: 50%;
   margin: auto;
   padding: 20px;
   height: 50%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: inline-block;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+  // display: inline-block;
   margin:0;
   padding:0;
 }
@@ -139,7 +139,7 @@ $size-height: 65vh;
   position: absolute;
   color: black;
   overflow: scroll;
-  // height:80vh;
+  height:fit-content;
 }
 .modal__inner{
   height:80vh;
