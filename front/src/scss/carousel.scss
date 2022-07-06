@@ -164,13 +164,13 @@ $size-height: 65vh;
   // display: inline-block;
   cursor: pointer;
 }
-.pop label.open {
+.pop label.open,.pop .btn.open {
   color: turquoise;
   -webkit-transition: color 200ms ease-in-out;
   transition: color 200ms ease-in-out;
   text-decoration: underline;
 }
-.pop label.open:hover {
+.pop label.open:hover,.pop .btn.open:hover {
   color: paleturquoise;
 }
 .pop input {
