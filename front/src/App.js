@@ -241,7 +241,7 @@ const Front = ()=>{
                           <input ref={password} class='form-control' type='Password' placeholder='Password' required/>
                         </div>
                           {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
-                          <Popup title={"個人情報取り扱いについて"} content={
+                          <Popup title={"個人情報取り扱いについて"} num={1} content={
                             <div>
                               CHATSHACK(以下「当社」)では、お預かりした個人情報について、以下のとおり適正かつ安全に管理・運用することに努めます。
                               <br/>
