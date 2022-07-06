@@ -139,7 +139,7 @@ $size-height: 65vh;
   position: absolute;
   color: black;
   overflow-y: scroll;
-  height:fit-content;
+  max-height:80vh;
 }
 .modal__inner{
   height:80vh;
