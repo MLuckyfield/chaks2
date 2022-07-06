@@ -138,7 +138,7 @@ $size-height: 65vh;
   padding: 30px;
   position: absolute;
   color: black;
-  overflow: scroll;
+  overflow-y: scroll;
   height:fit-content;
 }
 .modal__inner{
