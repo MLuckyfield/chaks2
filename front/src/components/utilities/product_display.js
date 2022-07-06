@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {axios} from "../../utilities/axios";
 import AccessDisplay from '../nav/AccessDisplay'
+import Popup1 from './popup'
 import Popup from './popup'
 
 const Product_Display = (props)=>{
@@ -92,7 +93,7 @@ const Product_Display = (props)=>{
                                 学生割を希望のお客様はこちらの通常コース(30,000円)へご入会の上、ご来店の際にお名前と学生証の提示をお願い致します。<br/>学生証の確認が取れましたらその場で現金にて5,000円をお返しさせていただきます。
                               </div>
                             }/>
-                            <Popup title={"お支払いについて"} content={
+                            <Popup1 title={"お支払いについて"} content={
                               <div>
                               こちらのサービスは自動で毎月継続購入されるサービスとなります。<br/>自動購入を停止されたい場合には大変お手数ではございますが、下記電話番号にお電話もしくは、店頭にてお申し付けくださいますようお願い致します。電話番号：05033951280
                               </div>
