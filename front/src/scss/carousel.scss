@@ -149,6 +149,11 @@ $size-height: 65vh;
   .pop .modal__inner {
     width: 100%;
   }
+  .pop .btn{
+    bottom: auto;
+    top:0px;
+    height:auto;
+  }
 }
 .btn-close{
     color: #fff;
@@ -156,7 +161,7 @@ $size-height: 65vh;
 }
 
 .pop label,.pop .btn {
-  display: inline-block;
+  // display: inline-block;
   cursor: pointer;
 }
 .pop label.open {
