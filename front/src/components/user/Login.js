@@ -9,7 +9,7 @@ const Login = () => {
   const email = useRef('');
   const password = useRef('');
 
-  const [feedback, setFeedback] = useState();
+  const [msg,setMsg] = useState()
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +26,8 @@ const Login = () => {
           })
       .catch((err) => {
         console.log(err);
-        // setFeedback(err.response.data.message);
+        setMsg([err,false])
+
         });
   }
 
@@ -42,6 +43,8 @@ const Login = () => {
                       <input ref={password} type="password" class="form-control" placeholder="Password" required/>
                     </div>
                     <label>{feedback}</label>
+                    {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
+
                     <button type="submit" class="outline-first">Login</button>
 
                   </form>
