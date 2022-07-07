@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect,useRef} from 'react'
 import DateTimePicker from 'react-datetime-picker'
 import 'react-calendar/dist/Calendar.css'
 import Calendar from 'react-calendar'
@@ -11,8 +11,9 @@ const Booking = ()=>{
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day, setDay]=useState(new Date())
   const [msg,setMsg] = useState()
+  const appointment = useRef()
   const [bookings, setBookings]=useState()
-  const [appointment,setAppointment]=useState()
+  // const [appointment,setAppointment]=useState()
   const [available,setAvailable]=useState()
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
   // const [showPayment, setShowPayment]=useState(false)
@@ -107,10 +108,10 @@ const Booking = ()=>{
           .catch(error => console.log("error"+error))
     }
   }
-  const updateAppointment=(item)=>{
-    setAppointment(item)
-    console.log(item)
-  }
+  // const updateAppointment=(item)=>{
+  //   setAppointment(item)
+  //   console.log(item)
+  // }
   const prepBooking=(data)=>{
       if(moment(data).format('dddd')=='Monday'){
         setMsg(['Monday is a holiday.',false])
@@ -139,14 +140,14 @@ const Booking = ()=>{
                   )
                 })): 'No reservations. Why not make one? :)'}
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
-                    <select class='form-control'>
+                    <select class='form-control' ref={appointment}>
 
                       {available?available.map(function(item,i){
-                        return <option class='col slim feedback clickable' onClick={(item)=>{updateAppointment(available[i])}}>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}<br/>{item.level}</option>
+                        return <option class='col slim feedback clickable' value={available[i]}>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher} {item.level}</option>
 
                       }):<option>No timeslots available!</option>}
                     </select>
-                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
+                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.current.value.slot).format('MMMM Do, h:mm a') + ' '+appointment.current.value.teacher:''}</button>
           </div>
           {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
       </div>
