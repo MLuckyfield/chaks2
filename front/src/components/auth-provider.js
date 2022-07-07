@@ -1,4 +1,6 @@
 
-export const metaTags=(title)=>{
+const metaTags=(title)=>{
   document.title=title
 }
+
+export default metaTags
