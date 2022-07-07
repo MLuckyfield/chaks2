@@ -147,7 +147,7 @@ const Booking = ()=>{
 
                       }):<option>No timeslots available!</option>}
                     </select>
-                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.current.slot).format('MMMM Do, h:mm a') + ' '+appointment.current.teacher:''}</button>
+                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
           {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
       </div>
