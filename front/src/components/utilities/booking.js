@@ -52,7 +52,8 @@ const Booking = ()=>{
           .then((res) => {
               console.log('length '+res.data.data.length)
               // console.log(res.data.data)
-              let schedule = [{
+              let schedule = [
+                {
                 slot: moment(e).startOf('day').add(7,'hours'),
                 teacher:'Canadian',
                 level:'中級-上級'
@@ -86,7 +87,7 @@ const Booking = ()=>{
                 level:'初級-中級'
 
               }]
-              console.log(booking)              
+              console.log(bookings)              
               res.data.data.forEach((booking, i) => {
                   schedule.forEach((slot, y) => {
                       let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
