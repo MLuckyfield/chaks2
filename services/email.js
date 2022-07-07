@@ -2,7 +2,7 @@ const User = require('../models/user/model')
 const nodemailer = require('nodemailer');
 const moment = require ('moment')
 
-const sendBooking = (req)=>{
+const sendBooking = (req,res)=>{
     console.log('email service starting')
     // console.log(booking)
     const transporter = nodemailer.createTransport({
