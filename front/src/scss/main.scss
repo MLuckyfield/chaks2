@@ -311,6 +311,9 @@ nav {
     display: flex;
     z-index: 10;
 }
+.clickable{
+  cursor: pointer;
+}
 
 .nav-links li {
     padding: 3% 7%;

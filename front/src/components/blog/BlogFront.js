@@ -8,26 +8,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const BlogFront = () => {
 
   const [comments, setComments] = useState(null);
-  const [items, setItems] = useState([{
-    picture: banner,
-    text:'CHATSHACK',
-    subtext:'Learning Center',
-    link:'/',
-    active:true
-  },{
-    picture: banner,
-    text:'DISCOUNTS',
-    subtext:'Coming Soon',
-    link:'/',
-    active:false
-  },
-  {
-    picture: banner,
-    text:'BLOG',
-    subtext:'Free!',
-    link:'/',
-    active:false
-  }]);
 
   useEffect(() => {
     // updateTitle('Blog')
@@ -49,7 +29,7 @@ const BlogFront = () => {
       <div class='master-row'>
         <h1>BLOG</h1>
         <div class='col'>
-            <div id='header' class='transparent blog_thumbnail' onClick={comments?()=>{loadBlog(comments[0])}:''} style={{backgroundImage: 'url('+banner+')', verticalAlign:'middle',display:'flex'}}>
+            <div id='header' class='transparent blog_thumbnail clickable' onClick={comments?()=>{loadBlog(comments[0])}:''} style={{backgroundImage: 'url('+banner+')', verticalAlign:'middle',display:'flex'}}>
                 <div class='overlay'>
                     <div class='row'>
                       <div class='col'>
@@ -62,7 +42,7 @@ const BlogFront = () => {
             {comments ? (comments.map(function(item, i){
                 if(i!=0){
                   if(i%3==0){return (
-                    <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
+                    <div class='col  clickable' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
                       <h1>{item.title}</h1>
                       <h3>{item.preview.slice(0,20)}</h3>
                     </div>
@@ -70,7 +50,7 @@ const BlogFront = () => {
                   else{
                     return (
                         <div class='row'>
-                          <div class='col' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
+                          <div class='col  clickable' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
                             <h1>{item.title}</h1>
                             <h3>{item.preview.slice(0,20)}</h3>
                           </div>

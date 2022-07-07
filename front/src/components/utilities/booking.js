@@ -139,11 +139,13 @@ const Booking = ()=>{
                   )
                 })): 'No reservations. Why not make one? :)'}
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
-                    {available?available.map(function(item,i){
-                      return <div class='col slim feedback' onClick={(item)=>{updateAppointment(available[i])}}>
-                          <div class=''>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}<br/>{item.level}</div>
-                      </div>
-                    }):'No timeslots available!'}
+                    <select class='form-control' ref={level}>
+
+                      {available?available.map(function(item,i){
+                        <option class='col slim feedback clickable' onClick={(item)=>{updateAppointment(available[i])}}>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}<br/>{item.level}</option>
+
+                      }):<option>No timeslots available!</option>}
+                    </select>
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
           {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
