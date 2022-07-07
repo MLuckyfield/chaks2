@@ -66,8 +66,6 @@ const request = require('request')
               // ==mialchimp finished
           }
         );
-
-
       }catch(err){
         console.log('there was a problem')
         return res.status(500).json({

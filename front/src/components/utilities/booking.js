@@ -19,24 +19,28 @@ const Booking = ()=>{
   // const [showPayment, setShowPayment]=useState(false)
 
   const onSubmit=(e)=>{
-    e.preventDefault();
-    console.log('activating...')
-    // setShowPayment(true)
-    // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
-    axios.post('/booking/new',{
-        student:student,
-        teacher:appointment.teacher,
-        date:appointment.slot
-    })
-      .then((res) => {
-          console.log(res.data.data)
-          window.location.reload(true)
-          // setMsg([res.data.message,res.data.success]);
-          })
-      .catch((err) => {
-        setMsg([err.message,err.success]);
-        // setFeedback(err.response.data.message);
-        });
+    if(appointment){
+      e.preventDefault();
+      console.log('activating...')
+      // setShowPayment(true)
+      // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
+      axios.post('/booking/new',{
+          student:student,
+          teacher:appointment.teacher,
+          date:appointment.slot
+      })
+        .then((res) => {
+            console.log(res.data.data)
+            window.location.reload(true)
+            // setMsg([res.data.message,res.data.success]);
+            })
+        .catch((err) => {
+          setMsg([err.message,err.success]);
+          // setFeedback(err.response.data.message);
+          });
+    }else{
+      setMsg(['Please select a timeslot',false])
+    }
   }
   const updateView=(e)=>{
     if(moment(e).format('dddd')=='Monday'){
@@ -132,6 +136,7 @@ const Booking = ()=>{
       <div class='col slim'>
       <h1>Reservations</h1>
             <div class='col'>
+              <h2>Upcoming ({bookings?bookings.length:'0'})</h2>
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim feedback'>
@@ -139,15 +144,16 @@ const Booking = ()=>{
                     </div>
                   )
                 })): 'No reservations. Why not make one? :)'}
+                <h2>Make a New Booking ({student?'Points' student.points:'0'})</h2>
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     <select class='form-control' onChange={()=>console.log(appointment)} ref={appointment}>
                       {available?available.map(function(item,i){
                         return <option class='col slim feedback clickable' value={available[i]}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
                       }):<option>No timeslots available!</option>}
                     </select>
-                  <button onClick={onSubmit} {appointment?'':'disabled'} class="solid-first">Reserve {appointment?()=>moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
+                    {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
+                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?()=>moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
-          {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
       </div>
     </div>
   )
