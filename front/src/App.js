@@ -8,7 +8,7 @@ import Product_Display from './components/utilities/product_display'
 
 //import components
 import Login from './components/user/Login'
-import Signup from './components/user/Signup'
+// import Signup from './components/user/Signup'
 import Navbar from './components/nav/Navbar'
 import AdminDash from './components/nav/AdminDash'
 import SecureRoute from './components/nav/SecureRoute'
@@ -74,7 +74,6 @@ const App = () => {
         </div>
           <Route exact path="/" component={Front}/>
           <Route path="/events" component={EventsPage}/>
-          <Route path="/signup" component={Signup}/>
           <Route path="/campaigns" component={CampaignPage}/>
           <Route path="/about" component={StylePage}/>
           <Route exact path="/blog" component={BlogFront}/>
