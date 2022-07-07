@@ -48,7 +48,7 @@ const Booking = ()=>{
               console.log('length '+res.data.data.length)
               // console.log(res.data.data)
               let schedule = [{
-                slot: moment(e).add(7,'hours'),
+                slot: moment(e).startOf('day').add(7,'hours'),
                 teacher:'Canadian',
                 level:'Intermediate-Advanced'
               },

@@ -21,7 +21,6 @@ const Login = () => {
         password: password.current.value
       })
       .then((res) => {
-          setUser(res.data.result);
           localStorage.setItem('user', JSON.stringify(res.data.result));
           window.location='/dash';
           })
