@@ -227,19 +227,20 @@ const Product_Display = (props)=>{
 
                   ３．⼄が前項により解除した場合、⼄はそれにより甲に⽣じた損害の⼀切について賠償する義務を負わず、甲は⼄に⽣じた損害を全て賠償する責任を負います。 </p>
 
-                  <p>（役務提供者の情報）
+                  役務提供者の情報）
 
                   <p><strong>第１０条</strong><br/>
 
                   特定商取引法第４２条第２項第７号に定める、本契約の役務提供事業者の⽒名・住所等については下記のとおりです。
 
-                  <p class='indent'>① 役務提供事業者<br/>
+                    <p class='indent'>① 役務提供事業者<br/>
 
-                  CHATSHACK<br/>
+                    CHATSHACK<br/>
 
-                  東京都千代田区九段南2-4-12 アビスタ九段ビル201<br/>
+                    東京都千代田区九段南2-4-12 アビスタ九段ビル201<br/>
 
-                  代表 八木俊祐　</p></p>
+                    代表 八木俊祐　</p>
+                  </p>
                   {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RpBVAfieqaobowDgpi3c',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
                   </div>
                 }/>

@@ -135,7 +135,8 @@ $size-height: 65vh;
   position: absolute;
   color: black;
   overflow-y: scroll;
-  height:65vh;
+  max-height:65vh;
+  height: fit-content;
   text-align: left;
 }
 .modal__inner{
