@@ -30,7 +30,7 @@ const BlogFront = () => {
   }]);
 
   useEffect(() => {
-    updateTitle('Blog')
+    // updateTitle('Blog')
     axios.get('/content/all')
       .then((res) => {
           setComments(res.data.data.reverse());
