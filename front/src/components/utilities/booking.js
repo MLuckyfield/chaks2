@@ -143,11 +143,11 @@ const Booking = ()=>{
                     <select class='form-control' ref={appointment}>
 
                       {available?available.map(function(item,i){
-                        return <option class='col slim feedback clickable' value={available[i]}>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher} {item.level}</option>
+                        return <option class='col slim feedback clickable' value={available[i]}>{moment(item.slot).format('MMMM Do, h:mm a')} | <strong>TEACHER:</strong>{item.teacher} ({item.level})</option>
 
                       }):<option>No timeslots available!</option>}
                     </select>
-                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?()=>{console.log(appointment);return moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}}</button>
+                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?()=>{console.log(appointment);return moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher;}:''}</button>
           </div>
           {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
       </div>
