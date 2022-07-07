@@ -95,8 +95,8 @@ const Booking = ()=>{
                       console.log(x)
                       console.log(z)
                       console.log(x==z)
-                      // console.log('booking teacher'+booking.teacher)
-                      // console.log('schedule teacher'+slot.teacher)
+                      console.log('booking teacher'+booking.teacher)
+                      console.log('schedule teacher'+slot.teacher)
 
                       if (x==z){
                         if(booking.teacher==slot.teacher){
@@ -129,7 +129,7 @@ const Booking = ()=>{
     axios.get('/booking/all', {params:{filter:{student:student,date:{$gte:new Date()}}}})
       .then((res) => {
           setBookings(res.data.data.reverse());
-          updateView(new Date())
+          if(date){updateView(date)}
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -147,7 +147,7 @@ const Booking = ()=>{
                     </div>
                   )
                 })): 'No reservations. Why not make one? :)'}<br/>
-                <h2>Make a New Booking (Points: {student?<span>{student.points}</span>:'0'})</h2><br/>
+                <h2>Make a New Booking (Points: {student.points?student.points:'0'})</h2><br/>
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
                       {available?available.map(function(item,i){
