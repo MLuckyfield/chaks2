@@ -13,7 +13,7 @@ const Booking = ()=>{
   const [msg,setMsg] = useState()
   const [bookings, setBookings]=useState()
   const active = useRef()
-  const [appointment,setAppointment]=useState()
+  const [appointment,setAppointment]=useState(null)
   const [available,setAvailable]=useState()
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
   // const [showPayment, setShowPayment]=useState(false)
@@ -126,9 +126,10 @@ const Booking = ()=>{
       }
   }
   useEffect(()=>{
-    axios.get('/booking/all', {params:{filter:{student:student}}})
+    axios.get('/booking/all', {params:{filter:{student:student,date:{$gte:new Date()}}}})
       .then((res) => {
           setBookings(res.data.data.reverse());
+          updateView(new Date())
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -154,7 +155,7 @@ const Booking = ()=>{
                       }):<option>No timeslots available!</option>}
                     </select>
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
-                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') }+ ' '+{appointment.teacher}</span>:''}</button>
+                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>
           </div>
       </div>
     </div>
