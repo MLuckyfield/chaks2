@@ -140,14 +140,12 @@ const Booking = ()=>{
                   )
                 })): 'No reservations. Why not make one? :)'}
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
-                    <select class='form-control' ref={appointment}>
-
+                    <select class='form-control' onChange={()=>console.log(appointment)} ref={appointment}>
                       {available?available.map(function(item,i){
                         return <option class='col slim feedback clickable' value={available[i]}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
-
                       }):<option>No timeslots available!</option>}
                     </select>
-                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?()=>{console.log(appointment);return moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher;}:''}</button>
+                  <button onClick={onSubmit} {appointment?'':'disabled'} class="solid-first">Reserve {appointment?()=>moment(appointment.slot).format('MMMM Do, h:mm a') + ' '+appointment.teacher:''}</button>
           </div>
           {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
       </div>
