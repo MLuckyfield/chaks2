@@ -13,7 +13,6 @@ import Navbar from './components/nav/Navbar'
 import AdminDash from './components/nav/AdminDash'
 import SecureRoute from './components/nav/SecureRoute'
 import AccessDisplay from './components/nav/AccessDisplay'
-import AuthDataProvider from "./components/auth-provider";
 import StudentComments from './components/user/StudentComments'
 import BlogPosts from './components/blog/BlogPosts'
 import Blog from './components/blog/Blog'
