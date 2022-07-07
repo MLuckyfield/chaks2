@@ -11,10 +11,9 @@ const Booking = ()=>{
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day, setDay]=useState(new Date())
   const [msg,setMsg] = useState()
-  const [appointment,setAppointment] = useState()
   const [bookings, setBookings]=useState()
   const active = useRef()
-  // const [appointment,setAppointment]=useState()
+  const [appointment,setAppointment]=useState()
   const [available,setAvailable]=useState()
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
   // const [showPayment, setShowPayment]=useState(false)
@@ -117,6 +116,7 @@ const Booking = ()=>{
     setAppointment(available[item])
     console.log(item)
     console.log(available[item])
+    console.log(appointment)
   }
   const prepBooking=(data)=>{
       if(moment(data).format('dddd')=='Monday'){
@@ -145,8 +145,8 @@ const Booking = ()=>{
                         <div class=''>{moment(item.date).format('dddd, MMM DD @ h:mm a')} {item.teacher}</div>
                     </div>
                   )
-                })): 'No reservations. Why not make one? :)'}
-                <h2>Make a New Booking ({student?<span>Points {student.points}</span>:'0'})</h2><br/>
+                })): 'No reservations. Why not make one? :)'}<br/>
+                <h2>Make a New Booking (Points: {student?<span>{student.points}</span>:'0'})</h2><br/>
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
                       {available?available.map(function(item,i){

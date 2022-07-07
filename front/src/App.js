@@ -86,8 +86,8 @@ const App = () => {
             <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts} fail={Login}/>
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={Login}/>
             <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile} fail={Login}/>
-            <SecureRoute path="/reservation" access={['user','teacher','manager']} success={Booking} fail={Login}/>
-          
+            <SecureRoute path="/reservations" access={['user','teacher','manager']} success={Booking} fail={Login}/>
+
       </Router>
 
     )
