@@ -1,5 +1,5 @@
-// const updateTitle=(title)=>{
-//   document.title=title
+// const updateTitle=(setting)=>{
+//   document.title=setting.title
 // }
 //
 // module.exports={updateTitle}

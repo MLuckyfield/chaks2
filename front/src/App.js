@@ -50,6 +50,8 @@ import campaign_header from './campaign_header.jpg'
 const App = () => {
 
     useEffect(() => {
+    // document.querySelector('meta[name]=description').setAttribute("content","英会話カフェ")
+
     const script = document.createElement('script');
     script.src = "https://www.googletagmanager.com/gtag/js?id=G-KSPWEELDL9";
     script.async = true;
