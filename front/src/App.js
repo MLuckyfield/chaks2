@@ -78,7 +78,7 @@ const App = () => {
           <Route exact path="/blog" component={BlogFront}/>
           <Route exact path="/blog/*" component={BlogDisplay}/>
           <Route path="/products" component={Product_Display}/>
-          <AuthDataProvider>
+
             <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/account" access={['user','manager']} success={Account} fail={Login}/>
@@ -87,7 +87,7 @@ const App = () => {
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={Login}/>
             <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile} fail={Login}/>
             <SecureRoute path="/reservation" access={['user','teacher','manager']} success={Booking} fail={Login}/>
-          </AuthDataProvider>
+          
       </Router>
 
     )
