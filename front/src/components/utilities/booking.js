@@ -31,7 +31,7 @@ const Booking = ()=>{
       })
         .then((res) => {
             console.log(res.data.data)
-            window.location.reload(true)
+            // window.location.reload(true)
             // setMsg([res.data.message,res.data.success]);
             })
         .catch((err) => {
@@ -87,9 +87,8 @@ const Booking = ()=>{
                 level:'初級-中級'
 
               }]
-              console.log(bookings)              
-              res.data.data.forEach((booking, i) => {
-                  schedule.forEach((slot, y) => {
+              res.data.data.forEach((slot, i) => {
+                  schedule.forEach((booking, y) => {
                       let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
                       let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
                       console.log(x)
@@ -129,7 +128,7 @@ const Booking = ()=>{
     axios.get('/booking/all', {params:{filter:{student:student,date:{$gte:new Date()}}}})
       .then((res) => {
           setBookings(res.data.data.reverse());
-          if(date){console.log('activating updateView for initial render');updateView(date);setAppointment(available[0])}
+          if(date){console.log('activating updateView for initial render');updateView(date);}
         })
       .catch(error => console.log("error"+error))
   },[])
