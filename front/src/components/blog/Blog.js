@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
-import {useAuthDataContext} from "../auth-provider";
 import {Editor, EditorState, convertToRaw, RichUtils} from 'draft-js'
 
 const Blog = () => {
