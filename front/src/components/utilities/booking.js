@@ -51,35 +51,35 @@ const Booking = ()=>{
               let schedule = [{
                 slot: moment(e).startOf('day').add(7,'hours'),
                 teacher:'Canadian',
-                level:'Intermediate-Advanced'
+                level:'中級-上級'
               },
               {
                 slot: moment(e).startOf('day').add(7,'hours'),
                 teacher:'Japanese',
-                level:'Beginner-Intermediate'
+                level:'初級-中級'
               },
               {
                 slot: moment(e).startOf('day').add(8,'hours'),
                 teacher:'Canadian',
-                level:'Intermediate-Advanced'
+                level:'中級-上級'
 
               },
               {
                 slot: moment(e).startOf('day').add(8,'hours'),
                 teacher:'Japanese',
-                level:'Beginner-Intermediate'
+                level:'初級-中級'
 
               },
               {
                 slot: moment(e).startOf('day').add(9,'hours'),
                 teacher:'Canadian',
-                level:'Intermediate-Advanced'
+                level:'中級-上級'
 
               },
               {
                 slot: moment(e).startOf('day').add(9,'hours'),
                 teacher:'Japanese',
-                level:'Beginner-Intermediate'
+                level:'初級-中級'
 
               }]
               res.data.data.forEach((booking, i) => {
@@ -143,7 +143,7 @@ const Booking = ()=>{
                     <select class='form-control' ref={appointment}>
 
                       {available?available.map(function(item,i){
-                        return <option class='col slim feedback clickable' value={available[i]}>{moment(item.slot).format('MMMM Do, h:mm a')} | <strong>TEACHER:</strong>{item.teacher} ({item.level})</option>
+                        return <option class='col slim feedback clickable' value={available[i]}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
 
                       }):<option>No timeslots available!</option>}
                     </select>
