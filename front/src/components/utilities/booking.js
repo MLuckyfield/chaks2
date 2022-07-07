@@ -54,30 +54,30 @@ const Booking = ()=>{
                 level:'Intermediate-Advanced'
               },
               {
-                slot: moment(e).add(7,'hours'),
+                slot: moment(e).startOf('day').add(7,'hours'),
                 teacher:'Japanese',
                 level:'Beginner-Intermediate'
               },
               {
-                slot: moment(e).add(8,'hours'),
+                slot: moment(e).startOf('day').add(8,'hours'),
                 teacher:'Canadian',
                 level:'Intermediate-Advanced'
 
               },
               {
-                slot: moment(e).add(8,'hours'),
+                slot: moment(e).startOf('day').add(8,'hours'),
                 teacher:'Japanese',
                 level:'Beginner-Intermediate'
 
               },
               {
-                slot: moment(e).add(9,'hours'),
+                slot: moment(e).startOf('day').add(9,'hours'),
                 teacher:'Canadian',
                 level:'Intermediate-Advanced'
 
               },
               {
-                slot: moment(e).add(9,'hours'),
+                slot: moment(e).startOf('day').add(9,'hours'),
                 teacher:'Japanese',
                 level:'Beginner-Intermediate'
 
@@ -147,7 +147,7 @@ const Booking = ()=>{
 
                       }):<option>No timeslots available!</option>}
                     </select>
-                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.current.value.slot).format('MMMM Do, h:mm a') + ' '+appointment.current.value.teacher:''}</button>
+                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?moment(appointment.current.slot).format('MMMM Do, h:mm a') + ' '+appointment.current.teacher:''}</button>
           </div>
           {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
       </div>
