@@ -26,7 +26,7 @@ import Account from './components/user/account'
 // import Payment from './components/utilities/payment'
 import Profile from './components/user/Profile'
 
-import microsoft_clarity from './components/microsoft_clarity'
+import google_analytics from './components/google_analytics'
 //import pages
 import EventsPage from './components/page/EventsPage'
 import CampaignPage from './components/page/CampaignPage'
@@ -57,7 +57,7 @@ const App = () => {
     document.head.appendChild(script);
 
     const script2 = document.createElement('script');
-    script2.src = "microsoft_clarity";
+    script2.src = "google_analytics";
     // script2.async = true;
     document.head.appendChild(script2);
     // return () => {
