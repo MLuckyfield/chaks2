@@ -144,7 +144,7 @@ const Booking = ()=>{
                     </div>
                   )
                 })): 'No reservations. Why not make one? :)'}
-                <h2>Make a New Booking ({student?'Points' student.points:'0'})</h2>
+                <h2>Make a New Booking ({student?'Points ' +student.points:'0'})</h2>
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     <select class='form-control' onChange={()=>console.log(appointment)} ref={appointment}>
                       {available?available.map(function(item,i){

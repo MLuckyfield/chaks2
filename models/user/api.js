@@ -95,7 +95,13 @@ const request = require('request')
                 success: false
               });
             }
-
+            //check if active (for former employees)
+            if(user.active==false){
+              return res.status(401).json({
+                message: 'Account inactive. Please contact administrator.',
+                success: false
+              });
+            }
             //check password
             if(await auth.validatePass(password, user.password)){
 

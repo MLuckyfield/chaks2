@@ -65,6 +65,9 @@ const User = mongoose.model('User', new Schema({
   inClass:{
     type:Boolean,
     default:false
+  },
+  active:{
+    type:Boolean,
   }
 },{
   timestamps: true,
