@@ -242,7 +242,7 @@ const Product_Display = (props)=>{
                     東京都千代田区九段南2-4-12 アビスタ九段ビル201<br/>
 
                     代表 八木俊祐　</p>
-                  </p>
+                  </p><br/>
                   {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RpBVAfieqaobowDgpi3c',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
                   </div>
                 }/>

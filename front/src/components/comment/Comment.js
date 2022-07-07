@@ -31,7 +31,7 @@ const Comment = () => {
       })
       .then((res) => {
           setFeedback(res.data.message);
-          window.location='/dash';
+          window.location.reload(true)
           })
       .catch((err) => {
         console.log(err);
