@@ -2,7 +2,6 @@ import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import Comment from "../comment/Comment";
 import Profile from "./Profile";
-import {useAuthDataContext} from "../auth-provider";
 import moment from "moment"
 
 const StudentComments = () => {
