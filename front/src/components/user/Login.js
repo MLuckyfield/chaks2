@@ -10,7 +10,6 @@ const Login = () => {
   const password = useRef('');
 
   const [feedback, setFeedback] = useState();
-  const { onLogin } = useAuthDataContext();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +21,9 @@ const Login = () => {
         password: password.current.value
       })
       .then((res) => {
-          onLogin(res.data.result);
+          setUser(res.data.result);
+          localStorage.setItem('user', JSON.stringify(res.data.result));
+          window.location='/dash';
           })
       .catch((err) => {
         console.log(err);
