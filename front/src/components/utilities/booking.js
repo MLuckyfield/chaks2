@@ -42,7 +42,7 @@ const Booking = ()=>{
       setMsg(['Monday is a holiday.',false])
     }else{
       setDay(e)
-      // console.log(moment(e).startOf())
+      console.log(moment(e).startOf('day'))
         axios.get('/booking/all', {params:{filter:{date:{$gte:e,$lte:moment(e).add(24,'hours')}}}})
           .then((res) => {
               console.log('length '+res.data.data.length)
@@ -142,7 +142,7 @@ const Booking = ()=>{
                     <select class='form-control'>
 
                       {available?available.map(function(item,i){
-                        <option class='col slim feedback clickable' onClick={(item)=>{updateAppointment(available[i])}}>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}<br/>{item.level}</option>
+                        return <option class='col slim feedback clickable' onClick={(item)=>{updateAppointment(available[i])}}>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}<br/>{item.level}</option>
 
                       }):<option>No timeslots available!</option>}
                     </select>
