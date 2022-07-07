@@ -11,8 +11,9 @@ const Booking = ()=>{
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day, setDay]=useState(new Date())
   const [msg,setMsg] = useState()
-  const appointment = useRef()
+  const [appointment,setAppointment] = useState()
   const [bookings, setBookings]=useState()
+  const active = useRef()
   // const [appointment,setAppointment]=useState()
   const [available,setAvailable]=useState()
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
@@ -146,9 +147,9 @@ const Booking = ()=>{
                 })): 'No reservations. Why not make one? :)'}
                 <h2>Make a New Booking ({student?<span>Points {student.points}</span>:'0'})</h2><br/>
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
-                    <select class='form-control' onChange={()=>{console.log(JSON.stringify(appointment.current.value));console.log(typeof appointment.current.value)}} ref={appointment}>
+                    <select class='form-control' onChange={()=>{setAppointment(available[active])}} ref={active}>
                       {available?available.map(function(item,i){
-                        return <option class='col slim feedback clickable' value={available[i]}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
+                        return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
                       }):<option>No timeslots available!</option>}
                     </select>
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
