@@ -139,7 +139,7 @@ const Booking = ()=>{
                   )
                 })): 'No reservations. Why not make one? :)'}
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
-                    <select class='form-control' ref={level}>
+                    <select class='form-control'>
 
                       {available?available.map(function(item,i){
                         <option class='col slim feedback clickable' onClick={(item)=>{updateAppointment(available[i])}}>{moment(item.slot).format('MMMM Do, h:mm a')} {item.teacher}<br/>{item.level}</option>

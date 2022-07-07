@@ -3,14 +3,14 @@ import {axios} from "../../utilities/axios";
 import banner from '../../banner.jpg'
 import Carousel from '../utilities/carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import {updateTitle} from '../auth-provider'
+import {metaTags} from '../auth-provider'
 
 const BlogFront = () => {
 
   const [comments, setComments] = useState(null);
 
   useEffect(() => {
-    // updateTitle('Blog')
+    metaTags('Blog')
     axios.get('/content/all')
       .then((res) => {
           setComments(res.data.data.reverse());
