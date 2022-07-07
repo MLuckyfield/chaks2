@@ -86,11 +86,9 @@ const Booking = ()=>{
                 level:'初級-中級'
 
               }]
-              console.log('starting viewUpdate')
+              console.log(booking)              
               res.data.data.forEach((booking, i) => {
-                  console.log(booking)
                   schedule.forEach((slot, y) => {
-                    console.log(slot)
                       let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
                       let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
                       console.log(x)
@@ -130,7 +128,7 @@ const Booking = ()=>{
     axios.get('/booking/all', {params:{filter:{student:student,date:{$gte:new Date()}}}})
       .then((res) => {
           setBookings(res.data.data.reverse());
-          if(date){console.log('activating updateView for initial render');updateView(date)}
+          if(date){console.log('activating updateView for initial render');updateView(date);setAppointment(available[0])}
         })
       .catch(error => console.log("error"+error))
   },[])

@@ -22,11 +22,12 @@ const sendBooking = (req,res)=>{
 
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
+          console.log(error)
           return res.status(201).json({
             message: 'Error - confirmation not sent',
             success: false
           });
-        } else {
+        } else {console.log('email sent')
           return res.status(201).json({
             message: 'Done! See you soon :)',
             success: true
