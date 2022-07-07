@@ -29,7 +29,8 @@ const Comment = () => {
         author: author,
       })
       .then((res) => {
-          setFeedback(res.data.message);
+          console.log('done')
+          // setFeedback(res.data.message);
           window.location.reload(true)
           })
       .catch((err) => {
