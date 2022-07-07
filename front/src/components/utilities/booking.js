@@ -147,7 +147,7 @@ const Booking = ()=>{
                 })): 'No reservations. Why not make one? :)'}
                 <h2>Make a New Booking ({student?<span>Points {student.points}</span>:'0'})</h2><br/>
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
-                    <select class='form-control' onChange={()=>{setAppointment(available[active])}} ref={active}>
+                    <select class='form-control' onChange={()=>{setAppointment(available[active.current.value])}} ref={active}>
                       {available?available.map(function(item,i){
                         return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
                       }):<option>No timeslots available!</option>}
