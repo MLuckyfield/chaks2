@@ -127,7 +127,7 @@ $size-height: 65vh;
 .pop .modal__inner {
   -webkit-transform: translate(-50%, -50%) scale(0.75);
           transform: translate(-50%, -50%) scale(0.75);
-  top: 60%;
+  top: 50%;
   left: 50%;
   width: 50%;
   background: white;
@@ -135,7 +135,8 @@ $size-height: 65vh;
   position: absolute;
   color: black;
   overflow-y: scroll;
-  max-height:80vh;
+  height:65vh;
+  text-align: left;
 }
 .modal__inner{
   height:80vh;
@@ -200,15 +201,11 @@ $size-height: 65vh;
 .pop input:checked + .modal label:hover {
   background: #333333;
 }
-.pop input:checked + .modal .btn:hover {
-  background: #333333;
-}
 .pop input:checked + .modal .btn {
-  position: absolute;
-  top: 0;
+  position: relative;
+  bottom: 0;
   right: 0;
-  height: 30px;
-  width: 30px;
+  width:100%;
   background: #666666;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
