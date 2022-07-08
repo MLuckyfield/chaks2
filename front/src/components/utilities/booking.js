@@ -150,7 +150,7 @@ const Booking = ()=>{
                         <div class=''>{moment(item.date).format('dddd, MMM DD @ h:mm a')} | TEACHER: {item.teacher}</div>
                     </div>
                   )
-                })): 'No reservations. Why not make one? :)'}<br/>
+                })): '予約がありません。レッスンを予約しましょう :)'}<br/>
                 <h2>新しい予約をする</h2><br/>
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     {available?
