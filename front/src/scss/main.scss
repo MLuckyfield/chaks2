@@ -103,7 +103,7 @@ select{
     color:black !important;
   }
   .react-calendar__tile--now{
-    background-color: $second;
+    background-color: blue !important;
   }
   .react-calendar__tile{
     color:black;
@@ -126,6 +126,7 @@ select{
 .accordion-content{
   text-align: center;
 }
+
 .msg{
   height:30px;
   padding: 3% 2%;
