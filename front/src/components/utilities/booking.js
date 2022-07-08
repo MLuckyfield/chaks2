@@ -48,67 +48,124 @@ const Booking = ()=>{
     }else{
       setDay(e)
       console.log(moment(e).startOf('day'))
-        axios.get('/booking/all', {params:{filter:{date:{$gte:e,$lte:moment(e).add(24,'hours')}}}})
-          .then((res) => {
-              console.log('length '+res.data.data.length)
-              // console.log(res.data.data)
-              let schedule = [
-                {
-                slot: moment(e).startOf('day').add(7,'hours'),
-                teacher:'Canadian',
-                level:'中級-上級'
-              },
-              {
-                slot: moment(e).startOf('day').add(7,'hours'),
-                teacher:'Japanese',
-                level:'初級-中級'
-              },
-              {
-                slot: moment(e).startOf('day').add(8,'hours'),
-                teacher:'Canadian',
-                level:'中級-上級'
+        // axios.get('/booking/all', {params:{filter:{date:{$gte:e,$lte:moment(e).add(24,'hours')}}}})
+        //   .then((res) => {
+        //       console.log('length '+res.data.data.length)
+        //       console.log(res.data.data)
+        //       let schedule = [
+        //         {
+        //         slot: moment(e).startOf('day').add(7,'hours'),
+        //         teacher:'Canadian',
+        //         level:'中級-上級'
+        //       },
+        //       {
+        //         slot: moment(e).startOf('day').add(7,'hours'),
+        //         teacher:'Japanese',
+        //         level:'初級-中級'
+        //       },
+        //       {
+        //         slot: moment(e).startOf('day').add(8,'hours'),
+        //         teacher:'Canadian',
+        //         level:'中級-上級'
+        //
+        //       },
+        //       {
+        //         slot: moment(e).startOf('day').add(8,'hours'),
+        //         teacher:'Japanese',
+        //         level:'初級-中級'
+        //
+        //       },
+        //       {
+        //         slot: moment(e).startOf('day').add(9,'hours'),
+        //         teacher:'Canadian',
+        //         level:'中級-上級'
+        //
+        //       },
+        //       {
+        //         slot: moment(e).startOf('day').add(9,'hours'),
+        //         teacher:'Japanese',
+        //         level:'初級-中級'
+        //
+        //       }]
+        //       res.data.data.forEach((slot, i) => {
+        //           schedule.forEach((booking, y) => {
+        //               let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
+        //               let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
+        //               console.log(x)
+        //               console.log(z)
+        //               console.log(x==z)
+        //               console.log('booking teacher'+booking.teacher)
+        //               console.log('schedule teacher'+slot.teacher)
+        //
+        //               if (x==z){
+        //                 if(booking.teacher==slot.teacher){
+        //                   console.log('removing')
+        //                   console.log(slot)
+        //                   schedule.splice(y,1)
+        //                 }
+        //               }
+        //           });
+        //       });
+        //       setAvailable(schedule);
+        //     })
+        //   .catch(error => console.log("error"+error))
+        
+             let schedule = [
+               {
+               slot: moment(e).startOf('day').add(7,'hours'),
+               teacher:'Canadian',
+               level:'中級-上級'
+             },
+             {
+               slot: moment(e).startOf('day').add(7,'hours'),
+               teacher:'Japanese',
+               level:'初級-中級'
+             },
+             {
+               slot: moment(e).startOf('day').add(8,'hours'),
+               teacher:'Canadian',
+               level:'中級-上級'
 
-              },
-              {
-                slot: moment(e).startOf('day').add(8,'hours'),
-                teacher:'Japanese',
-                level:'初級-中級'
+             },
+             {
+               slot: moment(e).startOf('day').add(8,'hours'),
+               teacher:'Japanese',
+               level:'初級-中級'
 
-              },
-              {
-                slot: moment(e).startOf('day').add(9,'hours'),
-                teacher:'Canadian',
-                level:'中級-上級'
+             },
+             {
+               slot: moment(e).startOf('day').add(9,'hours'),
+               teacher:'Canadian',
+               level:'中級-上級'
 
-              },
-              {
-                slot: moment(e).startOf('day').add(9,'hours'),
-                teacher:'Japanese',
-                level:'初級-中級'
+             },
+             {
+               slot: moment(e).startOf('day').add(9,'hours'),
+               teacher:'Japanese',
+               level:'初級-中級'
 
-              }]
-              res.data.data.forEach((slot, i) => {
-                  schedule.forEach((booking, y) => {
-                      let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
-                      let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
-                      console.log(x)
-                      console.log(z)
-                      console.log(x==z)
-                      console.log('booking teacher'+booking.teacher)
-                      console.log('schedule teacher'+slot.teacher)
+             }]
+             bookings.forEach((slot, i) => {
+                 schedule.forEach((booking, y) => {
+                     let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
+                     let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
+                     console.log(x)
+                     console.log(z)
+                     console.log(x==z)
+                     console.log('booking teacher'+booking.teacher)
+                     console.log('schedule teacher'+slot.teacher)
 
-                      if (x==z){
-                        if(booking.teacher==slot.teacher){
-                          console.log('removing')
-                          console.log(slot)
-                          schedule.splice(y,1)
-                        }
-                      }
-                  });
-              });
-              setAvailable(schedule);
-            })
-          .catch(error => console.log("error"+error))
+                     if (x==z){
+                       if(booking.teacher==slot.teacher){
+                         console.log('removing')
+                         console.log(slot)
+                         schedule.splice(y,1)
+                       }
+                     }
+                 });
+             });
+                   setAvailable(schedule);
+
     }
   }
   const updateAppointment=(item)=>{
