@@ -2,11 +2,16 @@ import React, {useState} from 'react'
 import {axios} from "../../utilities/axios";
 import AccessDisplay from '../nav/AccessDisplay'
 import Popup from './popup'
+import {metaTags} from '../seo'
 
 const Product_Display = (props)=>{
   const [selected,setSelected]=useState();
   const [student, setStudent]=useState(localStorage.getItem('user')?JSON.parse(localStorage.getItem('user'))._id:null)
   const [msg,setMsg] = useState()
+
+  useEffect(()=>{
+    metaTags('プロダクト','ビジネス英語や、TOEFL対策などお客様の希望にあったレッスンができるマンツーマン英会話や、好きなだけ英語が話せる英会話カフェ通い放題コースの購入はこちらから！')
+  })
 
   const onSubmit=(e,product,countable)=>{
     e.preventDefault();
@@ -61,7 +66,13 @@ const Product_Display = (props)=>{
                     <li><strong>利用可能時間</strong> 7時～10時</li>
                     <li><strong>レッスン時間</strong> 45分</li>
                     <li style={{fontSize:'10px'}}><strong>※支払方法：ポイント制</strong> ポイントはマンツーマンレッスンを予約する際に利用します。100ポイントの購入から可能です。100ポイント=1レッスン</li>
-
+                    <li>
+                        <Popup title={"返金について"} num={4} content={
+                          <div>
+                            予約されたレッスンについては返金いたしかねますのでご了承ください。ただ、予約後のレッスン時間の変更は可能です。時間変更をご希望の方はお手数ですが、下記電話番号にお問い合わせください。050-3395-1289
+                          </div>
+                        }/>
+                    </li>
                   </ul>
                 </div>
                 {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RfBVAfieqaobHLe2lgTJ',true)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}

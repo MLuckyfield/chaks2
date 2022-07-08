@@ -1,7 +1,9 @@
+import React, { useEffect, useState} from 'react';
 import girlsnight from '../../event_girlsnight.jpg'
 import party from '../../event_party.jpg'
 import dj_night from '../../dj_night.jpg'
 import event_game from '../../event_game.jpg'
+import {metaTags} from '../seo'
 
 
 import AccessDisplay from '../nav/AccessDisplay'
@@ -9,6 +11,9 @@ import AccessDisplay from '../nav/AccessDisplay'
 
 const EventsPage = () => {
 
+  useEffect(()=>{
+    metaTags('イベント','「国際交流をして外国人の友達が欲しい！」そんな人にはCHATSHACKのイベントがおすすめ！様々な国際交流イベントを東京で開催しています！')
+  })
 
   return(
     <div>

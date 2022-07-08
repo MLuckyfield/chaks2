@@ -3,7 +3,7 @@ import {axios} from "../../utilities/axios";
 import banner from '../../banner.jpg'
 import Carousel from '../utilities/carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import {metaTags} from '../auth-provider'
+import {metaTags} from '../seo'
 
 const BlogFront = () => {
 

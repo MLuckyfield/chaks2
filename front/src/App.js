@@ -31,6 +31,7 @@ import google_analytics from './components/google_analytics'
 import EventsPage from './components/page/EventsPage'
 import CampaignPage from './components/page/CampaignPage'
 import StylePage from './components/page/StylePage'
+import {metaTags} from './components/seo'
 
 
 //import styles
@@ -49,21 +50,21 @@ import campaign_header from './campaign_header.jpg'
 const App = () => {
 
     useEffect(() => {
-    // document.querySelector('meta[name]=description').setAttribute("content","英会話カフェ")
+      metaTags('CHATSHACK','東京にある英会話カフェCHATSHACK。ネイティブスピーカーと一緒に英語を勉強できて、カフェで英会話を実践できます！オンライン英会話よりもリアルな‟生”の英会話を一緒に学びましょう！')
 
-    const script = document.createElement('script');
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-KSPWEELDL9";
-    script.async = true;
-    document.head.appendChild(script);
+      const script = document.createElement('script');
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-KSPWEELDL9";
+      script.async = true;
+      document.head.appendChild(script);
 
-    const script2 = document.createElement('script');
-    script2.src = "google_analytics";
-    // script2.async = true;
-    document.head.appendChild(script2);
-    // return () => {
-    //   document.head.removeChild(script);
-    // }
-  }, []);
+      const script2 = document.createElement('script');
+      script2.src = "google_analytics";
+      // script2.async = true;
+      document.head.appendChild(script2);
+      // return () => {
+      //   document.head.removeChild(script);
+      // }
+    }, []);
 
 
     return (
