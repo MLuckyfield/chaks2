@@ -126,7 +126,7 @@ const Booking = ()=>{
     axios.get('/booking/all', {params:{filter:{student:student,date:{$gte:new Date()}}}})
       .then((res) => {
           setBookings(res.data.data.reverse());
-          if(date){console.log('activating updateView for initial render');}
+          if(date){console.log('activating updateView for initial render');updateView(date)}
         })
       .catch(error => console.log("error"+error))
   },[])
