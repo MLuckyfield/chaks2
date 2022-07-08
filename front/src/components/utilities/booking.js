@@ -11,7 +11,7 @@ const Booking = ()=>{
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day, setDay]=useState(new Date())
   const [msg,setMsg] = useState()
-  const [disable,setDisable] = useState('none')
+  const [disable,setDisable] = useState(false)
   const [bookings, setBookings]=useState()
   const active = useRef()
   const [appointment,setAppointment]=useState(null)
@@ -22,7 +22,7 @@ const Booking = ()=>{
   const onSubmit=(e)=>{
     if(appointment){
       e.preventDefault();
-      setDisable('auto')
+      setDisable(true)
       console.log('activating...')
       console.log(appointment)
       axios.post('/booking/new',{
@@ -155,15 +155,8 @@ const Booking = ()=>{
                       </select>
                       :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
-                  <button onClick={onSubmit} class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>
-                  <div class='pop' style={{display:disable}}>
-                    <div class="modal" >
-                      <div class="modal__inner">
-                                  Please wait...
+                  {disable?'Loading, please wait...':<button onClick={onSubmit} class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>}
 
-                      </div>
-                    </div>
-                  </div>
           </div>
       </div>
     </div>
