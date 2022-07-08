@@ -24,8 +24,7 @@ const Booking = ()=>{
       e.preventDefault();
       setDisable('auto')
       console.log('activating...')
-      // setShowPayment(true)
-      // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
+      console.log(appointment)
       axios.post('/booking/new',{
           student:student,
           teacher:appointment.teacher,
@@ -36,8 +35,7 @@ const Booking = ()=>{
             // setMsg([res.data.message,res.data.success]);
             })
         .catch((err) => {
-          console.log(err)
-          setMsg([err,err.success]);
+          setMsg([err.message,err.success]);
           // setFeedback(err.response.data.message);
           });
     }else{
