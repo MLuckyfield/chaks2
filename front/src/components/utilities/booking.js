@@ -11,7 +11,7 @@ const Booking = ()=>{
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day, setDay]=useState(new Date())
   const [msg,setMsg] = useState()
-  const [disable,setDisable] = useState('hidden')
+  const [disable,setDisable] = useState('none')
   const [bookings, setBookings]=useState()
   const active = useRef()
   const [appointment,setAppointment]=useState(null)
@@ -22,7 +22,7 @@ const Booking = ()=>{
   const onSubmit=(e)=>{
     if(appointment){
       e.preventDefault();
-      setDisable('visible')
+      setDisable('auto')
       console.log('activating...')
       // setShowPayment(true)
       // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
@@ -136,7 +136,7 @@ const Booking = ()=>{
     <div class='master-row'>
       <div class='col slim'>
       <h1>Reservations</h1>
-            <div class="modal" style={{visibility:disable}}>
+            <div class="modal" style={{display:disable}}>
               <div class="modal__inner">
                           Please wait...
 
@@ -147,7 +147,7 @@ const Booking = ()=>{
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim feedback'>
-                        <div class=''>{moment(item.date).format('dddd, MMM DD @ h:mm a')} | {item.teacher}</div>
+                        <div class=''>{moment(item.date).format('dddd, MMM DD @ h:mm a')} | TEACHER: {item.teacher}</div>
                     </div>
                   )
                 })): 'No reservations. Why not make one? :)'}<br/>
@@ -161,7 +161,7 @@ const Booking = ()=>{
                           return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
                         }):''}
                       </select>
-                      :()=>{setMsg('No Lessons Available',false);return ''}:'Please pick a day!'}
+                      :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                   <button onClick={onSubmit} class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>
           </div>
