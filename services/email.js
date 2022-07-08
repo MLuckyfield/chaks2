@@ -16,7 +16,7 @@ const sendBooking = (user,req,res)=>{
     const mailOptions = {
       from: 'support@chatshack.jp',
       to: 'support@chatshack.jp',
-      subject: 'NEW BOOKING | Teacher: ' + req.teacher+' @ '+moment(req.date),
+      subject: 'NEW BOOKING | Teacher: ' + req.teacher+' @ '+req.date,
       text: user.first+' '+user.last
     };
     console.log(transporter)
