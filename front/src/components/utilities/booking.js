@@ -109,7 +109,7 @@ const Booking = ()=>{
         //       setAvailable(schedule);
         //     })
         //   .catch(error => console.log("error"+error))
-        
+
              let schedule = [
                {
                slot: moment(e).startOf('day').add(7,'hours'),
@@ -184,8 +184,8 @@ const Booking = ()=>{
   useEffect(()=>{
     axios.get('/booking/all', {params:{filter:{student:student,date:{$gte:new Date()}}}})
       .then((res) => {
-          setBookings(res.data.data.reverse());
-          if(date){console.log('activating updateView for initial render');updateView(date);}
+          setBookings(res.data.data.reverse()).then(()=>updateView(date));
+          if(date){console.log('activating updateView for initial render');}
         })
       .catch(error => console.log("error"+error))
   },[])
