@@ -145,15 +145,17 @@ const Booking = ()=>{
                level:'初級-中級'
 
              }]
-             bookings.forEach((slot, i) => {
-                 schedule.forEach((booking, y) => {
+             bookings.forEach((booking, i) => {
+                 schedule.forEach((slot, y) => {
                      let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
                      let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
-                     console.log(x)
-                     console.log(z)
+                     console.log('analyzing...')
+                     console.log(booking)
+                     console.log(slot)
                      console.log(x==z)
                      console.log('booking teacher'+booking.teacher)
                      console.log('schedule teacher'+slot.teacher)
+                     console.log('done...')
 
                      if (x==z){
                        if(booking.teacher==slot.teacher){
