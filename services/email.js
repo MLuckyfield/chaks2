@@ -12,6 +12,9 @@ const sendBooking = (user,req,res)=>{
         pass: process.env.EMAIL_AUTH
       }
     });
+    console.log(req)
+    console.log(moment(req.date).format('dddd, MMM DD @ h:mm a'))
+    console.log(moment(req.date).format('dddd, MMM DD @ h:mm a').toString())
 
     const mailOptions = {
       from: 'support@chatshack.jp',
@@ -19,8 +22,6 @@ const sendBooking = (user,req,res)=>{
       subject: 'NEW BOOKING for ' +user.first+' '+user.last+ '| Teacher: ' + req.teacher+' @ '+moment(req.date).format('dddd, MMM DD @ h:mm a').toString(),
       text: user.first+' '+user.last
     };
-    console.log(transporter)
-    console.log(mailOptions)
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
           console.log(error)

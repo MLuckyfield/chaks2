@@ -20,7 +20,7 @@ router.post('/new', async (req, res) => {
             //update user
             User.findOneAndUpdate({_id:req.student},{$inc:{points:-100}})
                 .then(()=>{
-                  email.sendBooking(user,result,res)
+                  email.sendBooking(user,req,res)
 
                   // return res.status(201).json({
                   //   message: 'User update',
