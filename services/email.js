@@ -1,6 +1,7 @@
 const User = require('../models/user/model')
 const nodemailer = require('nodemailer');
 const moment = require ('moment')
+const timezone = require ('moment-timezone')
 
 const sendBooking = (user,req,res)=>{
     console.log('email service starting')
@@ -19,7 +20,7 @@ const sendBooking = (user,req,res)=>{
     const mailOptions = {
       from: 'support@chatshack.jp',
       to: 'support@chatshack.jp',
-      subject: 'NEW BOOKING for ' +user.first+' '+user.last+ '| Teacher: ' + req.teacher+' @ '+moment(req.date).format('dddd, MMM DD @ h:mm a').toString(),
+      subject: 'NEW BOOKING for ' +user.first+' '+user.last+ '| Teacher: ' + req.teacher+' @ '+timezone.tz(req.date,'Asia/Tokyo').format('dddd, MMM DD @ h:mm a').toString(),
       text: user.first+' '+user.last
     };
     transporter.sendMail(mailOptions, function(error, info){
