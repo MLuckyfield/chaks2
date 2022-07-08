@@ -11,6 +11,7 @@ const Booking = ()=>{
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day, setDay]=useState(new Date())
   const [msg,setMsg] = useState()
+  const [disable,setDisable] = useState('hidden')
   const [bookings, setBookings]=useState()
   const active = useRef()
   const [appointment,setAppointment]=useState(null)
@@ -21,6 +22,7 @@ const Booking = ()=>{
   const onSubmit=(e)=>{
     if(appointment){
       e.preventDefault();
+      setDisable('visible')
       console.log('activating...')
       // setShowPayment(true)
       // window.location.href='https://book.stripe.com/test_7sIg1z0jC1iI7EkcMM'
@@ -134,8 +136,14 @@ const Booking = ()=>{
     <div class='master-row'>
       <div class='col slim'>
       <h1>Reservations</h1>
+            <div class="modal" style={{visibility:disable}}>
+              <div class="modal__inner">
+                          Please wait...
+
+              </div>
+            </div>
             <div class='col'>
-              <h2>Upcoming ({bookings?bookings.length:'0'})</h2>
+              <h2>予約状況 ({bookings?bookings.length:'0'})</h2>
               {bookings ? (bookings.map(function(item, i){
                   return (
                     <div class='col slim feedback'>
@@ -143,19 +151,19 @@ const Booking = ()=>{
                     </div>
                   )
                 })): 'No reservations. Why not make one? :)'}<br/>
-                <h2>Make a New Booking (Points: {student.points?student.points:'0'})</h2><br/>
+                <h2>新しい予約をする</h2><br/>
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     {available?
                       available.length>0?
                       <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
-                        <option class='col slim feedback clickable'>{available.length} Open Slots</option>
+                        <option class='col slim feedback clickable'>予約可能枠 ({available.length})</option>
                         {available?available.map(function(item,i){
                           return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
                         }):''}
                       </select>
                       :()=>{setMsg('No Lessons Available',false);return ''}:'Please pick a day!'}
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
-                  <button onClick={onSubmit} class="solid-first">Reserve {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>
+                  <button onClick={onSubmit} class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>
           </div>
       </div>
     </div>
