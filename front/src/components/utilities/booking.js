@@ -147,6 +147,7 @@ const Booking = ()=>{
                 <h2>Make a New Booking (Points: {student.points?student.points:'0'})</h2><br/>
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
+                      <option class='col slim feedback clickable'>{available.length} Open Slots</option>
                       {available?available.map(function(item,i){
                         return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
                       }):<option>No timeslots available!</option>}
