@@ -41,7 +41,7 @@ router.post('/new', async (req, res) => {
             });
           })
       }else{
-      return res.status(300).json({
+      return res.status(401).json({
         message: `Not enough points. You need at least 100!`,
         success: false
       });}

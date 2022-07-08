@@ -37,8 +37,7 @@ const Booking = ()=>{
             })
         .catch((err) => {
           console.log(err)
-
-          setMsg([err.message,err.success]);
+          setMsg([err,err.success]);
           // setFeedback(err.response.data.message);
           });
     }else{
