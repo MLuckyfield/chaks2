@@ -146,12 +146,14 @@ const Booking = ()=>{
                 })): 'No reservations. Why not make one? :)'}<br/>
                 <h2>Make a New Booking (Points: {student.points?student.points:'0'})</h2><br/>
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
-                    <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
-                      {available?<option class='col slim feedback clickable'>{available.length} Open Slots</option>:<option>No timeslots available!</option>}
-                      {available?available.map(function(item,i){
-                        return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
-                      }):''}
-                    </select>
+                    {available.length>0?
+                      <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
+                        {available?<option class='col slim feedback clickable'>{available.length} Open Slots</option>:<option>Please select a day</option>}
+                        {available?available.map(function(item,i){
+                          return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
+                        }):''}
+                      </select>
+                      :()=>{setMsg('No Lessons Available',false);return ''}}
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>
           </div>

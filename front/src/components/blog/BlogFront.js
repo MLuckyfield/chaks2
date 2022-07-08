@@ -10,7 +10,7 @@ const BlogFront = () => {
   const [comments, setComments] = useState(null);
 
   useEffect(() => {
-    metaTags('Blog')
+    metaTags('ブログ','英語学習に使える無料の情報はこちらから！英語のスラングや、効率的な英語の勉強方法など様々な情報を発信しています！')
     axios.get('/content/all')
       .then((res) => {
           setComments(res.data.data.reverse());
