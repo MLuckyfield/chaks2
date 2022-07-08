@@ -60,6 +60,7 @@ const Navbar = ()=>{
               {user.role!='user'?(<li style={{padding:'3% 7%'}}><a href='/dash'><span class="material-icons">group</span></a></li>):''}
               {user.role!='user'?(<li style={{padding:'3% 7%'}}><a href='/manage-blog'><span class="material-icons">edit</span></a></li>):''}
               {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/dash'><span class="material-icons">home</span></a></li>):''}
+              {user.role=='user'?(<li><a href='/products'><span class="material-icons">shopping_cart</span></a></li>):''}
               {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/blog'><span class="material-icons">school</span></a></li>):''}
               {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/events'><span class="material-icons">info</span></a></li>):''}
               {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/account'><span class="material-icons">settings</span></a></li>):''}
@@ -76,5 +77,3 @@ const Navbar = ()=>{
 
 }
 export default Navbar;
-
-// {user.role=='user'?(<li><a href='/products'><span class="material-icons">shopping_cart</span></a></li>):''}
