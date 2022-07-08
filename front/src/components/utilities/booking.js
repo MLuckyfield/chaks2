@@ -136,12 +136,6 @@ const Booking = ()=>{
     <div class='master-row'>
       <div class='col slim'>
       <h1>Reservations</h1>
-            <div class="modal" style={{display:disable}}>
-              <div class="modal__inner">
-                          Please wait...
-
-              </div>
-            </div>
             <div class='col'>
               <h2>予約状況 ({bookings?bookings.length:'0'})</h2>
               {bookings ? (bookings.map(function(item, i){
@@ -164,6 +158,14 @@ const Booking = ()=>{
                       :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                   <button onClick={onSubmit} class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>
+                  <div class='pop' style={{display:disable}}>
+                    <div class="modal" >
+                      <div class="modal__inner">
+                                  Please wait...
+
+                      </div>
+                    </div>
+                  </div>
           </div>
       </div>
     </div>
