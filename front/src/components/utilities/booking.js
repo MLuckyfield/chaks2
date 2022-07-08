@@ -32,11 +32,12 @@ const Booking = ()=>{
           date:appointment.slot
       })
         .then((res) => {
-            console.log(res.data.data)
             window.location.reload(true)
             // setMsg([res.data.message,res.data.success]);
             })
         .catch((err) => {
+          console.log(err)
+
           setMsg([err.message,err.success]);
           // setFeedback(err.response.data.message);
           });
