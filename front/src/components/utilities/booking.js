@@ -48,7 +48,6 @@ const Booking = ()=>{
     }else{
       setDay(e)
       // console.log(moment(e).startOf('day'))
-
              let schedule = [
                {
                slot: moment(e).startOf('day').add(7,'hours'),
@@ -126,7 +125,7 @@ const Booking = ()=>{
     axios.get('/booking/all', {params:{filter:{student:student,date:{$gte:new Date()}}}})
       .then((res) => {
           setBookings(res.data.data.reverse());
-          if(date){console.log('activating updateView for initial render');updateView(date)}
+          if(bookings){console.log('activating updateView for initial render');updateView(date)}
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -149,12 +148,12 @@ const Booking = ()=>{
                     {available?
                       available.length>0?
                       <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
-                        {available?<option class='col slim feedback clickable'>{available.length} Open Slots</option>:<option>Please select a day</option>}
+                        <option class='col slim feedback clickable'>{available.length} Open Slots</option>
                         {available?available.map(function(item,i){
                           return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
                         }):''}
                       </select>
-                      :()=>{setMsg('No Lessons Available',false);return ''}:'Loading...'}
+                      :()=>{setMsg('No Lessons Available',false);return ''}:'Please pick a day!'}
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                   <button onClick={onSubmit} class="solid-first">Reserve {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>
           </div>

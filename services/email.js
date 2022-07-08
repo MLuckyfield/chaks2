@@ -19,7 +19,8 @@ const sendBooking = (req,res)=>{
       subject: 'NEW booking: ' + req.teacher+': '+moment(req.date).format('dddd, MM DD @ h:mm a'),
       text: req.student.first+' '+req.student.last
     };
-
+    console.log(transporter)
+    console.log(mailOptions)
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
           console.log(error)
