@@ -184,7 +184,7 @@ const Booking = ()=>{
   useEffect(()=>{
     axios.get('/booking/all', {params:{filter:{student:student,date:{$gte:new Date()}}}})
       .then((res) => {
-          setBookings(res.data.data.reverse()).then(()=>updateView(date));
+          setBookings(res.data.data.reverse());
           if(date){console.log('activating updateView for initial render');}
         })
       .catch(error => console.log("error"+error))
