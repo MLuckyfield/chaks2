@@ -59,7 +59,7 @@ select{
 }
 @media (max-width:800px){
   .up_row{
-    display:auto;
+    flex-direction: column;
   }
   .blog_thumbnail{
     .overlay{
