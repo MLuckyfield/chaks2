@@ -38,6 +38,7 @@ import {metaTags} from './components/seo'
 import './scss/main.scss'
 import banner from './banner.jpg'
 import shunsuke from './shunsuke.jpg'
+import event_game from './event_game.jpg'
 import matt from './matt.jpg'
 import nerea from './nerea.jpg'
 import sonja from './sonja.jpg'
@@ -103,10 +104,16 @@ const Front = ()=>{
       ])
       const [items, setItems] = useState([{
         picture: banner,
+        text:'英会話カフェ&バー',
+        subtext:'英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く。英会話を楽しく、身近で、達成感のあるものにすること。',
+        link:null,
+        active:true
+      },{
+        picture: event_game,
         text:'イベント',
         subtext:'国際交流パーティーやLADIES NIGHT英会話などの最新情報!',
         link:'/events',
-        active:true
+        active:false
       },{
         picture: campaign_header,
         text:'キャンペーン',

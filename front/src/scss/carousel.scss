@@ -1,5 +1,6 @@
 $size-width: 100vw;
 $size-height: 65vh;
+$slides:3;
 .carousel_button{
   width: 10%;
   height:  40px;
@@ -31,7 +32,7 @@ $size-height: 65vh;
 
 .carousel {
   display: flex;
-  width: $size-width * 3;
+  width: $size-width * $slides;
   animation: sliding 6s infinite;
   vertical-align: middle;
   .col{

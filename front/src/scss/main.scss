@@ -152,7 +152,7 @@ h1, h2, h3{
   text-align: center;
 }
 .material-icons{
-  font-size:50px;
+  font-size:45px;
 }
 .map-marker{
   position: absolute;
@@ -357,6 +357,9 @@ nav {
 // }
 
 @media screen and (max-width: 800px) {
+    .material-icons{
+      font-size:50px;
+    }
     body {
         overflow-x: hidden;
     }
