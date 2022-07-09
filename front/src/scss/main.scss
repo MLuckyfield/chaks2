@@ -181,7 +181,8 @@ h1, h2, h3{
   width:100%;
   display: flex;
   flex-direction: column;
-  // border: 1px solid yellow;
+  align-items: center;
+
 }
 .border{
     border: 1px solid black;
@@ -198,7 +199,7 @@ h1, h2, h3{
 .up_row{
   margin: 0;
   width: 100%;
-  // border: 1px solid red;
+  align-items: center;
   display: flex;
   justify-content: center;
   flex-direction: row;
