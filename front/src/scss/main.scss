@@ -58,6 +58,9 @@ select{
   }
 }
 @media (max-width:800px){
+  .up_row{
+    display:auto;
+  }
   .blog_thumbnail{
     .overlay{
       height:35vh !important;
@@ -210,6 +213,7 @@ h1, h2, h3{
     width:85% !important;
     margin:5%;
     padding:5%;
+    height: fit-content;
   }
   .w80{
     width:85% !important;
