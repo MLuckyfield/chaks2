@@ -218,6 +218,8 @@ h1, h2, h3{
   }
   .fixed-row{
     flex-wrap: nowrap !important;
+    flex-direction:row !important;
+
   }
   .row, .up_row{
     flex-wrap:wrap;
