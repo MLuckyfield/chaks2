@@ -104,8 +104,8 @@ const Front = ()=>{
       ])
       const [items, setItems] = useState([{
         picture: banner,
-        text:'英会話カフェ&バー',
-        subtext:'英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く。英会話を楽しく、身近で、達成感のあるものにすること。',
+        text:<span>英会話<br/>カフェ&バー</span>,
+        subtext:'英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く',
         link:null,
         active:true
       },{
