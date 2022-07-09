@@ -225,7 +225,7 @@ const Front = ()=>{
                         </div>
                   </div>
               </div>
-              <div class='col'>
+              <div id='signup' class='col'>
                 <div class='col'>
                   <form onSubmit={onSubmit}>
                     <div class="master-row form-group border">

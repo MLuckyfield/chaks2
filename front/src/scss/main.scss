@@ -199,7 +199,7 @@ h1, h2, h3{
 .up_row{
   margin: 0;
   width: 100%;
-  align-items: center;
+  // align-items: center;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -227,6 +227,8 @@ h1, h2, h3{
   }
   .row{
     flex-wrap:wrap;
+    flex-direction:column;
+    
   }
   .col{
     flex-direction:column;

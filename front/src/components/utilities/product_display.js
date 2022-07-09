@@ -75,7 +75,7 @@ const Product_Display = (props)=>{
                     </li>
                   </ul>
                 </div>
-                {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RfBVAfieqaobHLe2lgTJ',true)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
+                {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RfBVAfieqaobHLe2lgTJ',true)}}>購入</div>:<div class="btn" onClick={()=>window.location='/#signup'}>購入</div>}
               </div>
             </div>
             <div class="plan ultimite">
@@ -254,7 +254,7 @@ const Product_Display = (props)=>{
 
                     代表 八木俊祐　</p>
                   </p><br/>
-                  {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RpBVAfieqaobowDgpi3c',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/signup'}>購入</div>}
+                  {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LI0RpBVAfieqaobowDgpi3c',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/#signup'}>購入</div>}
                   </div>
                 }/>
               </div>
