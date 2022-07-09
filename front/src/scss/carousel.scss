@@ -33,7 +33,7 @@ $slides:3;
 .carousel {
   display: flex;
   width: $size-width * $slides;
-  animation: sliding $slide*2s infinite;
+  animation: sliding $slides*2s infinite;
   vertical-align: middle;
   .col{
     height:auto;
