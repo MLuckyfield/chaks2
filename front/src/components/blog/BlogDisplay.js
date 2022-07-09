@@ -34,7 +34,7 @@ const BlogDisplay = () => {
     <div>
     <div class='nav-filler'>
     </div>
-    <div class='row'>
+    <div class='up_row'>
         <div class='col w80 blog'>
         {blog?(
           <div class='col'>

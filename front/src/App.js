@@ -210,7 +210,7 @@ const Front = ()=>{
               </div>
               <div id='merit' class='master-row mid'>
                   <div class='row'><h1 class='col'>MERIT</h1></div>
-                  <div class='row'>
+                  <div class='up_row'>
                         <div class='col slim'>
                             <span class='material-icons'>school</span>
                             <div class='col'>生の英会話を楽しめる！テキストを使わず、自由な会話をベースとしたスタイルなので、あなたの知りたいことや話したいことをテーマにして生の英会話を楽しめます。</div>

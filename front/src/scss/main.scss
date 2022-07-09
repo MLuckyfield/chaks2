@@ -191,6 +191,14 @@ h1, h2, h3{
   align-items: center;
   flex-direction: row;
 }
+.up_row{
+  margin: 0;
+  width: 100%;
+  // border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
 .fixed-row{
   @extend .row
 }
@@ -257,7 +265,7 @@ h1, h2, h3{
 .subtitle{
   font-size:20px;
   color:white;
-  height: 100%;
+  height: fit-content;
   // border: 1px solid $first;
   padding: 3%;
   margin:10% 0 10% 0;
