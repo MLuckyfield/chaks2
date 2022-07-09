@@ -291,7 +291,7 @@ const Front = ()=>{
               <div id='team' class='row dark'>
                 <div class='master-row slim'>
                     <h1 class='col'>TEAM</h1>
-                    <div class='row center'>
+                    <div class='up_row center'>
                         <div class='col slim'>
                             <img class='avatar' src={shunsuke}></img>
                             <h2>SHUNSUKE</h2>
@@ -307,7 +307,7 @@ const Front = ()=>{
                             Born in Canada. Went to 11 schools within 12 years in 5 countries. Has too many hobbies & interests - ask me!
                         </div>
                     </div>
-                    <div class='row center'>
+                    <div class='up_row center'>
                         <div class='col slim'>
                             <img class='avatar' src={nerea}></img>
                             <h2>NEREA</h2>
@@ -372,8 +372,8 @@ const Front = ()=>{
     const AccordionItem=({ title, content })=>{
     const [isActive, setIsActive] = useState(false);
     return (
-      <div class='accordion_item'>
-        <div class='accordion-title' onClick={() => setIsActive(!isActive)}>
+      <div class='accordion_item clickable' onClick={() => setIsActive(!isActive)}>
+        <div class='accordion-title'>
           <h2>{title}</h2>
         </div>
         {isActive && <div class='accordion-content'>{content}</div>}
