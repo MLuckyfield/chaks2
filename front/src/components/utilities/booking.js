@@ -133,7 +133,7 @@ const Booking = ()=>{
   return (
     <div class='master-row'>
       <div class='col slim'>
-      <h1>Reservations</h1>
+      <h1>マンツーマン予約</h1>
             <div class='col'>
               <h2>予約状況 ({bookings?bookings.length:'0'})</h2>
               {bookings ? (bookings.map(function(item, i){
@@ -143,7 +143,7 @@ const Booking = ()=>{
                     </div>
                   )
                 })): '予約がありません。レッスンを予約しましょう :)'}<br/>
-                <h2>新しい予約をする</h2><br/>
+                <h2>新しいマンツーマン予約をする</h2><br/>
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     {available?
                       available.length>0?
