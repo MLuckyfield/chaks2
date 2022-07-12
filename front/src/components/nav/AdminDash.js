@@ -63,7 +63,7 @@ const Dash = ()=>{
       <div>
         <QrReader onResult={(result,error)=>{
           if(!!result){
-            console.log(result)
+            alert(result)
           }
           if(!!error){
             console.log(error)
