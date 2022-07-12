@@ -90,12 +90,14 @@ const App = () => {
             <SecureRoute path="/qr-reader" access={['user','teacher','manager']} success={()=><QrReader onResult={(result,error)=>{
               if(!!result){
                 alert(result)
+                localStorage.setItem('student',result)
+                window.location='/student'
               }
               if(!!error){
-                console.log(error)
+                alert(error)
               }
             }} constraints={{facingMode:'environment'}}/>} fail={Login}/>
-            <SecureRoute path="/qr-code" access={['user','teacher','manager']} success={()=><QRCode value={JSON.parse(localStorage.getItem('user'))._id}/>} fail={Login}/>
+            <SecureRoute path="/qr-code" access={['user','teacher','manager']} success={()=><QRCode value={JSON.parse(localStorage.getItem('user'))}/>} fail={Login}/>
       </Router>
 
     )
