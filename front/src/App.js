@@ -44,9 +44,8 @@ import nerea from './nerea.jpg'
 import sonja from './sonja.jpg'
 import blog_header from './blog_header.jpg'
 import campaign_header from './campaign_header.jpg'
-
-
-
+import {QrReader} from 'react-qr-reader'
+import QRCode from 'react-qr-code'
 
 const App = () => {
 
@@ -80,7 +79,6 @@ const App = () => {
           <Route exact path="/blog" component={BlogFront}/>
           <Route exact path="/blog/*" component={BlogDisplay}/>
           <Route path="/products" component={Product_Display}/>
-
             <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/account" access={['user','manager']} success={Account} fail={Login}/>
@@ -89,6 +87,8 @@ const App = () => {
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={Login}/>
             <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile} fail={Login}/>
             <SecureRoute path="/reservations" access={['user','teacher','manager']} success={Booking} fail={Login}/>
+            <SecureRoute path="/qr-reader" access={['user','teacher','manager']} success={QrReader} fail={Login}/>
+            <SecureRoute path="/qr-code" access={['user','teacher','manager']} success={QRCode} fail={Login}/>
 
       </Router>
 
