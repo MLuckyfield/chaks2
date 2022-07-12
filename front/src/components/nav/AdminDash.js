@@ -61,15 +61,6 @@ const Dash = ()=>{
   }else if (user.role=='manager'){
     return(
       <div>
-        <QrReader onResult={(result,error)=>{
-          if(!!result){
-            alert(result)
-          }
-          if(!!error){
-            console.log(error)
-          }
-        }}/>
-        <QRCode value={user}/>
         <Calendar/>
         <StaffTable/>
         <StudentTable/>
