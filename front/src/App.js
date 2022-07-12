@@ -54,7 +54,7 @@ const App = () => {
       metaTags('CHATSHACK','東京にある英会話カフェCHATSHACK。ネイティブスピーカーと一緒に英語を勉強できて、カフェで英会話を実践できます！オンライン英会話よりもリアルな‟生”の英会話を一緒に学びましょう！')
 
       const script = document.createElement('script');
-      script.src = "https://www.googletagmanager.com/gtag/js?id=G-KSPWEELDL9";
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-9GGD597BC3";
       script.async = true;
       document.head.appendChild(script);
 
