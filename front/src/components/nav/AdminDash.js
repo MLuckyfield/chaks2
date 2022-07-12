@@ -12,6 +12,8 @@ import StudentComments from '../user/StudentComments'
 import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
 import Product_Display from '../utilities/product_display'
 import QRCode from 'react-qr-code'
+import QRReader from 'react-qr-reader'
+
 
 const Admin = () => {
 
@@ -59,6 +61,14 @@ const Dash = ()=>{
   }else if (user.role=='manager'){
     return(
       <div>
+        <QRReader onResult={(result,error)=>{
+          if(!!result){
+            console.log(result)
+          }
+          if(!!error){
+            console.log(error)
+          }
+        }}/>
         <QRCode value={user}/>
         <Calendar/>
         <StaffTable/>
