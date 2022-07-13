@@ -7,23 +7,38 @@ import moment from "moment"
 const StudentComments = () => {
 
   const [comments, setComments] = useState(null);
-
-  useEffect(() => {
-    let target = ''
+  const [target, setTarget]=useState(()=>{
+    let temp = ''
     if (localStorage.getItem('student')){
-      target = JSON.parse(localStorage.getItem('student')._id)
-    }else{target=JSON.parse(localStorage.getItem('user')._id)}
+      temp = JSON.parse(localStorage.getItem('student'))
+    }else{temp=JSON.parse(localStorage.getItem('user'))}
+    return temp
+  })
+  useEffect(() => {
 
-    axios.get('/comment/all', {params:{filter:target}})
+
+    axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data.reverse());
         })
       .catch(error => console.log("error"+error))
   },[])
 
+  const clockin=(item,status)=>{
+    console.log('will send '+JSON.stringify(item))
+    axios.get('/user/clock', {params:{filter:item._id,data:status}})
+      .then((res) => {
+          console.log('updating front');
+          setTarget(target)
+        })
+      .catch(error => console.log("error"+error))
+  }
+
   return(
     <div class='master-row'>
-      <div class='row'>
+      <div class='col'>
+        {JSON.parse(localStorage.getItem('user')).role=='manager'? (<button onClick={target.inClass?()=>clockin(target,false):()=>clockin(target,true)} style={target.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{target.inClass?'End':'Start'}</button>):''}
+:''}
         {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
       </div>
       <h1>Feedback ({comments?comments.length:'None Yet!'})</h1>
