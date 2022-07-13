@@ -89,7 +89,7 @@ const App = () => {
             <SecureRoute path="/reservations" access={['user','teacher','manager']} success={Booking} fail={Login}/>
             <SecureRoute path="/qr-reader" access={['user','teacher','manager']} success={()=><QrReader onResult={(result,error)=>{
               if(!!result){
-                alert(result.text)
+                alert(typeof result.text)
                 localStorage.setItem('student',result.text)
                 window.location='/student'
               }
