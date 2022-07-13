@@ -16,6 +16,7 @@ const StudentComments = () => {
       temp = JSON.parse(localStorage.getItem('student'))
     }else{temp=JSON.parse(localStorage.getItem('user'))}
     setTarget(temp)
+    console.log('--setting temp as--')
     console.log(temp)
     console.log(temp.inClass)
     axios.get('/comment/all', {params:{filter:temp._id}})
