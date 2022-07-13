@@ -14,11 +14,7 @@ const StudentComments = () => {
     }else{return JSON.parse(localStorage.getItem('user'))}
   })
   useEffect(() => {
-    axios.get('/user/all', {params:{filter:target._id}})
-      .then((res) => {
-          setTarget(res.data.data);
-        })
-      .catch(error => console.log("error"+error))
+    
     axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data.reverse());
