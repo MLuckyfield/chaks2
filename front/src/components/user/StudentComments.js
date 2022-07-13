@@ -30,7 +30,7 @@ const StudentComments = () => {
       .then((res) => {
           console.log(res.data.data);
           setTarget(res.data.data)
-          localStorage.setItem(source,res.data.data)
+          localStorage.setItem(source,JSON.stringify(res.data.data))
           if(status==true){setPayable(null)}
           else{setPayable(res.data.data.statistics[0])}
         })
