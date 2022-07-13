@@ -13,6 +13,9 @@ const StudentComments = () => {
     if (localStorage.getItem('student')){
       temp = JSON.parse(localStorage.getItem('student'))
     }else{temp=JSON.parse(localStorage.getItem('user'))}
+    console.log(temp)
+    console.log(temp.inClass)
+
     return temp
   })
   useEffect(() => {
