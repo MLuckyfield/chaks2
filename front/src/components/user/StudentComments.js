@@ -40,7 +40,7 @@ const StudentComments = () => {
   return(
     <div class='master-row'>
       <div class='col'>
-        {JSON.parse(localStorage.getItem('user')).role=='manager'?(payable?moment(payable.end).diff(moment(payable.start), 'hours'):''):''}
+        {JSON.parse(localStorage.getItem('user')).role=='manager'?(payable?moment(payable.end).diff(moment(payable.start), 'minutes'):''):''}
         {JSON.parse(localStorage.getItem('user')).role=='manager'? (<button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{target.inClass?'End':'Start'}</button>):''}
         {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
       </div>
