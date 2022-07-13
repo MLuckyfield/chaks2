@@ -24,9 +24,9 @@ const StudentComments = () => {
       .catch(error => console.log("error"+error))
   },[])
 
-  const clockin=(item,status)=>{
-    console.log('will send '+JSON.stringify(item))
-    axios.get('/user/clock', {params:{filter:item._id,data:status}})
+  const clockin=(status)=>{
+    console.log('will send '+JSON.stringify(target._id))
+    axios.get('/user/clock', {params:{filter:target._id,data:status}})
       .then((res) => {
           console.log('updating front');
           setTarget(target)
@@ -37,8 +37,8 @@ const StudentComments = () => {
   return(
     <div class='master-row'>
       <div class='col'>
-        {JSON.parse(localStorage.getItem('user')).role=='manager'? (<button onClick={target.inClass?()=>clockin(target,false):()=>clockin(target,true)} style={target.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{target.inClass?'End':'Start'}</button>):''}
-:''}
+        {JSON.parse(localStorage.getItem('user')).role=='manager'? (<button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{target.inClass?'End':'Start'}</button>):''}
+
         {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
       </div>
       <h1>Feedback ({comments?comments.length:'None Yet!'})</h1>
