@@ -188,6 +188,9 @@ h1, h2, h3{
 .fixed-row{
   @extend .row
 }
+svg{
+  margin: 10% 20%;
+}
 @media (max-width:800px){
   .blog_thumbnail{
     height:20vh;
@@ -216,9 +219,7 @@ h1, h2, h3{
   .master-row{
     padding-top:10%;
   }
-  svg{
-    margin: 10% 40%;
-  }
+
   .fixed-row{
     flex-wrap: nowrap !important;
     flex-direction:row !important;
