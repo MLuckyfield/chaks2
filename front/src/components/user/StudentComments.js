@@ -28,8 +28,8 @@ const StudentComments = () => {
     console.log('will send '+JSON.stringify(target._id))
     axios.get('/user/clock', {params:{filter:target._id,data:status}})
       .then((res) => {
-          console.log('updating front');
-          setTarget(target)
+          console.log(res.data.data);
+          setTarget(res.data.data)
         })
       .catch(error => console.log("error"+error))
   }
