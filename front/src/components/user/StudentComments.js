@@ -8,13 +8,15 @@ const StudentComments = () => {
 
   const [comments, setComments] = useState(null);
   const [payable,setPayable] = useState(null)
+  const [source,setSource] =useState()
   const [target, setTarget]=useState(()=>{
     if (localStorage.getItem('student')){
+      setSource('student')
       return JSON.parse(localStorage.getItem('student'))
-    }else{return JSON.parse(localStorage.getItem('user'))}
+    }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
   })
   useEffect(() => {
-    
+
     axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data.reverse());
@@ -28,6 +30,7 @@ const StudentComments = () => {
       .then((res) => {
           console.log(res.data.data);
           setTarget(res.data.data)
+          localStorage.setItem(source,res.data.data)
           if(status==true){setPayable(null)}
           else{setPayable(res.data.data.statistics[0])}
         })
