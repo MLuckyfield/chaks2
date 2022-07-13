@@ -7,6 +7,7 @@ import moment from "moment"
 const StudentComments = () => {
 
   const [comments, setComments] = useState(null);
+  const [payable,setPayable] = useState(null)
   const [target, setTarget]=useState(()=>{
     let temp = ''
     if (localStorage.getItem('student')){
@@ -30,6 +31,8 @@ const StudentComments = () => {
       .then((res) => {
           console.log(res.data.data);
           setTarget(res.data.data)
+          if(status==true){setPayable(null)}
+          else{setPayable(res.data.data.statistics[0])}
         })
       .catch(error => console.log("error"+error))
   }
@@ -37,8 +40,8 @@ const StudentComments = () => {
   return(
     <div class='master-row'>
       <div class='col'>
+        {payable?moment(payable.end).diff(moment(payable.start), 'hours'):moment(payable.start).format('h:mm a')}
         {JSON.parse(localStorage.getItem('user')).role=='manager'? (<button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{target.inClass?'End':'Start'}</button>):''}
-
         {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
       </div>
       <h1>Feedback ({comments?comments.length:'None Yet!'})</h1>
