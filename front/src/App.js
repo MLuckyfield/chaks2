@@ -90,7 +90,7 @@ const App = () => {
             <SecureRoute path="/qr-reader" access={['user','teacher','manager']} success={()=><QrReader onResult={(result,error)=>{
               if(!!result){
                 alert(result.text)
-                localStorage.setItem('student',result)
+                localStorage.setItem('student',result.text)
                 window.location='/student'
               }
               if(!!error){
