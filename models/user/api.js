@@ -86,7 +86,7 @@ const request = require('request')
           async (req, res) => {
             // req=req.body
             let {email, password} = req.body;
-            console.log('recieved '+ email+' and '+password)
+            console.log('recieved '+ email)
             //check if exists
             const user = await User.findOne({email});
             if(!user){
