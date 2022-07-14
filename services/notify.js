@@ -6,7 +6,8 @@ const emit = (stream,title,body,link)=>{
      instanceId: "d3fef753-d608-4c0b-8b9c-879e7c9e44eb",
      secretKey:process.env.BEAMS,
    });
-
+   console.log('publishing')
+   console.log(stream, title,body)
    beamsClient
      .publishToInterests([stream], {
        web: {
