@@ -1,5 +1,6 @@
 const PushNotifications = require("@pusher/push-notifications-server");
- export const emit = (stream,title,body,link)=>{
+
+const emit = (stream,title,body,link)=>{
 
    let beamsClient = new PushNotifications({
      instanceId: "d3fef753-d608-4c0b-8b9c-879e7c9e44eb",
@@ -24,4 +25,4 @@ const PushNotifications = require("@pusher/push-notifications-server");
      });
  }
 
-  export default emit
+module.exports={emit}
