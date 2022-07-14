@@ -139,7 +139,7 @@ const request = require('request')
     })
     //Start and End session
     router.get('/clock', auth.auth, auth.permission(['admin','manager']), async (req, res) => {
-      notify.emit('62900e59f7fadacf7159f379_students','NEW','Please welcome Shunsuke','')
+      notify.emit('62bec286e4a871a163c6eaaf','NEW','Please welcome Shunsuke','')
       req=req.query
       let session = {}
       console.log(typeof req.data)
