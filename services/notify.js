@@ -9,7 +9,7 @@ const emit = (stream,title,body,link)=>{
    console.log('publishing')
    console.log(stream, title,body)
    beamsClient
-     .publishToInterests([stream], {
+     .publishToInterests(stream, {
        web: {
          notification: {
            title: title,

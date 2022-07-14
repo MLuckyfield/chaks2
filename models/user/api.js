@@ -139,7 +139,6 @@ const request = require('request')
     })
     //Start and End session
     router.get('/clock', auth.auth, auth.permission(['admin','manager']), async (req, res) => {
-      notify.emit('62bec286e4a871a163c6eaaf_students','NEW','Please welcome Shunsuke','')
       req=req.query
       let session = {}
       console.log(typeof req.data)
@@ -149,6 +148,7 @@ const request = require('request')
 
       //1. If session started
       if (req.data=='true'){
+        notify.emit(['62bec286e4a871a163c6eaaf_students'],'NEW','Please welcome Shunsuke','')
         console.log('creating new session')
         session['start'] = new Date()
         await User.findById(req.filter)
