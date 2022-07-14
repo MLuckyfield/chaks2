@@ -13,7 +13,7 @@ const emit = (stream,title,body,link)=>{
          notification: {
            title: title,
            body: body,
-           deep_link: link,
+           deep_link: 'https://chatshack.jp',
          },
        },
      })
