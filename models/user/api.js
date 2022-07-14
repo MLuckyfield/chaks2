@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const auth= require('../../services/authentication');
+const notify= require('../../services/notify');
 const User = require('./model')
 const request = require('request')
 
@@ -138,7 +139,7 @@ const request = require('request')
     })
     //Start and End session
     router.get('/clock', auth.auth, auth.permission(['admin','manager']), async (req, res) => {
-      // console.log(req)
+      notify.emit('62900e59f7fadacf7159f379_students','NEW','Please welcome Shunsuke','')
       req=req.query
       let session = {}
       console.log(typeof req.data)

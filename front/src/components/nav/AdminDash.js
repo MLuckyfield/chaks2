@@ -13,7 +13,7 @@ import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
 import Product_Display from '../utilities/product_display'
 import QRCode from 'react-qr-code'
 import {QrReader} from 'react-qr-reader'
-
+import * as PusherPushNotifications from "@pusher/push-notifications-web";
 
 const Admin = () => {
 
@@ -57,8 +57,24 @@ const Dash = ()=>{
     )
   }else if (user.role=='teacher')
   {
+    const beamsClient = new PusherPushNotifications.Client({
+      instanceId: "d3fef753-d608-4c0b-8b9c-879e7c9e44eb",
+    });
+    let streamId = user._id+'_students'
+    beamsClient
+      .start()
+      .then((beamsClient) => beamsClient.getDeviceId())
+      .then((deviceId) =>
+        console.log("Successfully registered with Beams. Device ID:", deviceId)
+      )
+      .then(() => beamsClient.addDeviceInterest(streamId))
+      .then(() => beamsClient.getDeviceInterests())
+      .then((interests) => console.log("Current interests:", interests))
+      .catch(console.error);
+
     return <StudentTable/>
   }else if (user.role=='manager'){
+
     return(
       <div>
         <Calendar/>

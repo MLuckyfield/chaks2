@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+cimport React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import banner from '../../banner.jpg'
 import Carousel from '../utilities/carousel'
