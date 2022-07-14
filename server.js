@@ -57,6 +57,7 @@ app.disable('x-powered-by');
 //const usersRouter = require('./routes/users');
 //app.use('/exercises',exercisesRouter);
 //app.use('/users',usersRouter);
+
 app.use('/user',require('./models/user/api'));
 app.use('/comment',auth.auth,require('./models/comment/api'));
 app.use('/booking',auth.auth,require('./models/booking/api'));
