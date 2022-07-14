@@ -141,10 +141,10 @@ const request = require('request')
     router.get('/clock', auth.auth, auth.permission(['admin','manager']), async (req, res) => {
       req=req.query
       let session = {}
-      console.log(typeof req.data)
-      console.log(req.data==true)
-      console.log(req.data===true)
-      console.log(req.filter)
+      // console.log(typeof req.data)
+      // console.log(req.data==true)
+      // console.log(req.data===true)
+      // console.log(req.filter)
 
       //1. If session started
       if (req.data=='true'){
