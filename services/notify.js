@@ -13,12 +13,12 @@ const emit = (stream,title,body,link)=>{
          notification: {
            title: title,
            body: body,
-           deep_link: 'https://chatshack.jp',
          },
        },
      })
      .then((publishResponse) => {
        console.log("Just published:", publishResponse.publishId);
+       console.log("Just published:", publishResponse);
      })
      .catch((error) => {
        console.log("Error:", error);
