@@ -18,7 +18,7 @@ button{
   cursor: pointer;
 }
 .emphasize{
-    font-size: 5em;
+    font-size: 3em;
 }
 
 select{
@@ -63,7 +63,9 @@ select{
     float: left !important;
   }
 }
-
+.mini_overlay{
+  height: 100%
+}
 .blog_thumbnail{
   display:flex;
   width:100%;

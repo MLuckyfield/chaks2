@@ -261,8 +261,8 @@ const Front = ()=>{
                     </div>
                 </div>
               </div>
-              <div id='intro' class='master-row' style={{background:'#eebc21',color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
-                <div class='overlay' style={{background:'238,188,33,0.5'}}>
+              <div id='intro' class='row' style={{background:'#eebc21',color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
+                <div class='mini_overlay' style={{backgroundColor:'238,188,33,0.7'}}>
                     <div class='col'>
                         <div class='col slim center'>
                             <h1 class='emphasize'>1時間0円!</h1>
