@@ -215,12 +215,12 @@ const Front = ()=>{
                         <h1>他の英会話教室とは一味違う</h1>
                     </div>
                     <div class='up_row'>
-                          <div class='col slim'>
+                          <div class='col'>
                               <span class='material-icons'>school</span>
                               <h2>しっかり学ぶ</h2>
                               <div class='col'>英会話講師経験のあるネイティブスピーカーがホワイトボードを使って正しい英語を 分かりやすく教えてくれます。</div>
                           </div>
-                          <div class='col slim'>
+                          <div class='col'>
                               <span class='material-icons'>record_voice_over</span>
                               <h2>英語をたくさん話す</h2>
                               <div class='col'>他の英会話カフェではレベルが違ったり、人数が多くて英語を話す機会が少ないことがあります。
@@ -229,24 +229,24 @@ const Front = ()=>{
                           </div>
                     </div>
                     <div class='up_row'>
-                          <div class='col slim'>
+                          <div class='col'>
                               <span class='material-icons'>trending_up</span>
                               <h2>成長を振り返る</h2>
                               <div class='col'>レッスン後には先生からのフィードバックがオンラインでもらえます。その日に何を学んだのかいつでも振り返ることができます。</div>
                           </div>
-                          <div class='col slim'>
+                          <div class='col'>
                               <span class='material-icons'>sentiment_very_satisfied</span>
                               <h2>様々な英会話メニュー</h2>
                               <div class='col'>50以上の英会話トピック、10以上の英会話特訓ゲーム、自由な英会話など様々なメニューがあるので、いつでも英語学習を楽しめます。</div>
                           </div>
                     </div>
                     <div class='up_row'>
-                          <div class='col slim'>
+                          <div class='col'>
                               <span class='material-icons'>sports_bar</span>
                               <h2>国際交流イベント</h2>
                               <div class='col'>グループレッスンで英会話力を向上したら、あなたの英会話力を国際交流イベントでテストしてみましょう。</div>
                           </div>
-                          <div class='col slim'>
+                          <div class='col'>
                               <span class='material-icons'>schedule</span>
                               <h2>予約不要</h2>
                               <div class='col'>予約は必要ありません。
@@ -260,13 +260,13 @@ const Front = ()=>{
                     </div>
                 </div>
               </div>
-              <div id='intro' class='row' style={{height:'50vh',color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
+              <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
                 <div class='mini_overlay' style={{backgroundColor:'238,188,33,0.7'}}>
                     <div class='col' style={{width:'70%'}}>
                             <h1 class='emphasize'>1時間<br/>0円!</h1>
                             <h1>初回無料！</h1>
                             <span style={{fontSize:'10px'}}>
-                                ※飲食物の注文は別途費用が掛かります
+                                ※飲食物の注文は別途費用が掛かります<br/>
                                 ※１回のみ利用可能
                             </span>
                     </div>
