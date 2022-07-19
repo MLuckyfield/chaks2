@@ -18,7 +18,7 @@ button{
   cursor: pointer;
 }
 .emphasize{
-    font-size: 3em;
+    font-size: 7em;
 }
 
 select{
@@ -202,7 +202,7 @@ svg{
 }
 @media (max-width:800px){
   .emphasize{
-      font-size: 3.5em;
+      font-size: 2.9em;
   }
   .blog_thumbnail{
     height:20vh;
@@ -255,7 +255,7 @@ svg{
 }
 .slim{
   @extend .col;
-  width:100%;
+  width:65% !important;
   line-height: 3;
   align-items: center;
   vertical-align: top;

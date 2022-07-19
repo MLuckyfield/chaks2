@@ -260,16 +260,15 @@ const Front = ()=>{
                     </div>
                 </div>
               </div>
-              <div id='intro' class='row' style={{background:'#eebc21',color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
+              <div id='intro' class='row' style={{height:'50vh',color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
                 <div class='mini_overlay' style={{backgroundColor:'238,188,33,0.7'}}>
-                    <div class='col' style={{left:'20px'}}>
-                            <h1 class='emphasize'>1時間0円!</h1>
+                    <div class='col' style={{width:'70%'}}>
+                            <h1 class='emphasize'>1時間<br/>0円!</h1>
                             <h1>初回無料！</h1>
                             <span style={{fontSize:'10px'}}>
                                 ※飲食物の注文は別途費用が掛かります
                                 ※１回のみ利用可能
                             </span>
-                            <div class='col'><button class='solid-first cta' onClick={()=>window.location='/products'}>レッスン</button></div>
                     </div>
                 </div>
               </div>
