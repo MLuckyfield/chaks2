@@ -69,17 +69,17 @@ $slides:4;
   30% {
     transform: translateX(0);
   }
-  35% {
+  47% {
     transform: translateX(-$size-width);
   }
-  65% {
+  62% {
+    transform: translateX(-$size-width);
+  }
+  77% {
     transform: translateX(-$size-width*2);
   }
-  70% {
+  90% {
     transform: translateX(-$size-width*3);
-  }
-  98% {
-    transform: translateX(-$size-width*4);
   }
   100% {
     transform: translateX(0);
