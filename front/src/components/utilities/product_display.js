@@ -37,7 +37,7 @@ const Product_Display = (props)=>{
               <div class="plan-inner">
                 <div class="entry-title">
                   <h3>グループ</h3>
-                  <div class="price">¥330~<span>/60分</span>
+                  <div class="price">¥1000<span>/30分</span>
                   </div>
                 </div>
                 <div class="entry-content">

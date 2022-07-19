@@ -259,6 +259,19 @@ const Front = ()=>{
                     </div>
                 </div>
               </div>
+              <div id='intro' class='master-row' style={{background:'#eebc21'}}>
+                <div class='col'>
+                    <div class='col slim center'>
+                        <h1>1時間0円!</h1>
+                        初回無料！
+                        <span style={{fontSize:'10px'}}>
+                            ※飲食物の注文は別途費用が掛かります
+                            ※１回のみ利用可能
+                        </span>
+                        <div class='col'><button class='solid-first cta' onClick={()=>window.location='/products'}>レッスン</button></div>                        
+                    </div>
+                </div>
+              </div>
               <div id='concept'  class='master-row dark'>
                 <div class='row'><h1 class='col'>CONCEPT</h1></div>
                 <div class='row'>
