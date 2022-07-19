@@ -180,6 +180,24 @@ const Front = ()=>{
       //       </div>
       //   </div>
       // </div>
+
+      // <div id='merit' class='master-row mid'>
+      //     <div class='row'><h1 class='col'>MERIT</h1></div>
+      //     <div class='up_row'>
+      //           <div class='col slim'>
+      //               <span class='material-icons'>school</span>
+      //               <div class='col'>生の英会話を楽しめる！テキストを使わず、自由な会話をベースとしたスタイルなので、あなたの知りたいことや話したいことをテーマにして生の英会話を楽しめます。</div>
+      //           </div>
+      //           <div class='col slim'>
+      //               <span class='material-icons'>more_time</span>
+      //               <div class='col'>いつでも参加できる！好きな時間に来店し自由に英会話へ参加ができ、好きな時間に退出ができます！</div>
+      //           </div>
+      //           <div class='col slim'>
+      //               <span class='material-icons'>savings</span>
+      //               <div class='col'>入会費、テキスト代が要らない！他社英会話教室には入会金やテキスト代等ありますが、当店は入場料の支払いのみでご参加いただけます！</div>
+      //           </div>
+      //     </div>
+      // </div>
       return (
         <div>
           <Carousel items={items}/>
@@ -188,16 +206,12 @@ const Front = ()=>{
                     <div class='col slim center'>
                         <h2>英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く。英会話を楽しく、身近で、達成感のあるものにすること</h2>
                     </div>
-                    <div class='row'>
-                      <div class='col'><button class='solid-first cta' onClick={()=>window.location='/about'}>Mission</button></div>
-                      <div class='col'><button class='solid-first cta' onClick={()=>window.location='/blog/62bbf3e2f048ac1e59f2856a/私達と他の英会話教室の違いについて'}>他社との違い</button></div>
-                    </div>
                 </div>
               </div>
-              <div id='intro' class='master-row'>
+              <div id='intro' class='master-row mid'>
                 <div class='col'>
                     <div class='col slim center'>
-                        <h2>他の英会話教室とは一味違う</h2>
+                        <h1>他の英会話教室とは一味違う</h1>
                     </div>
                     <div class='up_row'>
                           <div class='col slim'>
@@ -276,23 +290,6 @@ const Front = ()=>{
                   *月曜日は休みでございます
                 </div>
                 <div class='row'><p/></div>
-              </div>
-              <div id='merit' class='master-row mid'>
-                  <div class='row'><h1 class='col'>MERIT</h1></div>
-                  <div class='up_row'>
-                        <div class='col slim'>
-                            <span class='material-icons'>school</span>
-                            <div class='col'>生の英会話を楽しめる！テキストを使わず、自由な会話をベースとしたスタイルなので、あなたの知りたいことや話したいことをテーマにして生の英会話を楽しめます。</div>
-                        </div>
-                        <div class='col slim'>
-                            <span class='material-icons'>more_time</span>
-                            <div class='col'>いつでも参加できる！好きな時間に来店し自由に英会話へ参加ができ、好きな時間に退出ができます！</div>
-                        </div>
-                        <div class='col slim'>
-                            <span class='material-icons'>savings</span>
-                            <div class='col'>入会費、テキスト代が要らない！他社英会話教室には入会金やテキスト代等ありますが、当店は入場料の支払いのみでご参加いただけます！</div>
-                        </div>
-                  </div>
               </div>
               <div id='signup' class='col'>
                 <div class='col'>
