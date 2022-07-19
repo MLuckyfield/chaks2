@@ -204,7 +204,7 @@ const Front = ()=>{
               <div id='intro' class='master-row'>
                 <div class='col'>
                     <div class='col slim center'>
-                        <h2>英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く。英会話を楽しく、身近で、達成感のあるものにすること</h2>
+                        <h2>英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く</h2>
                     </div>
                 </div>
               </div>

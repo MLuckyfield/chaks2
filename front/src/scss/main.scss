@@ -17,6 +17,10 @@ button{
   font-size: 19px;
   cursor: pointer;
 }
+.emphasize{
+    font-size: 5em;
+}
+
 select{
   padding: 2%;
   margin: 3%;
@@ -193,6 +197,9 @@ svg{
   margin: 10% 20%;
 }
 @media (max-width:800px){
+  .emphasize{
+      font-size: 3.5em;
+  }
   .blog_thumbnail{
     height:20vh;
     .overlay{
