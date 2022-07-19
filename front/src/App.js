@@ -205,6 +205,7 @@ const Front = ()=>{
                 <div class='col'>
                     <div class='col slim center'>
                         <h2>英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く</h2>
+                        <Social data={'tiny-logo'}/>
                     </div>
                 </div>
               </div>
@@ -262,7 +263,7 @@ const Front = ()=>{
               <div id='intro' class='master-row' style={{background:'#eebc21',color:'white'}}>
                 <div class='col'>
                     <div class='col slim center'>
-                        <h1 style={{fontSize:'4em'}}>1時間0円!</h1>
+                        <h1 class='emphasize'>1時間0円!</h1>
                         <h1>初回無料！</h1>
                         <span style={{fontSize:'10px'}}>
                             ※飲食物の注文は別途費用が掛かります
@@ -301,6 +302,7 @@ const Front = ()=>{
                 </div>
                 <div class='row'>
                   *月曜日は休みでございます
+                  <div class='col'><button class='solid-first cta' onClick={()=>window.location='/products'}>レッスン</button></div>
                 </div>
                 <div class='row'><p/></div>
               </div>
@@ -356,7 +358,7 @@ const Front = ()=>{
                     </div>
                   </form>
                 </div>
-                <Social data='nav-logo'/>
+                <Social data={'tiny-logo'}/>
               </div>
               <AccessDisplay/>
               <div id='faq'  class='master-row'>

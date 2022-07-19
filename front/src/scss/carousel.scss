@@ -73,13 +73,13 @@ $slides:4;
     transform: translateX(-$size-width);
   }
   65% {
-    transform: translateX(-$size-width);
+    transform: translateX(-$size-width*2);
   }
   70% {
-    transform: translateX(-$size-width);
+    transform: translateX(-$size-width*3);
   }
   98% {
-    transform: translateX(-$size-width);
+    transform: translateX(-$size-width*4);
   }
   100% {
     transform: translateX(0);
