@@ -249,13 +249,13 @@ svg{
     vertical-align:middle;
   }
   .slim{
-    width:100%;
+    width:100% !important;
     padding: 0 10%;
   }
 }
 .slim{
   @extend .col;
-  width:65% !important;
+  width:65%;
   line-height: 3;
   align-items: center;
   vertical-align: top;
