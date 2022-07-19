@@ -262,8 +262,8 @@ const Front = ()=>{
               <div id='intro' class='master-row' style={{background:'#eebc21',color:'white'}}>
                 <div class='col'>
                     <div class='col slim center'>
-                        <h1>1時間0円!</h1>
-                        初回無料！
+                        <h1 style={{fontSize:'5em'}}>1時間0円!</h1>
+                        <h2>初回無料！</h2>
                         <span style={{fontSize:'10px'}}>
                             ※飲食物の注文は別途費用が掛かります
                             ※１回のみ利用可能

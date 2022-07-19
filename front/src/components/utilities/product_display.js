@@ -47,7 +47,7 @@ const Product_Display = (props)=>{
                     <li><strong>英会話カフェ</strong>（10時～18時）<br/>
 ¥1,000/30分<br/>（コーヒー、紅茶は飲み放題）</li>
                     <li><strong>英会話バー</strong>（18時～23時）<br/>
-¥2,500/無制限 <span style={{background:'#eebc21'}}>最安330円!</span><br/>（ワンドリンク付,最大８５０円!）</li>
+¥2,500/無制限 <span style={{background:'#eebc21',padding:'2%',color:'white'}}>最安330円!</span><br/>（ワンドリンク付,最大８５０円!）</li>
                   </ul>
                 </div>
                 <div class="border" style={{position:'absolute',bottom:'0px',width:'100%',padding:'8px 30px'}}>店頭でのお支払い</div>
