@@ -272,10 +272,17 @@ const Front = ()=>{
                     </div>
                 </div>
               </div>
+              <div id='intro' class='fixed-row'>
+                <div class='col review'>文法の間違いもしっかりと直してくれました。アットホームなので1人でも気兼ねなく通えます。Poutineというカナダの料理がとても美味しかったです！</div>
+                <div class='col review'>フレンドリーな雰囲気で楽しく過ごせました！最初は緊張したのですが、先生や他の生徒の方は優しくて、会話を通して知らない英語を教えてもらい、とても刺激になりました！</div>
+                <div class='col review'>正直何時間もいると飽きるかなぁといく前は思いましたが、先生が色々なミニゲームやトピックスを振ってくれるので、2時間いても飽きる事は全くありませんでした。</div>
+                <div class='col review'>楽しい雰囲気で過ごせる🍮ご飯も美味しくて英語も学べる良いところ！</div>
+
+              </div>
               <div id='concept'  class='master-row dark'>
                 <div class='row'><h1 class='col'>CONCEPT</h1></div>
                 <div class='row'>
-                  <div class='col slim center'>
+                  <div class='slim center'>
                   CHATSHACKは、東京にある英会話カフェ＆英会話バーです。
 当店では英会話は講師がリードし、気になる発音や文法などは１つ１つ説明するようにしています。
 なので、英会話に自信がない人や正しい自然な英語を学びたい人はぜひお越しください！初心者も大歓迎！

@@ -79,7 +79,7 @@ const Product_Display = (props)=>{
               </div>
             </div>
             <div class="plan ultimite">
-              <div class="plan-inner" style={{marginBottom:'10%'}}>
+              <div class="plan-inner">
               <div class="hot">週3回以上なら<br/>お得！</div>
                 <div class="entry-title">
                   <h3>英会話放題</h3>
@@ -261,7 +261,7 @@ const Product_Display = (props)=>{
             </div>
           </div>
         </div>
-        <div class='row border'>
+        <div class='row border' style={{padding: '5%',margin:'5% auto', width:'fit-content'}}>
             <h1 class='col'>学生割</h1>
             学生の方にはすべての商品やサービスを２０％割引にて提供しています！
         </div>
