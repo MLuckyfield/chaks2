@@ -79,7 +79,7 @@ const Product_Display = (props)=>{
               </div>
             </div>
             <div class="plan ultimite">
-              <div class="plan-inner">
+              <div class="plan-inner" style={{marginBottom:'10%'}}>
               <div class="hot">週3回以上なら<br/>お得！</div>
                 <div class="entry-title">
                   <h3>英会話放題</h3>
@@ -100,7 +100,7 @@ const Product_Display = (props)=>{
                     <li>
                             <Popup title={"学生割について"} num={1} content={
                               <div>
-                                学生割を希望のお客様はこちらの通常コース(30,000円)へご入会の上、ご来店の際にお名前と学生証の提示をお願い致します。<br/>学生証の確認が取れましたらその場で現金にて5,000円をお返しさせていただきます。
+                                学生割を希望のお客様はこちらの放題コース(30,000円)へご入会の上、ご来店の際にお名前と学生証の提示をお願い致します。<br/>学生証の確認が取れましたらで現金にて5,000円をお返しさせていただきます。
                               </div>
                             }/>
                             <Popup title={"継続購入について"} num={2} content={
@@ -260,6 +260,10 @@ const Product_Display = (props)=>{
               </div>
             </div>
           </div>
+        </div>
+        <div class='row border'>
+            <h1 class='col'>学生割</h1>
+            学生の方にはすべての商品やサービスを２０％割引にて提供しています！
         </div>
         <div id='concept'  class='master-row dark'>
           <div class='row'><h1 class='col'>MISSION</h1>

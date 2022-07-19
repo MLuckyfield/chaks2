@@ -202,7 +202,7 @@ const Front = ()=>{
       return (
         <div>
           <Carousel items={items}/>
-              <div id='intro' class='master-row mid'>
+              <div id='intro' class='row mid'>
                 <div class='col'>
                     <div class='col slim center'>
                         <h2>英会話教室よりもカジュアルに、<br/>クオリティーは英会話カフェより高く</h2>
