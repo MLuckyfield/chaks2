@@ -205,7 +205,7 @@ const Front = ()=>{
                 <div class='col'>
                     <div class='col slim center'>
                         <h2>英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く</h2>
-                        <Social data={'tiny-logo'}/>
+                        
                     </div>
                 </div>
               </div>
