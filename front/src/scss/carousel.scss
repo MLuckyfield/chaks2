@@ -72,14 +72,8 @@ $slides:4;
   45% {
     transform: translateX(-$size-width);
   }
-  60% {
-    transform: translateX(0);
-  }
   70% {
     transform: translateX(-$size-width*2);
-  }
-  85% {
-    transform: translateX(0);
   }
   90% {
     transform: translateX(-$size-width*3);
