@@ -76,10 +76,10 @@ $slides:4;
     transform: translateX(-$size-width);
   }
   70% {
-    transform: translateX(-$size-width * $slides);
+    transform: translateX(-$size-width);
   }
   98% {
-    transform: translateX(-$size-width * $slides);
+    transform: translateX(-$size-width);
   }
   100% {
     transform: translateX(0);
