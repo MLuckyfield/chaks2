@@ -3,6 +3,7 @@ import React, { useState, useEffect ,useRef} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Redirect } from 'react-router'
 import Carousel from './components/utilities/carousel'
+import MiniCarousel from './components/utilities/mini_carousel'
 import axios from 'axios';
 import Product_Display from './components/utilities/product_display'
 
@@ -137,6 +138,20 @@ const Front = ()=>{
         link:'/campaigns',
         active:false
       }]);
+
+      const mini_carousel=[{
+        reviewer:'',
+        review:'文法の間違いもしっかりと直してくれました。アットホームなので1人でも気兼ねなく通えます。Poutineというカナダの料理がとても美味しかったです！'
+      },{
+        reviewer:'',
+        review:'フレンドリーな雰囲気で楽しく過ごせました！最初は緊張したのですが、先生や他の生徒の方は優しくて、会話を通して知らない英語を教えてもらい、とても刺激になりました！'
+      },{
+        reviewer:'',
+        review:'正直何時間もいると飽きるかなぁといく前は思いましたが、先生が色々なミニゲームやトピックスを振ってくれるので、2時間いても飽きる事は全くありませんでした。'
+      },{
+        reviewer:'',
+        review:'楽しい雰囲気で過ごせる🍮ご飯も美味しくて英語も学べる良いところ！'
+      }]
       const email = useRef('');
       const first = useRef('');
       const last = useRef('');
@@ -272,13 +287,7 @@ const Front = ()=>{
                     </div>
                 </div>
               </div>
-              <div id='intro' class='fixed-row'>
-                <div class='col review'>文法の間違いもしっかりと直してくれました。アットホームなので1人でも気兼ねなく通えます。Poutineというカナダの料理がとても美味しかったです！</div>
-                <div class='col review'>フレンドリーな雰囲気で楽しく過ごせました！最初は緊張したのですが、先生や他の生徒の方は優しくて、会話を通して知らない英語を教えてもらい、とても刺激になりました！</div>
-                <div class='col review'>正直何時間もいると飽きるかなぁといく前は思いましたが、先生が色々なミニゲームやトピックスを振ってくれるので、2時間いても飽きる事は全くありませんでした。</div>
-                <div class='col review'>楽しい雰囲気で過ごせる🍮ご飯も美味しくて英語も学べる良いところ！</div>
-
-              </div>
+              <MiniCarousel items={mini_carousel}/>
               <div id='concept'  class='master-row dark'>
                 <div class='row'><h1 class='col'>CONCEPT</h1></div>
                 <div class='row'>
