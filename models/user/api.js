@@ -148,7 +148,7 @@ const request = require('request')
 
       //1. If session started
       if (req.data=='true'){
-        notify.emit(['62bec286e4a871a163c6eaaf_students'],'NEW','Please welcome Shunsuke','')
+        // notify.emit(['62bec286e4a871a163c6eaaf_students'],'NEW','Please welcome Shunsuke','')
         console.log('creating new session')
         session['start'] = new Date()
         await User.findById(req.filter)

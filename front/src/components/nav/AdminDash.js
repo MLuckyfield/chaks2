@@ -15,6 +15,7 @@ import QRCode from 'react-qr-code'
 import {QrReader} from 'react-qr-reader'
 import * as PusherPushNotifications from "@pusher/push-notifications-web";
 
+
 const Admin = () => {
 
   // useEffect(() => {
@@ -57,16 +58,38 @@ const Dash = ()=>{
     )
   }else if (user.role=='teacher')
   {
-    const beamsClient = new PusherPushNotifications.Client({
-      instanceId: "d3fef753-d608-4c0b-8b9c-879e7c9e44eb",
-    });
-    let streamId = user._id+'_students'
-    beamsClient
-      .start()
-      .then((beamsClient) => beamsClient.addDeviceInterest(streamId))
-      .then(() => beamsClient.getDeviceInterests())
-      .then((interests) => console.log("Current interests:", interests))
-      .catch(console.error);
+    // if (('serviceWorker' in navigator) && ('PushManager' in window)) {
+    //   return navigator.serviceWorker
+    //       .register('/../../utilities/service_worker.js')
+    //       .then((registration)=> {
+    //         console.log('Service worker successfully registered.');
+    //         const subscribeOptions = {
+    //         userVisibleOnly: true,
+    //         applicationServerKey: 'BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDzkrxZJjSgSnfckjBJuBkr3qBUYIHBQFLXYp5Nksh8U'}
+    //
+    //         return registration.pushManager.subscribe(subscribeOptions);;
+    //       })
+    //       .then(function (pushSubscription) {
+    //         console.log(
+    //           'Received PushSubscription: ',
+    //           JSON.stringify(pushSubscription),
+    //         );
+    //         console.log(JSON.stringify(pushSubscription));
+    //       });
+    //       .catch((err)=> {
+    //         console.error('Unable to register service worker.', err);
+    //       });
+    // }
+    // const beamsClient = new PusherPushNotifications.Client({
+    //   instanceId: "d3fef753-d608-4c0b-8b9c-879e7c9e44eb",
+    // });
+    // let streamId = user._id+'_students'
+    // beamsClient
+    //   .start()
+    //   .then((beamsClient) => beamsClient.addDeviceInterest(streamId))
+    //   .then(() => beamsClient.getDeviceInterests())
+    //   .then((interests) => console.log("Current interests:", interests))
+    //   .catch(console.error);
 
     return <StudentTable/>
   }else if (user.role=='manager'){
