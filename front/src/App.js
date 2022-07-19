@@ -125,17 +125,16 @@ const Front = ()=>{
         link:'/events',
         active:false
       },{
-        picture: campaign_header,
-        text:'キャンペーン',
-        subtext:'お得に英会話を楽しめるキャンペーン情報',
-        link:'/campaigns',
-        active:false
-      },
-      {
         picture: blog_header,
         text:'ブログ',
         subtext:'英語学習をより効率的にする情報を無料で!',
         link:'/blog',
+        active:false
+      },{
+        picture: campaign_header,
+        text:'キャンペーン',
+        subtext:'お得に英会話を楽しめるキャンペーン情報',
+        link:'/campaigns',
         active:false
       }]);
       const email = useRef('');
@@ -263,8 +262,7 @@ const Front = ()=>{
               </div>
               <div id='intro' class='row' style={{background:'#eebc21',color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
                 <div class='mini_overlay' style={{backgroundColor:'238,188,33,0.7'}}>
-                    <div class='col'>
-                        <div class='col slim center'>
+                    <div class='col' style={{left:'20px'}}>
                             <h1 class='emphasize'>1時間0円!</h1>
                             <h1>初回無料！</h1>
                             <span style={{fontSize:'10px'}}>
@@ -272,7 +270,6 @@ const Front = ()=>{
                                 ※１回のみ利用可能
                             </span>
                             <div class='col'><button class='solid-first cta' onClick={()=>window.location='/products'}>レッスン</button></div>
-                        </div>
                     </div>
                 </div>
               </div>

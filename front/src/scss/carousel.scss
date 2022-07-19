@@ -66,16 +66,22 @@ $slides:4;
   }
 }
 @keyframes sliding {
-  30% {
+  15% {
     transform: translateX(0);
   }
   45% {
     transform: translateX(-$size-width);
   }
+  60% {
+    transform: translateX(0);
+  }
   70% {
     transform: translateX(-$size-width*2);
   }
-  95% {
+  85% {
+    transform: translateX(0);
+  }
+  90% {
     transform: translateX(-$size-width*3);
   }
   100% {
