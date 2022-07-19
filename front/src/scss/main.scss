@@ -200,6 +200,9 @@ h1, h2, h3{
 svg{
   margin: 10% 20%;
 }
+.review{
+  font-size: 13px;
+}
 @media (max-width:800px){
   .emphasize{
       font-size: 3.5em;
@@ -220,9 +223,7 @@ svg{
     font-size: 10px;
     color: '#eebc21'
   }
-  .review{
-    font-size: 13px;
-  }
+
   .photo{
     height:100px;
     width:150px;

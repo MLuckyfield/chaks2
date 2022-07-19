@@ -289,8 +289,7 @@ const Front = ()=>{
               </div>
               <div class='col'>
                   <div class='up_row'>
-                    <div class='col'>
-                      <span class='material-icons ratings'>star</span><span class='material-icons ratings'>star</span><span class='material-icons ratings'>star</span><span class='material-icons ratings'>star</span><span class='material-icons ratings'>star</span>
+                    <div class='col'>                      
                       <span class='review'>文法の間違いもしっかりと直してくれました。アットホームなので1人でも気兼ねなく通えます。Poutineというカナダの料理がとても美味しかったです！</span>
                     </div>
                     <div class='col'>
