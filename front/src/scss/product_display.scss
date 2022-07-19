@@ -26,7 +26,8 @@
   min-width: 280px;
   max-width: 100%;
   position:relative;
-  height: 95vh;
+  height: fit-content;
+  min-height: 85vh;
 }
 
 .entry-title {
