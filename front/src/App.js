@@ -44,6 +44,8 @@ import nerea from './nerea.jpg'
 import sonja from './sonja.jpg'
 import blog_header from './blog_header.jpg'
 import campaign_header from './campaign_header.jpg'
+import discount from './discount.jpg'
+
 import {QrReader} from 'react-qr-reader'
 import QRCode from 'react-qr-code'
 
@@ -205,7 +207,6 @@ const Front = ()=>{
                 <div class='col'>
                     <div class='col slim center'>
                         <h2>英会話教室よりもカジュアルに、クオリティーは英会話カフェより高く</h2>
-                        
                     </div>
                 </div>
               </div>
@@ -260,7 +261,7 @@ const Front = ()=>{
                     </div>
                 </div>
               </div>
-              <div id='intro' class='master-row' style={{background:'#eebc21',color:'white'}}>
+              <div id='intro' class='master-row' style={{background:'#eebc21',color:'white',backgroundImage: 'url('+discount+')'}}>
                 <div class='col'>
                     <div class='col slim center'>
                         <h1 class='emphasize'>1時間0円!</h1>
@@ -300,10 +301,10 @@ const Front = ()=>{
                         <p/>6PM - 11PM (最終入店時間: 10PM)
                     </div>
                 </div>
-                <div class='row'>
-                  *月曜日は休みでございます
-                  <div class='col'><button class='solid-first cta' onClick={()=>window.location='/products'}>レッスン</button></div>
-                </div>
+                  <div class='col'>
+                      *月曜日は休みでございます
+                      <button class='solid-first cta' onClick={()=>window.location='/products'}>レッスン</button>
+                  </div>
                 <div class='row'><p/></div>
               </div>
               <div id='signup' class='col'>
