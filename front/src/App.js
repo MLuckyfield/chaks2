@@ -259,7 +259,7 @@ const Front = ()=>{
                     </div>
                 </div>
               </div>
-              <div id='intro' class='master-row' style={{background:'#eebc21'}}>
+              <div id='intro' class='master-row' style={{background:'#eebc21',color:'white'}}>
                 <div class='col'>
                     <div class='col slim center'>
                         <h1>1時間0円!</h1>
@@ -268,7 +268,7 @@ const Front = ()=>{
                             ※飲食物の注文は別途費用が掛かります
                             ※１回のみ利用可能
                         </span>
-                        <div class='col'><button class='solid-first cta' onClick={()=>window.location='/products'}>レッスン</button></div>                        
+                        <div class='col'><button class='solid-first cta' onClick={()=>window.location='/products'}>レッスン</button></div>
                     </div>
                 </div>
               </div>
