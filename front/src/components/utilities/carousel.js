@@ -17,7 +17,7 @@ const Carousel = (props)=>{
                         <div class='overlay' style={{background:'none'}}>
                             <div class='row'>
                               <div class='col'>
-                                <h1 class='logo-basic' style={{width:'100%',background:'rgba(128,0,0,0.7)',marginTop:'30%',padding:'3%'}}>{item.text}</h1>
+                                <h1 class='logo-basic' style={{width:'100%',background:'rgba(128,0,0,0.7)',padding:'3%'}}>{item.text}</h1>
                                 {item.link?<button onClick={()=>window.location=item.link} class="solid-first carousel_button">More</button>:''}
                               </div>
                             </div>

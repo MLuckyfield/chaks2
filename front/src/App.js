@@ -337,7 +337,7 @@ const Front = ()=>{
                 </div>
                   <div class='col'>
                       *月曜日は休みでございます<br/>
-                      *日曜日は１４時からでございます。
+                      *日曜日は１3時からでございます
                       <button class='solid-first cta' onClick={()=>window.location='/products'}>レッスン</button>
                   </div>
                 <div class='row'><p/></div>
