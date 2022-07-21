@@ -48,8 +48,14 @@ $slides:4;
     animation-play-state: paused;
   }
 }
+.first_carousel{
+  margin-top: 35%;
+}
 @media (max-width:800px){
   // .carousel-wrapper{margin-top:auto;}
+  .first_carousel{
+    margin-top: 25%;
+  }
   .carousel_button{
     font-size: 0.4em !important;
     width:30%;
