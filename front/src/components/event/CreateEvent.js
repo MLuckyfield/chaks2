@@ -69,7 +69,8 @@ const Event = () => {
       setNotes(array)
   }
   const removeNote = (i)=>{
-      notes.splice(i,1)
+      let array = notes.splice(i,1)
+      setNotes(array)
   }
   return(
     <div>
@@ -83,8 +84,8 @@ const Event = () => {
                     </div>
                     <div class="form-group make_blog">
                       <Calendar onChange={setDay} value={day} minDate={new Date()}/>
-                      <input ref={duration} type="number" class="form-control" placeholder="Duration (min)" required/>
-                      <span>{moment(day).add(duration,'minutes').format('dddd, MMM DD @ h:mm a')}</span>
+                      <input ref={duration} type="number" class="form-control" value='240' required/>
+                      <span>Time:{moment(day).startOf('day').add(19,'hours').format('dddd, MMM DD @ h:mm a')} ~ {moment(day).startOf('day').add(19,'hours').add(duration.current.value,'minutes').format('h:mm a')}</span>
                     </div>
                     <div class="form-group make_blog">
                       <div class='editor'>
