@@ -31,7 +31,7 @@ const Login = () => {
   }
 
   return(
-      <div class='row'>
+      <div class='master-row'>
         <form class='login' onSubmit={onSubmit}>
                 <h2>Welcome Back!</h2>
                     <div class="form-group">

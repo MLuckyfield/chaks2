@@ -83,13 +83,13 @@ const App = () => {
           <Route exact path="/blog/*" component={BlogDisplay}/>
           <Route path="/products" component={Product_Display}/>
           <Route path="/login" component={Login}/>
-            <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash}  />
-            <SecureRoute path="/account" access={['user','manager']} success={Account}  />
-            <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments}  />
-            <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts}  />
-            <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog}  />
-            <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile}  />
-            <SecureRoute path="/reservations" access={['user','teacher','manager']} success={Booking}  />
+            <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/account" access={['user','manager']} success={Account} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/reservations" access={['user','teacher','manager']} success={Booking} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/qr-reader" access={['user','teacher','manager']} success={()=><QrReader onResult={(result,error)=>{
               if(!!result){
                 alert(typeof result.text)
@@ -99,8 +99,8 @@ const App = () => {
               if(!!error){
                 alert(error)
               }
-            }} constraints={{facingMode:'environment'}}/>}  />
-            <SecureRoute path="/qr-code" access={['user','teacher','manager']} success={()=><QRCode value={localStorage.getItem('user')}/>}  />
+            }} constraints={{facingMode:'environment'}}/>} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/qr-code" access={['user','teacher','manager']} success={()=><QRCode value={localStorage.getItem('user')}/>} fail={()=><Redirect to='/login'/>}/>
       </Router>
 
     )
