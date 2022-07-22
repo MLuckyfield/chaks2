@@ -29,6 +29,7 @@ import Profile from './components/user/Profile'
 
 import google_analytics from './components/google_analytics'
 import google_ads from './components/google_ads'
+import hotjar from './components/hotjar'
 //import pages
 import EventList from './components/event/EventList'
 import CreateEvent from './components/event/CreateEvent'
@@ -64,22 +65,22 @@ const App = () => {
 
       const analytics_script2 = document.createElement('script');
       analytics_script2.src = google_analytics;
-      // script2.async = true;
+      analytics_script2.async = true;
       document.head.appendChild(analytics_script2);
 
       const ads_script = document.createElement('script');
       ads_script.src = "https://www.googletagmanager.com/gtag/js?id=G-9GGD597BC3";
-      // ads_script.async = true;
+      ads_script.async = true;
       document.head.appendChild(ads_script);
 
       const ads_script2 = document.createElement('script');
       ads_script2.src = google_ads;
-      // script2.async = true;
+      ads_script2.async = true;
       document.head.appendChild(ads_script2);
 
       const heatmap = document.createElement('script');
-      heatmap.src = google_ads;
-      script2.async = true;
+      heatmap.src = hotjar;
+      heatmap.async = true;
       document.head.appendChild(heatmap);
     }, []);
 
