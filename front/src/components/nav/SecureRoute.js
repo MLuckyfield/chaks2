@@ -14,7 +14,7 @@ const SecureRoute = ({ access, success, fail, ...options }) => {
 
     let user = localStorage.getItem('user');
     if(user == '' || user == null || user == undefined){
-      return <Route {...options} component={fail} />;
+      return <Route {...options} component={Redirect} />;
     }else{
       user = JSON.parse(localStorage.getItem('user'));
       let okay = false
