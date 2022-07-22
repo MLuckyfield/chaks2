@@ -178,6 +178,7 @@ const Front = ()=>{
           })
           .then((res) => {
             console.log('response'+res)
+            localStorage.setItem('user', JSON.stringify(res.data.result));            
             setMsg([res.data.message,res.data.success]);
             window.location='/dash'
           })

@@ -55,12 +55,14 @@ const request = require('request')
                      if (error) {
                        console.log('user saved, not loaded to mailchimp: '+req.email)
                        return res.status(500).json({
+                         result,
                          message: `user saved but mailchimp failed: ${err}`,
                          success: false
                        });
                        } else {
                          console.log('user saved, website okay ready')
                          return res.status(201).json({
+                           result,
                            message: `Success!`,
                            success: true
                          });
