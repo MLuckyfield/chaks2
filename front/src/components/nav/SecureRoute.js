@@ -22,6 +22,7 @@ if(user == '' || user == null || user == undefined){
 }
 const Redirect = ()=>{
   useEffect(()=>{
+    console.log('redirecting to login')
     window.location='/login'
   },[])
 
