@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect,useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import {Editor, EditorState, convertToRaw, RichUtils} from 'draft-js'
 import DateTimePicker from 'react-datetime-picker'
@@ -21,6 +21,9 @@ const Event = () => {
   const [feedback, setFeedback] = useState();
   const [day, setDay] = useState(new Date())
 
+  useEffect(()=>{
+    console.log(typeof notes)
+  })
   const onSubmit = (e) => {
     e.preventDefault();
 
