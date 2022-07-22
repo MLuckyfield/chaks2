@@ -5,16 +5,17 @@ const SecureRoute = ({ access, success, fail, ...options }) => {
 
 let user = localStorage.getItem('user');
 if(user == '' || user == null || user == undefined){
-  return <Route {...options} component={fail} />;
+  window.location='/login'
 }else{
   user = JSON.parse(localStorage.getItem('user'));
   let okay = false
   access.forEach((item, i) => {
-    if (user.role==item){okay=true}
+    if (user.role==item){return <Route {...options} component={success} />}
+    else{
+      window.location='/login'
+    }
   });
 
-  const finalComponent = (okay? success : fail);
-  return <Route {...options} component={finalComponent} />;
 }
 
 
