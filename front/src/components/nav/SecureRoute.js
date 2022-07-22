@@ -10,7 +10,7 @@ if(user == '' || user == null || user == undefined){
 }else{
   user = JSON.parse(localStorage.getItem('user'));
   access.forEach((item, i) => {
-    if (user.role==item){return <Route {...options} component={success} />}
+    if (user.role==item){console.log('directing to dash';return <Route {...options} component={success} />}
     else{
       return <Route {...options} component={Redirect} />
     }
