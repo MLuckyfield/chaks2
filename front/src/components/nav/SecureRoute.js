@@ -14,7 +14,7 @@ if(user == '' || user == null || user == undefined){
     if (user.role==item){okay=true}
   });
 
-  const finalComponent = (okay? success : Redirect);
+  const finalComponent = (okay? success : <Redirect/>);
   return <Route {...options} component={finalComponent} />;
 }
 
@@ -22,7 +22,6 @@ if(user == '' || user == null || user == undefined){
 }
 const Redirect = ()=>{
   useEffect(()=>{
-    console.log('redirecting to login')
     window.location='/login'
   },[])
 
