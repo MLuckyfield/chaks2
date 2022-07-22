@@ -28,53 +28,56 @@ const request = require('request')
           ...req,
           password: password,
           role: 'user'
-        }).save(()=>
-          {
-            //--MAILCHIMP
-            console.log('starting mail service')
-            request({
-              url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
-              json: {
-                  'email_address': req.email,
-                  'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
-                  'status': 'subscribed',
-                  'merge_fields': {
-                      'FNAME': req.first,
-                      'LNAME': req.last
-                  }
-              },
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
-              }
-          }, function(error, response, body){
-            console.log('mail service complete')
-                if (error) {
-                  console.log('user saved, not loaded to mailchimp: '+req.email)
-                  return res.status(500).json({
-                    message: `user saved but mailchimp failed: ${err}`,
-                    success: false
-                  });
-                  } else {
-                    console.log('user saved, website okay ready')
-                    return res.status(201).json({
-                      message: `Success!`,
-                      success: true
-                    });
-                  }
-              });
-              // ==mialchimp finished
-          }
-        );
-      }catch(err){
-        console.log('there was a problem')
-        return res.status(500).json({
-          message: `user creation unsuccessful: ${err}`,
-          success: false
-        });
-      }
-    });
+        }).save()
+           .then((user)=>{
+                 let result = auth.createToken(user)
+                 console.log(result)
+                 //--MAILCHIMP
+                 console.log('starting mail service')
+                 request({
+                   url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
+                   json: {
+                       'email_address': req.email,
+                       'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
+                       'status': 'subscribed',
+                       'merge_fields': {
+                           'FNAME': req.first,
+                           'LNAME': req.last
+                       }
+                   },
+                   method: 'POST',
+                   headers: {
+                       'Content-Type': 'application/json',
+                       'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
+                   }
+               }, function(error, response, body){
+                 console.log('mail service complete')
+                     if (error) {
+                       console.log('user saved, not loaded to mailchimp: '+req.email)
+                       return res.status(500).json({
+                         message: `user saved but mailchimp failed: ${err}`,
+                         success: false
+                       });
+                       } else {
+                         console.log('user saved, website okay ready')
+                         return res.status(201).json({
+                           message: `Success!`,
+                           success: true
+                         });
+                       }
+                   });
+                   // ==mialchimp finished
+               }
+             );
+           }catch(err){
+             console.log('there was a problem')
+             return res.status(500).json({
+               message: `user creation unsuccessful: ${err}`,
+               success: false
+             });
+           }
+
+           });
 
     const exists = async(email) => {
       let user = await User.findOne({email});
