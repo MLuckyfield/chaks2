@@ -165,10 +165,11 @@ const Front = ()=>{
       const last = useRef('');
       const password = useRef('');
       const [msg,setMsg] = useState()
+      const [form,setForm] = useState(true)
 
       const onSubmit = (e) => {
         e.preventDefault();
-
+        setForm(false)
         axios.post('user/new',
           {
             email: email.current.value,
@@ -178,11 +179,12 @@ const Front = ()=>{
           })
           .then((res) => {
             console.log('response'+res)
-            localStorage.setItem('user', JSON.stringify(res.data.result));            
+            localStorage.setItem('user', JSON.stringify(res.data.result));
             setMsg([res.data.message,res.data.success]);
             window.location='/dash'
           })
           .catch((err) => {
+            setForm(true)
             setMsg([err.message,err.success]);
           });
       }
@@ -400,7 +402,7 @@ const Front = ()=>{
                               </div>
                             }/>
                             <div class='row'>
-                                <button class='form-control solid-first' type="submit">Sign Up</button>
+                                {form?<button class='form-control solid-first' type="submit">Sign Up</button>:'Loading...'}
                             </div>
                       </div>
                     </form>
