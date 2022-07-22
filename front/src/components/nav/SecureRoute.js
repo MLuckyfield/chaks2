@@ -8,7 +8,6 @@ if(user == '' || user == null || user == undefined){
   window.location='/login'
 }else{
   user = JSON.parse(localStorage.getItem('user'));
-  let okay = false
   access.forEach((item, i) => {
     if (user.role==item){return <Route {...options} component={success} />}
     else{

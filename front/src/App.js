@@ -82,7 +82,7 @@ const App = () => {
           <Route exact path="/blog" component={BlogFront}/>
           <Route exact path="/blog/*" component={BlogDisplay}/>
           <Route path="/products" component={Product_Display}/>
-            <SecureRoute path="/login" access={['user']} success={AdminDash} fail={Login}/>
+          <Route path="/login" component={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={Login}/>
             <SecureRoute path="/account" access={['user','manager']} success={Account} fail={Login}/>
             <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={Login}/>
