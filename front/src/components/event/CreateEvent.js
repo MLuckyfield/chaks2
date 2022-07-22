@@ -62,7 +62,8 @@ const Event = () => {
     return 'not-handled';
   }
   const addNote = ()=>{
-      notes.push(temp.current.value)
+      let array = notes.push(temp.current.value)
+      setNotes(array)
   }
   const removeNote = (i)=>{
       notes.splice(i,1)
@@ -78,7 +79,7 @@ const Event = () => {
                       <input ref={name} type="text" class="form-control" placeholder="Event Name" required/>
                     </div>
                     <div class="form-group make_blog">
-                      <Calendar onChange={setDay} value={day} minDate={new Date()}/>                      
+                      <Calendar onChange={setDay} value={day} minDate={new Date()}/>
                       <input ref={duration} type="number" class="form-control" placeholder="Duration (min)" required/>
                     </div>
                     <div class="form-group make_blog">
