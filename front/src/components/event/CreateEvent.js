@@ -81,6 +81,7 @@ const Event = () => {
                     <div class="form-group make_blog">
                       <Calendar onChange={setDay} value={day} minDate={new Date()}/>
                       <input ref={duration} type="number" class="form-control" placeholder="Duration (min)" required/>
+                      <span>{moment(day).add(duration,'minutes').format('dddd, MMM DD @ h:mm a')}</span>
                     </div>
                     <div class="form-group make_blog">
                       <div class='editor'>
@@ -99,7 +100,7 @@ const Event = () => {
                                     <button onClick={()=>removeNote(i)} class="solid-first">Remove Note</button>
                                 </div>)
                       }):'No notes. Add some!'}
-                       <input ref={temp} type="number" value='240' class="form-control" required/>
+                       <input ref={temp} type="text" placeholder='Add Note' class="form-control" required/>
                        <button onClick={addNote} class="solid-first">Add Note</button>
                     </div>
                     <label>{feedback}</label>
