@@ -22,7 +22,7 @@ const Event = () => {
   const [day, setDay] = useState(new Date())
 
   useEffect(()=>{
-    console.log(typeof notes)
+    console.log(notes)
   })
   const onSubmit = (e) => {
     e.preventDefault();
