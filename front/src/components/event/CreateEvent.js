@@ -4,6 +4,7 @@ import {Editor, EditorState, convertToRaw, RichUtils} from 'draft-js'
 import DateTimePicker from 'react-datetime-picker'
 import 'react-calendar/dist/Calendar.css'
 import moment from "moment"
+import Calendar from 'react-calendar'
 
 const Event = () => {
 
@@ -77,7 +78,7 @@ const Event = () => {
                       <input ref={name} type="text" class="form-control" placeholder="Event Name" required/>
                     </div>
                     <div class="form-group make_blog">
-                      <DateTimePicker onChange={setDay} value={day} format='MM-dd' maxDetail='minute' disableClock='true' minDate={new Date()}/>
+                      <Calendar onChange={setDay} value={day} minDate={new Date()}/>                      
                       <input ref={duration} type="number" class="form-control" placeholder="Duration (min)" required/>
                     </div>
                     <div class="form-group make_blog">
