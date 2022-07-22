@@ -24,6 +24,8 @@ const Redirect = ()=>{
   useEffect(()=>{
     window.location='/login'
   },[])
+
+  return(<div></div>)
 }
 
 export default SecureRoute;
