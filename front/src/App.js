@@ -30,7 +30,8 @@ import Profile from './components/user/Profile'
 import google_analytics from './components/google_analytics'
 import google_ads from './components/google_ads'
 //import pages
-import EventsPage from './components/page/EventsPage'
+import EventList from './components/event/EventList'
+import CreateEvent from './components/event/CreateEvent'
 import CampaignPage from './components/page/CampaignPage'
 import StylePage from './components/page/StylePage'
 import {metaTags} from './components/seo'
@@ -84,7 +85,7 @@ const App = () => {
         <div class='nav-filler'>
         </div>
           <Route exact path="/" component={Front}/>
-          <Route path="/events" component={EventsPage}/>
+          <Route path="/events" component={EventList}/>
           <Route path="/campaigns" component={CampaignPage}/>
           <Route path="/about" component={StylePage}/>
           <Route exact path="/blog" component={BlogFront}/>
@@ -92,6 +93,7 @@ const App = () => {
           <Route path="/products" component={Product_Display}/>
           <Route path="/login" component={Login}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/create-event" access={['manager','admin']} success={CreateEvent} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/account" access={['user','manager']} success={Account} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts} fail={()=><Redirect to='/login'/>}/>
