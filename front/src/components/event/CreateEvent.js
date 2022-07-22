@@ -99,7 +99,7 @@ const Event = () => {
                                     <button onClick={()=>removeNote(i)} class="solid-first">Remove Note</button>
                                 </div>)
                       }):'No notes. Add some!'}
-                       <input ref={temp} type="number" class="form-control" placeholder="Add Note" required/>
+                       <input ref={temp} type="number" value='240' class="form-control" required/>
                        <button onClick={addNote} class="solid-first">Add Note</button>
                     </div>
                     <label>{feedback}</label>
