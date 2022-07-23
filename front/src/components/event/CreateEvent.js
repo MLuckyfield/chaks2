@@ -98,7 +98,7 @@ const Event = () => {
                       </div>
                     </div>
                     <div class="form-group make_blog">
-                      {notes?notes.forEach((note,i)=>{
+                      {notes?notes.map((note,i)=>{
                         return (<div class='fixed-row'>
                                     <span>{note}</span>
                                     <button onClick={()=>removeNote(i)} class="solid-first">Remove Note</button>
