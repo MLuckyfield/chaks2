@@ -103,7 +103,7 @@ const Booking = ()=>{
                        if(booking.teacher==slot.teacher){
                          console.log('removing')
                          console.log(slot)
-                         schedule.splice(y,1)
+                         // schedule.splice(y,1)
                        }
                      }
                  });
