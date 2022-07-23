@@ -156,13 +156,13 @@ const Booking = ()=>{
                           return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
                         }):''}
                       </select>
-                      :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
                       <select class='form-control' ref={lesson}>
                         <option class='col slim feedback clickable'>希望する内容</option>
                         {options?options.map(function(option,i){
                           return <option class='col slim feedback clickable' value={i}>{option}</option>
                         }):'Loading options...'}
                       </select>
+                      :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                   {disable?'Loading, please wait...':<button onClick={onSubmit} class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>}
           </div>
