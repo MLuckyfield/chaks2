@@ -6,7 +6,7 @@ const request = require('request')
 //Registration
 
     //user
-    router.post('/new', async (req, res) => {
+    router.post('/new',auth.auth, auth.permission(['manager']),async (req, res) => {
       req=req.body
 
       try{
@@ -30,7 +30,7 @@ const request = require('request')
     });
 
 
-    router.post('/update', async (req,res)=>{
+    router.post('/update',auth.auth, auth.permission(['manager']),async (req,res)=>{
       await Event.findOneAndUpdate(req.body.filter,req.body.data)
           .then(()=>{
             return res.status(201).json({
