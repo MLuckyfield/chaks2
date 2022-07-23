@@ -90,13 +90,13 @@ const Booking = ()=>{
                  schedule.forEach((slot, y) => {
                      let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
                      let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
-                     // console.log('analyzing...')
-                     // console.log(booking)
-                     // console.log(slot)
-                     // console.log(x==z)
-                     // console.log('booking teacher'+booking.teacher)
-                     // console.log('schedule teacher'+slot.teacher)
-                     // console.log('done...')
+                     console.log('analyzing...')
+                     console.log(booking)
+                     console.log(slot)
+                     console.log(x==z)
+                     console.log('booking teacher'+booking.teacher)
+                     console.log('schedule teacher'+slot.teacher)
+                     console.log('done...')
 
                      if (x==z){
                        if(booking.teacher==slot.teacher){
@@ -157,7 +157,12 @@ const Booking = ()=>{
                             return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
                           }):''}
                         </select>
-                        
+                        <select class='form-control' ref={lesson}>
+                          <option class='col slim feedback clickable'>希望する内容</option>
+                          {options?options.map(function(option,i){
+                            return <option class='col slim feedback clickable' value={option}>{option}</option>
+                          }):'Loading options...'}
+                        </select>
                       </span>
                       :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
