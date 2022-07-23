@@ -159,7 +159,7 @@ const Booking = ()=>{
                       <select class='form-control' ref={lesson}>
                         <option class='col slim feedback clickable'>希望する内容</option>
                         {options?options.map(function(option,i){
-                          return <option class='col slim feedback clickable' value={i}>{option}</option>
+                          return <option class='col slim feedback clickable' value={option}>{option}</option>
                         }):'Loading options...'}
                       </select>
                       :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
