@@ -14,8 +14,10 @@ const Booking = ()=>{
   const [disable,setDisable] = useState(false)
   const [bookings, setBookings]=useState()
   const active = useRef()
+  const lesson = useRef()
   const [appointment,setAppointment]=useState(null)
   const [available,setAvailable]=useState()
+  const [options,setOptions]=useState(['ビジネス英語','TOEFL対策','英会話'])
   const [student, setStudent]=useState(JSON.parse(localStorage.getItem('user'))._id)
   // const [showPayment, setShowPayment]=useState(false)
 
@@ -28,7 +30,8 @@ const Booking = ()=>{
       axios.post('/booking/new',{
           student:student,
           teacher:appointment.teacher,
-          date:appointment.slot
+          date:appointment.slot,
+          lesson:lesson.current.value
       })
         .then((res) => {
             window.location.reload(true)
@@ -154,9 +157,14 @@ const Booking = ()=>{
                         }):''}
                       </select>
                       :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
+                      <select class='form-control' ref={lesson}>
+                        <option class='col slim feedback clickable'>予約可能枠 ({available.length})</option>
+                        {options?options.map(function(option,i){
+                          return <option class='col slim feedback clickable' value={i}>{option}</option>
+                        }):'Loading options...'}
+                      </select>
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                   {disable?'Loading, please wait...':<button onClick={onSubmit} class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>}
-
           </div>
       </div>
     </div>

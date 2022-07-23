@@ -21,7 +21,7 @@ const sendBooking = (user,req,res)=>{
       from: 'support@chatshack.jp',
       to: 'support@chatshack.jp',
       subject: 'NEW BOOKING for ' +user.first+' '+user.last+ '| Teacher: ' + req.teacher+' @ '+timezone.tz(req.date,'Asia/Tokyo').format('dddd, MMM DD @ h:mm a').toString(),
-      text: user.first+' '+user.last
+      text: user.first+' '+user.last+' wants to learn '+req.lesson
     };
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {

@@ -14,7 +14,8 @@ router.post('/new', async (req, res) => {
         Booking.insertMany({
             teacher:req.teacher,
             student: req.student,
-            date: req.date
+            date: req.date,
+            lesson:req.lesson
         })
           .then((result)=>{
             //update user
