@@ -27,49 +27,51 @@ const EventList = () => {
 //<Carousel items={items}/>
   return(
       <div>
-        <div id='header' class='transparent' style={{backgroundImage: 'url('+comments[0].image+')'}}>
-              <div class='overlay'>
-                  <div class='row'>
-                    <div class='col'>
-                      <h1 class='logo-basic'>{comments[0].name}</h1>
-                      <h3>{moment(comments[0].start).format('dddd, MMM DD')}</h3>
+        {comments?(
+          <div id='header' class='transparent' style={{backgroundImage: 'url('+comments[0].image+')'}}>
+                <div class='overlay'>
+                    <div class='row'>
+                      <div class='col'>
+                        <h1 class='logo-basic'>{comments[0].name}</h1>
+                        <h3>{moment(comments[0].start).format('dddd, MMM DD')}</h3>
+                      </div>
                     </div>
-                  </div>
-              </div>
-        </div>
-            <div class='col'>
-                  <div class='col slim'>
-                      <h1 class='col'>CONCEPT</h1>
-                      <Editor editorState={description} readOnly={true}/>
-                      <Editor editorState={keypoints} readOnly={true}/>
-                  </div>
-                  <div class='col_up slim'>
-                      <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
-                      {moment(comments[0].start).format('dddd, MMM DD')}, {moment(comments[0].start).format('h:mm a')} {moment(comments[0].end).format('h:mm a')}<br/>
-                      入場料：¥{comments[0].entranceFee?comments[0].entranceFee:'0 (free!)'}<br/>
-                      {comments[0].notes.map((note,i)=>{
-                        return <span>note</span>
-                      })}<br/>
-                  </div>
-                  <div class='col_up slim'>
-                      <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
-                      {comments ? (comments.map(function(event, i){
-                          if(i!=0){
-                            return(
-                              <div class='col'>
-                                  <div class='fixed-row'>
-                                    <img class='photo' src={event.image}></img>
-                                    <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
-                                      <h3>{event.name}!</h3>
-                                      {moment(event.start).format('dddd, MMM DD')}
+                </div>
+          </div>
+              <div class='col'>
+                    <div class='col slim'>
+                        <h1 class='col'>CONCEPT</h1>
+                        <Editor editorState={description} readOnly={true}/>
+                        <Editor editorState={keypoints} readOnly={true}/>
+                    </div>
+                    <div class='col_up slim'>
+                        <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
+                        {moment(comments[0].start).format('dddd, MMM DD')}, {moment(comments[0].start).format('h:mm a')} {moment(comments[0].end).format('h:mm a')}<br/>
+                        入場料：¥{comments[0].entranceFee?comments[0].entranceFee:'0 (free!)'}<br/>
+                        {comments[0].notes.map((note,i)=>{
+                          return <span>note</span>
+                        })}<br/>
+                    </div>
+                    <div class='col_up slim'>
+                        <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
+                        {comments ? (comments.map(function(event, i){
+                            if(i!=0){
+                              return(
+                                <div class='col'>
+                                    <div class='fixed-row'>
+                                      <img class='photo' src={event.image}></img>
+                                      <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
+                                        <h3>{event.name}!</h3>
+                                        {moment(event.start).format('dddd, MMM DD')}
+                                      </div>
                                     </div>
-                                  </div>
-                              </div>
-                            )
-                          }  else{return <div></div>}
-                        })): 'Loading Events...'}
-                  </div>
-            </div>
+                                </div>
+                              )
+                            }  else{return <div></div>}
+                          })): 'Loading Events...'}
+                    </div>
+              </div>
+        ):'Loading Events...'}
         <AccessDisplay/>
       </div>
 )
