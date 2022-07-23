@@ -103,7 +103,7 @@ const Booking = ()=>{
                        if(booking.teacher==slot.teacher){
                          console.log('removing')
                          console.log(slot)
-                         // schedule.splice(y,1)
+                         schedule.splice(y,1)
                        }
                      }
                  });
@@ -127,8 +127,8 @@ const Booking = ()=>{
   }
   useEffect(()=>{
     axios.get('/booking/all', {params:{filter:{student:student,date:{$gte:new Date()}}}})
-      .then((res) => {
-          setBookings(res.data.data.reverse());
+      .then((res) => {console.log('data okay')
+          setBookings(res.data.data.reverse());console.log('bookings okay')
           if(bookings){console.log('activating updateView for initial render');updateView(date)}
         })
       .catch(error => console.log("error"+error))
