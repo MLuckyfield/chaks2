@@ -52,10 +52,9 @@ const Booking = ()=>{
     }else{
       setDay(e)
       console.log(moment(e).startOf('day'))
-             let schedule = [
-               ]
              console.log('bookings of',bookings.length,bookings)
              if(bookings!=null){
+               console.log('checking duplicates...')
                bookings.forEach((booking, i) => {
                  schedule.forEach((slot, y) => {
                      let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
