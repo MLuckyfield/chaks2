@@ -50,7 +50,7 @@ const Booking = ()=>{
     if(moment(e).format('dddd')=='Monday'){
       setMsg(['Monday is a holiday.',false])
     }else{
-      setDay(e)
+      // setDay(e)
       console.log(moment(e).startOf('day'))
              let schedule = [
                {
