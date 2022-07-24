@@ -78,7 +78,7 @@ const Booking = ()=>{
                      }
                  });
              });}
-                   setAvailable(schedule);
+                   // setAvailable(schedule);
 
     }
   }
