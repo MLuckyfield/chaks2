@@ -47,72 +47,72 @@ const Booking = ()=>{
   }
   const updateView=(e)=>{
     console.log('updating...',e)
-    if(moment(e).format('dddd')=='Monday'){
-      setMsg(['Monday is a holiday.',false])
-    }else{
-      setDay(e)
-      console.log(moment(e).startOf('day'))
-             let schedule = [
-               {
-               slot: moment(e).startOf('day').add(7,'hours'),
-               teacher:'Canadian',
-               level:'中級-上級'
-             },
-             {
-               slot: moment(e).startOf('day').add(7,'hours'),
-               teacher:'Japanese',
-               level:'初級-中級'
-             },
-             {
-               slot: moment(e).startOf('day').add(8,'hours'),
-               teacher:'Canadian',
-               level:'中級-上級'
-
-             },
-             {
-               slot: moment(e).startOf('day').add(8,'hours'),
-               teacher:'Japanese',
-               level:'初級-中級'
-
-             },
-             {
-               slot: moment(e).startOf('day').add(9,'hours'),
-               teacher:'Canadian',
-               level:'中級-上級'
-
-             },
-             {
-               slot: moment(e).startOf('day').add(9,'hours'),
-               teacher:'Japanese',
-               level:'初級-中級'
-
-             }]
-             if(bookings){
-              console.log(bookings)
-               bookings.forEach((booking, i) => {
-                 schedule.forEach((slot, y) => {
-                     let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
-                     let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
-                     // console.log('analyzing...')
-                     // console.log(booking)
-                     // console.log(slot)
-                     // console.log(x==z)
-                     // console.log('booking teacher'+booking.teacher)
-                     // console.log('schedule teacher'+slot.teacher)
-                     // console.log('done...')
-
-                     if (x==z){
-                       if(booking.teacher==slot.teacher){
-                         console.log('removing')
-                         console.log(slot)
-                         schedule.splice(y,1)
-                       }
-                     }
-                 });
-             });}
-                   setAvailable(schedule);
-
-    }
+    // if(moment(e).format('dddd')=='Monday'){
+    //   setMsg(['Monday is a holiday.',false])
+    // }else{
+    //   setDay(e)
+    //   console.log(moment(e).startOf('day'))
+    //          let schedule = [
+    //            {
+    //            slot: moment(e).startOf('day').add(7,'hours'),
+    //            teacher:'Canadian',
+    //            level:'中級-上級'
+    //          },
+    //          {
+    //            slot: moment(e).startOf('day').add(7,'hours'),
+    //            teacher:'Japanese',
+    //            level:'初級-中級'
+    //          },
+    //          {
+    //            slot: moment(e).startOf('day').add(8,'hours'),
+    //            teacher:'Canadian',
+    //            level:'中級-上級'
+    //
+    //          },
+    //          {
+    //            slot: moment(e).startOf('day').add(8,'hours'),
+    //            teacher:'Japanese',
+    //            level:'初級-中級'
+    //
+    //          },
+    //          {
+    //            slot: moment(e).startOf('day').add(9,'hours'),
+    //            teacher:'Canadian',
+    //            level:'中級-上級'
+    //
+    //          },
+    //          {
+    //            slot: moment(e).startOf('day').add(9,'hours'),
+    //            teacher:'Japanese',
+    //            level:'初級-中級'
+    //
+    //          }]
+    //          if(bookings){
+    //           console.log(bookings)
+    //            bookings.forEach((booking, i) => {
+    //              schedule.forEach((slot, y) => {
+    //                  let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
+    //                  let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
+    //                  // console.log('analyzing...')
+    //                  // console.log(booking)
+    //                  // console.log(slot)
+    //                  // console.log(x==z)
+    //                  // console.log('booking teacher'+booking.teacher)
+    //                  // console.log('schedule teacher'+slot.teacher)
+    //                  // console.log('done...')
+    //
+    //                  if (x==z){
+    //                    if(booking.teacher==slot.teacher){
+    //                      console.log('removing')
+    //                      console.log(slot)
+    //                      schedule.splice(y,1)
+    //                    }
+    //                  }
+    //              });
+    //          });}
+    //                setAvailable(schedule);
+    //
+    // }
   }
   const updateAppointment=(item)=>{
     setAppointment(available[item])
