@@ -53,39 +53,7 @@ const Booking = ()=>{
       setDay(e)
       console.log(moment(e).startOf('day'))
              let schedule = [
-               {
-               slot: moment(e).startOf('day').add(7,'hours'),
-               teacher:'Canadian',
-               level:'中級-上級'
-             },
-             {
-               slot: moment(e).startOf('day').add(7,'hours'),
-               teacher:'Japanese',
-               level:'初級-中級'
-             },
-             {
-               slot: moment(e).startOf('day').add(8,'hours'),
-               teacher:'Canadian',
-               level:'中級-上級'
-
-             },
-             {
-               slot: moment(e).startOf('day').add(8,'hours'),
-               teacher:'Japanese',
-               level:'初級-中級'
-
-             },
-             {
-               slot: moment(e).startOf('day').add(9,'hours'),
-               teacher:'Canadian',
-               level:'中級-上級'
-
-             },
-             {
-               slot: moment(e).startOf('day').add(9,'hours'),
-               teacher:'Japanese',
-               level:'初級-中級'
-             }]
+               ]
              console.log('bookings of',bookings.length,bookings)
              if(bookings.length>0){
                bookings.forEach((booking, i) => {
