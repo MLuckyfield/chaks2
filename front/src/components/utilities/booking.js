@@ -52,7 +52,7 @@ const Booking = ()=>{
     }else{
       setDay(e)
       let schedule=[]
-      console.log(moment(e).startOf('day'))
+      console.log('ready',moment(e).startOf('day'))
              console.log('bookings of',bookings.length,bookings)
              if(bookings!=null){
                console.log('checking duplicates...')
