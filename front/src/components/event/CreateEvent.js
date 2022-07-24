@@ -65,11 +65,13 @@ const Event = () => {
     return 'not-handled';
   }
   const addNote = ()=>{
-      let array = notes.push(temp.current.value)
+      let array = notes
+      array.push(temp.current.value)
       setNotes(array)
   }
   const removeNote = (i)=>{
-      let array = notes.splice(i,1)
+      let array = notes
+      array.splice(i,1)
       setNotes(array)
   }
   return(
