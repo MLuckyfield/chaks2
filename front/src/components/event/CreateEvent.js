@@ -79,7 +79,6 @@ const Event = () => {
     <div class='nav-filler'>
     </div>
       <div class='row'>
-        <form class='make_blog' onSubmit={onSubmit}>
                 <h2>New Event</h2>
                     <div class="form-group make_blog">
                       <input ref={name} type="text" class="form-control" placeholder="Event Name" required/>
@@ -110,8 +109,7 @@ const Event = () => {
                        <button onClick={addNote} class="solid-first">Add Note</button>
                     </div>
                     <label>{feedback}</label>
-                    <button type="submit" class="solid-first">Submit</button>
-                  </form>
+                    <button onClick={onSubmit} class="solid-first">Submit</button>
                 </div>
             </div>
 )
