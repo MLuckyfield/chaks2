@@ -87,7 +87,9 @@ const Booking = ()=>{
                level:'初級-中級'
 
              }]
-             bookings.forEach((booking, i) => {
+             if(bookings){
+              console.log(bookings)
+               bookings.forEach((booking, i) => {
                  schedule.forEach((slot, y) => {
                      let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
                      let z = moment(slot.slot).format('dddd, MMM DD @ h:mm a')
@@ -107,7 +109,7 @@ const Booking = ()=>{
                        }
                      }
                  });
-             });
+             });}
                    setAvailable(schedule);
 
     }
@@ -166,16 +168,10 @@ const Booking = ()=>{
     </div>
   )
 }
-// activeStartDate={date?date:new Date()}
-// <form style={{width:'100%',border:'solid 1px black'}}>
-//   <div class='form-group'>
-//     <input type="text" class="form-control" placeholder={day?`${day}`:'Please pick a time'} disabled/>
-//   </div>
-// </form>
-// {showPayment?
-//   <div class='col'>
-//   <Payment appointment={appointment} product={'private_lesson'}/>
-//   <a onClick={()=>setShowPayment(false)} href="#">Cancel</a>
-//   </div>
-//       :'Set an appointment'}
+// <select class='form-control' ref={lesson}>
+//   <option class='col slim feedback clickable'>希望する内容</option>
+//   {options?options.map(function(option,i){
+//     return <option class='col slim feedback clickable' value={option}>{option}</option>
+//   }):'Loading options...'}
+// </select>
 export default Booking;
