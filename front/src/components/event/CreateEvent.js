@@ -67,6 +67,7 @@ const Event = () => {
   const addNote = ()=>{
       let array = notes
       array.push(temp.current.value)
+      console.log('adding',temp.current.value,array)      
       setNotes(array)
   }
   const removeNote = (i)=>{
@@ -79,6 +80,7 @@ const Event = () => {
     <div class='nav-filler'>
     </div>
       <div class='row'>
+        <form class='make_blog' onSubmit={onSubmit}>
                 <h2>New Event</h2>
                     <div class="form-group make_blog">
                       <input ref={name} type="text" class="form-control" placeholder="Event Name" required/>
@@ -109,7 +111,8 @@ const Event = () => {
                        <button onClick={addNote} class="solid-first">Add Note</button>
                     </div>
                     <label>{feedback}</label>
-                    <button onClick={onSubmit} class="solid-first">Submit</button>
+                    <button type="submit" class="solid-first">Submit</button>
+                  </form>
                 </div>
             </div>
 )
