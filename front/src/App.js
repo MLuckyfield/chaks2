@@ -31,7 +31,7 @@ import google_analytics from './components/google_analytics'
 import google_ads from './components/google_ads'
 import hotjar from './components/hotjar'
 //import pages
-import EventList from './components/event/EventList'
+import EventList from './components/page/EventsPage'
 import CreateEvent from './components/event/CreateEvent'
 import CampaignPage from './components/page/CampaignPage'
 import StylePage from './components/page/StylePage'
