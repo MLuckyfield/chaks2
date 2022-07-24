@@ -157,7 +157,7 @@ const Booking = ()=>{
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     {available?
                       available.length>0?
-                        <span>
+                        <span class='form-control'>
                           <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
                             <option class='col slim feedback clickable'>予約可能枠 ({available.length})</option>
                             {available?available.map(function(item,i){
@@ -165,7 +165,7 @@ const Booking = ()=>{
                             }):''}
                           </select>
                           <select class='form-control' ref={lesson}>
-                            <option class='col slim feedback clickable'>予約可能枠 ({available.length})</option>
+                            <option class='col slim feedback clickable'>要望する内容</option>
                             {options?options.map(function(item,i){
                               return <option class='col slim feedback clickable' value={item}>{item}</option>
                             }):''}
