@@ -85,10 +85,9 @@ const Booking = ()=>{
                slot: moment(e).startOf('day').add(9,'hours'),
                teacher:'Japanese',
                level:'初級-中級'
-
              }]
-             if(bookings){
-              console.log(bookings)
+             console.log('bookings of',bookings.length,bookings)
+             if(bookings.length>0){
                bookings.forEach((booking, i) => {
                  schedule.forEach((slot, y) => {
                      let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
