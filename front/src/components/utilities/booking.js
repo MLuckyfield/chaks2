@@ -154,12 +154,10 @@ const Booking = ()=>{
                   )
                 })): '予約がありません。レッスンを予約しましょう :)'}<br/>
                 <h2>新しいマンツーマン予約をする</h2><br/>
+                    <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     {available?
                       available.length>0?
                         <form class='login' onSubmit={onSubmit}>
-                            <div class='form-group'>
-                              <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
-                            </div>
                             <div class="form-group">
                               <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
                                 <option class='col slim feedback clickable'>予約可能枠 ({available.length})</option>
