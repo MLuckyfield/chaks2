@@ -50,7 +50,7 @@ const Booking = ()=>{
     if(moment(e).format('dddd')=='Monday'){
       setMsg(['Monday is a holiday.',false])
     }else{
-      // setDay(e)
+      setDay(e)
       console.log(moment(e).startOf('day'))
              let schedule = [
                {
@@ -159,12 +159,7 @@ const Booking = ()=>{
                             return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
                           }):''}
                         </select>
-                        <select class='form-control' ref={lesson}>
-                          <option class='col slim feedback clickable'>希望する内容</option>
-                          {options?options.map(function(option,i){
-                            return <option class='col slim feedback clickable' value={option}>{option}</option>
-                          }):'Loading options...'}
-                        </select>
+                        
                       </span>
                       :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
