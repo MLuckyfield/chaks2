@@ -86,7 +86,6 @@ const Booking = ()=>{
              level:'初級-中級'
            }
                ]
-             console.log('bookings of',bookings.length,bookings)
              if(bookings!=null){
                console.log('checking duplicates...')
                bookings.forEach((booking, i) => {
@@ -111,7 +110,7 @@ const Booking = ()=>{
                  });
              });}
              console.log(schedule)
-                   // setAvailable(schedule);
+                   setAvailable(schedule);
 
     }
   }
@@ -132,9 +131,9 @@ const Booking = ()=>{
     axios.get('/booking/all', {params:{filter:{student:student,date:{$gte:new Date()}}}})
       .then((res) => {console.log('data okay',res)
           if(res.data.data.length>0){
-            console.log('acgivated')
+            // console.log('acgivated')
             setBookings(res.data.data.reverse());
-            console.log('bookings okay')
+            // console.log('bookings okay')
             if(bookings){console.log('activating updateView for initial render');updateView(date)}
           }
         })
