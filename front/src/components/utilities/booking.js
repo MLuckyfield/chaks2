@@ -157,23 +157,27 @@ const Booking = ()=>{
                     <Calendar onChange={updateView} value={day} minDate={date?date:new Date()}/>
                     {available?
                       available.length>0?
-                        <span class='form-control'>
-                          <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
-                            <option class='col slim feedback clickable'>予約可能枠 ({available.length})</option>
-                            {available?available.map(function(item,i){
-                              return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
-                            }):''}
-                          </select>
-                          <select class='form-control' ref={lesson}>
-                            <option class='col slim feedback clickable'>要望する内容</option>
-                            {options?options.map(function(item,i){
-                              return <option class='col slim feedback clickable' value={item}>{item}</option>
-                            }):''}
-                          </select>
-                        </span>
+                        <form class='login' onSubmit={onSubmit}>
+                            <div class="form-group">
+                              <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
+                                <option class='col slim feedback clickable'>予約可能枠 ({available.length})</option>
+                                {available?available.map(function(item,i){
+                                  return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
+                                }):''}
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <select class='form-control' ref={lesson}>
+                                <option class='col slim feedback clickable'>要望する内容</option>
+                                {options?options.map(function(item,i){
+                                  return <option class='col slim feedback clickable' value={item}>{item}</option>
+                                }):''}
+                              </select>
+                            </div>
+                            {disable?'Loading, please wait...':<button type='submit' class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>}
+                        </form>
                       :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
-                  {disable?'Loading, please wait...':<button onClick={onSubmit} class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>}
           </div>
       </div>
     </div>
