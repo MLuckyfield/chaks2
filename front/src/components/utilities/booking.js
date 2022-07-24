@@ -12,7 +12,7 @@ const Booking = ()=>{
   const [day, setDay]=useState(new Date())
   const [msg,setMsg] = useState()
   const [disable,setDisable] = useState(false)
-  const [bookings, setBookings]=useState()
+  const [bookings, setBookings]=useState(null)
   const active = useRef()
   const lesson = useRef()
   const [appointment,setAppointment]=useState(null)
@@ -128,7 +128,7 @@ const Booking = ()=>{
   useEffect(()=>{
     axios.get('/booking/all', {params:{filter:{student:student,date:{$gte:new Date()}}}})
       .then((res) => {console.log('data okay',res)
-          setBookings(res.data.data);
+          setBookings(res.data.data.reverse());
           console.log('bookings okay')
           if(bookings){console.log('activating updateView for initial render');updateView(date)}
         })
