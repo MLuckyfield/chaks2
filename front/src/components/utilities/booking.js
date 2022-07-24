@@ -55,7 +55,7 @@ const Booking = ()=>{
              let schedule = [
                ]
              console.log('bookings of',bookings.length,bookings)
-             if(bookings.length>0){
+             if(bookings?){
                bookings.forEach((booking, i) => {
                  schedule.forEach((slot, y) => {
                      let x = moment(booking.date).format('dddd, MMM DD @ h:mm a')
