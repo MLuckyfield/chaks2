@@ -29,7 +29,9 @@ const EventList = () => {
             readyDescription['entityMap']={}
           setDescription(EditorState.createWithContent(convertFromRaw(readyDescription)))
           console.log('description ready')
-          setKeypoints(EditorState.createWithContent(convertFromRaw(formatted[0].keypoints)))
+          let readyKeys = formatted[0].keypoints[0]
+            readyKeys['entityMap']={}
+          setKeypoints(EditorState.createWithContent(convertFromRaw(readyKeys)))
 
         })
       .catch(error => console.log("error"+error))
