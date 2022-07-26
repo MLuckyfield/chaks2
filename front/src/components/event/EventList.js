@@ -48,7 +48,7 @@ const EventList = () => {
               <div class='row'>
                 <div class='col'>
                   <h1 class='logo-basic'>{comments[0].name}</h1>
-                  <h3>{moment(date).format('dddd, MMM DD')}</h3>
+                  <h3>{date?moment(date).format('dddd, MMM DD'):''}</h3>
                 </div>
               </div>
           </div>
