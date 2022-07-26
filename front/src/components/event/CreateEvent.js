@@ -14,12 +14,15 @@ const Event = () => {
   const entrance_fee = useRef('');
   const image = useRef('');
   const duration = useRef('');
+  const week = useRef('');
+  const day = useRef('');
   const temp = useRef('');
   const [description,setDescription]=useState(()=> EditorState.createEmpty())
   const [keypoints,setKeypoints]=useState(()=> EditorState.createEmpty())
   const [notes, setNotes] = useState([]);
   const [feedback, setFeedback] = useState();
-  const [day, setDay] = useState(new Date())
+  const [date, setDate] = useState();
+  // const [day, setDay] = useState(new Date())
 
   useEffect(()=>{
     console.log(notes)
@@ -30,8 +33,10 @@ const Event = () => {
     axios.post('/event_info/new',
       {
         name: name.current.value,
-        start: moment(day),
-        end: moment(day).add(duration,'minutes'),
+        repeats: {
+          day:day,
+          week:week
+        },
         entrance_fee: entrance_fee.current.value,
         image: image.current.value,
         notes: notes,
@@ -86,7 +91,16 @@ const Event = () => {
                       <input ref={name} type="text" class="form-control" placeholder="Event Name" required/>
                     </div>
                     <div class="form-group make_blog">
-                      <Calendar onChange={setDay} value={day} minDate={new Date()}/>
+                      <select class='form-control' ref={day}>
+                      <option class='col slim feedback clickable' value={0}>Sunday</option>
+                      <option class='col slim feedback clickable' value={1}>Monday</option>
+                      <option class='col slim feedback clickable' value={2}>Tuesday</option>
+                      <option class='col slim feedback clickable' value={3}>Wednesday</option>
+                      <option class='col slim feedback clickable' value={4}>Thursday</option>
+                      <option class='col slim feedback clickable' value={5}>Friday</option>
+                      <option class='col slim feedback clickable' value={6}>Saturday</option>
+                      </select>
+                      <input ref={week} type="number" class="form-control" min='1' max='4' required/>
                       <input ref={duration} type="number" class="form-control" value='240' required/>
                       <span>Time:{moment(day).startOf('day').add(19,'hours').format('dddd, MMM DD @ h:mm a')} ~ {moment(day).startOf('day').add(19,'hours').add(duration.current.value,'minutes').format('h:mm a')}</span>
                     </div>

@@ -17,6 +17,10 @@ const Event = mongoose.model('Event', new Schema({
     type: Date,
     required: true,
   },
+  repeats: {
+    day:{type:Number},
+    week:{type:Number}
+  },
   entranceFee: {
     type: Number,
   },
