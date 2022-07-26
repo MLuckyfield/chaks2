@@ -17,7 +17,8 @@ const EventList = () => {
     metaTags('EVENTS','英語学習に使える無料の情報はこちらから！英語のスラングや、効率的な英語の勉強方法など様々な情報を発信しています！')
     axios.get('/event_info/all')
       .then((res) => {
-        let formatted = res.data.data.reverse()
+          console.log(res)
+          let formatted = res.data.data.reverse()
           console.log(formatted)
           console.log(formatted[0])
           setDate(getDate(formatted[0].repeats));
