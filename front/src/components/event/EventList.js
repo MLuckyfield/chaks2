@@ -25,7 +25,9 @@ const EventList = () => {
           console.log('date ready')
           // setComments(formatted);
           console.log('events ready')
-          setDescription(EditorState.createWithContent(convertFromRaw(formatted[0].description)))
+          let readyDescription = formatted[0].description[0]
+            readyDescription['entityMap']={}
+          setDescription(EditorState.createWithContent(convertFromRaw(readyDescription)))
           console.log('description ready')
           setKeypoints(EditorState.createWithContent(convertFromRaw(formatted[0].keypoints)))
 
