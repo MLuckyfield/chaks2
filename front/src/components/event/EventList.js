@@ -9,6 +9,7 @@ import moment from "moment"
 const EventList = () => {
 
   const [comments, setComments] = useState(null);
+  const [date, setDate] = useState();
   const [description,setDescription] = useState()
   const [keypoints,setKeypoints] = useState()
 
@@ -17,6 +18,7 @@ const EventList = () => {
     axios.get('/event_info/all')
       .then((res) => {
         let formatted = res.data.data.reverse()
+          setDate(getDate(formatted[0].repeats));
           setComments(formatted);
           setDescription(EditorState.createWithContent(convertFromRaw(formatted[0].description)))
           setKeypoints(EditorState.createWithContent(convertFromRaw(formatted[0].keypoints)))
@@ -24,6 +26,13 @@ const EventList = () => {
         })
       .catch(error => console.log("error"+error))
   },[])
+
+  const getDate=(repeats)=>{
+    const d = new Date(new Date().getYear(), new Date().getMonth() - 1, 7 * (repeats.week - 1) + 1);
+    const w = d.getDay();
+    d.setDate(d.getDate() + (7 + repeats.dow - w) % 7);
+    return d;
+  }
 //<Carousel items={items}/>
   return(
       <div>
@@ -34,7 +43,7 @@ const EventList = () => {
               <div class='row'>
                 <div class='col'>
                   <h1 class='logo-basic'>{comments[0].name}</h1>
-                  <h3>{moment(comments[0].start).format('dddd, MMM DD')}</h3>
+                  <h3>{moment(date).format('dddd, MMM DD')}</h3>
                 </div>
               </div>
           </div>
@@ -47,7 +56,7 @@ const EventList = () => {
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
-                {moment(comments[0].start).format('dddd, MMM DD')}, {moment(comments[0].start).format('h:mm a')} {moment(comments[0].end).format('h:mm a')}<br/>
+                {moment(date).format('dddd, MMM DD')}, {moment(date).startOf('day').add(19,'hours').format('h:mm a')} {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
                 入場料：¥{comments[0].entranceFee?comments[0].entranceFee:'0 (free!)'}<br/>
                 {comments[0].notes.map((note,i)=>{
                   return <span>note</span>
@@ -63,7 +72,7 @@ const EventList = () => {
                               <img class='photo' src={event.image}></img>
                               <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
                                 <h3>{event.name}!</h3>
-                                {moment(event.start).format('dddd, MMM DD')}
+                                {moment(date).format('dddd, MMM DD')}
                               </div>
                             </div>
                         </div>
