@@ -48,7 +48,7 @@ const request = require('request')
 
     //Get
     router.get('/all', async (req, res) => {
-      console.log(req.query)
+      console.log('get all events...',req.query)
       let data = await Event.find(JSON.parse(req.query.filter))
       return res.status(201).json({
         data: data,
