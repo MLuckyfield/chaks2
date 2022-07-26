@@ -41,7 +41,7 @@ const Event = () => {
         image: image.current.value,
         notes: notes,
         description: convertToRaw(description.getCurrentContent()),
-        keyPoints: convertToRaw(keypoints.getCurrentContent()),
+        keypoints: convertToRaw(keypoints.getCurrentContent()),
       })
       .then((res) => {
           console.log('success')
