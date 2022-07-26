@@ -18,9 +18,14 @@ const EventList = () => {
     axios.get('/event_info/all')
       .then((res) => {
         let formatted = res.data.data.reverse()
+          console.log(formatted)
+          console.log(formatted[0])
           setDate(getDate(formatted[0].repeats));
+          console.log('date ready')
           setComments(formatted);
+          console.log('events ready')
           setDescription(EditorState.createWithContent(convertFromRaw(formatted[0].description)))
+          console.log('description ready')
           setKeypoints(EditorState.createWithContent(convertFromRaw(formatted[0].keypoints)))
 
         })
