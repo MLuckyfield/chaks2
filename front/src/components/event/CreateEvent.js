@@ -45,7 +45,7 @@ const Event = () => {
       })
       .then((res) => {
           setFeedback(res.data.message);
-          window.location='/manage-events';
+          // window.location='/manage-events';
           })
       .catch((err) => {
         console.log(err.response.data.message);
