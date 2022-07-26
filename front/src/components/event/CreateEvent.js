@@ -23,7 +23,7 @@ const Event = () => {
 
   useEffect(()=>{
     console.log(notes)
-  })
+  },[notes])
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -67,7 +67,7 @@ const Event = () => {
   const addNote = ()=>{
       let array = notes
       array.push(temp.current.value)
-      console.log('adding',temp.current.value,array)      
+      console.log('adding',temp.current.value,array)
       setNotes(array)
   }
   const removeNote = (i)=>{
