@@ -9,14 +9,6 @@ const Event = mongoose.model('Event', new Schema({
     trim: true,
     unique: true
   },
-  start: {
-    type: Date,
-    required:true
-  },
-  end: {
-    type: Date,
-    required: true,
-  },
   repeats: {
     day:{type:Number},
     week:{type:Number}
