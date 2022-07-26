@@ -34,8 +34,8 @@ const Event = () => {
       {
         name: name.current.value,
         repeats: {
-          day:day,
-          week:week
+          day:day.current.value,
+          week:week.current.value
         },
         entrance_fee: entrance_fee.current.value,
         image: image.current.value,
@@ -48,7 +48,7 @@ const Event = () => {
           // window.location='/manage-events';
           })
       .catch((err) => {
-        console.log(err.response.data.message);
+        console.log(err);
         // setFeedback(err.response.data.message);
         });
   }
