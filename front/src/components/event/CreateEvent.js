@@ -44,7 +44,7 @@ const Event = () => {
         keyPoints: convertToRaw(keypoints.getCurrentContent()),
       })
       .then((res) => {
-          setFeedback(res.data.message);
+          console.log('success')
           // window.location='/manage-events';
           })
       .catch((err) => {

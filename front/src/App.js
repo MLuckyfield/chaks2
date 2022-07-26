@@ -31,7 +31,8 @@ import google_analytics from './components/google_analytics'
 import google_ads from './components/google_ads'
 import hotjar from './components/hotjar'
 //import pages
-import EventList from './components/page/EventsPage'
+import EventList from './components/page/EventList'
+import EventsPage from './components/page/EventsPage'
 import CreateEvent from './components/event/CreateEvent'
 import CampaignPage from './components/page/CampaignPage'
 import StylePage from './components/page/StylePage'
@@ -103,6 +104,7 @@ const App = () => {
             <SecureRoute path="/account" access={['user','manager']} success={Account} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/manage-event" access={['manager','admin']} success={EventList} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/reservations" access={['user','teacher','manager']} success={Booking} fail={()=><Redirect to='/login'/>}/>
