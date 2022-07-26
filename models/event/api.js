@@ -48,8 +48,8 @@ const request = require('request')
 
     //Get
     router.get('/all', async (req, res) => {
-      console.log('get all events...',req.query)
-      let data = await Event.find(JSON.parse(req.query.filter))
+      // console.log('get all events...',req.query)
+      let data = await Event.find(JSON.parse(req.query?req.query.filter:{}))
       return res.status(201).json({
         data: data,
         message: 'Events List',
