@@ -23,7 +23,7 @@ const EventList = () => {
           console.log(formatted[0])
           setDate(getDate(formatted[0].repeats));
           console.log('date ready')
-          // setComments(formatted);
+          setComments(formatted);
           console.log('events ready')
           let readyDescription = formatted[0].description[0]
             readyDescription['entityMap']={}
