@@ -114,16 +114,6 @@ const Event = () => {
                       <Editor editorState={keypoints} onChange={setKeypoints} handleKeyCommand={markKeypoints}/>
                       </div>
                     </div>
-                    <div class="form-group make_blog">
-                      {notes?notes.map((note,i)=>{
-                        return (<div class='fixed-row'>
-                                    <span>{note}</span>
-                                    <button onClick={()=>removeNote(i)} class="solid-first">Remove Note</button>
-                                </div>)
-                      }):'No notes. Add some!'}
-                       <input ref={temp} type="text" placeholder='Add Note' class="form-control" required/>
-                       <button onClick={addNote} class="solid-first">Add Note</button>
-                    </div>
                     <label>{feedback}</label>
                     <button type="submit" class="solid-first">Submit</button>
                   </form>
