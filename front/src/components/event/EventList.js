@@ -17,22 +17,22 @@ const EventList = () => {
     metaTags('EVENTS','英語学習に使える無料の情報はこちらから！英語のスラングや、効率的な英語の勉強方法など様々な情報を発信しています！')
     axios.get('/event_info/all')
       .then((res) => {
-          console.log(res)
-          let formatted = res.data.data.reverse()
-          console.log(formatted)
-          console.log(typeof formatted)
-          console.log(formatted[0].image)
-          setDate(getDate(formatted[0].repeats));
-          console.log('date ready')
+          // console.log(res)
+          // let formatted = res.data.data.reverse()
+          // console.log(formatted)
+          // console.log(typeof formatted)
+          // console.log(formatted[0].image)
+          // setDate(getDate(formatted[0].repeats));
+          // console.log('date ready')
           setComments({name:'event',description:'description',keypoints:'key',image:'image'});
           console.log('events ready')
-          let readyDescription = formatted[0].description[0]
-            readyDescription['entityMap']={}
-          setDescription(EditorState.createWithContent(convertFromRaw(readyDescription)))
-          console.log('description ready')
-          let readyKeys = formatted[0].keypoints[0]
-            readyKeys['entityMap']={}
-          setKeypoints(EditorState.createWithContent(convertFromRaw(readyKeys)))
+          // let readyDescription = formatted[0].description[0]
+          //   readyDescription['entityMap']={}
+          // setDescription(EditorState.createWithContent(convertFromRaw(readyDescription)))
+          // console.log('description ready')
+          // let readyKeys = formatted[0].keypoints[0]
+          //   readyKeys['entityMap']={}
+          // setKeypoints(EditorState.createWithContent(convertFromRaw(readyKeys)))
 
         })
       .catch(error => console.log("error"+error))
