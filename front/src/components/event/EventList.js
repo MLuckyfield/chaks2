@@ -8,7 +8,7 @@ import moment from "moment"
 
 const EventList = () => {
 
-  const [comments, setComments] = useState(null);
+  const [comments, setComments] = useState();
   const [date, setDate] = useState();
   const [description,setDescription] = useState()
   const [keypoints,setKeypoints] = useState()
@@ -23,7 +23,7 @@ const EventList = () => {
           console.log(formatted[0])
           setDate(getDate(formatted[0].repeats));
           console.log('date ready')
-          setComments(formatted);
+          setComments(formatted[0]);
           console.log('events ready')
           let readyDescription = formatted[0].description[0]
             readyDescription['entityMap']={}
