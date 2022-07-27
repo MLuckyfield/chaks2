@@ -24,7 +24,7 @@ const EventList = () => {
           // console.log(formatted[0].image)
           // setDate(getDate(formatted[0].repeats));
           // console.log('date ready')
-          setEvents({name:'event',description:'description',keypoints:'key',image:'image'},{name:'event',description:'description',keypoints:'key',image:'image'});
+          setEvents([{name:'event',description:'description',keypoints:'key',image:'image'},{name:'event',description:'description',keypoints:'key',image:'image'}]);
           console.log('events ready')
           // let readyDescription = formatted[0].description[0]
           //   readyDescription['entityMap']={}
@@ -62,8 +62,8 @@ const EventList = () => {
       <div class='col'>
             <div class='col slim'>
                 <h1 class='col'>CONCEPT</h1>
-                <Editor editorState={description} readOnly={true}/>
-                <Editor editorState={keypoints} readOnly={true}/>
+                <Editor editorState={events[0].description} readOnly={true}/>
+                <Editor editorState={events[0].keypoints} readOnly={true}/>
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
