@@ -8,7 +8,7 @@ import moment from "moment"
 
 const EventList = () => {
 
-  const [comments, setComments] = useState();
+  const [events, setEvents] = useState();
   const [date, setDate] = useState(new Date());
   const [description,setDescription] = useState()
   const [keypoints,setKeypoints] = useState()
@@ -24,7 +24,7 @@ const EventList = () => {
           // console.log(formatted[0].image)
           // setDate(getDate(formatted[0].repeats));
           // console.log('date ready')
-          setComments({name:'event',description:'description',keypoints:'key',image:'image'});
+          setEvents({name:'event',description:'description',keypoints:'key',image:'image'});
           console.log('events ready')
           // let readyDescription = formatted[0].description[0]
           //   readyDescription['entityMap']={}
@@ -47,13 +47,13 @@ const EventList = () => {
 //<Carousel items={items}/>
   return(
       <div>
-      {comments?
+      {events?
         <span>
-        <div id='header' class='transparent' style={{backgroundImage: 'url('+comments[0].image+')'}}>
+        <div id='header' class='transparent' style={{backgroundImage: 'url('+events[0].image+')'}}>
           <div class='overlay'>
               <div class='row'>
                 <div class='col'>
-                  <h1 class='logo-basic'>{comments[0].name}</h1>
+                  <h1 class='logo-basic'>{events[0].name}</h1>
                   <h3>{date?moment(date).format('dddd, MMM DD'):''}</h3>
                 </div>
               </div>
@@ -68,14 +68,14 @@ const EventList = () => {
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
                 {moment(date).format('dddd, MMM DD')}, {moment(date).startOf('day').add(19,'hours').format('h:mm a')} {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
-                入場料：¥{comments[0].entranceFee?comments[0].entranceFee:'0 (free!)'}<br/>
-                {comments[0].notes.map((note,i)=>{
+                入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
+                {events[0].notes.map((note,i)=>{
                   return <span>note</span>
                 })}<br/>
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
-                {comments ? (comments.map(function(event, i){
+                {events ? (events.map(function(event, i){
                     if(i!=0){
                       return(
                         <div class='col'>
