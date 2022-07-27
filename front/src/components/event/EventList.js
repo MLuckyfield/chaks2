@@ -89,6 +89,10 @@ const EventList = () => {
 )
 }
 const EditorView = (props)=>{
+  useEffect(()=>{
+    let adjusted = props.content
+      adjusted['entityMap']={}
+  },[])
 
   return(
     <Editor editorState={props.content} readOnly={true}/>
