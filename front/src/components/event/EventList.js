@@ -21,6 +21,7 @@ const EventList = () => {
           let formatted = res.data.data.reverse()
           console.log(formatted)
           console.log(typeof formatted)
+          console.log(formatted[0].image)
           setDate(getDate(formatted[0].repeats));
           console.log('date ready')
           setComments(res.data.data);
