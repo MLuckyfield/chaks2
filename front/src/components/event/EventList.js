@@ -20,7 +20,7 @@ const EventList = () => {
           console.log(res)
           let formatted = res.data.data.reverse()
           console.log(formatted)
-          console.log(formatted[0])
+          console.log(typeof formatted)
           setDate(getDate(formatted[0].repeats));
           console.log('date ready')
           setComments(res.data.data);
