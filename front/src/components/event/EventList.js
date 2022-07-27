@@ -23,7 +23,7 @@ const EventList = () => {
           // console.log(typeof formatted)
           // console.log(formatted[0].image)
           // setDate(getDate(formatted[0].repeats));
-          // console.log('date ready')
+          console.log('date ready')
           setEvents([{name:'event',description:'description',keypoints:'key',image:'image'},{name:'event',description:'description',keypoints:'key',image:'image'}]);
           console.log('events ready')
           // let readyDescription = formatted[0].description[0]
@@ -47,55 +47,57 @@ const EventList = () => {
 //<Carousel items={items}/>
   return(
       <div>
-      {events?
-        <span>
-        <div id='header' class='transparent' style={{backgroundImage: 'url('+events[0].image+')'}}>
-          <div class='overlay'>
-              <div class='row'>
-                <div class='col'>
-                  <h1 class='logo-basic'>{events[0].name}</h1>
-                  <h3>{date?moment(date).format('dddd, MMM DD'):''}</h3>
-                </div>
-              </div>
-          </div>
-        </div>
-      <div class='col'>
-            <div class='col slim'>
-                <h1 class='col'>CONCEPT</h1>
-                <Editor editorState={events[0].description} readOnly={true}/>
-                <Editor editorState={events[0].keypoints} readOnly={true}/>
-            </div>
-            <div class='col_up slim'>
-                <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
-                {moment(date).format('dddd, MMM DD')}, {moment(date).startOf('day').add(19,'hours').format('h:mm a')} {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
-                入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
-                {events[0].notes.map((note,i)=>{
-                  return <span>note</span>
-                })}<br/>
-            </div>
-            <div class='col_up slim'>
-                <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
-                {events ? (events.map(function(event, i){
-                    if(i!=0){
-                      return(
-                        <div class='col'>
-                            <div class='fixed-row'>
-                              <img class='photo' src={event.image}></img>
-                              <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
-                                <h3>{event.name}!</h3>
-                                {moment(date).format('dddd, MMM DD')}
-                              </div>
-                            </div>
-                        </div>
-                      )
-                    }  else{return <div></div>}
-                  })): 'Loading Events...'}
-            </div>
-        </div>
-        </span>:''}
-        <AccessDisplay/>
+
       </div>
 )
 }
 
 export default EventList;
+
+// {events?
+//   <span>
+//   <div id='header' class='transparent' style={{backgroundImage: 'url('+events[0].image+')'}}>
+//     <div class='overlay'>
+//         <div class='row'>
+//           <div class='col'>
+//             <h1 class='logo-basic'>{events[0].name}</h1>
+//             <h3>{date?moment(date).format('dddd, MMM DD'):''}</h3>
+//           </div>
+//         </div>
+//     </div>
+//   </div>
+// <div class='col'>
+//       <div class='col slim'>
+//           <h1 class='col'>CONCEPT</h1>
+//           <Editor editorState={events[0].description} readOnly={true}/>
+//           <Editor editorState={events[0].keypoints} readOnly={true}/>
+//       </div>
+//       <div class='col_up slim'>
+//           <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
+//           {moment(date).format('dddd, MMM DD')}, {moment(date).startOf('day').add(19,'hours').format('h:mm a')} {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
+//           入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
+//           {events[0].notes.map((note,i)=>{
+//             return <span>note</span>
+//           })}<br/>
+//       </div>
+//       <div class='col_up slim'>
+//           <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
+//           {events ? (events.map(function(event, i){
+//               if(i!=0){
+//                 return(
+//                   <div class='col'>
+//                       <div class='fixed-row'>
+//                         <img class='photo' src={event.image}></img>
+//                         <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
+//                           <h3>{event.name}!</h3>
+//                           {moment(date).format('dddd, MMM DD')}
+//                         </div>
+//                       </div>
+//                   </div>
+//                 )
+//               }  else{return <div></div>}
+//             })): 'Loading Events...'}
+//       </div>
+//   </div>
+//   </span>:''}
+//   <AccessDisplay/>
