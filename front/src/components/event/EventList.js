@@ -26,13 +26,13 @@ const EventList = () => {
           console.log('date ready')
           setEvents(res.data.data);
           console.log('events ready')
-          // let readyDescription = formatted[0].description[0]
-          //   readyDescription['entityMap']={}
-          // setDescription(EditorState.createWithContent(convertFromRaw(readyDescription)))
-          // console.log('description ready')
-          // let readyKeys = formatted[0].keypoints[0]
-          //   readyKeys['entityMap']={}
-          // setKeypoints(EditorState.createWithContent(convertFromRaw(readyKeys)))
+          let readyDescription = formatted[0].description[0]
+            readyDescription['entityMap']={}
+          setDescription(EditorState.createWithContent(convertFromRaw(readyDescription)))
+          console.log('description ready')
+          let readyKeys = formatted[0].keypoints[0]
+            readyKeys['entityMap']={}
+          setKeypoints(EditorState.createWithContent(convertFromRaw(readyKeys)))
 
         })
       .catch(error => console.log("error"+error))
@@ -62,8 +62,8 @@ const EventList = () => {
       <div class='col'>
             <div class='col slim'>
                 <h1 class='col'>CONCEPT</h1>
-                <Editor editorState={EditorState.createWithContent(convertFromRaw(events[0].description))} readOnly={true}/>
-                <Editor editorState={EditorState.createWithContent(convertFromRaw(events[0].keypoints))} readOnly={true}/>
+                <Editor editorState={description} readOnly={true}/>
+                <Editor editorState={keypoints} readOnly={true}/>
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
