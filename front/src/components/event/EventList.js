@@ -26,11 +26,11 @@ const EventList = () => {
           console.log('date ready')
           setEvents(res.data.data);
           console.log('events ready')
-          let readyDescription = formatted[0].description[0]
+          let readyDescription = formatted[0].description[0].blocks
             readyDescription['entityMap']={}
           setDescription(EditorState.createWithContent(convertFromRaw(readyDescription)))
           console.log('description ready')
-          let readyKeys = formatted[0].keypoints[0]
+          let readyKeys = formatted[0].keypoints[0].blocks
             readyKeys['entityMap']={}
           setKeypoints(EditorState.createWithContent(convertFromRaw(readyKeys)))
 
