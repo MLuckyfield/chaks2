@@ -105,6 +105,9 @@ const Event = () => {
                       <span>Time:{moment(day).startOf('day').add(19,'hours').format('dddd, MMM DD @ h:mm a')} ~ {moment(day).startOf('day').add(19,'hours').add(duration.current.value,'minutes').format('h:mm a')}</span>
                     </div>
                     <div class="form-group make_blog">
+                      <input ref={image} type="text" class="form-control" required/>
+                    </div>
+                    <div class="form-group make_blog">
                       <div class='editor'>
                       <Editor editorState={description} onChange={setDescription} handleKeyCommand={markDescription}/>
                       </div>
