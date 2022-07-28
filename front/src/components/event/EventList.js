@@ -20,10 +20,11 @@ const EventList = () => {
           let formatted = res.data.data.reverse()
           console.log(formatted)
           console.log(typeof formatted)
-          console.log(formatted[0].image)
+          console.log('data',formatted[0].description[0])
           setDate(getDate(formatted[0].repeats));
           console.log('date ready')
-          setEvents(res.data.data);
+          co
+          // setEvents(res.data.data);
           console.log('events ready')
 
         })
@@ -90,8 +91,7 @@ const EventList = () => {
 }
 const EditorView = (props)=>{
   useEffect(()=>{
-    let adjusted = props.content
-      adjusted['entityMap']={}
+      props.content['entityMap']={}
   },[])
 
   return(
