@@ -22,10 +22,10 @@ const EventList = () => {
           setDate(getDate(formatted[0].repeats));
           console.log('date ready')
           setEvents({
-            name:formatted[0].name,
-            description:formatted[0].description,
-            repeats:formatted[0].repeats,
-            keypoints:formatted[0].keypoints,
+            name:'formatted[0].name',
+            description:'formatted[0].description',
+            repeats:'formatted[0].repeats',
+            keypoints:'formatted[0].keypoints',
 
           });
           console.log('events ready')
