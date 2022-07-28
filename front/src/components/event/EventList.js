@@ -21,7 +21,13 @@ const EventList = () => {
           console.log('data',formatted[0].description[0])
           setDate(getDate(formatted[0].repeats));
           console.log('date ready')
-          setEvents(res.data.data[0]);
+          setEvents({
+            name:formatted[0].name,
+            description:formatted[0].description,
+            repeats:formatted[0].repeats,
+            keypoints:formatted[0].keypoints,
+
+          });
           console.log('events ready')
 
         })
