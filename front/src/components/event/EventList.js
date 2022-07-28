@@ -39,11 +39,11 @@ const EventList = () => {
       <div>
       {events?
         <span>
-        <div id='header' class='transparent' style={{backgroundImage: 'url('+events.image+')'}}>
+        <div id='header' class='transparent' style={{backgroundImage: 'url('+events[0].image+')'}}>
           <div class='overlay'>
               <div class='row'>
                 <div class='col'>
-                  <h1 class='logo-basic'>{events.name}</h1>
+                  <h1 class='logo-basic'>{events[0].name}</h1>
                   <h3>{date?moment(date).format('dddd, MMM DD'):''}</h3>
                 </div>
               </div>
@@ -52,15 +52,15 @@ const EventList = () => {
       <div class='col'>
             <div class='col slim'>
                 <h1 class='col'>CONCEPT</h1>
-                <EditorView content={EditorState.createWithContent(convertFromRaw(events.description[0]))} readOnly={true}/>
+                <EditorView content={EditorState.createWithContent(convertFromRaw(events[0].description[0]))} readOnly={true}/>
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
                 {moment(date).format('dddd, MMM DD')}, {moment(date).startOf('day').add(19,'hours').format('h:mm a')} {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
-                入場料：¥{events.entranceFee?events.entranceFee:'0 (free!)'}<br/>
-                {events.notes.map((note,i)=>{
+                入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
+                {events[0].notes? events[0].notes.map((note,i)=>{
                   return <span>note</span>
-                })}<br/>
+                }):''}<br/>
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
