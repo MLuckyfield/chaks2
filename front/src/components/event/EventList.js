@@ -23,7 +23,7 @@ const EventList = () => {
           console.log('',formatted[0].description[0])
           setDate(getDate(formatted[0].repeats));
           console.log('date ready')
-          // setEvents(res.data.data);
+          setEvents(res.data.data[0]);
           console.log('events ready')
 
         })
