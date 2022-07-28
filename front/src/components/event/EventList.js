@@ -18,9 +18,7 @@ const EventList = () => {
       .then((res) => {
           console.log(res)
           let formatted = res.data.data.reverse()
-          console.log(formatted)
-          console.log(typeof formatted)
-          console.log('',formatted[0].description[0])
+          console.log('data',formatted[0].description[0])
           setDate(getDate(formatted[0].repeats));
           console.log('date ready')
           setEvents(res.data.data[0]);
