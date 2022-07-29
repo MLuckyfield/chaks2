@@ -52,7 +52,7 @@ const EventList = () => {
       <div class='col'>
             <div class='col slim'>
                 <h1 class='col'>CONCEPT</h1>
-                <EditorView content={EditorState.createWithContent(convertFromRaw(events[0].description[0]))} readOnly={true}/>
+                <EditorView content={EditorState.createWithContent(convertFromRaw(events[0].description))} readOnly={true}/>
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
