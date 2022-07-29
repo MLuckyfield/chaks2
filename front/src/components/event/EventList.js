@@ -87,11 +87,11 @@ const EventList = () => {
 )
 }
 const EditorView = (props)=>{
-  const [editorState,setEditorState] = useState()
+  const [editorState,setEditorState] = useState(EditorState.createWithContent(convertFromRaw(props.content)))
 
   useEffect(()=>{
     console.log('content',props.content)
-    setEditorState(EditorState.createWithContent(convertFromRaw(props.content)))
+    // setEditorState()
       // props.content['entityMap']={}
   },[])
 
