@@ -33,6 +33,7 @@ const EventList = () => {
     const d = new Date(new Date().getYear(), new Date().getMonth() - 1, 7 * (repeats.week - 1) + 1);
     const w = d.getDay();
     d.setDate(d.getDate() + (7 + repeats.dow - w) % 7);
+    console.log('date',d)
     return d;
   }
 //<Carousel items={items}/>
@@ -40,7 +41,7 @@ const EventList = () => {
       <div>
       {events?
         <span>
-        <div id='header' class='transparent' style={()=>{return {backgroundImage: 'url('+dj_night+')'}}}>
+        <div id='header' class='transparent' style={{backgroundImage: 'url('+require(events[0].image)+')'}}}>
           <div class='overlay'>
               <div class='row'>
                 <div class='col'>
