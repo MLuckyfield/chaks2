@@ -91,7 +91,7 @@ const EditorView = (props)=>{
 
   useEffect(()=>{
     console.log('content',props.content)
-      setEditorState(EditorState.createWithContent(props.content))
+    setEditorState(EditorState.createWithContent(convertFromRaw(props.content)))
       // props.content['entityMap']={}
   },[])
 
