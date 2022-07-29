@@ -30,11 +30,21 @@ const EventList = () => {
   },[])
 
   const getDate=(repeats)=>{
-    const d = new Date(new Date().getYear(), new Date().getMonth() - 1, 7 * (repeats.week - 1) + 1);
-    const w = d.getDay();
-    d.setDate(d.getDate() + (7 + repeats.dow - w) % 7);
-    console.log('date',d)
-    return d;
+    let count = 0;
+    let date = new Date(new Date().getYear(),new Date().getMonth(),1)
+     while (count < repeats.week){
+         if (date.getDay() === repeats.dow){
+             break;
+         }
+         date = new Date(date.getYear() + 1900, date.getMonth(), (date.getDate() + 1));
+     }
+     console.log(date)
+     return date
+    // const d = new Date(new Date().getYear(), new Date().getMonth() - 1, 7 * (repeats.week - 1) + 1);
+    // const w = d.getDay();
+    // d.setDate(d.getDate() + (7 + repeats.dow - w) % 7);
+    // console.log('date',d)
+    // return d;
   }
 //<Carousel items={items}/>
 
