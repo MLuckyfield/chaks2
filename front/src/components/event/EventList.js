@@ -52,7 +52,7 @@ const EventList = () => {
       <div class='col'>
             <div class='col slim'>
                 <h1 class='col'>CONCEPT</h1>
-                <EditorView content={EditorState.createWithContent(convertFromRaw(events[0].description))} readOnly={true}/>
+                <EditorView content={events[0].description} readOnly={true}/>
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
@@ -87,12 +87,16 @@ const EventList = () => {
 )
 }
 const EditorView = (props)=>{
+  const [editorState,setEditorState] = useState()
+
   useEffect(()=>{
-      props.content['entityMap']={}
+    console.log('content',props.content)
+      setEditorState(EditorState.createWithContent(props.content))
+      // props.content['entityMap']={}
   },[])
 
   return(
-    <Editor editorState={props.content} readOnly={true}/>
+    <Editor editorState={editorState} readOnly={true}/>
   )
 }
 export default EventList;
