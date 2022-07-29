@@ -41,7 +41,7 @@ const EventList = () => {
       <div>
       {events?
         <span>
-        <div id='header' class='transparent' style={{backgroundImage: 'url('+require(events[0].image)+')'}}}>
+        <div id='header' class='transparent' style={{backgroundImage: 'url('+require(events[0].image)+')'}}>
           <div class='overlay'>
               <div class='row'>
                 <div class='col'>
