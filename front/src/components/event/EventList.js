@@ -90,7 +90,7 @@ const EventList = () => {
                             </div>
                         </div>
                       )
-                    }  else{return <div></div>}
+                    }  else{return <div>Coming soon!</div>}
                   })): 'Loading Events...'}
             </div>
         </div>
