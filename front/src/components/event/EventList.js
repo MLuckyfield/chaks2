@@ -5,6 +5,7 @@ import {metaTags} from '../seo'
 import {Editor, EditorState, convertFromRaw, RichUtils} from 'draft-js'
 import AccessDisplay from '../nav/AccessDisplay'
 import moment from "moment"
+import dj_night from '../../dj_night.jpg'
 
 const EventList = () => {
 
@@ -18,8 +19,8 @@ const EventList = () => {
       .then((res) => {
           console.log(res)
           let formatted = res.data.data.reverse()
-          console.log('data',formatted[0].description[0])
-          setDate(getDate(formatted[0].repeats));
+          console.log('date',getDate(formatted[0].repeats))
+          setDate(g);
           console.log('date ready')
           setEvents(res.data.data);
           console.log('events ready')
@@ -39,7 +40,7 @@ const EventList = () => {
       <div>
       {events?
         <span>
-        <div id='header' class='transparent' style={{backgroundImage: 'url('+events[0].image+')'}}>
+        <div id='header' class='transparent' style={()=>{return {backgroundImage: 'url('+dj_night+')'}}}>
           <div class='overlay'>
               <div class='row'>
                 <div class='col'>
@@ -64,7 +65,7 @@ const EventList = () => {
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
-                {events ? (events.map(function(event, i){
+                {events.length>1 ? (events.map(function(event, i){
                     if(i!=0){
                       return(
                         <div class='col'>
