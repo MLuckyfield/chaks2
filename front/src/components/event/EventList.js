@@ -5,7 +5,9 @@ import {metaTags} from '../seo'
 import {Editor, EditorState, convertFromRaw, RichUtils} from 'draft-js'
 import AccessDisplay from '../nav/AccessDisplay'
 import moment from "moment"
+import party from '../../event_party.jpg'
 import dj_night from '../../dj_night.jpg'
+import event_game from '../../event_game.jpg'
 
 const EventList = () => {
 
@@ -28,6 +30,19 @@ const EventList = () => {
         })
       .catch(error => console.log("error"+error))
   },[])
+
+  const getImage=(url)=>{
+    switch(url){
+      case 'party':
+        return party;
+      case 'dj_night':
+        return dj_night
+      case 'event_game':
+        return event_game;
+      default:
+
+    }
+  }
 
   const getDate=(repeats)=>{
     let count = 0;
@@ -52,7 +67,7 @@ const EventList = () => {
       <div>
       {events?
         <span>
-        <div id='header' class='transparent' style={{backgroundImage: 'url('+import(events[0].image)+')'}}>
+        <div id='header' class='transparent' style={{backgroundImage: 'url('+getImage(events[0].image)+')'}}>
           <div class='overlay'>
               <div class='row'>
                 <div class='col'>
@@ -78,7 +93,7 @@ const EventList = () => {
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
                 {events.length>1 ? (events.map(function(event, i){
-                    if(i!=0){
+                    if(i>0){
                       return(
                         <div class='col'>
                             <div class='fixed-row'>
