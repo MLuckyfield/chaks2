@@ -46,7 +46,7 @@ const Event = () => {
       })
       .then((res) => {
           console.log('success')
-          // window.location='/manage-events';
+          window.location='/manage-events';
           })
       .catch((err) => {
         console.log(err);

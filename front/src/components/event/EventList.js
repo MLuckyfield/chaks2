@@ -60,8 +60,11 @@ const EventList = () => {
          date = new Date((year + 1900), month, (date.getDate() + 1));
          count++;
      }
-     // console.log('answer is',repeats.week,list,list[repeats.week-1])
-     return list[repeats.week-1]
+     let adjusted =list[repeats.week-1];
+     if (adjusted.getDate()<new Date().getDate()){
+       return adjusted
+     }
+     return adjusted.setMonth(adjusted.getMonth()+1)
   }
 //<Carousel items={items}/>
 
@@ -73,7 +76,7 @@ const EventList = () => {
           <div class='overlay'>
               <div class='row'>
                 <div class='col'>
-                  <h1 class='logo-basic'>{events[0].name}</h1>
+                  <h1>{events[0].name}</h1>
                   <h3>{date?moment(date).format('dddd, MMM DD'):''}</h3>
                 </div>
               </div>
