@@ -32,18 +32,18 @@ const EventList = () => {
       .catch(error => console.log("error"+error))
   },[])
 
-  // const getImage=(url)=>{
-  //   switch(url){
-  //     case 'party':
-  //       return party;
-  //     case 'dj_night':
-  //       return dj_night
-  //     case 'event_game':
-  //       return event_game;
-  //     default:
-  //
-  //   }
-  // }
+  const getImage=(url)=>{
+    switch(url){
+      case 'party':
+        return party;
+      case 'dj_night':
+        return dj_night
+      case 'event_game':
+        return event_game;
+      default:
+
+    }
+  }
   const getDate=(repeats)=>{
     let count = 0;
     let year = new Date().getYear()
@@ -61,11 +61,6 @@ const EventList = () => {
      }
      console.log('answer is',repeats.week,list,list[repeats.week-1])
      return list[repeats.week-1]
-    // const d = new Date(new Date().getYear(), new Date().getMonth() - 1, 7 * (repeats.week - 1) + 1);
-    // const w = d.getDay();
-    // d.setDate(d.getDate() + (7 + repeats.dow - w) % 7);
-    // console.log('date',d)
-    // return d;
   }
 //<Carousel items={items}/>
 
@@ -73,7 +68,7 @@ const EventList = () => {
       <div>
       {events?
         <span>
-        <div id='header' class='transparent' >
+        <div id='header' class='transparent' style={{backgroundImage:'url('+events[0].image+')'} }>
           <div class='overlay'>
               <div class='row'>
                 <div class='col'>
