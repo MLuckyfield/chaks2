@@ -55,7 +55,8 @@ const EventList = () => {
          if (date.getDay() === repeats.day){
            list.push(date)
          }
-         date = new Date(date.getYear() + 1900, date.getMonth(), (date.getDate() + 1));
+         console.log(year, year+1900)
+         date = new Date((year + 1900), month, (date.getDate() + 1));
          count++;
      }
      console.log('answer is',repeats.week,list,list[repeats.week-1])
