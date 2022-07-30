@@ -129,7 +129,11 @@ return (
             </div>
           </div>
       </div>
-    {isActive && <div class='accordion-content'>{event.description}{event.details}</div>}
+    {isActive &&
+      <div class='accordion-content'>
+          <EditorView content={event.description} readOnly={true}/>
+          <EditorView content={event.details} readOnly={true}/>          
+      </div>}
   </div>
 
 )
