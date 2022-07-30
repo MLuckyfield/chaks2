@@ -34,7 +34,7 @@ const EventList = () => {
 
   const getDate=(repeats)=>{
     let count = 0;
-    let year = new Date().getYear()
+    let year = new Date().getYear()+1900
     let month = new Date().getMonth()
     let date = new Date(year,month,1)
     console.log('starting with',year,month,date)
@@ -46,7 +46,7 @@ const EventList = () => {
            if (date.getDay() === repeats.day){
              list.push(date)
            }
-           date = new Date((year + 1900), month, (date.getDate() + 1));
+           date = new Date((year), month, (date.getDate() + 1));
            count++;
        }
      }
