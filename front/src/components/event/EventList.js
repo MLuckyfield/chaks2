@@ -21,7 +21,7 @@ const EventList = () => {
       .then((res) => {
           console.log(res)
           let formatted = res.data.data.reverse()
-          console.log('data',getDate(formatted[0].repeats))
+          console.log('data',new Date())
           // setDate(g);
           console.log('date ready')
           setEvents(res.data.data);
@@ -44,15 +44,15 @@ const EventList = () => {
   //   }
   // }
 
-  const getDate=(repeats)=>{
-    let count = 0;
-    let date = new Date(new Date().getYear(),new Date().getMonth(),1)
-     while (count < repeats.week){
-         if (date.getDay() === repeats.dow){
-             break;
-         }
-         date = new Date(date.getYear() + 1900, date.getMonth(), (date.getDate() + 1));
-     }
+  // const getDate=(repeats)=>{
+  //   let count = 0;
+  //   let date = new Date(new Date().getYear(),new Date().getMonth(),1)
+  //    while (count < repeats.week){
+  //        if (date.getDay() === repeats.dow){
+  //            break;
+  //        }
+  //        date = new Date(date.getYear() + 1900, date.getMonth(), (date.getDate() + 1));
+  //    }
      console.log(date)
      return date
     // const d = new Date(new Date().getYear(), new Date().getMonth() - 1, 7 * (repeats.week - 1) + 1);
