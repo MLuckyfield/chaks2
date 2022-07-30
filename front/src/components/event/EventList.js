@@ -32,19 +32,6 @@ const EventList = () => {
       .catch(error => console.log("error"+error))
   },[])
 
-  const getImage=(url)=>{
-    console.log(url)
-    switch(url){
-      case 'party':
-        return party;
-      case 'dj_night':
-        return dj_night
-      case 'event_game':
-        return event_game;
-      default:
-        console.log('No image found')
-    }
-  }
   const getDate=(repeats)=>{
     let count = 0;
     let year = new Date().getYear()
@@ -103,7 +90,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem title={event.name} content={moment(date).format('dddd, MMM DD')} image={event.image}/>
+                        <AccordionItem event={event} date={moment(date).format('dddd, MMM DD')}/>
                       )
                     }
                   })): 'Coming soon!'}
@@ -115,21 +102,34 @@ const EventList = () => {
       </div>
 )
 }
-const AccordionItem=({ title, content, image })=>{
+const getImage=(url)=>{
+  console.log(url)
+  switch(url){
+    case 'party':
+      return party;
+    case 'dj_night':
+      return dj_night
+    case 'event_game':
+      return event_game;
+    default:
+      console.log('No image found')
+  }
+}
+const AccordionItem=(event,date)=>{
 const [isActive, setIsActive] = useState(false);
 return (
 
   <div class='accordion_item clickable' onClick={() => setIsActive(!isActive)}>
       <div class='col'>
           <div class='fixed-row'>
-            <img class='photo' src={image}></img>
+            <img class='photo' src={getImage(event.image)}></img>
             <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
-              <h3>{title}</h3>
-              {content}
+              <h3>{event.name}</h3>
+              {date}
             </div>
           </div>
       </div>
-    {isActive && <div class='accordion-content'>{content}</div>}
+    {isActive && <div class='accordion-content'>{event.description}{event.details}</div>}
   </div>
 
 )
