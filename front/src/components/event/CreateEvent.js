@@ -122,8 +122,11 @@ const Event = () => {
                     </div>
                     <div class="form-group make_blog">
                     Requirements
-                        <input ref={entranceFee} type="text" class="form-control" required/>
-                        <input ref={drinkRequired} type="text" class="form-control" required/>
+                        <input ref={entranceFee} type="number" placeholder="Entrance Fee in Yen" class="form-control" required/>
+                        <select class='form-control' ref={drinkRequired}>
+                            <option class='col slim feedback clickable' value={true}>Yes</option>
+                            <option class='col slim feedback clickable' value={false}>No</option>
+                        </select>
                     </div>
                     <label>{feedback}</label>
                     <button type="submit" class="solid-first">Submit</button>
