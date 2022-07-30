@@ -33,6 +33,7 @@ const EventList = () => {
   },[])
 
   const getImage=(url)=>{
+    console.log(url)
     switch(url){
       case 'party':
         return party;
@@ -41,7 +42,7 @@ const EventList = () => {
       case 'event_game':
         return event_game;
       default:
-
+        console.log('No image found')
     }
   }
   const getDate=(repeats)=>{
