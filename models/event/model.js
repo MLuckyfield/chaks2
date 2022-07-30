@@ -16,6 +16,9 @@ const Event = mongoose.model('Event', new Schema({
   entranceFee: {
     type: Number,
   },
+  drinkRequired:{
+    type:Boolean
+  },
   image:{type:String},
   description:[],
   keypoints:[],

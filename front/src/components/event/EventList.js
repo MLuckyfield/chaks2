@@ -57,6 +57,7 @@ const EventList = () => {
          date = new Date(date.getYear() + 1900, date.getMonth(), (date.getDate() + 1));
          count++;
      }
+     console.log('answer is',list[repeats.week-1)
      return list[repeats.week-1]
     // const d = new Date(new Date().getYear(), new Date().getMonth() - 1, 7 * (repeats.week - 1) + 1);
     // const w = d.getDay();
@@ -89,9 +90,7 @@ const EventList = () => {
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
                 {moment(date).format('dddd, MMM DD')}, {moment(date).startOf('day').add(19,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
                 入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
-                {events[0].notes? events[0].notes.map((note,i)=>{
-                  return <span>note</span>
-                }):''}<br/>
+                {events[0].drinkRequired?'*ワンドリンクオーダー制':''}
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>

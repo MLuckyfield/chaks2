@@ -11,7 +11,8 @@ const Event = () => {
   //const [Event, setEvent] = useState();
   //const [password, setPassword] = useState();
   const name = useRef('');
-  const entrance_fee = useRef('');
+  const entranceFee = useRef('');
+  const drinkRequired = useRef('');
   const image = useRef('');
   const duration = useRef('');
   const week = useRef('');
@@ -37,9 +38,9 @@ const Event = () => {
           day:day.current.value,
           week:week.current.value
         },
-        entrance_fee: entrance_fee.current.value,
+        entranceFee: entranceFee.current.value,
+        drinkRequired:drinkRequired.current.value,
         image: image.current.value,
-        notes: notes,
         description: convertToRaw(description.getCurrentContent()),
         keypoints: convertToRaw(keypoints.getCurrentContent()),
       })
@@ -102,20 +103,27 @@ const Event = () => {
                       </select>
                       <input ref={week} type="number" class="form-control" min='1' max='4' required/>
                       <input ref={duration} type="number" class="form-control" value='240' required/>
-                      <span>Time:{moment(day).startOf('day').add(19,'hours').format('dddd, MMM DD @ h:mm a')} ~ {moment(day).startOf('day').add(19,'hours').add(duration.current.value,'minutes').format('h:mm a')}</span>
                     </div>
                     <div class="form-group make_blog">
+                      Background Photo
                       <input ref={image} type="text" class="form-control" required/>
                     </div>
                     <div class="form-group make_blog">
+                      Description
                       <div class='editor'>
                       <Editor editorState={description} onChange={setDescription} handleKeyCommand={markDescription}/>
                       </div>
                     </div>
                     <div class="form-group make_blog">
+                    Details
                       <div class='editor'>
                       <Editor editorState={keypoints} onChange={setKeypoints} handleKeyCommand={markKeypoints}/>
                       </div>
+                    </div>
+                    <div class="form-group make_blog">
+                    Requirements
+                        <input ref={entranceFee} type="text" class="form-control" required/>
+                        <input ref={drinkRequired} type="text" class="form-control" required/>
                     </div>
                     <label>{feedback}</label>
                     <button type="submit" class="solid-first">Submit</button>
