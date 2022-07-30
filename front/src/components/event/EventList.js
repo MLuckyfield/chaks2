@@ -51,8 +51,8 @@ const EventList = () => {
     let date = new Date(year,month,1)
     let list = []
      while (count < new Date(year, month, 0).getDate()){
-       console.log(date.getDay(),repeats.dow,date.getDay()===repeats.dow)
-         if (date.getDay() === repeats.dow){
+       console.log(date.getDay(),repeats.day,date.getDay()===repeats.day)
+         if (date.getDay() === repeats.day){
            list.push(date)
          }
          date = new Date(date.getYear() + 1900, date.getMonth(), (date.getDate() + 1));
