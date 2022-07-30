@@ -56,7 +56,7 @@ const EventList = () => {
          date = new Date(date.getYear() + 1900, date.getMonth(), (date.getDate() + 1));
          count++;
      }
-     console.log('answer is',list[repeats.week-1])
+     console.log('answer is',repeats.week,list,list[repeats.week-1])
      return list[repeats.week-1]
     // const d = new Date(new Date().getYear(), new Date().getMonth() - 1, 7 * (repeats.week - 1) + 1);
     // const w = d.getDay();
