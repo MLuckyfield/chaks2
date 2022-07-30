@@ -60,7 +60,7 @@ const EventList = () => {
          date = new Date((year + 1900), month, (date.getDate() + 1));
          count++;
      }
-     let adjusted =list[repeats.week-1];
+     let adjusted = list[repeats.week-1];
      if (adjusted.getDate()<new Date().getDate()){
        return adjusted
      }
@@ -99,7 +99,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem title={event.name} content={moment(date).format('dddd, MMM DD')} />
+                        <AccordionItem title={event.name} content={moment(date).format('dddd, MMM DD')} image={event.image}/>
                       )
                     }
                   })): 'Coming soon!'}
@@ -111,13 +111,14 @@ const EventList = () => {
       </div>
 )
 }
-const AccordionItem=({ title, content })=>{
+const AccordionItem=({ title, content, image })=>{
 const [isActive, setIsActive] = useState(false);
 return (
 
   <div class='accordion_item clickable' onClick={() => setIsActive(!isActive)}>
       <div class='col'>
           <div class='fixed-row'>
+            <img class='photo' src={image}></img>
             <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
               <h3>{title}</h3>
               {content}
