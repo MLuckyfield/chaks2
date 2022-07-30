@@ -46,15 +46,19 @@ const EventList = () => {
 
   const getDate=(repeats)=>{
     let count = 0;
-    let date = new Date(new Date().getYear(),new Date().getMonth(),1)
-     while (count < repeats.week){
+    let year = new Date().getYear()
+    let month = new Date().getMonth()
+    let date = new Date(year,month,1)
+    let list = []
+     while (count < new Date(year, month, 0).getDate()){
          if (date.getDay() === repeats.dow){
-             break;
+           list.push(date)
          }
          date = new Date(date.getYear() + 1900, date.getMonth(), (date.getDate() + 1));
+         count++;
+         console.log(count)
      }
-     console.log(date)
-     return date
+     return list[repeats.week-1]
     // const d = new Date(new Date().getYear(), new Date().getMonth() - 1, 7 * (repeats.week - 1) + 1);
     // const w = d.getDay();
     // d.setDate(d.getDate() + (7 + repeats.dow - w) % 7);
@@ -84,7 +88,7 @@ const EventList = () => {
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
-                {moment(date).format('dddd, MMM DD')}, {moment(date).startOf('day').add(19,'hours').format('h:mm a')} {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
+                {moment(date).format('dddd, MMM DD')}, {moment(date).startOf('day').add(19,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
                 入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
                 {events[0].notes? events[0].notes.map((note,i)=>{
                   return <span>note</span>
