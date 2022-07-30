@@ -48,7 +48,7 @@ const EventList = () => {
   const getDate=(repeats)=>{
     let count = 0;
     let year = new Date().getYear()
-    let month = ''
+    let month = new Date().getMonth()
     let date = new Date(year,month,1)
     let list = []
      const findDays=(x,y)=>{
@@ -67,9 +67,8 @@ const EventList = () => {
      let adjusted = list[repeats.week-1];
      if (adjusted.getDate()<new Date().getDate()){//if event is in the past
        findDays(year,month+1,0)
-
      }
-     return adjusted.setMonth(adjusted.getMonth()+1)
+     return list[repeats.week-1]
   }
 //<Carousel items={items}/>
 
