@@ -90,7 +90,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem event={event} date={moment(date).format('dddd, MMM DD')}/>
+                        <AccordionItem title={event.name} content={moment(date).format('dddd, MMM DD')} image={event.image}/>
                       )
                     }
                   })): 'Coming soon!'}
@@ -115,25 +115,21 @@ const getImage=(url)=>{
       console.log('No image found')
   }
 }
-const AccordionItem=(event,date)=>{
+const AccordionItem=({ title, content, image })=>{
 const [isActive, setIsActive] = useState(false);
 return (
 
   <div class='accordion_item clickable' onClick={() => setIsActive(!isActive)}>
       <div class='col'>
           <div class='fixed-row'>
-            <img class='photo' src={getImage(event.image)}></img>
+            <img class='photo' src={getImage(image)}></img>
             <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
-              <h3>{event.name}</h3>
-              {date}
+              <h3>{title}</h3>
+              {content}
             </div>
           </div>
       </div>
-    {isActive &&
-      <div class='accordion-content'>
-          <EditorView content={event.description} readOnly={true}/>
-          <EditorView content={event.details} readOnly={true}/>          
-      </div>}
+    {isActive && <div class='accordion-content'>{content}</div>}
   </div>
 
 )
