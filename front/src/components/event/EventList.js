@@ -42,7 +42,7 @@ const EventList = () => {
      const findDays=(x,y)=>{
        list = []
        while (count < new Date(x, y, 0).getDate()){
-         // console.log(date.getDay(),repeats.day,date.getDay()===repeats.day)
+         console.log(date.getDay(),repeats.day,date.getDay()===repeats.day)
            if (date.getDay() === repeats.day){
              list.push(date)
            }
@@ -50,10 +50,11 @@ const EventList = () => {
            count++;
        }
      }
-     findDays(year,month,0)
+     findDays(year,month)
+     console.log(list)
      let adjusted = list[repeats.week-1];
      if (adjusted.getDate()<new Date().getDate()){//if event is in the past
-       findDays(year,month+1,0)
+       findDays(year,month+1)
      }
      console.log('conclusion',list[repeats.week-1])
      return list[repeats.week-1]
@@ -128,9 +129,7 @@ return (
               {date}
             </div>
           </div>
-    {isActive && <div class='accordion-content'>
-          <EditorView content={description} readOnly={true}/>
-      </div>}
+    {isActive && <div class='accordion-content'></div>}
   </div>
 
 )
