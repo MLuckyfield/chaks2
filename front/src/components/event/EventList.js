@@ -37,6 +37,7 @@ const EventList = () => {
     let year = new Date().getYear()
     let month = new Date().getMonth()
     let date = new Date(year,month,1)
+    console.log('starting with',year,month,date)
     let list = []
      const findDays=(x,y)=>{
        list = []
@@ -45,7 +46,6 @@ const EventList = () => {
            if (date.getDay() === repeats.day){
              list.push(date)
            }
-           console.log(year, year+1900)
            date = new Date((year + 1900), month, (date.getDate() + 1));
            count++;
        }
@@ -55,6 +55,7 @@ const EventList = () => {
      if (adjusted.getDate()<new Date().getDate()){//if event is in the past
        findDays(year,month+1,0)
      }
+     console.log('conclusion',list[repeats.week-1])
      return list[repeats.week-1]
   }
 //<Carousel items={items}/>
@@ -90,7 +91,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem title={event.name} content={moment(date).format('dddd, MMM DD')} image={event.image}/>
+                        <AccordionItem title={event.name} date={moment(date).format('dddd, MMM DD')} description={events[0].description} image={event.image}/>
                       )
                     }
                   })): 'Coming soon!'}
@@ -115,21 +116,21 @@ const getImage=(url)=>{
       console.log('No image found')
   }
 }
-const AccordionItem=({ title, content, image })=>{
+const AccordionItem=({ title, date, description,image })=>{
 const [isActive, setIsActive] = useState(false);
 return (
 
-  <div class='accordion_item clickable' onClick={() => setIsActive(!isActive)}>
-      <div class='col'>
+  <div class='accordion_item clickable' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
           <div class='fixed-row'>
             <img class='photo' src={getImage(image)}></img>
-            <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
+            <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
               <h3>{title}</h3>
-              {content}
+              {date}
             </div>
           </div>
-      </div>
-    {isActive && <div class='accordion-content'>{content}</div>}
+    {isActive && <div class='accordion-content'>
+          <EditorView content={description} readOnly={true}/>
+      </div>}
   </div>
 
 )
