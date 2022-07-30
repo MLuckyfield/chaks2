@@ -31,18 +31,18 @@ const EventList = () => {
       .catch(error => console.log("error"+error))
   },[])
 
-  const getImage=(url)=>{
-    switch(url){
-      case 'party':
-        return party;
-      case 'dj_night':
-        return dj_night
-      case 'event_game':
-        return event_game;
-      default:
-
-    }
-  }
+  // const getImage=(url)=>{
+  //   switch(url){
+  //     case 'party':
+  //       return party;
+  //     case 'dj_night':
+  //       return dj_night
+  //     case 'event_game':
+  //       return event_game;
+  //     default:
+  //
+  //   }
+  // }
 
   const getDate=(repeats)=>{
     let count = 0;
@@ -67,7 +67,7 @@ const EventList = () => {
       <div>
       {events?
         <span>
-        <div id='header' class='transparent' style={{backgroundImage: 'url('+getImage(events[0].image)+')'}}>
+        <div id='header' class='transparent' >
           <div class='overlay'>
               <div class='row'>
                 <div class='col'>
