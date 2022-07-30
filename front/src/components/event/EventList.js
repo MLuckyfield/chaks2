@@ -21,6 +21,7 @@ const EventList = () => {
       .then((res) => {
           console.log(res)
           let formatted = res.data.data.reverse()
+          console.log('event date',formatted[0],formatted[0].repeats)
           console.log('data',getDate(formatted[0].repeats))
           setDate(getDate(formatted[0].repeats));
           console.log('date ready')
@@ -94,26 +95,38 @@ const EventList = () => {
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
+                <div class='accordion'>
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <div class='col'>
-                            <div class='fixed-row'>
-                              <img class='photo' src={event.image}></img>
-                              <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
-                                <h3>{event.name}!</h3>
-                                {moment(date).format('dddd, MMM DD')}
-                              </div>
-                            </div>
-                        </div>
+                        <AccordionItem title={event.name} content={moment(date).format('dddd, MMM DD')} />
                       )
                     }
                   })): 'Coming soon!'}
+                </div>
             </div>
         </div>
         </span>:''}
         <AccessDisplay/>
       </div>
+)
+}
+const AccordionItem=({ title, content })=>{
+const [isActive, setIsActive] = useState(false);
+return (
+
+  <div class='accordion_item clickable' onClick={() => setIsActive(!isActive)}>
+      <div class='col'>
+          <div class='fixed-row'>
+            <div class='col' style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
+              <h3>{title}</h3>
+              {content}
+            </div>
+          </div>
+      </div>
+    {isActive && <div class='accordion-content'>{content}</div>}
+  </div>
+
 )
 }
 const EditorView = (props)=>{
