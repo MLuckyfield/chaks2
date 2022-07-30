@@ -52,7 +52,7 @@ const EventList = () => {
     let date = new Date(year,month,1)
     let list = []
      while (count < new Date(year, month, 0).getDate()){
-       console.log(date.getDay(),repeats.day,date.getDay()===repeats.day)
+       // console.log(date.getDay(),repeats.day,date.getDay()===repeats.day)
          if (date.getDay() === repeats.day){
            list.push(date)
          }
@@ -60,7 +60,7 @@ const EventList = () => {
          date = new Date((year + 1900), month, (date.getDate() + 1));
          count++;
      }
-     console.log('answer is',repeats.week,list,list[repeats.week-1])
+     // console.log('answer is',repeats.week,list,list[repeats.week-1])
      return list[repeats.week-1]
   }
 //<Carousel items={items}/>
@@ -69,7 +69,7 @@ const EventList = () => {
       <div>
       {events?
         <span>
-        <div id='header' class='transparent' style={{backgroundImage:'url('+events[0].image+')'} }>
+        <div id='header' class='transparent' style={{backgroundImage:'url('+getImage(events[0].image)+')'} }>
           <div class='overlay'>
               <div class='row'>
                 <div class='col'>
