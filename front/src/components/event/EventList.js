@@ -41,7 +41,7 @@ const EventList = () => {
     console.log('approach',repeats.day,repeats.week)
     let list = []
      const findDays=(x,y)=>{
-       console.log(new Date(x, y, 0).getDate())
+       // console.log(new Date(x, y, 0).getDate())
        count=0
        list = []
        while (count < new Date(x, y, 0).getDate()){
@@ -54,13 +54,13 @@ const EventList = () => {
        }
      }
      findDays(year,month)
-     // console.log(list, repeats.week-1)
+     console.log(list, repeats.week-1)
      let adjusted = list[repeats.week-1];
      if (adjusted.getDate()<new Date().getDate()){//if event is in the past
-       // console.log('rerun')
+       console.log('rerun')
        findDays(year,month+1)
      }
-     console.log('conclusion',list[repeats.week-1])
+     // console.log('conclusion',list[repeats.week-1])
      return list[repeats.week-1]
   }
 //<Carousel items={items}/>
