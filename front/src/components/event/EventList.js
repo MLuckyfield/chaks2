@@ -128,7 +128,7 @@ const AccordionItem=({ title, date, description,image,id })=>{
     const [isActive, setIsActive] = useState(false);
 
     useEffect(()=>{
-      console.log('User',user)
+      console.log('User',user.role==='manager')
     },[])
     const onSubmit=(e,id,rsvp)=>{
       console.log('rsvp for',id,user._id)
@@ -160,8 +160,8 @@ const AccordionItem=({ title, date, description,image,id })=>{
             <div class='col slim'>
             <EditorView content={description} readOnly={true}/>
             {user?(
-              user.role=='manager'?<div class="btn" onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''
-            ):'Sign in to RSVP!'}
+              user.role==='manager'?<div class="btn" onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''
+            ):''}
             </div>
           </div>}
       </div>

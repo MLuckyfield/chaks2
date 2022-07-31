@@ -46,7 +46,7 @@ const sendBooking = (user,req,res)=>{
     // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a').toString())
 
     const mailOptions = prepareEmail(
-      'NEW BOOKING for ' +user.first+' '+user.last+ '| Teacher: ' + req.teacher+' @ '+timezone.tz(req.date,'Asia/Tokyo').format('dddd, MMM DD @ h:mm a').toString(),
+      'BOT| New Booking for ' +user.first+' '+user.last+ '| Teacher: ' + req.teacher+' @ '+timezone.tz(req.date,'Asia/Tokyo').format('dddd, MMM DD @ h:mm a').toString(),
       user.first+' '+user.last+' wants to learn '+req.lesson
     )
     sendEmail(transporter,mailOptions,res)
@@ -60,7 +60,7 @@ const sendRSVP = (user,event,res)=>{
     // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a').toString())
 
     const mailOptions = prepareEmail(
-      'NEW RSVP for ' +event.name+' | ' + user.first,
+      'BOT|New RSVP for ' +event.name+' | ' + user.first,
       user.first+' will join '+event.name
     )
     sendEmail(transporter,mailOptions,res,event)
