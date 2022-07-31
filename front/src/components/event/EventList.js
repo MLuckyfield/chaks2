@@ -76,7 +76,7 @@ const EventList = () => {
               <div class='row'>
                 <div class='col'>
                   <h1>{events[0].name}</h1>
-                  <h3>{moment(events[0].date).format('dddd, MMM DD')}</h3>
+                  <h3>{moment(events[0].date).format('MM月D日')}</h3>
                 </div>
               </div>
           </div>
@@ -88,7 +88,7 @@ const EventList = () => {
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
-                {moment(date).format('dddd, MMM DD')}, {moment(date).startOf('day').add(19.5,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
+                {moment(date).format('MM D')}, {moment(date).startOf('day').add(19.5,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
                 入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
                 {events[0].drinkRequired?'*ワンドリンクオーダー制':''}
             </div>
@@ -98,7 +98,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem title={event.name} date={moment(event.date).format('dddd, MMM DD')} description={events[0].description[0]} image={event.image} id={event._id}/>
+                        <AccordionItem title={event.name} date={moment(event.date).format('MM D')} description={event.description[0]} image={event.image} id={event._id}/>
                       )
                     }
                   })): 'Coming soon!'}
@@ -127,8 +127,11 @@ const AccordionItem=({ title, date, description,image,id })=>{
     const [user, setUser] = useState(localStorage.getItem('user'))
     const [isActive, setIsActive] = useState(false);
 
+    useEffect(()=>{
+      console.log('User',user.role)
+    },[])
     const onSubmit=(e,id,rsvp)=>{
-      console.log('rsvp for',id)
+      console.log('rsvp for',id,user._id)
       e.preventDefault();
       axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user._id}})
         .then((res) => {
@@ -141,7 +144,7 @@ const AccordionItem=({ title, date, description,image,id })=>{
 
     }
     return (
-      <div class='accordion_item' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
+      <div class='accordion_item clickable' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
               <div class='fixed-row'>
                 <img class='photo' src={getImage(image)}></img>
                 <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
@@ -151,8 +154,10 @@ const AccordionItem=({ title, date, description,image,id })=>{
               </div>
         {isActive &&
           <div class='accordion-content'>
+            <div class='col slim'>
             <EditorView content={description} readOnly={true}/>
             {user.role=='manager'?<div class="btn" onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''}
+            </div>
           </div>}
       </div>
     )
