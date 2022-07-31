@@ -96,7 +96,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem title={event.name} date={moment(date).format('dddd, MMM DD')} description={events[0].description} image={event.image}/>
+                        <AccordionItem title={event.name} date={moment(getDate(event.repeats)).format('dddd, MMM DD')} description={events[0].description} image={event.image}/>
                       )
                     }
                   })): 'Coming soon!'}
