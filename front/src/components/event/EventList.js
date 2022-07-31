@@ -89,7 +89,7 @@ const EventList = () => {
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
-                {moment(date).format('dddd, MMM DD')}, {moment(date).startOf('day').add(19,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
+                {moment(date).format('dddd, MMM DD')}, {moment(date).startOf('day').add(19.5,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
                 入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
                 {events[0].drinkRequired?'*ワンドリンクオーダー制':''}
             </div>
@@ -126,18 +126,20 @@ const getImage=(url)=>{
 }
 const AccordionItem=({ title, date, description,image,id })=>{
 const [isActive, setIsActive] = useState(false);
-const onSubmit=(id)=>{
-  
+const onSubmit=(id,rsvp)=>{
+  console.log('rsvp for',id,rsvp)
   e.preventDefault();
-  axios.post('/event_info/update',{filter:{_id:id},{'$set':{attendees:user._id}},{new:true}})
+  axios.post('/event_info/update',{params:{filter:id,rsvp:rsvp}})
     .then((res) => {
-        console.log(res)
+        console.log(res.data)
 
       })
     .catch(error => console.log("error"+error))
 }
-return (
+const isAttending=()=>{
 
+}
+return (
   <div class='accordion_item' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
           <div class='fixed-row'>
             <img class='photo' src={getImage(image)}></img>
@@ -149,10 +151,9 @@ return (
     {isActive &&
       <div class='accordion-content'>
         <EditorView content={description} readOnly={true}/>
-        {user.role=='manager'?<div class="btn" onClick={()=>{onSubmit(id)}}>RSVP</div>}
+        {user.role=='manager'?<div class="btn" onClick={()=>{onSubmit(id,user._id)}}>RSVP</div>}
       </div>}
   </div>
-
 )
 }
 const EditorView = (props)=>{

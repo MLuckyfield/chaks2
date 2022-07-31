@@ -29,7 +29,23 @@ const request = require('request')
       }
     });
 
-
+    router.post('/update',auth.auth, auth.permission(['manager']),async (req,res)=>{
+      req=req.query
+      Event.findByIdAndUpdate(req.filter,{'$set':{attendees:req.rsvp}},{new:true})
+            .then((result)=>{
+              return res.status(201).json({
+                data:result,
+                message: 'User update',
+                success: true
+              });
+            })
+            .catch((err)=>{
+              return res.status(500).json({
+                message: `Could not find user: ${err}`,
+                success: false
+              });
+            })
+    })
     router.post('/update',auth.auth, auth.permission(['manager']),async (req,res)=>{
       await Event.findOneAndUpdate(req.body.filter,req.body.data)
           .then(()=>{
