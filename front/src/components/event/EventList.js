@@ -128,7 +128,7 @@ const AccordionItem=({ title, date, description,image,id })=>{
     const [isActive, setIsActive] = useState(false);
 
     useEffect(()=>{
-      console.log('User',user.role)
+      console.log('User',user)
     },[])
     const onSubmit=(e,id,rsvp)=>{
       console.log('rsvp for',id,user._id)
