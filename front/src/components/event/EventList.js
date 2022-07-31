@@ -20,12 +20,15 @@ const EventList = () => {
     axios.get('/event_info/all')
       .then((res) => {
           console.log(res)
-          let formatted = res.data.data.reverse()
-          console.log('event date',formatted[0],formatted[0].repeats)
-          console.log('data',getDate(formatted[0].repeats))
+          let formatted = res.data.data
+          formatted.forEach((event, i) => {
+            let readyDate = getDate(event.repeats)
+            event['date'] = readyDate
+          });
+          formatted.sort((a,b)=>Number(a.date)-Number(b.date))
           setDate(getDate(formatted[0].repeats));
           console.log('date ready')
-          setEvents(res.data.data);
+          setEvents(formatted);
           console.log('events ready')
 
         })
@@ -74,7 +77,7 @@ const EventList = () => {
               <div class='row'>
                 <div class='col'>
                   <h1>{events[0].name}</h1>
-                  <h3>{date?moment(date).format('dddd, MMM DD'):''}</h3>
+                  <h3>{moment(events[0].date).format('dddd, MMM DD')}</h3>
                 </div>
               </div>
           </div>
@@ -96,7 +99,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem title={event.name} date={moment(getDate(event.repeats)).format('dddd, MMM DD')} description={events[0].description} image={event.image}/>
+                        <AccordionItem title={event.name} date={moment(event.date).format('dddd, MMM DD')} description={events[0].description} image={event.image}/>
                       )
                     }
                   })): 'Coming soon!'}
