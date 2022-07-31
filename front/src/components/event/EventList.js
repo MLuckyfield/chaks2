@@ -49,7 +49,7 @@ const EventList = () => {
            if (date.getDay() === repeats.day){
              list.push(date)
            }
-           date = new Date((year), month, (date.getDate() + 1));
+           date = new Date(x, y, (date.getDate() + 1));
            count++;
        }
      }
