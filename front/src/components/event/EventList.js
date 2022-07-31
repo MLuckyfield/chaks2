@@ -19,7 +19,7 @@ const EventList = () => {
     metaTags('EVENTS','英語学習に使える無料の情報はこちらから！英語のスラングや、効率的な英語の勉強方法など様々な情報を発信しています！')
     axios.get('/event_info/all')
       .then((res) => {
-          console.log(res)
+          // console.log(res)
           let formatted = res.data.data
           formatted.forEach((event, i) => {
             let readyDate = getDate(event.repeats)
@@ -27,9 +27,9 @@ const EventList = () => {
           });
           formatted.sort((a,b)=>Number(a.date)-Number(b.date))
           setDate(getDate(formatted[0].repeats));
-          console.log('date ready')
+          // console.log('date ready')
           setEvents(formatted);
-          console.log('events ready')
+          // console.log('events ready')
 
         })
       .catch(error => console.log("error"+error))
@@ -40,8 +40,8 @@ const EventList = () => {
     let year = new Date().getYear()+1900
     let month = new Date().getMonth()
     let date = new Date(year,month,1)
-    console.log('starting with',year,month,date)
-    console.log('approach',repeats.day,repeats.week)
+    // console.log('starting with',year,month,date)
+    // console.log('approach',repeats.day,repeats.week)
     let list = []
      const findDays=(x,y)=>{
        // console.log(new Date(x, y, 0).getDate())
@@ -57,10 +57,10 @@ const EventList = () => {
        }
      }
      findDays(year,month)
-     console.log(list, repeats.week-1)
+     // console.log(list, repeats.week-1)
      let adjusted = list[repeats.week-1];
      if (adjusted.getDate()<new Date().getDate()){//if event is in the past
-       console.log('rerun for',month, month+1)
+       // console.log('rerun for',month, month+1)
        findDays(year,month+1)
      }
      // console.log('conclusion',list[repeats.week-1])
@@ -99,7 +99,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem title={event.name} date={moment(event.date).format('dddd, MMM DD')} description={events[0].description} image={event.image}/>
+                        <AccordionItem title={event.name} date={moment(event.date).format('dddd, MMM DD')} description={events[0].description[0]} image={event.image}/>
                       )
                     }
                   })): 'Coming soon!'}
@@ -136,7 +136,7 @@ return (
               {date}
             </div>
           </div>
-    {isActive && <div class='accordion-content'></div>}
+    {isActive && <div class='accordion-content'><EditorView content={description} readOnly={true}/></div>}
   </div>
 
 )

@@ -24,6 +24,10 @@ const Event = mongoose.model('Event', new Schema({
   keypoints:[],
   active:{
     type: Boolean
+  },
+  attendees:{//opinions from others
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 },{
   timestamps: true,
