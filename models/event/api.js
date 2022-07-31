@@ -29,7 +29,8 @@ const request = require('request')
       }
     });
 
-    router.post('/update',auth.auth, auth.permission(['manager']),async (req,res)=>{
+    router.post('/rsvp',auth.auth, auth.permission(['manager']),async (req,res)=>{
+      console.log(req)
       req=req.query
       Event.findByIdAndUpdate(req.filter,{'$set':{attendees:req.rsvp}},{new:true})
             .then((result)=>{

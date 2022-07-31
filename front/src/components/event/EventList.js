@@ -14,7 +14,6 @@ const EventList = () => {
   const [events, setEvents] = useState();
   const [date, setDate] = useState(new Date());
   const [keypoints,setKeypoints] = useState()
-  const [user, setUser] = useState(localStorage.getItem('user'))
   useEffect(() => {
     metaTags('EVENTS','英語学習に使える無料の情報はこちらから！英語のスラングや、効率的な英語の勉強方法など様々な情報を発信しています！')
     axios.get('/event_info/all')
@@ -125,36 +124,38 @@ const getImage=(url)=>{
   }
 }
 const AccordionItem=({ title, date, description,image,id })=>{
-const [isActive, setIsActive] = useState(false);
-const onSubmit=(id,rsvp)=>{
-  console.log('rsvp for',id,rsvp)
-  e.preventDefault();
-  axios.post('/event_info/update',{params:{filter:id,rsvp:rsvp}})
-    .then((res) => {
-        console.log(res.data)
+    const [user, setUser] = useState(localStorage.getItem('user'))
+    const [isActive, setIsActive] = useState(false);
 
-      })
-    .catch(error => console.log("error"+error))
-}
-const isAttending=()=>{
+    const onSubmit=(e,id,rsvp)=>{
+      console.log('rsvp for',id)
+      e.preventDefault();
+      axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user._id}})
+        .then((res) => {
+            console.log(res.data)
 
-}
-return (
-  <div class='accordion_item' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
-          <div class='fixed-row'>
-            <img class='photo' src={getImage(image)}></img>
-            <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
-              <h3>{title}</h3>
-              {date}
-            </div>
-          </div>
-    {isActive &&
-      <div class='accordion-content'>
-        <EditorView content={description} readOnly={true}/>
-        {user.role=='manager'?<div class="btn" onClick={()=>{onSubmit(id,user._id)}}>RSVP</div>}
-      </div>}
-  </div>
-)
+          })
+        .catch(error => console.log("error"+error))
+    }
+    const isAttending=()=>{
+
+    }
+    return (
+      <div class='accordion_item' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
+              <div class='fixed-row'>
+                <img class='photo' src={getImage(image)}></img>
+                <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
+                  <h3>{title}</h3>
+                  {date}
+                </div>
+              </div>
+        {isActive &&
+          <div class='accordion-content'>
+            <EditorView content={description} readOnly={true}/>
+            {user.role=='manager'?<div class="btn" onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''}
+          </div>}
+      </div>
+    )
 }
 const EditorView = (props)=>{
   const [editorState,setEditorState] = useState(()=>{
