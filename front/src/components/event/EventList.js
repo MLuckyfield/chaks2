@@ -41,6 +41,7 @@ const EventList = () => {
     let list = []
      const findDays=(x,y)=>{
        console.log(new Date(x, y, 0).getDate())
+       count=0
        list = []
        while (count < new Date(x, y, 0).getDate()){
          console.log(date.getDay(),repeats.day,date.getDay()===repeats.day)
@@ -123,7 +124,7 @@ const AccordionItem=({ title, date, description,image })=>{
 const [isActive, setIsActive] = useState(false);
 return (
 
-  <div class='accordion_item clickable' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
+  <div class='accordion_item' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
           <div class='fixed-row'>
             <img class='photo' src={getImage(image)}></img>
             <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
