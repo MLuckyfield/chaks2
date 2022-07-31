@@ -14,7 +14,7 @@ const EventList = () => {
   const [events, setEvents] = useState();
   const [date, setDate] = useState(new Date());
   const [keypoints,setKeypoints] = useState()
-
+  const [user, setUser] = useState(localStorage.getItem('user'))
   useEffect(() => {
     metaTags('EVENTS','英語学習に使える無料の情報はこちらから！英語のスラングや、効率的な英語の勉強方法など様々な情報を発信しています！')
     axios.get('/event_info/all')
@@ -99,7 +99,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem title={event.name} date={moment(event.date).format('dddd, MMM DD')} description={events[0].description[0]} image={event.image}/>
+                        <AccordionItem title={event.name} date={moment(event.date).format('dddd, MMM DD')} description={events[0].description[0]} image={event.image} id={event._id}/>
                       )
                     }
                   })): 'Coming soon!'}
@@ -124,8 +124,18 @@ const getImage=(url)=>{
       console.log('No image found')
   }
 }
-const AccordionItem=({ title, date, description,image })=>{
+const AccordionItem=({ title, date, description,image,id })=>{
 const [isActive, setIsActive] = useState(false);
+const onSubmit=(id)=>{
+  
+  e.preventDefault();
+  axios.post('/event_info/update',{filter:{_id:id},{'$set':{attendees:user._id}},{new:true}})
+    .then((res) => {
+        console.log(res)
+
+      })
+    .catch(error => console.log("error"+error))
+}
 return (
 
   <div class='accordion_item' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
@@ -136,7 +146,11 @@ return (
               {date}
             </div>
           </div>
-    {isActive && <div class='accordion-content'><EditorView content={description} readOnly={true}/></div>}
+    {isActive &&
+      <div class='accordion-content'>
+        <EditorView content={description} readOnly={true}/>
+        {user.role=='manager'?<div class="btn" onClick={()=>{onSubmit(id)}}>RSVP</div>}
+      </div>}
   </div>
 
 )
