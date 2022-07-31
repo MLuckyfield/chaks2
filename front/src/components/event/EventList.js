@@ -40,6 +40,7 @@ const EventList = () => {
     console.log('starting with',year,month,date)
     let list = []
      const findDays=(x,y)=>{
+       console.log(new Date(x, y, 0).getDate())
        list = []
        while (count < new Date(x, y, 0).getDate()){
          console.log(date.getDay(),repeats.day,date.getDay()===repeats.day)
