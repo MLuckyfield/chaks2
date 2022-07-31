@@ -57,7 +57,7 @@ const EventList = () => {
      console.log(list, repeats.week-1)
      let adjusted = list[repeats.week-1];
      if (adjusted.getDate()<new Date().getDate()){//if event is in the past
-       console.log('rerun')
+       console.log('rerun for',month, month+1)
        findDays(year,month+1)
      }
      // console.log('conclusion',list[repeats.week-1])
