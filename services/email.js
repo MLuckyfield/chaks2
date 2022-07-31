@@ -20,7 +20,7 @@ const prepareEmail=(subject,text)=>{
     text: text
   };
 }
-const sendEmail=(transporter,mailOptions)=>{
+const sendEmail=(transporter,mailOptions,res,data)=>{
   transporter.sendMail(mailOptions, function(error, info){
       if (error) {
         console.log(error)
@@ -30,6 +30,7 @@ const sendEmail=(transporter,mailOptions)=>{
         });
       } else {console.log('email sent')
         return res.status(201).json({
+          data:data,
           message: 'Done! See you soon :)',
           success: true
         });
@@ -48,9 +49,9 @@ const sendBooking = (user,req,res)=>{
       'NEW BOOKING for ' +user.first+' '+user.last+ '| Teacher: ' + req.teacher+' @ '+timezone.tz(req.date,'Asia/Tokyo').format('dddd, MMM DD @ h:mm a').toString(),
       user.first+' '+user.last+' wants to learn '+req.lesson
     )
-    const sendEmail(transporter,mailOptions)
+    sendEmail(transporter,mailOptions,res)
 }
-const sendRSVP = (user,req,res)=>{
+const sendRSVP = (user,event,res)=>{
     console.log('email service starting')
     // console.log(booking)
     const transporter = authenticate()
@@ -59,9 +60,9 @@ const sendRSVP = (user,req,res)=>{
     // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a').toString())
 
     const mailOptions = prepareEmail(
-      'NEW BOOKING for ' +user.first+' '+user.last+ '| Teacher: ' + req.teacher+' @ '+timezone.tz(req.date,'Asia/Tokyo').format('dddd, MMM DD @ h:mm a').toString(),
-      user.first+' '+user.last+' wants to learn '+req.lesson
+      'NEW RSVP for ' +event.name+' | ' + user.first,
+      user.first+' will join '+event.name
     )
-    const sendEmail(transporter,mailOptions)
+    sendEmail(transporter,mailOptions,res,event)
 }
 module.exports={sendBooking}

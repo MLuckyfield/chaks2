@@ -133,7 +133,7 @@ const AccordionItem=({ title, date, description,image,id })=>{
     const onSubmit=(e,id,rsvp)=>{
       console.log('rsvp for',id,user._id)
       e.preventDefault();
-      axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user._id}})
+      axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user}})
         .then((res) => {
             console.log(res.data)
 

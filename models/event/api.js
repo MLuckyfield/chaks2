@@ -2,6 +2,7 @@ const router = require('express').Router();
 const auth= require('../../services/authentication');
 const Event = require('./model')
 const request = require('request')
+const email = require('../../services/email')
 
 //Registration
 
@@ -32,8 +33,9 @@ const request = require('request')
     router.post('/rsvp',auth.auth, auth.permission(['manager']),async (req,res)=>{
       console.log(req)
       req=req.query
-      Event.findByIdAndUpdate(req.filter,{'$set':{attendees:req.rsvp}},{new:true})
+      Event.findByIdAndUpdate(req.filter,{'$set':{attendees:req.rsvp._id}},{new:true})
             .then((result)=>{
+              email.sendRSVP(req.rsvp,result,res)
               return res.status(201).json({
                 data:result,
                 message: 'User update',
