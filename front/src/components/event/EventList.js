@@ -98,7 +98,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem title={event.name} date={moment(event.date).format('MM D')} description={event.description[0]} image={event.image} id={event._id}/>
+                        <AccordionItem title={event.name} date={moment(event.date).format('MM月D日')} description={event.description[0]} image={event.image} id={event._id}/>
                       )
                     }
                   })): 'Coming soon!'}
@@ -140,8 +140,11 @@ const AccordionItem=({ title, date, description,image,id })=>{
           })
         .catch(error => console.log("error"+error))
     }
-    const isAttending=()=>{
-
+    const isAttending=(event)=>{
+        event.attendees.forEach((person, i) => {
+          if(person==user._id){return true}
+        });
+        return false
     }
     return (
       <div class='accordion_item clickable' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
@@ -156,7 +159,9 @@ const AccordionItem=({ title, date, description,image,id })=>{
           <div class='accordion-content'>
             <div class='col slim'>
             <EditorView content={description} readOnly={true}/>
-            {user.role=='manager'?<div class="btn" onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''}
+            {user?(
+              user.role=='manager'?<div class="btn" onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''
+            ):'Sign in to RSVP!'}
             </div>
           </div>}
       </div>
