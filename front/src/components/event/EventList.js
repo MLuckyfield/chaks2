@@ -123,7 +123,7 @@ const getImage=(url)=>{
       console.log('No image found')
   }
 }
-const AccordionItem=({ title, date, description,image,id ,attendees})=>{
+const AccordionItem=(props)=>{
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
     const [isActive, setIsActive] = useState(false);
     const [isAttending, setIsAttending] = useState(false);
@@ -158,18 +158,18 @@ const AccordionItem=({ title, date, description,image,id ,attendees})=>{
     return (
       <div class='accordion_item clickable' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
               <div class='fixed-row'>
-                <img class='photo' src={getImage(image)}></img>
+                <img class='photo' src={getImage(props.image)}></img>
                 <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
-                  <h3>{title}</h3>
-                  {date}
+                  <h3>{props.title}</h3>
+                  {props.date}
                 </div>
               </div>
         {isActive &&
           <div class='accordion-content'>
             <div class='col slim'>
-            <EditorView content={description} readOnly={true}/>
+            <EditorView content={props.description} readOnly={true}/>
             {user?(
-              isAttending?<div class="relative-btn" onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''
+              isAttending?<div class="relative-btn" onClick={(e)=>{onSubmit(e,props.id)}}>RSVP</div>:''
             ):''}
             </div>
           </div>}
