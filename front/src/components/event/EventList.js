@@ -142,6 +142,7 @@ const AccordionItem=({ title, date, description,image,id ,attendees})=>{
         .catch(error => console.log("error"+error))
     }
     const attendance=(list)=>{
+      console.log(typeof list,list)
         list.forEach((person, i) => {
           if(person==user._id){return true}
         });
