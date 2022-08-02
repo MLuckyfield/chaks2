@@ -129,7 +129,7 @@ const AccordionItem=({ title, date, description,image,id ,attendees})=>{
     const [isAttending, setIsAttending] = useState(false);
 
     useEffect(()=>{
-      setIsAttending(attendance(attendees))
+      setIsAttending(attendance(props.attendees))
       console.log('User',user, typeof user, user.role,user.role==='manager')
     },[])
     const onSubmit=(e,id,rsvp)=>{
