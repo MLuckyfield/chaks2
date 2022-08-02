@@ -142,14 +142,15 @@ const getImage=(url)=>{
 }
 const attendance=(list,user)=>{
   console.log(typeof list,list)
+  user = JSON.parse(localStorage.getItem('user'))._id
     if(Array.isArray(list)){
       console.log('executing')
       if(list.length>1){
         list.forEach((person, i) => {
-          if(person==user._id){return true}
+          if(person==user){return true}
         });
       }else{
-          if(list==user._id){return true}
+          if(list==user){return true}
       }
     }
     if(list==user._id){return true}
