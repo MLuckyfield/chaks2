@@ -111,7 +111,7 @@ const EventList = () => {
 )
 }
 const getImage=(url)=>{
-  console.log(url)
+  // console.log(url)
   switch(url){
     case 'party':
       return party;
@@ -150,7 +150,7 @@ const AccordionItem=({ title, date, description,image,id ,attendees})=>{
               if(person==user._id){return true}
             });
           }else{
-              if(person==user._id){return true}
+              if(list==user._id){return true}
           }
         }
         return false
@@ -183,7 +183,7 @@ const EditorView = (props)=>{
   })
 
   useEffect(()=>{
-    console.log('content',props.content)
+    // console.log('content',props.content)
     // setEditorState()
       // props.content['entityMap']={}
   },[])
