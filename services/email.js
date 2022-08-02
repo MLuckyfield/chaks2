@@ -65,4 +65,4 @@ const sendRSVP = (user,event,res)=>{
     )
     sendEmail(transporter,mailOptions,res,event)
 }
-module.exports={sendBooking}
+module.exports={sendBooking, sendRSVP}
