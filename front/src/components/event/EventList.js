@@ -124,7 +124,7 @@ const getImage=(url)=>{
   }
 }
 const AccordionItem=({ title, date, description,image,id })=>{
-    const [user, setUser] = useState(localStorage.getItem('user'))
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
     const [isActive, setIsActive] = useState(false);
 
     useEffect(()=>{
