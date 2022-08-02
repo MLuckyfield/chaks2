@@ -143,7 +143,7 @@ const AccordionItem=(props)=>{
     }
     const attendance=(list)=>{
       console.log(typeof list,list)
-        if(list.isArray()){
+        if(Array.isArray(list)){
           console.log('executing')
           if(list.length>1){
             list.forEach((person, i) => {
