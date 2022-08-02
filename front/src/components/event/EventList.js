@@ -15,6 +15,7 @@ const EventList = () => {
   const [date, setDate] = useState(new Date());
   const [isAttending, setIsAttending] = useState(false);
   const [keypoints,setKeypoints] = useState()
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
 
   useEffect(() => {
     setIsAttending(attendance(events[0].attendees))
@@ -36,7 +37,15 @@ const EventList = () => {
         })
       .catch(error => console.log("error"+error))
   },[])
-
+  const onSubmit=(e,id,rsvp)=>{
+    console.log('rsvp for',id,user)
+    e.preventDefault();
+    axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user}})
+      .then((res) => {
+          setIsAttending(attendance(res.data.data.attendees))
+        })
+      .catch(error => console.log("error"+error))
+  }
   const getDate=(repeats)=>{
     let count = 0;
     let year = new Date().getYear()+1900
@@ -94,8 +103,8 @@ const EventList = () => {
                 {moment(date).format('MM月D日')}, {moment(date).startOf('day').add(19.5,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
                 入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
                 {events[0].drinkRequired?'*ワンドリンクオーダー制':''}
-                {localStorage.getItem('user')?(
-                  isAttending?<div class="border" style={{width:'100%',padding:'8px 30px'}}>Registered!</div>:<div class="relative-btn" onClick={(e)=>{onSubmit(e,props.id)}}>RSVP</div>
+                {user?(
+                  isAttending?<div class="border" style={{width:'100%',padding:'8px 30px'}}>Registered!</div>:<div class="relative-btn" onClick={(e)=>{onSubmit(e,events[0]._id)}}>RSVP</div>
                 ):''}
             </div>
 
