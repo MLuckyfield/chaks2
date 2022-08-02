@@ -18,7 +18,7 @@ const EventList = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
 
   useEffect(() => {
-    setIsAttending(attendance(events[0].attendees))
+    setIsAttending(attendance(events[0].attendees),user)
     metaTags('EVENTS','英語学習に使える無料の情報はこちらから！英語のスラングや、効率的な英語の勉強方法など様々な情報を発信しています！')
     axios.get('/event_info/all')
       .then((res) => {
@@ -42,7 +42,7 @@ const EventList = () => {
     e.preventDefault();
     axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user}})
       .then((res) => {
-          setIsAttending(attendance(res.data.data.attendees))
+          setIsAttending(attendance(res.data.data.attendees),user)
         })
       .catch(error => console.log("error"+error))
   }
@@ -139,7 +139,7 @@ const getImage=(url)=>{
       console.log('No image found')
   }
 }
-const attendance=(list)=>{
+const attendance=(list,user)=>{
   console.log(typeof list,list)
     if(Array.isArray(list)){
       console.log('executing')
@@ -159,7 +159,7 @@ const AccordionItem=(props)=>{
     const [isAttending, setIsAttending] = useState(false);
 
     useEffect(()=>{
-      setIsAttending(attendance(props.attendees))
+      setIsAttending(attendance(props.attendees,user))
       console.log('Attending?', user.role,props.attendees)
     },[])
     const onSubmit=(e,id,rsvp)=>{
@@ -167,7 +167,7 @@ const AccordionItem=(props)=>{
       e.preventDefault();
       axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user}})
         .then((res) => {
-            setIsAttending(attendance(res.data.data.attendees))
+            setIsAttending(attendance(res.data.data.attendees,user))
           })
         .catch(error => console.log("error"+error))
     }
