@@ -126,8 +126,10 @@ const getImage=(url)=>{
 const AccordionItem=({ title, date, description,image,id ,attendees})=>{
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
     const [isActive, setIsActive] = useState(false);
+    const [isAttending, setIsAttending] = useState(false);
 
     useEffect(()=>{
+      setIsAttending(attendance(attendees))
       console.log('User',user, typeof user, user.role,user.role==='manager')
     },[])
     const onSubmit=(e,id,rsvp)=>{
@@ -135,13 +137,12 @@ const AccordionItem=({ title, date, description,image,id ,attendees})=>{
       e.preventDefault();
       axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user}})
         .then((res) => {
-            console.log(res.data)
-
+            setIsAttending(attendance(res.data.data.attendees))
           })
         .catch(error => console.log("error"+error))
     }
-    const isAttending=()=>{
-        attendees.forEach((person, i) => {
+    const attendance=(list)=>{
+        list.forEach((person, i) => {
           if(person==user._id){return true}
         });
         return false
