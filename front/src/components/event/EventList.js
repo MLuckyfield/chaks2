@@ -18,7 +18,6 @@ const EventList = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
 
   useEffect(() => {
-    setIsAttending(attendance(events[0].attendees),user)
     metaTags('EVENTS','英語学習に使える無料の情報はこちらから！英語のスラングや、効率的な英語の勉強方法など様々な情報を発信しています！')
     axios.get('/event_info/all')
       .then((res) => {
@@ -32,6 +31,7 @@ const EventList = () => {
           setDate(getDate(formatted[0].repeats));
           // console.log('date ready')
           setEvents(formatted);
+          setIsAttending(attendance(formatted[0].attendees),user)          
           // console.log('events ready')
 
         })
