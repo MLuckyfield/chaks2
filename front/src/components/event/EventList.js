@@ -145,9 +145,13 @@ const AccordionItem=({ title, date, description,image,id ,attendees})=>{
       console.log(typeof list,list)
         if(list){
           console.log('executing')
-          list.forEach((person, i) => {
-            if(person==user._id){return true}
-          });
+          if(list.length>1){
+            list.forEach((person, i) => {
+              if(person==user._id){return true}
+            });
+          }else{
+              if(person==user._id){return true}
+          }
         }
         return false
     }
