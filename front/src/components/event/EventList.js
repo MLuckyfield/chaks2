@@ -160,7 +160,7 @@ const AccordionItem=({ title, date, description,image,id })=>{
             <div class='col slim'>
             <EditorView content={description} readOnly={true}/>
             {user?(
-              user.role==='manager'?<div class="btn" style={{position:'relative !imporant'}} onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''
+              user.role==='manager'?<div class="relative-btn" onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''
             ):''}
             </div>
           </div>}
