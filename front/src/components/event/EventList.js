@@ -88,7 +88,7 @@ const EventList = () => {
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
-                {moment(date).format('MM D')}, {moment(date).startOf('day').add(19.5,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
+                {moment(date).format('MM月D日')}, {moment(date).startOf('day').add(19.5,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
                 入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
                 {events[0].drinkRequired?'*ワンドリンクオーダー制':''}
             </div>
@@ -160,7 +160,7 @@ const AccordionItem=({ title, date, description,image,id })=>{
             <div class='col slim'>
             <EditorView content={description} readOnly={true}/>
             {user?(
-              user.role==='manager'?<div class="btn" onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''
+              user.role==='manager'?<div class="btn" style={{position:'relative !imporant'}} onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''
             ):''}
             </div>
           </div>}
