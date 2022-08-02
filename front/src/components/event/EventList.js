@@ -43,6 +43,7 @@ const EventList = () => {
     axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user}})
       .then((res) => {
           setIsAttending(attendance(res.data.data.attendees),user)
+          window.location.reload(true)
         })
       .catch(error => console.log("error"+error))
   }
@@ -169,6 +170,8 @@ const AccordionItem=(props)=>{
       axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user}})
         .then((res) => {
             setIsAttending(attendance(res.data.data.attendees,user))
+            window.location.reload(true)
+            
           })
         .catch(error => console.log("error"+error))
     }
