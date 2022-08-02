@@ -13,8 +13,11 @@ const EventList = () => {
 
   const [events, setEvents] = useState();
   const [date, setDate] = useState(new Date());
+  const [isAttending, setIsAttending] = useState(false);
   const [keypoints,setKeypoints] = useState()
+
   useEffect(() => {
+    setIsAttending(attendance(events[0].attendees))
     metaTags('EVENTS','英語学習に使える無料の情報はこちらから！英語のスラングや、効率的な英語の勉強方法など様々な情報を発信しています！')
     axios.get('/event_info/all')
       .then((res) => {
@@ -91,7 +94,11 @@ const EventList = () => {
                 {moment(date).format('MM月D日')}, {moment(date).startOf('day').add(19.5,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
                 入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
                 {events[0].drinkRequired?'*ワンドリンクオーダー制':''}
+                {localStorage.getItem('user')?(
+                  isAttending?<div class="border" style={{width:'100%',padding:'8px 30px'}}>Registered!</div>:<div class="relative-btn" onClick={(e)=>{onSubmit(e,props.id)}}>RSVP</div>
+                ):''}
             </div>
+
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>UPCOMING EVENTS...</h1>
                 <div class='accordion'>
@@ -123,6 +130,20 @@ const getImage=(url)=>{
       console.log('No image found')
   }
 }
+const attendance=(list)=>{
+  console.log(typeof list,list)
+    if(Array.isArray(list)){
+      console.log('executing')
+      if(list.length>1){
+        list.forEach((person, i) => {
+          if(person==user._id){return true}
+        });
+      }else{
+          if(list==user._id){return true}
+      }
+    }
+    return false
+}
 const AccordionItem=(props)=>{
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
     const [isActive, setIsActive] = useState(false);
@@ -141,20 +162,7 @@ const AccordionItem=(props)=>{
           })
         .catch(error => console.log("error"+error))
     }
-    const attendance=(list)=>{
-      console.log(typeof list,list)
-        if(Array.isArray(list)){
-          console.log('executing')
-          if(list.length>1){
-            list.forEach((person, i) => {
-              if(person==user._id){return true}
-            });
-          }else{
-              if(list==user._id){return true}
-          }
-        }
-        return false
-    }
+
     return (
       <div class='accordion_item clickable' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
               <div class='fixed-row'>
