@@ -31,14 +31,14 @@ const EventList = () => {
           setDate(getDate(formatted[0].repeats));
           // console.log('date ready')
           setEvents(formatted);
-          setIsAttending(attendance(formatted[0].attendees),user)
+          setIsAttending(attendance(formatted[0].attendees),JSON.parse(localStorage.getItem('user')))
           // console.log('events ready')
 
         })
       .catch(error => console.log("error"+error))
   },[])
   const onSubmit=(e,id,rsvp)=>{
-    console.log('rsvp for',id,user)
+    // console.log('rsvp for',id,user)
     e.preventDefault();
     axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user}})
       .then((res) => {
@@ -162,16 +162,16 @@ const AccordionItem=(props)=>{
 
     useEffect(()=>{
       setIsAttending(attendance(props.attendees,user))
-      console.log('Attending?', user.role,props.attendees)
+      // console.log('Attending?', user.role,props.attendees)
     },[])
     const onSubmit=(e,id,rsvp)=>{
-      console.log('rsvp for',id,user)
+      // console.log('rsvp for',id,user)
       e.preventDefault();
       axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user}})
         .then((res) => {
             setIsAttending(attendance(res.data.data.attendees,user))
             window.location.reload(true)
-            
+
           })
         .catch(error => console.log("error"+error))
     }
