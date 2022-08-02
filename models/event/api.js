@@ -32,7 +32,7 @@ const email = require('../../services/email')
 
     router.post('/rsvp',auth.auth, auth.permission(['manager']),async (req,res)=>{
       console.log(req)
-      req=req.query
+      req=req.body.params
       Event.findByIdAndUpdate(req.filter,{'$set':{attendees:req.rsvp._id}},{new:true})
             .then((result)=>{
               email.sendRSVP(req.rsvp,result,res)
