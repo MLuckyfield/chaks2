@@ -130,7 +130,7 @@ const AccordionItem=(props)=>{
 
     useEffect(()=>{
       setIsAttending(attendance(props.attendees))
-      console.log('User',user, typeof user, user.role,user.role==='manager')
+      console.log('Attending?', user.role,props.attendees)
     },[])
     const onSubmit=(e,id,rsvp)=>{
       console.log('rsvp for',id,user)
@@ -169,7 +169,7 @@ const AccordionItem=(props)=>{
             <div class='col slim'>
             <EditorView content={props.description} readOnly={true}/>
             {user?(
-              isAttending?<div class="relative-btn" onClick={(e)=>{onSubmit(e,props.id)}}>RSVP</div>:''
+              isAttending?<div class="relative-btn" onClick={(e)=>{onSubmit(e,props.id)}}>RSVP</div>:<div class="border" style={{width:'100%',padding:'8px 30px'}}>Registered!</div>
             ):''}
             </div>
           </div>}
