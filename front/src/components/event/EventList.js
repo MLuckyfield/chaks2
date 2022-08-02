@@ -31,7 +31,7 @@ const EventList = () => {
           setDate(getDate(formatted[0].repeats));
           // console.log('date ready')
           setEvents(formatted);
-          setIsAttending(attendance(formatted[0].attendees),user)          
+          setIsAttending(attendance(formatted[0].attendees),user)
           // console.log('events ready')
 
         })
@@ -151,6 +151,7 @@ const attendance=(list,user)=>{
           if(list==user._id){return true}
       }
     }
+    if(list==user._id){return true}
     return false
 }
 const AccordionItem=(props)=>{
