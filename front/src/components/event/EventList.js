@@ -143,9 +143,11 @@ const AccordionItem=({ title, date, description,image,id ,attendees})=>{
     }
     const attendance=(list)=>{
       console.log(typeof list,list)
-        list.forEach((person, i) => {
-          if(person==user._id){return true}
-        });
+        if(list){
+          list.forEach((person, i) => {
+            if(person==user._id){return true}
+          });
+        }
         return false
     }
     return (
