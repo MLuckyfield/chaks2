@@ -98,7 +98,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem title={event.name} date={moment(event.date).format('MM月D日')} description={event.description[0]} image={event.image} id={event._id} attendees={event.attendees}/>
+                        <AccordionItem title={event.name} date={moment(event.date).format('MM月D日')} description={event.description[0]} image={event.image} id={event._id} attendees={[event.attendees]}/>
                       )
                     }
                   })): 'Coming soon!'}
@@ -143,7 +143,7 @@ const AccordionItem=(props)=>{
     }
     const attendance=(list)=>{
       console.log(typeof list,list)
-        if(list){
+        if(list.isArray()){
           console.log('executing')
           if(list.length>1){
             list.forEach((person, i) => {
