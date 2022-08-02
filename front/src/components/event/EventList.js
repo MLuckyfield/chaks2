@@ -169,7 +169,7 @@ const AccordionItem=(props)=>{
             <div class='col slim'>
             <EditorView content={props.description} readOnly={true}/>
             {user?(
-              isAttending?<div class="relative-btn" onClick={(e)=>{onSubmit(e,props.id)}}>RSVP</div>:<div class="border" style={{width:'100%',padding:'8px 30px'}}>Registered!</div>
+              isAttending?<div class="border" style={{width:'100%',padding:'8px 30px'}}>Registered!</div>:<div class="relative-btn" onClick={(e)=>{onSubmit(e,props.id)}}>RSVP</div>
             ):''}
             </div>
           </div>}
