@@ -98,7 +98,7 @@ const EventList = () => {
                 {events.length>1 ? (events.map(function(event, i){
                     if(i>0){
                       return(
-                        <AccordionItem title={event.name} date={moment(event.date).format('MM月D日')} description={event.description[0]} image={event.image} id={event._id}/>
+                        <AccordionItem title={event.name} date={moment(event.date).format('MM月D日')} description={event.description[0]} image={event.image} id={event._id} attendees={event.attendees}/>
                       )
                     }
                   })): 'Coming soon!'}
@@ -123,7 +123,7 @@ const getImage=(url)=>{
       console.log('No image found')
   }
 }
-const AccordionItem=({ title, date, description,image,id })=>{
+const AccordionItem=({ title, date, description,image,id ,attendees})=>{
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
     const [isActive, setIsActive] = useState(false);
 
@@ -140,8 +140,8 @@ const AccordionItem=({ title, date, description,image,id })=>{
           })
         .catch(error => console.log("error"+error))
     }
-    const isAttending=(event)=>{
-        event.attendees.forEach((person, i) => {
+    const isAttending=()=>{
+        attendees.forEach((person, i) => {
           if(person==user._id){return true}
         });
         return false
@@ -160,7 +160,7 @@ const AccordionItem=({ title, date, description,image,id })=>{
             <div class='col slim'>
             <EditorView content={description} readOnly={true}/>
             {user?(
-              user.role==='manager'?<div class="relative-btn" onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''
+              isAttending?<div class="relative-btn" onClick={(e)=>{onSubmit(e,id)}}>RSVP</div>:''
             ):''}
             </div>
           </div>}
