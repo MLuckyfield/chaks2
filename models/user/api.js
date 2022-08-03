@@ -227,7 +227,7 @@ const moment = require ('moment')
       User.find().then((users)=>{
         console.log('cron running...',users.length)
         users.forEach((user, i) => {
-          let last = user.statistics[0]
+          let last = user.statistics.sort((a,b)=>{a.end-b.end})[0]
           if(last){
             console.log('User:',user.first,moment(last.end).format('MM D'),moment(new Date()).diff(moment(last.end),'days'))
           }
