@@ -231,7 +231,7 @@ const moment = require ('moment')
           if(user.statistics){
             last = user.statistics.sort((a,b)=>{return b.end-a.end})
             let first = user.statistics.sort((a,b)=>{return a.end-b.end})
-            console.log('User',user.first, user.statistics[0],last[0],first[0])
+            console.log('User',user.first, user.statistics[0],user.statistics.reverse()[0])
           }
           else{
 
