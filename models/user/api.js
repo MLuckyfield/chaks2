@@ -227,10 +227,14 @@ const moment = require ('moment')
       User.find().then((users)=>{
         console.log('cron running...',users.length)
         users.forEach((user, i) => {
-          let last = user.statistics.sort((a,b)=>{b.end-a.end})[0]
-          if(last){
-            console.log('User:',user.first,moment(user.statistics[0].start).format('MM D'),moment(last.end).format('MM D'),moment(new Date()).diff(moment(last.end),'days'))
+          let last = ''
+          if(user.statistics){
+            last = user.statistics.sort((a,b)=>{b.end-a.end})
+            console.log('User',user.first, user.statistics[0],last[0])
           }
+          // if(last){
+          //   console.log('User:',user.first,moment(user.statistics[0].start).format('MM D'),moment(last.end).format('MM D'),moment(new Date()).diff(moment(last.end),'days'))
+          // }
         });
       })
     })
