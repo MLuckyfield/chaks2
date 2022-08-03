@@ -228,7 +228,7 @@ const moment = require ('moment')
         console.log('cron running...',users.length)
         users.forEach((user, i) => {
           let last = ''
-          if(user.first=='大吾'){
+          if(user.statistics){
             last = user.statistics.sort((a,b)=>{return b.end-a.end})
             let first = user.statistics.sort((a,b)=>{return a.end-b.end})
             console.log('original',user.statistics)
