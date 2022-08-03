@@ -226,7 +226,7 @@ const cron = require('node-cron')
       console.log('cron running...')
       await User.find().then((users)=>{
         users.forEach((user, i) => {
-          console.log(user.statistics)
+          console.log(user.statistics.reverse()[0])
         });
 
       })
