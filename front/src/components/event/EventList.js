@@ -141,7 +141,7 @@ const getImage=(url)=>{
   }
 }
 const attendance=(list,user)=>{
-  console.log(typeof list,list)
+  console.log(user,list)
   let temp = localStorage.getItem('user')
   user = temp?JSON.parse(temp):temp;
   if(user&&list){
