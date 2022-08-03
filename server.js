@@ -6,6 +6,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const path = require("path")//heroku deployment
 const auth= require('./services/authentication');
+const cron = require('node-cron')
 
 require('dotenv').config();
 
@@ -69,6 +70,9 @@ app.use('/payment',require('./services/payment'));
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "/front/build", "index.html"));
 });
+cron.schedule('* * * * *',()=>{
+  console.log('cron running...')
+})
 //start listening
 app.listen(port,() => {
   console.log(`Server is running on port: ${port}`)
