@@ -230,7 +230,8 @@ const moment = require ('moment')
           let last = ''
           if(user.statistics){
             last = user.statistics.sort((a,b)=>{b.end-a.end})
-            console.log('User',user.first, user.statistics[0],last[0])
+            let first = user.statistics.sort((a,b)=>{a.end-b.end})
+            console.log('User',user.first, user.statistics[0],last[0],first[0])
           }
           // if(last){
           //   console.log('User:',user.first,moment(user.statistics[0].start).format('MM D'),moment(last.end).format('MM D'),moment(new Date()).diff(moment(last.end),'days'))
