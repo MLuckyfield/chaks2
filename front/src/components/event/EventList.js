@@ -144,7 +144,7 @@ const attendance=(list,user)=>{
   console.log(typeof list,list)
   let temp = localStorage.getItem('user')
   user = temp?JSON.parse(temp):temp;
-  if(user){
+  if(user&&list){
     if(Array.isArray(list)){
       console.log('executing')
       if(list.length>1){
