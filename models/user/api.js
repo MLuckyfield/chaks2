@@ -226,10 +226,8 @@ const cron = require('node-cron')
       console.log('cron running...')
       User.find().then((users)=>{
         users.forEach((user, i) => {
-          console.log(user.statistics.reverse()[0])
+          console.log('User:',user.first,user.statistics.reverse()[0])
         });
-
       })
-
     })
 module.exports = router;
