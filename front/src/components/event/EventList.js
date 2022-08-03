@@ -15,7 +15,7 @@ const EventList = () => {
   const [date, setDate] = useState(new Date());
   const [isAttending, setIsAttending] = useState(false);
   const [keypoints,setKeypoints] = useState()
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+  const [user, setUser] = useState()
 
   useEffect(() => {
     metaTags('EVENTS','英語学習に使える無料の情報はこちらから！英語のスラングや、効率的な英語の勉強方法など様々な情報を発信しています！')
@@ -31,7 +31,7 @@ const EventList = () => {
           setDate(getDate(formatted[0].repeats));
           // console.log('date ready')
           setEvents(formatted);
-          setIsAttending(attendance(formatted[0].attendees),JSON.parse(localStorage.getItem('user')))
+          setIsAttending(attendance(formatted[0].attendees),'')
           // console.log('events ready')
 
         })
@@ -142,18 +142,21 @@ const getImage=(url)=>{
 }
 const attendance=(list,user)=>{
   console.log(typeof list,list)
-  user = JSON.parse(localStorage.getItem('user'))._id
+  let temp = localStorage.getItem('user')
+  user = temp?JSON.parse(temp):temp;
+  if(user){
     if(Array.isArray(list)){
       console.log('executing')
       if(list.length>1){
         list.forEach((person, i) => {
-          if(person==user){return true}
+          if(person==user._id){return true}
         });
       }else{
-          if(list==user){return true}
+          if(list==user._id){return true}
       }
     }
     if(list==user._id){return true}
+  }    
     return false
 }
 const AccordionItem=(props)=>{
