@@ -156,11 +156,11 @@ const attendance=(list,user)=>{
       }
     }
     if(list==user._id){return true}
-  }    
+  }
     return false
 }
 const AccordionItem=(props)=>{
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+    const [user, setUser] = useState(localStorage.getItem('user'))
     const [isActive, setIsActive] = useState(false);
     const [isAttending, setIsAttending] = useState(false);
 
