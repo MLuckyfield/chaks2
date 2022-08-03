@@ -4,6 +4,7 @@ const notify= require('../../services/notify');
 const User = require('./model')
 const request = require('request')
 const cron = require('node-cron')
+const moment = require ('moment')
 
 //Registration
 
@@ -226,7 +227,8 @@ const cron = require('node-cron')
       console.log('cron running...')
       User.find().then((users)=>{
         users.forEach((user, i) => {
-          console.log('User:',user.first,user.statistics.reverse()[0])
+          let last = user.statistics.reverse()[0].end
+          console.log('User:',user.first,moment(last),moment(new Date()).diff(moment(last),'days'))
         });
       })
     })
