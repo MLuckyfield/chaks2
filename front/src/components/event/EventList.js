@@ -40,7 +40,7 @@ const EventList = () => {
   const onSubmit=(e,id,rsvp)=>{
     // console.log('rsvp for',id,user)
     e.preventDefault();
-    axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user._id}})
+    axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user?user._id:'error no user'}})
       .then((res) => {
           setIsAttending(attendance(res.data.data.attendees),user)
           window.location.reload(true)
@@ -105,7 +105,7 @@ const EventList = () => {
                 入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
                 {events[0].drinkRequired?'*ワンドリンクオーダー制':''}
                 {user?(
-                  isAttending?<div class="border" style={{width:'100%',padding:'8px 30px'}}>Registered!</div>:<div class="relative-btn" onClick={(e)=>{onSubmit(e,events[0]._id,user)}}>RSVP</div>
+                  isAttending?<div class="border" style={{width:'100%',padding:'8px 30px'}}>Registered!</div>:<div class="relative-btn" onClick={(e)=>{onSubmit(e,events[0]._id)}}>RSVP</div>
                 ):''}
             </div>
 
@@ -140,9 +140,9 @@ const getImage=(url)=>{
       console.log('No image found')
   }
 }
-const attendance=(list,user)=>{
+const attendance=(list)=>{
   let temp = localStorage.getItem('user')
-  user = temp?JSON.parse(temp):temp;
+  let user = temp?JSON.parse(temp):undefined;
   console.log(user,list)
   if(user&&list){
     if(Array.isArray(list)){
@@ -165,7 +165,7 @@ const AccordionItem=(props)=>{
     const [isAttending, setIsAttending] = useState(false);
 
     useEffect(()=>{
-      setIsAttending(attendance(props.attendees,user))
+      setIsAttending(attendance(props.attendees))
       // console.log('Attending?', user.role,props.attendees)
     },[])
     const onSubmit=(e,id,rsvp,user)=>{
@@ -173,7 +173,7 @@ const AccordionItem=(props)=>{
       e.preventDefault();
       axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user._id}})
         .then((res) => {
-            setIsAttending(attendance(res.data.data.attendees,user))
+            setIsAttending(attendance(res.data.data.attendees))
             window.location.reload(true)
 
           })

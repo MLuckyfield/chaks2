@@ -3,6 +3,7 @@ const auth= require('../../services/authentication');
 const notify= require('../../services/notify');
 const User = require('./model')
 const request = require('request')
+const cron = require('node-cron')
 
 //Registration
 
@@ -221,5 +222,14 @@ const request = require('request')
       });
     })
 
+    cron.schedule('* * * * *',()=>{
+      console.log('cron running...')
+      await User.find().then((users)=>{
+        users.forEach((user, i) => {
+          console.log(user.statistics)
+        });
 
+      })
+
+    })
 module.exports = router;
