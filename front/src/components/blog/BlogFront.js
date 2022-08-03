@@ -43,7 +43,7 @@ const BlogFront = () => {
                 if(i!=0){
                   return(
                     <div class='row'>
-                      <div class='col  clickable' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',paddingTop:'5%'}}>
+                      <div class='col border clickable' onClick={()=>{loadBlog(item)}} style={{borderLeft:'solid 3px black',padding:'5%',margin:'10% 0'}}>
                         <h1>{item.title}</h1>
                         <h3>{item.preview.slice(0,20)}</h3>
                       </div>

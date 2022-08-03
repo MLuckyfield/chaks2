@@ -229,7 +229,7 @@ const moment = require ('moment')
         users.forEach((user, i) => {
           let last = user.statistics.sort((a,b)=>{a.end-b.end})[0]
           if(last){
-            console.log('User:',user.first,moment(last.end).format('MM D'),moment(new Date()).diff(moment(last.end),'days'))
+            console.log('User:',user.first,moment(user.statistics[0].start).format('MM D'),moment(last.end).format('MM D'),moment(new Date()).diff(moment(last.end),'days'))
           }
         });
       })
