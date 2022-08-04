@@ -229,7 +229,7 @@ const moment = require ('moment')
         let delay=[]
         let mada=[]
         users.forEach((user, i) => {
-          if(user.role!='user'){
+          if(user.role=='user'){
             let last = ''
             if(user.statistics && user.statistics.length>0){
               let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
@@ -238,7 +238,7 @@ const moment = require ('moment')
                     delay.push(user)
                 }
             }else{
-              console.log(user.first,user.last,'has not visited yet.')
+              console.log(user.first,user.last,'has not visited yet.',moment(new Date()).diff(moment(user.statistics[0].createdAt),'days'),'days since registration')
               mada.push(user)
             }
           }
