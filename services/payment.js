@@ -136,6 +136,7 @@ router.post('/new', async (req, res)=>{
   const paymentLink = await stripe.paymentLinks.create({
     line_items:[line_items],
     metadata:{order:req.body.user},
+    payment_intent_data:{setup_future_usage:'off_session'},
     after_completion: {type: 'redirect', redirect: {url: 'https://chatshack.jp'}},
 
   })
@@ -145,5 +146,33 @@ router.post('/new', async (req, res)=>{
      success: true
    });
 })
+router.post('/charge', async (req, res)=>{
 
+    await stripe.prices.create({
+      unit_amount: req.duration*req.rates,
+      currency: 'jpy',
+      product: 'prod_MBBrK8yIna6ImD',
+    }).then((price)=>{
+      await stripe.checkout.sessions.create({
+        success_url: 'https://example.com/success',
+        cancel_url: 'https://example.com/cancel',
+        line_items: [
+          {price: price.id, quantity: 1},
+        ],
+        mode: 'payment',
+        customer:req.user.stripe_id, //doesnt exist
+        metadata:{order:req.body.user},
+      }).then((session)=>{
+        return res.status(201).json({
+           message: 'Charged!',
+           success: true
+         });
+      }).catch((err)=>{
+        return res.status(201).json({
+           message: 'Could not charge',
+           success: false
+         });
+      });
+    });
+})
 module.exports=router;
