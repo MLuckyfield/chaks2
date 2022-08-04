@@ -232,12 +232,12 @@ const moment = require ('moment')
             if(user.statistics.length>0){
               last = user.statistics.sort((a,b)=>{return b.end-a.end})
               let first = user.statistics.sort((a,b)=>{return a.end-b.end})
-              // console.log('original',user.statistics)
-              // console.log('reverse',user.statistics.reverse())
-              // console.log('b-a',last)
-              // console.log('a-b',first)
-              // console.log('User',user.first, user.statistics[0],user.statistics.reverse()[0],last[0],first[0])
-              console.log('User:',user.first,moment(user.statistics[0].start).format('MM D'),moment(last[0].end).format('MM D'),moment(new Date()).diff(moment(user.statistics[0].end),'days'))
+              console.log('original',user.statistics)
+              console.log('reverse',user.statistics.reverse())
+              console.log('b-a',last)
+              console.log('a-b',first)
+              console.log('User',user.first, user.statistics[0],user.statistics.reverse()[0],last[0],first[0])
+              // console.log('User:',user.first,moment(user.statistics[0].start).format('MM D'),moment(last[0].end).format('MM D'),moment(new Date()).diff(moment(user.statistics[0].end),'days'))
             }
           }
         });
