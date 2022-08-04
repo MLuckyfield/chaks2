@@ -231,10 +231,10 @@ const moment = require ('moment')
           if(user.statistics){
             if(user.statistics.length>0){
               last = user.statistics.sort((a,b)=>{return b.createdAt-a.createdAt})
-              console.log('original',user.statistics)
-              console.log('reverse',user.statistics.reverse())
-              console.log('b-a',last)
-              console.log('User:',user.first,moment(user.statistics[0].start).format('MM D'),moment(user.statistics.reverse()[0].end).format('MM D'),moment(new Date()).diff(moment(user.statistics[0].start),'days'))
+              // console.log('original',user.statistics)
+              // console.log('reverse',user.statistics.reverse())
+              // console.log('b-a',last)
+              console.log('User:',user.first,moment(user.statistics[0].createdAt).format('MM D'),moment(user.statistics[0].createdAt).format('MM D'),moment(new Date()).diff(moment(user.statistics[0].createdAt),'days'))
             }
           }
         });
