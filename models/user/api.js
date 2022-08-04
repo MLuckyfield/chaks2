@@ -229,16 +229,18 @@ const moment = require ('moment')
         let delay=[]
         let mada=[]
         users.forEach((user, i) => {
-          let last = ''
-          if(user.statistics && user.statistics.length>0){
-            let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
-              if(absent>30){
-                  console.log(user.first,user.last,'has not visited for',absent)
-                  delay.push(user)
-              }
-          }else{
-            console.log(user.first,user.last,'has not visited yet.')
-            mada.push(user)
+          if(user.role!='user'){
+            let last = ''
+            if(user.statistics && user.statistics.length>0){
+              let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
+                if(absent>30){
+                    console.log(user.first,user.last,'has not visited for',absent)
+                    delay.push(user)
+                }
+            }else{
+              console.log(user.first,user.last,'has not visited yet.')
+              mada.push(user)
+            }
           }
         });
         console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
