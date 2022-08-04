@@ -228,14 +228,11 @@ const moment = require ('moment')
         console.log('cron running...',users.length)
         users.forEach((user, i) => {
           let last = ''
-          if(user.statistics){
-            if(user.statistics.length>0){
-              last = user.statistics.sort((a,b)=>{return b.createdAt-a.createdAt})
-              // console.log('original',user.statistics)
-              // console.log('reverse',user.statistics.reverse())
-              // console.log('b-a',last)
-              console.log('User:',user.first,moment(user.statistics[0].end).format('MM D'),moment(user.statistics[0].end).format('MM D'),moment(new Date()).diff(moment(user.statistics[0].end),'days'))
-            }
+          if(user.statistics && user.statistics.length>0){
+            let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
+              if(absent>30){
+                  console.log(user.first,user.last,'has not visited for',absent)
+              }
           }
         });
       })
