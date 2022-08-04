@@ -234,7 +234,7 @@ const moment = require ('moment')
               // console.log('original',user.statistics)
               // console.log('reverse',user.statistics.reverse())
               // console.log('b-a',last)
-              console.log('User:',user.first,moment(user.statistics[0].createdAt).format('MM D'),moment(user.statistics[0].createdAt).format('MM D'),moment(new Date()).diff(moment(user.statistics[0].createdAt),'days'))
+              console.log('User:',user.first,moment(user.statistics[0].end).format('MM D'),moment(user.statistics[0].end).format('MM D'),moment(new Date()).diff(moment(user.statistics[0].end),'days'))
             }
           }
         });
