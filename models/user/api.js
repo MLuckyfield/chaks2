@@ -230,7 +230,7 @@ const moment = require ('moment')
           let last = ''
           if(user.statistics){
             if(user.statistics.length>0){
-              last = user.statistics.sort((a,b)=>{return b.end-a.end})
+              last = user.statistics.sort((a,b)=>{return b.createdAt-a.createdAt})
               console.log('original',user.statistics)
               console.log('reverse',user.statistics.reverse())
               console.log('b-a',last)
