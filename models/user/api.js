@@ -233,6 +233,8 @@ const moment = require ('moment')
               if(absent>30){
                   console.log(user.first,user.last,'has not visited for',absent)
               }
+          }else{
+            console.log(user.first,user.last,'has not visited yet.')
           }
         });
       })
