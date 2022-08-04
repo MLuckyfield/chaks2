@@ -153,7 +153,7 @@ router.post('/charge', async (req, res)=>{
       currency: 'jpy',
       product: 'prod_MBBrK8yIna6ImD',
     }).then((price)=>{
-      await stripe.checkout.sessions.create({
+      stripe.checkout.sessions.create({
         success_url: 'https://example.com/success',
         cancel_url: 'https://example.com/cancel',
         line_items: [
