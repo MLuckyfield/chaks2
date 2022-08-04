@@ -240,7 +240,6 @@ const moment = require ('moment')
               console.log('User:',user.first,moment(first[0].start).format('MM D'),moment(last[0].end).format('MM D'),moment(new Date()).diff(moment(last[0].end),'days'))
             }
           }
-
         });
       })
     })
