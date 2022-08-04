@@ -238,7 +238,7 @@ const moment = require ('moment')
                     delay.push(user)
                 }
             }else{
-              console.log(user.first,user.last,'has not visited yet.',moment(new Date()).diff(moment(user.statistics[0].createdAt),'days'),'days since registration')
+              console.log(user.first,user.last,'has not visited yet.',moment(new Date()).diff(moment(user.createdAt),'days'),'days since registration')
               mada.push(user)
             }
           }
