@@ -18,10 +18,10 @@ const Table = (props)=> {
             // res.data.data.forEach((item, i) => {
             //   item['inClass']=false
             // });
-            console.log(res.data.data)
+            alert(res.data.message)
             setData(res.data.data.reverse());
           })
-        .catch(error => alert("error"+error.data.message))
+        .catch((error) => {alert("error"+error.data.message);window.location='/login';})
     }
 
   },[])
