@@ -108,14 +108,13 @@ const App = () => {
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/reservations" access={['user','teacher','manager']} success={Booking} fail={()=><Redirect to='/login'/>}/>
-            <SecureRoute path="/qr-reader" access={['user','teacher','manager']} success={()=><QrReader onResult={(result,error)=>{
+            <SecureRoute path="/qr-reader" access={['user','teacher','manager']} success={()=><QrReader ViewFinder={()=>{return <div class='qr_viewfinder'></div>}} scanDelay={1000} onResult={(result,error)=>{
               if(!!result){
                 alert(typeof result.text)
                 localStorage.setItem('student',result.text)
                 window.location='/student'
               }
               if(!!error){
-                alert(error)
               }
             }} constraints={{facingMode:'environment'}}/>} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/qr-code" access={['user','teacher','manager']} success={()=><QRCode value={localStorage.getItem('user')}/>} fail={()=><Redirect to='/login'/>}/>
