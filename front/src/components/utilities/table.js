@@ -21,7 +21,7 @@ const Table = (props)=> {
             console.log(res.data.data)
             setData(res.data.data.reverse());
           })
-        .catch(error => console.log("error"+error.data.message))
+        .catch(error => alert("error"+error.data.message))
     }
 
   },[])
