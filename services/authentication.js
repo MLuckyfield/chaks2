@@ -43,7 +43,7 @@ const auth = (req,res,next)=>{
   let proposal = ''
   if(req.headers.authorization){
     proposal = req.headers.authorization.split(' ')
-  }else{reject(res)}
+  }else{reject(res,'')}
   // console.log(proposal)
   if(proposal[0]=='Token'){
     let token = proposal[1]
@@ -52,7 +52,7 @@ const auth = (req,res,next)=>{
         jwt.verify(token,process.env.SECRET, (err, decoded)=>{
           if (err){
             console.log(err)
-            reject(res)
+            reject(res,err)
           }else{
             req.user=decoded
             // console.log('decoded '+decoded)
@@ -61,7 +61,7 @@ const auth = (req,res,next)=>{
         })
     }
     else{
-      reject(res)
+      reject(res,'')
     }
   }else if(proposal[0]=='api'){
     let token = proposal[1]
@@ -70,7 +70,7 @@ const auth = (req,res,next)=>{
         next()
     }
     else{
-      reject(res)
+      reject(res,'')
     }
   }
 }
@@ -86,18 +86,18 @@ const permission = (requirements)=>{
       if(access == true){
         next()
       }else{
-        reject(res)
+        reject(res,'')
       }
     }else if(req.script && req.script==true){
       // console.log('script agent')
       next()
     }
-    else{reject(res)}
+    else{reject(res,'')}
   }
 }
-const reject = (res)=>{
+const reject = (res,msg)=>{
   return res.status(403).json({
-    message: 'There was a problem with access',
+    message: msg,
     success: false
   });
 }

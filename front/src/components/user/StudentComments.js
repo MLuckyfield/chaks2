@@ -21,7 +21,8 @@ const StudentComments = () => {
       .then((res) => {
           setComments(res.data.data.reverse());
         })
-      .catch(error => console.log("error"+error))
+        .catch(error => console.log("error"+error.data.message))
+
   },[])
 
   const clockin=(status)=>{
