@@ -244,24 +244,24 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
             }
           }
           if(user.first=='Matthew'){
-            console.log('sending email to',user)
-            // let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
-            // mailchimp.setConfig({
-            //   apiKey: process.env.MAILCHIMP_AUTH,
-            //   server: 'us9',
-            // });
-            //
-            // const response = mailchimp.lists.updateListMemberTags(
-            //   "cb86e9b6f5",
-            //   mailchimp_hash,
-            //   { tags: [{ name: "not_visited", status: "active" }] }
-            // ).then(()=>{
-            //   console.log('Email sent to',user.first,user.last)
-            //   return res.status(201).json({
-            //           message: `Success!`,
-            //           success: true
-            //         });
-            // })
+            console.log('sending email to',user.first,user.last)
+            let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
+            mailchimp.setConfig({
+              apiKey: process.env.MAILCHIMP_AUTH,
+              server: 'us9',
+            });
+
+            const response = mailchimp.lists.updateListMemberTags(
+              "cb86e9b6f5",
+              mailchimp_hash,
+              { tags: [{ name: "internal_test", status: "active" }] }
+            ).then(()=>{
+              console.log('Email sent to',user.first,user.last)
+              return res.status(201).json({
+                      message: `Success!`,
+                      success: true
+                    });
+            })
           }
         });
         console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
