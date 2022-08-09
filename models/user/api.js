@@ -5,6 +5,7 @@ const User = require('./model')
 const request = require('request')
 const cron = require('node-cron')
 const moment = require ('moment')
+const encrypt = require('crypto-js/md5')
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 //Registration
