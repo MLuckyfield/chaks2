@@ -225,43 +225,43 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
       });
     })
 
-    cron.schedule('* * * * *',()=>{
-      User.find().then((users)=>{
-        console.log('cron running...',users.length)
-        let delay=[]
-        let mada=[]
-        users.forEach((user, i) => {
-          if(user.role=='user'){
-            let last = ''
-            if(user.statistics && user.statistics.length>0){
-              let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
-                if(absent>30){
-                    console.log(user.first,user.last,'has not visited for',absent)
-                    delay.push(user)
-                }
-            }else{
-              console.log(user.first,user.last,'has not visited yet.',moment(new Date()).diff(moment(user.createdAt),'days'),'days since registration')
-              mada.push(user)
-            }
-          }
-          if(user.first=='Matthew'){
-            console.log('sending email to',user.first,user.last)
-            let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
-            mailchimp.setConfig({
-              apiKey: process.env.MAILCHIMP_AUTH,
-              server: 'us9',
-            });
-
-            const response = mailchimp.lists.updateListMemberTags(
-              "cb86e9b6f5",
-              mailchimp_hash,
-              { tags: [{ name: "internal_test", status: "active" }] }
-            ).then(()=>{
-              console.log('Email sent to',user.first,user.last)
-            })
-          }
-        });
-        console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
-      })
-    })
+    // cron.schedule('* * * * *',()=>{
+    //   User.find().then((users)=>{
+    //     console.log('cron running...',users.length)
+    //     let delay=[]
+    //     let mada=[]
+    //     users.forEach((user, i) => {
+    //       if(user.role=='user'){
+    //         let last = ''
+    //         if(user.statistics && user.statistics.length>0){
+    //           let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
+    //             if(absent>30){
+    //                 console.log(user.first,user.last,'has not visited for',absent)
+    //                 delay.push(user)
+    //             }
+    //         }else{
+    //           console.log(user.first,user.last,'has not visited yet.',moment(new Date()).diff(moment(user.createdAt),'days'),'days since registration')
+    //           mada.push(user)
+    //         }
+    //       }
+    //       if(user.first=='Matthew'){
+    //         console.log('sending email to',user.first,user.last)
+    //         let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
+    //         mailchimp.setConfig({
+    //           apiKey: process.env.MAILCHIMP_AUTH,
+    //           server: 'us9',
+    //         });
+    //
+    //         const response = mailchimp.lists.updateListMemberTags(
+    //           "cb86e9b6f5",
+    //           mailchimp_hash,
+    //           { tags: [{ name: "internal_test", status: "active" }] }
+    //         ).then(()=>{
+    //           console.log('Email sent to',user.first,user.last)
+    //         })
+    //       }
+    //     });
+    //     console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
+    //   })
+    // })
 module.exports = router;
