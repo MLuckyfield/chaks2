@@ -53,7 +53,7 @@ const displayable=(key)=>{
 }
   return (
     <div class='master-row'>
-      <h1>{props.name}</h1>
+      <h1>{props.name} ({data?data.length:''})</h1>
       <div class='row'>
         <table>
           {target?(

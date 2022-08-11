@@ -37,7 +37,7 @@ const Profile = () => {
       })
       .then((res) => {
           setFeedback(res.data.message);
-          // window.location='/dash';
+          window.location.reload(true)
           })
       .catch((err) => {
         setFeedback(err.response.data.message);
