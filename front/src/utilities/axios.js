@@ -10,6 +10,8 @@ axios.interceptors.request.use(
       const expiry = (JSON.parse(atob(token.split('.')[1]))).exp
       if(Math.floor(new Date().getTime()/1000)>=expiry){
         console.log('login required...')
+        localStorage.setItem('user','');
+        localStorage.setItem('student','');
         window.location.href='/login'
       }
       console.log('Setting headers');
