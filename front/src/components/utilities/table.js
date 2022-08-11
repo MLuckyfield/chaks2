@@ -21,7 +21,7 @@ const Table = (props)=> {
             // alert(res.data.message)
             setData(res.data.data.reverse());
           })
-        .catch((error) => {alert("error"+error.data.message);window.location='/login';})
+        .catch((error) => {console.log('activating alert');alert("error"+error.data.message);window.location='/login';})
     }
 
   },[])
