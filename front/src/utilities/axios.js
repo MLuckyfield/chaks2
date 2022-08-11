@@ -9,12 +9,12 @@ axios.interceptors.request.use(
       //check token is not expired
       const expiry = (JSON.parse(atob(token.split('.')[1]))).exp
       console.log(expiry,new Date().getTime()/1000)
-      if(Math.floor(new Date().getTime()/1000)>=expiry){
-        console.log('login required...')
-        localStorage.setItem('user','');
-        localStorage.setItem('student','');
-        window.location.href='/login'
-      }
+      // if(Math.floor(new Date().getTime()/1000)>=expiry){
+      //   console.log('login required...')
+      //   localStorage.setItem('user','');
+      //   localStorage.setItem('student','');
+      //   window.location.href='/login'
+      // }
       console.log('Setting headers');
       config.headers.Authorization = `Token ${token}`;
       axios.defaults.headers.common['Authorization'] = `Token ${token}`;
