@@ -22,8 +22,6 @@ const Table = (props)=> {
             setData(res.data.data.reverse());
           })
         .catch((error) => {
-            console.log('activating alert',error.data.message);
-            window.location='/login';
         })
     }
 
