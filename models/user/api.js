@@ -245,19 +245,19 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
               //user has not visited EVER
               let duration = moment(new Date()).diff(moment(user.createdAt),'days')
               //1 week email
-              if(duration>7 && duration<14){
+              if(duration>=7 && duration<14){
                 mail_tag='1_week_no_exp'
               }
               //2 week email
-              if(duration>14 && duration<21){
+              if(duration>=14 && duration<21){
                 mail_tag='2_week_no_exp'
               }
               //1 month
-              if(duration>30 && duration<60){
+              if(duration>=30 && duration<60){
                 mail_tag='1_month_no_exp'
               }
               //2 month
-              if(duration>60){
+              if(duration>=60){
                 mail_tag='2_month_no_exp'
               }
               console.log(user.first,user.last,'has not visited yet.',duration,'days since registration')
