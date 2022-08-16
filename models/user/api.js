@@ -255,7 +255,7 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
             const response = mailchimp.lists.updateListMemberTags(
               "cb86e9b6f5",
               mailchimp_hash,
-              { tags: [{ name: "internal_test", status: "active" }] }
+              { tags: [{ name: "internal_test", status: "inactive" }] }
             ).then(()=>{
               console.log('Email sent to',user.first,user.last)
             })
