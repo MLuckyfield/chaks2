@@ -230,17 +230,37 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
         console.log('cron running...',users.length)
         let delay=[]
         let mada=[]
+        let mail_tag = ''
         users.forEach((user, i) => {
           if(user.role=='user'){
             let last = ''
-            if(user.statistics && user.statistics.length>0){
+            let visited = user.statistics && user.statistics.length>0
+            if(visited){
               let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
                 if(absent>30){
-                    console.log(user.first,user.last,'has not visited for',absent)
+                    // console.log(user.first,user.last,'has not visited for',absent)
                     delay.push(user)
                 }
             }else{
-              console.log(user.first,user.last,'has not visited yet.',moment(new Date()).diff(moment(user.createdAt),'days'),'days since registration')
+              //user has not visited EVER
+              let duration = moment(new Date()).diff(moment(user.createdAt),'days')
+              //1 week email
+              if(duration>7 && duration<14){
+                mail_tag='1_week_no_exp'
+              }
+              //2 week email
+              if(duration>14 && duration<21){
+                mail_tag='2_week_no_exp'
+              }
+              //1 month
+              if(duration>30 && duration<60){
+                mail_tag='1_month_no_exp'
+              }
+              //2 month
+              if(duration>60){
+                mail_tag='2_month_no_exp'
+              }
+              console.log(user.first,user.last,'has not visited yet.',duration,'days since registration')
               mada.push(user)
             }
           }
@@ -251,17 +271,20 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
               apiKey: process.env.MAILCHIMP_AUTH,
               server: 'us9',
             });
-
-            const response = mailchimp.lists.updateListMemberTags(
-              "cb86e9b6f5",
-              mailchimp_hash,
-              { tags: [{ name: "internal_test", status: "active" }] }
-            ).then(()=>{
-              console.log('Email sent to',user.first,user.last)
-            })
+            mailchimp_email(mailchimp_hash,mail_tag,user)
           }
         });
         console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
       })
     })
+
+    const mailchimp_email = (mailchimp_hash,mail_tag,user)=>{
+      const response = mailchimp.lists.updateListMemberTags(
+        "cb86e9b6f5",
+        mailchimp_hash,
+        { tags: [{ name: mail_tag, status: "active" }] }
+      ).then(()=>{
+        console.log('Email sent to',user.first,user.last)
+      })
+    }
 module.exports = router;
