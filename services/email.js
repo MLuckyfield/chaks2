@@ -65,4 +65,26 @@ const sendRSVP = (user,event,res)=>{
     )
     sendEmail(transporter,mailOptions,res,event)
 }
+const reportEngagement = (mada,dash,res)=>{
+    console.log('email service starting')
+    // console.log(booking)
+    const transporter = authenticate()
+    // console.log(req)
+    // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a'))
+    // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a').toString())
+    let report = 'Not yet visited:'+mada.length+'\n'
+    mada.forEach((item, i) => {
+      report += report + item.name + ' registered '+item.duration+' days ago\n'
+    });
+    report='Absent:'+dash.length+'\n'
+    dash.forEach((item, i) => {
+      report += report + item.name + ' registered '+item.duration+' days ago\n'
+    });
+
+    const mailOptions = prepareEmail(
+      'BOT|Daily Report: Email Engagement ',
+      report
+    )
+    sendEmail(transporter,mailOptions,res)
+}
 module.exports={sendBooking, sendRSVP}

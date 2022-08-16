@@ -7,6 +7,7 @@ const cron = require('node-cron')
 const moment = require ('moment')
 const encrypt = require('crypto-js/md5')
 const mailchimp = require("@mailchimp/mailchimp_marketing");
+const email = require('../../services/email')
 
 //Registration
 
@@ -239,7 +240,10 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
               let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
                 if(absent>30){
                     // console.log(user.first,user.last,'has not visited for',absent)
-                    delay.push(user)
+                    delay.push({
+                        name:user.first+" "+user.last,
+                        duration: absent
+                    })
                 }
             }else{
               //user has not visited EVER
@@ -261,7 +265,10 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
                 mail_tag='2_month_no_exp'
               }
               console.log(user.first,user.last,'has not visited yet.',duration,'days since registration')
-              mada.push(user)
+              mada.push({
+                  name:user.first+" "+user.last,
+                  duration: duration
+              })
             }
           }
           if(user.first=='Matthew'){
@@ -271,7 +278,7 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
               apiKey: process.env.MAILCHIMP_AUTH,
               server: 'us9',
             });
-            mailchimp_email(mailchimp_hash,mail_tag,user)
+            // mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_week_no_exp',user)
           }
         });
         console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
