@@ -45,7 +45,7 @@ import banner from './banner.jpg'
 import shunsuke from './shunsuke.jpg'
 import event_game from './event_game.jpg'
 import matt from './matt.jpg'
-import nerea from './nerea.jpg'
+import vincent from './vincent.jpg'
 import sonja from './sonja.jpg'
 import blog_header from './blog_header.jpg'
 import campaign_header from './campaign_header.jpg'
@@ -449,10 +449,10 @@ const Front = ()=>{
                     </div>
                     <div class='up_row center'>
                         <div class='col slim'>
-                            <img class='avatar' src={nerea}></img>
-                            <h2>NEREA</h2>
+                            <img class='avatar' src={vincent}></img>
+                            <h2>VINCENT</h2>
                             <h3>INSTRUCTOR</h3>
-                            Born in Spain. Lived in 4 countries. 12 years of English teaching experience with a Masters in Education. Loves travel, photography, wearing kimonos, and more!
+                            Born in Canada. Speaks English and French. Loves craft beer, playing guitar, and learning about people!
                         </div>
                         <div class='col slim'>
                             <img class='avatar' src={sonja}></img>
