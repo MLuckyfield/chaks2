@@ -239,7 +239,7 @@ const email = require('../../services/email')
             if(visited){
               let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
                 if(absent>30){
-                    // console.log(user.first,user.last,'has not visited for',absent)
+                    console.log(user.first,user.last,'has not visited for',absent)
                     delay.push({
                         name:user.first+" "+user.last,
                         duration: absent
@@ -264,7 +264,7 @@ const email = require('../../services/email')
               if(duration>=60){
                 mail_tag='2_month_no_exp'
               }
-              console.log(user.first,user.last,'has not visited yet.',duration,'days since registration')
+              console.log(user.first,user.last,'has not visited yet.',duration,'days since registration.',mail_tag)
               mada.push({
                   name:user.first+" "+user.last,
                   duration: duration
