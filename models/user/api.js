@@ -282,7 +282,7 @@ const email = require('../../services/email')
           }
         });
         console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
-        email.reportEngagement(mada,dash,res)
+        email.reportEngagement(mada,delay,res)
       })
     })
 
