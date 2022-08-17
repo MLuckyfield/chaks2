@@ -238,12 +238,20 @@ const email = require('../../services/email')
             let visited = user.statistics && user.statistics.length>0
             if(visited){
               let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
-                if(absent>30){
-                    console.log(user.first,user.last,'has not visited for',absent)
-                    delay.push({
-                        name:user.first+" "+user.last,
-                        duration: absent
-                    })
+                if(absent>=30 && absent<35){
+                  mail_tag='1_month_absent'
+                }
+                if(absent>=60 && absent<65){
+                  mail_tag='2_month_absent'
+                }
+                console.log(user.first,user.last,'has not visited for',absent)
+                delay.push({
+                    name:user.first+" "+user.last,
+                    duration: absent
+                })
+                if(user.first=='Matthew'){
+                  console.log('sending email to',user.first,user.last)
+                  mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_month_absent',user)
                 }
             }else{
               //user has not visited EVER
@@ -266,12 +274,7 @@ const email = require('../../services/email')
               }
               if(user.first=='Matthew'){
                 console.log('sending email to',user.first,user.last)
-                let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
-                mailchimp.setConfig({
-                  apiKey: process.env.MAILCHIMP_AUTH,
-                  server: 'us9',
-                });
-                mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_week_no_exp',user)
+                mailchimp_email(mail_tag?mail_tag:'1_week_no_exp',user)
               }
               console.log(user.first,user.last,'has not visited yet.',duration,'days since registration.',mail_tag)
               mada.push({
@@ -286,7 +289,12 @@ const email = require('../../services/email')
       })
     })
 
-    const mailchimp_email = (mailchimp_hash,mail_tag,user)=>{
+    const mailchimp_email = (mail_tag,user)=>{
+      let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
+      mailchimp.setConfig({
+        apiKey: process.env.MAILCHIMP_AUTH,
+        server: 'us9',
+      });
       const response = mailchimp.lists.updateListMemberTags(
         "cb86e9b6f5",
         mailchimp_hash,
