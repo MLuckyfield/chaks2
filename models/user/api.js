@@ -226,7 +226,7 @@ const email = require('../../services/email')
       });
     })
 
-    cron.schedule('* * * * *',()=>{
+    cron.schedule('00 22 * * *',()=>{
       User.find().then((users)=>{
         console.log('cron running...',users.length)
         let delay=[]
