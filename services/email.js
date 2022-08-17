@@ -82,9 +82,9 @@ const reportEngagement = (mada,dash,res)=>{
     });
 
     const mailOptions = prepareEmail(
-      'BOT|Daily Report: Email Engagement ',
+      'BOT|Daily Report: Email Engagement',
       report
     )
     sendEmail(transporter,mailOptions,res)
 }
-module.exports={sendBooking, sendRSVP}
+module.exports={sendBooking, sendRSVP, reportEngagement}
