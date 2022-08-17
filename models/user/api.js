@@ -264,21 +264,21 @@ const email = require('../../services/email')
               if(duration>=60){
                 mail_tag='2_month_no_exp'
               }
+              if(user.first=='Matthew'){
+                console.log('sending email to',user.first,user.last)
+                let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
+                mailchimp.setConfig({
+                  apiKey: process.env.MAILCHIMP_AUTH,
+                  server: 'us9',
+                });
+                mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_week_no_exp',user)
+              }
               console.log(user.first,user.last,'has not visited yet.',duration,'days since registration.',mail_tag)
               mada.push({
                   name:user.first+" "+user.last,
                   duration: duration
               })
             }
-          }
-          if(user.first=='Matthew'){
-            console.log('sending email to',user.first,user.last)
-            let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
-            mailchimp.setConfig({
-              apiKey: process.env.MAILCHIMP_AUTH,
-              server: 'us9',
-            });
-            mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_week_no_exp',user)
           }
         });
         console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
