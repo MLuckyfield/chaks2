@@ -77,15 +77,16 @@ const reportEngagement = (mada,delay)=>{
     // console.log(req)
     // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a'))
     // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a').toString())
-    let report = 'Not yet visited:'+mada.length+'\n'
-    mada.forEach((item, i) => {
-      console.log(item,item.duration, report.length)
-      report += report + item.name + ' registered '+item.duration+' days ago\n'
-    });
-    report='Absent:'+delay.length+'\n'
-    delay.forEach((item, i) => {
-      report += report + item.name + ' last attended '+item.duration+' days ago\n'
-    });
+    let report = 'Absent: '+delay.length+' |Not visited: '+mada.length
+    // let report = 'Not yet visited:'+mada.length+'\n'
+    // mada.forEach((item, i) => {
+    //   console.log(item,item.duration, report.length)
+    //   report += report + item.name + ' registered '+item.duration+' days ago\n'
+    // });
+    // report='Absent:'+delay.length+'\n'
+    // delay.forEach((item, i) => {
+    //   report += report + item.name + ' last attended '+item.duration+' days ago\n'
+    // });
 
     const mailOptions = prepareEmail(
       'BOT|Daily Report: Email Engagement',
