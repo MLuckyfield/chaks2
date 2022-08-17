@@ -278,11 +278,11 @@ const email = require('../../services/email')
               apiKey: process.env.MAILCHIMP_AUTH,
               server: 'us9',
             });
-            // mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_week_no_exp',user)
+            mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_week_no_exp',user)
           }
         });
         console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
-        email.reportEngagement(mada,delay,res)
+        email.reportEngagement(mada,delay)
       })
     })
 

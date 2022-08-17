@@ -37,6 +37,11 @@ const sendEmail=(transporter,mailOptions,res,data)=>{
       }
 })
 }
+const sendEmailNoRes=(transporter,mailOptions,data)=>{
+  transporter.sendMail(mailOptions, function(error, info){
+      if (error) {console.log(error)} else {console.log('email sent')}
+    })
+}
 const sendBooking = (user,req,res)=>{
     console.log('email service starting')
     // console.log(booking)
@@ -65,7 +70,7 @@ const sendRSVP = (user,event,res)=>{
     )
     sendEmail(transporter,mailOptions,res,event)
 }
-const reportEngagement = (mada,dash,res)=>{
+const reportEngagement = (mada,dash)=>{
     console.log('email service starting')
     // console.log(booking)
     const transporter = authenticate()
@@ -85,6 +90,6 @@ const reportEngagement = (mada,dash,res)=>{
       'BOT|Daily Report: Email Engagement',
       report
     )
-    sendEmail(transporter,mailOptions,res)
+    sendEmailNoRes(transporter,mailOptions)
 }
 module.exports={sendBooking, sendRSVP, reportEngagement}
