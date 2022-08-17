@@ -61,6 +61,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           break;
         case 'customer.subscription.updated':
           console.log(session.pause_collection)
+          console.log('Relevant product',items.data[0].price.product)
           if(session.cancel_at_period_end){ //cancellation expected
             purchased = {
                 $set:{
