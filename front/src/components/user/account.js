@@ -17,8 +17,8 @@ const Account = () => {
           //   item['inClass']=false
           // });
           console.log(res.data.data)
-          setAccount(res.data.data[0])
-          console.log(res.data.data[0],res.data.data[0].first)
+          setAccount(JSON.parse(res.data.data[0]))
+          console.log(res.data.data[0],JSON.parse(res.data.data[0]).first)
         })
       .catch(error => console.log("error"+error))
   },[])
