@@ -162,7 +162,7 @@ router.post('/update_sub', async (req, res)=>{
     let plan = ''
     if(action=='upgrade'){price_id=HODAI_TEST;plan='unlimited'}
     else if (action=='downgrade') {price_id=PREMIUM_TEST;plan='premium'}
-    await stripe.subscriptions.retrieve(sub_id)
+    stripe.subscriptions.retrieve(sub_id)
       .then((subscription)=>{
         stripe.subscriptions.update(sub_id, {
           cancel_at_period_end: false,
