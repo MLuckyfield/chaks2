@@ -254,7 +254,7 @@ const Product_Display = (props)=>{
 
                     代表 八木俊祐　</p>
                   </p><br/>
-                  {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LDp5RBVAfieqaob',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/#signup'}>購入</div>}
+                  {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LDp5RBVAfieqaob33XKdj12',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/#signup'}>購入</div>}
                   </div>
                 }/>
               </div>
