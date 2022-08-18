@@ -24,9 +24,9 @@ const Account = () => {
   },[])
   const onSubmit=(e,action)=>{
     console.log(action)
-    axios.post('payment/update_sub', {params:{filter:{_id:student._id},fields:'stripe plan'}})
+    axios.post('payment/update_sub', {params:{filter:{_id:student._id},fields:'first stripe plan'}})
       .then((res) => {
-          console.log(res.data.data)
+          console.log(res.data.data[0])
           setAccount(res.data.data[0])
         })
       .catch(error => console.log("error"+error))
