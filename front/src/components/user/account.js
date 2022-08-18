@@ -18,6 +18,7 @@ const Account = () => {
           // });
           console.log(res.data.data)
           setAccount(res.data.data[0])
+          console.log(res.data.data[0],res.data.data[0].first)
         })
       .catch(error => console.log("error"+error))
   },[])
