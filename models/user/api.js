@@ -281,7 +281,7 @@ const email = require('../../services/email')
                   name:user.first+" "+user.last,
                   duration: duration
               })
-              if(user.first=='Matthew'){
+              if(user.first=='M'){
                 console.log('sending email to',user.first,user.last)
                 mailchimp_email(mail_tag?mail_tag:'1_week_no_exp',user)
               }
