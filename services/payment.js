@@ -139,8 +139,8 @@ router.post('/new', async (req, res)=>{
     metadata:{order:req.body.user},
     payment_intent_data:{setup_future_usage:'off_session'},
     after_completion: {type: 'redirect', redirect: {url: 'https://chatshack.jp'}},
-
   })
+  console.log('preparing payment link',paymentLink)
   return res.status(201).json({
      data: paymentLink,
      message: 'Booking saved',

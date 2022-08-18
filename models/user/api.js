@@ -226,7 +226,7 @@ const email = require('../../services/email')
       });
     })
 
-    cron.schedule('10 02 * * *',()=>{
+    cron.schedule('10 02 * * *',()=>{ //server time is 9 hours ahead
       User.find().then((users)=>{
         console.log('cron running...',users.length)
         let delay=[]
