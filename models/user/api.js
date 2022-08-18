@@ -238,7 +238,7 @@ const email = require('../../services/email')
             let visited = user.statistics && user.statistics.length>0
             if(visited){
               let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
-                if(absent>=30 && absent<35){
+                if(absent>=30 && absent<60){
                   mail_tag='1_month_absent'
                   delay.push({
                       name:user.first+" "+user.last,
@@ -264,35 +264,23 @@ const email = require('../../services/email')
               //1 week email
               if(duration>=7 && duration<14){
                 mail_tag='1_week_no_exp'
-                mada.push({
-                    name:user.first+" "+user.last,
-                    duration: duration
-                })
               }
               //2 week email
               if(duration>=14 && duration<21){
                 mail_tag='2_week_no_exp'
-                mada.push({
-                    name:user.first+" "+user.last,
-                    duration: duration
-                })
               }
               //1 month
               if(duration>=30 && duration<60){
                 mail_tag='1_month_no_exp'
-                mada.push({
-                    name:user.first+" "+user.last,
-                    duration: duration
-                })
               }
               //2 month
               if(duration>=60){
                 mail_tag='2_month_no_exp'
-                mada.push({
-                    name:user.first+" "+user.last,
-                    duration: duration
-                })
               }
+              mada.push({
+                  name:user.first+" "+user.last,
+                  duration: duration
+              })
               if(user.first=='Matthew'){
                 console.log('sending email to',user.first,user.last)
                 mailchimp_email(mail_tag?mail_tag:'1_week_no_exp',user)
