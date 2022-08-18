@@ -4,7 +4,11 @@ const moment = require ('moment')
 const router = require('express').Router();
 const express = require('express');
 
-//
+const HODAI_LIVE=''
+const PREMIUM_LIVE=''
+const HODAI_TEST='price_1LDp5RBVAfieqaob33XKdjl2'
+const PREMIUM_TEST='price_1LY1UlBVAfieqaobWDpvBnCj'
+
 router.post('/complete', express.raw({type:'application/json'}),async (req, res)=>{
       const sig = req.headers['stripe-signature'];
 
@@ -36,7 +40,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             console.log('points' in metadata)
             console.log('plan' in metadata)
             console.log('sub_points' in metadata)
-
+            const price_id=session.items.data[0].price.product
             if('points' in metadata){
               purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
               console.log('adding points')
@@ -115,6 +119,7 @@ const updateUser=(user,update,res)=>{
   User.findOneAndUpdate(user,update,{new:true}).then((result)=>{
        console.log(result)
           return res.status(201).json({
+            data:result,
             message: 'Booking saved',
             success: true
           });
@@ -146,6 +151,29 @@ router.post('/new', async (req, res)=>{
      message: 'Booking saved',
      success: true
    });
+})
+
+//upgrade or downgrade the subscription
+router.post('/update_sub', async (req, res)=>{
+  req=req.body
+  User.findById(req).then((user)=>{
+    const sub_id=user.plan.stripe_id
+    let price_id=''
+    let plan = ''
+    if(action=='upgrade'){price_id=HODAI_TEST;plan='unlimited'}
+    else if (action=='downgrade') {price_id=PREMIUM_TEST;plan='premium'}
+    await stripe.subscriptions.retrieve(sub_id)
+      .then((subscription)=>{
+        stripe.subscriptions.update(sub_id, {
+          cancel_at_period_end: false,
+          items: [{
+            id: subscription.items.data[0].id,
+            price: price_id,
+          }]
+        });
+      });
+    updateUser(req,{plan:plan},res)
+  })
 })
 router.post('/charge', async (req, res)=>{
 

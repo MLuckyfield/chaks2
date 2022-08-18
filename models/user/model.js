@@ -42,7 +42,6 @@ const User = mongoose.model('User', new Schema({
   },
   plan:{
     type:String,
-    enum:['standard','unlimited'],
     default:'standard',
   },
   stripe:{

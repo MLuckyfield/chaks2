@@ -282,7 +282,7 @@ const email = require('../../services/email')
                   duration: duration
               })
               if(user.first=='M'){
-                console.log('sending email to',user.first,user.last)
+                console.log('sending email to',user.first,user.last,mail_tag)
                 mailchimp_email(mail_tag?mail_tag:'1_week_no_exp',user)
               }
               console.log(user.first,user.last,'has not visited yet.',duration,'days since registration.',mail_tag)

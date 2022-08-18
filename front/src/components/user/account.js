@@ -11,7 +11,7 @@ const Account = () => {
 
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
-    axios.get('user/all', {params:{filter:{_id:student._id},fields:'stripe plan points'}})
+    axios.get('user/all', {params:{filter:{_id:student._id}}})
       .then((res) => {
           // res.data.data.forEach((item, i) => {
           //   item['inClass']=false
@@ -21,8 +21,14 @@ const Account = () => {
         })
       .catch(error => console.log("error"+error))
   },[])
-  const onSubmit=(e)=>{
-
+  const onSubmit=(e,action)=>{
+    console.log(action)
+    // axios.post('payment/update_sub', {params:{filter:{_id:student._id}}})
+    //   .then((res) => {
+    //       console.log(res.data.data)
+    //       setAccount(res.data.data[0])
+    //     })
+    //   .catch(error => console.log("error"+error))
   }
   return(
       <div class='master-row'>
@@ -31,6 +37,7 @@ const Account = () => {
               {account?
               <div class='col'>
                 Plan: {account.plan}  {account.plan!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}<br/>
+                {student.first?account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={onSubmit(e,'downgrade')}>Downgrade</div>:''}
                 Points: {account.points}
               </div>
             :'Loading account...'}
