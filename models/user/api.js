@@ -254,7 +254,7 @@ const email = require('../../services/email')
                 }
                 console.log(user.first,user.last,'has not visited for',absent)
 
-                if(user.first=='Matthew'){
+                if(user.first=='M'){
                   console.log('sending email to',user.first,user.last)
                   mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_month_absent',user)
                 }
