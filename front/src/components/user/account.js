@@ -24,12 +24,12 @@ const Account = () => {
   },[])
   const onSubmit=(e,action)=>{
     console.log(action)
-    // axios.post('payment/update_sub', {params:{filter:{_id:student._id}}})
-    //   .then((res) => {
-    //       console.log(res.data.data)
-    //       setAccount(res.data.data[0])
-    //     })
-    //   .catch(error => console.log("error"+error))
+    axios.post('payment/update_sub', {params:{filter:{_id:student._id},fields:'stripe plan'}})
+      .then((res) => {
+          console.log(res.data.data)
+          setAccount(res.data.data[0])
+        })
+      .catch(error => console.log("error"+error))
   }
   return(
       <div class='master-row'>
