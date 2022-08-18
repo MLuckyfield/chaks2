@@ -38,7 +38,7 @@ const Account = () => {
               {account?
               <div class='col'>
                 Plan: {account.plan}  {account.plan!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}<br/>
-                {student.first=='M'?account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={(e)=>onSubmit(e,'downgrade')}>Downgrade</div>:''}
+                {account.first=='M'?account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={(e)=>onSubmit(e,'downgrade')}>Downgrade</div>:''}
                 Points: {account.points}
               </div>
             :'Loading account...'}
