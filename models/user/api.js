@@ -253,7 +253,7 @@ const email = require('../../services/email')
                       duration: absent
                   })
                 }
-                console.log(user.first,user.last,'has not visited for',absent)
+                console.log(user.first,user.last,'has not visited for',absent,mail_tag)
 
                 if(user.first=='M'){
                   console.log('sending email to',user.first,user.last)
