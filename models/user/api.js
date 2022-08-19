@@ -233,7 +233,7 @@ const email = require('../../services/email')
         let mada=[]
         let mail_tag = ''
         users.forEach((user, i) => {
-          mailtag=''
+          mail_tag=''
           if(user.role=='user'){
             let last = ''
             let visited = user.statistics && user.statistics.length>0
