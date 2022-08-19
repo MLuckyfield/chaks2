@@ -254,10 +254,11 @@ const email = require('../../services/email')
                   })
                 }
                 console.log(user.first,user.last,'has not visited for',absent,mail_tag)
+                // mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_month_absent',user)
 
-                if(user.first=='M'){
+                if(mail_tag!=''){
                   console.log('sending email to',user.first,user.last)
-                  // mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_month_absent',user)
+                  mailchimp_email(mailchimp_hash,mail_tag,user)
                 }
             }else{
               //user has not visited EVER
@@ -282,9 +283,9 @@ const email = require('../../services/email')
                   name:user.first+" "+user.last,
                   duration: duration
               })
-              if(user.first=='M'){
-                console.log('sending email to',user.first,user.last,mail_tag)
-                // mailchimp_email(mail_tag?mail_tag:'1_week_no_exp',user)
+              if(mail_tag!=''){
+                console.log('sending email to',user.first,user.last)
+                mailchimp_email(mailchimp_hash,mail_tag,user)
               }
               console.log(user.first,user.last,'has not visited yet.',duration,'days since registration.',mail_tag)
 
@@ -292,7 +293,7 @@ const email = require('../../services/email')
           }
         });
         console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
-        // email.reportEngagement(mada,delay)
+        email.reportEngagement(mada,delay)
       })
     })
 
