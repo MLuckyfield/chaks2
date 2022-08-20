@@ -35,7 +35,8 @@ const StudentComments = () => {
           if(status==true){setPayable(null)}
           else{setPayable(res.data.data.statistics[0])}
           const time = moment(res.data.data.statistics[0].end).diff(moment(res.data.data.statistics[0].start), 'minutes')
-          alert(time+' minutes | '+1000+Math.round(((time-40)>0?time:0)/30)*1000)
+          if(time-40>0){time=time-40}else{time=0}
+          alert(time+' minutes | '+1000+Math.round((time/30)*1000)
         })
       .catch(error => console.log("error"+error))
   }
