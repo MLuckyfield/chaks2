@@ -226,7 +226,7 @@ const email = require('../../services/email')
       });
     })
 
-    cron.schedule('0 9 * * *',()=>{ //server time is 9 hours ahead
+    cron.schedule('0 22 * * *',()=>{ //server time is 9 hours ahead
       User.find().then((users)=>{
         console.log('cron running...',users.length)
         let delay=[]
@@ -294,6 +294,7 @@ const email = require('../../services/email')
         });
         console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
         email.reportEngagement(mada,delay)
+        console.log('cron complete at',new Date())
       })
     })
 
