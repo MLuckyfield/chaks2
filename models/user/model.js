@@ -61,6 +61,16 @@ const User = mongoose.model('User', new Schema({
     start:{type:Date},
     end:{type:Date}
   }],
+  progress:[{
+    ref:{//opinions from others
+      type: Schema.Types.ObjectId,
+      ref: 'Material'
+    },
+    complete:{
+      type:Boolean,
+      default:false
+    }
+  }],
   inClass:{
     type:Boolean,
     default:false
