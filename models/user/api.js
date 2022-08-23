@@ -229,6 +229,8 @@ const email = require('../../services/email')
     cron.schedule('0 22 * * *',()=>{ //server time is 9 hours ahead
       User.find().then((users)=>{
         console.log('cron running...',users.length)
+        email.sendDefault('Activating Engagement',new Date())
+
         let delay=[]
         let mada=[]
         let mail_tag = ''

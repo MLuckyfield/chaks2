@@ -20,6 +20,20 @@ const prepareEmail=(subject,text)=>{
     text: text
   };
 }
+const sendDefault = (title,content)=>{
+    console.log('email service starting')
+    // console.log(booking)
+    const transporter = authenticate()
+    // console.log(req)
+    // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a'))
+    // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a').toString())
+
+    const mailOptions = prepareEmail(
+      title,
+      content
+    )
+    sendEmailNoRes(transporter,mailOptions)
+}
 const sendEmail=(transporter,mailOptions,res,data)=>{
   transporter.sendMail(mailOptions, function(error, info){
       if (error) {
