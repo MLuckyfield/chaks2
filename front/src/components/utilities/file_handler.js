@@ -1,71 +1,160 @@
-import React, { Component } from 'react';
-import {axios} from "../../utilities/axios";
+import React, { useState, CSSProperties } from 'react';
 
-import { CSVReader, readString } from 'react-papaparse'
+import {
+  useCSVReader,
+  lightenDarkenColor,
+  formatFileSize,
+} from 'react-papaparse';
 
-export default class FileHandler extends Component {
-  handleOnDrop = (data) => {
-    let headers  = []
-    let result = []
+const GREY = '#CCC';
+const GREY_LIGHT = 'rgba(255, 255, 255, 0.4)';
+const DEFAULT_REMOVE_HOVER_COLOR = '#A01919';
+const REMOVE_HOVER_COLOR_LIGHT = lightenDarkenColor(
+  DEFAULT_REMOVE_HOVER_COLOR,
+  40
+);
+const GREY_DIM = '#686868';
 
-    data.forEach((item, i) => {//prepare data for posting to database
-        if(i==0){//if first row, extract headers
-            item.data.forEach((item, i) => {
-              headers.push(item)
-            });
-        }else{//match data with headers
-            if(item.data[0]!=''){//does not prepare empty lines
-              let temp={}
-              headers.forEach((h, i) => {//dynamically create JSON data
-                if(typeof item.data[i] == 'number'){
-                  temp[headers[i]]=Number(item.data[i])
-                }else{
-                  temp[headers[i]]=item.data[i]
-                }
-              });
-              result.push(temp)
-            }
-        }
-    });
-    //result.pop()
-    console.log('prepped'+result)
-    axios.post(this.props.api,result)
-      .then((res) => {
-          console.log('file uploaded '+res);
-          })
-      .catch((err) => {
-        console.log('error '+err);
-        });
-  }
+const styles = {
+  zone: {
+    alignItems: 'center',
+    borderWidth: 2,
+    borderStyle: 'dashed',
+    borderColor: GREY,
+    borderRadius: 20,
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    justifyContent: 'center',
+    padding: 20,
+  } as CSSProperties,
+  file: {
+    background: 'linear-gradient(to bottom, #EEE, #DDD)',
+    borderRadius: 20,
+    display: 'flex',
+    height: 120,
+    width: 120,
+    position: 'relative',
+    zIndex: 10,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  } as CSSProperties,
+  info: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    paddingLeft: 10,
+    paddingRight: 10,
+  } as CSSProperties,
+  size: {
+    backgroundColor: GREY_LIGHT,
+    borderRadius: 3,
+    marginBottom: '0.5em',
+    justifyContent: 'center',
+    display: 'flex',
+  } as CSSProperties,
+  name: {
+    backgroundColor: GREY_LIGHT,
+    borderRadius: 3,
+    fontSize: 12,
+    marginBottom: '0.5em',
+  } as CSSProperties,
+  progressBar: {
+    bottom: 14,
+    position: 'absolute',
+    width: '100%',
+    paddingLeft: 10,
+    paddingRight: 10,
+  } as CSSProperties,
+  zoneHover: {
+    borderColor: GREY_DIM,
+  } as CSSProperties,
+  default: {
+    borderColor: GREY,
+  } as CSSProperties,
+  remove: {
+    height: 23,
+    position: 'absolute',
+    right: 6,
+    top: 6,
+    width: 23,
+  } as CSSProperties,
+};
 
-  handleOnError = (err, file, inputElem, reason) => {
-    console.log(err)
-  }
+export default function CSVReader() {
+  const { CSVReader } = useCSVReader();
+  const [zoneHover, setZoneHover] = useState(false);
+  const [removeHoverColor, setRemoveHoverColor] = useState(
+    DEFAULT_REMOVE_HOVER_COLOR
+  );
 
-  handleOnRemoveFile = (data) => {
-    console.log('---------------------------')
-    console.log(data)
-    console.log('---------------------------')
-  }
-
-  render() {
-    return (
-      <CSVReader
-        onDrop={this.handleOnDrop}
-        onError={this.handleOnError}
-        noClick
-        addRemoveButton
-        onRemoveFile={this.handleOnRemoveFile}
-        configOptions={{
-            header: true,
-            skipEmptyLines: 'greedy',
-            step: function(row) { /* Stream */
-              console.log("Row:", row.data);
-            },
-          }}
-      >
-        <span>Drop CSV file here to upload.</span>
-      </CSVReader>
-    )
-  }
+  return (
+    <CSVReader
+      onUploadAccepted={(results: any) => {
+        console.log('---------------------------');
+        console.log(results);
+        console.log('---------------------------');
+        setZoneHover(false);
+      }}
+      onDragOver={(event: DragEvent) => {
+        event.preventDefault();
+        setZoneHover(true);
+      }}
+      onDragLeave={(event: DragEvent) => {
+        event.preventDefault();
+        setZoneHover(false);
+      }}
+    >
+      {({
+        getRootProps,
+        acceptedFile,
+        ProgressBar,
+        getRemoveFileProps,
+        Remove,
+      }: any) => (
+        <>
+          <div
+            {...getRootProps()}
+            style={Object.assign(
+              {},
+              styles.zone,
+              zoneHover && styles.zoneHover
+            )}
+          >
+            {acceptedFile ? (
+              <>
+                <div style={styles.file}>
+                  <div style={styles.info}>
+                    <span style={styles.size}>
+                      {formatFileSize(acceptedFile.size)}
+                    </span>
+                    <span style={styles.name}>{acceptedFile.name}</span>
+                  </div>
+                  <div style={styles.progressBar}>
+                    <ProgressBar />
+                  </div>
+                  <div
+                    {...getRemoveFileProps()}
+                    style={styles.remove}
+                    onMouseOver={(event: Event) => {
+                      event.preventDefault();
+                      setRemoveHoverColor(REMOVE_HOVER_COLOR_LIGHT);
+                    }}
+                    onMouseOut={(event: Event) => {
+                      event.preventDefault();
+                      setRemoveHoverColor(DEFAULT_REMOVE_HOVER_COLOR);
+                    }}
+                  >
+                    <Remove color={removeHoverColor} />
+                  </div>
+                </div>
+              </>
+            ) : (
+              'Drop CSV file here or click to upload'
+            )}
+          </div>
+        </>
+      )}
+    </CSVReader>
+  );
 }
