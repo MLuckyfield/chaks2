@@ -1,64 +1,70 @@
-import React, { CSSProperties } from 'react';
+import React, { Component } from 'react'
+import axios from 'axios';
+import { CSVReader, readString } from 'react-papaparse'
 
-import { useCSVReader } from 'react-papaparse';
+export default class FileHandler extends Component {
+  handleOnDrop = (data) => {
+    let headers  = []
+    let result = []
 
-const styles = {
-  csvReader: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginBottom: 10,
-  } as CSSProperties,
-  browseFile: {
-    width: '20%',
-  } as CSSProperties,
-  acceptedFile: {
-    border: '1px solid #ccc',
-    height: 45,
-    lineHeight: 2.5,
-    paddingLeft: 10,
-    width: '80%',
-  } as CSSProperties,
-  remove: {
-    borderRadius: 0,
-    padding: '0 20px',
-  } as CSSProperties,
-  progressBarBackgroundColor: {
-    backgroundColor: 'red',
-  } as CSSProperties,
-};
+    data.forEach((item, i) => {//prepare data for posting to database
+        if(i==0){//if first row, extract headers
+            item.data.forEach((item, i) => {
+              headers.push(item)
+            });
+        }else{//match data with headers
+            if(item.data[0]!=''){//does not prepare empty lines
+              let temp={}
+              headers.forEach((h, i) => {//dynamically create JSON data
+                if(typeof item.data[i] == 'number'){
+                  temp[headers[i]]=Number(item.data[i])
+                }else{
+                  temp[headers[i]]=item.data[i]
+                }
+              });
+              result.push(temp)
+            }
+        }
+    });
+    //result.pop()
+    console.log('prepped'+result)
+    // axios.post(this.props.api,result)
+    //   .then((res) => {
+    //       console.log('file uploaded '+res);
+    //       })
+    //   .catch((err) => {
+    //     console.log('error '+err);
+    //     });
+  }
 
-export default function CSVReader() {
-  const { CSVReader } = useCSVReader();
+  handleOnError = (err, file, inputElem, reason) => {
+    console.log(err)
+  }
 
-  return (
-    <CSVReader
-      onUploadAccepted={(results: any) => {
-        console.log('---------------------------');
-        console.log(results);
-        console.log('---------------------------');
-      }}
-    >
-      {({
-        getRootProps,
-        acceptedFile,
-        ProgressBar,
-        getRemoveFileProps,
-      }: any) => (
-        <>
-          <div style={styles.csvReader}>
-            <button type='button' {...getRootProps()} style={styles.browseFile}>
-              Browse file
-            </button>
-            <div style={styles.acceptedFile}>
-              {acceptedFile && acceptedFile.name}
-            </div>
-            <button {...getRemoveFileProps()} style={styles.remove}>
-              Remove
-            </button>
-          </div>
-          <ProgressBar style={styles.progressBarBackgroundColor} />
-        </>
-      )}
-    </CSVReader>
-  );
-}s
+  handleOnRemoveFile = (data) => {
+    console.log('---------------------------')
+    console.log(data)
+    console.log('---------------------------')
+  }
+
+  render() {
+    return (
+      <CSVReader
+        onDrop={this.handleOnDrop}
+        onError={this.handleOnError}
+        noClick
+        addRemoveButton
+        onRemoveFile={this.handleOnRemoveFile}
+        configOptions={{
+            header: true,
+            skipEmptyLines: 'greedy',
+            step: function(row) { /* Stream */
+              console.log("Row:", row.data);
+            },
+          }}
+      >
+        <span>Drop CSV file here to upload.</span>
+      </CSVReader>
+    )
+  }
+}
