@@ -8,6 +8,15 @@ const Event = mongoose.model('Material', new Schema({
     required: true,
     unique: true
   },
+  category:{
+    type:String,
+  },
+  sub_category:{
+    type:String,
+  },
+  level:{
+    type:Number,
+  },
 },{
   timestamps: true,
 }));
