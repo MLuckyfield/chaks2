@@ -70,6 +70,9 @@ const User = mongoose.model('User', new Schema({
       type:Boolean,
       default:false
     },
+    goal:{
+      type:Boolean,
+    },
     success:{
       type:Number
     },
