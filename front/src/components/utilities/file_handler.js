@@ -27,7 +27,7 @@ export default class FileHandler extends Component {
         }
     });
     //result.pop()
-    console.log('prepped'+JSON.stringify(result))
+    console.log('Original',data)
     // axios.post(this.props.api,result)
     //   .then((res) => {
     //       console.log('file uploaded '+res);
