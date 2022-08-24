@@ -15,7 +15,7 @@ const Admin = ()=> {
                   <div id="popup">
                     <div class='master-row'>
                       <div class='row'>
-                        <File api='/material/new'/>
+                        
                       </div>
                       <div class='row'>
                         <div class='col'>
