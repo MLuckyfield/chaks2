@@ -65,7 +65,7 @@ app.use('/booking',auth.auth,require('./models/booking/api'));
 app.use('/event_info',require('./models/event/api'));
 app.use('/content',require('./models/content/api'));
 app.use('/payment',require('./services/payment'));
-app.use('/material',require('./material/new'));
+app.use('/material',require('./material/api'));
 
 //heroku deployment
 app.get("*", (req, res) => {
