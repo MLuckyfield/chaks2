@@ -28,6 +28,9 @@ const Event = mongoose.model('Event', new Schema({
   attendees:{//opinions from others
     type: Schema.Types.ObjectId,
     ref: 'User'
+  },
+  active:{
+    type:Boolean
   }
 },{
   timestamps: true,
