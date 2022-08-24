@@ -51,25 +51,23 @@ export default function CSVReader() {
             {...getRootProps()}
             style={Object.assign(
               {},
-              styles.zone,
-              zoneHover && styles.zoneHover
+              zoneHover
             )}
           >
             {acceptedFile ? (
               <>
-                <div style={styles.file}>
-                  <div style={styles.info}>
-                    <span style={styles.size}>
+                <div>
+                  <div>
+                    <span>
                       {formatFileSize(acceptedFile.size)}
                     </span>
-                    <span style={styles.name}>{acceptedFile.name}</span>
+                    <span>{acceptedFile.name}</span>
                   </div>
-                  <div style={styles.progressBar}>
+                  <div>
                     <ProgressBar />
                   </div>
                   <div
                     {...getRemoveFileProps()}
-                    style={styles.remove}
                     onMouseOver={(event: Event) => {
                       event.preventDefault();
                       setRemoveHoverColor(REMOVE_HOVER_COLOR_LIGHT);
