@@ -69,6 +69,12 @@ const User = mongoose.model('User', new Schema({
     complete:{
       type:Boolean,
       default:false
+    },
+    success:{
+      type:Number
+    },
+    fail:{
+      type:Number
     }
   }],
   inClass:{
