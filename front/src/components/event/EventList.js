@@ -27,7 +27,7 @@ const EventList = () => {
             let readyDate = getDate(event.repeats)
             event['date'] = readyDate
             console.log(event,event.active,event.active==false)
-            if(event.active=='false'){delete formatted[i]}
+            if(event.active==false){delete formatted[i]}
           });
           formatted.sort((a,b)=>Number(a.date)-Number(b.date))
           setDate(getDate(formatted[0].repeats));
