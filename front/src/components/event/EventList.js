@@ -26,6 +26,7 @@ const EventList = () => {
           formatted.forEach((event, i) => {
             let readyDate = getDate(event.repeats)
             event['date'] = readyDate
+            console.log(event)
             if(event.active=='false'){delete formatted[i]}
           });
           formatted.sort((a,b)=>Number(a.date)-Number(b.date))
@@ -144,10 +145,10 @@ const getImage=(url)=>{
 const attendance=(list)=>{
   let temp = localStorage.getItem('user')
   let user = temp?JSON.parse(temp):undefined;
-  console.log(user,list)
+  // console.log(user,list)
   if(user&&list){
     if(Array.isArray(list)){
-      console.log('executing')
+      // console.log('executing')
       if(list.length>1){
         list.forEach((person, i) => {
           if(person==user._id){return true}
