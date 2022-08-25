@@ -32,7 +32,6 @@ import google_ads from './components/google_ads'
 import hotjar from './components/hotjar'
 //import pages
 import EventList from './components/event/EventList'
-import EventsPage from './components/page/EventsPage'
 import Material_Admin from './components/user/admin'
 import CreateEvent from './components/event/CreateEvent'
 import CampaignPage from './components/page/CampaignPage'
@@ -92,6 +91,7 @@ const App = () => {
         <Navbar/>
         <div class='nav-filler'>
         </div>
+          <Route exact path="/redirect" component={Front}/>
           <Route exact path="/" component={Front}/>
           <Route path="/events" component={EventList}/>
           <Route path="/campaigns" component={CampaignPage}/>
