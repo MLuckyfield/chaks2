@@ -298,6 +298,7 @@ const email = require('../../services/email')
         // email.reportEngagement(mada,delay)
         // console.log('cron complete at',moment(new Date()).format('MM DD'))
       })
+      console.log('running')
     })
 
     const mailchimp_email = (mail_tag,user)=>{
