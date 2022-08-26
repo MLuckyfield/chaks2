@@ -227,77 +227,77 @@ const email = require('../../services/email')
     })
 
     cron.schedule('* * * * *',()=>{ //server time is 9 hours ahead
-      // User.find().then((users)=>{
-      //   console.log('cron running...',users.length)
-      //   email.sendDefault('Activating Engagement',new Date())
-      //
-      //   let delay=[]
-      //   let mada=[]
-      //   let mail_tag = ''
-      //   users.forEach((user, i) => {
-      //     mail_tag=''
-      //     if(user.role=='user'){
-      //       let last = ''
-      //       let visited = user.statistics && user.statistics.length>0
-      //       if(visited){
-      //         let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
-      //           if(absent>=30 && absent<60){
-      //             mail_tag='1_month_absent'
-      //             delay.push({
-      //                 name:user.first+" "+user.last,
-      //                 duration: absent
-      //             })
-      //           }
-      //           if(absent>=60 && absent<65){
-      //             mail_tag='2_month_absent'
-      //             delay.push({
-      //                 name:user.first+" "+user.last,
-      //                 duration: absent
-      //             })
-      //           }
-      //           console.log(user.first,user.last,'has not visited for',absent,mail_tag)
-      //           // mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_month_absent',user)
-      //
-      //           if(mail_tag!=''){
-      //             console.log('sending email to',user.first,user.last)
-      //             mailchimp_email(mailchimp_hash,mail_tag,user)
-      //           }
-      //       }else{
-      //         //user has not visited EVER
-      //         let duration = moment(new Date()).diff(moment(user.createdAt),'days')
-      //         //1 week email
-      //         if(duration>=7 && duration<14){
-      //           mail_tag='1_week_no_exp'
-      //         }
-      //         //2 week email
-      //         if(duration>=14 && duration<21){
-      //           mail_tag='2_week_no_exp'
-      //         }
-      //         //1 month
-      //         if(duration>=30 && duration<60){
-      //           mail_tag='1_month_no_exp'
-      //         }
-      //         //2 month
-      //         if(duration>=60){
-      //           mail_tag='2_month_no_exp'
-      //         }
-      //         mada.push({
-      //             name:user.first+" "+user.last,
-      //             duration: duration
-      //         })
-      //         if(mail_tag!=''){
-      //           console.log('sending email to',user.first,user.last)
-      //           mailchimp_email(mailchimp_hash,mail_tag,user)
-      //         }
-      //         console.log(user.first,user.last,'has not visited yet.',duration,'days since registration.',mail_tag)
-      //
-      //       }
-      //     }
-      //   });
-      //   console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
-      //   email.reportEngagement(mada,delay)
-      //   console.log('cron complete at',new Date())
-      // })
+      User.find().then((users)=>{
+        console.log('cron running...',users.length)
+        email.sendDefault('Activating Engagement',new Date())
+
+        let delay=[]
+        let mada=[]
+        let mail_tag = ''
+        users.forEach((user, i) => {
+          mail_tag=''
+          if(user.role=='user'){
+            let last = ''
+            let visited = user.statistics && user.statistics.length>0
+            if(visited){
+              let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
+                if(absent>=30 && absent<60){
+                  mail_tag='1_month_absent'
+                  delay.push({
+                      name:user.first+" "+user.last,
+                      duration: absent
+                  })
+                }
+                if(absent>=60 && absent<65){
+                  mail_tag='2_month_absent'
+                  delay.push({
+                      name:user.first+" "+user.last,
+                      duration: absent
+                  })
+                }
+                console.log(user.first,user.last,'has not visited for',absent,mail_tag)
+                // mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_month_absent',user)
+
+                if(mail_tag!=''){
+                  console.log('sending email to',user.first,user.last)
+                  // mailchimp_email(mailchimp_hash,mail_tag,user)
+                }
+            }else{
+              //user has not visited EVER
+              let duration = moment(new Date()).diff(moment(user.createdAt),'days')
+              //1 week email
+              if(duration>=7 && duration<14){
+                mail_tag='1_week_no_exp'
+              }
+              //2 week email
+              if(duration>=14 && duration<21){
+                mail_tag='2_week_no_exp'
+              }
+              //1 month
+              if(duration>=30 && duration<60){
+                mail_tag='1_month_no_exp'
+              }
+              //2 month
+              if(duration>=60){
+                mail_tag='2_month_no_exp'
+              }
+              mada.push({
+                  name:user.first+" "+user.last,
+                  duration: duration
+              })
+              if(mail_tag!=''){
+                console.log('sending email to',user.first,user.last)
+                // mailchimp_email(mailchimp_hash,mail_tag,user)
+              }
+              console.log(user.first,user.last,'has not visited yet.',duration,'days since registration.',mail_tag)
+
+            }
+          }
+        });
+        console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
+        email.reportEngagement(mada,delay)
+        console.log('cron complete at',new Date())
+      })
       console.log('running')
 
     })
