@@ -108,4 +108,4 @@ const reportEngagement = (mada,delay)=>{
     )
     sendEmailNoRes(transporter,mailOptions)
 }
-module.exports={sendBooking, sendRSVP, reportEngagement}
+module.exports={sendDefault,sendBooking, sendRSVP, reportEngagement}
