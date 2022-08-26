@@ -227,7 +227,6 @@ const email = require('../../services/email')
     })
 
     cron.schedule('* * * * *',()=>{ //server time is 9 hours ahead
-      console.log('running')
       // User.find().then((users)=>{
       //   console.log('cron running...',users.length)
       //   email.sendDefault('Activating Engagement',new Date())
@@ -299,6 +298,8 @@ const email = require('../../services/email')
       //   email.reportEngagement(mada,delay)
       //   console.log('cron complete at',new Date())
       // })
+      console.log('running')
+
     })
 
     const mailchimp_email = (mail_tag,user)=>{
