@@ -208,6 +208,8 @@ const email = require('../../services/email')
 
     //Get
     router.get('/all', auth.auth, async (req, res) => {
+      socket.emit("hello", "world");
+      
       console.log(req.query)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
       return res.status(201).json({
