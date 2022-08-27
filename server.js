@@ -17,9 +17,7 @@ const io = new Server(server);
 
 io.on('connection', (socket) => {
   console.log('a user connected');
-  socket.on("hello", (arg) => {
-    console.log(arg); // world
-  });
+  
 });
 const port = process.env.PORT || 5000;
 //setup middleware
