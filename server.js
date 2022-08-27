@@ -13,7 +13,7 @@ const { Server } = require("socket.io");
 require('dotenv').config();
 
 const app = express();
-const io = new Server(http.createServer(app));
+const io = new Server((app));
 io.on('connection', (socket) => {
   console.log('a user connected');
 });
@@ -81,6 +81,6 @@ app.get("*", (req, res) => {
 //   console.log('cron running...')
 // })
 //start listening
-server.listen(port,() => {
+app.listen(port,() => {
   console.log(`Server is running on port: ${port}`)
 })
