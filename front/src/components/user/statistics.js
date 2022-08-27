@@ -11,7 +11,7 @@ const Statistics = (props)=>{
     socket.on('connect', () => {
       console.log('Socket ready');
     });
-    socket.on('ping', () => {
+    socket.on('pong', () => {
       console.log('pinged')
     });
     // console.log('loading account view for '+JSON.stringify(student))
@@ -24,6 +24,7 @@ const Statistics = (props)=>{
   },[])
 
   const sendPing = () => {
+    console.log('ping clicked')
     socket.emit('ping');
   }
   return (
