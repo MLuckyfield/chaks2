@@ -10,9 +10,9 @@ const Statistics = (props)=>{
   useEffect(()=>{
     socket.on('connect', () => {
       console.log('Socket ready');
-      socket.on('ping', () => {
-        console.log('pinged')
-      });
+    });
+    socket.on('ping', () => {
+      console.log('pinged')
     });
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
