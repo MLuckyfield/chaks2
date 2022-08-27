@@ -86,10 +86,10 @@ const App = () => {
       heatmap.async = true;
       document.head.appendChild(heatmap);
 
-      const socketio = document.createElement('script');
-      socketio.src = socket;
-      socketio.async = true;
-      document.head.appendChild(socketio);
+      // const socketio = document.createElement('script');
+      // socketio.src = socket;
+      // socketio.async = true;
+      // document.head.appendChild(socketio);
     }, []);
 
 

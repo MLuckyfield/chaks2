@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
+import io from 'socket.io-client';
 
 const Statistics = (props)=>{
 
   const [user,setUser]=useState()
+  const socket = io();
 
   useEffect(()=>{
+    socket.on('connect', () => {
+      console.log('Socket ready');
+    });
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
