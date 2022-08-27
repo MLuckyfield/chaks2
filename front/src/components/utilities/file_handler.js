@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+import {axios} from "../../utilities/axios";
 import { CSVReader, readString } from 'react-papaparse'
 
 export default class FileHandler extends Component {

@@ -36,6 +36,7 @@ import Material_Admin from './components/user/admin'
 import CreateEvent from './components/event/CreateEvent'
 import CampaignPage from './components/page/CampaignPage'
 import StylePage from './components/page/StylePage'
+import Statistics from './components/user/statistics'
 import {metaTags} from './components/seo'
 
 
@@ -91,7 +92,6 @@ const App = () => {
         <Navbar/>
         <div class='nav-filler'>
         </div>
-          <Route exact path="/redirect" component={Front}/>
           <Route exact path="/" component={Front}/>
           <Route path="/events" component={EventList}/>
           <Route path="/campaigns" component={CampaignPage}/>
@@ -110,6 +110,7 @@ const App = () => {
             <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/reservations" access={['user','teacher','manager']} success={Booking} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/material_admin" access={['manager']} success={Material_Admin} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/statistics" access={['manager']} success={Statistics} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/qr-reader" access={['user','teacher','manager']} success={()=><QrReader ViewFinder={()=>{return <div class='qr_viewfinder'></div>}} scanDelay={1000} onResult={(result,error)=>{
               if(!!result){
                 alert(typeof result.text)
