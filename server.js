@@ -9,11 +9,11 @@ const auth= require('./services/authentication');
 const http = require('http')
 const { Server } = require("socket.io");
 // const cron = require('node-cron')
-
+const server = http.createServer(app)
 require('dotenv').config();
 
 const app = express();
-const io = new Server(http.createServer(app));
+const io = new Server(server);
 io.on('connection', (socket) => {
   console.log('a user connected');
 });
@@ -81,6 +81,6 @@ app.get("*", (req, res) => {
 //   console.log('cron running...')
 // })
 //start listening
-app.listen(port,() => {
+server.listen(port,() => {
   console.log(`Server is running on port: ${port}`)
 })
