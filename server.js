@@ -81,6 +81,6 @@ app.get("*", (req, res) => {
 //   console.log('cron running...')
 // })
 //start listening
-app.listen(port,() => {
+server.listen(port,() => {
   console.log(`Server is running on port: ${port}`)
 })
