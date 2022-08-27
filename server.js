@@ -12,8 +12,9 @@ const { Server } = require("socket.io");
 require('dotenv').config();
 
 const app = express();
-const io = new Server(server);
 const server = http.createServer(app)
+const io = new Server(server);
+
 io.on('connection', (socket) => {
   console.log('a user connected');
 });
