@@ -13,7 +13,9 @@ require('dotenv').config();
 
 const app = express();
 const io = new Server(http.createServer(app));
-
+io.on('connection', (socket) => {
+  console.log('a user connected');
+});
 const port = process.env.PORT || 5000;
 //setup middleware
 app.use(cors({
