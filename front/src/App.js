@@ -29,7 +29,6 @@ import Profile from './components/user/Profile'
 import google_analytics from './components/google_analytics'
 import google_ads from './components/google_ads'
 import hotjar from './components/hotjar'
-import socket from './components/socketio'
 
 //import pages
 import EventList from './components/event/EventList'
