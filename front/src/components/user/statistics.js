@@ -11,8 +11,8 @@ const Statistics = (props)=>{
     socket.on('connect', () => {
       console.log('Socket ready');
     });
-    socket.on('pong', () => {
-      console.log('pinged')
+    socket.on("hello", (arg) => {
+      console.log(arg); // world
     });
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
@@ -25,7 +25,7 @@ const Statistics = (props)=>{
 
   const sendPing = () => {
     console.log('ping clicked')
-    socket.emit('ping');
+    socket.emit("hello", "world");
   }
   return (
     <div class="pop">
