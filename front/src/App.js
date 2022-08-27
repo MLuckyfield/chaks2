@@ -23,13 +23,14 @@ import Social from './components/utilities/social'
 import Booking from './components/utilities/booking'
 import Popup from './components/utilities/popup'
 import Account from './components/user/account'
-
 // import Payment from './components/utilities/payment'
 import Profile from './components/user/Profile'
 
 import google_analytics from './components/google_analytics'
 import google_ads from './components/google_ads'
 import hotjar from './components/hotjar'
+import socket from './components/socketio'
+
 //import pages
 import EventList from './components/event/EventList'
 import Material_Admin from './components/user/admin'
@@ -84,6 +85,11 @@ const App = () => {
       heatmap.src = hotjar;
       heatmap.async = true;
       document.head.appendChild(heatmap);
+
+      const socketio = document.createElement('script');
+      socketio.src = socket;
+      socketio.async = true;
+      document.head.appendChild(socketio);
     }, []);
 
 

@@ -6,11 +6,14 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const path = require("path")//heroku deployment
 const auth= require('./services/authentication');
+const { Server } = require("socket.io");
 // const cron = require('node-cron')
 
 require('dotenv').config();
 
 const app = express();
+const io = new Server(http.createServer(app));
+
 const port = process.env.PORT || 5000;
 //setup middleware
 app.use(cors({

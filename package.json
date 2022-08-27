@@ -39,6 +39,7 @@
     "passport-jwt": "^4.0.0",
     "react-papaparse": "^3.18.1",
     "request": "^2.88.2",
+    "socket.io": "^4.5.1",
     "stripe": "^9.9.0"
   }
 }
