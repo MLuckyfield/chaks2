@@ -9,11 +9,11 @@ const auth= require('./services/authentication');
 const http = require('http')
 const { Server } = require("socket.io");
 // const cron = require('node-cron')
-const server = http.createServer(app)
 require('dotenv').config();
 
 const app = express();
 const io = new Server(server);
+const server = http.createServer(app)
 io.on('connection', (socket) => {
   console.log('a user connected');
 });
