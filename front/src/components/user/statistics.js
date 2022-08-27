@@ -10,14 +10,14 @@ const Statistics = (props)=>{
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
           setUser(res.data.data)
-          console.log('Statistics for',user)
+          console.log('Statistics for',res.data.data)
         })
       .catch(error => console.log("error"+error))
   },[])
 
   return (
     <div class="pop">
-      
+
     </div>
   )
 }
