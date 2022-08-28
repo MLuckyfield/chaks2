@@ -17,7 +17,7 @@ const Statistics = (props)=>{
   useEffect(()=>{
     console.log('Front Connected?',isConnected)
     socket.on('connect', () => {
-      setIsConnected(true).then(console.log(isConnected))
+      setIsConnected(true)
       console.log('Socket ready');
     });
 
