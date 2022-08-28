@@ -9,16 +9,18 @@ const Statistics = (props)=>{
   const socket = io();
   const [isConnected,setIsConnected]=useState(socket.connected)
 
+  socket.on("return", (arg) => {
+    alert('recieved',arg); // world
+    setTime(new Date())
+  });
+  
   useEffect(()=>{
     console.log('Front Connected?',isConnected)
     socket.on('connect', () => {
       setIsConnected(true)
       console.log('Socket ready');
     });
-    socket.on("return", (arg) => {
-      alert('recieved',arg); // world
-      setTime(new Date())
-    });
+
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
