@@ -18,6 +18,8 @@ const Statistics = (props)=>{
     console.log('Front Connected?',isConnected)
     socket.on('connect', () => {
       setIsConnected(true)
+      socket.emit("hello", "world");
+      
       console.log('Socket ready');
     });
 
