@@ -34,7 +34,7 @@ const Statistics = (props)=>{
   }
   return (
     <div class="pop">
-
+      <p>Connected: {isConnected}</p>    
       <p>Current Time: {time.toString()}</p>
       <button onClick={ sendPing }>Send ping</button>
     </div>
