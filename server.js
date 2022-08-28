@@ -4,7 +4,8 @@ const MongoStore = require('connect-mongo');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
-const path = require("path")//heroku deployment
+const socket = require('../../services/email')
+const path = require("path")//heroku deployment7
 const auth= require('./services/authentication');
 const http = require('http')
 const { Server } = require("socket.io");
@@ -15,9 +16,9 @@ const app = express();
 const server = http.createServer(app)
 const io = new Server(server);
 
-io.on('connection', (socket) => {
+io.on('connection', (socketio) => {
   console.log('a user connected');
-  
+
 });
 const port = process.env.PORT || 5000;
 //setup middleware
