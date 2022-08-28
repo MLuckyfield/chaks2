@@ -15,7 +15,7 @@ const Statistics = (props)=>{
       setIsConnected(true)
       console.log('Socket ready');
     });
-    socket.on("pong", (arg) => {
+    socket.on("hello", (arg) => {
       alert('recieved',arg); // world
       setTime(new Date())
     });
@@ -30,7 +30,7 @@ const Statistics = (props)=>{
 
   const sendPing = () => {
     console.log('ping clicked')
-    socket.emit("ping", "world");
+    socket.emit("hello", "world");
   }
   return (
     <div class="pop">
