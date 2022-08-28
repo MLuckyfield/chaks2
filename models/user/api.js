@@ -8,7 +8,9 @@ const moment = require ('moment')
 const encrypt = require('crypto-js/md5')
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const email = require('../../services/email')
-const io = require('socket.io-client');
+const { Server } = require("socket.io");
+
+const io = new Server({ /* options */ });
 
 //Registration
 
@@ -210,7 +212,7 @@ const io = require('socket.io-client');
     //Get
     router.get('/all', auth.auth, async (req, res) => {
       const socket = req.app.get('socketio')
-      socket.emit("hello", "world");
+      io.emit("hello", "world");
 
       console.log('running user/all')
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
