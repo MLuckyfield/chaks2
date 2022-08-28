@@ -4,7 +4,6 @@ const MongoStore = require('connect-mongo');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
-const socket = require('../../services/email')
 const path = require("path")//heroku deployment7
 const auth= require('./services/authentication');
 const http = require('http')
