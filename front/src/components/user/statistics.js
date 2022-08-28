@@ -15,7 +15,7 @@ const Statistics = (props)=>{
       setIsConnected(true)
       console.log('Socket ready');
     });
-    socket.on("hello", (arg) => {
+    socket.on("return", (arg) => {
       alert('recieved',arg); // world
       setTime(new Date())
     });
@@ -34,7 +34,7 @@ const Statistics = (props)=>{
   }
   return (
     <div class="pop">
-      <p>Connected: {isConnected}</p>    
+      <p>Connected: {isConnected}</p>
       <p>Current Time: {time.toString()}</p>
       <button onClick={ sendPing }>Send ping</button>
     </div>
