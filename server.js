@@ -19,6 +19,7 @@ io.on('connection', (socketio) => {
   console.log('a user connected');
 });
 io.on("hello", (arg) => {
+  console.log('hello recieved')
   io.emit('return',arg)
 });
 app.set('socketio', io)

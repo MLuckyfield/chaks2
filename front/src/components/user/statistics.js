@@ -13,7 +13,7 @@ const Statistics = (props)=>{
     alert('recieved',arg); // world
     setTime(new Date())
   });
-  
+
   useEffect(()=>{
     console.log('Front Connected?',isConnected)
     socket.on('connect', () => {
@@ -36,6 +36,7 @@ const Statistics = (props)=>{
   }
   return (
     <div class="pop">
+      <p></p>
       <p>Connected: {isConnected}</p>
       <p>Current Time: {time.toString()}</p>
       <button onClick={ sendPing }>Send ping</button>
