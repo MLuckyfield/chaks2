@@ -17,9 +17,9 @@ const io = new Server(server);
 
 io.on('connection', (socketio) => {
   console.log('a user connected');
-  socketio.on("hello", (arg) => {
-    socketio.emit('return',arg)
-  });
+});
+io.on("hello", (arg) => {
+  io.emit('return',arg)
 });
 app.set('socketio', io)
 const port = process.env.PORT || 5000;
