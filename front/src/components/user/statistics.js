@@ -5,14 +5,16 @@ import io from 'socket.io-client';
 const Statistics = (props)=>{
 
   const [user,setUser]=useState()
+  const [time,setTime]=useState(new Date())
   const socket = io();
 
   useEffect(()=>{
     socket.on('connect', () => {
       console.log('Socket ready');
     });
-    socket.on("hello", (arg) => {
+    socket.on("pong", (arg) => {
       alert('recieved',arg); // world
+      setTime(new Date())
     });
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
@@ -25,10 +27,11 @@ const Statistics = (props)=>{
 
   const sendPing = () => {
     console.log('ping clicked')
-    socket.emit("hello", "world");
+    socket.emit("ping", "world");
   }
   return (
     <div class="pop">
+      <p>{time}</p>
       <button onClick={ sendPing }>Send ping</button>
     </div>
   )
