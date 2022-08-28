@@ -12,7 +12,7 @@ const Statistics = (props)=>{
       console.log('Socket ready');
     });
     socket.on("hello", (arg) => {
-      console.log('recieved',arg); // world
+      alert('recieved',arg); // world
     });
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
