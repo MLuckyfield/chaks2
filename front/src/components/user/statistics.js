@@ -7,9 +7,11 @@ const Statistics = (props)=>{
   const [user,setUser]=useState()
   const [time,setTime]=useState(new Date())
   const socket = io();
+  const [isConnected,setIsConnected]=useState(socket.connected)
 
   useEffect(()=>{
     socket.on('connect', () => {
+      setIsConnected(true)
       console.log('Socket ready');
     });
     socket.on("pong", (arg) => {
@@ -31,7 +33,8 @@ const Statistics = (props)=>{
   }
   return (
     <div class="pop">
-      <p>{time}</p>
+      <p>Connected: {isConnected}</p>
+      <p>Current Time: {time}</p>
       <button onClick={ sendPing }>Send ping</button>
     </div>
   )
