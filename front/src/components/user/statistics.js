@@ -10,6 +10,7 @@ const Statistics = (props)=>{
   const [isConnected,setIsConnected]=useState(socket.connected)
 
   useEffect(()=>{
+    console.log('Front Connected?',isConnected)
     socket.on('connect', () => {
       setIsConnected(true)
       console.log('Socket ready');
@@ -33,7 +34,7 @@ const Statistics = (props)=>{
   }
   return (
     <div class="pop">
-      <p>Connected: {isConnected}</p>
+
       <p>Current Time: {time}</p>
       <button onClick={ sendPing }>Send ping</button>
     </div>
