@@ -9,7 +9,6 @@ const encrypt = require('crypto-js/md5')
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const email = require('../../services/email')
 const { Server } = require("socket.io");
-const http = require('http')
 
 // const io = new Server({ /* options */ });
 
@@ -212,14 +211,9 @@ const http = require('http')
 
     //Get
     router.get('/all', auth.auth, async (req, res) => {
-      const server = http.createServer(req.app)
-      const io = new Server(server);
-      console.log('back io',io)
-      io.on("connection", (arg) => {
-        console.log('hello recieved')
-        io.emit('hello',world)
-      });
-      // io.emit("hello", "world");
+
+      const io = req.app.locals.io
+      io.emit("hello", "world");
 
       console.log('running user/all')
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)

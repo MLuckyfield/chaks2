@@ -6,16 +6,17 @@ const Statistics = (props)=>{
 
   const [user,setUser]=useState()
   const [time,setTime]=useState(new Date())
-  const socket = io();
   const [isConnected,setIsConnected]=useState(socket.connected)
   // socket.on("return", (arg) => {
   //   alert('recieved',arg); // world
   //   setTime(new Date())
   // });
   useEffect(()=>{
+    const socket = io();
+
     console.log('Front Connected?',isConnected)
     socket.emit("hello", "world");
-    
+
     socket.on("return", (arg) => {
       setTime(new Date())
       alert('recieved'+arg); // world
@@ -33,7 +34,7 @@ const Statistics = (props)=>{
 
   const sendPing = () => {
     console.log('ping clicked')
-    socket.emit("hello", "world");
+    // socket.emit("hello", "world");
   }
   return (
     <div class="pop">
