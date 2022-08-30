@@ -253,6 +253,7 @@ const io = new Server({ /* options */ });
                       name:user.first+" "+user.last,
                       duration: absent
                   })
+                  // mailchimp_email(mailchimp_hash,mail_tag,user)
                 }
                 if(absent>=60){
                   mail_tag='2_month_absent'
@@ -260,13 +261,13 @@ const io = new Server({ /* options */ });
                       name:user.first+" "+user.last,
                       duration: absent
                   })
+                  // mailchimp_email(mailchimp_hash,mail_tag,user)
                 }
                 console.log(user.first,user.last,'has not visited for',absent,mail_tag)
-                // mailchimp_email(mailchimp_hash,mail_tag?mail_tag:'1_month_absent',user)
 
                 if(mail_tag!=''){
                   console.log('sending email to',user.first,user.last)
-                  // mailchimp_email(mailchimp_hash,mail_tag,user)
+                  mailchimp_email(mailchimp_hash,mail_tag,user)
                 }
             }else{
               //user has not visited EVER
@@ -293,7 +294,7 @@ const io = new Server({ /* options */ });
               })
               if(mail_tag!=''){
                 console.log('sending email to',user.first,user.last)
-                // mailchimp_email(mailchimp_hash,mail_tag,user)
+                mailchimp_email(mailchimp_hash,mail_tag,user)
               }
               console.log(user.first,user.last,'has not visited yet.',duration,'days since registration.',mail_tag)
 
