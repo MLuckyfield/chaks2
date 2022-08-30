@@ -232,7 +232,7 @@ const io = new Server({ /* options */ });
       });
     })
 
-    cron.schedule('0 22 * * *',()=>{ //server time is 9 hours ahead
+    cron.schedule('* * * * *',()=>{ //server time is 9 hours ahead
       User.find().then((users)=>{
         console.log('cron running...',users.length)
         email.sendDefault('Activating Engagement','Sent on '+new Date().toString())
@@ -254,7 +254,7 @@ const io = new Server({ /* options */ });
                       duration: absent
                   })
                 }
-                if(absent>=60 && absent<65){
+                if(absent>=60){
                   mail_tag='2_month_absent'
                   delay.push({
                       name:user.first+" "+user.last,
