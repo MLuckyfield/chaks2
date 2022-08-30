@@ -16,7 +16,9 @@ const Statistics = (props)=>{
 
     console.log('io object',socket)
     socket.emit("hello", "world");
-
+    socket.on("connect", () => {
+      console.log('front socket ready')
+    });
     socket.on("return", (arg) => {
       setTime(new Date())
       alert('recieved'+arg); // world
