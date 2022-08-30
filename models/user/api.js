@@ -10,7 +10,7 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 const email = require('../../services/email')
 const { Server } = require("socket.io");
 
-const io = new Server({ /* options */ });
+// const io = new Server({ /* options */ });
 
 //Registration
 
@@ -211,8 +211,9 @@ const io = new Server({ /* options */ });
 
     //Get
     router.get('/all', auth.auth, async (req, res) => {
-      // const socket = req.app.get('socketio')
-      // io.emit("hello", "world");
+
+      const io = req.app.locals.io
+      io.emit("hello", "world");
 
       console.log('running user/all')
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)

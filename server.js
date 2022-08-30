@@ -22,10 +22,9 @@ io.on('connection', (socketio) => {
     io.emit('return',arg)
   });
   // io.emit('return','server to frotn okay')
-
 });
-
 app.set('socketio', io)
+app.locals.io = io
 const port = process.env.PORT || 5000;
 //setup middleware
 app.use(cors({
