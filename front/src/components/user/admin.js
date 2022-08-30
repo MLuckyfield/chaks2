@@ -9,7 +9,7 @@ const Admin = ()=> {
     <div class='master-row'>
         <div class='row'>
           <div class='col'>
-            <File/>
+            <File api='material/new'/>
           </div>
         </div>
     </div>
