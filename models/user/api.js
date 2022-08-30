@@ -215,7 +215,7 @@ const http = require('http')
       const server = http.createServer(req.app)
       const io = new Server(server);
       console.log('back io',io)
-      io.on("hello", (arg) => {
+      io.on("connection", (arg) => {
         console.log('hello recieved')
         io.emit('hello',world)
       });
