@@ -300,7 +300,7 @@ const io = new Server({ /* options */ });
     //         }
     //       }
     //     });
-    //     console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
+        console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
     //     // email.reportEngagement(mada,delay)
     //     // console.log('cron complete at',moment(new Date()).format('MM DD'))
     //   })
