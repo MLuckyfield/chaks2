@@ -8,6 +8,7 @@ export default class FileHandler extends Component {
     let result = []
 
     data.forEach((item, i) => {//prepare data for posting to database
+      console.log(i,item)
         if(i==0){//if first row, extract headers
             item.data.forEach((item, i) => {
               headers.push(item)
