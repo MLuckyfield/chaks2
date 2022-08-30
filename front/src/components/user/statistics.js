@@ -14,6 +14,8 @@ const Statistics = (props)=>{
   // });
   useEffect(()=>{
     console.log('Front Connected?',isConnected)
+    socket.emit("hello", "world");
+    
     socket.on("return", (arg) => {
       setTime(new Date())
       alert('recieved'+arg); // world
