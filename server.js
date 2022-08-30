@@ -17,11 +17,12 @@ const io = new Server(server);
 
 io.on('connection', (socketio) => {
   console.log('a user connected');
+  io.on("hello", (arg) => {
+    console.log('hello recieved')
+    io.emit('return',arg)
+  });
 });
-io.on("hello", (arg) => {
-  console.log('hello recieved')
-  io.emit('return',arg)
-});
+
 app.set('socketio', io)
 const port = process.env.PORT || 5000;
 //setup middleware
