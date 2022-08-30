@@ -12,7 +12,7 @@ export default class FileHandler extends Component {
             item.data.forEach((item, i) => {
               headers.push(item)
             });
-        }else{//match data with headers
+        }
             if(item.data[0]!=''){//does not prepare empty lines
               let temp={}
               headers.forEach((h, i) => {//dynamically create JSON data
@@ -25,7 +25,6 @@ export default class FileHandler extends Component {
               });
               result.push(temp)
             }
-        }
     });
     //result.pop()
     console.log('Original',data,result)
