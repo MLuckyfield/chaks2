@@ -21,7 +21,7 @@ io.on('connection', (socketio) => {
     console.log('hello recieved')
     io.emit('return',arg)
   });
-  io.emit('return','server to frotn okay')
+  // io.emit('return','server to frotn okay')
 
 });
 
