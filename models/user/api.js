@@ -211,8 +211,8 @@ const io = new Server({ /* options */ });
 
     //Get
     router.get('/all', auth.auth, async (req, res) => {
-      const socket = req.app.get('socketio')
-      io.emit("hello", "world");
+      // const socket = req.app.get('socketio')
+      // io.emit("hello", "world");
 
       console.log('running user/all')
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
@@ -232,7 +232,7 @@ const io = new Server({ /* options */ });
       });
     })
 
-    // cron.schedule('* * * * *',()=>{ //server time is 9 hours ahead
+    cron.schedule('* * * * *',()=>{ //server time is 9 hours ahead
     //   User.find().then((users)=>{
     //     console.log('cron running...',users.length)
     //     email.sendDefault('Activating Engagement',new Date())
@@ -304,8 +304,8 @@ const io = new Server({ /* options */ });
     //     // email.reportEngagement(mada,delay)
     //     // console.log('cron complete at',moment(new Date()).format('MM DD'))
     //   })
-    //   console.log('running')
-    // })
+      console.log('running')
+    })
 
     const mailchimp_email = (mail_tag,user)=>{
       let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
