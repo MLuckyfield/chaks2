@@ -8,7 +8,6 @@ export default class FileHandler extends Component {
     let result = []
 
     data.forEach((item, i) => {//prepare data for posting to database
-      console.log(i,item)
         if(i==0){//if first row, extract headers
             item.data.forEach((item, i) => {
               headers.push(item)
@@ -19,6 +18,7 @@ export default class FileHandler extends Component {
               headers.forEach((h, i) => {//dynamically create JSON data
                 if(typeof item.data[i] == 'number'){
                   temp[headers[i]]=Number(item.data[i])
+                  console.log(typeof item.data[i])
                 }else{
                   temp[headers[i]]=item.data[i]
                 }
