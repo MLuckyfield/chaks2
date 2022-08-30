@@ -27,14 +27,14 @@ export default class FileHandler extends Component {
         }
     });
     //result.pop()
-    console.log('Original',data)
-    axios.post(this.props.api,result)
-      .then((res) => {
-          console.log('file uploaded '+res);
-          })
-      .catch((err) => {
-        console.log('error '+err);
-        });
+    console.log('Original',data,result)
+    // axios.post(this.props.api,result)
+    //   .then((res) => {
+    //       console.log('file uploaded '+res);
+    //       })
+    //   .catch((err) => {
+    //     console.log('error '+err);
+    //     });
   }
 
   handleOnError = (err, file, inputElem, reason) => {
