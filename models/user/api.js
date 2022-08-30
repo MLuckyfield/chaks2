@@ -233,12 +233,12 @@ const io = new Server({ /* options */ });
     })
 
     cron.schedule('* * * * *',()=>{ //server time is 9 hours ahead
-    //   User.find().then((users)=>{
-    //     console.log('cron running...',users.length)
-    //     email.sendDefault('Activating Engagement',new Date())
-    //
-    //     let delay=[]
-    //     let mada=[]
+      User.find().then((users)=>{
+        console.log('cron running...',users.length)
+        email.sendDefault('Activating Engagement',new Date())
+
+        let delay=[]
+        let mada=[]
     //     let mail_tag = ''
     //     users.forEach((user, i) => {
     //       mail_tag=''
@@ -303,7 +303,7 @@ const io = new Server({ /* options */ });
         console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
     //     // email.reportEngagement(mada,delay)
     //     // console.log('cron complete at',moment(new Date()).format('MM DD'))
-    //   })
+      })
       console.log('running')
     })
 
