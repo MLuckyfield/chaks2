@@ -213,6 +213,7 @@ const { Server } = require("socket.io");
     router.get('/all', auth.auth, async (req, res) => {
 
       const io = req.app.locals.io
+      console.log('back io',io)
       io.emit("hello", "world");
 
       console.log('running user/all')
