@@ -15,8 +15,9 @@ const Statistics = (props)=>{
   useEffect(()=>{
     console.log('Front Connected?',isConnected)
     socket.on("return", (arg) => {
-      alert('recieved',arg); // world
       setTime(new Date())
+      alert('recieved'+arg); // world
+      
     });
 
     // console.log('loading account view for '+JSON.stringify(student))
