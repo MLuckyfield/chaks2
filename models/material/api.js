@@ -6,8 +6,8 @@ const email = require('../../services/email')
 
 //Create
 router.post('/new', auth.auth, auth.permission(['manager']),async (req, res) => {
+  // req = JSON.stringify(req.body)
   console.log('recieved: '+req)
-  req = JSON.stringify(req.body)
 
   await Material.insertMany(JSON.parse(req))
       .then(()=>{
