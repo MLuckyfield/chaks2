@@ -9,7 +9,7 @@ router.post('/new', auth.auth, auth.permission(['manager']),async (req, res) => 
   // req = JSON.stringify(req.body)
   console.log('recieved: '+req)
 
-  await Material.insertMany(JSON.parse(req))
+  await Material.insertMany(req)
       .then(()=>{
         return res.status(201).json({
           message: 'Material saved',
