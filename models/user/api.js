@@ -232,7 +232,7 @@ const io = new Server({ /* options */ });
       });
     })
 
-    cron.schedule('* * * * *',()=>{ //server time is 9 hours ahead
+    cron.schedule('*/30 * * * *',()=>{ //server time is 9 hours ahead
       User.find().then((users)=>{
         console.log('cron running...',users.length)
         email.sendDefault('Activating Engagement','Sent on '+new Date().toString())
