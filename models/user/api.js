@@ -235,7 +235,7 @@ const io = new Server({ /* options */ });
     cron.schedule('* * * * *',()=>{ //server time is 9 hours ahead
       User.find().then((users)=>{
         console.log('cron running...',users.length)
-        email.sendDefault('Activating Engagement',new Date())
+        // email.sendDefault('Activating Engagement',new Date())
 
         let delay=[]
         let mada=[]
