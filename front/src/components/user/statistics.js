@@ -6,7 +6,7 @@ const Statistics = (props)=>{
 
   const [user,setUser]=useState()
   const [time,setTime]=useState(new Date())
-  const socket = io('/');
+  const socket = io();
   const [isConnected,setIsConnected]=useState(socket.connected)
   socket.on("return", (arg) => {
     alert('recieved',arg); // world
