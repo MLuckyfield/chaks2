@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
-import io from 'socket.io-client';
+import {io} from 'socket.io-client';
 
 const Statistics = (props)=>{
 
@@ -14,13 +14,12 @@ const Statistics = (props)=>{
   useEffect(()=>{
     const socket = io();
 
-    console.log('Front Connected?',isConnected)
+    console.log('io object',socket)
     socket.emit("hello", "world");
 
     socket.on("return", (arg) => {
       setTime(new Date())
       alert('recieved'+arg); // world
-
     });
 
     // console.log('loading account view for '+JSON.stringify(student))
