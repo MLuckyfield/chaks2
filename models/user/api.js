@@ -267,7 +267,7 @@ const io = new Server({ /* options */ });
 
                 if(mail_tag!=''){
                   console.log('sending email to',user.first,user.last)
-                  mailchimp_email(mailchimp_hash,mail_tag,user)
+                  mailchimp_email(mail_tag,user)
                 }
             }else{
               //user has not visited EVER
@@ -294,7 +294,7 @@ const io = new Server({ /* options */ });
               })
               if(mail_tag!=''){
                 console.log('sending email to',user.first,user.last)
-                mailchimp_email(mailchimp_hash,mail_tag,user)
+                mailchimp_email(mail_tag,user)
               }
               console.log(user.first,user.last,'has not visited yet.',duration,'days since registration.',mail_tag)
 
