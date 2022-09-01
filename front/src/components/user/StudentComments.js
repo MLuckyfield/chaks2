@@ -22,7 +22,7 @@ const StudentComments = () => {
       console.log('front socket ready')
     });
 
-    socket.on("return", (arg) => {
+    socket.on("recievestudent", (arg) => {
       alert('recieved'+arg); // world
     });
     axios.get('/comment/all', {params:{filter:target._id}})
@@ -63,7 +63,7 @@ const StudentComments = () => {
          console.log(result)
          let popup = document.getElementById("teacher_select");
          popup.style.display = 'none';
-         socket.emit('newstudent','tada')
+         socket.emit('sendstudent','tada')
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   }

@@ -113,8 +113,8 @@ const Session =(props)=>{
   useEffect(() => {
     socket.on("connect", () => {
       console.log('front socket ready')
-      socket.emit('sendstudent','tada')
-      
+      // socket.emit('sendstudent','tada')
+
     });
 
     socket.on("recievestudent", (arg) => {
