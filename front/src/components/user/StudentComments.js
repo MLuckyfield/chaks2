@@ -21,10 +21,6 @@ const StudentComments = () => {
     socket.on("connect", () => {
       console.log('front socket ready')
     });
-
-    socket.on("recievestudent", (arg) => {
-      alert('recieved'+arg); // world
-    });
     axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data.reverse());

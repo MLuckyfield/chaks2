@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // import {axios} from "../../utilities/axios";
 import Sidebar from './Sidebar'
 import Table from '../utilities/table'
@@ -110,20 +110,20 @@ const Dash = ()=>{
 }
 
 const Session =(props)=>{
+  const [students,setStudents]=useState()
   useEffect(() => {
     socket.on("connect", () => {
       console.log('front socket ready')
       // socket.emit('sendstudent','tada')
-
     });
 
     socket.on("recievestudent", (arg) => {
-      alert('recieved'+arg); // world
+      setStudents(arg)
     });
   },[])
 
   return (
-    <div>Session</div>
+    <div>Session {students}</div>
   )
 }
 export default Admin;
