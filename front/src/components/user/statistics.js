@@ -35,8 +35,9 @@ const Statistics = (props)=>{
   },[])
 
   const sendPing = () => {
-    console.log('ping clicked')
     socket.emit("hello", "world");
+    console.log('ping clicked')
+    
   }
   return (
     <div class="pop">

@@ -80,6 +80,10 @@ const User = mongoose.model('User', new Schema({
       type:Number
     }
   }],
+  students:[{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
   inClass:{
     type:Boolean,
     default:false
