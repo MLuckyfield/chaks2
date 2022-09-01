@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 // import {axios} from "../../utilities/axios";
 import Sidebar from './Sidebar'
 import Table from '../utilities/table'
@@ -14,7 +14,8 @@ import Product_Display from '../utilities/product_display'
 import QRCode from 'react-qr-code'
 import {QrReader} from 'react-qr-reader'
 import * as PusherPushNotifications from "@pusher/push-notifications-web";
-
+import {io} from 'socket.io-client';
+const socket = io();
 
 const Admin = () => {
 
@@ -58,6 +59,8 @@ const Dash = ()=>{
     )
   }else if (user.role=='teacher')
   {
+    <Session user={user}/>
+
     // if (('serviceWorker' in navigator) && ('PushManager' in window)) {
     //   return navigator.serviceWorker
     //       .register('/../../utilities/service_worker.js')
@@ -96,7 +99,6 @@ const Dash = ()=>{
 
     return(
       <div>
-        <Session user={user}/>
         <Calendar/>
         <StaffTable/>
         <StudentTable/>
@@ -109,7 +111,14 @@ const Dash = ()=>{
 }
 
 const Session =(props)=>{
-  return <Table name='In Session' api='/user/all' filter={{_id: props.user._id}} fields="-__v -tags -source -password -createdAt -updatedAt -role -points -active"/>
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log('front socket ready')
+    });
 
+    socket.on("newstudent", (arg) => {
+      alert('recieved'+arg); // world
+    });
+  },[])
 }
 export default Admin;

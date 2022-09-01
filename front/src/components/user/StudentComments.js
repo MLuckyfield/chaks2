@@ -3,6 +3,8 @@ import {axios} from "../../utilities/axios";
 import Comment from "../comment/Comment";
 import Profile from "./Profile";
 import moment from "moment"
+import {io} from 'socket.io-client';
+const socket = io();
 
 const StudentComments = () => {
 
@@ -16,7 +18,13 @@ const StudentComments = () => {
     }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
   })
   useEffect(() => {
+    socket.on("connect", () => {
+      console.log('front socket ready')
+    });
 
+    socket.on("return", (arg) => {
+      alert('recieved'+arg); // world
+    });
     axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data.reverse());
@@ -44,15 +52,18 @@ const StudentComments = () => {
           let billable = 0
           if(time-40>0){billable=time-40}
           console.log('Billable time is',billable)
-          alert(time+' minutes | '+1000+(Math.round(billable/30)*1000)+'/n Start:'+moment(res.data.data.statistics[0].start).format('HH:MM')+'/n End:'+moment(res.data.data.statistics[0].end).format('HH:MM'))
+          if(status){alert(time+' minutes | '+1000+(Math.round(billable/30)*1000)+'/n Start:'+moment(res.data.data.statistics[0].start).format('HH:MM')+'/n End:'+moment(res.data.data.statistics[0].end).format('HH:MM'))}
         })
       .catch(error => console.log("error"+error))
   }
   const sendTo=(id)=>{
     console.log(id)
-    axios.post('user/update',{_id: id})
+    axios.post('user/update',{_id: id},{'$push':{students:target._id}})
       .then((result)=>{
          console.log(result)
+         let popup = document.getElementById("teacher_select");
+         popup.style.display = 'none';
+         socket.emit('newstudent','tada')
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   }
