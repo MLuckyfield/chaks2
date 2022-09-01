@@ -116,7 +116,7 @@ const Session =(props)=>{
   useEffect(() => {
     axios.get('user/all',{params:{filter:{_id: JSON.parse(localStorage.getItem('user'))._id}}})
       .then((result)=>{
-        result = result.data.data
+        result = result.data.data.students
          console.log(result)
          setStudents(result)
       })
