@@ -16,6 +16,7 @@ import {QrReader} from 'react-qr-reader'
 import * as PusherPushNotifications from "@pusher/push-notifications-web";
 import {io} from 'socket.io-client';
 const socket = io();
+import {axios} from "../../utilities/axios";
 
 const Admin = () => {
 
@@ -117,13 +118,27 @@ const Session =(props)=>{
       // socket.emit('sendstudent','tada')
     });
 
-    socket.on("recievestudent", (arg) => {
-      setStudents(arg)
+    socket.on("recievestudent", (id) => {
+      axios.get('user/all',{_id: id})
+        .then((result)=>{
+           console.log(result)
+           setStudents(current=>[...current,result])
+        })
+        .catch(error=>console.log('From sendTo teacher:',error))
     });
   },[])
 
   return (
-    <div>Session {students}</div>
+    <div>Session <p></p>
+      {students?students.map((student,i)=>{
+        return (
+          <tr>
+            <td>{student.first}</td>
+            <td>{student.last}</td>
+          </tr>
+        )
+      }):'No students in session'}
+    </div>
   )
 }
 export default Admin;

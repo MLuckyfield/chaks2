@@ -59,7 +59,7 @@ const StudentComments = () => {
          console.log(result)
          let popup = document.getElementById("teacher_select");
          popup.style.display = 'none';
-         socket.emit('sendstudent','tada')
+         socket.emit('sendstudent',target._id)
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   }
