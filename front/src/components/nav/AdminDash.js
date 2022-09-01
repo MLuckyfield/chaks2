@@ -112,7 +112,7 @@ const Dash = ()=>{
 }
 
 const Session =(props)=>{
-  const [students,setStudents]=useState()
+  const [students,setStudents]=useState([])
   useEffect(() => {
     socket.on("connect", () => {
       console.log('front socket ready')
