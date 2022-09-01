@@ -120,7 +120,7 @@ const Session =(props)=>{
     });
 
     socket.on("recievestudent", (id) => {
-      axios.get('user/all',{_id: id})
+      axios.get('user/all',{params:{filter:{_id: id}}})
         .then((result)=>{
            console.log(result)
            setStudents(current=>[...current,result])
