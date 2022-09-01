@@ -96,6 +96,7 @@ const Dash = ()=>{
 
     return(
       <div>
+        <Session user={user}/>
         <Calendar/>
         <StaffTable/>
         <StudentTable/>
@@ -104,6 +105,11 @@ const Dash = ()=>{
   }else{
     return <div>none</div>
   }
+
+}
+
+const Session =(props)=>{
+  return <Table name='In Session' api='/user/all' filter={{_id: props.user._id}} fields="-__v -tags -source -password -createdAt -updatedAt -role -points -active"/>
 
 }
 export default Admin;
