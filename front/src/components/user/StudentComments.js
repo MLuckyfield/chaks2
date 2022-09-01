@@ -50,9 +50,9 @@ const StudentComments = () => {
   }
   const sendTo=(id)=>{
     console.log(id)
-    // axios.get()
+    // axios.post('user/update',{_id: id})
     //   .then((result)=>{
-    //
+    //      console.log(result)
     //   })
     //   .catch(error=>console.log('From sendTo teacher:',error))
   }
