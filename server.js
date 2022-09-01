@@ -17,9 +17,9 @@ const io = new Server(server);
 
 io.on('connection', (socketio) => {
   console.log('a user connected');
-  io.on("hello", (arg) => {
+  socketio.on("hello", (arg) => {
     console.log('hello recieved')
-    io.emit('return',arg)
+    socketio.emit('return',arg)
   });
   // io.emit('return','server to frotn okay')
 });
