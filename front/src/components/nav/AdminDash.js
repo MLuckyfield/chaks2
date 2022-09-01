@@ -45,10 +45,10 @@ const Admin = () => {
 }
 
 const StaffTable = ()=>{
-  return <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -tags -source -password -createdAt -updatedAt -role -points -active"/>
+  return <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -progress -tags -source -password -createdAt -updatedAt -role -points -active"/>
 }
 const StudentTable = ()=>{
-  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -tags -source -password -createdAt -updatedAt -role -points -active"/>
+  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -progress -tags -source -password -createdAt -updatedAt -role -points -active"/>
 }
 
 const Dash = ()=>{
@@ -122,7 +122,7 @@ const Session =(props)=>{
     socket.on("recievestudent", (id) => {
       axios.get('user/all',{params:{filter:{_id: id}}})
         .then((result)=>{
-          result = result.data.data
+          result = result.data.data[0]
            console.log(result)
            setStudents(current=>[...current,result])
         })
