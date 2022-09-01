@@ -130,7 +130,11 @@ const Session =(props)=>{
         .then((result)=>{
           result = result.data.data[0]
            console.log(result)
-           setStudents(current=>[result,...current])
+           if(students.length>0){
+             setStudents(current=>[result,...current])
+           }else{
+             setStudents([result])
+           }
         })
         .catch(error=>console.log('From sendTo teacher:',error))
     });
