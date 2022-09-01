@@ -129,7 +129,12 @@ const Session =(props)=>{
         .catch(error=>console.log('From sendTo teacher:',error))
     });
   },[])
-
+  const makeComment = (item)=>{
+      localStorage.setItem('student',JSON.stringify(item))
+      window.location='/student';
+      // setTarget(item)
+      // console.log(target)
+  }
   return (
     <div>Session <p></p>
       {students?students.map((student,i)=>{
@@ -137,6 +142,7 @@ const Session =(props)=>{
           <tr>
             <td>{student.first}</td>
             <td>{student.last}</td>
+            <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
           </tr>
         )
       }):'No students in session'}
