@@ -59,7 +59,6 @@ const Dash = ()=>{
     )
   }else if (user.role=='teacher')
   {
-    <Session user={user}/>
 
     // if (('serviceWorker' in navigator) && ('PushManager' in window)) {
     //   return navigator.serviceWorker
@@ -94,7 +93,7 @@ const Dash = ()=>{
     //   .then((interests) => console.log("Current interests:", interests))
     //   .catch(console.error);
 
-    return <StudentTable/>
+    return <div><Session user={user}/><StudentTable/></div>
   }else if (user.role=='manager'){
 
     return(
