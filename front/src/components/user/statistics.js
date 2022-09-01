@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import {io} from 'socket.io-client';
+const socket = io();
 
 const Statistics = (props)=>{
 
@@ -12,13 +13,11 @@ const Statistics = (props)=>{
   //   setTime(new Date())
   // });
   useEffect(()=>{
-    const socket = io();
 
     console.log('io object',socket)
     socket.on("connect", () => {
       console.log('front socket ready')
       socket.emit("hello", "world");
-      
     });
 
     socket.on("return", (arg) => {
@@ -37,7 +36,7 @@ const Statistics = (props)=>{
 
   const sendPing = () => {
     console.log('ping clicked')
-    // socket.emit("hello", "world");
+    socket.emit("hello", "world");
   }
   return (
     <div class="pop">
