@@ -19,7 +19,7 @@ io.on('connection', (socketio) => {
   console.log('a user connected');
   socketio.on("sendstudent", (arg) => {
     console.log('student recieved')
-    socketio.emit('recievestudent',arg)
+    io.emit('recievestudent',arg)
   });
   // io.emit('return','server to frotn okay')
 });
