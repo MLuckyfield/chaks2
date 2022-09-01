@@ -48,7 +48,14 @@ const StudentComments = () => {
         })
       .catch(error => console.log("error"+error))
   }
-
+  const sendTo=(id)=>{
+    console.log(id)
+    // axios.get()
+    //   .then((result)=>{
+    //
+    //   })
+    //   .catch(error=>console.log('From sendTo teacher:',error))
+  }
   return(
     <div class='master-row'>
       <div class='col'>
@@ -56,7 +63,10 @@ const StudentComments = () => {
         {JSON.parse(localStorage.getItem('user')).role=='manager'? (<button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{target.inClass?'End':'Start'}</button>):''}
         {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
       </div>
-      <div id='teacher_select'></div>
+      <div id='teacher_select'>
+        <button onClick={()=>sendTo('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
+        <button onClick={()=>sendTo('62900e59f7fadacf7159f379')} class='button'>Sonja</button>
+      </div>
       <h1>Feedback ({comments?comments.length:'None Yet!'})</h1>
       <div class='col'>
           {comments ? (comments.map(function(item, i){
