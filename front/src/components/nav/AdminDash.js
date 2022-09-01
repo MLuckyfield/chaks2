@@ -114,11 +114,17 @@ const Dash = ()=>{
 const Session =(props)=>{
   const [students,setStudents]=useState([])
   useEffect(() => {
+    axios.get('user/all',{params:{filter:{_id: id}}})
+      .then((result)=>{
+        result = result.data.data
+         console.log(result)
+         setStudents(result)
+      })
+      .catch(error=>console.log('From sendTo teacher:',error))
     socket.on("connect", () => {
       console.log('front socket ready')
       // socket.emit('sendstudent','tada')
     });
-
     socket.on("recievestudent", (id) => {
       axios.get('user/all',{params:{filter:{_id: id}}})
         .then((result)=>{
