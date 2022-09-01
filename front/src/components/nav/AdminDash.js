@@ -115,7 +115,7 @@ const Session =(props)=>{
       console.log('front socket ready')
     });
 
-    socket.on("newstudent", (arg) => {
+    socket.on("recievestudent", (arg) => {
       alert('recieved'+arg); // world
     });
   },[])
