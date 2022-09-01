@@ -26,6 +26,12 @@ const StudentComments = () => {
   },[])
 
   const clockin=(status)=>{
+    const vincent=0
+    const sonja=0
+    if(status){
+      let popup = document.getElementById("teacher_select");
+      popup.style.display = 'block';
+    }
     console.log('will send '+JSON.stringify(target._id))
     axios.get('/user/clock', {params:{filter:target._id,data:status}})
       .then((res) => {
@@ -50,6 +56,7 @@ const StudentComments = () => {
         {JSON.parse(localStorage.getItem('user')).role=='manager'? (<button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{target.inClass?'End':'Start'}</button>):''}
         {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
       </div>
+      <div id='teacher_select'></div>
       <h1>Feedback ({comments?comments.length:'None Yet!'})</h1>
       <div class='col'>
           {comments ? (comments.map(function(item, i){
