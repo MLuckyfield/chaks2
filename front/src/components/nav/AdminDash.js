@@ -119,5 +119,9 @@ const Session =(props)=>{
       alert('recieved'+arg); // world
     });
   },[])
+
+  return (
+    <div>Session</div>
+  )
 }
 export default Admin;
