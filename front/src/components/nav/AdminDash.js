@@ -15,8 +15,9 @@ import QRCode from 'react-qr-code'
 import {QrReader} from 'react-qr-reader'
 import * as PusherPushNotifications from "@pusher/push-notifications-web";
 import {io} from 'socket.io-client';
-const socket = io();
 import {axios} from "../../utilities/axios";
+
+const socket = io();
 
 const Admin = () => {
 
