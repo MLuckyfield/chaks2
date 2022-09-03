@@ -54,8 +54,9 @@ const StudentComments = () => {
       .catch(error => console.log("error"+error))
   }
   const sendTo=(id)=>{
-    console.log(id)
-    axios.post('user/update',{filter:{_id: id},data:{'$push':{students:target._id}}})
+    let params = {filter:{_id: id},data:{'$push':{students:target._id}}}
+    console.log(id,params)
+    axios.post('user/update',params)
       .then((result)=>{
          console.log(result)
          let popup = document.getElementById("teacher_select");
