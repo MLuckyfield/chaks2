@@ -138,7 +138,7 @@ const { Server } = require("socket.io");
     router.post('/update', auth.auth, auth.permission(['teacher','manager']), async (req,res)=>{
       console.log('filter recieved',req.body.filter)
       console.log('data recieved',req.body.data)
-      console.log(req)
+      // console.log(req)
       await User.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
           .then((result)=>{
             return res.status(201).json({
