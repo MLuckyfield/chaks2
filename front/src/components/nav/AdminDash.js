@@ -117,7 +117,7 @@ const Session =(props)=>{
     axios.get('user/all',{params:{filter:{_id: JSON.parse(localStorage.getItem('user'))._id}}})
       .then((result)=>{
         result = result.data.data.students
-         console.log('students retrieved: ',result.data.data)
+         console.log('students retrieved: ',result)
          setStudents(result)
       })
       .catch(error=>console.log('From sendTo teacher:',error))
