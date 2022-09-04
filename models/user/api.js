@@ -218,6 +218,7 @@ const { Server } = require("socket.io");
 
       console.log('running user/all',req)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
+      console.log('data retrieved:',data)
       return res.status(201).json({
         data: data,
         message: 'Job saved',
