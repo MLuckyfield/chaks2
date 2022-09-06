@@ -15,14 +15,19 @@ const Statistics = (props)=>{
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
-          setSessions(res.data.data[0].statistics)
-          console.log('Statistics for',res.data.data[0].statistics.length)
+        res=res.data.data[0].statistics
+          setSessions(res)
+          console.log('Statistics for',res.length)
+          const progressbar = document.querySelector(".progress");
+          progressbar.style.width = `${res.length}%`;
         })
       .catch(error => console.log("error"+error))
   },[])
 
   return (
-    <LinearProgressWithLabel value={sessions} />
+    <div class="progress-container">
+      <div class="progress"></div>
+    </div>
   )
 }
 
