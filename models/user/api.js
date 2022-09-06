@@ -248,6 +248,10 @@ const { Server } = require("socket.io");
 
     //rewards status
     cron.schedule('*/3 * * * *',()=>{
+      let gold = 0
+      let platinum = 0
+      let diamond = 0
+
       User.find().then((users)=>{
         users.forEach((user, i) => {
           if(user.role=='user'){
@@ -259,20 +263,16 @@ const { Server } = require("socket.io");
               if(moment(session.start).month()==month){count++}
             });
             let reward = ''
-            if(count>=4 && count<8){count='gold'}
-            if(count>=8 && count<12){count='platinum'}
-            if(count>=12){reward='diamond'}
+            if(count>=4 && count<8){reward='gold';gold++}
+            if(count>=8 && count<12){reward='platinum';platinum++}
+            if(count>=12){reward='diamond';diamond++}
             console.log(user.first,user.last,count,reward)
             if(reward){
-
-              // User.findOneAndUpdate({_id:user._id},{reward:reward})
-              // .then(()=>{
-              //   console.log(user.first,user.last,reward)
-              // })
+              User.findOneAndUpdate({_id:user._id},{reward:reward})
             }
           }
         });
-        // email.sendDefault('BOT|Monthly Rewards',)
+        email.sendDefault('BOT|Monthly Rewards','Gold: '+gold+', Platinum: '+platinum+', Diamond: '+diamond)
       })
     })
     //automated engagement
