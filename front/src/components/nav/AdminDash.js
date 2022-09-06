@@ -114,7 +114,9 @@ const Dash = ()=>{
 const Session =(props)=>{
   const [students,setStudents]=useState([])
   useEffect(() => {
-    axios.get('user/all',{params:{filter:{_id: JSON.parse(localStorage.getItem('user'))._id}}})
+    let target = JSON.parse(localStorage.getItem('user'))._id
+    console.log('getting for',target)
+    axios.get('user/all',{params:{filter:{_id: target}}})
       .then((result)=>{
         result = result.data.data.students
          console.log('students retrieved: ',result)
