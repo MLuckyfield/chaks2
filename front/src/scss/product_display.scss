@@ -9,6 +9,23 @@
   font-family: 'Lato', Arial, sans-serif;
   width:30%;
 }
+.progress-container {
+  height: 0.8rem;
+  width: 32rem;
+  border-radius: 0.4rem;
+
+  background: #000;
+}
+
+.progress-container .progress {
+  height: 100%;
+  width: 0;
+  border-radius: 0.4rem;
+
+  background: #ff4754;
+
+  transition: width 0.4s ease;
+}
 @media (max-width:800px){
     .plan{
       width:90%;
