@@ -116,7 +116,7 @@ const Session =(props)=>{
   useEffect(() => {
     let target = JSON.parse(localStorage.getItem('user'))._id
     console.log('getting for',target)
-    axios.get('user/all',{params:{filter:{_id: target}}})
+    axios.get('user/session',{params:{filter:{_id: target}}})
       .then((result)=>{
         result = result.data.data[0].students
          console.log('students retrieved: ',result)
