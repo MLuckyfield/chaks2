@@ -148,7 +148,7 @@ const Session =(props)=>{
       // console.log(target)
   }
   return (
-    <div>Session <p></p>
+    <div class='col'><h1>Session</h1><p></p>
       {students?students.map((student,i)=>{
         return (
           <tr>

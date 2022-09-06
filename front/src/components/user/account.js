@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
+import QRCode from 'react-qr-code'
 
 const Account = () => {
 
@@ -43,6 +44,7 @@ const Account = () => {
               </div>
             :'Loading account...'}
           </div>
+          <QRCode value={localStorage.getItem('user')}/>
       </div>
 )
 }
