@@ -216,7 +216,7 @@ const { Server } = require("socket.io");
     //Get
     router.get('/all', auth.auth, async (req, res) => {
 
-      console.log('running user/all',req)
+      console.log('running user/all',req.query)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
       console.log('data retrieved:',data)
       return res.status(201).json({
