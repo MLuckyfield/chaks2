@@ -35,10 +35,9 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
               mailchimp_hash,
               { tags: [{ name: "finished_trial", status: "active" }] }
             ).then(()=>{
-              console.log('removing',req.student._id,'from',req.author._id)
-
               User.findOneAndUpdate({_id:req.author._id},{'$pull':{students:req.student._id}},{new:true})
                   .then((result)=>{
+                    console.log('removing',req.student._id,'from',req.author._id,result)
                     return res.status(201).json({
                       data:result,
                       message: 'User update',
