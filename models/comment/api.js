@@ -18,45 +18,45 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
       author: req.author._id
   })
       .then(()=>{
-        Comment.find({student:req.student._id}).then((result)=>{
-          // let mailchimp_hash = encrypt(req.student.email.toLowerCase()).toString()
-          // console.log(req.student.email)
-          // console.log(encrypt(req.student.email).toString())
-          if (result.length==1){
-            console.log('sending feedback email...')
-            let mailchimp_hash = encrypt(req.student.email.toLowerCase()).toString()
-            mailchimp.setConfig({
-              apiKey: process.env.MAILCHIMP_AUTH,
-              server: 'us9',
-            });
+        User.findOneAndUpdate({_id:req.author._id},{'$pull':{students:req.student._id}},{new:true})
+            .then((result)=>{
+              console.log('removing',req.student._id,'from',req.author._id,result)
+              Comment.find({student:req.student._id}).then((result)=>{
+                // let mailchimp_hash = encrypt(req.student.email.toLowerCase()).toString()
+                // console.log(req.student.email)
+                // console.log(encrypt(req.student.email).toString())
+                if (result.length==1){
+                  console.log('sending feedback email...')
+                  let mailchimp_hash = encrypt(req.student.email.toLowerCase()).toString()
+                  mailchimp.setConfig({
+                    apiKey: process.env.MAILCHIMP_AUTH,
+                    server: 'us9',
+                  });
 
-            const response = mailchimp.lists.updateListMemberTags(
-              "cb86e9b6f5",
-              mailchimp_hash,
-              { tags: [{ name: "finished_trial", status: "active" }] }
-            ).then(()=>{
-              User.findOneAndUpdate({_id:req.author._id},{'$pull':{students:req.student._id}},{new:true})
-                  .then((result)=>{
-                    console.log('removing',req.student._id,'from',req.author._id,result)
-                    return res.status(201).json({
-                      data:result,
-                      message: 'User update',
-                      success: true
-                    });
+                  const response = mailchimp.lists.updateListMemberTags(
+                    "cb86e9b6f5",
+                    mailchimp_hash,
+                    { tags: [{ name: "finished_trial", status: "active" }] }
+                  ).then(()=>{
+                    // return res.status(201).json({
+                    //         message: `Success!`,
+                    //         success: true
+                    //       });
                   })
-                  .catch((err)=>{
-                    return res.status(500).json({
-                      message: `User failed to update: ${err}`,
-                      success: false
-                    });
-                  })
+                }
+              })
               // return res.status(201).json({
-              //         message: `Success!`,
-              //         success: true
-              //       });
+              //   data:result,
+              //   message: 'User update',
+              //   success: true
+              // });
             })
-          }
-        })
+            .catch((err)=>{
+              return res.status(500).json({
+                message: `User failed to update: ${err}`,
+                success: false
+              });
+            })
         // return res.status(201).json({
         //   message: 'Feedback uploaded!',
         //   success: true
