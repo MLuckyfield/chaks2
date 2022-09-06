@@ -250,24 +250,26 @@ const { Server } = require("socket.io");
     cron.schedule('*/3 * * * *',()=>{
       User.find().then((users)=>{
         users.forEach((user, i) => {
-          let sessions = user.statistics
-          let month = new Date().getMonth()
-          let count = 0
-          sessions.forEach((session, i) => {
-            console.log(moment(session.start).month(),month,moment(session.start).month()==month)
-            if(moment(session.start).month()==month){count++}
-          });
-          let reward = ''
-          if(count>=4 && count<8){count='gold'}
-          if(count>=8 && count<12){count='platinum'}
-          if(count>=12){reward='diamond'}
-          console.log(user.first,user.last,count,reward)
-          if(reward){
+          if(user.role=='user'){
+            let sessions = user.statistics
+            let month = new Date().getMonth()
+            let count = 0
+            sessions.forEach((session, i) => {
+              // console.log(moment(session.start).month(),month,moment(session.start).month()==month)
+              if(moment(session.start).month()==month){count++}
+            });
+            let reward = ''
+            if(count>=4 && count<8){count='gold'}
+            if(count>=8 && count<12){count='platinum'}
+            if(count>=12){reward='diamond'}
+            console.log(user.first,user.last,count,reward)
+            if(reward){
 
-            // User.findOneAndUpdate({_id:user._id},{reward:reward})
-            // .then(()=>{
-            //   console.log(user.first,user.last,reward)
-            // })
+              // User.findOneAndUpdate({_id:user._id},{reward:reward})
+              // .then(()=>{
+              //   console.log(user.first,user.last,reward)
+              // })
+            }
           }
         });
         // email.sendDefault('BOT|Monthly Rewards',)
