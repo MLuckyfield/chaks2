@@ -118,7 +118,7 @@ const Session =(props)=>{
     console.log('getting for',target)
     axios.get('user/all',{params:{filter:{_id: target}}})
       .then((result)=>{
-        // result = result.data.data.students
+        result = result.data.data[0].students
          console.log('students retrieved: ',result)
          setStudents(result)
       })
