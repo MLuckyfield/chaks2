@@ -118,7 +118,7 @@ const Session =(props)=>{
     console.log('getting for',target)
     axios.get('user/all',{params:{filter:{_id: target}}})
       .then((result)=>{
-        result = result.data.data.students
+        // result = result.data.data.students
          console.log('students retrieved: ',result)
          setStudents(result)
       })
@@ -131,7 +131,7 @@ const Session =(props)=>{
       axios.get('user/all',{params:{filter:{_id: id}}})
         .then((result)=>{
           result = result.data.data[0]
-           console.log(result)
+           console.log('triggered',result)
            if(students.length>0){
              setStudents(current=>[result,...current])
            }else{
