@@ -9,6 +9,7 @@ const Comment = () => {
   const comment = useRef('');
   const [student, setStudent] = useState(JSON.parse(localStorage.getItem('student')));
   const [author, setAuthor] = useState(JSON.parse(localStorage.getItem('user')));
+  const [active,setActive]=useState(true)
   const [hours, setHours] = useState(()=>{
     if(JSON.parse(localStorage.getItem('student')).statistics){
       let counter=0
@@ -22,6 +23,7 @@ const Comment = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setActive(false)
     axios.post('/comment/new',
       {
         comment: comment.current.value,
@@ -60,7 +62,7 @@ const Comment = () => {
                       <input type="text" class="form-control" placeholder={`${student.first} ${student.last}`} disabled/>
                     </div>
                     <label>{feedback}</label>
-                    <button type="submit" class="solid-first">Comment</button>
+                    {active?<button type="submit" class="solid-first">Comment</button>:'Please wait...'}
                   </form>
                 </div>
 )
