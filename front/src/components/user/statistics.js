@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
-import LinearProgressWithLabel from '@mui/material/Progress';
+import LinearProgressWithLabel from '@mui/material/LinearProgress';
 
 const Statistics = (props)=>{
 
