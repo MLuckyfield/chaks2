@@ -1,51 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
-import {io} from 'socket.io-client';
-const socket = io();
+import LinearProgressWithLabel from '@mui/material/Progress';
 
 const Statistics = (props)=>{
 
-  const [user,setUser]=useState()
-  const [time,setTime]=useState(new Date())
-  const [isConnected,setIsConnected]=useState()
+  const [sessions,setSessions]=useState()
+  // const [time,setTime]=useState(new Date())
+  // const [isConnected,setIsConnected]=useState()
   // socket.on("return", (arg) => {
   //   alert('recieved',arg); // world
   //   setTime(new Date())
   // });
   useEffect(()=>{
-
-    console.log('io object',socket)
-    socket.on("connect", () => {
-      console.log('front socket ready')
-      socket.emit("hello", "world");
-    });
-
-    socket.on("return", (arg) => {
-      setTime(new Date())
-      alert('recieved'+arg); // world
-    });
-
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
-          setUser(res.data.data)
-          console.log('Statistics for',res.data.data)
+          setSessions(res.data.data[0].statistics)
+          console.log('Statistics for',res.data.data[0].statistics.length)
         })
       .catch(error => console.log("error"+error))
   },[])
 
-  const sendPing = () => {
-    socket.emit("hello", "world");
-    console.log('ping clicked')
-    
-  }
   return (
-    <div class="pop">
-      <p></p>
-      <p>Connected: {isConnected}</p>
-      <p>Current Time: {time.toString()}</p>
-      <button onClick={ sendPing }>Send ping</button>
-    </div>
+    <LinearProgressWithLabel value={sessions} />
   )
 }
 

@@ -51,11 +51,6 @@ const sendEmail=(transporter,mailOptions,res,data)=>{
       }
 })
 }
-const sendEmailNoRes=(transporter,mailOptions,data)=>{
-  transporter.sendMail(mailOptions, function(error, info){
-      if (error) {console.log(error)} else {console.log('email sent')}
-    })
-}
 const sendBooking = (user,req,res)=>{
     console.log('email service starting')
     // console.log(booking)
@@ -107,5 +102,10 @@ const reportEngagement = (mada,delay)=>{
       report
     )
     sendEmailNoRes(transporter,mailOptions)
+}
+const sendEmailNoRes=(transporter,mailOptions,data)=>{
+  transporter.sendMail(mailOptions, function(error, info){
+      if (error) {console.log(error)} else {console.log('email sent')}
+    })
 }
 module.exports={sendDefault,sendBooking, sendRSVP, reportEngagement}
