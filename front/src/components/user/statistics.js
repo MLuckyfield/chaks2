@@ -4,7 +4,7 @@ import LinearProgressWithLabel from '@mui/material/LinearProgress';
 
 const Statistics = (props)=>{
 
-  const [sessions,setSessions]=useState()
+  const [sessions,setSessions]=useState(0)
   // const [time,setTime]=useState(new Date())
   // const [isConnected,setIsConnected]=useState()
   // socket.on("return", (arg) => {
