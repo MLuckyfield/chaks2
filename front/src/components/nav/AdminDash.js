@@ -127,7 +127,7 @@ const Session =(props)=>{
       console.log('front socket ready')
       // socket.emit('sendstudent','tada')
     });
-    socket.on("recievestudent", (id) => {
+    socket.on(target, (id) => {
       axios.get('user/all',{params:{filter:{_id: id}}})
         .then((result)=>{
           result = result.data.data[0]

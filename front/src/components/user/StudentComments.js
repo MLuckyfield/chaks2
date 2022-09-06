@@ -61,7 +61,7 @@ const StudentComments = () => {
          console.log(result)
          let popup = document.getElementById("teacher_select");
          popup.style.display = 'none';
-         socket.emit('sendstudent',target._id)
+         socket.emit('sendstudent',target._id,id)
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   }
@@ -87,7 +87,6 @@ const StudentComments = () => {
                     <div class=''>{moment(item.createdAt).format('dddd MMM-DD')}</div>
                 </div>
               )
-
                   })): 'No data to display'}
       </div>
       </div>
