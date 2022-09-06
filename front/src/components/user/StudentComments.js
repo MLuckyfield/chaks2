@@ -47,8 +47,8 @@ const StudentComments = () => {
           const time = moment(res.data.data.statistics[0].end).diff(moment(res.data.data.statistics[0].start), 'minutes')
           let billable = 0
           if(time-40>0){billable=time-40}
-          console.log('Billable time is',billable)
           billable = Math.round(billable/30)*1000
+          console.log('Billable time is',billable)
           if(!status){alert(time+' minutes | '+1000+billable+'/n Start:'+moment(res.data.data.statistics[0].start).format('HH:MM')+'/n End:'+moment(res.data.data.statistics[0].end).format('HH:MM'))}
         })
       .catch(error => console.log("error"+error))
