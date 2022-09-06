@@ -118,7 +118,7 @@ const App = () => {
             <SecureRoute path="/statistics" access={['manager']} success={Statistics} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/qr-reader" access={['user','teacher','manager']} success={()=><QrReader ViewFinder={()=>{return <div class='qr_viewfinder'></div>}} scanDelay={1000} onResult={(result,error)=>{
               if(!!result){
-                alert(typeof result.text)
+                // alert(typeof result.text)
                 localStorage.setItem('student',result.text)
                 window.location='/student'
               }
