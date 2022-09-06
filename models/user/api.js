@@ -269,6 +269,9 @@ const { Server } = require("socket.io");
             console.log(user.first,user.last,count,reward)
             if(reward){
               User.findOneAndUpdate({_id:user._id},{reward:reward})
+              .then(()=>{
+                console.log(user.first,user.last,'updated to',reward)
+              })
             }
           }
         });
