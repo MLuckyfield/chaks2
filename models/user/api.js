@@ -246,6 +246,28 @@ const { Server } = require("socket.io");
       });
     })
 
+    //rewards status
+    cron.schedule('*/3 * * * *',()=>{
+      User.find().then((users)=>{
+        users.forEach((user, i) => {
+          let sessions = user.statistics.length
+          let reward = ''
+          if(sessions>=4 && sessions<8){reward='gold'}
+          if(sessions>=8 && sessions<12){reward='platinum'}
+          if(sessions>=12){reward='diamond'}
+          if(reward){
+              console.log(user.first,user.last,reward)
+
+            // User.findOneAndUpdate({_id:user._id},{reward:reward})
+            // .then(()=>{
+            //   console.log(user.first,user.last,reward)
+            // })
+          }
+        });
+        // email.sendDefault('BOT|Monthly Rewards',)
+      })
+    })
+    //automated engagement
     cron.schedule('0 22 * * *',()=>{ //server time is 9 hours ahead
       User.find().then((users)=>{
         console.log('cron running...',users.length)

@@ -40,6 +40,9 @@ const User = mongoose.model('User', new Schema({
     },
     details:{type:String}
   },
+  reward:{
+    type:String
+  },
   plan:{
     type:String,
     default:'standard',
