@@ -62,7 +62,7 @@ const Comment = () => {
                       <input type="text" class="form-control" placeholder={`${student.first} ${student.last}`} disabled/>
                     </div>
                     <label>{feedback}</label>
-                    {active?<button type="submit" class="solid-first">Comment</button>:'Please wait...'}
+                    {active?<button type="submit" class="solid-first">Comment</button>:'Please wait... (manually refresh after 5 seconds)'}
                   </form>
                 </div>
 )
