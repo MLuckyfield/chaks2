@@ -45,7 +45,7 @@ const Admin = () => {
 }
 
 const StaffTable = ()=>{
-  return <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -progress -tags -source -password -createdAt -updatedAt -role -points -active"/>
+  return <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -progress -students -tags -source -password -createdAt -updatedAt -role -points -active"/>
 }
 const StudentTable = ()=>{
   return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -progress -students -tags -source -password -createdAt -updatedAt -role -points -active"/>
