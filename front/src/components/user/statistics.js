@@ -20,7 +20,6 @@ const Statistics = (props)=>{
     axios.get('user/all', {params:{filter:{_id:account._id}}})
       .then((res) => {
         res=res.data.data[0].statistics
-          setSessions(res)
           console.log('Statistics for',res.length)
           setSessions(res.length/4)
         })
@@ -39,7 +38,7 @@ const Statistics = (props)=>{
           :'Loading account...'}
         </div>
         <div class="progress-container">
-          <div class="progress" style={{width:`${sessions}%`}}></div>
+          <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
         </div>
         <QRCode value={localStorage.getItem('user')}/>
     </div>
