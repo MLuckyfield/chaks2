@@ -34,8 +34,7 @@ const Statistics = (props)=>{
             <h1>ACCOUNT</h1>
             {account?
             <div class='col'>
-              Plan: {account.plan}  {account.plan!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}<br/>
-              {account.first=='M'?(account.plan=='premium'?<div class="btn">Upgrade</div>:<div class="btn">Downgrade</div>):''}
+              Plan: 
               Points: {account.points}
             </div>
           :'Loading account...'}
