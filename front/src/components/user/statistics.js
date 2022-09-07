@@ -5,6 +5,8 @@ import LinearProgressWithLabel from '@mui/material/LinearProgress';
 const Statistics = (props)=>{
 
   const [sessions,setSessions]=useState(0)
+  const [account,setAccount]=useState(JSON.parse(localStorage.getItem('user')))
+
   // const [time,setTime]=useState(new Date())
   // const [isConnected,setIsConnected]=useState()
   // socket.on("return", (arg) => {
@@ -13,21 +15,35 @@ const Statistics = (props)=>{
   // });
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
-    axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
+    axios.get('user/all', {params:{filter:{_id:account._id}}})
       .then((res) => {
         res=res.data.data[0].statistics
           setSessions(res)
           console.log('Statistics for',res.length)
           const progressbar = document.querySelector(".progress");
-          progressbar.style.width = `${res.length}%`;
+          progressbar.style.width = `${res.length/4}%`;
         })
       .catch(error => console.log("error"+error))
   },[])
 
   return (
-    <div class="progress-container">
-      <div class="progress"></div>
+    <div class='master-row'>
+        <div class='col border'>
+            <h1>ACCOUNT</h1>
+            {account?
+            <div class='col'>
+              Plan: {account.plan}  {account.plan!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}<br/>
+              {account.first=='M'?(account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={(e)=>onSubmit(e,'downgrade')}>Downgrade</div>):''}
+              Points: {account.points}
+            </div>
+          :'Loading account...'}
+        </div>
+        <div class="progress-container">
+          <div class="progress"></div>
+        </div>
+        <QRCode value={localStorage.getItem('user')}/>
     </div>
+
   )
 }
 
