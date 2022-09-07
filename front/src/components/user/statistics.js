@@ -21,7 +21,13 @@ const Statistics = (props)=>{
       .then((res) => {
         res=res.data.data[0].statistics
           console.log('Statistics for',res.length)
-          setSessions((res.length/4)*100)
+          let month = new Date()
+          let count = 0
+          res.forEach((item, i) => {
+            // console.log(moment(session.start).month(),month,moment(session.start).month()==month)
+            if(moment(item.start).month()==month){count++}
+          });
+          setSessions((count/4)*100)
         })
       .catch(error => console.log("error"+error))
   },[])
