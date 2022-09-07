@@ -44,12 +44,14 @@ const StudentComments = () => {
           localStorage.setItem(source,JSON.stringify(res.data.data))
           if(status==true){setPayable(null)}
           else{setPayable(res.data.data.statistics[0])}
-          const time = moment(res.data.data.statistics[0].end).diff(moment(res.data.data.statistics[0].start), 'minutes')
+          let start =moment(res.data.data.statistics[0].start)
+          let end = moment(res.data.data.statistics[0].end)
+          const time = end.diff(start, 'minutes')
           let billable = 0
           if(time-40>0){billable=time-40}
           billable = (Math.round(billable/30)*1000)+1000
-          console.log('Billable time is',billable)
-          if(!status){alert(time+' minutes | '+billable+'/n Start:'+moment(res.data.data.statistics[0].start).format('HH:MM')+'/n End:'+moment(res.data.data.statistics[0].end).format('HH:MM'))}
+          console.log('Billable time is',billable,start,end)
+          if(!status){alert(time+' minutes | ¥'+billable+' Start:'+start.format('HH:MM')+' End:'+end.format('HH:MM'))}
         })
       .catch(error => console.log("error"+error))
   }
