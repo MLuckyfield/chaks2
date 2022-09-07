@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import LinearProgressWithLabel from '@mui/material/LinearProgress';
+import moment from "moment"
+import QRCode from 'react-qr-code'
 
 const Statistics = (props)=>{
 
@@ -33,7 +35,7 @@ const Statistics = (props)=>{
             {account?
             <div class='col'>
               Plan: {account.plan}  {account.plan!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}<br/>
-              {account.first=='M'?(account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={(e)=>onSubmit(e,'downgrade')}>Downgrade</div>):''}
+              {account.first=='M'?(account.plan=='premium'?<div class="btn">Upgrade</div>:<div class="btn">Downgrade</div>):''}
               Points: {account.points}
             </div>
           :'Loading account...'}
