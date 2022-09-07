@@ -95,7 +95,7 @@ const Dash = ()=>{
     //   .then((interests) => console.log("Current interests:", interests))
     //   .catch(console.error);
 
-    return <div><Session user={user}/><StudentTable/></div>
+    return <div><Session user={user}/></div>
   }else if (user.role=='manager'){
 
     return(
