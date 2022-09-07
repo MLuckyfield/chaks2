@@ -21,7 +21,7 @@ const Statistics = (props)=>{
       .then((res) => {
         res=res.data.data[0].statistics
           console.log('Statistics for',res.length)
-          setSessions(res.length/4)
+          setSessions((res.length/4)*100)
         })
       .catch(error => console.log("error"+error))
   },[])
