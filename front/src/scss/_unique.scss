@@ -10,11 +10,16 @@
   top:-200px !important;
 }
 #teacher_select{
-  width:300px;
-  height:300px;
+  width:80%;
+  height:50vh;
   background: blue;
   display:none;
   position:absolute;
+  .button{
+    height:50%;
+    background:white;
+    color:green;
+  }
 }
 #header{
   // position: absolute;
