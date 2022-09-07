@@ -256,7 +256,7 @@ const { Server } = require("socket.io");
         users.forEach((user, i) => {
           if(user.role=='user'){
             let sessions = user.statistics
-            let month = new Date().getMonth()
+            let month = new Date().getMonth()-1
             let count = 0
             sessions.forEach((session, i) => {
               // console.log(moment(session.start).month(),month,moment(session.start).month()==month)

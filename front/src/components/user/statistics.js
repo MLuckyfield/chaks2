@@ -22,8 +22,7 @@ const Statistics = (props)=>{
         res=res.data.data[0].statistics
           setSessions(res)
           console.log('Statistics for',res.length)
-          const progressbar = document.querySelector(".progress");
-          progressbar.style.width = `${res.length/4}%`;
+          setSessions(res.length/4)
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -34,13 +33,13 @@ const Statistics = (props)=>{
             <h1>ACCOUNT</h1>
             {account?
             <div class='col'>
-              Plan: 
+              Plan:
               Points: {account.points}
             </div>
           :'Loading account...'}
         </div>
         <div class="progress-container">
-          <div class="progress"></div>
+          <div class="progress" style={{width:`${sessions}%`}}></div>
         </div>
         <QRCode value={localStorage.getItem('user')}/>
     </div>
