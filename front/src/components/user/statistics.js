@@ -22,6 +22,7 @@ const Statistics = (props)=>{
     axios.get('user/all', {params:{filter:{_id:account._id}}})
       .then((res) => {
           let user = res.data.data[0]
+          setAccount(user)
           res=user.statistics
           console.log('Statistics for',res.length)
           let month = new Date()
