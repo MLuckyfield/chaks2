@@ -62,10 +62,7 @@ const Statistics = (props)=>{
           :'Loading account...'}
         </div>
         Current Reward Level: {account.reward?account.reward:'Standard'}
-        {account.reward&&reward!=undefined&&count&&nextReward?(
-          count>reward[account.reward][0]?<span>{reward[nextReward][0]-count} to {reward[account.reward][1]} level!</span>
-            :<span>{reward[account.reward][0]-count} to keep your current status!</span>
-        ):'Loading...'}
+        {reward?<span>hi!</span>:<span>bye</span>}
           <div class="progress-container">
             <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
           </div>
