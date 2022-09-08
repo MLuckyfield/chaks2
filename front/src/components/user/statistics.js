@@ -43,7 +43,7 @@ const Statistics = (props)=>{
           // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
           // if(user.reward=='Diamond'){requirement=12}
           if(res.length>temp[user.reward][0]){setSessions((res.length/temp[temp[account.reward][1]][0])*100)}
-          if(res.length<temp[user.reward][0]){setSessions((res.length/temp[account.reward][0])*100)}
+          else{setSessions((res.length/temp[account.reward][0])*100)}
           setNextReward(temp[account.reward][1])
           console.log(temp[account.reward][1])
         })
@@ -62,7 +62,7 @@ const Statistics = (props)=>{
           :'Loading account...'}
         </div>
         Current Reward Level: {account.reward?account.reward:'Standard'}
-        {account.reward&&reward&&count&&nextReward?(
+        {account.reward&&reward!=undefined&&count&&nextReward?(
           count>reward[account.reward][0]?<span>{reward[nextReward][0]-count} to {reward[account.reward][1]} level!</span>
             :<span>{reward[account.reward][0]-count} to keep your current status!</span>
         ):'Loading...'}
