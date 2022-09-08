@@ -42,6 +42,7 @@ const User = mongoose.model('User', new Schema({
   },
   reward:{
     type:String,
+    default:'Standard',
     enum:['Gold','Platinum','Diamond']
   },
   plan:{
