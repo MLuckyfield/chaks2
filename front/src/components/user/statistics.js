@@ -38,15 +38,15 @@ const Statistics = (props)=>{
           temp['Platinum']=[8,'Diamond']
           temp['Diamond']=[12]
           setReward(temp)
-          console.log(temp[account.reward][1],user)
+          console.log(temp[user.reward][1],user)
 
           if(user.reward){requirement=temp[user.reward][0];}
           // if(user.reward=='Gold'){setReward('Platinum');requirement=4}
           // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
           // if(user.reward=='Diamond'){requirement=12}
-          if(res.length>temp[user.reward][0]){setSessions((res.length/temp[temp[account.reward][1]][0])*100)}
-          else{setSessions((res.length/temp[account.reward][0])*100)}
-          setNextReward(temp[account.reward][1])
+          if(res.length>temp[user.reward][0]){setSessions((res.length/temp[temp[user.reward][1]][0])*100)}
+          else{setSessions((res.length/temp[user.reward][0])*100)}
+          setNextReward(temp[user.reward][1])
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -72,7 +72,6 @@ const Statistics = (props)=>{
           <div class="progress-container">
             <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
           </div>
-          Please show this QR code at reception to check in!
         <QRCode value={localStorage.getItem('user')}/>
     </div>
 
