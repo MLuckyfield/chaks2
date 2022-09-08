@@ -24,6 +24,7 @@ const Statistics = (props)=>{
           let user = res.data.data[0]
           setAccount(user)
           res=user.statistics
+          setCount(res)
           console.log('Statistics for',res.length)
           let month = new Date()
           res.forEach((item, i) => {
@@ -40,7 +41,8 @@ const Statistics = (props)=>{
           // if(user.reward=='Gold'){setReward('Platinum');requirement=4}
           // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
           // if(user.reward=='Diamond'){requirement=12}
-          setSessions((count/requirement)*100)
+          if(res.length>temp[user.reward][0]){setSessions((res.length/temp[temp[account.reward][1]][0])*100)}
+          if(res.length<temp[user.reward][0]){setSessions((res.length/temp[account.reward][0])*100)}          
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -57,10 +59,11 @@ const Statistics = (props)=>{
           :'Loading account...'}
         </div>
         Current Reward Level: {account.reward?account.reward:'Standard'}
-
-        <div class="progress-container">
-          <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
-        </div>
+        {count>reward[account.reward][0]?<span>{reward[reward[account.reward][1]][0]-count} to {reward[account.reward][1]} level!</span>
+          :<span>{reward[account.reward][0]-count} to keep your current status!</span>}
+          <div class="progress-container">
+            <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
+          </div>
         <QRCode value={localStorage.getItem('user')}/>
     </div>
 
