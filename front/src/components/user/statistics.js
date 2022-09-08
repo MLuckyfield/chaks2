@@ -20,7 +20,7 @@ const Statistics = (props)=>{
   // });
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
-    axios.get('user/all', {params:{filter:{_id:account._id}}})
+    axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
           let user = res.data.data[0]
           setAccount(user)
