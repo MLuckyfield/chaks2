@@ -8,7 +8,7 @@ const Statistics = (props)=>{
 
   const [sessions,setSessions]=useState(0)
   const [count,setCount]=useState(0)
-  const [reward,setReward]=useState([])
+  const [reward,setReward]=useState()
   const [nextReward,setNextReward]=useState('')
   const [account,setAccount]=useState()
 
