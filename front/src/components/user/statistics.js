@@ -10,7 +10,7 @@ const Statistics = (props)=>{
   const [count,setCount]=useState(0)
   const [reward,setReward]=useState([])
   const [nextReward,setNextReward]=useState('')
-  const [account,setAccount]=useState(JSON.parse(localStorage.getItem('user')))
+  const [account,setAccount]=useState()
 
   // const [time,setTime]=useState(new Date())
   // const [isConnected,setIsConnected]=useState()
