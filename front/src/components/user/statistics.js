@@ -9,6 +9,7 @@ const Statistics = (props)=>{
   const [sessions,setSessions]=useState(0)
   const [count,setCount]=useState(0)
   const [reward,setReward]=useState([])
+  const [nextReward,setNextReward]=useState('')
   const [account,setAccount]=useState(JSON.parse(localStorage.getItem('user')))
 
   // const [time,setTime]=useState(new Date())
@@ -37,12 +38,14 @@ const Statistics = (props)=>{
           temp['Platinum']=[8,'Diamond']
           temp['Diamond']=[12]
           setReward(temp)
-          if(user.reward){requirement=temp[user.reward][0];console.log(requirement,temp[user.reward],temp[user.reward][0])}
+          if(user.reward){requirement=temp[user.reward][0];}
           // if(user.reward=='Gold'){setReward('Platinum');requirement=4}
           // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
           // if(user.reward=='Diamond'){requirement=12}
           if(res.length>temp[user.reward][0]){setSessions((res.length/temp[temp[account.reward][1]][0])*100)}
-          if(res.length<temp[user.reward][0]){setSessions((res.length/temp[account.reward][0])*100)}          
+          if(res.length<temp[user.reward][0]){setSessions((res.length/temp[account.reward][0])*100)}
+          setNextReward(temp[account.reward][1])
+          console.log(temp[account.reward][1])
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -59,7 +62,7 @@ const Statistics = (props)=>{
           :'Loading account...'}
         </div>
         Current Reward Level: {account.reward?account.reward:'Standard'}
-        {count>reward[account.reward][0]?<span>{reward[reward[account.reward][1]][0]-count} to {reward[account.reward][1]} level!</span>
+        {count>reward[account.reward][0]?<span>{reward[nextReward][0]-count} to {reward[account.reward][1]} level!</span>
           :<span>{reward[account.reward][0]-count} to keep your current status!</span>}
           <div class="progress-container">
             <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
