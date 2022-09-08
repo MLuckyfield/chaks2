@@ -7,6 +7,8 @@ import QRCode from 'react-qr-code'
 const Statistics = (props)=>{
 
   const [sessions,setSessions]=useState(0)
+  const [count,setCount]=useState(0)
+  const [reward,setReward]=useState([])
   const [account,setAccount]=useState(JSON.parse(localStorage.getItem('user')))
 
   // const [time,setTime]=useState(new Date())
@@ -19,15 +21,25 @@ const Statistics = (props)=>{
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:account._id}}})
       .then((res) => {
-        res=res.data.data[0].statistics
+          let user = res.data.data[0]
+          res=user.statistics
           console.log('Statistics for',res.length)
           let month = new Date()
-          let count = 0
           res.forEach((item, i) => {
             // console.log(moment(session.start).month(),month,moment(session.start).month()==month)
-            if(moment(item.start).month()==month){count++}
+            if(moment(item.start).month()==month){setCount(count+1)}
           });
-          setSessions((count/4)*100)
+          let requirement = 4
+          let temp = []
+          temp['Gold']=[4,'Platinum']
+          temp['Platinum']=[8,'Diamond']
+          temp['Diamond']=[12]
+          setReward(temp)
+          if(user.reward){requirement=temp[user.reward][0];console.log(requirement,temp[user.reward],temp[user.reward][0])}
+          // if(user.reward=='Gold'){setReward('Platinum');requirement=4}
+          // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
+          // if(user.reward=='Diamond'){requirement=12}
+          setSessions((count/requirement)*100)
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -43,6 +55,8 @@ const Statistics = (props)=>{
             </div>
           :'Loading account...'}
         </div>
+        Current Reward Level: {account.reward?account.reward:'Standard'}
+
         <div class="progress-container">
           <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
         </div>
