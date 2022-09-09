@@ -45,7 +45,45 @@ const Admin = () => {
 }
 
 const StaffTable = ()=>{
-  return <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -progress -students -tags -source -password -createdAt -updatedAt -role -points -active"/>
+  // return <Table name='Teachers' api='/user/session' filter={{role: 'teacher'}} display='students' fields="-__v -progress -tags -source -password -createdAt -updatedAt -role -points -active"/>
+  const [students, setStudents] = useState();
+
+  useEffect(() => {
+    let target = JSON.parse(localStorage.getItem('user'))._id
+    console.log('getting for',target)
+    axios.get('user/session',{params:{filter:{role: 'teacher'}}})
+      .then((result)=>{
+        result = result.data.data
+         console.log('students retrieved: ',result)
+         let inSession = []
+         result.forEach((teacher, i) => {
+           teacher.forEach((student, i) => {
+             student['teacher']=teacher
+             inSession.push(student)
+           });
+           console.log(inSession)
+           setStudents(inSession)
+         });
+
+      })
+      .catch(error=>console.log('From sendTo teacher:',error))
+  },[])
+
+  return(
+    <div>
+      <h1>In Session</h1>
+      <table>
+      {students?students.map((student,i)=>{
+        return <tr>
+          <td>student.first</td>
+          <td>student.last</td>
+          <td>student.teacher</td>
+          <td>student.statistics[0].start</td>
+        </tr>
+      }):'None. :('}
+      </table>
+    </div>
+  )
 }
 const StudentTable = ()=>{
   return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -progress -students -tags -source -password -createdAt -updatedAt -role -points -active"/>
