@@ -51,7 +51,7 @@ const Statistics = (props)=>{
             setSessions((res.length/temp[next][0])*100).toFixed(2)}
           else{
             setMsg(temp[user.reward][0]-count +' more sessions to keep your current status!');
-            setSessions((res.length/temp[user.reward][0])*100).toFixed(2))
+            setSessions((res.length/temp[user.reward][0]*100).toFixed(2))
           }
           // setNextReward(temp[user.reward][1])
         })
@@ -70,7 +70,7 @@ const Statistics = (props)=>{
           :'Loading account...'}
         </div>
         Current Reward Level: {account?account.reward:'Loading'}
-        <span>{msg}</span>
+        <span>{msg} {moment(new Date()).day().diff(moment(new Date().endOf('month')))} days left</span>
           <div class="progress-container">
             <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
           </div>
