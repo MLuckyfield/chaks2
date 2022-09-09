@@ -40,7 +40,7 @@ const Statistics = (props)=>{
           temp['Platinum']=[8,'Diamond']
           temp['Diamond']=[12]
           setReward(temp)
-          console.log('end of',moment(new Date()).diff(moment(new Date()).endOf('month')))
+          console.log('end of',moment(new Date()).diff(moment(new Date()).endOf('month')).format('HH:MM'))
 
           if(user.reward){requirement=temp[user.reward][0];}
           // if(user.reward=='Gold'){setReward('Platinum');requirement=4}
