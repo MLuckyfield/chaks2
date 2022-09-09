@@ -70,7 +70,7 @@ const StaffTable = ()=>{
   },[])
 
   return(
-    <div>
+    <div class='col'>
       <h1>In Session</h1>
       <table>
       {students?students.map((student,i)=>{
