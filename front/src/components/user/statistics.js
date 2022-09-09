@@ -10,6 +10,7 @@ const Statistics = (props)=>{
   const [count,setCount]=useState(0)
   const [reward,setReward]=useState()
   const [nextReward,setNextReward]=useState('')
+  const [msg,setMsg]=useState('')
   const [account,setAccount]=useState()
 
   // const [time,setTime]=useState(new Date())
@@ -28,9 +29,10 @@ const Statistics = (props)=>{
           setCount(res)
           console.log('Statistics for',res.length)
           let month = new Date()
+          let count = 0
           res.forEach((item, i) => {
             // console.log(moment(session.start).month(),month,moment(session.start).month()==month)
-            if(moment(item.start).month()==month){setCount(count+1)}
+            if(moment(item.start).month()==month){count++}
           });
           let requirement = 4
           let temp = []
@@ -43,9 +45,12 @@ const Statistics = (props)=>{
           // if(user.reward=='Gold'){setReward('Platinum');requirement=4}
           // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
           // if(user.reward=='Diamond'){requirement=12}
+          let next = temp[user.reward][1]
+          if(count>temp[user.reward][0]){setMsg(temp[next][0]-count +' to next level!')}
+          else{setMsg(temp[user.reward][0]-count +' to keep your current status!')}
           if(res.length>temp[user.reward][0]){setSessions((res.length/temp[temp[user.reward][1]][0])*100)}
           else{setSessions((res.length/temp[user.reward][0])*100)}
-          setNextReward(temp[user.reward][1])
+          // setNextReward(temp[user.reward][1])
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -62,12 +67,7 @@ const Statistics = (props)=>{
           :'Loading account...'}
         </div>
         Current Reward Level: {account?account.reward:'Loading'}
-        {reward?(
-          account&&count&&nextReward?(
-            count>reward[account.reward][0]?<span>{reward[nextReward][0]-count} to {reward[account.reward][1]} level!</span>
-              :<span>{(reward[account.reward][0]-count).toString()} to keep your current status!</span>
-          ):<span>Loading...</span>
-        ):''}
+        {msg}
           <div class="progress-container">
             <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
           </div>
