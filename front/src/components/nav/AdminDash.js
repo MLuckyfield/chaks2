@@ -71,8 +71,15 @@ const StaffTable = ()=>{
   return(
     <div class='col'>
       <h1>In Session</h1>
-    
-      <Table name='Teachers' api='/user/session' filter={{role: 'teacher'}} display='students' fields="-__v -progress -tags -source -password -createdAt -updatedAt -role -points -active"/>
+      <table>
+      {students?students.map((student,i)=>{
+        return <tr>
+          <td>student.first</td>
+          <td>student.last</td>
+          <td>student.teacher</td>
+        </tr>
+      }):'None. :('}
+      </table>     
 
     </div>
   )
