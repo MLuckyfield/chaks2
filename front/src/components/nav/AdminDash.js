@@ -45,7 +45,6 @@ const Admin = () => {
 }
 
 const StaffTable = ()=>{
-  // return <Table name='Teachers' api='/user/session' filter={{role: 'teacher'}} display='students' fields="-__v -progress -tags -source -password -createdAt -updatedAt -role -points -active"/>
   const [students, setStudents] = useState();
 
   useEffect(() => {
@@ -82,6 +81,8 @@ const StaffTable = ()=>{
         </tr>
       }):'None. :('}
       </table>
+      <Table name='Teachers' api='/user/session' filter={{role: 'teacher'}} display='students' fields="-__v -progress -tags -source -password -createdAt -updatedAt -role -points -active"/>
+
     </div>
   )
 }
