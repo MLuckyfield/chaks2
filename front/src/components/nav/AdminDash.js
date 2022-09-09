@@ -61,7 +61,7 @@ const StaffTable = ()=>{
              student['teacher']=teacher
              inSession.push(student)
            });
-           console.log(inSession)
+           console.log('inSession',inSession)
            setStudents(inSession)
          });
 
