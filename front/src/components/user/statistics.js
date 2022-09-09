@@ -39,7 +39,6 @@ const Statistics = (props)=>{
           temp['Diamond']=[12]
           setReward(temp)
           console.log(temp[user.reward][1],user)
-
           if(user.reward){requirement=temp[user.reward][0];}
           // if(user.reward=='Gold'){setReward('Platinum');requirement=4}
           // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
@@ -66,7 +65,7 @@ const Statistics = (props)=>{
         {reward?(
           account&&count&&nextReward?(
             count>reward[account.reward][0]?<span>{reward[nextReward][0]-count} to {reward[account.reward][1]} level!</span>
-              :<span>{reward[account.reward][0]-count} to keep your current status!</span>
+              :<span>{(reward[account.reward][0]-count).toString()} to keep your current status!</span>
           ):<span>Loading...</span>
         ):''}
           <div class="progress-container">
