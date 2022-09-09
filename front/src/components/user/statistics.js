@@ -36,6 +36,7 @@ const Statistics = (props)=>{
           });
           let requirement = 4
           let temp = []
+          temp['Standard']=[0,'Gold']          
           temp['Gold']=[4,'Platinum']
           temp['Platinum']=[8,'Diamond']
           temp['Diamond']=[12]
