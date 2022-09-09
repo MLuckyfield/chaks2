@@ -40,7 +40,7 @@ const Statistics = (props)=>{
           temp['Platinum']=[8,'Diamond']
           temp['Diamond']=[12]
           setReward(temp)
-          console.log(temp[user.reward][1],user)
+          console.log(moment(new Date()).day(),moment(new Date().endOf('month'))),moment(new Date()).day().diff(moment(new Date().endOf('month'))))
           if(user.reward){requirement=temp[user.reward][0];}
           // if(user.reward=='Gold'){setReward('Platinum');requirement=4}
           // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
@@ -70,7 +70,7 @@ const Statistics = (props)=>{
           :'Loading account...'}
         </div>
         Current Reward Level: {account?account.reward:'Loading'}
-        <span>{msg} {moment(new Date()).day().diff(moment(new Date().endOf('month')))} days left</span>
+        <span>{msg}  days left</span>
           <div class="progress-container">
             <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
           </div>
