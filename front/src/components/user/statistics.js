@@ -46,10 +46,13 @@ const Statistics = (props)=>{
           // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
           // if(user.reward=='Diamond'){requirement=12}
           let next = temp[user.reward][1]
-          if(count>temp[user.reward][0]){setMsg(temp[next][0]-count +' to next level!')}
-          else{setMsg(temp[user.reward][0]-count +' to keep your current status!')}
-          if(res.length>temp[user.reward][0]){setSessions((res.length/temp[temp[user.reward][1]][0])*100)}
-          else{setSessions((res.length/temp[user.reward][0])*100)}
+          if(count>temp[user.reward][0]){
+            setMsg(temp[next][0]-count +' to next level!');
+            setSessions((res.length/temp[next][0])*100)}
+          else{
+            setMsg(temp[user.reward][0]-count +' to keep your current status!');
+            setSessions((res.length/temp[user.reward][0])*100)
+          }
           // setNextReward(temp[user.reward][1])
         })
       .catch(error => console.log("error"+error))
@@ -67,7 +70,7 @@ const Statistics = (props)=>{
           :'Loading account...'}
         </div>
         Current Reward Level: {account?account.reward:'Loading'}
-        {msg}
+        <span>{msg}</span>
           <div class="progress-container">
             <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
           </div>
