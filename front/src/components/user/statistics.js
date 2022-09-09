@@ -49,10 +49,10 @@ const Statistics = (props)=>{
           let next = temp[user.reward][1]
           if(count>temp[user.reward][0]){
             setMsg(temp[next][0]-count +' more sessions to unlock '+temp[next][1]+' level!');
-            setSessions((res.length/temp[next][0])*100).toFixed(2)}
+            setSessions((count/temp[next][0])*100).toFixed(2)}
           else{
             setMsg(temp[user.reward][0]-count +' more sessions to keep your current status!');
-            setSessions((res.length/temp[user.reward][0]*100).toFixed(2))
+            setSessions((count/temp[user.reward][0]*100).toFixed(2))
           }
           // setNextReward(temp[user.reward][1])
         })
