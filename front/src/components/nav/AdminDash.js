@@ -79,7 +79,7 @@ const StaffTable = ()=>{
           <td>student.teacher</td>
         </tr>
       }):'None. :('}
-      </table>     
+      </table>
 
     </div>
   )
@@ -139,6 +139,8 @@ const Dash = ()=>{
       <div>
         <Calendar/>
         <StaffTable/>
+        <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -progress -students -tags -source -password -createdAt -updatedAt -role -points -active"/>
+
         <StudentTable/>
       </div>
     )
