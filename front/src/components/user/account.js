@@ -10,7 +10,7 @@ const Account = () => {
   const [student, setStudent] = useState(JSON.parse(localStorage.getItem('user')));
   const [account,setAccount]=useState()
   const [sessions,setSessions]=useState(0)
-  // const [count,setCount]=useState(0)
+  const [count,setCount]=useState(0)
   const [reward,setReward]=useState()
   const [msg,setMsg]=useState('')
 
@@ -51,10 +51,10 @@ const Account = () => {
           let next = temp[user.reward][1]
           if(count>temp[user.reward][0]){
             setMsg(temp[next][0]-count +' more sessions to unlock '+temp[next][1]+' level!');
-            setSessions((count/temp[next][0])*100).toFixed(2)}
+            setSessions((count/temp[next][0])*100)}
           else{
             setMsg(temp[user.reward][0]-count +' more sessions to keep your current status!');
-            setSessions((count/temp[user.reward][0]*100).toFixed(2))
+            setSessions((count/temp[user.reward][0]*100))
           }
         })
       .catch(error => console.log("error"+error))
