@@ -49,7 +49,7 @@ const Account = () => {
           // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
           // if(user.reward=='Diamond'){requirement=12}
           let next = temp[user.reward][1]
-          if(count>temp[user.reward][0]){
+          if(count>=temp[user.reward][0]){
             setMsg(temp[next][0]-count +' more sessions to unlock '+temp[next][1]+' level!');
             setSessions((count/temp[next][0])*100)}
           else{
