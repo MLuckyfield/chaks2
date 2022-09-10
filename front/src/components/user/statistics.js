@@ -72,7 +72,7 @@ const Statistics = (props)=>{
           :'Loading account...'}
         </div>
         Current Reward Level: {account?account.reward:'Loading'}
-        <span>{msg}  days left</span>
+        <span>{msg} {moment().endOf('month').diff(moment(),'days')} days left</span>
           <div class="progress-container">
             <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
           </div>
