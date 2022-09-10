@@ -80,7 +80,7 @@ const { Server } = require("socket.io");
                }
              );
            }catch(err){
-             console.log('there was a problem')
+             console.log('there was a problem',err)
              return res.status(500).json({
                message: `user creation unsuccessful: ${err}`,
                success: false
