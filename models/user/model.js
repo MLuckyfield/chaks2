@@ -43,11 +43,11 @@ const User = mongoose.model('User', new Schema({
   reward:{
     type:String,
     default:'Standard',
-    enum:['Gold','Platinum','Diamond']
+    enum:['Standard','Gold','Platinum','Diamond']
   },
   plan:{
     type:String,
-    default:'standard',
+    default:'Standard',
   },
   stripe:{
     plan_id:{type:String},
