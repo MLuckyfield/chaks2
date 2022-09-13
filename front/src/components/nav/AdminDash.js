@@ -70,7 +70,7 @@ const StaffTable = ()=>{
 
   return(
     <div class='col'>
-      <h1>In Session</h1>
+      <h1>In Session ({students?students.length:0})</h1>
       <table>
         <tr>
           <th>first</th>
@@ -85,7 +85,7 @@ const StaffTable = ()=>{
           <td>{student.last}</td>
           <td>{student.teacher}</td>
           <td>{student.inSession?'In Class':'Pending feedback'}</td>
-        </tr>)        
+        </tr>)
       }):'None. :('}
       </table>
 
