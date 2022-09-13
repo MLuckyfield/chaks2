@@ -39,7 +39,7 @@ const { Server } = require("socket.io");
         }).save()
            .then((user)=>{
                  let result = auth.createToken(user)
-                 console.log(result)
+                 // console.log(result)
                  //--MAILCHIMP
                  console.log('starting mail service')
                  request({
@@ -136,8 +136,8 @@ const { Server } = require("socket.io");
         })
 
     router.post('/update', auth.auth, auth.permission(['teacher','manager']), async (req,res)=>{
-      console.log('filter recieved',req.body.filter)
-      console.log('data recieved',req.body.data)
+      // console.log('filter recieved',req.body.filter)
+      // console.log('data recieved',req.body.data)
       // console.log(req)
       await User.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
           .then((result)=>{
@@ -191,7 +191,7 @@ const { Server } = require("socket.io");
       }
       else{
         //2. if session ended
-        console.log('considered false: '+req.data)
+        // console.log('considered false: '+req.data)
         await User.findById(req.filter)
           .then((user)=>{
             user.statistics.reverse()[0].end=new Date()
@@ -217,7 +217,7 @@ const { Server } = require("socket.io");
     router.get('/all', auth.auth, async (req, res) => {
       // console.log('running user/all',req.query)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
-      console.log('data retrieved:',data)
+      // console.log('data retrieved:',data)
       return res.status(201).json({
         data: data,
         message: 'Job saved',
@@ -227,7 +227,7 @@ const { Server } = require("socket.io");
 
     //Get
     router.get('/session', auth.auth, async (req, res) => {
-      console.log('running user/all',req.query)
+      // console.log('running user/all',req.query)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields).populate('students')
       console.log('data retrieved:',data)
       return res.status(201).json({
