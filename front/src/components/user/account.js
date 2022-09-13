@@ -32,9 +32,10 @@ const Account = () => {
           let month = new Date()
           let count = 0
           res.forEach((item, i) => {
-            // console.log(moment(session.start).month(),month,moment(session.start).month()==month)
             if(moment(item.start).month()==month){count++}
+            console.log(moment(item.start).month(),month,moment(item.start).month()==month)
           });
+          console.log('number',count)
           let requirement = 4
           let temp = []
           temp['Standard']=[0,'Gold']
