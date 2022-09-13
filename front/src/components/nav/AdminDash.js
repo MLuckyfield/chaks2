@@ -45,7 +45,7 @@ const Admin = () => {
 }
 
 const StaffTable = ()=>{
-  const [students, setStudents] = useState();
+  const [students, setStudents] = useState([]);
 
   useEffect(() => {
     let target = JSON.parse(localStorage.getItem('user'))._id
