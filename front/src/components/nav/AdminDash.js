@@ -70,7 +70,7 @@ const StaffTable = ()=>{
 
   return(
     <div class='col'>
-      <h1>In Session ({students?students.length:0})</h1>
+      <h1>In Session ({students?students.length:''})</h1>
       <table>
         <tr>
           <th>first</th>
