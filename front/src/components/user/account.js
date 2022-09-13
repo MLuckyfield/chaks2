@@ -28,21 +28,21 @@ const Account = () => {
           setAccount(user)
           res=user.statistics
           setCount(res)
-          console.log('Statistics for',res.length)
+          // console.log('Statistics for',res.length)
           let month = new Date().getMonth()
           let count = 0
           res.forEach((item, i) => {
             if(moment(item.start).month()==month){count++}
-            console.log(i,moment(item.start).month()+1,month,moment(item.start).month()+1==month)
+            // console.log(i,moment(item.start).month()+1,month,moment(item.start).month()+1==month)
           });
-          console.log('number',count)
+          // console.log('number',count)
           let temp = []
           temp['Standard']=[0,'Gold']
           temp['Gold']=[4,'Platinum']
           temp['Platinum']=[8,'Diamond']
           temp['Diamond']=[12]
           setReward(temp)
-          console.log('end of',moment().endOf('month').diff(moment(),'days'))
+          // console.log('end of',moment().endOf('month').diff(moment(),'days'))
           let eligible = ''
           if(count<4){eligible='Standard'}
           if(count>=4 && count<8){eligible='Gold'}
@@ -61,7 +61,7 @@ const Account = () => {
       .catch(error => console.log("error"+error))
   },[])
   const onSubmit=(e,action)=>{
-    console.log(action)
+    // console.log(action)
     axios.post('payment/update_sub', {params:{filter:{_id:student._id},fields:'first stripe plan'}})
       .then((res) => {
           console.log(res.data.data[0])
