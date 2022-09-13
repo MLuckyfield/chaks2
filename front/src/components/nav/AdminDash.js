@@ -80,12 +80,12 @@ const StaffTable = ()=>{
 
         </tr>
       {students?students.map((student,i)=>{
-        return <tr>
+        return (<tr>
           <td>{student.first}</td>
           <td>{student.last}</td>
           <td>{student.teacher}</td>
           <td>{student.inSession?'In Class':'Pending feedback'}</td>
-        </tr>
+        </tr>)        
       }):'None. :('}
       </table>
 
