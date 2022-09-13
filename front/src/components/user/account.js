@@ -33,7 +33,7 @@ const Account = () => {
           let count = 0
           res.forEach((item, i) => {
             if(moment(item.start).month()==month){count++}
-            console.log(i,moment(item.start).month(),month,moment(item.start).month()==month)
+            console.log(i,moment(item.start).month()+1,month,moment(item.start).month()+1==month)
           });
           console.log('number',count)
           let temp = []
