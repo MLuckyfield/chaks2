@@ -82,7 +82,7 @@ const StaffTable = ()=>{
           <td>{student.first}</td>
           <td>{student.last}</td>
           <td>{student.teacher.first}</td>
-          <td>{student.inSession?'In Class':'Pending feedback'}</td>
+          <td>{student.inSession==true?'In Class':'Pending feedback'}</td>
         </tr>)
       }):'None. :('}
       </table>
