@@ -77,7 +77,7 @@ const StaffTable = ()=>{
           <th>teacher</th>
           <th>status</th>
         </tr>
-      {students.length>0?students.map((student,i)=>{
+      {students?students.map((student,i)=>{
         return (<tr>
           <td>{student.first}</td>
           <td>{student.last}</td>
