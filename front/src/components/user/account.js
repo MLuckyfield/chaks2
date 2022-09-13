@@ -50,7 +50,7 @@ const Account = () => {
           // if(user.reward=='Diamond'){requirement=12}
           let next = temp[user.reward][1]
           if(count>=temp[user.reward][0]){
-            setMsg(temp[next][0]-count +' more sessions to unlock '+temp[next][1]+' level!');
+            setMsg(temp[next][0]-count +' more sessions to unlock '+next+' level!');
             setSessions((count/temp[next][0])*100)}
           else{
             setMsg(temp[user.reward][0]-count +' more sessions to keep your current status!');
@@ -82,7 +82,7 @@ const Account = () => {
           </div>
           {student.first=='Takeshi'?
           <div>
-          Current Reward Level: {account?account.reward:'Loading'}
+          Current Reward Level: {account?account.reward:'Loading'}<br/>
           <span>{msg} {moment().endOf('month').diff(moment(),'days')} days left</span>
             <div class="progress-container">
               <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
