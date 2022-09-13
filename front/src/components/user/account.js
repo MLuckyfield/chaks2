@@ -36,7 +36,6 @@ const Account = () => {
             console.log(moment(item.start).month(),month,moment(item.start).month()==month)
           });
           console.log('number',count)
-          let requirement = 4
           let temp = []
           temp['Standard']=[0,'Gold']
           temp['Gold']=[4,'Platinum']
@@ -44,8 +43,6 @@ const Account = () => {
           temp['Diamond']=[12]
           setReward(temp)
           console.log('end of',moment().endOf('month').diff(moment(),'days'))
-
-          if(user.reward){requirement=temp[user.reward][0];}
           // if(user.reward=='Gold'){setReward('Platinum');requirement=4}
           // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
           // if(user.reward=='Diamond'){requirement=12}
