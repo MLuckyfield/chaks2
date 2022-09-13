@@ -353,7 +353,7 @@ const Front = ()=>{
                         <p/>雰囲気あるカフェスペースにて、英会話を楽しみましょう！会話は講師陣がリードするので、不安な方でも楽しくご利用いただけます！
                         <p/>FREE! coffee or tea
                         <p/>¥1,000/30分
-                        <p/>11AM - 6PM
+                        <p/>11AM - 7PM
                     </div>
                     <div class='col slim center border'>
                     EVENING
@@ -361,10 +361,11 @@ const Front = ()=>{
                         <p/>国際色豊かなファストフードや季節のクラフトビールを片手に英会話を楽しみましょう！カフェよりもカジュアルで自由な雰囲気なので、気軽に楽しめます！
                         <p/>FREE! 1 drink （アルコールを含む, 最大８５０円）
                         <p/>¥2,500/時間制限なし
-                        <p/>6PM - 10PM (最終入店時間: 9:30PM)
+                        <p/>7PM - 10PM (最終入店時間: 9:30PM)
                     </div>
                 </div>
                   <div class='col'>
+                      *6pm-7pm HAPPY HOUR (クラフトビールが150円割)<br/>
                       *月曜日は休みでございます<br/>
                       *日曜日は１3時からでございます
                       <button class='solid-first cta' onClick={()=>window.location='/products'}>レッスン</button>
