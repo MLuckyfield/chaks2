@@ -43,12 +43,14 @@ const Account = () => {
           temp['Diamond']=[12]
           setReward(temp)
           console.log('end of',moment().endOf('month').diff(moment(),'days'))
-          // if(user.reward=='Gold'){setReward('Platinum');requirement=4}
-          // if(user.reward=='Platinum'){setReward('Diamond');requirement=8}
-          // if(user.reward=='Diamond'){requirement=12}
-          let next = temp[user.reward][1]
-          let nextnext=temp[next][1]
-          if(count>=temp[user.reward][0]){
+          let eligible = ''
+          if(count<4){eligible='Standard'}
+          if(count>=4 && count<8){eligible='Gold'}
+          if(count>=8 && count<12){eligible='Platinum'}
+          if(count>=12){eligible='Diamond'}
+
+          let next = temp[eligible][1]
+          if(count>=temp[eligible][0]){
             setMsg(temp[next][0]-count +' more sessions to unlock '+next+' level!');
             setSessions((count/temp[next][0])*100)}
           else{
