@@ -51,7 +51,7 @@ const Account = () => {
           setReward(eligible)
           let next = temp[eligible][1]
           if(count>=temp[eligible][0]){
-            setMsg('Only 'temp[next][0]-count +' more sessions to unlock '+next+' level!');
+            setMsg('Only '+temp[next][0]-count +' more sessions to unlock '+next+' level!');
             setSessions((count/temp[next][0])*100)}
           else{
             setMsg('Only '+temp[eligible][0]-count +' more sessions to keep your current status!');
