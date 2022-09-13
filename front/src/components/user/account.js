@@ -48,14 +48,14 @@ const Account = () => {
           if(count>=4 && count<8){eligible='Gold'}
           if(count>=8 && count<12){eligible='Platinum'}
           if(count>=12){eligible='Diamond'}
-
+          setReward(eligible)
           let next = temp[eligible][1]
           if(count>=temp[eligible][0]){
             setMsg(temp[next][0]-count +' more sessions to unlock '+next+' level!');
             setSessions((count/temp[next][0])*100)}
           else{
-            setMsg(temp[user.reward][0]-count +' more sessions to keep your current status!');
-            setSessions((count/temp[user.reward][0]*100))
+            setMsg(temp[eligible][0]-count +' more sessions to keep your current status!');
+            setSessions((count/temp[eligible][0]*100))
           }
         })
       .catch(error => console.log("error"+error))
@@ -84,6 +84,7 @@ const Account = () => {
           {student.first=='Takeshi'?
           <div>
           Current Reward Level: <span style={{fontWeight:'bold'}}>{account?account.reward:'Loading'}</span><br/>
+          You are eligible for {reward}!<br/>
           <span>{msg} {moment().endOf('month').diff(moment(),'days')} days left</span>
             <div class="progress-container">
               <div class="progress" style={{width:`${sessions}%`}}></div>
