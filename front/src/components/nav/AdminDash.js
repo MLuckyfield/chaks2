@@ -45,7 +45,7 @@ const Admin = () => {
 }
 
 const StaffTable = ()=>{
-  const [students, setStudents] = useState([]);
+  const [students, setStudents] = useState();
 
   useEffect(() => {
     let target = JSON.parse(localStorage.getItem('user'))._id
@@ -81,7 +81,7 @@ const StaffTable = ()=>{
         return (<tr>
           <td>{student.first}</td>
           <td>{student.last}</td>
-          <td>{student.teacher}</td>
+          <td>{student.teacher.first}</td>
           <td>{student.inSession?'In Class':'Pending feedback'}</td>
         </tr>)
       }):'None. :('}
