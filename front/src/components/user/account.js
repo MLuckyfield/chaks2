@@ -83,7 +83,7 @@ const Account = () => {
           Current Reward Level: {account?account.reward:'Loading'}<br/>
           <span>{msg} {moment().endOf('month').diff(moment(),'days')} days left</span>
             <div class="progress-container">
-              <div class="progress" style={{width:`${sessions}%`}}></div>{sessions}
+              <div class="progress" style={{width:`${sessions}%`}}></div>
             </div>
           </div>:''}
           <QRCode value={localStorage.getItem('user')}/>
