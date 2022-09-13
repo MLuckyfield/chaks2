@@ -56,7 +56,7 @@ const StaffTable = ()=>{
          console.log('students retrieved: ',result)
          let inSession = []
          result.forEach((teacher, i) => {
-           teacher.forEach((student, i) => {
+           teacher.students.forEach((student, i) => {
              student['teacher']=teacher
              inSession.push(student)
            });
