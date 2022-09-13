@@ -44,10 +44,10 @@ const Product_Display = (props)=>{
                   <ul>
                     <li>予約不要で少人数のグループレッスン！
 入会費、テキスト代はなしで、来たいときに滞在した分だけの支払い！</li>
-                    <li><strong>英会話カフェ</strong>（10時～18時）<br/>
+                    <li><strong>英会話カフェ</strong>（11時～19時）<br/>
 ¥1,000/30分<br/>（コーヒー、紅茶は飲み放題）</li>
-                    <li><strong>英会話バー</strong>（18時～23時）<br/>
-¥2,500/無制限 <span style={{background:'#eebc21',padding:'2%',color:'white'}}>最安1時間330円!</span><br/>（ワンドリンク付,最大８５０円!）</li>
+                    <li><strong>英会話バー</strong>（19時～22時）<br/>
+¥2,500/無制限 <span style={{background:'#eebc21',padding:'2%',color:'white'}}>最安1時間550円!</span><br/>（ワンドリンク付,最大８５０円!）</li>
                   </ul>
                 </div>
                 <div class="border" style={{position:'absolute',bottom:'0px',width:'100%',padding:'8px 30px'}}>店頭でのお支払い</div>
@@ -92,9 +92,9 @@ const Product_Display = (props)=>{
 通常の英会話カフェ＆バーでのグループレッスンを時間制限なしで受講し放題！
 これから留学を考えている方や、外資系への転職を考えている人などへ向けたプランです！</li>
                     <li>
-                        <strong>利用可能時間</strong> 10時～23時
+                        <strong>利用可能時間</strong> 11時～22時
                         <br/>
-                        最終入店時間: 22時
+                        最終入店時間: 21:30時
                     </li>
                     <li><strong>レッスン時間</strong> 無制限~</li>
                     <li>
