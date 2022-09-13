@@ -60,10 +60,9 @@ const StaffTable = ()=>{
              student['teacher']=teacher
              inSession.push(student)
            });
-           console.log('inSession',inSession)
-           setStudents(inSession)
          });
-
+         console.log('inSession',inSession)
+         setStudents(inSession)
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   },[])
