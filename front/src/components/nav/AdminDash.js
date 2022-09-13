@@ -72,11 +72,19 @@ const StaffTable = ()=>{
     <div class='col'>
       <h1>In Session</h1>
       <table>
+        <tr>
+          <th>first</th>
+          <th>last</th>
+          <th>teacher</th>
+          <th>status</th>
+
+        </tr>
       {students?students.map((student,i)=>{
         return <tr>
-          <td>student.first</td>
-          <td>student.last</td>
-          <td>student.teacher</td>
+          <td>{student.first}</td>
+          <td>{student.last}</td>
+          <td>{student.teacher}</td>
+          <td>{student.inSession?'In Class':'Pending feedback'}</td>
         </tr>
       }):'None. :('}
       </table>

@@ -85,7 +85,7 @@ const User = mongoose.model('User', new Schema({
       type:Number
     }
   }],
-  students:[{
+  students:[{ //teacher field
     type: Schema.Types.ObjectId,
     ref: 'User'
   }],
@@ -93,8 +93,12 @@ const User = mongoose.model('User', new Schema({
     type:Boolean,
     default:false
   },
-  active:{
+  active:{ //teacher field
     type:Boolean,
+  },
+  recovery:{
+    code:{type: String},
+    expiry:{type: Date}
   }
 },{
   timestamps: true,
