@@ -29,11 +29,11 @@ const Account = () => {
           res=user.statistics
           setCount(res)
           console.log('Statistics for',res.length)
-          let month = new Date()
+          let month = new Date().getMonth()
           let count = 0
           res.forEach((item, i) => {
             if(moment(item.start).month()==month){count++}
-            console.log(moment(item.start).month(),month,moment(item.start).month()==month)
+            console.log(i,moment(item.start).month(),month,moment(item.start).month()==month)
           });
           console.log('number',count)
           let temp = []
