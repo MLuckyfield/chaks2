@@ -86,7 +86,7 @@ const Account = () => {
           {student.first=='Takeshi'?
           <div>
           Current Reward Level: <span style={{fontWeight:'bold'}}>{account?account.reward:'Loading'}</span><br/>
-          <span>You are eligible for {reward}!</span><br/>
+          <span>You are eligible for {reward}.</span><br/>
           <span>{msg} {moment().endOf('month').diff(moment(),'days')} days left</span>
             <div class="progress-container">
               <div class="progress" style={{width:`${sessions}%`}}></div>

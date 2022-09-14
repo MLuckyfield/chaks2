@@ -75,6 +75,7 @@ const StaffTable = ()=>{
           <th>first</th>
           <th>last</th>
           <th>teacher</th>
+          <th>start</th>          
           <th>status</th>
         </tr>
       {students?students.map((student,i)=>{
@@ -82,6 +83,7 @@ const StaffTable = ()=>{
           <td>{student.first}</td>
           <td>{student.last}</td>
           <td>{student.teacher.first}</td>
+          <td>{moment(student.statistics[0].start).format('HH:MM')}</td>
           <td>{student.inSession==true?'In Class':'Pending feedback'}</td>
         </tr>)
       }):'None. :('}
