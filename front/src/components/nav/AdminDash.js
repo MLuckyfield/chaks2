@@ -80,6 +80,7 @@ const StaffTable = ()=>{
           <th>status</th>
         </tr>
       {students?students.map((student,i)=>{
+        console.log(student.first,student.statistics[0].start)
         return (<tr>
           <td>{student.first}</td>
           <td>{student.last}</td>
