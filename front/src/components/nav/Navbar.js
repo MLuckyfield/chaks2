@@ -67,7 +67,7 @@ const Navbar = ()=>{
               {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/products'><span class="material-icons">shopping_cart</span></a></li>):''}
               {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/blog'><span class="material-icons">school</span></a></li>):''}
               {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/events'><span class="material-icons">info</span></a></li>):''}
-              {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/account'><span class="material-icons">qr_code_scanner</span></a></li>):''}
+              {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/account'><span class="material-icons">settings</span></a></li>):''}
               <li style={{padding:'3% 7%'}}><a href='#' onClick={logout}><span class="material-icons">logout</span></a></li>
           </ul>
         )}
