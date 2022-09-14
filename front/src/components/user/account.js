@@ -50,8 +50,10 @@ const Account = () => {
           if(count>=12){eligible='Diamond'}
           setReward(eligible)
           let next = temp[eligible][1]
+          let word = 'unlock'
+          if(eligible==user.reward){word='keep'}
           if(count>=temp[eligible][0]){
-            setMsg(temp[next][0]-count +' more sessions to unlock '+next+' for next month!');
+            setMsg(temp[next][0]-count +' more sessions to '+word+' '+next+' for next month!');
             setSessions((count/temp[next][0])*100)}
           else{
             setMsg(temp[eligible][0]-count +' more sessions to keep your current status!');
