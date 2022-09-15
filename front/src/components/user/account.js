@@ -77,7 +77,7 @@ const Account = () => {
               <h1>ACCOUNT</h1>
               {account?
               <div class='col'>
-                Plan: {account.plan}  {account.plan!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}<br/>
+                Plan: {account.plan}  {account.plan!='Standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}<br/>
                 {account.first=='M'?(account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={(e)=>onSubmit(e,'downgrade')}>Downgrade</div>):''}
                 Points: {account.points}
               </div>
