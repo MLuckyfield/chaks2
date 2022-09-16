@@ -85,7 +85,8 @@ const StaffTable = ()=>{
           <td>{student.first}</td>
           <td>{student.last}</td>
           <td>{student.teacher.first}</td>
-          <td>{moment(student.statistics[0].start).format('HH:MM')}</td>
+          <td>{new Date(student.statistics[0].start)}</td>
+          <td>{moment(new Date(student.statistics[0].start)).format('HH:MM')}</td>
           <td>{student.inSession==true?'In Class':'Pending feedback'}</td>
         </tr>)
       }):'None. :('}
