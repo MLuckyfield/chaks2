@@ -69,6 +69,7 @@ const StaffTable = ()=>{
       .catch(error=>console.log('From sendTo teacher:',error))
   },[])
   const makeComment = (item)=>{
+      console.log(item)
       localStorage.setItem('student',JSON.stringify(item))
       window.location='/student';
       // setTarget(item)
@@ -87,7 +88,7 @@ const StaffTable = ()=>{
         </tr>
       {students?students.map((student,i)=>{
         let first = student.statistics[0].start
-        console.log(student.first,moment(first).format('D HH:MM'),moment(first).timezone('Asia/Taipei').format('D HH:MM'))
+        console.log(student.first,moment(first),moment(first).format('D HH:MM'),moment(first).timezone('Asia/Taipei').format('D HH:MM'))
         return (<tr>
           <td>{student.first}</td>
           <td>{student.last}</td>
