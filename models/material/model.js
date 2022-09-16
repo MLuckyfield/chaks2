@@ -6,13 +6,16 @@ const Event = mongoose.model('Material', new Schema({
   name: {
     type: String,
     required: true,
-    unique: true
   },
   category:{
     type:String,
   },
   sub_category:{
     type:String,
+  },
+  identifier:{
+    type:String,
+    unique: true    
   },
   level:{
     type:Number,
