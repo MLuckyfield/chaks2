@@ -7,8 +7,10 @@ const email = require('../../services/email')
 //Create
 router.post('/new', auth.auth, auth.permission(['manager']),async (req, res) => {
   // req = JSON.stringify(req.body)
-  console.log(req)
-
+  req=req.body
+  console.log(req[0])
+  req.shift()
+  console.log(req[0])  
   await Material.insertMany(req)
       .then(()=>{
         return res.status(201).json({
