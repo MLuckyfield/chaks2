@@ -88,7 +88,7 @@ const StaffTable = ()=>{
         </tr>
       {students?students.map((student,i)=>{
         let first = student.statistics[0].start
-        console.log(student.first,moment(first),moment(first).format('D HH:MM'),moment(first).timezone('Asia/Taipei').format('D HH:MM'))
+        console.log(student.first,moment(first),moment(first).format('D HH:MM'),timezone(first,'Asia/Taipei').format('D HH:MM'))
         return (<tr>
           <td>{student.first}</td>
           <td>{student.last}</td>
