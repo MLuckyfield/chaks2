@@ -86,13 +86,14 @@ const StaffTable = ()=>{
           <th>status</th>
         </tr>
       {students?students.map((student,i)=>{
-        console.log(student.first,student.statistics[0].start)
+        let first = student.statistics[0].start
+        console.log(student.first,moment(first).format('D HH:MM'),moment(first).timezone('Asia/Taipei').format('D HH:MM'))
         return (<tr>
           <td>{student.first}</td>
           <td>{student.last}</td>
           <td>{student.teacher.first}</td>
-            
-          <td>{timezone(student.statistics[0].start,'Asia/Taipei').format('HH:MM')}</td>
+
+          <td>{timezone(student.statistics[0].start,'Asia/Taipei').format('D HH:MM')}</td>
           <td>{student.inSession==true?'In Class':'Pending feedback'}</td>
           <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
         </tr>)
