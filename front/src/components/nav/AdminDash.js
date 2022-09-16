@@ -91,9 +91,7 @@ const StaffTable = ()=>{
           <td>{student.first}</td>
           <td>{student.last}</td>
           <td>{student.teacher.first}</td>
-          <td>{timezone(student.statistics[0].start,'Asia/Taipei')._a}</td>
-          <td>{timezone(student.statistics[0].start,'Asia/Taipei')._d}</td>
-          <td>{timezone(student.statistics[0].start,'Asia/Taipei')._pf}</td>
+            
           <td>{timezone(student.statistics[0].start,'Asia/Taipei').format('HH:MM')}</td>
           <td>{student.inSession==true?'In Class':'Pending feedback'}</td>
           <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
