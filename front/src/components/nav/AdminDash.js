@@ -17,6 +17,7 @@ import * as PusherPushNotifications from "@pusher/push-notifications-web";
 import {io} from 'socket.io-client';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
+const timezone = require ('moment-timezone')
 
 const socket = io();
 
@@ -90,8 +91,8 @@ const StaffTable = ()=>{
           <td>{student.first}</td>
           <td>{student.last}</td>
           <td>{student.teacher.first}</td>
-          <td>{student.statistics[0].start}</td>
-          <td>{moment(new Date(student.statistics[0].start)).format('HH:MM')}</td>
+          <td>{timezone(student.statistics[0].start,'Asia/Taipei')}</td>
+          <td>{timezone(student.statistics[0].start,'Asia/Taipei').format('HH:MM')}</td>
           <td>{student.inSession==true?'In Class':'Pending feedback'}</td>
           <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
         </tr>)
