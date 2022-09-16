@@ -7,14 +7,14 @@ const email = require('../../services/email')
 const cron = require('node-cron')
 
 
-cron.schedule('15 */1 * * *',()=>{
-  Material.find().then((materials)=>{
-    User.updateMany({role:'user'},{progress:materials})
-      .then(()=>{console.log('done')})
-      .catch((err)=>{console.log(err)})
-    })
-  })
-})
+// cron.schedule('15 */1 * * *',()=>{
+//   Material.find().then((materials)=>{
+//     User.updateMany({role:'user'},{progress:materials})
+//       .then(()=>{console.log('done')})
+//       .catch((err)=>{console.log(err)})
+//     })
+//   })
+// })
 //Create
 router.post('/new', auth.auth, auth.permission(['manager']),async (req, res) => {
   // req = JSON.stringify(req.body)
