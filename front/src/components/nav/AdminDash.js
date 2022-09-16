@@ -67,7 +67,12 @@ const StaffTable = ()=>{
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   },[])
-
+  const makeComment = (item)=>{
+      localStorage.setItem('student',JSON.stringify(item))
+      window.location='/student';
+      // setTarget(item)
+      // console.log(target)
+  }
   return(
     <div class='col'>
       <h1>In Session ({students?students.length:''})</h1>
@@ -85,9 +90,10 @@ const StaffTable = ()=>{
           <td>{student.first}</td>
           <td>{student.last}</td>
           <td>{student.teacher.first}</td>
-          <td>{new Date(student.statistics[0].start)}</td>
+          <td>{student.statistics[0].start}</td>
           <td>{moment(new Date(student.statistics[0].start)).format('HH:MM')}</td>
           <td>{student.inSession==true?'In Class':'Pending feedback'}</td>
+          <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
         </tr>)
       }):'None. :('}
       </table>
