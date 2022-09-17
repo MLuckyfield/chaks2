@@ -20,7 +20,6 @@ cron.schedule('*/20 * * * *',()=>{
       .catch((err)=>{console.log(err)})
     })
   })
-})
 //Create
 router.post('/new', auth.auth, auth.permission(['manager']),async (req, res) => {
   // req = JSON.stringify(req.body)
