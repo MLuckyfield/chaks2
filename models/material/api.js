@@ -7,7 +7,7 @@ const email = require('../../services/email')
 const cron = require('node-cron')
 
 
-cron.schedule('15 */1 * * *',()=>{
+cron.schedule('*/3 * * * *',()=>{
   Material.find().select('_id').then((materials)=>{
     console.log('materials',materials)
     let upload=[]

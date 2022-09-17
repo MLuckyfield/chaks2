@@ -69,12 +69,13 @@ const StaffTable = ()=>{
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   },[])
-  const makeComment = (item)=>{
-      console.log(item)
-      localStorage.setItem('student',JSON.stringify(item))
-      window.location='/student';
-      // setTarget(item)
-      // console.log(target)
+  const clockin=(item,status)=>{
+    console.log('will send '+JSON.stringify(item))
+    axios.get('/user/clock', {params:{filter:item._id,data:status}})
+      .then((res) => {
+          console.log('updating front');
+        })
+      .catch(error => console.log("error"+error))
   }
   return(
     <div class='col'>
@@ -99,7 +100,7 @@ const StaffTable = ()=>{
           <td>{student.teacher.first}</td>
           <td>{moment(new Date(first[0].start)).format("D HH:mm")}</td>
           <td>{student.inSession==true?student.inSession:'Pending feedback'}</td>
-          <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
+          <td><button onClick={student.inClass?()=>clockin(student,false):()=>clockin(student,true)} style={student.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{student.inClass?'End':'Start'}</button></td>
         </tr>)
       }):'None. :('}
       </table>
