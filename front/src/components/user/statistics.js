@@ -40,6 +40,7 @@ const Statistics = (props)=>{
               </tr>
                 {progress?
                 progress.map((material,i)=>{
+                  console.log(material.complete,material)
                   return   (
                     <tr>
                       <th>{material.ref.name}</th>
