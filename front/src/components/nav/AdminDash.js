@@ -70,7 +70,7 @@ const StaffTable = ()=>{
       .catch(error=>console.log('From sendTo teacher:',error))
   },[])
   const clockin=(item,status)=>{
-    console.log('will send '+JSON.stringify(item))
+    console.log('will send '+item)
     axios.get('/user/clock', {params:{filter:item._id,data:status}})
       .then((res) => {
         setStudents(students.map(x=>{
