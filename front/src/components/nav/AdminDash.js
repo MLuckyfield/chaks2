@@ -98,7 +98,7 @@ const StaffTable = ()=>{
           <td>{student.first}</td>
           <td>{student.last}</td>
           <td>{student.teacher.first}</td>
-          <td>{moment(new Date(first[0])).format("D HH:mm")}</td>
+          <td>{moment(new Date(first[0].start)).format("D HH:mm")}</td>
           <td>{student.inSession==true?student.inSession:'Pending feedback'}</td>
           <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
         </tr>)
