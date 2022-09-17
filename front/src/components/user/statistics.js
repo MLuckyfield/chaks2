@@ -72,8 +72,10 @@ const [accordion,setAccordion] = useState([])
 const [incept,setIncept] = useState()
 
 useEffect(()=>{
-  let unique = [...new Set((props.data.map((obj)=>{return obj[props.key]})))]
+  console.log(props.data,props.key)
+  let unique = [...new Set((props.data.map((obj)=>{console.log('search',obj[props.key]);return obj[props.key]})))]
   let temp =[]
+  console.log('unique',unique)
   unique.forEach((item, i) => {
     let content=[]
     props.data.forEach((material, i) => {
