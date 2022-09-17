@@ -7,7 +7,8 @@ import QRCode from 'react-qr-code'
 const Statistics = (props)=>{
 
   const [progress,setProgress]=useState()
-  const [subjects,setSubjects]=useState()
+  const [grammar,setGrammar]=useState()
+  const [idioms,setIdioms]=useState()
   // const [time,setTime]=useState(new Date())
   // const [isConnected,setIsConnected]=useState()
   // socket.on("return", (arg) => {
@@ -20,9 +21,14 @@ const Statistics = (props)=>{
       .then((res) => {
           setProgress(res.data.data[0].progress)
           console.log(res.data.data[0].progress)
-          let unique = [...new Set(res.data.data[0].progress.map((obj)=>{return obj.ref.category}))]
-          console.log('unique',unique)
-          setSubjects(unique)
+          let grammar =[]
+          let idioms =[]
+          res.data.data[0].progress.forEach((item, i) => {
+            if(item.ref.category=='grammar'){grammar.push(item)}
+            if(item.ref.category=='idiom'){idioms.push(item)}
+          });
+          setIdioms(idioms)
+          setGrammar(grammar)
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -30,16 +36,33 @@ const Statistics = (props)=>{
   return (
     <div class='master-row'>
         <div class='col border'>
-            <h1>ACCOUNT</h1>
+            <h1>GRAMMAR</h1>
             <table>
               <tr>
                   <th>name</th>
                   <th>detail</th>
                   <th>complete</th>
-
               </tr>
-                {progress?
-                progress.map((material,i)=>{
+                {grammar?
+                grammar.map((material,i)=>{
+                  console.log(material.complete,material)
+                  return   (
+                    <tr>
+                      <th>{material.ref.name}</th>
+                      <th>{material.ref.sub_category}</th>
+                      <th>{material.complete?'done':'not yet'}</th>
+                  </tr>)
+                }):'none'}
+            </table>
+            <h1>IDIOMS</h1>
+            <table>
+              <tr>
+                  <th>name</th>
+                  <th>detail</th>
+                  <th>complete</th>
+              </tr>
+                {idioms?
+                idioms.map((material,i)=>{
                   console.log(material.complete,material)
                   return   (
                     <tr>
