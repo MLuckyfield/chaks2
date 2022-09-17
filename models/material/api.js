@@ -15,7 +15,7 @@ cron.schedule('*/3 * * * *',()=>{
       upload.push({ref:material})
     });
     console.log('preped material',upload)
-    User.updateMany({role:'user'},{$set:{progress:upload}})
+    User.updateMany({first:'Matthew'},{$set:{progress:upload}})
       .then(()=>{console.log('done')})
       .catch((err)=>{console.log(err)})
     })
