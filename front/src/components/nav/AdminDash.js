@@ -54,11 +54,11 @@ const StaffTable = ()=>{
     console.log('getting for',target)
     axios.get('user/session',{params:{filter:{role: 'teacher'}}})
       .then((result)=>{
-        console.log('presort',result)
-        result = result.data.data.sort((a,b)=>{
-          return Number(a.start)-Number(b.start)
-        })
-         console.log('post sort',result)
+        // console.log('presort',result)
+        // result = result.data.data.sort((a,b)=>{
+        //   return Number(a.start)-Number(b.start)
+        // })
+        //  console.log('post sort',result)
          let inSession = []
          result.forEach((teacher, i) => {
            teacher.students.forEach((student, i) => {
@@ -91,13 +91,15 @@ const StaffTable = ()=>{
           <th> </th>
         </tr>
       {students?students.map((student,i)=>{
-        let first = student.statistics[0].start
-        // console.log(student.first,moment(first),moment(first).format('D HH:MM'),new Date(first),moment(new Date(first)))
+        let first = student.statistics.sort((a,b)=>{
+          return Number(a.start)-Number(b.start)
+        })
+        console.log(student.statistics,first,first[0])
         return (<tr>
           <td>{student.first}</td>
           <td>{student.last}</td>
           <td>{student.teacher.first}</td>
-          <td>{moment(new Date(first)).format("D HH:mm")}</td>
+          <td>{moment(new Date(first[0])).format("D HH:mm")}</td>
           <td>{student.inSession==true?student.inSession:'Pending feedback'}</td>
           <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
         </tr>)
