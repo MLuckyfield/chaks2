@@ -20,7 +20,7 @@ const Statistics = (props)=>{
       .then((res) => {
           setProgress(res.data.data)
           console.log(res.data.data)
-          console.log(...new Set(res.data.data.category))
+          console.log([...new Set(res.data.data.category)])
         })
       .catch(error => console.log("error"+error))
   },[])
