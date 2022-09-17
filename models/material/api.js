@@ -7,19 +7,19 @@ const email = require('../../services/email')
 const cron = require('node-cron')
 
 
-cron.schedule('*/3 * * * *',()=>{
-  Material.find().select('_id').then((materials)=>{
-    console.log('materials',materials)
-    // let upload=[]
-    // materials.forEach((material, i) => {
-    //   upload.push({ref:material})
-    // });
-    // console.log('preped material',upload)
-    User.updateMany({first:'Matthew'},{progress:materials})
-      .then(()=>{console.log('done')})
-      .catch((err)=>{console.log(err)})
-    })
-  })
+// cron.schedule('*/3 * * * *',()=>{
+//   Material.find().select('_id').then((materials)=>{
+//     console.log('materials',materials)
+//     // let upload=[]
+//     // materials.forEach((material, i) => {
+//     //   upload.push({ref:material})
+//     // });
+//     // console.log('preped material',upload)
+//     User.updateMany({first:'Matthew'},{progress:materials})
+//       .then(()=>{console.log('done')})
+//       .catch((err)=>{console.log(err)})
+//     })
+//   })
 //Create
 router.post('/new', auth.auth, auth.permission(['manager']),async (req, res) => {
   // req = JSON.stringify(req.body)
