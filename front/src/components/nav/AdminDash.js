@@ -96,6 +96,8 @@ const StaffTable = ()=>{
         let first = student.statistics.sort((a,b)=>{
           return Number(a.start)-Number(b.start)
         })
+        console.log('pre',student.statistics)
+        console.log('post',first)
         console.log('in session?',student.inSession)
         return (<tr>
           <td>{student.first}</td>
