@@ -99,8 +99,8 @@ const StaffTable = ()=>{
           <td>{student.last}</td>
           <td>{student.teacher.first}</td>
           <td>{moment(new Date(first[0].start)).format("D HH:mm")}</td>
-          <td>{student.inSession==true?student.inSession:'Pending feedback'}</td>
-          <td><button onClick={student.inClass?()=>clockin(student,false):()=>clockin(student,true)} style={student.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{student.inClass?'End':'Start'}</button></td>
+          <td>{student.inClass==true?<button onClick={student.inClass?()=>clockin(student,false):()=>clockin(student,true)} style={student.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{student.inClass?'End':'Start'}</button>:'Pending feedback'}</td>
+          <td></td>
         </tr>)
       }):'None. :('}
       </table>
