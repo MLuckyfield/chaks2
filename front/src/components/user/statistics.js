@@ -60,7 +60,7 @@ const Statistics = (props)=>{
                   <th>detail</th>
                   <th>complete</th>
               </tr>
-                {idioms?<Accordion data={idioms} key={'category'} test='hi' lol={'lol'}/>:'none'}
+                {idioms?<Accordion data={idioms} k={'category'} test='hi' lol={'lol'}/>:'none'}
             </table>
         </div>
     </div>
@@ -72,14 +72,14 @@ const [accordion,setAccordion] = useState([])
 const [incept,setIncept] = useState()
 
 useEffect(()=>{
-  console.log(props.data,props.key,props.test,props.lol,props)
-  let unique = [...new Set((props.data.map((obj)=>{console.log('search',obj.ref[props.key]);return obj.ref[props.key]})))]
+  console.log(props.data,props.k,props.test,props.lol,props)
+  let unique = [...new Set((props.data.map((obj)=>{return obj.ref[props.k]})))]
   let temp =[]
   console.log('unique',unique)
   unique.forEach((item, i) => {
     let content=[]
     props.data.forEach((material, i) => {
-      if(material[props.key]==item){content.push(material)}
+      if(material[props.k]==item){content.push(material)}
     });
     temp.push({title:item,content:content})
   });
