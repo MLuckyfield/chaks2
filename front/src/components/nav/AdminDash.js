@@ -73,8 +73,11 @@ const StaffTable = ()=>{
     console.log('will send '+JSON.stringify(item))
     axios.get('/user/clock', {params:{filter:item._id,data:status}})
       .then((res) => {
-          console.log('updating front');
-        })
+        setStudents(students.map(x=>{
+          if(x._id!==res.data.data._id){console.log('no match');return x}
+          return {...x,inClass:res.data.data.inClass}
+        }))
+      })
       .catch(error => console.log("error"+error))
   }
   return(
