@@ -45,7 +45,6 @@ const Statistics = (props)=>{
               </tr>
                 {grammar?
                 grammar.map((material,i)=>{
-                  console.log(material.complete,material)
                   return   (
                     <tr>
                       <th>{material.ref.name}</th>
@@ -61,62 +60,35 @@ const Statistics = (props)=>{
                   <th>detail</th>
                   <th>complete</th>
               </tr>
-                {idioms?
-                idioms.map((material,i)=>{
-                  console.log(material.complete,material)
-                  return   (
-                    <tr>
-                      <th>{material.ref.name}</th>
-                      <th>{material.ref.sub_category}</th>
-                      <th>{material.complete?'done':'not yet'}</th>
-                  </tr>)
-                }):'none'}
+                {idioms?<Accordion data={idioms} key='category'/>:'none'}
             </table>
         </div>
     </div>
 
   )
 }
-const Accordion =()=>{
-const accordionData = [{
-  title: '普通の英会話教室と何が違うの？',
-  content: `普通の英会話教室と違うポイントたくさんありますがその中でも以下の３点が特徴となります。
-1.実際の会話中に英語を教えたり、気軽に英語の質問ができる雰囲気を提供します。
-2.入会が不必要な為、レッスン予約やテキスト代など必要ありません。来たいときに来れて帰りたいときに帰れます！
-3.安い！安くて知りたいことを知れるそんな環境を提供しています！入会金やテキスト代もなく気軽にご利用いただけます。`,
-},
-{
-title: '英会話バーでも英語が学べるの？',
-content: `もちろん英語力を向上していただけます。
-英語を学ぶ場所の提供が私たちの一番の役目です。CHTASHACKでの英会話は自由テーマで行われます。
-なので、英語に関する質問はいつでもできるし、インストラクターも例文や絵などで説明をしてくれます。
-また、バーといっても英会話を楽しむことを大事としているので、音の大きい音楽を流すなどはしません。`,
-},
-{
-title: '他にも安い英会話はありますが、割引などありますか？',
-content: `もちろん私たちより安い英会話教室は存在します！ただ、私たちはより自由に話しやすい環境を提供している自信があります。また、CHATSHACKには入会金や月謝などをお客様から頂戴しておりません。
-割引に関しては今後条件付きで行う予定ではあります！
-最新情報としてお客様へ共有する予定ですのでHPよりメールアドレスの登録をよろしくお願いいたします。`,
-},
-{
-title: '英会話中に飲食をすることは可能ですか？',
-content: `もちろんです！海外のカフェやバーを意識したメニューを提供しております！
-アルコール類はクラフトビールをメインとしハイボールやソフトドリンクもご用意しています。
-食べ物もナチョスやポテトフライなどの食べやすくて美味しいものを提供しています。
-英会話中にはぜひ食べ物や飲み物もお楽しみください！`,
-},
-{
-title: '予約は必要ですか？',
-content: `必要ありません！直接お越しください！`,
-}];
+const Accordion =(props)=>{
+const [accordion,setAccordion] = useState([])
 
-
+useEffect(()=>{
+  let unique = [...new Set((props.data.map((obj)=>{return obj[props.key]})))]
+  let temp =[]
+  unique.forEach((item, i) => {
+    let content=[]
+    props.data.forEach((material, i) => {
+      if(material[props.key]==item){content.push(material)}
+    });
+    temp.push({title:item,content:content})
+  });
+  console.log(temp)
+  setAccordion(temp)
+},[])
 
 return (
     <div class='accordion'>
-          {accordionData.map(({ title, content }) => (
+          {accordion?accordion.map(({ title, content }) => (
             <AccordionItem title={title} content={content} />
-          ))}
+          )):'no data'}
     </div>
 );
 }
