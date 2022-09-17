@@ -42,11 +42,11 @@ const Statistics = (props)=>{
                 progress.map((material,i)=>{
                   return   (
                     <tr>
-                      <th>{material.name}</th>
-                      <th>{material.sub_category}</th>
-                      <th>{material.complete}</th>                      
+                      <th>{material.ref.name}</th>
+                      <th>{material.ref.sub_category}</th>
+                      <th>{material.complete}</th>
                   </tr>)
-                }):''}
+                }):'none'}
             </table>
         </div>
     </div>
