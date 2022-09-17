@@ -77,8 +77,11 @@ const StaffTable = ()=>{
           if(x._id!==res.data.data._id){console.log('no match');return x}
           return {...x,inClass:res.data.data.inClass}
         }))
-        let start =moment(res.data.data.statistics[0].start)
-        let end = moment(res.data.data.statistics[0].end)
+        let first = res.data.data.statistics.sort((a,b)=>{
+          return new Date(b.start)-new Date(a.start)
+        })
+        let start =moment(first[0].start)
+        let end = moment(first[0].end)
         const time = end.diff(start, 'minutes')
         let billable = 0
         if(time-40>0){billable=time-40}
@@ -110,7 +113,7 @@ const StaffTable = ()=>{
           <td>{student.first}</td>
           <td>{student.last}</td>
           <td>{student.teacher.first}</td>
-          <td>{moment(new Date(first[0].start)).format("D HH:mm")}</td>
+          <td>{moment(new Date(first[0].start)).format("MMM Do HH:mm")}</td>
           <td>{student.inClass==true?<button onClick={student.inClass?()=>clockin(student,false):()=>clockin(student,true)} style={student.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{student.inClass?'End':'Start'}</button>:'Pending feedback'}</td>
           <td></td>
         </tr>)
