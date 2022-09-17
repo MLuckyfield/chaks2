@@ -45,7 +45,7 @@ const Statistics = (props)=>{
                     <tr>
                       <th>{material.ref.name}</th>
                       <th>{material.ref.sub_category}</th>
-                      <th>{material.complete}</th>
+                      <th>{material.complete?'done':'not yet'}</th>
                   </tr>)
                 }):'none'}
             </table>
