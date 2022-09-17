@@ -69,6 +69,7 @@ const Statistics = (props)=>{
 }
 const Accordion =(props)=>{
 const [accordion,setAccordion] = useState([])
+const [incept,setIncept] = useState()
 
 useEffect(()=>{
   let unique = [...new Set((props.data.map((obj)=>{return obj[props.key]})))]
@@ -80,14 +81,19 @@ useEffect(()=>{
     });
     temp.push({title:item,content:content})
   });
-  console.log(temp)
+  console.log('ready',temp)
+  if(temp[0].content instanceof Array){setIncept(true)}
   setAccordion(temp)
 },[])
 
 return (
     <div class='accordion'>
-          {accordion?accordion.map(({ title, content }) => (
-            <AccordionItem title={title} content={content} />
+          {accordion?incept?(
+            accordion.map(({ title, content }) => (
+               <AccordionItem title={title} content={content}/>
+            ))
+          ):accordion.map(({ title, content }) => (
+             <Accordion data={content} key={'sub_category'}/>
           )):'no data'}
     </div>
 );
