@@ -80,8 +80,8 @@ const StaffTable = ()=>{
         let first = res.data.data.statistics.sort((a,b)=>{
           return new Date(b.start)-new Date(a.start)
         })
-        let start =moment(first[0].start)
-        let end = moment(first[0].end)
+        let start =moment(new Date(first[0].start)).format("HH:mm")
+        let end = moment(new Date(first[0].end)).format("HH:mm")
         const time = end.diff(start, 'minutes')
         let billable = 0
         if(time-40>0){billable=time-40}
