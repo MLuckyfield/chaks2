@@ -54,10 +54,11 @@ const StaffTable = ()=>{
     console.log('getting for',target)
     axios.get('user/session',{params:{filter:{role: 'teacher'}}})
       .then((result)=>{
+        console.log('presort',result)
         result = result.data.data.sort((a,b)=>{
           return Number(a.start)-Number(b.start)
         })
-         console.log('students retrieved: ',result)
+         console.log('post sort',result)
          let inSession = []
          result.forEach((teacher, i) => {
            teacher.students.forEach((student, i) => {
