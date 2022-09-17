@@ -77,6 +77,13 @@ const StaffTable = ()=>{
           if(x._id!==res.data.data._id){console.log('no match');return x}
           return {...x,inClass:res.data.data.inClass}
         }))
+        let start =moment(res.data.data.statistics[0].start)
+        let end = moment(res.data.data.statistics[0].end)
+        const time = end.diff(start, 'minutes')
+        let billable = 0
+        if(time-40>0){billable=time-40}
+        billable = (Math.round(billable/30)*1000)+1000
+        alert('Billable time is',billable,start,end)
       })
       .catch(error => console.log("error"+error))
   }
