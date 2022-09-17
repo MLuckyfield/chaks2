@@ -60,7 +60,7 @@ const Statistics = (props)=>{
                   <th>detail</th>
                   <th>complete</th>
               </tr>
-                {idioms?<Accordion data={idioms} key={'category'}/>:'none'}
+                {idioms?<Accordion data={idioms} key={'category'} test='hi' lol={'lol'}/>:'none'}
             </table>
         </div>
     </div>
@@ -72,7 +72,7 @@ const [accordion,setAccordion] = useState([])
 const [incept,setIncept] = useState()
 
 useEffect(()=>{
-  console.log(props.data,props.key)
+  console.log(props.data,props.key,props.test,props.lol,props)
   let unique = [...new Set((props.data.map((obj)=>{console.log('search',obj.ref[props.key]);return obj.ref[props.key]})))]
   let temp =[]
   console.log('unique',unique)
