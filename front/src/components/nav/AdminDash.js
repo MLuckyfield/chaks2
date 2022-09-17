@@ -94,7 +94,7 @@ const StaffTable = ()=>{
         </tr>
       {students?students.map((student,i)=>{
         let first = student.statistics.sort((a,b)=>{
-          return Number(a.start)-Number(b.start)
+          return new Date(a.start)-new Date(b.start)
         })
         console.log('pre',student.statistics)
         console.log('post',first)
