@@ -48,7 +48,7 @@ const Navbar = ()=>{
           </div>
         </div>
         {user==''||user==null||user==undefined?(
-          <ul class="nav-links" style={{paddingTop:'5%'}}>
+          <ul class="nav-links">
               <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#concept">CONCEPT</a>:<a onClick={navSlide} href="#concept">CONCEPT</a>}</li>
               <li><a href="/products">LESSONS</a></li>
               <li><a href="/events">EVENTS</a></li>
@@ -56,7 +56,7 @@ const Navbar = ()=>{
               <li><button class='solid-first' style={{fontSize:'13px',width:'100px'}} onClick={()=>window.location='/login'}>LOG IN</button></li>
           </ul>
         ):(
-          <ul class="nav-links" style={{paddingTop:'5%'}}>
+          <ul class="nav-links">
               {user.role!='user'?(<li style={{padding:'3% 7%'}}><a href='/dash'><span class="material-icons">group</span></a></li>):''}
               {user.role!='user'?(<li style={{padding:'3% 7%'}}><a href='/manage-blog'><span class="material-icons">edit</span></a></li>):''}
               {user.role!='user'?(<li style={{padding:'3% 7%'}}><a href='/create-event'><span class="material-icons">edit_calendar</span></a></li>):''}

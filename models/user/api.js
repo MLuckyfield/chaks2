@@ -224,7 +224,17 @@ const { Server } = require("socket.io");
         success: true
       });
     });
-
+    //Get
+    router.get('/progress', auth.auth, async (req, res) => {
+      // console.log('running user/all',req.query)
+      let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields).populate('ref')
+      // console.log('data retrieved:',data)
+      return res.status(201).json({
+        data: data,
+        message: 'Job saved',
+        success: true
+      });
+    });
     //Get
     router.get('/session', auth.auth, async (req, res) => {
       // console.log('running user/all',req.query)
