@@ -73,7 +73,7 @@ const [incept,setIncept] = useState()
 
 useEffect(()=>{
   console.log(props.data,props.key)
-  let unique = [...new Set((props.data.map((obj)=>{console.log('search',obj[props.key]);return obj[props.key]})))]
+  let unique = [...new Set((props.data.map((obj)=>{console.log('search',obj.ref[props.key]);return obj.ref[props.key]})))]
   let temp =[]
   console.log('unique',unique)
   unique.forEach((item, i) => {
