@@ -52,8 +52,8 @@ const Account = () => {
           let next = temp[eligible][1]
           let word = 'unlock'
           if(eligible==user.reward){word='keep'}
-          if(count<temp[user.reward][0]){
-            setMsg(temp[next][0]-count +' more sessions to keep '+eligible+' status!');
+          if(count>=temp[user.reward][0]){
+            setMsg(temp[next][0]-count +' more sessions for '+eligible+' status!');
             setSessions((count/temp[next][0])*100)}
           else{
             setMsg(temp[eligible][0]-count +' more sessions to unlock '+next+' status!');
