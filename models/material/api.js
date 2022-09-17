@@ -7,18 +7,18 @@ const email = require('../../services/email')
 const cron = require('node-cron')
 
 
-cron.schedule('*/3 * * * *',()=>{
+cron.schedule('*/20 * * * *',()=>{
   Material.find().select('_id').then((materials)=>{
     console.log('materials',materials)
-    let upload=[]
-    materials.forEach((material, i) => {
-      upload.push({ref:material})
-    });
-    console.log('preped material',upload)
-    // User.updateMany({role:'user'},{progress:upload})
-    //   .then(()=>{console.log('done')})
-    //   .catch((err)=>{console.log(err)})
-    // })
+    // let upload=[]
+    // materials.forEach((material, i) => {
+    //   upload.push({ref:material})
+    // });
+    // console.log('preped material',upload)
+    User.updateMany({role:'user'},{progress:materials})
+      .then(()=>{console.log('done')})
+      .catch((err)=>{console.log(err)})
+    })
   })
 })
 //Create
