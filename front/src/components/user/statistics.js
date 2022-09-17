@@ -7,7 +7,7 @@ import QRCode from 'react-qr-code'
 const Statistics = (props)=>{
 
   const [progress,setProgress]=useState()
-
+  const [subjects,setSubjects]=useState()
   // const [time,setTime]=useState(new Date())
   // const [isConnected,setIsConnected]=useState()
   // socket.on("return", (arg) => {
@@ -22,6 +22,7 @@ const Statistics = (props)=>{
           console.log(res.data.data[0].progress)
           let unique = [...new Set(res.data.data[0].progress.map((obj)=>{return obj.ref.category}))]
           console.log('unique',unique)
+          setSubjects(unique)
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -30,7 +31,23 @@ const Statistics = (props)=>{
     <div class='master-row'>
         <div class='col border'>
             <h1>ACCOUNT</h1>
+            <table>
+              <tr>
+                  <th>name</th>
+                  <th>detail</th>
+                  <th>complete</th>
 
+              </tr>
+                {progress?
+                progress.map((material,i)=>{
+                  return   (
+                    <tr>
+                      <th>{material.name}</th>
+                      <th>{material.sub_category}</th>
+                      <th>{material.complete}</th>                      
+                  </tr>)
+                }):''}
+            </table>
         </div>
     </div>
 
