@@ -20,7 +20,8 @@ const Statistics = (props)=>{
       .then((res) => {
           setProgress(res.data.data[0].progress)
           console.log(res.data.data[0].progress)
-          console.log([...new Set(res.data.data[0].progress.category)])
+          let unique = [...new Set(res.data.data[0].progress.map((obj)=>{return obj.ref.category}))]
+          console.log('unique',unique)
         })
       .catch(error => console.log("error"+error))
   },[])
