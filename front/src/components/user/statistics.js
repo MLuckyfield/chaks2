@@ -18,9 +18,9 @@ const Statistics = (props)=>{
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/progress', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
-          setProgress(res.data.data)
-          console.log(res.data.data)
-          console.log([...new Set(res.data.data.category)])
+          setProgress(res.data.data[0].progress)
+          console.log(res.data.data[0].progress)
+          console.log([...new Set(res.data.data[0].progress.category)])
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -29,12 +29,67 @@ const Statistics = (props)=>{
     <div class='master-row'>
         <div class='col border'>
             <h1>ACCOUNT</h1>
+
         </div>
     </div>
 
   )
 }
+const Accordion =()=>{
+const accordionData = [{
+  title: '普通の英会話教室と何が違うの？',
+  content: `普通の英会話教室と違うポイントたくさんありますがその中でも以下の３点が特徴となります。
+1.実際の会話中に英語を教えたり、気軽に英語の質問ができる雰囲気を提供します。
+2.入会が不必要な為、レッスン予約やテキスト代など必要ありません。来たいときに来れて帰りたいときに帰れます！
+3.安い！安くて知りたいことを知れるそんな環境を提供しています！入会金やテキスト代もなく気軽にご利用いただけます。`,
+},
+{
+title: '英会話バーでも英語が学べるの？',
+content: `もちろん英語力を向上していただけます。
+英語を学ぶ場所の提供が私たちの一番の役目です。CHTASHACKでの英会話は自由テーマで行われます。
+なので、英語に関する質問はいつでもできるし、インストラクターも例文や絵などで説明をしてくれます。
+また、バーといっても英会話を楽しむことを大事としているので、音の大きい音楽を流すなどはしません。`,
+},
+{
+title: '他にも安い英会話はありますが、割引などありますか？',
+content: `もちろん私たちより安い英会話教室は存在します！ただ、私たちはより自由に話しやすい環境を提供している自信があります。また、CHATSHACKには入会金や月謝などをお客様から頂戴しておりません。
+割引に関しては今後条件付きで行う予定ではあります！
+最新情報としてお客様へ共有する予定ですのでHPよりメールアドレスの登録をよろしくお願いいたします。`,
+},
+{
+title: '英会話中に飲食をすることは可能ですか？',
+content: `もちろんです！海外のカフェやバーを意識したメニューを提供しております！
+アルコール類はクラフトビールをメインとしハイボールやソフトドリンクもご用意しています。
+食べ物もナチョスやポテトフライなどの食べやすくて美味しいものを提供しています。
+英会話中にはぜひ食べ物や飲み物もお楽しみください！`,
+},
+{
+title: '予約は必要ですか？',
+content: `必要ありません！直接お越しください！`,
+}];
 
+
+
+return (
+    <div class='accordion'>
+          {accordionData.map(({ title, content }) => (
+            <AccordionItem title={title} content={content} />
+          ))}
+    </div>
+);
+}
+const AccordionItem=({ title, content })=>{
+const [isActive, setIsActive] = useState(false);
+return (
+  <div class='accordion_item clickable' onClick={() => setIsActive(!isActive)}>
+    <div class='accordion-title'>
+      <h2>{title}</h2>
+    </div>
+    {isActive && <div class='accordion-content'>{content}</div>}
+  </div>
+
+)
+}
 export default Statistics;
 
 // CHATSHACK(以下「当社」)では、お預かりした個人情報について、以下のとおり適正かつ安全に管理・運用することに努めます。
