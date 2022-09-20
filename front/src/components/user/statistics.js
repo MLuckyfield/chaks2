@@ -43,15 +43,7 @@ const Statistics = (props)=>{
                   <th>detail</th>
                   <th>complete</th>
               </tr>
-                {grammar?
-                grammar.map((material,i)=>{
-                  return   (
-                    <tr>
-                      <th>{material.ref.name}</th>
-                      <th>{material.ref.sub_category}</th>
-                      <th>{material.complete?'done':'not yet'}</th>
-                  </tr>)
-                }):'none'}
+              {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
             </table>
             <h1>IDIOMS</h1>
             <table>
@@ -102,10 +94,14 @@ return (
 const AccordionItem=({ title, content,incept })=>{
   const [isActive, setIsActive] = useState(false);
 return (
-    <div class='accordion_item clickable' onClick={() => setIsActive(!isActive)}>
-      <div class='accordion-title'>
-        <h2>{title}</h2>
-      </div>
+    <div class='accordion_item'>
+      {incept?
+        <div class='accordion-title clickable' onClick={() => setIsActive(!isActive)}>
+          <h2>{title} {content[0].complete}</h2>
+        </div>:
+        <div class='accordion-title'>
+          <h2>{title}</h2>
+        </div>}
       {isActive && <div class='accordion-content'>{incept?<Accordion k={'name'} data={content}/>:<span>{content[0].ref.name} {content[0].complete}</span>}</div>}
     </div>
 
