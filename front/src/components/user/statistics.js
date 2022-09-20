@@ -38,10 +38,10 @@ const Statistics = (props)=>{
         <div class='col border'>
             <h1>GRAMMAR</h1>
             {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
-
+        </div>
+        <div class='col border'>
             <h1>IDIOMS</h1>
             {idioms?<Accordion k={'sub_category'} data={idioms}/>:'none'}
-
         </div>
     </div>
   )
