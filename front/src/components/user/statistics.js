@@ -60,7 +60,7 @@ const Statistics = (props)=>{
                   <th>detail</th>
                   <th>complete</th>
               </tr>
-                {idioms?<Accordion data={idioms} k={'sub_category'} test='hi' lol={'lol'}/>:'none'}
+                {idioms?<Accordion k={'sub_category'} data={idioms}/>:'none'}
             </table>
         </div>
     </div>
