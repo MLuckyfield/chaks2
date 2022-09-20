@@ -78,8 +78,8 @@ useEffect(()=>{
   unique.forEach((item, i) => {
     let content=[]
     props.data.forEach((material, i) => {
-      console.log(material['sub_category'],typeof material['sub_category'],item, typeof item,material['sub_category']==item)
-      if(material['sub_category']==item){content.push(material)}
+      console.log(material.sub_category,typeof material.sub_category,item, typeof item,material.sub_category==item)
+      if(material.sub_category==item){content.push(material)}
     });
     temp.push({title:item,content:content})
   });
