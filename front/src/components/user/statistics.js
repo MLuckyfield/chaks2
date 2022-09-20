@@ -102,17 +102,12 @@ return (
 const AccordionItem=({ title, content,incept })=>{
   const [isActive, setIsActive] = useState(false);
 return (
-  <span>
-    {incept?(
-      <Accordion k={'name'} data={content}/>
-    ):
     <div class='accordion_item clickable' onClick={() => setIsActive(!isActive)}>
       <div class='accordion-title'>
         <h2>{title}</h2>
       </div>
-      {isActive && <div class='accordion-content'>{content[0].ref.name} {content[0].complete}</div>}
-    </div>}
-  </span>
+      {isActive && <div class='accordion-content'>{incept?<Accordion k={'name'} data={content}/>:<span>{content[0].ref.name} {content[0].complete}</span>}</div>}
+    </div>
 
 )
 }
