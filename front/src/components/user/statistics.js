@@ -37,23 +37,11 @@ const Statistics = (props)=>{
     <div class='master-row'>
         <div class='col border'>
             <h1>GRAMMAR</h1>
-            <table>
-              <tr>
-                  <th>name</th>
-                  <th>detail</th>
-                  <th>complete</th>
-              </tr>
-              {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
-            </table>
+            {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
+
             <h1>IDIOMS</h1>
-            <table>
-              <tr>
-                  <th>name</th>
-                  <th>detail</th>
-                  <th>complete</th>
-              </tr>
-                {idioms?<Accordion k={'sub_category'} data={idioms}/>:'none'}
-            </table>
+            {idioms?<Accordion k={'sub_category'} data={idioms}/>:'none'}
+
         </div>
     </div>
   )
