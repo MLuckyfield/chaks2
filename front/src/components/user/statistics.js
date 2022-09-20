@@ -60,7 +60,7 @@ const Statistics = (props)=>{
                   <th>detail</th>
                   <th>complete</th>
               </tr>
-                {idioms?<Accordion data={idioms} k={'category'} test='hi' lol={'lol'}/>:'none'}
+                {idioms?<Accordion data={idioms} k={'sub_category'} test='hi' lol={'lol'}/>:'none'}
             </table>
         </div>
     </div>
@@ -91,7 +91,7 @@ return (
     <div class='accordion'>
           {accordion?incept?(
             accordion.map(({ title, content }) => (
-               <Accordion data={content} key={'sub_category'}/>
+               <Accordion data={content} key={'name'}/>
             ))
           ):accordion.map(({ title, content }) => (
               <AccordionItem title={title} content={content}/>
