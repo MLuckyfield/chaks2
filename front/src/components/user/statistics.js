@@ -90,8 +90,8 @@ useEffect(()=>{
 return (
     <div class='accordion'>
           {accordion?incept?(
-            accordion.map(({ title, content }) => (
-               <Accordion k={'name'} data={content}/>
+            accordion.map((item,i) => (
+               <AccordionItem incept={true} title={item.title} content={item.content}/>
             ))
           ):accordion.map(({ title, content }) => (
               <AccordionItem title={title} content={content}/>
@@ -99,15 +99,20 @@ return (
     </div>
 );
 }
-const AccordionItem=({ title, content })=>{
-const [isActive, setIsActive] = useState(false);
+const AccordionItem=({ title, content,incept })=>{
+  const [isActive, setIsActive] = useState(false);
 return (
-  <div class='accordion_item clickable' onClick={() => setIsActive(!isActive)}>
-    <div class='accordion-title'>
-      <h2>{title}</h2>
-    </div>
-    {isActive && <div class='accordion-content'>{content[0].ref.name} {content[0].complete}</div>}
-  </div>
+  <span>
+    {incept?(
+      <Accordion k={'name'} data={content}/>
+    ):
+    <div class='accordion_item clickable' onClick={() => setIsActive(!isActive)}>
+      <div class='accordion-title'>
+        <h2>{title}</h2>
+      </div>
+      {isActive && <div class='accordion-content'>{content[0].ref.name} {content[0].complete}</div>}
+    </div>}
+  </span>
 
 )
 }
