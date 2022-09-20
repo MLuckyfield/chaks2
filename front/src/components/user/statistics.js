@@ -72,13 +72,14 @@ const [incept,setIncept] = useState()
 
 useEffect(()=>{
   console.log(props.data,props.k,props.test,props.lol,props)
-  let unique = [...new Set((props.data.map((obj)=>{return obj.ref[props.k]})))]
+  let unique = [...new Set((props.data.map((obj)=>{return obj.ref['sub_category']})))]
   let temp =[]
   console.log('unique',unique)
   unique.forEach((item, i) => {
     let content=[]
     props.data.forEach((material, i) => {
-      if(material[props.k]==item){content.push(material)}
+      console.log(material,material['sub_category']==item)
+      if(material['sub_category']==item){content.push(material)}
     });
     temp.push({title:item,content:content})
   });
