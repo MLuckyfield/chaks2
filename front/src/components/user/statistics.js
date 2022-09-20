@@ -68,10 +68,10 @@ const Statistics = (props)=>{
 }
 const Accordion =(props)=>{
 const [accordion,setAccordion] = useState([])
-const [incept,setIncept] = useState()
+const [incept,setIncept] = useState(false)
 
 useEffect(()=>{
-  console.log(props.data,props.k,props.test,props.lol,props)
+  // console.log(props.data,props.k,props.test,props.lol,props)
   let unique = [...new Set((props.data.map((obj)=>{return obj.ref[props.k]})))]
   let temp =[]
   console.log('unique',unique)
@@ -83,7 +83,7 @@ useEffect(()=>{
     temp.push({title:item,content:content})
   });
   console.log('ready',temp)
-  if(temp[0].content instanceof Array){console.log('intercepting');setIncept(true)}
+  if(temp[0].content.length>1){console.log('intercepting');setIncept(true)}
   setAccordion(temp)
 },[])
 
@@ -106,7 +106,7 @@ return (
     <div class='accordion-title'>
       <h2>{title}</h2>
     </div>
-    {isActive && <div class='accordion-content'>{content.ref.name} {content.complete}</div>}
+    {isActive && <div class='accordion-content'>{content[0].ref.name} {content[0].complete}</div>}
   </div>
 
 )
