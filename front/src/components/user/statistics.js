@@ -91,7 +91,7 @@ return (
     <div class='accordion'>
           {accordion?incept?(
             accordion.map(({ title, content }) => (
-               <Accordion data={content} key={'name'}/>
+               <Accordion k={'name'} data={content}/>
             ))
           ):accordion.map(({ title, content }) => (
               <AccordionItem title={title} content={content}/>
