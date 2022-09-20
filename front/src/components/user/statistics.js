@@ -64,7 +64,6 @@ const Statistics = (props)=>{
             </table>
         </div>
     </div>
-
   )
 }
 const Accordion =(props)=>{
