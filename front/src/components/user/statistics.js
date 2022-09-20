@@ -78,7 +78,7 @@ useEffect(()=>{
   unique.forEach((item, i) => {
     let content=[]
     props.data.forEach((material, i) => {
-      if(material.ref[props.k]==item){content.push(material.ref)}
+      if(material.ref[props.k]==item){content.push(material)}
     });
     temp.push({title:item,content:content})
   });
@@ -106,7 +106,7 @@ return (
     <div class='accordion-title'>
       <h2>{title}</h2>
     </div>
-    {isActive && <div class='accordion-content'>{content.name} {content.complete}</div>}
+    {isActive && <div class='accordion-content'>{content.ref.name} {content.complete}</div>}
   </div>
 
 )
