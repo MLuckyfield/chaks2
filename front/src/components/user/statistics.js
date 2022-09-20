@@ -34,12 +34,12 @@ const Statistics = (props)=>{
   },[])
 
   return (
-    <div class='master-row'>
-        <div class='col border'>
+    <div class='row'>
+        <div class='col'>
             <h1>GRAMMAR</h1>
             {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
         </div>
-        <div class='col border'>
+        <div class='col'>
             <h1>IDIOMS</h1>
             {idioms?<Accordion k={'sub_category'} data={idioms}/>:'none'}
         </div>
@@ -88,7 +88,7 @@ return (
           <h2>{title} ({content.length})</h2>
         </div>:
         <div class='accordion-title'>
-          <h2>{title} {content[0].complete?'Done!':'pending'}{console.log('item',content)}</h2>
+          <h2>{title} {content[0].complete?'Done!':content[0].success/(content[0].success+content[0].fail)}{console.log('item',content)}</h2>
         </div>}
       {isActive && <div class='accordion-content'>{incept?<Accordion k={'name'} data={content}/>:<span>{content[0].ref.name} {content[0].complete}</span>}</div>}
     </div>
