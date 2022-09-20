@@ -71,20 +71,19 @@ const [accordion,setAccordion] = useState([])
 const [incept,setIncept] = useState()
 
 useEffect(()=>{
-  console.log(props.data,props.k,props.test,props.lol,props)
-  let unique = [...new Set((props.data.map((obj)=>{return obj.ref['sub_category']})))]
+  // console.log(props.data,props.k,props.test,props.lol,props)
+  let unique = [...new Set((props.data.map((obj)=>{return obj.ref[props.k]})))]
   let temp =[]
   console.log('unique',unique)
   unique.forEach((item, i) => {
     let content=[]
     props.data.forEach((material, i) => {
-      console.log(material.ref,material.ref.sub_category,typeof material.ref.sub_category,item, typeof item,material.ref.sub_category==item)
-      if(material.ref.sub_category==item){content.push(material.ref)}
+      if(material.ref[props.k]==item){content.push(material.ref)}
     });
     temp.push({title:item,content:content})
   });
   console.log('ready',temp)
-  if(temp[0].content instanceof Array){setIncept(true)}
+  if(temp[0].content instanceof Array){console.log('intercepting');setIncept(true)}
   setAccordion(temp)
 },[])
 
@@ -92,10 +91,10 @@ return (
     <div class='accordion'>
           {accordion?incept?(
             accordion.map(({ title, content }) => (
-               <AccordionItem title={title} content={content}/>
+               <Accordion data={content} key={'sub_category'}/>
             ))
           ):accordion.map(({ title, content }) => (
-             <Accordion data={content} key={'sub_category'}/>
+              <AccordionItem title={title} content={content}/>
           )):'no data'}
     </div>
 );
@@ -107,7 +106,7 @@ return (
     <div class='accordion-title'>
       <h2>{title}</h2>
     </div>
-    {isActive && <div class='accordion-content'>{content}</div>}
+    {isActive && <div class='accordion-content'>{content.name} {content.complete}</div>}
   </div>
 
 )
