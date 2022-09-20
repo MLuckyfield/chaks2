@@ -36,11 +36,11 @@ const Statistics = (props)=>{
   return (
     <div class='row'>
         <div class='col'>
-            <h1>GRAMMAR</h1>
+            <h1>GRAMMAR ({grammar.length})</h1>
             {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
         </div>
         <div class='col'>
-            <h1>IDIOMS</h1>
+            <h1>IDIOMS ({idioms.length})</h1>
             {idioms?<Accordion k={'sub_category'} data={idioms}/>:'none'}
         </div>
     </div>
