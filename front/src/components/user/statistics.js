@@ -71,7 +71,7 @@ const [accordion,setAccordion] = useState([])
 const [incept,setIncept] = useState()
 
 useEffect(()=>{
-  // console.log(props.data,props.k,props.test,props.lol,props)
+  console.log(props.data,props.k,props.test,props.lol,props)
   let unique = [...new Set((props.data.map((obj)=>{return obj.ref[props.k]})))]
   let temp =[]
   console.log('unique',unique)
