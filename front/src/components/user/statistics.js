@@ -88,8 +88,8 @@ return (
           <h2>{title} ({content.length})</h2>
         </div>:
         <div class='accordion-title'>
-            <table>
-                <tr>
+            <table style={{border:'none',width:'100%',height:'100%'}}>
+                <tr style={{background:'none'}}>
                   <td>{title}</td> <td>{content[0].complete?'Done!':content[0].success||content[0].fail?content[0].success/(content[0].success+content[0].fail):'new'}</td>}
                 </tr>
             </table>
