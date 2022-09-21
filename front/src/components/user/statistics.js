@@ -88,7 +88,11 @@ return (
           <h2>{title} ({content.length})</h2>
         </div>:
         <div class='accordion-title'>
-          <span>{title}</span> <span>{content[0].complete?'Done!':content[0].success||content[0].fail?content[0].success/(content[0].success+content[0].fail):'new'}</span>}
+            <table>
+                <tr>
+                  <td>{title}</td> <td>{content[0].complete?'Done!':content[0].success||content[0].fail?content[0].success/(content[0].success+content[0].fail):'new'}</td>}
+                </tr>
+            </table>
         </div>}
       {isActive && <div class='accordion-content'>{incept?<Accordion k={'name'} data={content}/>:<span>{content[0].ref.name} {content[0].complete}</span>}</div>}
     </div>
