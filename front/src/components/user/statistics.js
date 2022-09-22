@@ -91,7 +91,7 @@ return (
         <div class='accordion-title'>
             <table style={{border:'none',width:'100%',height:'100%'}}>
                 <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
-                  <td>{title}</td> <td>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:<ProgressCircle value={0.1}/>}</td>}
+                  <td style={{width:'80%'}}>{title}</td> <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:<ProgressCircle value={0.1}/>}</td>}
                 </tr>
             </table>
         </div>}
