@@ -532,7 +532,7 @@ td, th {
 //circular progress background
 $size:70px;
 .circle-wrap {
-  margin: $size auto;
+  // margin: $size auto;
   width: $size;
   height: $size;
   background: #fefcff;
@@ -556,16 +556,16 @@ $size:70px;
   width: $size*0.81;
   height: $size*0.81;
   border-radius: 50%;
-  background: #d2eaf1;
+  background: white;
   line-height: $size*0.8;
   text-align: center;
   margin-top: $size*0.1;
   margin-left: $size*0.1;
-  color: #1e51dc;
+  color: #00ff00;
   position: absolute;
   z-index: 100;
   font-weight: 700;
-  font-size: 2em;
+  // font-size: 2em;
 }
 
 /* color animation */
