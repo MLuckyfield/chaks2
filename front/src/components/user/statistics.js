@@ -111,7 +111,7 @@ const ProgressCircle = (props)=>{
           <div class="mask half">
             <div class="fill"></div>
           </div>
-          <div class="inside-circle"> {props.value}% </div>
+          <div class="inside-circle"> {props.value*100}% </div>
         </div>
       </div>
   )
