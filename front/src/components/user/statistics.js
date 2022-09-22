@@ -90,7 +90,7 @@ return (
         <div class='accordion-title'>
             <table style={{border:'none',width:'100%',height:'100%'}}>
                 <tr style={{background:'none'}}>
-                  <td>{title}</td> <td>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success+content[0].fail>5?content[0].success/(content[0].success+content[0].fail):'you need 5 attempts!'}</td>}
+                  <td>{title}</td> <td>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:<ProgressCircle value={content[0].success/(content[0].success+content[0].fail)}/>}</td>}
                 </tr>
             </table>
         </div>}
@@ -98,6 +98,22 @@ return (
     </div>
 
 )
+}
+
+const ProgressCircle = (props)=>{
+  return (
+    <div class="circle-wrap">
+        <div class="circle">
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+          <div class="mask half">
+            <div class="fill"></div>
+          </div>
+          <div class="inside-circle"> {props.value}% </div>
+        </div>
+      </div>
+  )
 }
 export default Statistics;
 
