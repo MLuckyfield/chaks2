@@ -530,10 +530,11 @@ td, th {
 	text-align:center;
 }
 //circular progress background
+$size = 150px;
 .circle-wrap {
-  margin: 150px auto;
-  width: 150px;
-  height: 150px;
+  margin: $size auto;
+  width: $size;
+  height: $size;
   background: #fefcff;
   border-radius: 50%;
   border: 1px solid #cdcbd0;
@@ -541,14 +542,14 @@ td, th {
 
 .circle-wrap .circle .mask,
 .circle-wrap .circle .fill {
-  width: 150px;
-  height: 150px;
+  width: $size;
+  height: $size;
   position: absolute;
   border-radius: 50%;
 }
 
 .circle-wrap .circle .mask {
-  clip: rect(0px, 150px, 150px, 75px);
+  clip: rect(0px, $size, $size, $size/2);
 }
 
 .circle-wrap .inside-circle {
@@ -571,14 +572,14 @@ td, th {
 
 /* 3rd progress bar */
 .mask .fill {
-  clip: rect(0px, 75px, 150px, 0px);
+  clip: rect(0px, $size/2, $size, 0px);
   background-color: #227ded;
 }
 
 .mask.full,
 .circle .fill {
   animation: fill ease-in-out 3s;
-  transform: rotate(135deg);
+  // transform: rotate(135deg);
 }
 
 @keyframes fill{
