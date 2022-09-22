@@ -357,7 +357,7 @@ nav {
 .nav-filler{
   // position: absolute;
   top: 0;
-  height:8vh;
+  height:16vh;
   width:100%;
 }
 .logo {
@@ -529,7 +529,8 @@ td, th {
 	flex: 1 1 20%;
 	text-align:center;
 }
-//circular progress background.circle-wrap {
+//circular progress background
+.circle-wrap {
   margin: 150px auto;
   width: 150px;
   height: 150px;
