@@ -34,7 +34,7 @@ const Statistics = (props)=>{
   },[])
 
   return (
-    <div class='row'>
+    <div class='up_row'>
         <div class='col_up'>
             <h1>GRAMMAR ({grammar?grammar.length:''})</h1>
             {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
