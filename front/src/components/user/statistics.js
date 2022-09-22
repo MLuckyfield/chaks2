@@ -3,7 +3,7 @@ import {axios} from "../../utilities/axios";
 import LinearProgressWithLabel from '@mui/material/LinearProgress';
 import moment from "moment"
 import QRCode from 'react-qr-code'
-import CircularProgressWithLabel from '@mui/material/CircularProgress'
+// import CircularProgressWithLabel from '@mui/material/CircularProgress'
 
 const Statistics = (props)=>{
 
@@ -91,7 +91,7 @@ return (
         <div class='accordion-title'>
             <table style={{border:'none',width:'100%',height:'100%'}}>
                 <tr style={{background:'none'}}>
-                  <td>{title}</td> <td>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:<CircularProgressWithLabel value={10}/>}</td>}
+                  <td>{title}</td> <td>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:<ProgressCircle value={0.1}/>}</td>}
                 </tr>
             </table>
         </div>}
@@ -106,7 +106,7 @@ const ProgressCircle = (props)=>{
     <div class="circle-wrap">
         <div class="circle">
           <div class="mask full">
-            <div class="fill" style={{transform:`rotate(${props.value})`}}></div>
+            <div class="fill" style={{transform:`rotate(${props.value*360}deg)`}}></div>
           </div>
           <div class="mask half">
             <div class="fill"></div>
