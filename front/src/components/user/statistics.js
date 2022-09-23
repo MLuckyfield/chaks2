@@ -42,7 +42,7 @@ const Statistics = (props)=>{
   },[])
 
   return (
-    <div class='container'>
+    <div class='col'>
       <div class='row'>
         <div class='col'>
           <ProgressBar title={'Speed'} percent={10}/>
@@ -138,8 +138,8 @@ const ProgressCircle = (props)=>{
 
 const ProgressBar = ({percent,title})=>{
   return (
-    <table>
-      <tr>
+    <table style={{border:'none',width:'100%',height:'100%'}}>
+      <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
         <td><h2>{title}</h2></td>
         <td>
           <div class="progress-container">
