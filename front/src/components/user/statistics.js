@@ -9,7 +9,10 @@ const Statistics = (props)=>{
 
   const [progress,setProgress]=useState()
   const [grammar,setGrammar]=useState()
+  const [grammar_progress,setGrammar_progress]=useState()
+  const [idiom_progress,setIdiom_progress]=useState()
   const [idioms,setIdioms]=useState()
+
   // const [time,setTime]=useState(new Date())
   // const [isConnected,setIsConnected]=useState()
   // socket.on("return", (arg) => {
@@ -24,12 +27,16 @@ const Statistics = (props)=>{
           console.log(res.data.data[0].progress)
           let grammar =[]
           let idioms =[]
+          let grammar_track=0
+          let idiom_track=0
           res.data.data[0].progress.forEach((item, i) => {
-            if(item.ref.category=='grammar'){grammar.push(item)}
-            if(item.ref.category=='idiom'){idioms.push(item)}
+            if(item.ref.category=='grammar'){grammar.push(item);if(item.complete){grammar_track++}}
+            if(item.ref.category=='idiom'){idioms.push(item);if(item.complete){idiom_track++}}
           });
           setIdioms(idioms)
           setGrammar(grammar)
+          setGrammar_progress(grammar_track/grammar.length)
+          setIdiom_progress(idiom_track/idioms.length)
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -38,10 +45,12 @@ const Statistics = (props)=>{
     <div class='up_row'>
         <div class='col_up'>
             <h1>GRAMMAR ({grammar?grammar.length:''})</h1>
+            {grammar_progress?<ProgressCircle value={grammar_progress}/>:''}
             {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
         </div>
         <div class='col_up'>
             <h1>IDIOMS ({idioms?idioms.length:''})</h1>
+            {idiom_progress?<ProgressCircle value={idiom_progress}/>:''}
             {idioms?<Accordion k={'sub_category'} data={idioms}/>:'none'}
         </div>
     </div>
