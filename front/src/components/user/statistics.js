@@ -45,12 +45,12 @@ const Statistics = (props)=>{
     <div class='up_row'>
         <div class='col_up'>
             <h1>GRAMMAR ({grammar?grammar.length:''})</h1>
-            {grammar_progress?<ProgressCircle value={grammar_progress}/>:''}
+            {<ProgressCircle value={grammar_progress}/>}
             {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
         </div>
         <div class='col_up'>
             <h1>IDIOMS ({idioms?idioms.length:''})</h1>
-            {idiom_progress?<ProgressCircle value={idiom_progress}/>:''}
+            {<ProgressCircle value={idiom_progress}/>}
             {idioms?<Accordion k={'sub_category'} data={idioms}/>:'none'}
         </div>
     </div>
