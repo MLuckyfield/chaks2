@@ -66,6 +66,14 @@ const User = mongoose.model('User', new Schema({
     start:{type:Date},
     end:{type:Date}
   }],
+  fluency:{
+    thinking:[{
+      type:Number
+    }],
+    listening:[{
+      type:Number
+    }]
+  },
   progress:[{
     ref:{//opinions from others
       type: Schema.Types.ObjectId,

@@ -24,7 +24,7 @@ const Statistics = (props)=>{
     axios.get('user/progress', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
           setProgress(res.data.data[0].progress)
-          console.log(res.data.data[0].progress)
+          console.log(res.data.data)
           let grammar =[]
           let idioms =[]
           let grammar_track=0
@@ -42,17 +42,27 @@ const Statistics = (props)=>{
   },[])
 
   return (
-    <div class='up_row'>
-        <div class='col_up'>
-            <h1>GRAMMAR ({grammar?grammar.length:''})</h1>
-            {<ProgressCircle value={grammar_progress}/>}
-            {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
+    <div class='container'>
+      <div class='row'>
+        <div class='col'>
+          <ProgressBar title={'Speed'} percent={10}/>
+          <ProgressBar title={'Listening'} percent={10}/>
+          <ProgressBar title={'Correctness'} percent={10}/>
+          <ProgressBar title={'Naturalness'} percent={10}/>
         </div>
-        <div class='col_up'>
-            <h1>IDIOMS ({idioms?idioms.length:''})</h1>
-            {<ProgressCircle value={idiom_progress}/>}
-            {idioms?<Accordion k={'sub_category'} data={idioms}/>:'none'}
-        </div>
+      </div>
+      <div class='up_row'>
+          <div class='col_up'>
+              <h1>GRAMMAR ({grammar?grammar.length:''})</h1>
+              {<ProgressCircle value={grammar_progress}/>}
+              {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
+          </div>
+          <div class='col_up'>
+              <h1>IDIOMS ({idioms?idioms.length:''})</h1>
+              {<ProgressCircle value={idiom_progress}/>}
+              {idioms?<Accordion k={'sub_category'} data={idioms}/>:'none'}
+          </div>
+      </div>
     </div>
   )
 }
@@ -123,6 +133,21 @@ const ProgressCircle = (props)=>{
           <div class="inside-circle"> {props.value*100}% </div>
         </div>
       </div>
+  )
+}
+
+const ProgressBar = ({percent,title})=>{
+  return (
+    <table>
+      <tr>
+        <td><h2>{title}</h2></td>
+        <td>
+          <div class="progress-container">
+            <div class="progress" style={{width:`${percent}%`}}></div>
+          </div>
+        </td>
+      </tr>
+    </table>
   )
 }
 export default Statistics;
