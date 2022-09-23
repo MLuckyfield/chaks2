@@ -9,8 +9,8 @@ const Statistics = (props)=>{
 
   const [progress,setProgress]=useState()
   const [grammar,setGrammar]=useState()
-  const [grammar_progress,setGrammar_progress]=useState()
-  const [idiom_progress,setIdiom_progress]=useState()
+  const [grammar_progress,setGrammar_progress]=useState(0)
+  const [idiom_progress,setIdiom_progress]=useState(0)
   const [idioms,setIdioms]=useState()
 
   // const [time,setTime]=useState(new Date())
