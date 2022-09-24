@@ -115,6 +115,11 @@ return (
 }
 const AccordionItem=({ title, content,incept })=>{
   const [isActive, setIsActive] = useState(false);
+  const updateGoal=()=>{
+    axios.post('')
+      .then(()=>{})
+      ,catch((err)=>{})
+  }
 return (
     <div class='accordion_item'>
       {incept?
@@ -124,7 +129,7 @@ return (
         <div class='accordion-title'>
             <table style={{border:'none',width:'100%',height:'100%'}}>
                 <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
-                  <td style={{width:'80%'}} rowspan='2'><td>{title}</td><td>{goals>3?'':<button>Set Goal</button>}</td></td> 
+                  <td style={{width:'80%'}} rowspan='2'><td>{title}</td><td>{goals<4?<button onClick={()=>{updateGoal()}}>Set Goal</button>:''}</td></td>
                   <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success&&content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
                 </tr>
             </table>
