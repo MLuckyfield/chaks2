@@ -65,7 +65,7 @@ const Statistics = (props)=>{
           <ProgressBar title={'Naturalness'} percent={idioms?idiom_progress:0}/>
         </div>
       </div>
-      <div class='up_row'>
+      <div class='up_row'>{goals}
           <div class='col_up'>
               <h1>GRAMMAR ({grammar?grammar.length:''})</h1>
               {<ProgressCircle value={grammar_progress}/>}
