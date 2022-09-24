@@ -125,12 +125,12 @@ const AccordionItem=({ title, content,incept, id,goals })=>{
       .catch((err)=>{})
   }
 return (
-    <div class='accordion_item'>{limit}
+    <div class='accordion_item'>
       {incept?
         <div class='accordion-title clickable' onClick={() => setIsActive(!isActive)}>
           <h2>{title} ({content.length})</h2>
         </div>:
-        <div class='accordion-title'>
+        <div class='accordion-title'>{limit}
             <table style={{border:'none',width:'100%',height:'100%'}}>
                 <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
                   <td style={{width:'80%'}} rowspan='2'><td>{title}</td><td>{console.log('recieved',limit)}{limit<4?<button onClick={()=>{updateGoal(id)}}>Set Goal</button>:''}</td></td>
