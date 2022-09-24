@@ -65,7 +65,7 @@ const Statistics = (props)=>{
           <ProgressBar title={'Naturalness'} percent={idioms?idiom_progress:0}/>
         </div>
       </div>
-      <div class='up_row'>{goals}
+      <div class='up_row'>
           <div class='col_up'>
               <h1>GRAMMAR ({grammar?grammar.length:''})</h1>
               {<ProgressCircle value={grammar_progress}/>}
@@ -104,7 +104,6 @@ useEffect(()=>{
 
 return (
     <div class='accordion'>
-    {props.goals}
           {accordion?incept?(
             accordion.map((item,i) => (
                <AccordionItem incept={true} title={item.title} content={item.content} id={item._id} goals={limit}/>
@@ -126,16 +125,17 @@ const AccordionItem=({ title, content,incept, id,goals })=>{
       .catch((err)=>{})
   }
 return (
-    <div class='accordion_item'>{limit}
+    <div class='accordion_item'>
       {incept?
         <div class='accordion-title clickable' onClick={() => setIsActive(!isActive)}>
           <h2>{title} ({content.length})</h2>
         </div>:
-        <div class='accordion-title'>{'tada '+limit}
+        <div class='accordion-title'>
             <table style={{border:'none',width:'100%',height:'100%'}}>
                 <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
-                  <td style={{width:'80%'}} rowspan='2'><td>{title}</td><td>{console.log('recieved',limit)}{limit<4?<button onClick={()=>{updateGoal(id)}}>Set Goal</button>:''}</td></td>
-                  <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success&&content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
+                  <td style={{width:'80%'}}>{title}</td>
+                  <td style={{width:'80%'}}>{limit<4?<button onClick={()=>{updateGoal(id)}}>Set Goal</button>:''}</td>
+                  <td style={{width:'20%'}} rowspan='2'>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success&&content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
                 </tr>
             </table>
         </div>}
