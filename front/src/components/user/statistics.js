@@ -117,6 +117,7 @@ return (
 const AccordionItem=({ title, content,incept, id,goals })=>{
 
   const [isActive, setIsActive] = useState(false);
+  const [limit, setLimit] = useState(goals);
   const updateGoal=(id)=>{
     console.log(id)
     axios.post('')
@@ -124,7 +125,7 @@ const AccordionItem=({ title, content,incept, id,goals })=>{
       .catch((err)=>{})
   }
 return (
-    <div class='accordion_item'>{goals}
+    <div class='accordion_item'>{limit}
       {incept?
         <div class='accordion-title clickable' onClick={() => setIsActive(!isActive)}>
           <h2>{title} ({content.length})</h2>
@@ -132,7 +133,7 @@ return (
         <div class='accordion-title'>
             <table style={{border:'none',width:'100%',height:'100%'}}>
                 <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
-                  <td style={{width:'80%'}} rowspan='2'><td>{title}</td><td>{console.log('recieved',goals)}{goals<4?<button onClick={()=>{updateGoal(id)}}>Set Goal</button>:''}</td></td>
+                  <td style={{width:'80%'}} rowspan='2'><td>{title}</td><td>{console.log('recieved',limit)}{limit<4?<button onClick={()=>{updateGoal(id)}}>Set Goal</button>:''}</td></td>
                   <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success&&content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
                 </tr>
             </table>
