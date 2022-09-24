@@ -15,7 +15,6 @@ const Statistics = (props)=>{
   const [speed,setSpeed]=useState()
   const [listening,setListening]=useState()
   const [level,setLevel]=useState()
-  const [goals,setGoals]=useState()
 
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
@@ -105,17 +104,19 @@ return (
     <div class='accordion'>
           {accordion?incept?(
             accordion.map((item,i) => (
-               <AccordionItem incept={true} title={item.title} content={item.content}/>
+               <AccordionItem incept={true} title={item.title} content={item.content} id={item._id}/>
             ))
-          ):accordion.map(({ title, content }) => (
-              <AccordionItem title={title} content={content}/>
+          ):accordion.map(({ title, content, _id }) => (
+              <AccordionItem title={title} content={content}  id={_id}/>
           )):'no data'}
     </div>
 );
 }
-const AccordionItem=({ title, content,incept })=>{
+const AccordionItem=({ title, content,incept, id })=>{
+  const [goals,setGoals]=useState()
   const [isActive, setIsActive] = useState(false);
-  const updateGoal=()=>{
+  const updateGoal=(id)=>{
+    console.log(id)
     axios.post('')
       .then(()=>{})
       .catch((err)=>{})
@@ -129,7 +130,7 @@ return (
         <div class='accordion-title'>
             <table style={{border:'none',width:'100%',height:'100%'}}>
                 <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
-                  <td style={{width:'80%'}} rowspan='2'><td>{title}</td><td>{goals<4?<button onClick={()=>{updateGoal()}}>Set Goal</button>:''}</td></td>
+                  <td style={{width:'80%'}} rowspan='2'><td>{title}</td><td>{goals<4?<button onClick={()=>{updateGoal(id)}}>Set Goal</button>:''}</td></td>
                   <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success&&content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
                 </tr>
             </table>
