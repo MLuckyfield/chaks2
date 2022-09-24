@@ -103,7 +103,7 @@ useEffect(()=>{
 
 return (
     <div class='accordion'>
-    {goals}
+    {props.goals}
           {accordion?incept?(
             accordion.map((item,i) => (
                <AccordionItem incept={true} title={item.title} content={item.content} id={item._id} goals={props.goals}/>
