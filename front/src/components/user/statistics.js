@@ -118,7 +118,7 @@ const AccordionItem=({ title, content,incept })=>{
   const updateGoal=()=>{
     axios.post('')
       .then(()=>{})
-      ,catch((err)=>{})
+      .catch((err)=>{})
   }
 return (
     <div class='accordion_item'>
