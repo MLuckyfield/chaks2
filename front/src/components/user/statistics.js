@@ -14,13 +14,7 @@ const Statistics = (props)=>{
   const [idioms,setIdioms]=useState()
   const [speed,setSpeed]=useState()
   const [listening,setListening]=useState()
-
-  // const [time,setTime]=useState(new Date())
-  // const [isConnected,setIsConnected]=useState()
-  // socket.on("return", (arg) => {
-  //   alert('recieved',arg); // world
-  //   setTime(new Date())
-  // });
+  
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/progress', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
