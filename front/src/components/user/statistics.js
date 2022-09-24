@@ -124,7 +124,7 @@ const AccordionItem=({ title, content,incept, id,goals })=>{
       .catch((err)=>{})
   }
 return (
-    <div class='accordion_item'>
+    <div class='accordion_item'>{goals}
       {incept?
         <div class='accordion-title clickable' onClick={() => setIsActive(!isActive)}>
           <h2>{title} ({content.length})</h2>
