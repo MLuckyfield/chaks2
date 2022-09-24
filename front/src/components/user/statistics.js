@@ -12,6 +12,8 @@ const Statistics = (props)=>{
   const [grammar_progress,setGrammar_progress]=useState(0)
   const [idiom_progress,setIdiom_progress]=useState(0)
   const [idioms,setIdioms]=useState()
+  const [speed,setSpeed]=useState()
+  const [listening,setListening]=useState()
 
   // const [time,setTime]=useState(new Date())
   // const [isConnected,setIsConnected]=useState()
@@ -35,6 +37,9 @@ const Statistics = (props)=>{
           });
           setIdioms(idioms)
           setGrammar(grammar)
+          let fluency = res.data.data[0].fluency
+          setSpeed(fluency.thinking.reduce((b,a)=>{return b+a})/fluency.thinking.length)
+          setListening(fluency.listening.reduce((b,a)=>{return b+a})/fluency.listening.length)
           setGrammar_progress(grammar_track/grammar.length)
           setIdiom_progress(idiom_track/idioms.length)
         })
@@ -45,10 +50,11 @@ const Statistics = (props)=>{
     <div class='col'>
       <div class='row'>
         <div class='col'>
-          <ProgressBar title={'Speed'} percent={10}/>
-          <ProgressBar title={'Listening'} percent={10}/>
-          <ProgressBar title={'Correctness'} percent={10}/>
-          <ProgressBar title={'Naturalness'} percent={10}/>
+          <h2>Fluency<span>Class: {speed&&listening&&grammar&&idioms?(speed+listening+grammar_progress+idiom_progress)/4:'Loading...'}</span></h2>
+          <ProgressBar title={'Speed'} percent={speed?speed:0}/>
+          <ProgressBar title={'Listening'} percent={listening?listening:0}/>
+          <ProgressBar title={'Correctness'} percent={grammar?grammar_progress:0}/>
+          <ProgressBar title={'Naturalness'} percent={idioms?idiom_progress:0}/>
         </div>
       </div>
       <div class='up_row'>
