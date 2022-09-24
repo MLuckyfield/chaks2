@@ -74,6 +74,25 @@ const User = mongoose.model('User', new Schema({
       type:Number
     }]
   },
+  goals:[{
+    ref:{//opinions from others
+      type: Schema.Types.ObjectId,
+      ref: 'Material'
+    },
+    complete:{
+      type:Boolean,
+      default:false
+    },
+    goal:{
+      type:Boolean,
+    },
+    success:{
+      type:Number
+    },
+    fail:{
+      type:Number
+    }
+  }],
   progress:[{
     ref:{//opinions from others
       type: Schema.Types.ObjectId,

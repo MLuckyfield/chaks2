@@ -15,6 +15,7 @@ const Statistics = (props)=>{
   const [speed,setSpeed]=useState()
   const [listening,setListening]=useState()
   const [level,setLevel]=useState()
+  const [goals,setGoals]=useState()
 
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
@@ -30,6 +31,7 @@ const Statistics = (props)=>{
             if(item.ref.category=='grammar'){grammar.push(item);if(item.complete){grammar_track++}}
             if(item.ref.category=='idiom'){idioms.push(item);if(item.complete){idiom_track++}}
           });
+          setGoals(res.data.data[0].goals.length)
           setIdioms(idioms)
           setGrammar(grammar)
           let fluency = res.data.data[0].fluency
@@ -122,7 +124,8 @@ return (
         <div class='accordion-title'>
             <table style={{border:'none',width:'100%',height:'100%'}}>
                 <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
-                  <td style={{width:'80%'}}>{title}</td> <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success&&content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
+                  <td style={{width:'80%'}} rowspan='2'><td>{title}</td><td>{goals>3?'':<button>Set Goal</button>}</td></td> 
+                  <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success&&content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
                 </tr>
             </table>
         </div>}
