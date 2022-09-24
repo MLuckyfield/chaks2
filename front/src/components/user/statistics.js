@@ -31,7 +31,7 @@ const Statistics = (props)=>{
             if(item.ref.category=='grammar'){grammar.push(item);if(item.complete){grammar_track++}}
             if(item.ref.category=='idiom'){idioms.push(item);if(item.complete){idiom_track++}}
           });
-          setGoals(res.data.data[0].goals.length)
+          setGoals(res.data.data[0].goals?res.data.data[0].goals.length:0)
           setIdioms(idioms)
           setGrammar(grammar)
           let fluency = res.data.data[0].fluency
