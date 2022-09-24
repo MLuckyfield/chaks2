@@ -14,7 +14,8 @@ const Statistics = (props)=>{
   const [idioms,setIdioms]=useState()
   const [speed,setSpeed]=useState()
   const [listening,setListening]=useState()
-  
+  const [level,setLevel]=useState()
+
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/progress', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
@@ -32,10 +33,21 @@ const Statistics = (props)=>{
           setIdioms(idioms)
           setGrammar(grammar)
           let fluency = res.data.data[0].fluency
-          setSpeed(fluency.thinking.reduce((b,a)=>{return b+a})/fluency.thinking.length)
-          setListening(fluency.listening.reduce((b,a)=>{return b+a})/fluency.listening.length)
+          let speed = fluency.thinking.reduce((b,a)=>{return b+a})/fluency.thinking.length
+          setSpeed(speed)
+          let listening = fluency.listening.reduce((b,a)=>{return b+a})/fluency.listening.length
+          setListening(listening)
           setGrammar_progress(grammar_track/grammar.length)
           setIdiom_progress(idiom_track/idioms.length)
+
+          let rating = speed+listening+grammar_track/grammar_track.length+idiom_track/idiom_track.length
+          if(rating>=0.9){setLevel('S')}
+          if(rating>=0.8 && rating<0.9){setLevel('A')}
+          if(rating>=0.7 && rating<0.8){setLevel('B')}
+          if(rating>=0.6 && rating<0.7){setLevel('C')}
+          if(rating<0.6){setLevel('D')}
+
+
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -44,7 +56,7 @@ const Statistics = (props)=>{
     <div class='col'>
       <div class='row'>
         <div class='col'>
-          <h2>Fluency<span>Class: {speed&&listening&&grammar&&idioms?(speed+listening+grammar_progress+idiom_progress)/4:'Loading...'}</span></h2>
+          <h2>Fluency<span> Class: {level?level:'D'}</span></h2>
           <ProgressBar title={'Speed'} percent={speed?speed:0}/>
           <ProgressBar title={'Listening'} percent={listening?listening:0}/>
           <ProgressBar title={'Correctness'} percent={grammar?grammar_progress:0}/>
