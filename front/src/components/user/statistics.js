@@ -83,6 +83,7 @@ const Statistics = (props)=>{
 const Accordion =(props)=>{
 const [accordion,setAccordion] = useState([])
 const [incept,setIncept] = useState(false)
+const [limit,setLimit]=useState(props.goals)
 
 useEffect(()=>{
   // console.log(props.data,props.k,props.test,props.lol,props)
@@ -106,10 +107,10 @@ return (
     {props.goals}
           {accordion?incept?(
             accordion.map((item,i) => (
-               <AccordionItem incept={true} title={item.title} content={item.content} id={item._id} goals={props.goals}/>
+               <AccordionItem incept={true} title={item.title} content={item.content} id={item._id} goals={limit}/>
             ))
           ):accordion.map(({ title, content, _id }) => (
-              <AccordionItem title={title} content={content}  id={_id} goals={props.goals}/>
+              <AccordionItem title={title} content={content}  id={_id} goals={limit}/>
           )):'no data'}
     </div>
 );
