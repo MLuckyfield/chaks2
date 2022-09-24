@@ -235,6 +235,30 @@ const { Server } = require("socket.io");
         success: true
       });
     });
+    router.post('/goals', auth.auth, async (req, res) => {
+      //get number of goals
+      console.log('running user/progress',req.query)
+      let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
+      console.log('data retrieved:',data)
+      //check number of goals
+      //if over 3 do not save
+      if(data.length>3){
+        return res.status(500).json({
+          message: 'You cannot have more than 3 goals',
+          success: true
+        });
+      }
+      //else save
+      User.findOneAndUpdate({_id:user._id},{reward:reward})
+      .then(()=>{
+        console.log(user.first,user.last,'updated to',reward)
+        // return res.status(201).json({
+        //   data: data,
+        //   message: 'Job saved',
+        //   success: true
+        // });
+      })
+    });
     //Get
     router.get('/session', auth.auth, async (req, res) => {
       // console.log('running user/all',req.query)

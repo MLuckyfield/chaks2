@@ -15,6 +15,7 @@ const Statistics = (props)=>{
   const [speed,setSpeed]=useState()
   const [listening,setListening]=useState()
   const [level,setLevel]=useState()
+  const [goals,setGoals]=useState()
 
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
@@ -68,12 +69,12 @@ const Statistics = (props)=>{
           <div class='col_up'>
               <h1>GRAMMAR ({grammar?grammar.length:''})</h1>
               {<ProgressCircle value={grammar_progress}/>}
-              {grammar?<Accordion k={'sub_category'} data={grammar}/>:'none'}
+              {grammar?<Accordion k={'sub_category'} data={grammar} goals={goals}/>:'none'}
           </div>
           <div class='col_up'>
               <h1>IDIOMS ({idioms?idioms.length:''})</h1>
               {<ProgressCircle value={idiom_progress}/>}
-              {idioms?<Accordion k={'sub_category'} data={idioms}/>:'none'}
+              {idioms?<Accordion k={'sub_category'} data={idioms} goals={goals}/>:'none'}
           </div>
       </div>
     </div>
@@ -104,16 +105,16 @@ return (
     <div class='accordion'>
           {accordion?incept?(
             accordion.map((item,i) => (
-               <AccordionItem incept={true} title={item.title} content={item.content} id={item._id}/>
+               <AccordionItem incept={true} title={item.title} content={item.content} id={item._id} goals={props.goals/>
             ))
           ):accordion.map(({ title, content, _id }) => (
-              <AccordionItem title={title} content={content}  id={_id}/>
+              <AccordionItem title={title} content={content}  id={_id} goals={props.goals}/>
           )):'no data'}
     </div>
 );
 }
-const AccordionItem=({ title, content,incept, id })=>{
-  const [goals,setGoals]=useState()
+const AccordionItem=({ title, content,incept, id,goals })=>{
+
   const [isActive, setIsActive] = useState(false);
   const updateGoal=(id)=>{
     console.log(id)
