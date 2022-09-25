@@ -237,17 +237,16 @@ const { Server } = require("socket.io");
     });
     router.post('/goals', auth.auth, async (req, res) => {
       //get number of goals
-      console.log('running user/progress',req)
-      // let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
-      // console.log('data retrieved:',data)
-      // //check number of goals
-      // //if over 3 do not save
-      // if(data.length>3){
-      //   return res.status(500).json({
-      //     message: 'You cannot have more than 3 goals',
-      //     success: true
-      //   });
-      // }
+      let data = await User.find(JSON.parse(req.body.filter)).select(req.body.fields?req.body.fields:req.query.fields)
+      console.log('progress retrieved:',data.progress.id())
+      //check number of goals
+      //if over 3 do not save
+      if(data.goals.length>3){
+        return res.status(500).json({
+          message: 'You cannot have more than 3 goals',
+          success: true
+        });
+      }
       //else save
       // User.findByIdAndUpdate(req.filter,{'$set':{goal:true}},{new:true})
       //       .then((result)=>{
