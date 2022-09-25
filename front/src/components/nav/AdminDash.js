@@ -91,6 +91,12 @@ const StaffTable = ()=>{
       })
       .catch(error => console.log("error"+error))
   }
+  const makeComment = (item)=>{
+      localStorage.setItem('student',JSON.stringify(item))
+      window.location='/student';
+      // setTarget(item)
+      // console.log(target)
+  }
   return(
     <div class='col'>
       <h1>In Session ({students?students.length:''})</h1>
@@ -116,7 +122,7 @@ const StaffTable = ()=>{
           <td>{student.teacher.first}</td>
           <td>{moment(new Date(first[0].start)).format("MMM Do HH:mm")}</td>
           <td>{student.inClass==true?<button onClick={student.inClass?()=>clockin(student,false):()=>clockin(student,true)} style={student.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{student.inClass?'End':'Start'}</button>:'Pending feedback'}</td>
-          <td></td>
+          <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
         </tr>)
       }):'None. :('}
       </table>
