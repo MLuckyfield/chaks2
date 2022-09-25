@@ -106,9 +106,9 @@ return (
     <div class='accordion'>
           {accordion?incept?(
             accordion.map((item,i) => (
-               <AccordionItem incept={true} title={item.title} content={item.content} id={item._id} goals={limit}/>
+               <AccordionItem incept={true} title={item.title} content={item.content} goals={limit}/>
             ))
-          ):accordion.map(({ title, content, _id }) => (
+          ):accordion.map(({ title, content, _id }) => (console.log('id is',_id);
               <AccordionItem title={title} content={content}  id={_id} goals={limit}/>
           )):'no data'}
     </div>
