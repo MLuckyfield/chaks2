@@ -108,7 +108,8 @@ return (
             accordion.map((item,i) => (
                <AccordionItem incept={true} title={item.title} content={item.content} goals={limit}/>
             ))
-          ):accordion.map(({ title, content, _id }) => (console.log('id is',_id);
+          ):accordion.map(({ title, content, _id }) => (
+
               <AccordionItem title={title} content={content}  id={_id} goals={limit}/>
           )):'no data'}
     </div>
@@ -118,6 +119,9 @@ const AccordionItem=({ title, content,incept, id,goals })=>{
 
   const [isActive, setIsActive] = useState(false);
   const [limit, setLimit] = useState(goals);
+  useEffect(()=>{
+    console.log(id)
+  },[])
   const updateGoal=(e,id)=>{
     e.preventDefault()
     console.log(id)
