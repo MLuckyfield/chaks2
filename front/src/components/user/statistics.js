@@ -125,7 +125,7 @@ const AccordionItem=({ title, content,incept, id,goals })=>{
   const updateGoal=(e,id)=>{
     e.preventDefault()
     console.log(id)
-    axios.post('')
+    axios.post('user/goals',{filter:{_id: id},data:{'$push':{students:id}}})
       .then(()=>{})
       .catch((err)=>{})
   }
