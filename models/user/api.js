@@ -237,7 +237,7 @@ const { Server } = require("socket.io");
     });
     router.post('/goals', auth.auth, async (req, res) => {
       //get number of goals
-      console.log('running user/progress',req.query)
+      console.log('running user/progress',req)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
       console.log('data retrieved:',data)
       //check number of goals
@@ -249,15 +249,20 @@ const { Server } = require("socket.io");
         });
       }
       //else save
-      User.findOneAndUpdate({_id:user._id},{reward:reward})
-      .then(()=>{
-        console.log(user.first,user.last,'updated to',reward)
-        // return res.status(201).json({
-        //   data: data,
-        //   message: 'Job saved',
-        //   success: true
-        // });
-      })
+      // User.findByIdAndUpdate(req.filter,{'$set':{goal:true}},{new:true})
+      //       .then((result)=>{
+      //         return res.status(201).json({
+      //           data:result,
+      //           message: 'User update',
+      //           success: true
+      //         });
+      //       })
+      //       .catch((err)=>{
+      //         return res.status(500).json({
+      //           message: `Could not find user: ${err}`,
+      //           success: false
+      //         });
+      //       })
     });
     //Get
     router.get('/session', auth.auth, async (req, res) => {
