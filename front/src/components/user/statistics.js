@@ -120,7 +120,7 @@ const AccordionItem=({ title, content,incept, id,goals })=>{
   const [isActive, setIsActive] = useState(false);
   const [limit, setLimit] = useState(goals);
   useEffect(()=>{
-    console.log(id)
+    console.log('got',id)
   },[])
   const updateGoal=(e,id)=>{
     e.preventDefault()
