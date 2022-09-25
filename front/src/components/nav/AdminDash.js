@@ -92,6 +92,8 @@ const StaffTable = ()=>{
       .catch(error => console.log("error"+error))
   }
   const makeComment = (item)=>{
+    console.log('raw',item)
+    console.log('after',JSON.stringify(item))
       localStorage.setItem('student',JSON.stringify(item))
       window.location='/student';
       // setTarget(item)
