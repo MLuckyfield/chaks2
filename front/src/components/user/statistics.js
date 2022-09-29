@@ -56,7 +56,7 @@ const Statistics = (props)=>{
 
   const updateGoals =(e,id)=>{
     e.preventDefault()
-    console.log(user)
+    console.log('adding goal',id)
     axios.post('user/goals',{filter:{_id: user},data:id})
       .then((update)=>{
           console.log('new goals',update.data.data[0],update)
