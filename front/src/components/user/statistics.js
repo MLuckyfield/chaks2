@@ -20,7 +20,7 @@ const Statistics = (props)=>{
 
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
-    axios.get('user/progress', {params:{filter:{_id:user._id}}})
+    axios.get('user/progress', {params:{filter:{_id:user}}})
       .then((res) => {
           setProgress(res.data.data[0].progress)
           console.log(res.data.data)
@@ -57,8 +57,8 @@ const Statistics = (props)=>{
   const updateGoals =(e,id)=>{
     e.preventDefault()
     console.log('success',id)
-    console.log(user._id)
-    axios.post('user/goals',{filter:{_id: user._id},data:{'$push':{goals:{ref:id}}}})
+    console.log(user)
+    axios.post('user/goals',{filter:{_id: user},data:{'$push':{goals:{ref:id}}}})
       .then((update)=>{
           console.log('goal set',update)
       })
