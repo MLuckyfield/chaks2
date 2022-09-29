@@ -157,7 +157,7 @@ return (
                 <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
                   <td style={{width:'80%'}}>
                     <tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{title}</td></tr>
-                    <tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{console.log('recieved',limit)}{limit.length<3?<button style={{background:'yellow',color:'white',width:'50%'}} onClick={(e)=>{updateGoals(e,content[0]._id)}}>Set Goal</button>:''}</td></tr>
+                    {content[0].complete?'':<tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{console.log('recieved',limit)}{limit.length<3?<button style={{background:'yellow',color:'white',width:'50%'}} onClick={(e)=>{updateGoals(e,content[0]._id)}}>Set Goal</button>:''}</td></tr>}
                   </td>
                   <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success&&content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
                 </tr>
