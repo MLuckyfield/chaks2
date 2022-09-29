@@ -56,11 +56,11 @@ const Statistics = (props)=>{
   const updateGoals =(e,id)=>{
     e.preventDefault()
     console.log('success',id)
-    // axios.post('user/goals',{filter:{_id: user._id},data:{'$push':{goals:{ref:id}}}})
-    //   .then((update)=>{
-    //
-    //   })
-    //   .catch((err)=>{})
+    axios.post('user/goals',{filter:{_id: user._id},data:{'$push':{goals:{ref:id}}}})
+      .then((update)=>{
+          console.log('goal set',update)
+      })
+      .catch((err)=>{})
   }
   return (
     <div class='col'>
