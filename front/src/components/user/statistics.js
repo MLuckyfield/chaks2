@@ -54,6 +54,15 @@ const Statistics = (props)=>{
       .catch(error => console.log("error"+error))
   },[])
 
+  const updateGoals =(e,id)=>{
+    e.preventDefault()
+    console.log('success',id)
+    // axios.post('user/goals',{filter:{_id: user._id},data:{'$push':{goals:{ref:id}}}})
+    //   .then((update)=>{
+    //
+    //   })
+    //   .catch((err)=>{})
+  }
   return (
     <div class='col'>
       <div class='row'>
@@ -69,12 +78,12 @@ const Statistics = (props)=>{
           <div class='col_up'>
               <h1>GRAMMAR ({grammar?grammar.length:''})</h1>
               {<ProgressCircle value={grammar_progress}/>}
-              {grammar?<Accordion k={'sub_category'} data={grammar} goals={goals}/>:'none'}
+              {grammar?<Accordion k={'sub_category'} data={grammar} goals={goals} updateGoals={updateGoals}/>:'none'}
           </div>
           <div class='col_up'>
               <h1>IDIOMS ({idioms?idioms.length:''})</h1>
               {<ProgressCircle value={idiom_progress}/>}
-              {idioms?<Accordion k={'sub_category'} data={idioms} goals={goals}/>:'none'}
+              {idioms?<Accordion k={'sub_category'} data={idioms} goals={goals} updateGoals={updateGoals}/>:'none'}
           </div>
       </div>
     </div>
@@ -106,16 +115,16 @@ return (
     <div class='accordion'>
           {accordion?incept?(
             accordion.map((item,i) => (
-               <AccordionItem incept={true} title={item.title} content={item.content} goals={limit}/>
+               <AccordionItem incept={true} title={item.title} content={item.content} goals={limit} updateGoals={props.updateGoals}/>
             ))
           ):accordion.map(({ title, content, _id }) => (
 
-              <AccordionItem title={title} content={content}  id={_id} goals={limit}/>
+              <AccordionItem title={title} content={content}  id={_id} goals={limit} updateGoals={props.updateGoals}/>
           )):'no data'}
     </div>
 );
 }
-const AccordionItem=({ title, content,incept, id,goals })=>{
+const AccordionItem=({ title, content,incept, id,goals, updateGoals})=>{
 
   const [isActive, setIsActive] = useState(false);
   const [limit, setLimit] = useState(goals);
@@ -123,14 +132,6 @@ const AccordionItem=({ title, content,incept, id,goals })=>{
 
   useEffect(()=>{
   },[])
-  const updateGoal=(e,id)=>{
-    e.preventDefault()
-    console.log('goals',goals,id,user)
-
-    axios.post('user/goals',{filter:{_id: user._id},data:{'$push':{goals:{ref:id}}}})
-      .then(()=>{})
-      .catch((err)=>{})
-  }
 return (
     <div class='accordion_item'>
       {incept?
@@ -142,7 +143,7 @@ return (
                 <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
                   <td style={{width:'80%'}}>
                     <tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{title}</td></tr>
-                    <tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{console.log('recieved',limit)}{limit<4?<button style={{background:'yellow',color:'white',width:'50%'}} onClick={(e,id)=>{updateGoal(e,content[0]._id)}}>Set Goal</button>:''}</td></tr>
+                    <tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{console.log('recieved',limit)}{limit<4?<button style={{background:'yellow',color:'white',width:'50%'}} onClick={(e,id)=>{updateGoals(e,content[0]._id)}}>Set Goal</button>:''}</td></tr>
                   </td>
                   <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success&&content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
                 </tr>
