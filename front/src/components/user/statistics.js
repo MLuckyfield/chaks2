@@ -75,15 +75,14 @@ const Statistics = (props)=>{
         </div>
       </div>
       <div class='row'>
+      <h2>Active Goals</h2>
         <table>
-          <tr>
             {goals?(
               goals.length>0?(
               goals.map((goal,i)=>{
-                return <td>{goal.ref}</td>
+                return <tr><td>{goal.ref}</td></tr>
               })):''
             ):'You have not set any goals!'}
-          </tr>
         </table>
       </div>
       <div class='up_row'>
