@@ -148,7 +148,7 @@ return (
                 </tr>
             </table>
         </div>}
-      {isActive && <div class='accordion-content'>{incept?<Accordion k={'name'} data={content} goals={limit} id={id}/>:<span>{content[0].ref.name} {content[0].complete}</span>}</div>}
+      {isActive && <div class='accordion-content'>{incept?<Accordion k={'name'} data={content} goals={limit} id={id} updateGoals={props.updateGoals}/>:<span>{content[0].ref.name} {content[0].complete}</span>}</div>}
     </div>
 
 )
