@@ -59,8 +59,8 @@ const Statistics = (props)=>{
     console.log('adding goal',id)
     axios.post('user/goals',{filter:{_id: user},data:id})
       .then((update)=>{
-          console.log('new goals',update.data.data[0],update)
-          setGoals(update.data.data[0])
+          console.log('new goals',update.data.data.goals,update)
+          setGoals(update.data.data.goals)
       })
       .catch((err)=>{
         console.log('oops',err)
