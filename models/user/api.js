@@ -240,6 +240,7 @@ const { Server } = require("socket.io");
       console.log(req.body)
       User.findByIdAndUpdate(req.body.filter,req.body.data,{new:true})
             .then((result)=>{
+              console.log(result)
               return res.status(201).json({
                 data:result,
                 message: 'User update',
