@@ -49,7 +49,6 @@ const Statistics = (props)=>{
           if(rating>=0.6 && rating<0.7){setLevel('C')}
           if(rating<0.6){setLevel('D')}
 
-
         })
       .catch(error => console.log("error"+error))
   },[])

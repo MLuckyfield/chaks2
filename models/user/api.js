@@ -252,8 +252,8 @@ const { Server } = require("socket.io");
                 success: false
               });
             })
-    })
-      }
+    // })
+    //   }
       //else save
       // User.findByIdAndUpdate(req.filter,{'$set':{goal:true}},{new:true})
       //       .then((result)=>{
