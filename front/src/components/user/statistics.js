@@ -15,7 +15,7 @@ const Statistics = (props)=>{
   const [speed,setSpeed]=useState()
   const [listening,setListening]=useState()
   const [level,setLevel]=useState()
-  const [goals,setGoals]=useState()
+  const [goals,setGoals]=useState([])
   const [user, setUser]=useState(JSON.parse(localStorage.getItem('user'))._id)
 
   useEffect(()=>{
@@ -56,11 +56,10 @@ const Statistics = (props)=>{
 
   const updateGoals =(e,id)=>{
     e.preventDefault()
-    console.log('success',id)
     console.log(user)
     axios.post('user/goals',{filter:{_id: user},data:id})
       .then((update)=>{
-          console.log('goal set',update)
+          setGoals(update.goals)
       })
       .catch((err)=>{})
   }
