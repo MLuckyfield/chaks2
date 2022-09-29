@@ -16,10 +16,11 @@ const Statistics = (props)=>{
   const [listening,setListening]=useState()
   const [level,setLevel]=useState()
   const [goals,setGoals]=useState()
+  const [user, setUser]=useState(JSON.parse(localStorage.getItem('user'))._id)
 
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
-    axios.get('user/progress', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
+    axios.get('user/progress', {params:{filter:{_id:user._id}}})
       .then((res) => {
           setProgress(res.data.data[0].progress)
           console.log(res.data.data)
