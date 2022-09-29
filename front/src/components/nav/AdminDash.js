@@ -239,9 +239,22 @@ const Session =(props)=>{
       {students?students.map((student,i)=>{
         return (
           <tr>
-            <td>{student.first}</td>
-            <td>{student.last}</td>
-            <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
+            <tr>
+              <td>{student.first}</td>
+              <td>{student.last}</td>
+              <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
+            </tr>
+            {student.goals.length>0?(
+              student.goals.map((goal,i)=>{
+                return (
+                  <tr>
+                    <td> </td>
+                    <td>{goal.ref}</td>
+                    <td><button style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
+                  </tr>
+                )
+              })
+            ):'You have not set any goals!'}
           </tr>
         )
       }):'No students in session'}
