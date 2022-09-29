@@ -31,7 +31,7 @@ const Statistics = (props)=>{
             if(item.ref.category=='grammar'){grammar.push(item);if(item.complete){grammar_track++}}
             if(item.ref.category=='idiom'){idioms.push(item);if(item.complete){idiom_track++}}
           });
-          setGoals(res.data.data[0].goals?res.data.data[0].goals.length:0)
+          setGoals(res.data.data[0].goals)
           setIdioms(idioms)
           setGrammar(grammar)
           let fluency = res.data.data[0].fluency
@@ -119,13 +119,15 @@ const AccordionItem=({ title, content,incept, id,goals })=>{
 
   const [isActive, setIsActive] = useState(false);
   const [limit, setLimit] = useState(goals);
+  const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
+
   useEffect(()=>{
-    console.log('got',id)
   },[])
   const updateGoal=(e,id)=>{
     e.preventDefault()
-    console.log(id)
-    axios.post('user/goals',{filter:{_id: id},data:{'$push':{students:id}}})
+    console.log('goals',goals,id,user)
+
+    axios.post('user/goals',{filter:{_id: user._id},data:{'$push':{goals:{ref:id}}}})
       .then(()=>{})
       .catch((err)=>{})
   }

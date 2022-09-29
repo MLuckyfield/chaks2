@@ -237,6 +237,7 @@ const { Server } = require("socket.io");
     });
     router.post('/goals', auth.auth, async (req, res) => {
       //get number of goals
+      console.log(req.body,req.params)
       let data = await User.find(JSON.parse(req.body.filter)).select(req.body.fields?req.body.fields:req.query.fields)
       console.log('progress retrieved:',data.progress.id())
       //check number of goals
