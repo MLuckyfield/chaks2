@@ -77,10 +77,11 @@ const Statistics = (props)=>{
       <div class='row'>
         <table>
           <tr>
-            {goals.length>0?(
+            {goals?(
+              goals.length>0?(
               goals.map((goal,i)=>{
                 return <td>{goal.ref}</td>
-              })
+              })):''
             ):'You have not set any goals!'}
           </tr>
         </table>
