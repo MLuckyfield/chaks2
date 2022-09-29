@@ -59,6 +59,7 @@ const Statistics = (props)=>{
     console.log(user)
     axios.post('user/goals',{filter:{_id: user},data:id})
       .then((update)=>{
+          console.log('new goals',update.goals,update)
           setGoals(update.goals)
       })
       .catch((err)=>{})
@@ -74,7 +75,7 @@ const Statistics = (props)=>{
           <ProgressBar title={'Naturalness'} percent={idioms?idiom_progress:0}/>
         </div>
       </div>
-      <div class='row'>
+      <div class='col'>
       <h2>Active Goals</h2>
         <table>
             {goals?(

@@ -238,7 +238,7 @@ const Session =(props)=>{
     <div class='col'><h1>Session</h1><p></p>
       {students?students.map((student,i)=>{
         return (
-          <tr>
+          <table>
             <tr>
               <td>{student.first}</td>
               <td>{student.last}</td>
@@ -255,7 +255,7 @@ const Session =(props)=>{
                 )
               })
             ):'You have not set any goals!'}
-          </tr>
+          </table>
         )
       }):'No students in session'}
     </div>
