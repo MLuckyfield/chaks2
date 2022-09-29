@@ -77,7 +77,7 @@ const Statistics = (props)=>{
       <div class='row'>
         <table>
           <tr>
-            {goals?(
+            {goals.length>0?(
               goals.map((goal,i)=>{
                 return <td>{goal.ref}</td>
               })
