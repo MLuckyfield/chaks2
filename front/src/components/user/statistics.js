@@ -57,6 +57,7 @@ const Statistics = (props)=>{
   const updateGoals =(e,id)=>{
     e.preventDefault()
     console.log('success',id)
+    console.log(user._id)
     axios.post('user/goals',{filter:{_id: user._id},data:{'$push':{goals:{ref:id}}}})
       .then((update)=>{
           console.log('goal set',update)
@@ -78,12 +79,12 @@ const Statistics = (props)=>{
           <div class='col_up'>
               <h1>GRAMMAR ({grammar?grammar.length:''})</h1>
               {<ProgressCircle value={grammar_progress}/>}
-              {grammar?<Accordion k={'sub_category'} data={grammar} goals={goals} updateGoals={updateGoals}/>:'none'}
+              {grammar?<Accordion k={'sub_category'} data={grammar} goals={goals} updateGoals={updateGoals}/>:'Loading, please wait...'}
           </div>
           <div class='col_up'>
               <h1>IDIOMS ({idioms?idioms.length:''})</h1>
               {<ProgressCircle value={idiom_progress}/>}
-              {idioms?<Accordion k={'sub_category'} data={idioms} goals={goals} updateGoals={updateGoals}/>:'none'}
+              {idioms?<Accordion k={'sub_category'} data={idioms} goals={goals} updateGoals={updateGoals}/>:'Loading, please wait...'}
           </div>
       </div>
     </div>

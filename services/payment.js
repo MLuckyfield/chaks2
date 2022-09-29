@@ -43,8 +43,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             const price_id=session.items.data[0].price.product
             if('points' in metadata){
               purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
-              console.log('adding points')
-            }else if('plan' in metadata){
+              console.log('adding points')}
+            if('plan' in metadata){
               purchased = {
                   plan:metadata.plan,
                   stripe:{
@@ -54,7 +54,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                   }
               }
               console.log('add plan')
-            }else if('sub_points' in metadata){
+            }
+            if('sub_points' in metadata){
                 purchased = {$inc:{points:metadata.sub_points * checkout.line_items.data[0].quantity}}
                 console.log('add sub_points')
               }
