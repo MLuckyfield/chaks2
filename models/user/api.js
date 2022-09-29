@@ -242,7 +242,7 @@ const { Server } = require("socket.io");
             .then((result)=>{
               console.log(result.goals)
               return res.status(201).json({
-                data:result,
+                data:result.goals,
                 message: 'User update',
                 success: true
               });
