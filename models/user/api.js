@@ -248,6 +248,7 @@ const { Server } = require("socket.io");
               });
             })
             .catch((err)=>{
+              console.log(err)
               return res.status(500).json({
                 message: `Could not find user: ${err}`,
                 success: false
