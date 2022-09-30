@@ -61,7 +61,7 @@ const Statistics = (props)=>{
     if(tobematched){
       tobematched.forEach((goal, i) => {
         match.forEach((item, i) => {
-          console.log('test', item,goal,item.ref._id,goal.ref,item.ref._id==goal.ref)
+          console.log('test', item,goal,item._id,goal.ref,item._id==goal.ref)
           if(item._id==goal.ref){
             temp.push(item)
           }
