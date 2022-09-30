@@ -55,6 +55,7 @@ const Statistics = (props)=>{
       .catch(error => console.log("error"+error))
   },[])
 
+  //translate IDs saved in goals to a list to get names
   const matchGoals=(match,tobematched)=>{
     let temp = []
     if(tobematched){
