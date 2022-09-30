@@ -61,13 +61,13 @@ const Statistics = (props)=>{
     if(tobematched){
       tobematched.forEach((goal, i) => {
         match.forEach((item, i) => {
+          console.log('test', item,goal,item.ref._id,goal.ref,item.ref._id==goal.ref)
           if(item.ref._id==goal.ref){
             temp.push(item)
           }
           });
         });
     }
-    else{temp=[]}
     setGoals(temp)
   }
   const updateGoals =(e,id)=>{
