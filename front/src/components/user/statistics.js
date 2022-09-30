@@ -73,7 +73,7 @@ const Statistics = (props)=>{
   const updateGoals =(e,id)=>{
     e.preventDefault()
     console.log('adding goal',id)
-    axios.post('user/goals',{filter:{_id: user},data:id})
+    axios.post('user/goals',{filter:{_id: user},data:{'$push':{goals:{ref:id}}}})
       .then((update)=>{
           console.log('new goals',update.data.data.goals,update)
           matchGoals(progress,update.data.data.goals)
