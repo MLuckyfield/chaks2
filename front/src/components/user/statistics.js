@@ -32,7 +32,8 @@ const Statistics = (props)=>{
             if(item.ref.category=='grammar'){grammar.push(item);if(item.complete){grammar_track++}}
             if(item.ref.category=='idiom'){idioms.push(item);if(item.complete){idiom_track++}}
           });
-          setGoals(res.data.data[0].goals)
+          matchGoals(res.data.data[0].progress,res.data.data[0].goals)
+
           setIdioms(idioms)
           setGrammar(grammar)
           let fluency = res.data.data[0].fluency
@@ -54,13 +55,27 @@ const Statistics = (props)=>{
       .catch(error => console.log("error"+error))
   },[])
 
+  const matchGoals=(match,tobematched)=>{
+    let temp = []
+    if(tobematched){
+      tobematched.forEach((goal, i) => {
+        match.forEach((item, i) => {
+          if(item.ref._id==goal.ref){
+            temp.push(item)
+          }
+          });
+        });
+    }
+    else{temp=[]}
+    setGoals(temp)
+  }
   const updateGoals =(e,id)=>{
     e.preventDefault()
     console.log('adding goal',id)
     axios.post('user/goals',{filter:{_id: user},data:id})
       .then((update)=>{
           console.log('new goals',update.data.data.goals,update)
-          setGoals(update.data.data.goals)
+          matchGoals(progress,update)
       })
       .catch((err)=>{
         console.log('oops',err)
@@ -83,7 +98,7 @@ const Statistics = (props)=>{
             {goals?(
               goals.length>0?(
               goals.map((goal,i)=>{
-                return <tr><td>{goal.ref}</td></tr>
+                return <tr><td>{goal.ref.name}</td></tr>
               })):''
             ):'You have not set any goals!'}
         </table>

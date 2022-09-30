@@ -254,7 +254,7 @@ const Session =(props)=>{
                   </tr>
                 )
               })
-            ):'You have not set any goals!'}
+            ):'No goals set!'}
           </table>
         )
       }):'No students in session'}
