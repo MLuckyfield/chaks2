@@ -238,7 +238,7 @@ const { Server } = require("socket.io");
     router.post('/goals', auth.auth, async (req, res) => {
       //get number of goals
       console.log(req.body)
-      User.findByIdAndUpdate(req.body.filter,{'$push':{goals:{ref:req.body.data}}},{new:true,populate:{path:'goals._id'}})
+      User.findByIdAndUpdate(req.body.filter,{'$push':{goals:{ref:req.body.data}}},{new:true,populate:{path:'goals.ref'}})
             .then((result)=>{
               console.log(result.goals)
               return res.status(201).json({
