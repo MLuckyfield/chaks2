@@ -99,7 +99,7 @@ const Statistics = (props)=>{
             {goals?(
               goals.length>0?(
               goals.map((goal,i)=>{
-                return <tr><td>{goal.ref.name}</td><td><button style={{background:'red',color:'white',width:'50%'}} onClick={(e)=>{updateGoals(e,content[0]._id,'$pull')}}>Set Goal</button></td></tr>
+                return <tr><td>{goal.ref.name}</td><td><button style={{background:'red',color:'white',width:'50%'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>Set Goal</button></td></tr>
               })):''
             ):'You have not set any goals!'}
         </table>
