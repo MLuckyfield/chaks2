@@ -249,7 +249,7 @@ const Session =(props)=>{
                 return (
                   <tr>
                     <td> </td>
-                    <td>{goal.ref}</td>
+                    <td>{goal.ref.name}</td>
                     <td><button style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
                   </tr>
                 )
