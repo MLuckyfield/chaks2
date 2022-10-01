@@ -276,7 +276,7 @@ const { Server } = require("socket.io");
     //Get
     router.get('/update_goals', auth.auth, async (req, res) => {
       console.log('running update_goals',req.query)
-      let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields).populate({path:'students',model:'User',populate:{path:'goals.ref',model:'Material'}})
+      let data = await User.findOneAndUpdate(JSON.parse(req.query.filter),req.query.data,req.query.find)
       console.log('data retrieved:',data)
       return res.status(201).json({
         data: data,
