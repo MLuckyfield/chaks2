@@ -238,7 +238,7 @@ const Session =(props)=>{
   const updateProgress = (e,student,goal)=>{
       e.preventDefault()
       console.log('update progress',student,goal)
-      axios.get('user/update_goals',{params:{filter:{_id: student},data:{'$inc':{'goals.$[el].success':1}},find:{arrayFilters:[{'el._id':goal}],new:true}}})
+      axios.get('user/update_goals',{params:{filter:{_id: student},data:{'$inc':{'progress.$[el].success':1}},find:{arrayFilters:[{'el._id':goal}],new:true}}})
         .then((result)=>{
           result = result.data.data[0]
            console.log('triggered',result)
