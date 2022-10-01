@@ -74,7 +74,7 @@ const Statistics = (props)=>{
     e.preventDefault()
     let action = {'$push':{goals:{ref:id}}}
     if(tab=='$pull'){action={'$pull':{goals:{ref:id}}}}
-    axios.post('user/goals',{filter:{_id: user},data:action})
+    axios.post('user/goals',{filter:{_id: '62c297b96fe4e97963411a39'},data:action})
       .then((update)=>{
           console.log('new goals',update.data.data.goals,update)
           matchGoals(progress,update.data.data.goals)
