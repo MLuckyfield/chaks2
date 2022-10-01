@@ -294,7 +294,7 @@ const { Server } = require("socket.io");
     })
 
     //rewards status
-    cron.schedule('1 * 1 * *',()=>{
+    cron.schedule('1 1 1 * *',()=>{
       let gold = 0
       let platinum = 0
       let diamond = 0
