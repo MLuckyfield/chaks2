@@ -234,6 +234,23 @@ const Session =(props)=>{
       // setTarget(item)
       // console.log(target)
   }
+
+  const updateProgress = (e,student,goal)=>{
+      e.preventDefault()
+      axios.get('user/update_goals',{params:{filter:{_id: student},data:{'$inc':{'goals.$[el].success':1}},find:{arrayFilters:[{'el._id':goal}],new:true}}})
+        .then((result)=>{
+          result = result.data.data[0]
+           console.log('triggered',result)
+           if(students.length>0){
+             setStudents(current=>[result,...current])
+           }else{
+             setStudents([result])
+           }
+        })
+        .catch(error=>console.log('From sendTo teacher:',error))
+      // setTarget(item)
+      // console.log(target)
+  }
   return (
     <div class='col'><h1>Session</h1><p></p>
       {students?students.map((student,i)=>{
@@ -248,9 +265,8 @@ const Session =(props)=>{
               student.goals.map((goal,i)=>{
                 return (
                   <tr>
-                    <td> </td>
                     <td>{goal.ref.name}</td>
-                    <td><button class='round_button' style={{background:'green'}}>+</button></td>
+                    <td><button onClick={(e)=>updateProgress(student._id,goal.ref._id)} class='round_button' style={{background:'green'}}>+</button></td>
                     <td><button class='round_button' style={{background:'red'}}>-</button></td>
                   </tr>
                 )
