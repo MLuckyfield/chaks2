@@ -237,6 +237,7 @@ const Session =(props)=>{
 
   const updateProgress = (e,student,goal)=>{
       e.preventDefault()
+      console.log('update progress',student,goal)
       axios.get('user/update_goals',{params:{filter:{_id: student},data:{'$inc':{'goals.$[el].success':1}},find:{arrayFilters:[{'el._id':goal}],new:true}}})
         .then((result)=>{
           result = result.data.data[0]
@@ -266,7 +267,7 @@ const Session =(props)=>{
                 return (
                   <tr>
                     <td>{goal.ref.name}</td>
-                    <td><button onClick={(e)=>updateProgress(student._id,goal.ref._id)} class='round_button' style={{background:'green'}}>+</button></td>
+                    <td><button onClick={(e)=>updateProgress(e,student._id,goal.ref._id)} class='round_button' style={{background:'green'}}>+</button></td>
                     <td><button class='round_button' style={{background:'red'}}>-</button></td>
                   </tr>
                 )
