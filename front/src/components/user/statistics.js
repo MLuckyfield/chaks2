@@ -61,7 +61,7 @@ const Statistics = (props)=>{
     if(tobematched){
       tobematched.forEach((goal, i) => {
         match.forEach((item, i) => {
-          console.log('test', item,goal,item._id,goal.ref,item._id==goal.ref)
+          // console.log('test', item,goal,item._id,goal.ref,item._id==goal.ref)
           if(item._id==goal.ref){
             temp.push(item)
           }
@@ -70,10 +70,11 @@ const Statistics = (props)=>{
     }
     setGoals(temp)
   }
-  const updateGoals =(e,id,action)=>{
+  const updateGoals =(e,id,tab)=>{
     e.preventDefault()
-    console.log('adding goal',id)
-    axios.post('user/goals',{filter:{_id: user},data:{action:{goals:{ref:id}}}})
+    let action = {'$push':{goals:{ref:id}}}
+    if(tab=='$pull'){action={'$pull':{goals:{ref:id}}}}
+    axios.post('user/goals',{filter:{_id: user},data:action})
       .then((update)=>{
           console.log('new goals',update.data.data.goals,update)
           matchGoals(progress,update.data.data.goals)
