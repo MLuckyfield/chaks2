@@ -215,7 +215,7 @@ const Session =(props)=>{
       // socket.emit('sendstudent','tada')
     });
     socket.on(target, (id) => {
-      axios.get('user/all',{params:{filter:{_id: id}}})
+      axios.get('user/progress',{params:{filter:{_id: id}}})
         .then((result)=>{
           result = result.data.data[0]
            console.log('triggered',result)
