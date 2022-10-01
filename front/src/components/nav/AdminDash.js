@@ -242,11 +242,6 @@ const Session =(props)=>{
         .then((result)=>{
           result = result.data.data[0]
            console.log('triggered',result)
-           if(students.length>0){
-             setStudents(current=>[result,...current])
-           }else{
-             setStudents([result])
-           }
         })
         .catch(error=>console.log('From sendTo teacher:',error))
       // setTarget(item)
