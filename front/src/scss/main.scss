@@ -553,14 +553,14 @@ $bigSize:200px;
 }
 
 .big-circle-wrap .big-inside-circle {
-  width: $bigSize*0.big-81;
-  height: $bigSize*0.big-81;
+  width: $bigSize*0.81;
+  height: $bigSize*0.81;
   border-radius: 50%;
   background: white;
-  line-height: $bigSize*0.big-8;
+  line-height: $bigSize*0.8;
   text-align: center;
-  margin-top: $bigSize*0.big-1;
-  margin-left: $bigSize*0.big-1;
+  margin-top: $bigSize*0.1;
+  margin-left: $bigSize*0.1;
   color: #00ff00;
   position: absolute;
   font-weight: 700;
