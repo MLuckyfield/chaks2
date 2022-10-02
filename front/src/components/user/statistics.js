@@ -87,7 +87,7 @@ const Statistics = (props)=>{
     <div class='col'>
       <div class='row'>
         <div class='col'>
-          <h2>Fluency<span> Class: {level?level:'D'}</span></h2>
+          <h1>Fluency<span> Class: {level?level:'D'}</span></h1>
           <ProgressBar title={'Speed'} percent={speed?speed:0}/>
           <ProgressBar title={'Listening'} percent={listening?listening:0}/>
           <ProgressBar title={'Correctness'} percent={grammar?grammar_progress:0}/>
@@ -95,6 +95,7 @@ const Statistics = (props)=>{
         </div>
       </div>
       <div class='col'>
+      <h1>Guided Course</h1>
       <h2>Active Goals</h2>
         <table>
             {goals?(
@@ -107,13 +108,13 @@ const Statistics = (props)=>{
       </div>
       <div class='up_row'>
           <div class='col_up'>
-              <h1>GRAMMAR ({grammar?grammar.length:''})</h1>
-              {<ProgressCircle value={grammar_progress}/>}
+              <h2>GRAMMAR ({grammar?grammar.length:''})</h2>
+              {<ProgressCircle value={grammar_progress} size={'big'}/>}
               {grammar?<Accordion k={'sub_category'} data={grammar} goals={goals} updateGoals={updateGoals}/>:'Loading, please wait...'}
           </div>
           <div class='col_up'>
-              <h1>IDIOMS ({idioms?idioms.length:''})</h1>
-              {<ProgressCircle value={idiom_progress}/>}
+              <h2>IDIOMS ({idioms?idioms.length:''})</h2>
+              {<ProgressCircle value={idiom_progress} size={'big'}/>}
               {idioms?<Accordion k={'sub_category'} data={idioms} goals={goals} updateGoals={updateGoals}/>:'Loading, please wait...'}
           </div>
       </div>
@@ -188,17 +189,32 @@ return (
 
 const ProgressCircle = (props)=>{
   return (
-    <div class="circle-wrap">
-        <div class="circle">
-          <div class="mask full">
-            <div class="fill" style={{transform:`rotate(${props.value*360}deg)`}}></div>
+    <span>
+    {props.size=='big'?(
+      <div class="circle-wrap">
+          <div class="circle">
+            <div class="mask full">
+              <div class="fill" style={{transform:`rotate(${props.value*360}deg)`}}></div>
+            </div>
+            <div class="mask half">
+              <div class="fill"></div>
+            </div>
+            <div class="inside-circle"> {props.value*100}% </div>
           </div>
-          <div class="mask half">
-            <div class="fill"></div>
-          </div>
-          <div class="inside-circle"> {props.value*100}% </div>
         </div>
-      </div>
+    ):(
+      <div class="big-circle-wrap">
+          <div class="big-circle">
+            <div class="big-mask big-full">
+              <div class="big-fill" style={{transform:`rotate(${props.value*360}deg)`}}></div>
+            </div>
+            <div class="big-mask big-half">
+              <div class="big-fill"></div>
+            </div>
+            <div class="big-inside-circle"> {props.value*100}% </div>
+          </div>
+        </div>
+    )}</span>
   )
 }
 

@@ -530,6 +530,58 @@ td, th {
 	text-align:center;
 }
 //circular progress background
+$bigSize:200px;
+.big-circle-wrap {
+  // margin: $bigSize auto;
+  width: $bigSize;
+  height: $bigSize;
+  background: #fefcff;
+  border-radius: 50%;
+  border: 1px solid #cdcbd0;
+}
+
+.big-circle-wrap .big-circle .big-mask,
+.big-circle-wrap .big-circle .big-fill {
+  width: $bigSize;
+  height: $bigSize;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.big-circle-wrap .big-circle .big-mask {
+  clip: rect(0px, $bigSize, $bigSize, $bigSize/2);
+}
+
+.big-circle-wrap .big-inside-circle {
+  width: $bigSize*0.big-81;
+  height: $bigSize*0.big-81;
+  border-radius: 50%;
+  background: white;
+  line-height: $bigSize*0.big-8;
+  text-align: center;
+  margin-top: $bigSize*0.big-1;
+  margin-left: $bigSize*0.big-1;
+  color: #00ff00;
+  position: absolute;
+  font-weight: 700;
+  // font-size: 2em;
+}
+
+/* color animation */
+
+/* 3rd progress bar */
+.big-mask .big-fill {
+  clip: rect(0px, $bigSize/2, $bigSize, 0px);
+  background-color: #00ff00;
+}
+
+.big-mask.big-full,
+.big-circle .big-fill {
+  animation: fill ease-in-out 3s;
+  // transform: rotate(135deg);
+}
+
+//circular progress background
 $size:70px;
 .circle-wrap {
   // margin: $size auto;
