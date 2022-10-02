@@ -93,10 +93,12 @@ const User = mongoose.model('User', new Schema({
       type:Boolean,
     },
     success:{
-      type:Number
+      type:Number,
+      default:0
     },
     fail:{
-      type:Number
+      type:Number,
+      default:0
     }
   }],
   students:[{ //teacher field
