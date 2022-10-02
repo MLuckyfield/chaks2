@@ -275,9 +275,9 @@ const { Server } = require("socket.io");
 
     //Get
     router.get('/update_goals', auth.auth, async (req, res) => {
-      
+
       console.log('running update_goals',typeof req.query.find)
-      let data = await User.findOneAndUpdate(JSON.parse(req.query.filter),req.query.data,JSON.parse(req.query.find))
+      let data = await User.findOneAndUpdate(JSON.parse(req.query.filter),JSON.parse(req.query.data),JSON.parse(req.query.find))
       console.log('data retrieved:',data)
       return res.status(201).json({
         data: data,
