@@ -188,6 +188,10 @@ return (
 }
 
 const ProgressCircle = (props)=>{
+
+  useEffect(()=>{
+    console.log('graphs',props)
+  },[])
   return (
     <span>
     {props.size=='big'?(
