@@ -96,12 +96,12 @@ const Statistics = (props)=>{
       </div>
       <div class='col'>
       <h1>Guided Course</h1>
-      <h2>Active Goals</h2>
-        <table>
+      <h2 style={{marginTop:'10%'}}>Active Goals (Max 3)</h2>
+        <table style={{border:'none',width:'100%',height:'100%'}}>
             {goals?(
               goals.length>0?(
               goals.map((goal,i)=>{
-                return <tr><td>{goal.ref.name}</td><td>{goal.success+goal.fail>5?goal.success/goal.fail:5-(goal.success+goal.fail)+' more to be graded'}</td><td><button class='round_button' style={{background:'red'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>-</button></td></tr>
+                return <tr style={{background:'none',verticalAlign:'middle',display:'table'}} ><td>{goal.ref.name}</td><td>{goal.success+goal.fail>5?goal.success/goal.fail:5-(goal.success+goal.fail)+' more to be graded'}</td><td><button class='round_button' style={{background:'red'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>-</button></td></tr>
               })):''
             ):'You have not set any goals!'}
         </table>
@@ -175,7 +175,7 @@ return (
                 <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
                   <td style={{width:'80%'}}>
                     <tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{title}</td></tr>
-                    {content[0].complete?'':<tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{console.log('recieved',limit)}{limit.length<3?<button style={{background:'yellow',color:'white',width:'50%'}} onClick={(e)=>{updateGoals(e,content[0].ref._id,'$push')}}>Set Goal</button>:''}</td></tr>}
+                    {content[0].complete?'':<tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{console.log('recieved',limit)}{limit.length<3?<button style={{background:'none',color:'bronw',fontSize:'smaller',textDecoration:'underline',width:'50%'}} onClick={(e)=>{updateGoals(e,content[0].ref._id,'$push')}}>Set Goal ({3-limit.length} remaining)</button>:''}</td></tr>}
                   </td>
                   <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success&&content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
                 </tr>
@@ -193,7 +193,7 @@ const ProgressCircle = (props)=>{
     console.log('graphs',props)
   },[])
   return (
-    <span>
+    <span style={{display:'flex',justifyContent:'center',margin:'10% 0%'}}>
     {props.size=='big'?(
       <div class="big-circle-wrap">
           <div class="big-circle">
