@@ -77,7 +77,7 @@ const Comment = () => {
                           <option value="8">normal</option>
                           <option value="9">fast</option>
                         </select>
-                        <button onClick={()=>updateFluency(student._id)}>Update</button>
+                        <button onClick={(e)=>updateFluency(e,student._id)}>Update</button>
 
                         Listening
                         <select class='form-control' ref={listening}>
@@ -87,7 +87,7 @@ const Comment = () => {
                           <option value="8">normal</option>
                           <option value="9">fast</option>
                         </select>
-                        <button onClick={()=>updateFluency(student._id)}>Update</button>
+                        <button onClick={(e)=>updateFluency(e,student._id)}>Update</button>
                       </div>
                     </div>
                     <div class="form-group">
