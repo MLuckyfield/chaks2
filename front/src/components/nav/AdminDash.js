@@ -265,7 +265,7 @@ const Session =(props)=>{
                   <tr>
                     <td>{goal.ref.name}</td>
                     <td><button onClick={(e)=>updateProgress(e,student._id,goal.ref._id)} class='round_button' style={{background:'green'}}>+</button></td>
-                    <td><button class='round_button' style={{background:'red'}}>-</button></td>
+                    <td><button onClick={(e)=>updateProgress(e,student._id,goal.ref._id,'fail')} class='round_button' style={{background:'red'}}>-</button></td>
                   </tr>
                 )
               })
