@@ -87,7 +87,7 @@ const Comment = () => {
                           <option value="8">normal</option>
                           <option value="9">fast</option>
                         </select>
-                        <button style={{color:'white'}} onClick={(e)=>updateFluency(e,student._id)}>Update</button>
+                        <button style={{color:'white'}} onClick={(e)=>updateFluency(e,student._id,'listening')}>Update</button>
                       </div>
                     </div>
                     <div class="form-group">
