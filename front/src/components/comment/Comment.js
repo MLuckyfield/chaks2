@@ -44,8 +44,8 @@ const Comment = () => {
   }
   const updateFluency =(e,id,tab)=>{
     e.preventDefault()
-    let action = {fluency:{'$push':{thinking:speed.current.value}}}
-    if(tab=='listening'){action={fluency:{'$push':{listening:listening.current.value}}}}
+    let action = {'$push':{fluency:{thinking:speed.current.value}}}
+    if(tab=='listening'){action={'$push':{fluency:{listening:speed.current.value}}}}
 
     axios.post('user/goals',{filter:{_id: id},data:action})
       .then((update)=>{
@@ -77,7 +77,7 @@ const Comment = () => {
                           <option value="8">normal</option>
                           <option value="9">fast</option>
                         </select>
-                        <button onClick={(e)=>updateFluency(e,student._id)}>Update</button>
+                        <button style={{color:'white'}} onClick={(e)=>updateFluency(e,student._id)}>Update</button>
 
                         Listening
                         <select class='form-control' ref={listening}>
@@ -87,7 +87,7 @@ const Comment = () => {
                           <option value="8">normal</option>
                           <option value="9">fast</option>
                         </select>
-                        <button onClick={(e)=>updateFluency(e,student._id)}>Update</button>
+                        <button style={{color:'white'}} onClick={(e)=>updateFluency(e,student._id)}>Update</button>
                       </div>
                     </div>
                     <div class="form-group">
