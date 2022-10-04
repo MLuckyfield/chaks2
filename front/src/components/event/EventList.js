@@ -35,7 +35,6 @@ const EventList = () => {
           setEvents(formatted);
           setIsAttending(attendance(formatted[0].attendees),'')
           // console.log('events ready')
-
         })
       .catch(error => console.log("error"+error))
   },[])
