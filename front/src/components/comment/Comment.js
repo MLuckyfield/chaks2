@@ -20,6 +20,8 @@ const Comment = () => {
   });
 
   const [feedback, setFeedback] = useState();
+  const speed = useRef();
+  const listening = useRef();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -40,7 +42,19 @@ const Comment = () => {
         // setFeedback(err.response.data.message);
         });
   }
+  const updateFluency =(e,id,tab)=>{
+    e.preventDefault()
+    let action = {fluency:{'$push':{thinking:speed.current.value}}}
+    if(tab=='listening'){action={fluency:{'$push':{listening:listening.current.value}}}}
 
+    axios.post('user/goals',{filter:{_id: user},data:action})
+      .then((update)=>{
+          console.log('new goals',update.data.data.goals,update)
+      })
+      .catch((err)=>{
+        console.log('oops',err)
+      })
+  }
   return(
       <div class='row'>
         <form class='login' onSubmit={onSubmit} style={{width:'80%'}}>
@@ -55,6 +69,25 @@ const Comment = () => {
                       </div>
                       <div class='col'>
                         Fluency
+                        Speed
+                        <select class='form-control' ref={speed}>
+                          <option value="5">slowest</option>
+                          <option value="6">20% slower</option>
+                          <option value="7">10% slower</option>
+                          <option value="8">normal</option>
+                          <option value="9">fast</option>
+                        </select>
+                        <button onClick={()=>updateFluency(student._id)}>Update</button>
+
+                        Listening
+                        <select class='form-control' ref={listening}>
+                          <option value="5">slowest</option>
+                          <option value="6">20% slower</option>
+                          <option value="7">10% slower</option>
+                          <option value="8">normal</option>
+                          <option value="9">fast</option>
+                        </select>
+                        <button onClick={()=>updateFluency(student._id)}>Update</button>
                       </div>
                     </div>
                     <div class="form-group">
