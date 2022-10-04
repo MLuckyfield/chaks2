@@ -45,18 +45,13 @@ const Comment = () => {
       <div class='row'>
         <form class='login' onSubmit={onSubmit} style={{width:'80%'}}>
                 <h2>New Comment for {student.first}</h2>
-                    <div class='col'>
-                      <b>Plan:</b> {student.plan}<br/>
-                      <b>Reward:</b> {student.reward}<br/>
-                    </div>
                     <div class='row'>
                       <div class='col' style={{background: '1px solid black'}} onClick={()=>{window.location='/update_profile'}}>
                         {student.profile?<span><b>Likes:</b> {student.profile.likes}<br/>
                         <b>Goals:</b> {student.profile.goals}<br/>
                         <b>Personal:</b> {student.profile.personal}<br/>
                         <b>Level:</b> {student.profile.level}<br/>
-                        <br/>
-                        <b>Total Hours:</b> {hours}<br/></span>:'No profile added! Click here to add'}
+                        <br/></span>:'No profile added! Click here to add'}
                       </div>
                       <div class='col'>
                         Fluency
