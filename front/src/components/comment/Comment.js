@@ -43,7 +43,7 @@ const Comment = () => {
 
   return(
       <div class='row'>
-        <form class='login' onSubmit={onSubmit}>
+        <form class='login' onSubmit={onSubmit} style={{width:'80%'}}>
                 <h2>New Comment for {student.first}</h2>
                     <div class='col'>
                       <b>Plan:</b> {student.plan}<br/>
