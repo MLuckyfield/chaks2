@@ -54,7 +54,7 @@ const Comment = () => {
       .catch((err)=>{
         console.log('oops',err)
       })
-  }
+  }}
   return(
       <div class='row'>
         <form class='login' onSubmit={onSubmit} style={{width:'80%'}}>
