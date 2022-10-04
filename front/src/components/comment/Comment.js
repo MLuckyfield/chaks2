@@ -44,6 +44,7 @@ const Comment = () => {
   }
   const updateFluency =(e,id,tab)=>{
     e.preventDefault()
+    console.log('fluency values',speed,listening)
     let action = {fluency:{'$push':{thinking:speed.current.value}}}
     if(tab=='listening'){action={fluency:{'$push':{listening:listening.current.value}}}}
 
