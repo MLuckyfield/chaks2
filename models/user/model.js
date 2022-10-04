@@ -67,12 +67,12 @@ const User = mongoose.model('User', new Schema({
     end:{type:Date}
   }],
   fluency:{
-    thinking:[{
+    thinking:{
       type:Number
-    }],
-    listening:[{
+    },
+    listening:{
       type:Number
-    }]
+    }
   },
   goals:[{
     ref:{//opinions from others
