@@ -168,7 +168,7 @@ return (
     <div class='accordion_item'>
       {incept?
         <div class='accordion-title clickable' onClick={() => setIsActive(!isActive)}>
-          <h2>{title} ({content.length})</h2>
+          <h3>{title} ({content.length})</h3>
         </div>:
         <div class='accordion-title'>
             <table style={{border:'none',width:'100%',height:'100%'}}>
@@ -195,18 +195,6 @@ const ProgressCircle = (props)=>{
   return (
     <span>
     {props.size=='big'?(
-      <div class="circle-wrap">
-          <div class="circle">
-            <div class="mask full">
-              <div class="fill" style={{transform:`rotate(${props.value*360}deg)`}}></div>
-            </div>
-            <div class="mask half">
-              <div class="fill"></div>
-            </div>
-            <div class="inside-circle"> {props.value*100}% </div>
-          </div>
-        </div>
-    ):(
       <div class="big-circle-wrap">
           <div class="big-circle">
             <div class="big-mask big-full">
@@ -216,6 +204,18 @@ const ProgressCircle = (props)=>{
               <div class="big-fill"></div>
             </div>
             <div class="big-inside-circle"> {props.value*100}% </div>
+          </div>
+        </div>
+    ):(
+      <div class="circle-wrap">
+          <div class="circle">
+            <div class="mask full">
+              <div class="fill" style={{transform:`rotate(${props.value*360}deg)`}}></div>
+            </div>
+            <div class="mask half">
+              <div class="fill"></div>
+            </div>
+            <div class="inside-circle"> {props.value*100}% </div>
           </div>
         </div>
     )}</span>
