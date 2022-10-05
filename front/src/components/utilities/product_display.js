@@ -32,7 +32,7 @@ const Product_Display = (props)=>{
     <div>
       <div class='master-row'>
         <h1 class='col'>SERVICES</h1>
-          <div id="price">            
+          <div id="price">
             <div class="plan standard">
               <div class="plan-inner">
                 <div class="entry-title">
@@ -54,7 +54,7 @@ const Product_Display = (props)=>{
                     </li>
                   </ul>
                 </div>
-                {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LpNGgBVAfieqaobxk8qoRR3',true)}}>購入</div>:<div class="btn" onClick={()=>window.location='/#signup'}>購入</div>}
+                {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LpO9vBVAfieqaobUpRve6Ab',true)}}>購入</div>:<div class="btn" onClick={()=>window.location='/#signup'}>購入</div>}
               </div>
             </div>
             <div class="plan ultimite">

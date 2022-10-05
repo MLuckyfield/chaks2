@@ -143,6 +143,7 @@ router.post('/new', async (req, res)=>{
   const paymentLink = await stripe.paymentLinks.create({
     line_items:[line_items],
     metadata:{order:req.body.user},
+    adjustable_quantity:{enabled:true,minimum:1,maximum:100}
     // payment_intent_data:{setup_future_usage:'off_session'},
     after_completion: {type: 'redirect', redirect: {url: 'https://chatshack.jp'}},
   })
