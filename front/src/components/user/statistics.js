@@ -86,7 +86,7 @@ const Statistics = (props)=>{
   return (
     <div class='col'>
       <div class='row'>
-        <div class='col'>
+        <div class='col border'>
           <h1>Fluency<span> Class: {level?level:'D'}</span></h1>
           <ProgressBar title={'Speed'} percent={speed?speed:0}/>
           <ProgressBar title={'Listening'} percent={listening?listening:0}/>
