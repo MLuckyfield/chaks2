@@ -49,6 +49,7 @@ const EventList = () => {
       .catch(error => console.log("error"+error))
   }
   const getDate=(repeats)=>{
+    console.log('recieved',repeats)
     let count = 0;
     let year = new Date().getYear()+1900
     let month = new Date().getMonth()
@@ -76,7 +77,7 @@ const EventList = () => {
        // console.log('rerun for',month, month+1)
        findDays(year,month+1)
      }
-     // console.log('conclusion',list[repeats.week-1])
+     console.log('conclusion',list[repeats.week-1])
      return list[repeats.week-1]
   }
 //<Carousel items={items}/>
