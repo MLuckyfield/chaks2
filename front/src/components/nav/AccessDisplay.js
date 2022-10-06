@@ -32,14 +32,14 @@ import GoogleMapReact from 'google-map-react'
   const Map = ()=>{
   const [location, setLocation] = useState({
   address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
-  lat:35.693535,
+  lat:35.693,
   lng:139.744438
   })
 
   useEffect(()=>{
   setLocation({
-    // address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
-    lat:35.7,
+    //  Japan',
+    lat:35.693,
     lng:139.74439
   })
   },[])
