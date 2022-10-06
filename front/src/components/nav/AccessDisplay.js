@@ -39,7 +39,7 @@ import GoogleMapReact from 'google-map-react'
   useEffect(()=>{
   setLocation({
     // address:'2-chōme-4-12 Kudanminami, Chiyoda City, Tokyo 102-0074, Japan',
-    lat:35.694878,
+    lat:35.7,
     lng:139.74439
   })
   },[])
