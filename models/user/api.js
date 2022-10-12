@@ -32,6 +32,7 @@ const { Server } = require("socket.io");
 
 
       try{
+
         Material.find().select('_id').then((materials)=>{
             console.log('materials',materials)
             let upload=[]
@@ -86,7 +87,8 @@ const { Server } = require("socket.io");
                        // ==mialchimp finished
                    }
                  );
-           }}catch(err){
+           })
+        }catch(err){
              console.log('there was a problem',err)
              return res.status(500).json({
                message: `user creation unsuccessful: ${err}`,
