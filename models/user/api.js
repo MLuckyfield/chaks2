@@ -32,53 +32,60 @@ const { Server } = require("socket.io");
 
 
       try{
-        await new User({
-          ...req,
-          password: password,
-          role: 'user'
-        }).save()
-           .then((user)=>{
-                 let result = auth.createToken(user)
-                 // console.log(result)
-                 //--MAILCHIMP
-                 console.log('starting mail service')
-                 request({
-                   url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
-                   json: {
-                       'email_address': req.email,
-                       'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
-                       'status': 'subscribed',
-                       'merge_fields': {
-                           'FNAME': req.first,
-                           'LNAME': req.last
+        Material.find().select('_id').then((materials)=>{
+            console.log('materials',materials)
+            let upload=[]
+            materials.forEach((material, i) => {
+              upload.push({ref:material})
+            });
+            new User({
+              ...req,
+              progress:upload,
+              password: password,
+              role: 'user'
+            }).save()
+               .then((user)=>{
+                     let result = auth.createToken(user)
+                     // console.log(result)
+                     //--MAILCHIMP
+                     console.log('starting mail service')
+                     request({
+                       url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
+                       json: {
+                           'email_address': req.email,
+                           'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
+                           'status': 'subscribed',
+                           'merge_fields': {
+                               'FNAME': req.first,
+                               'LNAME': req.last
+                           }
+                       },
+                       method: 'POST',
+                       headers: {
+                           'Content-Type': 'application/json',
+                           'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
                        }
-                   },
-                   method: 'POST',
-                   headers: {
-                       'Content-Type': 'application/json',
-                       'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
-                   }
-               }, function(error, response, body){
-                 console.log('mail service complete')
-                     if (error) {
-                       console.log('user saved, not loaded to mailchimp: '+req.email)
-                       return res.status(500).json({
-                         result,
-                         message: `user saved but mailchimp failed: ${err}`,
-                         success: false
+                   }, function(error, response, body){
+                     console.log('mail service complete')
+                         if (error) {
+                           console.log('user saved, not loaded to mailchimp: '+req.email)
+                           return res.status(500).json({
+                             result,
+                             message: `user saved but mailchimp failed: ${err}`,
+                             success: false
+                           });
+                           } else {
+                             console.log('user saved, website okay ready')
+                             return res.status(201).json({
+                               result,
+                               message: `Success!`,
+                               success: true
+                             });
+                           }
                        });
-                       } else {
-                         console.log('user saved, website okay ready')
-                         return res.status(201).json({
-                           result,
-                           message: `Success!`,
-                           success: true
-                         });
-                       }
-                   });
-                   // ==mialchimp finished
-               }
-             );
+                       // ==mialchimp finished
+                   }
+                 );
            }catch(err){
              console.log('there was a problem',err)
              return res.status(500).json({
