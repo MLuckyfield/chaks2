@@ -2,6 +2,8 @@ const router = require('express').Router();
 const auth= require('../../services/authentication');
 const notify= require('../../services/notify');
 const User = require('./model')
+const Material = require('../material/model')
+
 const request = require('request')
 const cron = require('node-cron')
 const moment = require ('moment')
