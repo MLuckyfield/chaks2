@@ -298,7 +298,7 @@ const { Server } = require("socket.io");
       let data = await User.findOneAndUpdate(JSON.parse(req.query.filter),JSON.parse(req.query.data),JSON.parse(req.query.find))
       // console.log('data retrieved:',data)
       data.progress.forEach((item, i) => {
-        // console.log('check',progress.ref,req.body.goal)
+        console.log('check',item,item.ref,item.sucess/(item.sucess+item.fail),item.sucess/(item.sucess+item.fail)>1)
         if(item.sucess/(item.sucess+item.fail)>=1){
           console.log('found',item)
           User.findOneAndUpdate(JSON.parse(req.query.filter),{'$set':{'progress.$[el].complete':true}},JSON.parse(req.query.find))
