@@ -41,6 +41,7 @@ const Statistics = (props)=>{
           setSpeed(speed)
           let listening = fluency.listening.reduce((b,a)=>{return b+a})/fluency.listening.length
           setListening(listening)
+          console.log('overall',grammar_track,grammar.length)
           setGrammar_progress(grammar_track/grammar.length)
           setIdiom_progress(idiom_track/idioms.length)
 
