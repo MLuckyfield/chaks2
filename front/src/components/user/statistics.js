@@ -234,7 +234,7 @@ const ProgressBar = ({percent,title})=>{
         <td style={{width:'30%'}}><h2>{title}</h2></td>
         <td style={{width:'70%'}}>
           <div class="progress-container">
-            <div class="progress" style={{width:`${percent}%`}}></div>
+            <div class="progress" style={{width:`${percent*100}%`}}></div>
           </div>
         </td>
       </tr>
