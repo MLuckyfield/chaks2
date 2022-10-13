@@ -101,7 +101,7 @@ const Statistics = (props)=>{
       <div class='col'>
       <h1>Guided Course</h1>
       <h2 style={{marginTop:'10%'}}>Active Goals (Max 3)</h2>
-        <table style={{border:'none',width:'50%',height:'100%'}}>
+        <table style={{border:'none',width:'100%',height:'100%'}}>
             {goals?(
               goals.length>0?(
               goals.map((goal,i)=>{
@@ -230,8 +230,8 @@ const ProgressBar = ({percent,title})=>{
   return (
     <table style={{border:'none',width:'100%',height:'100%'}}>
       <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
-        <td style={{width:'80%'}}><h2>{title}</h2></td>
-        <td style={{width:'20%'}}>
+        <td style={{width:'30%'}}><h2>{title}</h2></td>
+        <td style={{width:'70%'}}>
           <div class="progress-container">
             <div class="progress" style={{width:`${percent}%`}}></div>
           </div>
