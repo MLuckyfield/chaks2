@@ -203,7 +203,7 @@ const ProgressCircle = (props)=>{
             <div class="big-mask big-half">
               <div class="big-fill"></div>
             </div>
-            <div class="big-inside-circle"> {(props.value*100).toFixed(2)}% </div>
+            <div class="big-inside-circle"> {((1-props.value)*100).toFixed(2)}% </div>
           </div>
         </div>
     ):(
