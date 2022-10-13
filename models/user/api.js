@@ -297,11 +297,11 @@ const { Server } = require("socket.io");
 
       console.log('running update_goals',typeof req.query.find)
       let data = await User.findOneAndUpdate(JSON.parse(req.query.filter),JSON.parse(req.query.data),JSON.parse(req.query.find))
-      console.log('data retrieved:',data)
-      data.progress.forEach((progress, i) => {
+      // console.log('data retrieved:',data)
+      data.progress.forEach((item, i) => {
         // console.log('check',progress.ref,req.body.goal)
-        if(progress._id==req.body.goal){
-          console.log('found',progress)
+        if(item._id==req.body.goal){
+          console.log('found',item)
           User.findOneAndUpdate(JSON.parse(req.query.filter),{'$set':{'progress.$[el].complete':true}},JSON.parse(req.query.find))
           .then((updated)=>{
             console.log('complete!',updated)
