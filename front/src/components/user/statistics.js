@@ -195,7 +195,7 @@ return (
 const ProgressCircle = (props)=>{
 
   useEffect(()=>{
-    console.log('graphs',props)
+    console.log('graphs',props.value, props.value*360)
   },[])
   return (
     <span style={{display:'flex',justifyContent:'center',margin:'20px 0px'}}>
@@ -215,7 +215,7 @@ const ProgressCircle = (props)=>{
       <div class="circle-wrap">
           <div class="circle">
             <div class="mask full">
-              <div class="fill" style={{transform:`rotate(${0.1*360}deg)`}}></div>
+              <div class="fill" style={{transform:`rotate(${0.1532*360}deg)`}}></div>
             </div>
             <div class="mask half">
               <div class="fill"></div>
