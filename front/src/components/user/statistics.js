@@ -101,7 +101,7 @@ const Statistics = (props)=>{
             {goals?(
               goals.length>0?(
               goals.map((goal,i)=>{
-                return <tr style={{background:'none',verticalAlign:'middle',display:'table'}} ><td>{goal.ref.name}</td><td>{goal.success+goal.fail>5?goal.success/goal.fail:5-(goal.success+goal.fail)+' more to be graded'}</td><td><button class='round_button' style={{background:'none',borderColor:'red',color:'red',width:'20px',height:'20px'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>-</button></td></tr>
+                return <tr style={{background:'none',verticalAlign:'middle',display:'table'}} ><td>{goal.ref.name}</td><td>{goal.success+goal.fail>4?goal.success/(goal.fail+goal.success):5-(goal.success+goal.fail)+' more to be graded'}</td><td><button class='round_button' style={{background:'none',borderColor:'red',color:'red',width:'20px',height:'20px'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>-</button></td></tr>
               })):''
             ):'You have not set any goals!'}
         </table>
@@ -177,7 +177,7 @@ return (
                     <tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{title}</td></tr>
                     {content[0].complete?'':<tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{console.log('recieved',limit)}{limit.length<3?<button style={{background:'none',color:'brown',fontSize:'smaller',textDecoration:'underline',width:'50%',border:'none'}} onClick={(e)=>{updateGoals(e,content[0].ref._id,'$push')}}>Set Goal</button>:''}</td></tr>}
                   </td>
-                  <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success&&content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
+                  <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success||content[0].fail?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
                 </tr>
             </table>
         </div>}
