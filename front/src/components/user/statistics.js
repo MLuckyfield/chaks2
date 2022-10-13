@@ -29,8 +29,8 @@ const Statistics = (props)=>{
           let grammar_track=0
           let idiom_track=0
           res.data.data[0].progress.forEach((item, i) => {
-            if(item.ref.category=='grammar'){grammar.push(item);if(item.ref.complete){grammar_track++}}
-            if(item.ref.category=='idiom'){idioms.push(item);if(item.ref.complete){idiom_track++}}
+            if(item.ref.category=='grammar'){grammar.push(item);if(item.complete){grammar_track++}}
+            if(item.ref.category=='idiom'){idioms.push(item);console.log(item.complete);if(item.complete){idiom_track++}}
           });
           matchGoals(res.data.data[0].progress,res.data.data[0].goals)
 
