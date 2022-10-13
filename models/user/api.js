@@ -299,11 +299,15 @@ const { Server } = require("socket.io");
       let data = await User.findOneAndUpdate(JSON.parse(req.query.filter),JSON.parse(req.query.data),JSON.parse(req.query.find))
       console.log('data retrieved:',data)
       data.progress.forEach((progress, i) => {
+        console.log('check',progress,progress.ref,req.body.goal)
         if(progress.ref==req.body.goal){
           console.log('found',progress)
+          User.findOneAndUpdate(JSON.parse(req.query.filter),{'$set':{'progress.$[el].complete':true}},JSON.parse(req.query.find))
+          .then((updated)=>{
+            console.log('complete!',updated)
+          })
         }
       });
-
       return res.status(201).json({
         data: data,
         message: 'Job saved',
