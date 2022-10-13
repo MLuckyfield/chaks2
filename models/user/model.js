@@ -68,10 +68,12 @@ const User = mongoose.model('User', new Schema({
   }],
   fluency:{
     thinking:{
-      type:Number
+      type:Number,
+      default:1
     },
     listening:{
-      type:Number
+      type:Number,
+      default:1
     }
   },
   goals:[{
