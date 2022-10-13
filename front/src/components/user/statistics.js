@@ -74,14 +74,16 @@ const Statistics = (props)=>{
     e.preventDefault()
     let action = {'$push':{goals:{ref:id}}}
     if(tab=='$pull'){action={'$pull':{goals:{ref:id}}}}
-    axios.post('user/goals',{filter:{_id: user},data:action,goals:goals})
-      .then((update)=>{
-          console.log('new goals',update.data.data.goals,update)
-          matchGoals(progress,update.data.data.goals)
-      })
-      .catch((err)=>{
-        console.log('oops',err)
-      })
+    if(goals.length<=3){
+      axios.post('user/goals',{filter:{_id: user},data:action,goals:goals})
+        .then((update)=>{
+            console.log('new goals',update.data.data.goals,update)
+            matchGoals(progress,update.data.data.goals)
+        })
+        .catch((err)=>{
+          console.log('oops',err)
+        })
+    }
   }
   return (
     <div class='col'>
