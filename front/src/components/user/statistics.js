@@ -101,7 +101,7 @@ const Statistics = (props)=>{
             {goals?(
               goals.length>0?(
               goals.map((goal,i)=>{
-                return <tr style={{background:'none',verticalAlign:'middle',display:'table'}} ><td>{goal.ref.name}</td><td>{goal.success+goal.fail>4?goal.success/(goal.fail+goal.success):5-(goal.success+goal.fail)+' more to be graded'}</td><td><button class='round_button' style={{background:'none',borderColor:'red',color:'red',width:'20px',height:'20px'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>-</button></td></tr>
+                return <tr style={{background:'none',verticalAlign:'middle',display:'table'}} ><td>{goal.ref.name}</td><td>{goal.success+goal.fail>4?(goal.success/(goal.fail+goal.success)).toFixed(2):5-(goal.success+goal.fail)+' more to be graded'}</td><td><button class='round_button' style={{background:'none',borderColor:'red',color:'red',width:'20px',height:'20px'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>-</button></td></tr>
               })):''
             ):'You have not set any goals!'}
         </table>
@@ -203,7 +203,7 @@ const ProgressCircle = (props)=>{
             <div class="big-mask big-half">
               <div class="big-fill"></div>
             </div>
-            <div class="big-inside-circle"> {props.value*100}% </div>
+            <div class="big-inside-circle"> {(props.value*100).toFixed(2)}% </div>
           </div>
         </div>
     ):(
