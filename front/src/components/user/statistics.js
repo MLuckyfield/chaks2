@@ -79,6 +79,7 @@ const Statistics = (props)=>{
         .then((update)=>{
             console.log('new goals',update.data.data.goals,update)
             matchGoals(progress,update.data.data.goals)
+            window.location.refresh()
         })
         .catch((err)=>{
           console.log('oops',err)
