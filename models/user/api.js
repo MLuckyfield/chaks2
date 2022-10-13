@@ -298,6 +298,12 @@ const { Server } = require("socket.io");
       console.log('running update_goals',typeof req.query.find)
       let data = await User.findOneAndUpdate(JSON.parse(req.query.filter),JSON.parse(req.query.data),JSON.parse(req.query.find))
       console.log('data retrieved:',data)
+      data.progress.forEach((progress, i) => {
+        if(progress.ref==req.body.goal){
+          console.log('found',progress)
+        }
+      });
+
       return res.status(201).json({
         data: data,
         message: 'Job saved',

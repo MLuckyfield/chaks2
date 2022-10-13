@@ -240,7 +240,7 @@ const Session =(props)=>{
       let update = {'$inc':{'progress.$[el].success':1}}
       if(trigger=='fail'){update={'$inc':{'progress.$[el].fail':1}}}
       console.log('update progress',student,goal)
-      axios.get('user/update_goals',{params:{filter:{_id: student},data:update,find:{arrayFilters:[{'el.ref':goal}],new:true}}})
+      axios.get('user/update_goals',{params:{filter:{_id: student},data:update,find:{arrayFilters:[{'el.ref':goal}],new:true}},goal:goal})
         .then((result)=>{
           // result = result.data.data[0]
            console.log('triggered',goal,result)
