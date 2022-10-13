@@ -242,8 +242,8 @@ const Session =(props)=>{
       console.log('update progress',student,goal)
       axios.get('user/update_goals',{params:{filter:{_id: student},data:update,find:{arrayFilters:[{'el.ref':goal}],new:true}}})
         .then((result)=>{
-          result = result.data.data[0]
-           console.log('triggered',result)
+          // result = result.data.data[0]
+           console.log('triggered',goal,result)
         })
         .catch(error=>console.log('From sendTo teacher:',error))
       // setTarget(item)
