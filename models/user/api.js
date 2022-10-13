@@ -248,23 +248,29 @@ const { Server } = require("socket.io");
     });
     router.post('/goals', auth.auth, async (req, res) => {
       //get number of goals
-      console.log('running goals',req.body.data)
-      User.findByIdAndUpdate(req.body.filter,req.body.data,{new:true,populate:{path:'goals'}})
-            .then((result)=>{
-              console.log(result.goals)
-              return res.status(201).json({
-                data:result,
-                message: 'User update',
-                success: true
-              });
-            })
-            .catch((err)=>{
-              console.log(err)
-              return res.status(500).json({
-                message: `Could not find user: ${err}`,
-                success: false
-              });
-            })
+      console.log('running goals',req.body.data, req.body.goals)
+      if(req.body.goals.length>=3){
+        User.findByIdAndUpdate(req.body.filter,req.body.data,{new:true,populate:{path:'goals'}})
+              .then((result)=>{
+                console.log(result.goals)
+                return res.status(201).json({
+                  data:result,
+                  message: 'User update',
+                  success: true
+                });
+              })
+              .catch((err)=>{
+                console.log(err)
+                return res.status(500).json({
+                  message: `Could not find user: ${err}`,
+                  success: false
+                });
+              })
+      }
+      return res.status(500).json({
+        message: `Max goals reached`,
+        success: false
+      });
     // })
     //   }
       //else save
