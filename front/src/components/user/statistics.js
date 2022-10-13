@@ -36,7 +36,7 @@ const Statistics = (props)=>{
 
           setIdioms(idioms)
           setGrammar(grammar)
-          let fluency = res.data.data[0].fluency
+          let fluency = res.data.data[0]
           let speed = fluency.thinking.reduce((b,a)=>{return b+a})/fluency.thinking.length
           setSpeed(speed)
           let listening = fluency.listening.reduce((b,a)=>{return b+a})/fluency.listening.length
@@ -62,7 +62,6 @@ const Statistics = (props)=>{
     if(tobematched){
       tobematched.forEach((goal, i) => {
         match.forEach((item, i) => {
-          console.log('test', item)
           if(item.ref._id==goal.ref){
             temp.push(item)
           }
