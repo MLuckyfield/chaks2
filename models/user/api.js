@@ -267,10 +267,12 @@ const { Server } = require("socket.io");
                 });
               })
       }
-      return res.status(500).json({
-        message: `Max goals reached`,
-        success: false
-      });
+      else{
+        return res.status(500).json({
+          message: `Max goals reached`,
+          success: false
+        });
+      }
     // })
     //   }
       //else save
