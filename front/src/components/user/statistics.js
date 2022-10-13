@@ -36,13 +36,14 @@ const Statistics = (props)=>{
 
           setIdioms(idioms)
           setGrammar(grammar)
-          console.log('overall',grammar_track,grammar.length)
+          console.log('grammar',grammar_track,grammar.length)
+          console.log('idiosm',idiom_track,idioms.length)
 
           // let fluency = res.data.data[0]
           // let speed = fluency.thinking.reduce((b,a)=>{return b+a})/fluency.thinking.length
-          setSpeed(res.data.data[0].fluency.thinking)
+          setSpeed(res.data.data[0].fluency.thinking/10)
           // let listening = fluency.listening.reduce((b,a)=>{return b+a})/fluency.listening.length
-          setListening(res.data.data[0].fluency.listening)
+          setListening(res.data.data[0].fluency.listening/10)
           setGrammar_progress(grammar_track/grammar.length)
           setIdiom_progress(idiom_track/idioms.length)
 
