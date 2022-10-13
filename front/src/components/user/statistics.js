@@ -198,12 +198,12 @@ const ProgressCircle = (props)=>{
       <div class="big-circle-wrap">
           <div class="big-circle">
             <div class="big-mask big-full">
-              <div class="big-fill" style={{transform:`rotate(${props.value*360}deg)`}}></div>
+              <div class="big-fill" style={{transform:`rotate(${(1-props.value)*360}deg)`}}></div>
             </div>
             <div class="big-mask big-half">
               <div class="big-fill"></div>
             </div>
-            <div class="big-inside-circle"> {((1-props.value)*100).toFixed(2)}% </div>
+            <div class="big-inside-circle"> {(props.value*100).toFixed(2)}% </div>
           </div>
         </div>
     ):(
