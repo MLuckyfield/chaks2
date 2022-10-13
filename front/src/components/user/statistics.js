@@ -101,7 +101,7 @@ const Statistics = (props)=>{
             {goals?(
               goals.length>0?(
               goals.map((goal,i)=>{
-                return <tr style={{background:'none',verticalAlign:'middle',display:'table'}} ><td>{goal.ref.name}</td><td>{goal.success+goal.fail>4?<ProgressCircle value={goal.success/(goal.fail+goal.success)}/>:5-(goal.success+goal.fail)+' more to be graded'}</td><td><button class='round_button' style={{background:'none',borderColor:'red',color:'red',width:'20px',height:'20px'}} onClick={(e)=>{updategoal(e,goal.ref._id,'$pull')}}>-</button></td></tr>
+                return <tr style={{background:'none',verticalAlign:'middle',display:'table'}} ><td>{goal.ref.name}</td><td>{goal.success+goal.fail>4?<ProgressCircle value={goal.success/(goal.fail+goal.success)}/>:5-(goal.success+goal.fail)+' more to be graded'}</td><td><button class='round_button' style={{background:'none',borderColor:'red',color:'red',width:'20px',height:'20px'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>-</button></td></tr>
               })):''
             ):'You have not set any goals!'}
         </table>
