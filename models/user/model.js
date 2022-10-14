@@ -58,10 +58,9 @@ const User = mongoose.model('User', new Schema({
     plan_start_date:{type:Date},
     customer_id:{type:String}
   },
-  points:{
-    type:Number,
-    default:0
-  },
+  points:[{
+    type:Number
+  }],
   statistics:[{
     start:{type:Date},
     end:{type:Date}

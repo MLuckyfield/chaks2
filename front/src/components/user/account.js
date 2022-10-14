@@ -12,6 +12,7 @@ const Account = () => {
   const [sessions,setSessions]=useState(0)
   const [count,setCount]=useState(0)
   const [reward,setReward]=useState()
+  const [points,setPoints]=useState()
   const [msg,setMsg]=useState('')
 
   useEffect(()=>{
@@ -59,6 +60,11 @@ const Account = () => {
             setMsg(temp[eligible][0]-count +' more sessions for '+eligible+' status!');
             setSessions((count/temp[eligible][0]*100))
           }
+          let lessons = 0
+          account.points.forEach((point, i) => {
+            lessons+=point
+          });
+          setPoints(lessons)
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -79,7 +85,7 @@ const Account = () => {
               <div class='col'>
                 Plan: {account.plan}  {account.plan.toLowerCase()!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}<br/>
                 {account.first=='M'?(account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={(e)=>onSubmit(e,'downgrade')}>Downgrade</div>):''}
-                Points: {account.points}
+                Points: {points?points:'Loading...'}
               </div>
             :'Loading account...'}
           </div>
