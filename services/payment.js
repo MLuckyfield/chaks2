@@ -60,7 +60,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 for(let i = 0;i<count;i++){
                   units.push({value:60})
                 }
-                purchased = {$inc:{points:units}}
+                purchased = {$push:{points:units}} //may need to multiple by quantity checkout.lineites
                 console.log('add sub_points',units)
               }
               console.log(session.metadata.order)
