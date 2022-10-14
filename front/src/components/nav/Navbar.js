@@ -69,8 +69,7 @@ const Navbar = ()=>{
               {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/events'><span class="material-icons">info</span></a></li>):''}
               {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/account'><span class="material-icons">qr_code_scanner</span></a></li>):''}
               <li style={{padding:'3% 7%'}}><a href='#' onClick={logout}><span class="material-icons">logout</span></a></li>
-          </ul>
-        )}
+          </ul>        )}
         <div class="burger" onClick={navSlide}>
             <div class="line1"></div>
             <div class="line2"></div>
