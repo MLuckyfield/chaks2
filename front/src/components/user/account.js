@@ -61,7 +61,7 @@ const Account = () => {
             setSessions((count/temp[eligible][0]*100))
           }
           let lessons = 0
-          account.points.forEach((point, i) => {
+          user.points.forEach((point, i) => {
             lessons+=point.value
           });
           setPoints(lessons)
