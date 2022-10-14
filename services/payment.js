@@ -3,6 +3,7 @@ const stripe = require('stripe')(process.env.STRIPE);
 const moment = require ('moment')
 const router = require('express').Router();
 const express = require('express');
+const email = require('./email')
 
 const HODAI_LIVE=''
 const PREMIUM_LIVE=''
@@ -70,6 +71,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           break;
         case 'charge.succeeded':
           console.log('charge successful',session)
+          email.sendDefault('BOT|Charge received',session)
+
           break;
         case 'customer.subscription.updated':
           console.log(session.pause_collection)
