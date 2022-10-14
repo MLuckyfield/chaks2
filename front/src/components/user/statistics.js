@@ -17,7 +17,6 @@ const Statistics = (props)=>{
   const [level,setLevel]=useState()
   const [goals,setGoals]=useState([])
   const [user, setUser]=useState(JSON.parse(localStorage.getItem('user'))._id)
-
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/progress', {params:{filter:{_id:user}}})
@@ -42,7 +41,12 @@ const Statistics = (props)=>{
           setListening(res.data.data[0].fluency.listening/10)
           setGrammar_progress(grammar_track/grammar.length)
           setIdiom_progress(idiom_track/idioms.length)
-
+          let ranking = (grammar_track/grammar.length+idiom_track/idioms.length+res.data.data[0].fluency.thinking/10+res.data.data[0].fluency.listening/10)/4
+          if(ranking<=6){setLevel('B+')}
+          if(ranking>6){setLevel('A')}
+          if(ranking>7){setLevel('A+')}
+          if(ranking>8){setLevel('S')}
+          if(ranking>=10){setLevel('S+')}
           let rating = speed+listening+grammar_track/grammar_track.length+idiom_track/idiom_track.length
           if(rating>=0.9){setLevel('S')}
           if(rating>=0.8 && rating<0.9){setLevel('A')}
@@ -88,7 +92,7 @@ const Statistics = (props)=>{
     <div class='col'>
       <div class='row'>
         <div class='col border'>
-          <h1>Fluency<span> Class: {level?level:'D'}</span></h1>
+          <h1>Fluency<span> Class: {level?level:'Loading...'}</span></h1>
           <ProgressBar title={'Speed'} percent={speed?speed:0}/>
           <ProgressBar title={'Listening'} percent={listening?listening:0}/>
           <ProgressBar title={'Correctness'} percent={grammar?grammar_progress:0}/>
