@@ -56,7 +56,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             }
             if('sub_points' in metadata){
                 let count = metadata.sub_points/60
-                let units  []
+                let units = []
                 for(let i = 0;i<count;i++){
                   units.push({value:60})
                 }
