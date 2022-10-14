@@ -60,8 +60,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 for(let i = 0;i<count;i++){
                   units.push({value:60})
                 }
-                purchased = {$inc:{points:metadata.sub_points * checkout.line_items.data[0].quantity}}
-                console.log('add sub_points')
+                purchased = {$inc:{points:units}}
+                console.log('add sub_points',units)
               }
               console.log(session.metadata.order)
               updateUser(identifier,purchased,res)
