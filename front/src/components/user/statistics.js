@@ -33,10 +33,8 @@ const Statistics = (props)=>{
             if(item.ref.category=='idiom'){idioms.push(item);console.log(item.complete);if(item.complete){idiom_track++}}
           });
           matchGoals(res.data.data[0].progress,res.data.data[0].goals)
-
           setIdioms(idioms)
           setGrammar(grammar)
-
           // let fluency = res.data.data[0]
           // let speed = fluency.thinking.reduce((b,a)=>{return b+a})/fluency.thinking.length
           console.log('fluency',res.data.data[0].fluency)
