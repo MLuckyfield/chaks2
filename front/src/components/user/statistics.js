@@ -211,7 +211,7 @@ const ProgressCircle = (props)=>{
       <div class="circle-wrap">
           <div class="circle">
             <div class="mask full">
-              <div class="fill" style={{transform:`rotate(${0.1532*360}deg)`}}></div>
+              <div class="fill" style={{transform:`rotate(${props.value*360}deg)`}}></div>
             </div>
             <div class="mask half">
               <div class="fill"></div>
