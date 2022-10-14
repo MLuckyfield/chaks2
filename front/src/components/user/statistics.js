@@ -37,7 +37,6 @@ const Statistics = (props)=>{
           setGrammar(grammar)
           // let fluency = res.data.data[0]
           // let speed = fluency.thinking.reduce((b,a)=>{return b+a})/fluency.thinking.length
-          console.log('fluency',res.data.data[0].fluency)
           setSpeed(res.data.data[0].fluency.thinking/10)
           // let listening = fluency.listening.reduce((b,a)=>{return b+a})/fluency.listening.length
           setListening(res.data.data[0].fluency.listening/10)

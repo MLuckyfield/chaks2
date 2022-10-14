@@ -46,7 +46,7 @@ const Comment = () => {
     e.preventDefault()
     console.log('fluency values',speed.current.value,listening)
     let action = {'$set':{'fluency.thinking':Number(speed.current.value)}}
-    if(tab=='listening'){action= {'$set':{'fluency.listening':Number(speed.current.value)}}}
+    if(tab=='listening'){action= {'$set':{'fluency.listening':Number(listening.current.value)}}}
     axios.post('user/goals',{filter:{_id: id},data:action})
       .then((update)=>{
           console.log('new goals',update.data.data.goals,update)
