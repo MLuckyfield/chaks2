@@ -69,6 +69,9 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             console.log('Order complete for: '+session.metadata.order)
           });
           break;
+        case 'charge.succeeded':
+          console.log('charge successful',session)
+          break;
         case 'customer.subscription.updated':
           console.log(session.pause_collection)
           console.log('Relevant product',session.items.data[0].price.product)
