@@ -59,7 +59,7 @@ const User = mongoose.model('User', new Schema({
     customer_id:{type:String}
   },
   points:[{
-    type:Number
+    value:{type:Number}
   }],
   statistics:[{
     start:{type:Date},

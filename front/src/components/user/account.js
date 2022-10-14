@@ -12,7 +12,7 @@ const Account = () => {
   const [sessions,setSessions]=useState(0)
   const [count,setCount]=useState(0)
   const [reward,setReward]=useState()
-  const [points,setPoints]=useState()
+  const [points,setPoints]=useState(0)
   const [msg,setMsg]=useState('')
 
   useEffect(()=>{
