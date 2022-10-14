@@ -62,7 +62,7 @@ const Account = () => {
           }
           let lessons = 0
           account.points.forEach((point, i) => {
-            lessons+=point
+            lessons+=point.value
           });
           setPoints(lessons)
         })
