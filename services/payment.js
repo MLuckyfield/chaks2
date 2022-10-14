@@ -33,7 +33,6 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       // Handle the event
       switch (event.type) {
         case 'checkout.session.completed': //update account with purchase
-
           console.log('updating account with purchase')
           await stripe.checkout.sessions.retrieve(session.id,{expand:['line_items.data.price.product']},(err,checkout)=>{
             const metadata=checkout.line_items.data[0].price.product.metadata
