@@ -104,7 +104,7 @@ const App = () => {
           <Route exact path="/blog" component={BlogFront}/>
           <Route exact path="/blog/*" component={BlogDisplay}/>
           <Route path="/login" component={Login}/>
-          <SecureRoute path="/products" access={['manager','admin']} success={Product_Display} fail={()=><Redirect to='/login'/>}/>
+          <SecureRoute path="/products" access={['manager','user']} success={Product_Display} fail={()=><Redirect to='/login'/>}/>
 
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/create-event" access={['manager','admin']} success={CreateEvent} fail={()=><Redirect to='/login'/>}/>
