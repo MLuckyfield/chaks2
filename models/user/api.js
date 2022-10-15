@@ -217,6 +217,7 @@ const { Server } = require("socket.io");
                     billable = (Math.round(billable/30))+1
                     let unpaid=0
                     for(let i =0;i<billable;i++){
+                      console.log('length',result.points.length)
                       if(result.points.length>=1){
                         result.points.splice(0,1)
                       }
@@ -225,9 +226,9 @@ const { Server } = require("socket.io");
                     // billable = (Math.round(billable/30)*1000)+1000
                     console.log('Billable time is',billable,start,end)
                     console.log('available',result.points, unpaid)
-                    result['remaining']=result.points
-                    result['unpaid']=result.unpaid
-                    result['billable']=result.billable
+                    result.points = result.points
+                    result['unpaid']= unpaid
+                    result['billable']=billable
                     console.log(result)
                     return res.status(201).json({
                       data:result,
