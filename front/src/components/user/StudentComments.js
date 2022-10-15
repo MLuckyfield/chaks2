@@ -53,7 +53,7 @@ const StudentComments = () => {
           // console.log('Billable time is',billable,start,end)
           res=res.data.display
           console.log('register',res)
-          if(!status){alert('Billable:',res.billable,'Unpaid:',res.unpaid,'Remaining:',res.remaining)}
+          if(!status){alert('Billable: '+res.billable+' |Unpaid: '+res.unpaid+' |Remaining: '+res.remaining)}
         })
       .catch(error => console.log("error"+error))
   }
