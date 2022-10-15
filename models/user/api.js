@@ -223,16 +223,17 @@ const { Server } = require("socket.io");
                       }
                       else{unpaid++}
                     }
-                    // billable = (Math.round(billable/30)*1000)+1000
-                    console.log('Billable time is',billable,start,end)
-                    console.log('available',result.points, unpaid)
-                    console.log(result)
-                    return res.status(201).json({
-                      data:result,
-                      display:{unpaid:unpaid,billable:billable,remaining:result.points.length*30},
-                      message: 'User update',
-                      success: true
-                    });
+                    User.findByIdAndUpdate(req.filter,{'$set':{points:result.points}},{new:true})
+                      .then((complete)=>{
+                        console.log('complete',complete)
+                        return res.status(201).json({
+                          data:complete,
+                          display:{unpaid:unpaid,billable:billable,remaining:complete.points.length*30},
+                          message: 'User update',
+                          success: true
+                        });
+                      })
+
                   })
                   .catch((err)=>{
                     return res.status(500).json({
