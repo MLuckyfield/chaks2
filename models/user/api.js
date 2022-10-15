@@ -213,9 +213,18 @@ const { Server } = require("socket.io");
                     const time = end.diff(start, 'minutes')
                     let billable = 0
                     if(time-40>0){billable=time-40}
-                    billable = (Math.round(billable/30)*1000)+1000
+                    billable = (Math.round(billable/30))
+                    let unpaid=0
+                    for(let i =0;i<billable;i++){
+                      if(result.points.length>=1){
+                        result.points.splice(0,1)
+                      }
+                      else{unpaid++}
+                    }
+                    // billable = (Math.round(billable/30)*1000)+1000
                     console.log('Billable time is',billable,start,end)
-                    console.log('available',result.points)
+                    console.log('available',result.points, unpaid)
+                    
                     return res.status(201).json({
                       data:result,
                       message: 'User update',
