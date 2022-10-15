@@ -208,6 +208,14 @@ const { Server } = require("socket.io");
             user.statistics.reverse()[0].end=new Date()
             User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:false}},{new:true})
                   .then((result)=>{
+                    let start =moment(result.statistics[0].start)
+                    let end = moment(result.statistics[0].end)
+                    const time = end.diff(start, 'minutes')
+                    let billable = 0
+                    if(time-40>0){billable=time-40}
+                    billable = (Math.round(billable/30)*1000)+1000
+                    console.log('Billable time is',billable,start,end)
+                    console.log('available',result.points)
                     return res.status(201).json({
                       data:result,
                       message: 'User update',
