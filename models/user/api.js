@@ -227,8 +227,8 @@ const { Server } = require("socket.io");
                     console.log('Billable time is',billable,start,end)
                     console.log('available',result.points, unpaid)
                     result.points = result.points
-                    result['unpaid']= unpaid
-                    result['billable']=billable
+                    result.unpaid= unpaid
+                    result.billable=billable
                     console.log(result)
                     return res.status(201).json({
                       data:result,
