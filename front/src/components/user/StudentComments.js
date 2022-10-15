@@ -51,7 +51,7 @@ const StudentComments = () => {
           // if(time-40>0){billable=time-40}
           // billable = (Math.round(billable/30)*1000)+1000
           // console.log('Billable time is',billable,start,end)
-          res=res.data.data
+          res=res.data.display
           console.log('register',res)
           if(!status){alert('Billable:',res.billable,'Unpaid:',res.unpaid,'Remaining:',res.remaining)}
         })

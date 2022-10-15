@@ -226,12 +226,10 @@ const { Server } = require("socket.io");
                     // billable = (Math.round(billable/30)*1000)+1000
                     console.log('Billable time is',billable,start,end)
                     console.log('available',result.points, unpaid)
-                    result.points = result.points
-                    result.unpaid= unpaid
-                    result.billable=billable
                     console.log(result)
                     return res.status(201).json({
                       data:result,
+                      display:{unpaid:unpaid,billable:billable,remaining:result.points.length*30},
                       message: 'User update',
                       success: true
                     });
