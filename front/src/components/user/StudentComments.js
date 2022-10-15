@@ -39,19 +39,21 @@ const StudentComments = () => {
     console.log('will send '+JSON.stringify(target._id))
     axios.get('/user/clock', {params:{filter:target._id,data:status}})
       .then((res) => {
-          console.log(res.data.data);
-          setTarget(res.data.data)
+          // console.log(res.data.data);
+          // setTarget(res.data.data)
           localStorage.setItem(source,JSON.stringify(res.data.data))
-          if(status==true){setPayable(null)}
-          else{setPayable(res.data.data.statistics[0])}
-          let start =moment(res.data.data.statistics[0].start)
-          let end = moment(res.data.data.statistics[0].end)
-          const time = end.diff(start, 'minutes')
-          let billable = 0
-          if(time-40>0){billable=time-40}
-          billable = (Math.round(billable/30)*1000)+1000
-          console.log('Billable time is',billable,start,end)
-          if(!status){alert(time+' minutes | ¥'+billable+' Start:'+start.format('HH:MM')+' End:'+end.format('HH:MM'))}
+          // if(status==true){setPayable(null)}
+          // else{setPayable(res.data.data.statistics[0])}
+          // let start =moment(res.data.data.statistics[0].start)
+          // let end = moment(res.data.data.statistics[0].end)
+          // const time = end.diff(start, 'minutes')
+          // let billable = 0
+          // if(time-40>0){billable=time-40}
+          // billable = (Math.round(billable/30)*1000)+1000
+          // console.log('Billable time is',billable,start,end)
+          res=res.data.data
+          console.log('register',res)
+          if(!status){alert('Billable:',res.billable,'Unpaid:',res.unpaid,'Remaining:',res.remaining)}
         })
       .catch(error => console.log("error"+error))
   }
@@ -70,7 +72,6 @@ const StudentComments = () => {
   return(
     <div class='master-row'>
       <div class='col'>
-        {JSON.parse(localStorage.getItem('user')).role=='manager'?(payable?<span style={{color:'green',fontSize:'14px'}}>{moment(payable.end).diff(moment(payable.start), 'minutes')}</span>:''):''}
         {JSON.parse(localStorage.getItem('user')).role=='manager'? (<button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red',width:'80%'}:{backgroundColor:'blue',width:'80%'}}>{target.inClass?'End':'Start'}</button>):''}
         {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
       </div>
