@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 import QRCode from 'react-qr-code'
-import Popup from './popup'
+import Popup from '../utilities/popup'
 
 const Account = () => {
 
