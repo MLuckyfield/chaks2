@@ -61,7 +61,7 @@ const Account = () => {
             setSessions((count/temp[eligible][0]*100))
           }
           console.log('has pounts',user)
-          setPoints(user.points?user.points.length*30:0)
+          // setPoints(user.points?user.points.length*30:0)
         })
       .catch(error => console.log("error"+error))
   },[])
