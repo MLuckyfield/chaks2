@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 import QRCode from 'react-qr-code'
+import Popup from './popup'
 
 const Account = () => {
 
@@ -64,6 +65,22 @@ const Account = () => {
         })
       .catch(error => console.log("error"+error))
   },[])
+
+  const toPay=(e,product,countable)=>{
+    e.preventDefault();
+    console.log(product)
+    axios.post('/payment/new',{user:student,product:product,countable:countable})
+      .then((res) => {
+          console.log(res.data.data)
+          window.location.href=res.data.data.url
+          // setMsg([res.data.message,res.data.success]);
+          })
+      .catch((err) => {
+        setMsg([err.message,err.success]);
+        // setFeedback(err.response.data.message);
+        });
+  }
+
   const onSubmit=(e,action)=>{
     // console.log(action)
     axios.post('payment/update_sub', {params:{filter:{_id:student._id},fields:'first stripe plan'}})
@@ -228,7 +245,7 @@ const Account = () => {
 
               代表 八木俊祐　</p>
             </p><br/>
-            {student?<div class="btn" onClick={(e)=>{onSubmit(e,'price_1LpNGgBVAfieqaobxk8qoRR3',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/#signup'}>購入</div>}
+            {student?<div class="btn" onClick={(e)=>{toPay(e,'price_1LpNGgBVAfieqaobxk8qoRR3',false)}}>購入</div>:<div class="btn" onClick={()=>window.location='/#signup'}>購入</div>}
             </div>
           }/>:''}
           {student.first=='Takeshi'?
