@@ -99,28 +99,30 @@ const Statistics = (props)=>{
           <ProgressBar title={'Naturalness'} percent={idioms?idiom_progress:0}/>
         </div>
       </div>
-      <div class='col'>
-      <h1>Guided Course</h1>
-      <h2 style={{marginTop:'10%'}}>Active Goals (Max 3)</h2>
-        <table style={{border:'none',width:'100%',height:'100%'}}>
-            {goals?(
-              goals.length>0?(
-              goals.map((goal,i)=>{
-                return <tr style={{background:'none',verticalAlign:'middle',display:'table'}} ><td style={{width:'70%'}}>{goal.ref.name}</td><td  style={{width:'15%'}}>{goal.success+goal.fail>4?<ProgressCircle value={goal.success/(goal.fail+goal.success)}/>:5-(goal.success+goal.fail)+' more to be graded'}</td><td  style={{width:'15%'}}><button class='round_button' style={{background:'none',borderColor:'red',color:'red',width:'20px',height:'20px'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>-</button></td></tr>
-              })):''
-            ):'You have not set any goals!'}
-        </table>
-      </div>
-      <div class='up_row'>
-          <div class='col_up'>
-              <h2>GRAMMAR ({grammar?grammar.length:''})</h2>
-              {<ProgressCircle value={grammar_progress} size={'big'}/>}
-              {grammar?<Accordion k={'sub_category'} data={grammar} goals={goals} updateGoals={updateGoals}/>:'Loading, please wait...'}
+      <div class='container border'>
+          <div class='col'>
+          <h1>Guided Course</h1>
+          <h2 style={{marginTop:'10%'}}>Active Goals (Max 3)</h2>
+            <table style={{border:'none',width:'100%',height:'100%'}}>
+                {goals?(
+                  goals.length>0?(
+                  goals.map((goal,i)=>{
+                    return <tr style={{background:'none',verticalAlign:'middle',display:'table'}} ><td style={{width:'70%'}}>{goal.ref.name}</td><td  style={{width:'15%'}}>{goal.success+goal.fail>4?<ProgressCircle value={goal.success/(goal.fail+goal.success)}/>:5-(goal.success+goal.fail)+' more to be graded'}</td><td  style={{width:'15%'}}><button class='round_button' style={{background:'none',borderColor:'red',color:'red',width:'20px',height:'20px'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>-</button></td></tr>
+                  })):''
+                ):'You have not set any goals!'}
+            </table>
           </div>
-          <div class='col_up'>
-              <h2>IDIOMS ({idioms?idioms.length:''})</h2>
-              {<ProgressCircle value={idiom_progress} size={'big'}/>}
-              {idioms?<Accordion k={'sub_category'} data={idioms} goals={goals} updateGoals={updateGoals}/>:'Loading, please wait...'}
+          <div class='up_row'>
+              <div class='col_up'>
+                  <h2>GRAMMAR ({grammar?grammar.length:''})</h2>
+                  {<ProgressCircle value={grammar_progress} size={'big'}/>}
+                  {grammar?<Accordion k={'sub_category'} data={grammar} goals={goals} updateGoals={updateGoals}/>:'Loading, please wait...'}
+              </div>
+              <div class='col_up'>
+                  <h2>IDIOMS ({idioms?idioms.length:''})</h2>
+                  {<ProgressCircle value={idiom_progress} size={'big'}/>}
+                  {idioms?<Accordion k={'sub_category'} data={idioms} goals={goals} updateGoals={updateGoals}/>:'Loading, please wait...'}
+              </div>
           </div>
       </div>
     </div>
