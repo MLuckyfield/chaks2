@@ -41,9 +41,9 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             console.log('plan' in metadata)
             console.log('sub_points' in metadata)
             // const price_id=session.items.data[0].price.product
-            if('points' in metadata){
-              purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
-              console.log('adding points')}
+            // if('points' in metadata){
+            //   purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
+            //   console.log('adding points')}
             if('plan' in metadata){
               purchased = {
                   plan:metadata.plan,
