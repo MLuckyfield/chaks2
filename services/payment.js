@@ -96,7 +96,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           }else if(session.pause_collection==null){ //continue subscription
             purchased = {
                 $set:{
-                  plan:'unlimited',
+                  plan:'premium',
                   stripe:{
                     plan_status:'active',
                     plan_start_date:new Date(),
