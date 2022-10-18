@@ -249,6 +249,7 @@ const Account = () => {
             </div>
           }/>:''}
           {student.first=='Takeshi'?
+
           <div>
           Current Reward Level: <span style={{fontWeight:'bold'}}>{account?account.reward:'Loading'}</span><br/>
           <span>You are eligible for {reward}.</span><br/>
