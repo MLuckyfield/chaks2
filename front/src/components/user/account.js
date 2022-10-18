@@ -60,11 +60,8 @@ const Account = () => {
             setMsg(temp[eligible][0]-count +' more sessions for '+eligible+' status!');
             setSessions((count/temp[eligible][0]*100))
           }
-          let lessons = 0
-          user.points.forEach((point, i) => {
-            lessons+=point.value
-          });
-          setPoints(lessons)
+
+          setPoints(user.points.length*30)
         })
       .catch(error => console.log("error"+error))
   },[])

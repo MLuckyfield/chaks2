@@ -387,6 +387,29 @@ const { Server } = require("socket.io");
         email.sendDefault('BOT|Monthly Rewards','Gold: '+gold+', Platinum: '+platinum+', Diamond: '+diamond)
       })
     })
+    //expiry check for lessons
+    cron.schedule('0 22 * * *',()=>{
+      console.log('starting lesson expiry...')
+      let expired = 0
+      User.find().then((users)=>{
+        users.forEach((user, i) => {
+          let remove = user.points
+          console.log(user.first,remove)
+          user.points.forEach((lesson, i) => {
+            console.log('expired?',moment(new Date()),moment(lesson.createdAt).add(60,'days'),moment(lesson.createdAt).add(60,'days').diff(moment(new Date()),'days'))
+            if(moment(lesson.createdAt).add(60,'days').diff(moment(new Date()),'days')){
+              remove.splice(i,1)
+            }
+          });
+          console.log('to update',remove)
+          User.findByIdAndUpdate(req.user._id,{'$set':{points:remove}},{new:true})
+            .then(()=>{
+              expired++
+            })
+        });
+        email.sendDefault('BOT|Expired Lessons',expired)
+      })
+    })
     //automated engagement
     cron.schedule('0 22 * * *',()=>{ //server time is 9 hours ahead
       User.find().then((users)=>{
