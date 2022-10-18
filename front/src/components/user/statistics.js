@@ -99,8 +99,7 @@ const Statistics = (props)=>{
           <ProgressBar title={'Naturalness'} percent={idioms?idiom_progress:0}/>
         </div>
       </div>
-      <div class='container border'>
-          <div class='col'>
+          <div class='col border'>
             <div class='col'>
             <h1>Guided Course</h1>
             <h2 style={{marginTop:'10%'}}>Active Goals (Max 3)</h2>
@@ -108,7 +107,7 @@ const Statistics = (props)=>{
                   {goals?(
                     goals.length>0?(
                     goals.map((goal,i)=>{
-                      return <tr style={{background:'none',verticalAlign:'middle',display:'table'}} ><td style={{width:'70%'}}>{goal.ref.name}</td><td style={{width:'15%'}}>{goal.ref.complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:goal.ref.success+goal.ref.fail>4?<ProgressCircle value={goal.ref.success/(goal.ref.fail+goal.ref.success)}/>:<ProgressCircle value={0}/>}</td><td  style={{width:'15%'}}><button class='round_button' style={{background:'none',borderColor:'red',color:'red',width:'20px',height:'20px'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>-</button></td></tr>
+                      return <tr style={{background:'none',verticalAlign:'middle',display:'table'}} ><td style={{width:'70%'}}>{goal.ref.name}</td><td style={{width:'15%'}}>{goal.complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:goal.success+goal.fail>4?<ProgressCircle value={goal.success/(goal.fail+goal.success)}/>:<ProgressCircle value={0}/>}</td><td  style={{width:'15%'}}><button class='round_button' style={{background:'none',borderColor:'red',color:'red',width:'20px',height:'20px'}} onClick={(e)=>{updateGoals(e,goal.ref._id,'$pull')}}>-</button></td></tr>
                     })):''
                   ):'You have not set any goals!'}
               </table>
@@ -127,7 +126,6 @@ const Statistics = (props)=>{
             </div>
           </div>
       </div>
-    </div>
   )
 }
 const Accordion =(props)=>{
