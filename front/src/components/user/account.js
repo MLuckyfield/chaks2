@@ -60,6 +60,7 @@ const Account = () => {
             setMsg(temp[eligible][0]-count +' more sessions for '+eligible+' status!');
             setSessions((count/temp[eligible][0]*100))
           }
+          console.log('has pounts',user)
           setPoints(user.points?user.points.length*30:0)
         })
       .catch(error => console.log("error"+error))
