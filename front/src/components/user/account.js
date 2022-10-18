@@ -69,7 +69,7 @@ const Account = () => {
   const toPay=(e,product,countable)=>{
     e.preventDefault();
     console.log(product)
-    axios.post('/payment/new',{user:student,product:product,countable:countable})
+    axios.post('/payment/new',{user:student,product:product})
       .then((res) => {
           console.log(res.data.data)
           window.location.href=res.data.data.url
