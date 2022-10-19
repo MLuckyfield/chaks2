@@ -182,7 +182,7 @@ return (
                 <tr style={{background:'none',verticalAlign:'middle',display:'table'}} >
                   <td style={{width:'80%'}}>
                     <tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{title}</td></tr>
-                    {content[0].complete?'':<tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{console.log('recieved',limit)}{limit.length<3?<button style={{background:'none',color:'brown',fontSize:'smaller',textDecoration:'underline',width:'50%',border:'none'}} onClick={(e)=>{updateGoals(e,content[0].ref._id,'$push')}}>Set Goal</button>:''}</td></tr>}
+                    {content[0].complete?'':<tr style={{background:'none',verticalAlign:'middle',display:'table'}}><td>{console.log('recieved',limit)}{user.plan=='premium'?limit.length<3?<button style={{background:'none',color:'brown',fontSize:'smaller',textDecoration:'underline',width:'50%',border:'none'}} onClick={(e)=>{updateGoals(e,content[0].ref._id,'$push')}}>Set Goal</button>:'':'You must be on the premium plan to access this course!'}</td></tr>}
                   </td>
                   <td style={{width:'20%'}}>{content[0].complete?<span style={{color:'green'}} class="material-icons">select_check_box</span>:content[0].success+content[0].fail>4?<ProgressCircle value={content[0].success/(content[0].fail+content[0].success)}/>:<ProgressCircle value={0}/>}</td>
                 </tr>
