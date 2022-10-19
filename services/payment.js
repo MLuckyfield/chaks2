@@ -71,7 +71,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           break;
         case 'charge.succeeded':
           console.log('charge successful',session)
-          email.sendDefault('BOT|Charge received',session)
+          email.sendDefault('BOT|Charge received',session.object.billing_details.email)
 
           break;
         case 'customer.subscription.updated':
