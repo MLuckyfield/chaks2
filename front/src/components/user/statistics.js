@@ -163,6 +163,7 @@ return (
     </div>
 );
 }
+
 const AccordionItem=({ title, content,incept, id,goals, updateGoals})=>{
 
   const [isActive, setIsActive] = useState(false);
