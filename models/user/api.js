@@ -396,7 +396,7 @@ const { Server } = require("socket.io");
           console.log(user.first,remove)
           user.points.forEach((lesson, i) => {
             console.log('expired?',moment(new Date()),moment(lesson.createdAt).add(60,'days'),moment(lesson.createdAt).add(60,'days').diff(moment(new Date()),'days'))
-            if(moment(lesson.createdAt).add(1,'days').diff(moment(new Date()),'days')){
+            if(moment(lesson.createdAt).add(60,'days').diff(moment(new Date()),'days')){
               remove.splice(i,1)
             }
           });
