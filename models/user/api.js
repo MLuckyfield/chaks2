@@ -401,7 +401,7 @@ const { Server } = require("socket.io");
             }
           });
           console.log('to update',remove)
-          User.findByIdAndUpdate(req.user._id,{'$set':{points:remove}},{new:true})
+          User.findByIdAndUpdate(user._id,{'$set':{points:remove}},{new:true})
             .then(()=>{
               expired++
             })
