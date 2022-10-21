@@ -30,7 +30,7 @@ const Account = () => {
           res=user.statistics
           setCount(res)
           console.log('has pounts',user)
-          setPoints(user.points?user.points.length*30:0)
+          setPoints(user.points.length*30)
           // console.log('Statistics for',res.length)
           let month = new Date().getMonth()
           let count = 0
