@@ -387,7 +387,7 @@ const { Server } = require("socket.io");
       })
     })
     //expiry check for lessons
-    cron.schedule('0 22 * * *',()=>{
+    cron.schedule('* * * * *',()=>{
       console.log('starting lesson expiry...')
       let expired = 0
       User.find().then((users)=>{
