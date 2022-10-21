@@ -82,7 +82,7 @@ const Account = () => {
               <div class='col'>
                 Plan: {account.plan}  {account.plan.toLowerCase()!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}<br/>
                 {account.first=='M'?(account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={(e)=>onSubmit(e,'downgrade')}>Downgrade</div>):''}
-                Points: {points?points:'Loading...'}
+                Points: {points}
               </div>
             :'Loading account...'}
           </div>
