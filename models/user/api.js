@@ -360,7 +360,6 @@ const { Server } = require("socket.io");
       let gold = 0
       let platinum = 0
       let diamond = 0
-
       User.find().then((users)=>{
         users.forEach((user, i) => {
           if(user.role=='user'){
