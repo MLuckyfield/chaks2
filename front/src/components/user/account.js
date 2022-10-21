@@ -29,6 +29,8 @@ const Account = () => {
           setAccount(user)
           res=user.statistics
           setCount(res)
+          console.log('has pounts',user)
+          setPoints(user.points?user.points.length*30:0)
           // console.log('Statistics for',res.length)
           let month = new Date().getMonth()
           let count = 0
@@ -60,8 +62,6 @@ const Account = () => {
             setMsg(temp[eligible][0]-count +' more sessions for '+eligible+' status!');
             setSessions((count/temp[eligible][0]*100))
           }
-          console.log('has pounts',user)
-          // setPoints(user.points?user.points.length*30:0)
         })
       .catch(error => console.log("error"+error))
   },[])

@@ -398,13 +398,11 @@ const { Server } = require("socket.io");
             console.log('expired?',moment(new Date()),moment(lesson.createdAt).add(60,'days'),moment(lesson.createdAt).add(60,'days').diff(moment(new Date()),'days'))
             if(moment(lesson.createdAt).add(60,'days').diff(moment(new Date()),'days')){
               remove.splice(i,1)
+              expired++
             }
           });
           console.log('to update',remove)
           User.findByIdAndUpdate(user._id,{'$set':{points:remove}},{new:true})
-            .then(()=>{
-              expired++
-            })
         });
         email.sendDefault('BOT|Expired Lessons',expired)
       })
