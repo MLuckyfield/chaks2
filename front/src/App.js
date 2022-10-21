@@ -91,6 +91,7 @@ const App = () => {
       // document.head.appendChild(socketio);
     }, []);
 
+    // <SecureRoute path="/reservations" access={['user','teacher','manager']} success={Booking} fail={()=><Redirect to='/login'/>}/>
 
     return (
       <Router>
@@ -114,7 +115,6 @@ const App = () => {
             <SecureRoute path="/manage-event" access={['manager','admin']} success={EventList} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile} fail={()=><Redirect to='/login'/>}/>
-            <SecureRoute path="/reservations" access={['user','teacher','manager']} success={Booking} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/material_admin" access={['manager']} success={Material_Admin} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/course" access={['user','manager']} success={Statistics} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/qr-reader" access={['user','teacher','manager']} success={()=><QrReader ViewFinder={()=>{return <div class='qr_viewfinder'></div>}} scanDelay={1000} onResult={(result,error)=>{
