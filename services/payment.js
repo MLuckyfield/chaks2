@@ -45,14 +45,23 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             //   purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
             //   console.log('adding points')}
             if('plan' in metadata){
-              purchased = {
-                  plan:metadata.plan,
-                  stripe:{
-                    plan_id:session.subscription,
-                    plan_status:'active',
-                    plan_start_date:new Date()
-                  }
+              // purchased = {
+              //     plan:metadata.plan,
+              //     stripe:{
+              //       plan_id:session.subscription,
+              //       plan_status:'active',
+              //       plan_start_date:new Date()
+              //     }
+              // }
+              purchased={'$set':{
+                plan:metadata.plan,
+                stripe:{
+                  plan_id:session.subscription,
+                  plan_status:'active',
+                  plan_start_date:new Date()
+                }
               }
+            }
               console.log('add plan')
               User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{}).catch((err)=>{})
             }
