@@ -64,7 +64,9 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 }
                 purchased = {$push:{points:units}} //may need to multiple by quantity checkout.lineites
                 console.log('add sub_points',units,session.customer)
-                updateUser(identifier,purchased,res)                
+                updateUser(identifier,purchased,res)
+                purchased={'$set':{stripe:{customer_id:session.customer}}}
+                updateUser(identifier,purchased,res)                                
               }
               console.log(session.metadata.order)
             console.log('Order complete for: '+session.metadata.order)
