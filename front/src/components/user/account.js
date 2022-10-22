@@ -65,6 +65,20 @@ const Account = () => {
         })
       .catch(error => console.log("error"+error))
   },[])
+  const toPay=(e,product,countable)=>{
+    e.preventDefault();
+    console.log(product)
+    axios.post('/payment/new',{user:student,product:product,countable:countable})
+      .then((res) => {
+          console.log(res.data.data)
+          window.location.href=res.data.data.url
+          // setMsg([res.data.message,res.data.success]);
+          })
+      .catch((err) => {
+        setMsg([err.message,err.success]);
+        // setFeedback(err.response.data.message);
+        });
+  }
   const onSubmit=(e,action)=>{
     // console.log(action)
     axios.post('payment/update_sub', {params:{filter:{_id:student._id},fields:'first stripe plan'}})
@@ -82,10 +96,11 @@ const Account = () => {
               <div class='col'>
                 Plan: {account.plan}  {account.plan.toLowerCase()!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):''}<br/>
                 {account.first=='M'?(account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={(e)=>onSubmit(e,'downgrade')}>Downgrade</div>):''}
-                Points: {points}
+                Minutes: {points}
               </div>
             :'Loading account...'}
           </div>
+          {student.first=='student'?<div class="btn" onClick={(e)=>{toPay(e,'price_1LpO9vBVAfieqaobUpRve6Ab',true)}}>購入</div>:''}
           {student.first=='Takeshi'?
           <div>
           Current Reward Level: <span style={{fontWeight:'bold'}}>{account?account.reward:'Loading'}</span><br/>
