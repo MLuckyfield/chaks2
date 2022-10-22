@@ -54,7 +54,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                   }
               }
               console.log('add plan')
-              updateUser(identifier,purchased,res)
+              User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{}).catch((err)=>{})
             }
             if('sub_points' in metadata){
                 let count = (metadata.sub_points* checkout.line_items.data[0].quantity)/30
@@ -64,9 +64,9 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 }
                 purchased = {$push:{points:units}} //may need to multiple by quantity checkout.lineites
                 console.log('add sub_points',units,session.customer)
-                updateUser(identifier,purchased,res)
+                User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{}).catch((err)=>{})
                 purchased={'$set':{stripe:{customer_id:session.customer}}}
-                updateUser(identifier,purchased,res)                                
+                updateUser(identifier,purchased,res)
               }
               console.log(session.metadata.order)
             console.log('Order complete for: '+session.metadata.order)
