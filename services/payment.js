@@ -54,18 +54,19 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                   }
               }
               console.log('add plan')
+              updateUser(identifier,purchased,res)
             }
             if('sub_points' in metadata){
-                let count = metadata.sub_points/30
+                let count = (metadata.sub_points* checkout.line_items.data[0].quantity)/30
                 let units = []
                 for(let i = 0;i<count;i++){
                   units.push({value:30})
                 }
                 purchased = {$push:{points:units}} //may need to multiple by quantity checkout.lineites
-                console.log('add sub_points',units)
+                console.log('add sub_points',units,session.customer)
+                updateUser(identifier,purchased,res)                
               }
               console.log(session.metadata.order)
-              updateUser(identifier,purchased,res)
             console.log('Order complete for: '+session.metadata.order)
           });
           break;
