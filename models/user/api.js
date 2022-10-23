@@ -217,6 +217,13 @@ const { Server } = require("socket.io");
                     billable = (Math.round(billable/30))+1
                     let unpaid=0
                     let temp = result.points.sort((a,b)=>{a.createdAt-b.createdAt})
+                    result.points.forEach((item, i) => {
+                      console.log(item.createdAt)
+                    });
+                    temp.forEach((item, i) => {
+                      console.log(item.createdAt)
+                    });                   
+
                     for(let i =0;i<billable;i++){
                       console.log('length',result.points,temp)
                       if(temp.length>=1){
