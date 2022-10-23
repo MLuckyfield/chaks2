@@ -185,10 +185,8 @@ const Dash = ()=>{
 
     return(
       <div>
-        <Calendar/>
         <StaffTable/>
         <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -fluency -progress -goals -students -tags -source -password -createdAt -updatedAt -role -points -active"/>
-
         <StudentTable/>
       </div>
     )
