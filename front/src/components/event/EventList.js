@@ -104,7 +104,7 @@ const EventList = () => {
             </div>
             <div class='col_up slim'>
                 <h1 class='col' style={{border:'1px solid black'}}>DETAILS</h1>
-                {moment(date).format('MM月D日')}, {moment(date).startOf('day').add(19.5,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(23,'hours').format('h:mm a')}<br/>
+                {moment(date).format('MM月D日')}, {moment(date).startOf('day').add(19.5,'hours').format('h:mm a')} ~ {moment(date).startOf('day').add(22.5,'hours').format('h:mm a')}<br/>
                 入場料：¥{events[0].entranceFee?events[0].entranceFee:'0 (free!)'}<br/>
                 {events[0].drinkRequired?'*ワンドリンクオーダー制':''}
                 {user?(
