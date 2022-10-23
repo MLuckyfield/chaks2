@@ -100,7 +100,6 @@ const Account = () => {
               </div>
             :'Loading account...'}
           </div>
-          {student.first=='Takeshi'?
           <div>
           Current Reward Level: <span style={{fontWeight:'bold'}}>{account?account.reward:'Loading'}</span><br/>
           <span>You are eligible for {reward}.</span><br/>
@@ -108,7 +107,7 @@ const Account = () => {
             <div class="progress-container">
               <div class="progress" style={{width:`${sessions}%`}}></div>
             </div>
-          </div>:''}
+          </div>
           VIP Rewards:
           <ul>
             <li>Diamond: <span>10%</span> off <span>everything</span> + 1 drink & 1 snack <span>FREE</span> at each event</li>

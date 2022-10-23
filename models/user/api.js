@@ -216,10 +216,11 @@ const { Server } = require("socket.io");
                     if(time-40>0){billable=time-40}
                     billable = (Math.round(billable/30))+1
                     let unpaid=0
+                    let temp = result.points.sort((a,b)=>{a.createdAt-b.createdAt})
                     for(let i =0;i<billable;i++){
-                      console.log('length',result.points.length)
-                      if(result.points.length>=1){
-                        result.points.splice(0,1)
+                      console.log('length',result.points,temp)
+                      if(temp.length>=1){
+                        temp.splice(0,1)
                       }
                       else{unpaid++}
                     }
