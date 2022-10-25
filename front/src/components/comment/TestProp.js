@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/youtube'
 
 const TestProp = () => {
 
