@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
+import ReactPlayer from 'react-player'
 
 const TestProp = () => {
 
 
   return(
     <div>
+      <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' play={true} volume={0} muted={true}/>
       <div id='intro' class='master-row' style={{background:'white'}}>
         <div class='col'>
             <div class='col slim center'>
