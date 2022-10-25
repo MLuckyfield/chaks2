@@ -110,9 +110,9 @@ const Account = () => {
           </div>
           VIP Rewards:
           <ul>
-            <li>Diamond: <span>10%</span> off <span>everything</span> + 1 drink & 1 snack <span>FREE</span> at each event</li>
-            <li>Platinum: <span>10%</span> off <span>lessons</span> + 1 snack <span>FREE</span> at each event</li>
-            <li>Gold: <span>5%</span> off <span>lessons</span></li>
+            <li>Diamond: <span>500円</span>ドリンク１杯<span>無料</span> ＋ スナック<span>無料</span> ＋ 全メニュー <span>5%</span>オフ</li>
+            <li>Platinum: <span>500円</span>ドリンク１杯<span>無料</span> ＋ 全メニュー <span>5%</span>オフ</li>
+            <li>Gold: <span>500円</span> ドリンク１杯<span>無料</span></li>
           </ul>
           <QRCode value={localStorage.getItem('user')}/>
       </div>
