@@ -42,14 +42,13 @@ const TestProp = () => {
   英会話をしたいときに来て、いつでも退店できるシステムです。</div>
                   </div>
             </div>
-            <div class='row'>
-              <div class='col'><button class='solid-first cta' onClick={()=>window.location='/about'}>Mission</button></div>
-              <div class='col'><button class='solid-first cta' onClick={()=>window.location='/blog/62bbf3e2f048ac1e59f2856a/私達と他の英会話教室の違いについて'}>他社との違い</button></div>
-            </div>
         </div>
       </div>
-      <div class='row'>
-        <div class='col'>
+      <div class='col'>
+        <div class='col slim center'>
+            <h1>他の英会話教室とは一味違う</h1>
+        </div>
+        <div class='row'>
           <div class='col' style={{height:'20%',backgroundColor:'#53cfe9'}}>
             <h2>COMMITMENT</h2>
           </div>
