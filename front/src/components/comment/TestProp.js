@@ -32,18 +32,8 @@ const TestProp = () => {
                       <h2>成長を振り返る</h2>
                       <div class='col'>レッスン後には先生からのフィードバックがオンラインでもらえます。その日に何を学んだのかいつでも振り返ることができます。</div>
                   </div>
-                  <div class='col'>
-                      <span class='material-icons'>sentiment_very_satisfied</span>
-                      <h2>様々な英会話メニュー</h2>
-                      <div class='col'>50以上の英会話トピック、10以上の英会話特訓ゲーム、自由な英会話など様々なメニューがあるので、いつでも英語学習を楽しめます。</div>
-                  </div>
             </div>
             <div class='up_row'>
-                  <div class='col'>
-                      <span class='material-icons'>sports_bar</span>
-                      <h2>国際交流イベント</h2>
-                      <div class='col'>グループレッスンで英会話力を向上したら、あなたの英会話力を国際交流イベントでテストしてみましょう。</div>
-                  </div>
                   <div class='col'>
                       <span class='material-icons'>schedule</span>
                       <h2>予約不要</h2>
@@ -60,16 +50,28 @@ const TestProp = () => {
       </div>
       <div class='row'>
         <div class='col'>
-          <div class='col' style={{height:'20%'}}>
+          <div class='col' style={{height:'20%',backgroundColor:'#53cfe9'}}>
             <h2>COMMITMENT</h2>
           </div>
-          <div class='col' style={{height:'80%'}}>
+          <div class='col' style={{height:'80%',backgroundColor:'#20bada'}}>
             eaeiuthiuryctiuayn crayncieuwy eryeanryvny rhfyaegyr reyagrygue
           </div>
         </div>
         <div class='col'>
+          <div class='col' style={{height:'20%',backgroundColor:'#4484c1'}}>
+            <h2>CONSISTENCY</h2>
+          </div>
+          <div class='col' style={{height:'80%',backgroundColor:'#3722aa'}}>
+            eaeiuthiuryctiuayn crayncieuwy eryeanryvny rhfyaegyr reyagrygue
+          </div>
         </div>
         <div class='col'>
+          <div class='col' style={{height:'20%',backgroundColor:'#f75c70'}}>
+            <h2>REWARD</h2>
+          </div>
+          <div class='col' style={{height:'80%',backgroundColor:'#dc4a5e'}}>
+            eaeiuthiuryctiuayn crayncieuwy eryeanryvny rhfyaegyr reyagrygue
+          </div>
         </div>
       </div>
     </div>
