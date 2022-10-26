@@ -7,7 +7,7 @@ const TestProp = () => {
 
   return(
     <div>
-      <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' play={true} volume={0} muted={true} width={'100%'} height={'80%'} />
+      <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' play={true} volume={0} muted={true} width={'100%'} height={'60vh'} />
       <div id='intro' class='master-row' style={{background:'white'}}>
         <div class='col'>
             <div class='col slim center'>
@@ -33,8 +33,6 @@ const TestProp = () => {
                       <h2>成長を振り返る</h2>
                       <div class='col'>レッスン後には先生からのフィードバックがオンラインでもらえます。その日に何を学んだのかいつでも振り返ることができます。</div>
                   </div>
-            </div>
-            <div class='up_row'>
                   <div class='col'>
                       <span class='material-icons'>schedule</span>
                       <h2>予約不要</h2>
@@ -50,26 +48,26 @@ const TestProp = () => {
             <h1>他の英会話教室とは一味違う</h1>
         </div>
         <div class='col'>
-          <div class='col' style={{height:'20%',backgroundColor:'#53cfe9',margin:'none'}}>
+          <div class='col' style={{height:'20%',backgroundColor:'#53cfe9',margin:'0'}}>
             <h2>COMMITMENT</h2>
           </div>
-          <div class='col' style={{height:'80%',backgroundColor:'#20bada',margin:'none'}}>
+          <div class='col' style={{height:'80%',backgroundColor:'#20bada',margin:'0'}}>
             eaeiuthiuryctiuayn crayncieuwy eryeanryvny rhfyaegyr reyagrygue
           </div>
         </div>
         <div class='col'>
-          <div class='col' style={{height:'20%',backgroundColor:'#4484c1',margin:'none'}}>
+          <div class='col' style={{height:'20%',backgroundColor:'#4484c1',margin:'0'}}>
             <h2>CONSISTENCY</h2>
           </div>
-          <div class='col' style={{height:'80%',backgroundColor:'#3722aa',margin:'none'}}>
+          <div class='col' style={{height:'80%',backgroundColor:'#3722aa',margin:'0'}}>
             eaeiuthiuryctiuayn crayncieuwy eryeanryvny rhfyaegyr reyagrygue
           </div>
         </div>
         <div class='col'>
-          <div class='col' style={{height:'20%',backgroundColor:'#f75c70',margin:'none'}}>
+          <div class='col' style={{height:'20%',backgroundColor:'#f75c70',margin:'0'}}>
             <h2>REWARD</h2>
           </div>
-          <div class='col' style={{height:'80%',backgroundColor:'#dc4a5e',margin:'none'}}>
+          <div class='col' style={{height:'80%',backgroundColor:'#dc4a5e',margin:'0'}}>
             eaeiuthiuryctiuayn crayncieuwy eryeanryvny rhfyaegyr reyagrygue
           </div>
         </div>
