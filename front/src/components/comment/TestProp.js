@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 import ReactPlayer from 'react-player/youtube'
+import party from '../../atmosphere.jpg'
 
 const TestProp = () => {
 
@@ -9,7 +10,7 @@ const TestProp = () => {
     <div>
       <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} />
       <div id='intro' class='master-row' style={{background:'white'}}>
-        <div class='col'>
+        <div class='col' style={{backgroundImage: 'url('+party+')'}}>
             <div class='col slim center'>
                 <h1>他の英会話教室とは一味違う</h1>
             </div>
@@ -80,7 +81,7 @@ const TestProp = () => {
           </div>
         </div>
       </div>
-      <div class='col'>
+      <div class='col dark'>
         <h2>Lots to Do!</h2>
         <div class='row'>
           <div class='col'>
