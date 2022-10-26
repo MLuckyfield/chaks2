@@ -48,7 +48,7 @@ const TestProp = () => {
             <h1>他の英会話教室とは一味違う</h1>
         </div>
         <div class='row'>
-          <div class='col'>
+          <div class='col'  style={{width:'100%',padding:'0',margin:'0'}}>
             <div class='col' style={{height:'20%',backgroundColor:'#53cfe9',margin:'0',color:'white',padding:'6%'}}>
               <h2>COMMITMENT</h2>
             </div>
@@ -56,7 +56,7 @@ const TestProp = () => {
               eaeiuthiuryctiuayn crayncieuwy eryeanryvny rhfyaegyr reyagrygue
             </div>
           </div>
-          <div class='col'>
+          <div class='col'  style={{width:'100%',padding:'0',margin:'0'}}>
             <div class='col' style={{height:'20%',backgroundColor:'#4484c1',margin:'0',color:'white',padding:'6%'}}>
               <h2>CONSISTENCY</h2>
             </div>
@@ -64,7 +64,7 @@ const TestProp = () => {
               eaeiuthiuryctiuayn crayncieuwy eryeanryvny rhfyaegyr reyagrygue
             </div>
           </div>
-          <div class='col'>
+          <div class='col' style={{width:'100%',padding:'0',margin:'0'}}>
             <div class='col' style={{height:'20%',backgroundColor:'#f75c70',margin:'0',color:'white',padding:'6%'}}>
               <h2>REWARD</h2>
             </div>
