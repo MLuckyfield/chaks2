@@ -54,8 +54,8 @@ const TestProp = () => {
             </div>
             <div class='col' style={{height:'80%',backgroundColor:'#20bada',margin:'0',color:'white',padding:'6%'}}>
               最初に、月に何時間勉強したいを決めて、コミット！
-              <br>
-              中途半端に勉強するのではなく、「英語力の成長」を、自分に約束すること。
+              <p>
+              中途半端に勉強するのではなく、「英語力の成長」を、自分に約束すること。</p>
             </div>
           </div>
           <div class='col'  style={{width:'100%',padding:'0',margin:'0'}}>
@@ -64,8 +64,8 @@ const TestProp = () => {
             </div>
             <div class='col' style={{height:'80%',backgroundColor:'#3722aa',margin:'0',color:'white',padding:'6%'}}>
               自分が好きな時に、自由にご来店、 習慣化を図ろう！
-              <br>
-              １回で５時間勉強するより、５回１時間勉強する方がよい。
+              <p>
+              １回で５時間勉強するより、５回１時間勉強する方がよい。</p>
             </div>
           </div>
           <div class='col' style={{width:'100%',padding:'0',margin:'0'}}>
@@ -74,8 +74,8 @@ const TestProp = () => {
             </div>
             <div class='col' style={{height:'80%',backgroundColor:'#dc4a5e',margin:'0',color:'white',padding:'6%'}}>
               英語力を向上しながら、 ボーナスリワードも ゲット！
-              <br>
-              モティベーションを下げないように、リワードをもらって楽しく勉強を進める。
+              <p>
+              モティベーションを下げないように、リワードをもらって楽しく勉強を進める。</p>
             </div>
           </div>
         </div>
