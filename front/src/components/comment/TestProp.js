@@ -74,6 +74,17 @@ const TestProp = () => {
           </div>
         </div>
       </div>
+      <div class='col'>
+        <h2>Lots to Do!</h2>
+        <div class='row'>
+          <div class='col'>
+            <h2>Events</h2>
+          </div>
+          <div class='col'>
+            <h2>Guided Course</h2>
+          </div>
+        </div>
+      </div>
     </div>
 )
 }
