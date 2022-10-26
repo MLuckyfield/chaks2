@@ -5,7 +5,6 @@ import ReactPlayer from 'react-player/youtube'
 
 const TestProp = () => {
 
-
   return(
     <div>
       <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' play={true} volume={0} muted={true}/>
