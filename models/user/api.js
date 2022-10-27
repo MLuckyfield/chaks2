@@ -222,7 +222,7 @@ const { Server } = require("socket.io");
                     });
                     temp.forEach((item, i) => {
                       console.log(item.createdAt)
-                    });                   
+                    });
 
                     for(let i =0;i<billable;i++){
                       console.log('length',result.points,temp)
@@ -393,6 +393,16 @@ const { Server } = require("socket.io");
         });
         email.sendDefault('BOT|Monthly Rewards','Gold: '+gold+', Platinum: '+platinum+', Diamond: '+diamond)
       })
+    })
+    cron.schedule('* * * * *',()=>{
+      console.log('updating keiko')
+      let update= {'$set':{
+        points:[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}],
+        stripe:{
+          customer_id:"cus_Mgk3uWbJps6Bhr"
+        }
+      }}
+      User.findByIdAndUpdate('632bc50839e1aa368cd88d25',update).then(()=>{console.log('done')})
     })
     //expiry check for lessons
     cron.schedule('0 22 * * *',()=>{

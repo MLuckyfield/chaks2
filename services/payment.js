@@ -13,7 +13,7 @@ const PREMIUM_TEST='price_1LY1UlBVAfieqaobWDpvBnCj'
 router.post('/complete', express.raw({type:'application/json'}),async (req, res)=>{
       const sig = req.headers['stripe-signature'];
 
-      const endpointSecret = 'whsec_WMV26QjDzHbLq14UmcbD7mCCEQ2RXvUD'
+      const endpointSecret = 'whsec_67c1ZI0hKYLtAxJC3cVC3esehowFEz6J'
 
       let event;
       console.log('starting payment...')
