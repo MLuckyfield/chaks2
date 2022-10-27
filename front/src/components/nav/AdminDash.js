@@ -48,10 +48,17 @@ const Admin = () => {
 
 const StaffTable = ()=>{
   const [students, setStudents] = useState();
+  const [source,setSource] =useState()
+  const [target, setTarget]=useState(()=>{
+    if (localStorage.getItem('student')){
+      setSource('student')
+      return JSON.parse(localStorage.getItem('student'))
+    }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
+  })
 
   useEffect(() => {
-    let target = JSON.parse(localStorage.getItem('user'))._id
-    console.log('getting for',target)
+    let focus = JSON.parse(localStorage.getItem('user'))._id
+    console.log('getting for',focus)
     axios.get('user/session',{params:{filter:{role: 'teacher'}}})
       .then((result)=>{
         // console.log('presort',result)
@@ -72,23 +79,41 @@ const StaffTable = ()=>{
   const clockin=(item,status)=>{
     console.log('will send '+item)
     axios.get('/user/clock', {params:{filter:item._id,data:status}})
+      // .then((res) => {
+      //   setStudents(students.map(x=>{
+      //     if(x._id!==res.data.data._id){console.log('no match');return x}
+      //     return {...x,inClass:res.data.data.inClass}
+      //   }))
+      //   let first = res.data.data.statistics.sort((a,b)=>{
+      //     return new Date(b.start)-new Date(a.start)
+      //   })
+      //   let start =moment(new Date(first[0].start)).format("HH:mm")
+      //   let end = moment(new Date(first[0].end)).format("HH:mm")
+      //   const time = end.diff(start, 'minutes')
+      //   let billable = 0
+      //   if(time-40>0){billable=time-40}
+      //   billable = (Math.round(billable/30)*1000)+1000
+      //   if(!status){alert(time+' minutes | ¥'+billable+' Start:'+start.format('HH:MM')+' End:'+end.format('HH:MM'))}
+      //
+      // })
+      // .catch(error => console.log("error"+error))
       .then((res) => {
-        setStudents(students.map(x=>{
-          if(x._id!==res.data.data._id){console.log('no match');return x}
-          return {...x,inClass:res.data.data.inClass}
-        }))
-        let first = res.data.data.statistics.sort((a,b)=>{
-          return new Date(b.start)-new Date(a.start)
+          // console.log(res.data.data);
+          // setTarget(res.data.data)
+          localStorage.setItem(source,JSON.stringify(res.data.data))
+          // if(status==true){setPayable(null)}
+          // else{setPayable(res.data.data.statistics[0])}
+          // let start =moment(res.data.data.statistics[0].start)
+          // let end = moment(res.data.data.statistics[0].end)
+          // const time = end.diff(start, 'minutes')
+          // let billable = 0
+          // if(time-40>0){billable=time-40}
+          // billable = (Math.round(billable/30)*1000)+1000
+          // console.log('Billable time is',billable,start,end)
+          res=res.data.display
+          console.log('register',res)
+          if(!status){alert('Billable: '+res.billable+' |Unpaid: '+res.unpaid+' |Remaining: '+res.remaining)}
         })
-        let start =moment(new Date(first[0].start)).format("HH:mm")
-        let end = moment(new Date(first[0].end)).format("HH:mm")
-        const time = end.diff(start, 'minutes')
-        let billable = 0
-        if(time-40>0){billable=time-40}
-        billable = (Math.round(billable/30)*1000)+1000
-        if(!status){alert(time+' minutes | ¥'+billable+' Start:'+start.format('HH:MM')+' End:'+end.format('HH:MM'))}
-
-      })
       .catch(error => console.log("error"+error))
   }
   const makeComment = (item)=>{
