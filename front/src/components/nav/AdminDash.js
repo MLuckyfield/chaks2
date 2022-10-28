@@ -99,7 +99,10 @@ const StaffTable = ()=>{
       .then((res) => {
           console.log(res.data.data);
           let change = res.data.data
-          setStudents(students.map(el => (el._id === change._id?{...el,change}:el)))
+          console.log('before',students)
+          let update = students.map(el => (el._id === change._id?{...el,change}:el))
+          console.log('after',update)
+          setStudents(update)
           localStorage.setItem(source,JSON.stringify(res.data.data))
           // if(status==true){setPayable(null)}
           // else{setPayable(res.data.data.statistics[0])}
@@ -140,9 +143,6 @@ const StaffTable = ()=>{
         let first = student.statistics.sort((a,b)=>{
           return new Date(b.start)-new Date(a.start)
         })
-        console.log('pre',student.statistics)
-        console.log('post',first)
-        console.log('in session?',student.inSession)
         return (<tr>
           <td>{student.first}</td>
           <td>{student.last}</td>
