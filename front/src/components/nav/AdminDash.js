@@ -99,6 +99,7 @@ const StaffTable = ()=>{
       .then((res) => {
           console.log(res.data.data);
           let change = res.data.data
+          console.log('new',change)
           console.log('before',students)
           let update = students
           update.forEach((item, i) => {
