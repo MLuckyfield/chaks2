@@ -98,7 +98,8 @@ const StaffTable = ()=>{
       // .catch(error => console.log("error"+error))
       .then((res) => {
           console.log(res.data.data);
-          setStudents(current=>[res.data.data,...current])
+          let change = res.data.data
+          setStudents(students.map(el => (el._id === change._id?{...el,change}:el)))
           localStorage.setItem(source,JSON.stringify(res.data.data))
           // if(status==true){setPayable(null)}
           // else{setPayable(res.data.data.statistics[0])}
