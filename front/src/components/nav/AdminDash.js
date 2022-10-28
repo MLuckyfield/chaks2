@@ -100,7 +100,12 @@ const StaffTable = ()=>{
           console.log(res.data.data);
           let change = res.data.data
           console.log('before',students)
-          let update = students.map(el => (el._id === change._id?{...el,change}:el))
+          let update = students
+          update.forEach((item, i) => {
+            if(item._id==change._id){
+              item=change
+            }
+          });
           console.log('after',update)
           setStudents(update)
           localStorage.setItem(source,JSON.stringify(res.data.data))
