@@ -94,7 +94,6 @@ const StaffTable = ()=>{
       //   if(time-40>0){billable=time-40}
       //   billable = (Math.round(billable/30)*1000)+1000
       //   if(!status){alert(time+' minutes | ¥'+billable+' Start:'+start.format('HH:MM')+' End:'+end.format('HH:MM'))}
-      //
       // })
       // .catch(error => console.log("error"+error))
       .then((res) => {
