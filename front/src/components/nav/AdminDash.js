@@ -103,7 +103,7 @@ const StaffTable = ()=>{
           console.log('before',students)
           let update = students
           update.forEach((item, i) => {
-            console.log(item._id,change._id,item._id=change._id)
+            console.log(item._id,change._id,item._id==change._id)
             if(item._id==change._id){
               update[i]=change
             }
