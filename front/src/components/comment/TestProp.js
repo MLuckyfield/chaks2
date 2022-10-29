@@ -11,7 +11,7 @@ const TestProp = () => {
       <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} />
       <div id='intro' class='master-row' style={{background:'white',color:'white'}}>
         <div class='col' style={{backgroundImage: 'url('+party+')',backgroundSize:'cover',backgroundPosition:'center center'}}>
-            <div class='overlay'>
+            <div class='mini_overlay' style={{backgroundColor:'rgba(255,255,255,0.7)'}}>
             <div class='col slim center'>
                 <h1>他の英会話教室とは一味違う</h1>
             </div>
