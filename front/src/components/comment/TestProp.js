@@ -9,8 +9,8 @@ const TestProp = () => {
 
   return(
     <div>
-      <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div class='mini_overlay' style={{height:'100%'}}>CHATSHACK</div>}/>
-      <div id='intro' class='master-row' style={{background:'white',color:'white'}}>
+      <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={false} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div class='mini_overlay' style={{height:'100%'}}>CHATSHACK</div>}/>
+      <div id='intro' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
         <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
             <div class='col slim center'>
@@ -87,12 +87,12 @@ const TestProp = () => {
           </div>
         </div>
       </div>
-      <div class='col dark'>
+      <div class='col dark' style={{width:'100%',margin:'0'}}>
         <h2 style={{padding:'5%'}}>LOTS TO DO</h2>
         <div class='row'>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
-              <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center'}}>
+              <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                   <h2>EVENTS</h2>
                   <button class='solid-first cta' onClick={()=>window.location='/events'}>レッスン</button>
               </div>
@@ -100,8 +100,9 @@ const TestProp = () => {
           </div>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
-              <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center'}}>
+              <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                   <h2>GUIDED COURSE</h2>
+                  <span></span>
               </div>
             </div>
           </div>
