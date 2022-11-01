@@ -47,7 +47,7 @@ const TestProp = () => {
       </div>
       <div class='col border'>
         <div class='col slim center'>
-            <h1>英語勉強の考え</h1>
+            <h1>私達の価値観</h1>
         </div>
         <div class='row'>
           <div class='col' style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
@@ -86,7 +86,7 @@ const TestProp = () => {
         </div>
       </div>
       <div class='col dark' style={{width:'100%',margin:'0'}}>
-        <h2 style={{padding:'5%'}}>いろいろ楽しめる</h2>
+        <h2 style={{padding:'5%'}}>+もっと楽しく！</h2>
         <div class='row'>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
