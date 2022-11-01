@@ -87,8 +87,8 @@ const TestProp = () => {
       <div class='col dark'>
         <h2>Lots to Do!</h2>
         <div class='row'>
-          <div class='col' style={{height:'80vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
-            <div class='mini_overlay'>
+          <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
+            <div class='mini_overlay' style={{backgroundColor:'#BC9797'}}>
               <h2>Events</h2>
             </div>
           </div>
