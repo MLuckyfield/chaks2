@@ -87,7 +87,7 @@ const TestProp = () => {
       <div class='col dark'>
         <h2>Lots to Do!</h2>
         <div class='row'>
-          <div class='col' style={{backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
+          <div class='col' style={{height:'80vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <h2>Events</h2>
           </div>
           <div class='col'>
