@@ -4,7 +4,6 @@ import moment from "moment"
 import ReactPlayer from 'react-player/youtube'
 import atmos from '../../atmosphere.jpg'
 import event_game from '../../event_game.jpg'
-import blog_header from './blog_header.jpg'
 
 const TestProp = () => {
 
