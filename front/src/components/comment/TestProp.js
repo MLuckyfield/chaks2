@@ -48,7 +48,7 @@ const TestProp = () => {
         </div>
       </div>
       <div class='col'>
-        <div class='col slim center'>
+        <div class='col slim center border'>
             <h1>他の英会話教室とは一味違う</h1>
         </div>
         <div class='row'>
