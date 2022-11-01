@@ -52,7 +52,7 @@ const TestProp = () => {
             <h1>他の英会話教室とは一味違う</h1>
         </div>
         <div class='row'>
-          <div class='col' style={{width:'100%',padding:'0',marginTop:'1%'}}>
+          <div class='col' style={{width:'100%',padding:'0',margin:'0'}}>
             <div class='col' style={{height:'20%',backgroundColor:'#53cfe9',margin:'0',color:'white',padding:'6%'}}>
               <h2>COMMITMENT</h2>
             </div>
@@ -62,7 +62,7 @@ const TestProp = () => {
               中途半端に勉強するのではなく、「英語力の成長」を、自分に約束すること。</p>
             </div>
           </div>
-          <div class='col'  style={{width:'100%',padding:'0',marginTop:'1%'}}>
+          <div class='col'  style={{width:'100%',padding:'0',margin:'0'}}>
             <div class='col' style={{height:'20%',backgroundColor:'#4484c1',margin:'0',color:'white',padding:'6%'}}>
               <h2>CONSISTENCY</h2>
             </div>
@@ -72,7 +72,7 @@ const TestProp = () => {
               １回で５時間勉強するより、５回１時間勉強する方がよい。</p>
             </div>
           </div>
-          <div class='col' style={{width:'100%',padding:'0',marginTop:'1%'}}>
+          <div class='col' style={{width:'100%',padding:'0',margin:'0'}}>
             <div class='col' style={{height:'20%',backgroundColor:'#f75c70',margin:'0',color:'white',padding:'6%'}}>
               <h2>REWARD</h2>
             </div>
