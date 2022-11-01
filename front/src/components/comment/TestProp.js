@@ -10,7 +10,7 @@ const TestProp = () => {
   return(
     <div>
       <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div class='mini_overlay' style={{height:'100%'}}>CHATSHACK</div>}/>
-      <div id='intro' class='master-row' style={{background:'white',color:'white',paddingTop:'1px'}}>
+      <div id='intro' class='master-row' style={{background:'white',color:'white'}}>
         <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
             <div class='col slim center'>
@@ -56,7 +56,7 @@ const TestProp = () => {
             <div class='col' style={{height:'20%',backgroundColor:'#53cfe9',margin:'0',color:'white',padding:'6%'}}>
               <h2>COMMITMENT</h2>
             </div>
-            <div class='col' style={{height:'30vh',backgroundColor:'#20bada',margin:'0',color:'white',padding:'6%'}}>
+            <div class='col' style={{height:'38vh',backgroundColor:'#20bada',margin:'0',color:'white',padding:'6%'}}>
               最初に、月に何時間勉強したいを決めて、コミット！
               <hr/>
               <p>
@@ -67,7 +67,7 @@ const TestProp = () => {
             <div class='col' style={{height:'20%',backgroundColor:'#4484c1',margin:'0',color:'white',padding:'6%'}}>
               <h2>CONSISTENCY</h2>
             </div>
-            <div class='col' style={{height:'30vh',backgroundColor:'#3722aa',margin:'0',color:'white',padding:'6%'}}>
+            <div class='col' style={{height:'38vh',backgroundColor:'#3722aa',margin:'0',color:'white',padding:'6%'}}>
               自分が好きな時に、自由にご来店、 習慣化を図ろう！
               <hr/>
               <p>
@@ -78,7 +78,7 @@ const TestProp = () => {
             <div class='col' style={{height:'20%',backgroundColor:'#f75c70',margin:'0',color:'white',padding:'6%'}}>
               <h2>REWARD</h2>
             </div>
-            <div class='col' style={{height:'30vh',backgroundColor:'#dc4a5e',margin:'0',color:'white',padding:'6%'}}>
+            <div class='col' style={{height:'38vh',backgroundColor:'#dc4a5e',margin:'0',color:'white',padding:'6%'}}>
               英語力を向上しながら、 ボーナスリワードも ゲット！
               <hr/>
               <p>
@@ -93,9 +93,8 @@ const TestProp = () => {
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
               <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center'}}>
-                  <span><h2>EVENTS</h2>
-                    <button class='solid-first cta' onClick={()=>window.location='/events'}>レッスン</button>
-                  </span>
+                  <h2>EVENTS</h2>
+                  <button class='solid-first cta' onClick={()=>window.location='/events'}>レッスン</button>
               </div>
             </div>
           </div>
