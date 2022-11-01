@@ -3,7 +3,8 @@
   margin-bottom: 5%;
 }
 .ytp-title,.ytp-show-cards-title,.ytp-watermark{
-  display: none;
+  display: none !important;
+  visibility: hidden !important;
 }
 .plan {
   display: inline-flex;
