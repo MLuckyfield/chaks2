@@ -371,7 +371,6 @@ const Front = ()=>{
                       *6pm-7pm HAPPY HOUR (クラフトビールが150円割)<br/>
                       *月曜日は休みでございます<br/>
                       *日曜日は１3時からでございます
-                      <button class='solid-first cta' onClick={()=>window.location='/products'}>レッスン</button>
                   </div>
                 <div class='row'><p/></div>
               </div>
