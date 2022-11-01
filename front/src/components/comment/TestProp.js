@@ -88,7 +88,9 @@ const TestProp = () => {
         <h2>Lots to Do!</h2>
         <div class='row'>
           <div class='col' style={{height:'80vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
-            <h2>Events</h2>
+            <div class='mini_overlay'>
+              <h2>Events</h2>
+            </div>
           </div>
           <div class='col'>
             <h2>Guided Course</h2>
