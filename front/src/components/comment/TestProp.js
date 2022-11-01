@@ -9,7 +9,7 @@ const TestProp = () => {
 
   return(
     <div>
-      <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} />
+      <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div class='mini_overlay' style={{height:'100%'}}></div>}/>
       <div id='intro' class='master-row' style={{background:'white',color:'white',paddingTop:'1px'}}>
         <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
@@ -91,14 +91,14 @@ const TestProp = () => {
         <h2>LOTS TO DO</h2>
         <div class='row'>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
-            <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+            <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
               <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center'}}>
                   <h2>EVENTS</h2>
               </div>
             </div>
           </div>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
-            <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+            <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
               <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center'}}>
                   <h2>GUIDED COURSE</h2>
               </div>
