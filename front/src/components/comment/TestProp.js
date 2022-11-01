@@ -4,6 +4,7 @@ import moment from "moment"
 import ReactPlayer from 'react-player/youtube'
 import atmos from '../../atmosphere.jpg'
 import event_game from '../../event_game.jpg'
+import blog_header from './blog_header.jpg'
 
 const TestProp = () => {
 
@@ -97,7 +98,7 @@ const TestProp = () => {
               </div>
             </div>
           </div>
-          <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
+          <div class='col' style={{height:'50vh',backgroundImage: 'url('+blog_header+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
               <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                   <h2>GUIDED COURSE</h2>
