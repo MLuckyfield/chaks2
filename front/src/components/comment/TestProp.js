@@ -52,32 +52,35 @@ const TestProp = () => {
             <h1>他の英会話教室とは一味違う</h1>
         </div>
         <div class='row'>
-          <div class='col' style={{width:'100%',padding:'0',margin:'0'}}>
+          <div class='col' style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
             <div class='col' style={{height:'20%',backgroundColor:'#53cfe9',margin:'0',color:'white',padding:'6%'}}>
               <h2>COMMITMENT</h2>
             </div>
             <div class='col' style={{height:'80%',backgroundColor:'#20bada',margin:'0',color:'white',padding:'6%'}}>
               最初に、月に何時間勉強したいを決めて、コミット！
+              <hr>
               <p>
               中途半端に勉強するのではなく、「英語力の成長」を、自分に約束すること。</p>
             </div>
           </div>
-          <div class='col'  style={{width:'100%',padding:'0',margin:'0'}}>
+          <div class='col'  style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
             <div class='col' style={{height:'20%',backgroundColor:'#4484c1',margin:'0',color:'white',padding:'6%'}}>
               <h2>CONSISTENCY</h2>
             </div>
             <div class='col' style={{height:'80%',backgroundColor:'#3722aa',margin:'0',color:'white',padding:'6%'}}>
               自分が好きな時に、自由にご来店、 習慣化を図ろう！
+              <hr>
               <p>
               １回で５時間勉強するより、５回１時間勉強する方がよい。</p>
             </div>
           </div>
-          <div class='col' style={{width:'100%',padding:'0',margin:'0'}}>
+          <div class='col' style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
             <div class='col' style={{height:'20%',backgroundColor:'#f75c70',margin:'0',color:'white',padding:'6%'}}>
               <h2>REWARD</h2>
             </div>
             <div class='col' style={{height:'80%',backgroundColor:'#dc4a5e',margin:'0',color:'white',padding:'6%'}}>
               英語力を向上しながら、 ボーナスリワードも ゲット！
+              <hr>
               <p>
               モティベーションを下げないように、リワードをもらって楽しく勉強を進める。</p>
             </div>
@@ -85,19 +88,19 @@ const TestProp = () => {
         </div>
       </div>
       <div class='col dark'>
-        <h2>Lots to Do!</h2>
+        <h2>LOTS TO DO</h2>
         <div class='row'>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center'}}>
               <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center'}}>
-                  <h2>Events</h2>
+                  <h2>EVENTS</h2>
               </div>
             </div>
           </div>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center'}}>
               <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center'}}>
-                  <h2>Guided Course</h2>
+                  <h2>GUIDED COURSE</h2>
               </div>
             </div>
           </div>
