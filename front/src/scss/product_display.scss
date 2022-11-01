@@ -2,15 +2,7 @@
   text-align: center;
   margin-bottom: 5%;
 }
-.ytp-title,.ytp-show-cards-title,.ytp-watermark{
-  display: none !important;
-  visibility: hidden !important;
-}
-.ytp-large-play-button{
-  width:'100%';
-  height:'100%';
-  background-color: rgba(0,0,0,0.5);
-}
+
 .plan {
   display: inline-flex;
   margin: 10px 1%;
@@ -193,4 +185,13 @@
 
 .ultimite .price {
   background: #DD4B5E;
+}
+.ytp-title,.ytp-show-cards-title,.ytp-watermark{
+  display: none !important;
+  visibility: hidden !important;
+}
+.ytp-large-play-button{
+  width:'100%';
+  height:'100%';
+  background-color: rgba(0,0,0,0.5);
 }
