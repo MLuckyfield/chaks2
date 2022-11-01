@@ -92,6 +92,7 @@ const TestProp = () => {
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
               <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                   <h2>EVENTS</h2>
+                  <span style={{height:'40px',margin:'5%',textAlign:'center'}}>国際交流で友達作りながら、先生なしで英会話を楽しめる</span>
                   <button class='solid-first cta' style={{margin:'5%'}} onClick={()=>window.location='/events'}>レッスン</button>
               </div>
             </div>
@@ -101,6 +102,7 @@ const TestProp = () => {
               <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                   <h2>GUIDED COURSE</h2>
                   <span style={{height:'40px',margin:'5%',textAlign:'center'}}>文法、イディオム、７０以上のコースで勉強可能</span>
+                  <span style={{height:'40px',margin:'5%',textAlign:'center'}}></span>
               </div>
             </div>
           </div>
