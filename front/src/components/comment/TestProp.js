@@ -12,7 +12,7 @@ const TestProp = () => {
       <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} />
       <div id='intro' class='master-row' style={{background:'white',color:'white',paddingTop:'1px'}}>
         <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
-            <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%'}}>
+            <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
             <div class='col slim center'>
                 <h1>他の英会話教室とは一味違う</h1>
             </div>
@@ -52,7 +52,7 @@ const TestProp = () => {
             <h1>他の英会話教室とは一味違う</h1>
         </div>
         <div class='row'>
-          <div class='col'  style={{width:'100%',padding:'0',marginTop:'1%'}}>
+          <div class='col' style={{width:'100%',padding:'0',marginTop:'1%'}}>
             <div class='col' style={{height:'20%',backgroundColor:'#53cfe9',margin:'0',color:'white',padding:'6%'}}>
               <h2>COMMITMENT</h2>
             </div>
@@ -89,12 +89,16 @@ const TestProp = () => {
         <div class='row'>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <h2>Events</h2>
+              <div style={{border:'1px solid white'}}>
+                  <h2>Events</h2>
+              </div>
             </div>
           </div>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <h2>Guided Course</h2>
+              <div style={{border:'1px solid white'}}>
+                  <h2>Guided Course</h2>
+              </div>
             </div>
           </div>
         </div>
