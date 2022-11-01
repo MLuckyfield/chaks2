@@ -9,7 +9,7 @@ const TestProp = () => {
 
   return(
     <div>
-      <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={false} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div class='mini_overlay' style={{height:'100%'}}>CHATSHACK</div>}/>
+      <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={false} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div class='mini_overlay' style={{height:'500px',width:'500px',zIndex:'10'}}>CHATSHACK</div>}/>
       <div id='intro' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
         <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
@@ -94,7 +94,7 @@ const TestProp = () => {
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
               <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                   <h2>EVENTS</h2>
-                  <button class='solid-first cta' onClick={()=>window.location='/events'}>レッスン</button>
+                  <button class='solid-first cta' style={{margin:'5%'}} onClick={()=>window.location='/events'}>レッスン</button>
               </div>
             </div>
           </div>
