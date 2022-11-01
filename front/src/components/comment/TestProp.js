@@ -2,7 +2,8 @@ import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 import ReactPlayer from 'react-player/youtube'
-import party from '../../atmosphere.jpg'
+import atmos from '../../atmosphere.jpg'
+import event_game from '../../event_game.jpg'
 
 const TestProp = () => {
 
@@ -10,7 +11,7 @@ const TestProp = () => {
     <div>
       <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} />
       <div id='intro' class='master-row' style={{background:'white',color:'white',paddingTop:'1px'}}>
-        <div class='col' style={{backgroundImage: 'url('+party+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
+        <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)'}}>
             <div class='col slim center'>
                 <h1>他の英会話教室とは一味違う</h1>
@@ -86,7 +87,7 @@ const TestProp = () => {
       <div class='col dark'>
         <h2>Lots to Do!</h2>
         <div class='row'>
-          <div class='col'>
+          <div class='col' style={{backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <h2>Events</h2>
           </div>
           <div class='col'>
