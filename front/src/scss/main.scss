@@ -14,9 +14,9 @@ body{
   scroll-behavior: smooth
 }
 .ytp-title{
-  display: none !important;
+  display: none !important !important;
   visibility: hidden !important;
-  color:red;
+  color:red !important;
 }
 .ytp-large-play-button{
   width:'100%';
