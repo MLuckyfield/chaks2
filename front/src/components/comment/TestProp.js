@@ -14,7 +14,7 @@ const TestProp = () => {
         <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
             <div class='col slim center'>
-                <h1>他の英会話教室とは一味違う</h1>
+                <h1 style={{padding:'5%',border:'1px solid white'}}>他の英会話教室とは一味違う</h1>
             </div>
             <div class='up_row'>
                   <div class='col'>
@@ -88,7 +88,7 @@ const TestProp = () => {
         </div>
       </div>
       <div class='col dark'>
-        <h2>LOTS TO DO</h2>
+        <h2 style={{padding:'5%'}}>LOTS TO DO</h2>
         <div class='row'>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
