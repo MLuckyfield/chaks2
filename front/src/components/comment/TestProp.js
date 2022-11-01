@@ -47,8 +47,8 @@ const TestProp = () => {
             </div>
         </div>
       </div>
-      <div class='col'>
-        <div class='col slim center border'>
+      <div class='col border'>
+        <div class='col slim center'>
             <h1>他の英会話教室とは一味違う</h1>
         </div>
         <div class='row'>
@@ -92,7 +92,7 @@ const TestProp = () => {
         <div class='row'>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
-              <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
+              <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                   <h2>EVENTS</h2>
                   <button class='solid-first cta' style={{margin:'5%'}} onClick={()=>window.location='/events'}>レッスン</button>
               </div>
@@ -100,9 +100,9 @@ const TestProp = () => {
           </div>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
-              <div style={{border:'1px solid white',width:'90%',height:'90%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
+              <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                   <h2>GUIDED COURSE</h2>
-                  <span></span>
+                  <span style={{height:'40px',margin:'5%'}}></span>
               </div>
             </div>
           </div>
