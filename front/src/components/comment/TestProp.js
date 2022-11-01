@@ -9,7 +9,7 @@ const TestProp = () => {
 
   return(
     <div>
-      <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={false} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div class='mini_overlay' style={{height:'500px',width:'500px',zIndex:'10'}}>CHATSHACK</div>}/>
+      <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={false} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div class='mini_overlay' style={{height:'500px',width:'500px',zIndex:'10'}}>hello</div>}/>
       <div id='intro' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
         <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
@@ -25,9 +25,9 @@ const TestProp = () => {
                   <div class='col'>
                       <span class='material-icons'>record_voice_over</span>
                       <h2>英語をたくさん話す</h2>
-                      <div class='col'>他の英会話カフェではレベルが違ったり、人数が多くて英語を話す機会が少ないことがあります。
+                      <div class='col'>
 
-  当店では、グループはレベル別に分けられ、講師陣は全員が平等に英語を喋れるように会話をリードします。</div>
+  グループはレベル別に分けられ、講師陣は全員が平等に英語を喋れるように会話をリードします。</div>
                   </div>
             </div>
             <div class='up_row'>
@@ -39,9 +39,7 @@ const TestProp = () => {
                   <div class='col'>
                       <span class='material-icons'>schedule</span>
                       <h2>予約不要</h2>
-                      <div class='col'>予約は必要ありません。
-
-  英会話をしたいときに来て、いつでも退店できるシステムです。</div>
+                      <div class='col'>自由に英会話をしたいときに来て、いつでも退店できるシステムです。</div>
                   </div>
             </div>
             </div>
@@ -49,7 +47,7 @@ const TestProp = () => {
       </div>
       <div class='col border'>
         <div class='col slim center'>
-            <h1>他の英会話教室とは一味違う</h1>
+            <h1>英語勉強の考え</h1>
         </div>
         <div class='row'>
           <div class='col' style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
@@ -88,7 +86,7 @@ const TestProp = () => {
         </div>
       </div>
       <div class='col dark' style={{width:'100%',margin:'0'}}>
-        <h2 style={{padding:'5%'}}>LOTS TO DO</h2>
+        <h2 style={{padding:'5%'}}>いろいろ楽しめる</h2>
         <div class='row'>
           <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
@@ -102,7 +100,7 @@ const TestProp = () => {
             <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
               <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                   <h2>GUIDED COURSE</h2>
-                  <span style={{height:'40px',margin:'5%'}}></span>
+                  <span style={{height:'40px',margin:'5%'}}>文法、イディオム、７０以上のコースで勉強可能</span>
               </div>
             </div>
           </div>
