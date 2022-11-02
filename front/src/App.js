@@ -55,7 +55,8 @@ import discount from './discount.jpg'
 
 import {QrReader} from 'react-qr-reader'
 import QRCode from 'react-qr-code'
-
+import ReactPlayer from 'react-player/youtube'
+import atmos from '../../atmosphere.jpg'
 const App = () => {
 
     useEffect(() => {
@@ -248,18 +249,12 @@ const Front = ()=>{
       // </div>
       return (
         <div>
-          <Carousel items={items}/>
-              <div id='intro' class='row mid'>
-                <div class='col'>
+              <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={false} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div class='mini_overlay' style={{height:'500px',width:'500px',zIndex:'10'}}>hello</div>}/>
+              <div id='intro' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
+                <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
+                    <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
                     <div class='col slim center'>
-                        <h2>英会話教室よりもカジュアルに、<br/>クオリティーは英会話カフェより高く</h2>
-                    </div>
-                </div>
-              </div>
-              <div id='intro' class='master-row' style={{background:'white'}}>
-                <div class='col'>
-                    <div class='col slim center'>
-                        <h1>他の英会話教室とは一味違う</h1>
+                        <h1 style={{padding:'5%',border:'1px solid white'}}>他の英会話教室とは一味違う</h1>
                     </div>
                     <div class='up_row'>
                           <div class='col'>
@@ -270,9 +265,9 @@ const Front = ()=>{
                           <div class='col'>
                               <span class='material-icons'>record_voice_over</span>
                               <h2>英語をたくさん話す</h2>
-                              <div class='col'>他の英会話カフェではレベルが違ったり、人数が多くて英語を話す機会が少ないことがあります。
+                              <div class='col'>
 
-当店では、グループはレベル別に分けられ、講師陣は全員が平等に英語を喋れるように会話をリードします。</div>
+          グループはレベル別に分けられ、講師陣は全員が平等に英語を喋れるように会話をリードします。</div>
                           </div>
                     </div>
                     <div class='up_row'>
@@ -282,29 +277,52 @@ const Front = ()=>{
                               <div class='col'>レッスン後には先生からのフィードバックがオンラインでもらえます。その日に何を学んだのかいつでも振り返ることができます。</div>
                           </div>
                           <div class='col'>
-                              <span class='material-icons'>sentiment_very_satisfied</span>
-                              <h2>様々な英会話メニュー</h2>
-                              <div class='col'>50以上の英会話トピック、10以上の英会話特訓ゲーム、自由な英会話など様々なメニューがあるので、いつでも英語学習を楽しめます。</div>
-                          </div>
-                    </div>
-                    <div class='up_row'>
-                          <div class='col'>
-                              <span class='material-icons'>sports_bar</span>
-                              <h2>国際交流イベント</h2>
-                              <div class='col'>グループレッスンで英会話力を向上したら、あなたの英会話力を国際交流イベントでテストしてみましょう。</div>
-                          </div>
-                          <div class='col'>
                               <span class='material-icons'>schedule</span>
                               <h2>予約不要</h2>
-                              <div class='col'>予約は必要ありません。
-
-英会話をしたいときに来て、いつでも退店できるシステムです。</div>
+                              <div class='col'>自由に英会話をしたいときに来て、いつでも退店できるシステムです。</div>
                           </div>
                     </div>
-                    <div class='row'>
-                      <div class='col'><button class='solid-first cta' onClick={()=>window.location='/about'}>Mission</button></div>
-                      <div class='col'><button class='solid-first cta' onClick={()=>window.location='/blog/62bbf3e2f048ac1e59f2856a/私達と他の英会話教室の違いについて'}>他社との違い</button></div>
                     </div>
+                </div>
+              </div>
+              <div class='col border'>
+                <div class='col slim center'>
+                    <h1>私達の価値観</h1>
+                </div>
+                <div class='row'>
+                  <div class='col' style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
+                    <div class='col' style={{height:'20%',backgroundColor:'#53cfe9',margin:'0',color:'white',padding:'6%'}}>
+                      <h2>COMMITMENT</h2>
+                    </div>
+                    <div class='col' style={{height:'38vh',backgroundColor:'#20bada',margin:'0',color:'white',padding:'6%'}}>
+                      最初に、月に何時間勉強したいを決めて、コミット！
+                      <hr/>
+                      <p>
+                      中途半端に勉強するのではなく、「英語力の成長」を、自分に約束すること。</p>
+                    </div>
+                  </div>
+                  <div class='col'  style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
+                    <div class='col' style={{height:'20%',backgroundColor:'#4484c1',margin:'0',color:'white',padding:'6%'}}>
+                      <h2>CONSISTENCY</h2>
+                    </div>
+                    <div class='col' style={{height:'38vh',backgroundColor:'#3722aa',margin:'0',color:'white',padding:'6%'}}>
+                      自分が好きな時に、自由にご来店、 習慣化を図ろう！
+                      <hr/>
+                      <p>
+                      １回で５時間勉強するより、５回１時間勉強する方がよい。</p>
+                    </div>
+                  </div>
+                  <div class='col' style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
+                    <div class='col' style={{height:'20%',backgroundColor:'#f75c70',margin:'0',color:'white',padding:'6%'}}>
+                      <h2>REWARD</h2>
+                    </div>
+                    <div class='col' style={{height:'38vh',backgroundColor:'#dc4a5e',margin:'0',color:'white',padding:'6%'}}>
+                      英語力を向上しながら、 ボーナスリワードも ゲット！
+                      <hr/>
+                      <p>
+                      モティベーションを下げないように、リワードをもらって楽しく勉強を進める。</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
@@ -312,9 +330,8 @@ const Front = ()=>{
                     <div class='col' style={{width:'70%'}}>
                             <h1 class='emphasize'>1時間<br/>0円!</h1>
                             <h1>初回無料！</h1>
-                            <span style={{fontSize:'10px'}}>
-                                ※飲食物の注文は別途費用が掛かります<br/>
-                                ※１回のみ利用可能
+                            <span style={{fontSize:'30px',border:'1px solid white',padding:'3%'}}>
+                                気軽に来てください!
                             </span>
                     </div>
                 </div>
@@ -340,39 +357,28 @@ const Front = ()=>{
                   </div>
                   <div class='row'>Google Reviews</div>
               </div>
-              <div id='concept'  class='master-row dark'>
-                <div class='row'><h1 class='col'>CONCEPT</h1></div>
+              <div class='col dark' style={{width:'100%',margin:'0'}}>
+                <h1 style={{padding:'5%'}}>+もっと楽しく！</h1>
                 <div class='row'>
-                  <div class='slim center'>
-                  CHATSHACKは、東京にある英会話カフェ＆英会話バーです。
-当店では英会話は講師がリードし、気になる発音や文法などは１つ１つ説明するようにしています。
-なので、英会話に自信がない人や正しい自然な英語を学びたい人はぜひお越しください！初心者も大歓迎！
+                  <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
+                    <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
+                      <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
+                          <h2>EVENTS</h2>
+                          <span style={{height:'40px',margin:'5%',textAlign:'center'}}>国際交流で友達作りながら、先生なしで英会話を楽しめる</span>
+                          <button class='solid-first cta' style={{margin:'5%'}} onClick={()=>window.location='/events'}>もっと見る</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
+                    <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
+                      <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
+                          <h2>GUIDED COURSE</h2>
+                          <span style={{height:'40px',margin:'5%',textAlign:'center'}}>文法、イディオム、７０以上のコースで勉強可能</span>
+                          <span style={{height:'40px',margin:'5%',textAlign:'center'}}></span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class='row'>
-                    <div class='col slim center border'>
-                    AFTERNOON
-                        <h2>ENGLISH + CAFE</h2>
-                        <p/>雰囲気あるカフェスペースにて、英会話を楽しみましょう！会話は講師陣がリードするので、不安な方でも楽しくご利用いただけます！
-                        <p/>FREE! coffee or tea
-                        <p/>¥1,000/30分
-                        <p/>11AM - 7PM
-                    </div>
-                    <div class='col slim center border'>
-                    EVENING
-                        <h2>ENGLISH + BAR</h2>
-                        <p/>国際色豊かなファストフードや季節のクラフトビールを片手に英会話を楽しみましょう！カフェよりもカジュアルで自由な雰囲気なので、気軽に楽しめます！
-                        <p/>FREE! 1 drink （アルコールを含む, 最大８５０円）
-                        <p/>¥2,500/時間制限なし
-                        <p/>7PM - 10PM (最終入店時間: 9:30PM)
-                    </div>
-                </div>
-                  <div class='col'>
-                      *6pm-7pm HAPPY HOUR (クラフトビールが150円割)<br/>
-                      *月曜日は休みでございます<br/>
-                      *日曜日は１3時からでございます
-                  </div>
-                <div class='row'><p/></div>
               </div>
               {localStorage.getItem('user')?'':(
                 <div id='signup' class='col'>
@@ -532,7 +538,98 @@ const Front = ()=>{
 
     )
     }
-
-
-
+//ORIGINAL WEBSITE
+// <div id='concept'  class='master-row dark'>
+//   <div class='row'><h1 class='col'>CONCEPT</h1></div>
+//   <div class='row'>
+//     <div class='slim center'>
+//     CHATSHACKは、東京にある英会話カフェ＆英会話バーです。
+// 当店では英会話は講師がリードし、気になる発音や文法などは１つ１つ説明するようにしています。
+// なので、英会話に自信がない人や正しい自然な英語を学びたい人はぜひお越しください！初心者も大歓迎！
+//     </div>
+//   </div>
+//   <div class='row'>
+//       <div class='col slim center border'>
+//       AFTERNOON
+//           <h2>ENGLISH + CAFE</h2>
+//           <p/>雰囲気あるカフェスペースにて、英会話を楽しみましょう！会話は講師陣がリードするので、不安な方でも楽しくご利用いただけます！
+//           <p/>FREE! coffee or tea
+//           <p/>¥1,000/30分
+//           <p/>11AM - 7PM
+//       </div>
+//       <div class='col slim center border'>
+//       EVENING
+//           <h2>ENGLISH + BAR</h2>
+//           <p/>国際色豊かなファストフードや季節のクラフトビールを片手に英会話を楽しみましょう！カフェよりもカジュアルで自由な雰囲気なので、気軽に楽しめます！
+//           <p/>FREE! 1 drink （アルコールを含む, 最大８５０円）
+//           <p/>¥2,500/時間制限なし
+//           <p/>7PM - 10PM (最終入店時間: 9:30PM)
+//       </div>
+//   </div>
+//     <div class='col'>
+//         *6pm-7pm HAPPY HOUR (クラフトビールが150円割)<br/>
+//         *月曜日は休みでございます<br/>
+//         *日曜日は１3時からでございます
+//     </div>
+//   <div class='row'><p/></div>
+// </div>
+    // <Carousel items={items}/>
+    //     <div id='intro' class='row mid'>
+    //       <div class='col'>
+    //           <div class='col slim center'>
+    //               <h2>英会話教室よりもカジュアルに、<br/>クオリティーは英会話カフェより高く</h2>
+    //           </div>
+    //       </div>
+    //     </div>
+    //     <div id='intro' class='master-row' style={{background:'white'}}>
+    //       <div class='col'>
+    //           <div class='col slim center'>
+    //               <h1>他の英会話教室とは一味違う</h1>
+    //           </div>
+    //           <div class='up_row'>
+    //                 <div class='col'>
+    //                     <span class='material-icons'>school</span>
+    //                     <h2>しっかり学ぶ</h2>
+    //                     <div class='col'>英会話講師経験のあるネイティブスピーカーがホワイトボードを使って正しい英語を 分かりやすく教えてくれます。</div>
+    //                 </div>
+    //                 <div class='col'>
+    //                     <span class='material-icons'>record_voice_over</span>
+    //                     <h2>英語をたくさん話す</h2>
+    //                     <div class='col'>他の英会話カフェではレベルが違ったり、人数が多くて英語を話す機会が少ないことがあります。
+    //
+    // 当店では、グループはレベル別に分けられ、講師陣は全員が平等に英語を喋れるように会話をリードします。</div>
+    //                 </div>
+    //           </div>
+    //           <div class='up_row'>
+    //                 <div class='col'>
+    //                     <span class='material-icons'>trending_up</span>
+    //                     <h2>成長を振り返る</h2>
+    //                     <div class='col'>レッスン後には先生からのフィードバックがオンラインでもらえます。その日に何を学んだのかいつでも振り返ることができます。</div>
+    //                 </div>
+    //                 <div class='col'>
+    //                     <span class='material-icons'>sentiment_very_satisfied</span>
+    //                     <h2>様々な英会話メニュー</h2>
+    //                     <div class='col'>50以上の英会話トピック、10以上の英会話特訓ゲーム、自由な英会話など様々なメニューがあるので、いつでも英語学習を楽しめます。</div>
+    //                 </div>
+    //           </div>
+    //           <div class='up_row'>
+    //                 <div class='col'>
+    //                     <span class='material-icons'>sports_bar</span>
+    //                     <h2>国際交流イベント</h2>
+    //                     <div class='col'>グループレッスンで英会話力を向上したら、あなたの英会話力を国際交流イベントでテストしてみましょう。</div>
+    //                 </div>
+    //                 <div class='col'>
+    //                     <span class='material-icons'>schedule</span>
+    //                     <h2>予約不要</h2>
+    //                     <div class='col'>予約は必要ありません。
+    //
+    // 英会話をしたいときに来て、いつでも退店できるシステムです。</div>
+    //                 </div>
+    //           </div>
+    //           <div class='row'>
+    //             <div class='col'><button class='solid-first cta' onClick={()=>window.location='/about'}>Mission</button></div>
+    //             <div class='col'><button class='solid-first cta' onClick={()=>window.location='/blog/62bbf3e2f048ac1e59f2856a/私達と他の英会話教室の違いについて'}>他社との違い</button></div>
+    //           </div>
+    //       </div>
+    //     </div>
 export default App;
