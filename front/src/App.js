@@ -124,7 +124,7 @@ const App = () => {
               if(!!result){
                 console.log('found',result)
                 localStorage.setItem('student',result.text)
-                window.location='/student'
+                // window.location='/student'
               }
               if(!!error){
                 console.log('oops',error)

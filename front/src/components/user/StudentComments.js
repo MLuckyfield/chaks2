@@ -21,7 +21,7 @@ const StudentComments = () => {
     socket.on("connect", () => {
       console.log('front socket ready')
     });
-    axios.get('/comment/all', {params:{filter:target._id}})
+    axios.get('/comment/all', {params:{filter:target}})
       .then((res) => {
           setComments(res.data.data.reverse());
         })
@@ -36,8 +36,8 @@ const StudentComments = () => {
       let popup = document.getElementById("teacher_select");
       popup.style.display = 'block';
     }
-    console.log('will send '+JSON.stringify(target._id))
-    axios.get('/user/clock', {params:{filter:target._id,data:status}})
+    console.log('will send '+JSON.stringify(target))
+    axios.get('/user/clock', {params:{filter:target,data:status}})
       .then((res) => {
           // console.log(res.data.data);
           setTarget(res.data.data)
@@ -58,14 +58,14 @@ const StudentComments = () => {
       .catch(error => console.log("error"+error))
   }
   const sendTo=(id)=>{
-    let params = {filter:{_id: id},data:{'$push':{students:target._id}}}
+    let params = {filter:{_id: id},data:{'$push':{students:target}}}
     console.log(id,params)
     axios.post('user/update',params)
       .then((result)=>{
          console.log(result)
          let popup = document.getElementById("teacher_select");
          popup.style.display = 'none';
-         socket.emit('sendstudent',target._id,id)
+         socket.emit('sendstudent',target,id)
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   }
