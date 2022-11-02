@@ -132,6 +132,7 @@ const App = () => {
               if(!!error){
                 console.log('oops',error)
               }
+              
             }} constraints={{facingMode:'environment'}}/>} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/qr-code" access={['user','teacher','manager']} success={()=><QRCode value={localStorage.getItem('user')}/>} fail={()=><Redirect to='/login'/>}/>
       </Router>
