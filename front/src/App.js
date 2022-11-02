@@ -128,7 +128,6 @@ const App = () => {
                   localStorage.setItem('student',user)
                   window.location='/student'
                 })
-
               }
               if(!!error){
                 console.log('oops',error)
