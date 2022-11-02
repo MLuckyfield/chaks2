@@ -56,7 +56,7 @@ import discount from './discount.jpg'
 import {QrReader} from 'react-qr-reader'
 import QRCode from 'react-qr-code'
 import ReactPlayer from 'react-player/youtube'
-import atmos from '../../atmosphere.jpg'
+import atmos from './atmosphere.jpg'
 const App = () => {
 
     useEffect(() => {
