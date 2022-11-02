@@ -330,7 +330,7 @@ const Front = ()=>{
                     <div class='col' style={{width:'70%'}}>
                             <h1 class='emphasize'>1時間<br/>0円!</h1>
                             <h1>初回無料！</h1>
-                            <span style={{fontSize:'30px',border:'1px solid white',padding:'3%'}}>
+                            <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',}}>
                                 気軽に来てください!
                             </span>
                     </div>
@@ -369,7 +369,7 @@ const Front = ()=>{
                       </div>
                     </div>
                   </div>
-                  <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
+                  <div class='col' style={{height:'50vh',backgroundImage: 'url('+blog_header+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
                     <div class='mini_overlay' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
                       <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                           <h2>GUIDED COURSE</h2>
