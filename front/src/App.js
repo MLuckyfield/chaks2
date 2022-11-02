@@ -364,7 +364,7 @@ const Front = ()=>{
                     <div class='mini_overlay slim' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
                       <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                           <h2>EVENTS</h2>
-                          <span style={{height:'40px',margin:'5%',textAlign:'center',padding:'0 5%'}}>国際交流で友達を作って、リアルな英会話も楽しめる</span>
+                          <span style={{height:'40px',margin:'5%',textAlign:'center'}}>国際交流で友達を作って、リアルな英会話も楽しめる</span>
                           <button class='solid-first cta' style={{margin:'5%'}} onClick={()=>window.location='/events'}>もっと見る</button>
                       </div>
                     </div>
@@ -373,7 +373,7 @@ const Front = ()=>{
                     <div class='mini_overlay slim' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
                       <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                           <h2>GUIDED COURSE</h2>
-                          <span style={{height:'40px',margin:'5%',textAlign:'center',padding:'0 5%'}}>７０個以上の文法やイディオム、１００個以上のトピックでの英語学習が可能</span>
+                          <span style={{height:'40px',margin:'5%',textAlign:'center'}}>７０個以上の文法やイディオム、１００個以上のトピックでの英語学習が可能</span>
                           <span style={{height:'40px',margin:'5%',textAlign:'center'}}></span>
                       </div>
                     </div>
