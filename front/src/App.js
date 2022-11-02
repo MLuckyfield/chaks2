@@ -123,8 +123,7 @@ const App = () => {
             <SecureRoute path="/qr-reader" access={['manager']} success={()=><QrReader ViewFinder={()=>{return <div class='qr_viewfinder'></div>}} scanDelay={1000} onResult={(result,error)=>{
               if(!!result){
                 console.log('found',result)
-                localStorage.setItem('student',result.text)
-                
+                localStorage.setItem('student',result.text)                
               }
               if(!!error){
                 console.log('oops',error)
