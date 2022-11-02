@@ -294,7 +294,7 @@ const Front = ()=>{
                     <div class='col' style={{height:'20%',backgroundColor:'#53cfe9',margin:'0',color:'white',padding:'6%'}}>
                       <h2>COMMITMENT</h2>
                     </div>
-                    <div class='col' style={{height:'38vh',backgroundColor:'#20bada',margin:'0',color:'white',padding:'6%'}}>
+                    <div class='col' style={{height:'38vh',backgroundColor:'#20bada',margin:'0',color:'white',padding:'6% 15%'}}>
                       最初に、月に何時間勉強したいを決めて、コミット！
                       <hr/>
                       <p>
@@ -305,7 +305,7 @@ const Front = ()=>{
                     <div class='col' style={{height:'20%',backgroundColor:'#4484c1',margin:'0',color:'white',padding:'6%'}}>
                       <h2>CONSISTENCY</h2>
                     </div>
-                    <div class='col' style={{height:'38vh',backgroundColor:'#3722aa',margin:'0',color:'white',padding:'6%'}}>
+                    <div class='col' style={{height:'38vh',backgroundColor:'#3722aa',margin:'0',color:'white',padding:'6% 15%'}}>
                       自分が好きな時に、自由にご来店、 習慣化を図ろう！
                       <hr/>
                       <p>
@@ -316,7 +316,7 @@ const Front = ()=>{
                     <div class='col' style={{height:'20%',backgroundColor:'#f75c70',margin:'0',color:'white',padding:'6%'}}>
                       <h2>REWARD</h2>
                     </div>
-                    <div class='col' style={{height:'38vh',backgroundColor:'#dc4a5e',margin:'0',color:'white',padding:'6%'}}>
+                    <div class='col' style={{height:'38vh',backgroundColor:'#dc4a5e',margin:'0',color:'white',padding:'6% 15%'}}>
                       英語力を向上しながら、 ボーナスリワードも ゲット！
                       <hr/>
                       <p>
