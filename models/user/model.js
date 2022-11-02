@@ -45,6 +45,9 @@ const User = mongoose.model('User', new Schema({
     default:'Standard',
     enum:['Standard','Gold','Platinum','Diamond']
   },
+  monthly_hours:{
+    type:Number
+  },
   plan:{
     type:String,
     default:'Standard',

@@ -14,8 +14,8 @@ const StudentComments = () => {
   const [target, setTarget]=useState(()=>{
     if (localStorage.getItem('student')){
       setSource('student')
-      return JSON.parse(localStorage.getItem('student'))
-    }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
+      return localStorage.getItem('student')
+    }else{setSource('user');return localStorage.getItem('user')}
   })
   useEffect(() => {
     socket.on("connect", () => {

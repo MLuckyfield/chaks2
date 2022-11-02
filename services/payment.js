@@ -74,7 +74,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 purchased = {$push:{points:units}} //may need to multiple by quantity checkout.lineites
                 console.log('add sub_points',units,session.customer)
                 User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{}).catch((err)=>{})
-                purchased={'$set':{stripe:{customer_id:session.customer}}}
+                purchased={'$set':{monthly_hours:checkout.line_items.data[0].quantity,stripe:{customer_id:session.customer}}}
                 updateUser(identifier,purchased,res)
               }
               console.log(session.metadata.order)
@@ -121,6 +121,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
         case 'customer.subscription.deleted':
           purchased = {
               $set:{
+                monthly_hours:0,
                 plan:'standard',
                 stripe:{
                   plan_status:'cancelled',
