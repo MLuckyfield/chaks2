@@ -257,7 +257,7 @@ const { Server } = require("socket.io");
     router.get('/all', auth.auth, async (req, res) => {
       // console.log('running user/all',req.query)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
-      console.log('data retrieved:',data)
+      // console.log('data retrieved:',data)
       return res.status(201).json({
         data: data,
         message: 'Job saved',
@@ -394,16 +394,25 @@ const { Server } = require("socket.io");
         email.sendDefault('BOT|Monthly Rewards','Gold: '+gold+', Platinum: '+platinum+', Diamond: '+diamond)
       })
     })
-    // cron.schedule('* * * * *',()=>{
-    //   console.log('updating keiko')
-    //   let update= {'$set':{
-    //     points:[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}],
-    //     stripe:{
-    //       customer_id:"cus_Mgk3uWbJps6Bhr"
-    //     }
-    //   }}
-    //   User.findByIdAndUpdate('632bc50839e1aa368cd88d25',update).then(()=>{console.log('done')})
-    // })
+
+    // //
+    cron.schedule('*/3 * * * *',()=>{
+      User.find().then((users)=>{
+        users.forEach((user, i) => {
+          console.log(user.first,user.last,user.stripe.plan_start_date,moment(user.stripe.plan_start_date),moment(user.stripe.plan_start_date).format('dd'),new Date().getDate())
+        });
+
+      })
+      // console.log('updating keiko')
+      // let update= {'$set':{
+      //   points:[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}],
+      //   stripe:{
+      //     customer_id:"cus_Mgk3uWbJps6Bhr"
+      //   }
+      // }}
+      // User.findByIdAndUpdate('632bc50839e1aa368cd88d25',update).then(()=>{console.log('done')})
+    })
+
     //expiry check for lessons
     cron.schedule('0 22 * * *',()=>{
       console.log('starting lesson expiry...')
