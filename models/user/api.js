@@ -395,17 +395,20 @@ const { Server } = require("socket.io");
       })
     })
 
-    // //
+    // add minutes
     cron.schedule('0 22 * * *',()=>{
       User.find().then((users)=>{
         users.forEach((user, i) => {
             if(user.stripe.plan_start_date && user.stripe.plan_status=='active'){
-              let units = []
-              for(let i = 0;i<user.monthly_hours*2;i++){
-                units.push({value:30})
+              if(moment(user.stripe.plan_start_date).format('DD')==new Date().getDate()){
+                let units = []
+                for(let i = 0;i<user.monthly_hours*2;i++){
+                  units.push({value:30})
               }
-              User.findByIdAndUpdate(user._id,{'$push':{points:units}},{new:true})
-              // console.log(user.first,user.last,user.monthly_hours,units.length,moment(user.stripe.plan_start_date).format('DD')==new Date().getDate())
+                // User.findByIdAndUpdate(user._id,{'$push':{points:units}},{new:true})
+                console.log(user.first,user.last,user.monthly_hours,units.length,moment(user.stripe.plan_start_date).format('DD')==new Date().getDate())
+
+              }
 
             }
         });
