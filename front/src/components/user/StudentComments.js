@@ -14,14 +14,14 @@ const StudentComments = () => {
   const [target, setTarget]=useState(()=>{
     if (localStorage.getItem('student')){
       setSource('student')
-      return localStorage.getItem('student')
-    }else{setSource('user');return localStorage.getItem('user')}
+      return JSON.parse(localStorage.getItem('student'))
+    }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
   })
   useEffect(() => {
     socket.on("connect", () => {
       console.log('front socket ready')
     });
-    axios.get('/comment/all', {params:{filter:target}})
+    axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data.reverse());
         })
@@ -36,8 +36,8 @@ const StudentComments = () => {
       let popup = document.getElementById("teacher_select");
       popup.style.display = 'block';
     }
-    console.log('will send '+JSON.stringify(target))
-    axios.get('/user/clock', {params:{filter:target,data:status}})
+    // console.log('will send '+JSON.stringify(target))
+    axios.get('/user/clock', {params:{filter:target._id,data:status}})
       .then((res) => {
           // console.log(res.data.data);
           setTarget(res.data.data)
@@ -58,7 +58,7 @@ const StudentComments = () => {
       .catch(error => console.log("error"+error))
   }
   const sendTo=(id)=>{
-    let params = {filter:{_id: id},data:{'$push':{students:target}}}
+    let params = {filter:{_id: id},data:{'$push':{students:target._id}}}
     console.log(id,params)
     axios.post('user/update',params)
       .then((result)=>{
