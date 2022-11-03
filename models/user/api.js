@@ -399,7 +399,10 @@ const { Server } = require("socket.io");
     cron.schedule('*/3 * * * *',()=>{
       User.find().then((users)=>{
         users.forEach((user, i) => {
-          console.log(user.first,user.last,user.stripe.plan_start_date,moment(user.stripe.plan_start_date),moment(user.stripe.plan_start_date).format('DD'),new Date().getDate(),moment(user.stripe.plan_start_date).format('DD')==new Date().getDate())
+            if(user.stripe.plan_start_date){
+              console.log(user.first,user.last,user.stripe.plan_start_date,moment(user.stripe.plan_start_date),moment(user.stripe.plan_start_date).format('DD'),new Date().getDate(),moment(user.stripe.plan_start_date).format('DD')==new Date().getDate())
+              
+            }
         });
 
       })
