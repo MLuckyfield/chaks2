@@ -125,7 +125,7 @@ const App = () => {
                 console.log('found',result)
                 axios.get('user/all',{params:{filter:{_id:result.text}}}).then((user)=>{
                   console.log('will load',user)
-                  localStorage.setItem('student',user)
+                  localStorage.setItem('student',JSON.stringify(user))
                   window.location='/student'
                 }).catch((err)=>{
                   console.log('err',err)
