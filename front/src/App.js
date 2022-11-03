@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Redirect } from 'react-router'
 import Carousel from './components/utilities/carousel'
 import MiniCarousel from './components/utilities/mini_carousel'
-import axios from 'axios';
+import {axios} from "./utilities/axios";
 import Product_Display from './components/utilities/product_display'
 
 //import components
