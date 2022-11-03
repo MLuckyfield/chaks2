@@ -400,8 +400,12 @@ const { Server } = require("socket.io");
       User.find().then((users)=>{
         users.forEach((user, i) => {
             if(user.stripe.plan_start_date){
-              console.log(user.first,user.last,user.stripe.plan_start_date,moment(user.stripe.plan_start_date),moment(user.stripe.plan_start_date).format('DD'),new Date().getDate(),moment(user.stripe.plan_start_date).format('DD')==new Date().getDate())
-              
+              let units = []
+              for(let i = 0;i<user.monthly_hours*2;i++){
+                units.push({value:30})
+              }
+              console.log(user.first,user.last,user.monthly_hours,units.length,moment(user.stripe.plan_start_date).format('DD')==new Date().getDate())
+
             }
         });
 
