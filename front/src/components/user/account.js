@@ -114,7 +114,7 @@ const Account = () => {
             <li>Platinum: <span>500円</span>ドリンク１杯<span>無料</span> ＋ 全メニュー <span>5%</span>オフ</li>
             <li>Gold: <span>500円</span> ドリンク１杯<span>無料</span></li>
           </ul>
-          <QRCode value={localStorage.getItem('user')}/>
+          <QRCode value={JSON.parse(localStorage.getItem('user'))._id}/>
       </div>
 )
 }
