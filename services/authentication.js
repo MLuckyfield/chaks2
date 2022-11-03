@@ -96,6 +96,7 @@ const permission = (requirements)=>{
   }
 }
 const reject = (res,msg)=>{
+  console.log('auth failed',msg)
   return res.status(403).json({
     message: msg,
     success: false
