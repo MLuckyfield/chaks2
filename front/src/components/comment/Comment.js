@@ -68,7 +68,7 @@ const Comment = () => {
                         <br/></span>:'No profile added! Click here to add'}
                       </div>
                       <div class='col'>
-                        Fluency - UNDER DEVELOPMENT DO NOT USE
+                        Fluency
                         Speed
                         <select class='form-control' ref={speed}>
                           <option value="5">slowest</option>
