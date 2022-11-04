@@ -100,6 +100,7 @@ const App = () => {
         <Navbar/>
         <div class='nav-filler'>
         </div>
+          <Route exact path="/ads" component={Front}/>
           <Route exact path="/" component={Front}/>
           <Route path="/events" component={EventList}/>
           <Route path="/campaigns" component={CampaignPage}/>
