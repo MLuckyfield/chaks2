@@ -58,7 +58,7 @@ const Comment = () => {
   return(
       <div class='row'>
         <form class='login' onSubmit={onSubmit} style={{width:'80%'}}>
-                <h2>New Comment for {student.first} ({student.points.length}minutes left)</h2>
+                <h2>New Comment for {student.first} ({student.points?student.points.length:'0'}minutes left)</h2>
                     <div class='row'>
                       <div class='col' style={{background: '1px solid black'}} onClick={()=>{window.location='/update_profile'}}>
                         {student.profile?<span><b>Likes:</b> {student.profile.likes}<br/>
