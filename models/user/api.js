@@ -396,7 +396,7 @@ const { Server } = require("socket.io");
     })
 
     // add minutes
-    cron.schedule('0 22 * * *',()=>{
+    cron.schedule('0 21 * * *',()=>{
       User.find().then((users)=>{
         users.forEach((user, i) => {
             if(user.stripe.plan_start_date && user.stripe.plan_status=='active'){
