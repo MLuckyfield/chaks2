@@ -99,17 +99,10 @@ const StaffTable = ()=>{
       .then((res) => {
           console.log(res.data.data);
           let change = res.data.data
-          console.log('new',change)
-          console.log('before',students)
-          let update = students
-          update.forEach((item, i) => {
-            console.log(item._id,change._id,item._id==change._id)
-            if(item._id==change._id){
-              item.inClass=change.inClass
-            }
-          });
-          console.log('after',update)
-          setStudents(update)
+          setStudents(students.map(x=>{
+            if(x._id!==res.data.data._id){console.log('no match');return x}
+            return {...x,inClass:res.data.data.inClass}
+          }))
           localStorage.setItem(source,JSON.stringify(res.data.data))
           // if(status==true){setPayable(null)}
           // else{setPayable(res.data.data.statistics[0])}
