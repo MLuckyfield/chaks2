@@ -213,6 +213,7 @@ const { Server } = require("socket.io");
                     let end = moment(result.statistics[0].end)
                     const time = end.diff(start, 'minutes')
                     let billable = time-10
+                    console.log('billing',time,time-10,billable/30,Math.ceil(billable/30))
                     // let billable = 0
                     // if(time-40>0){billable=time-40}
                     billable = (Math.ceil(billable/30))//+1
