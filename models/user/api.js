@@ -212,9 +212,10 @@ const { Server } = require("socket.io");
                     let start =moment(result.statistics[0].start)
                     let end = moment(result.statistics[0].end)
                     const time = end.diff(start, 'minutes')
-                    let billable = 0
-                    if(time-40>0){billable=time-40}
-                    billable = (Math.round(billable/30))+1
+                    let billable = time-10
+                    // let billable = 0
+                    // if(time-40>0){billable=time-40}
+                    billable = (Math.ceil(billable/30))//+1
                     let unpaid=0
                     let temp = result.points.sort((a,b)=>{a.createdAt-b.createdAt})
                     result.points.forEach((item, i) => {
@@ -394,11 +395,11 @@ const { Server } = require("socket.io");
         email.sendDefault('BOT|Monthly Rewards','Gold: '+gold+', Platinum: '+platinum+', Diamond: '+diamond)
       })
     })
-    //
+    //manual point insertion
       // cron.schedule('* * * * *',()=>{
-      //   console.log('running kanako update')
+      //   console.log('running point update')
       //   let update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
-      //   User.findOneAndUpdate({_id:'6312ff0f26518c5fbae0fbf8'},{'$push':{points:update}}).then(()=>console.log('uupdate done for kanako'))
+      //   User.findOneAndUpdate({_id:'6312ff0f26518c5fbae0fbf8'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
       // })
     // add minutes
     cron.schedule('0 21 * * *',()=>{
