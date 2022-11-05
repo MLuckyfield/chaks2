@@ -395,7 +395,7 @@ const { Server } = require("socket.io");
       })
     })
     //
-    cro.schedule('* * * * *',()=>{
+    cron.schedule('* * * * *',()=>{
       let update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
       User.findOneAndUpdate({_id:'6312ff0f26518c5fbae0fbf8'},{'$push':{points:update}})
     })
