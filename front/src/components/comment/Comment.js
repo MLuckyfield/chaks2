@@ -58,7 +58,7 @@ const Comment = () => {
   return(
       <div class='row'>
         <form class='login' onSubmit={onSubmit} style={{width:'80%'}}>
-                <h2>New Comment for {student.first}</h2>
+                <h2>New Comment for {student.first} ({student.points.length}minutes left)</h2>
                     <div class='row'>
                       <div class='col' style={{background: '1px solid black'}} onClick={()=>{window.location='/update_profile'}}>
                         {student.profile?<span><b>Likes:</b> {student.profile.likes}<br/>
@@ -67,8 +67,8 @@ const Comment = () => {
                         <b>Level:</b> {student.profile.level}<br/>
                         <br/></span>:'No profile added! Click here to add'}
                       </div>
-                      <div class='col'>
-                        Fluency
+                      <div class='col border'>
+                        <h2>Fluency</h2>
                         Speed
                         <select class='form-control' ref={speed}>
                           <option value="5">slowest</option>
