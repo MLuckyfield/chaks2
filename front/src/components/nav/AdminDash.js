@@ -105,7 +105,7 @@ const StaffTable = ()=>{
           update.forEach((item, i) => {
             console.log(item._id,change._id,item._id==change._id)
             if(item._id==change._id){
-              update[i]=change
+              item.inClass=change.inClass
             }
           });
           console.log('after',update)
