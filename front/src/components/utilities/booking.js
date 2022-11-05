@@ -52,38 +52,16 @@ const Booking = ()=>{
     }else{
       setDay(e)
       console.log(moment(e).startOf('day'))
-             let schedule = [{
-             slot: moment(e).startOf('day').add(7,'hours'),
-             teacher:'Canadian',
-             level:'中級-上級'
+             let schedule = [
+           {
+             slot: moment(e).startOf('day').add(12,'hours'),
            },
            {
-             slot: moment(e).startOf('day').add(7,'hours'),
-             teacher:'Japanese',
-             level:'初級-中級'
-           },
-           {
-             slot: moment(e).startOf('day').add(8,'hours'),
-             teacher:'Canadian',
-             level:'中級-上級'
+             slot: moment(e).startOf('day').add(13,'hours'),
 
            },
            {
-             slot: moment(e).startOf('day').add(8,'hours'),
-             teacher:'Japanese',
-             level:'初級-中級'
-
-           },
-           {
-             slot: moment(e).startOf('day').add(9,'hours'),
-             teacher:'Canadian',
-             level:'中級-上級'
-
-           },
-           {
-             slot: moment(e).startOf('day').add(9,'hours'),
-             teacher:'Japanese',
-             level:'初級-中級'
+             slot: moment(e).startOf('day').add(14,'hours'),
            }
                ]
              if(bookings!=null){
@@ -100,13 +78,13 @@ const Booking = ()=>{
                      // console.log('schedule teacher'+slot.teacher)
                      // console.log('done...')
 
-                     if (x==z){
-                       if(booking.teacher==slot.teacher){
-                         console.log('removing')
-                         console.log(slot)
-                         schedule.splice(y,1)
-                       }
-                     }
+                     // if (x==z){
+                     //   if(booking.teacher==slot.teacher){
+                     //     console.log('removing')
+                     //     console.log(slot)
+                     //     schedule.splice(y,1)
+                     //   }
+                     // }
                  });
              });}
              console.log(schedule)
@@ -162,7 +140,7 @@ const Booking = ()=>{
                               <select class='form-control' onChange={()=>{updateAppointment(active.current.value)}} ref={active}>
                                 <option class='col slim feedback clickable'>予約可能枠 ({available.length})</option>
                                 {available?available.map(function(item,i){
-                                  return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} | TEACHER: {item.teacher} ({item.level})</option>
+                                  return <option class='col slim feedback clickable' value={i}>{moment(item.slot).format('MMMM Do, h:mm a')} </option>
                                 }):''}
                               </select>
                             </div>
@@ -174,7 +152,7 @@ const Booking = ()=>{
                                 }):''}
                               </select>
                             </div>
-                            {disable?'Loading, please wait...':<button type='submit' class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } {appointment.teacher}</span>:''}</button>}
+                            {disable?'Loading, please wait...':<button type='submit' class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } </span>:''}</button>}
                         </form>
                       :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
