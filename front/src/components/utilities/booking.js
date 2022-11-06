@@ -157,10 +157,10 @@ const Booking = ()=>{
                                           }):''}
                                         </select>
                                       </div>
-                                      <div class="form-group border">
-                                        {appointment?<span>Every {moment(appointment.slot).format('dddd, h:mm a') } </span>:''}
+                                      <div class="form-group border" style={{paddingLeft:'7%',color:'white',background:'#006EDC'}}>
+                                        {appointment?<span>Every {moment(appointment.slot).format('dddd, h:mm a')}</span>:''}
                                       </div>
-                                      {disable?'Loading, please wait...':<button type='submit' class="solid-first">予約 {appointment?<span>{moment(appointment.slot).format('MMMM Do, h:mm a') } </span>:''}</button>}
+                                      {disable?'Loading, please wait...':<button type='submit' class="solid-first">予約</button>}
                                   </form>
                               </span>
                             :()=>{setMsg('No Lessons Available',false);return ''}:'日付を指定してください！'}
