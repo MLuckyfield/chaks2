@@ -398,11 +398,11 @@ const { Server } = require("socket.io");
       })
     })
     //manual point insertion
-      cron.schedule('*/15 * * * *',()=>{
-        console.log('running point update')
-        let update=[{value:30},{value:30},{value:30},{value:30}]
-        User.findOneAndUpdate({_id:'63673aed57b02a5be9c72b06'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
-      })
+      // cron.schedule('*/15 * * * *',()=>{
+      //   console.log('running point update')
+      //   let update=[{value:30},{value:30},{value:30},{value:30}]
+      //   User.findOneAndUpdate({_id:'63673aed57b02a5be9c72b06'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
+      // })
     // add minutes
     cron.schedule('0 21 * * *',()=>{
       User.find().then((users)=>{
