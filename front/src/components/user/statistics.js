@@ -177,7 +177,7 @@ const AccordionItem=({ title, content,incept, id,goals, updateGoals})=>{
   useEffect(()=>{
   },[])
 return (
-    <div class='accordion_item'>
+    <div class='accordion_item'>{user?console.log(user.plan):console.log('no plans')}
       {incept?
         <div class='accordion-title clickable' onClick={() => setIsActive(!isActive)}>
           <h3>{title} ({content.length})</h3>
