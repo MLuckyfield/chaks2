@@ -169,7 +169,10 @@ const AccordionItem=({ title, content,incept, id,goals, updateGoals})=>{
 
   const [isActive, setIsActive] = useState(false);
   const [limit, setLimit] = useState(goals);
-  const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
+  const [user,setUser]=useState(()=>{
+    axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
+    .then((result)=>{setUser(result)})
+  })
 
   useEffect(()=>{
   },[])
