@@ -94,6 +94,11 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
         case 'customer.subscription.updated':
           console.log(session.pause_collection)
           console.log('Relevant product',session.items.data[0].price.product)
+          //ENGULF BELOW IF STATEMENTS IN A CHECK FOR PRODUCT
+          //add subscriptions field as array of objects, each object has subscription data
+          //for existing subs, make cron script to transfer stripe object data to subcription array as object
+          //
+          //
           if(session.cancel_at_period_end){ //cancellation expected
             purchased = {
                 $set:{
