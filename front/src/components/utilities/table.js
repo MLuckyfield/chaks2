@@ -106,8 +106,10 @@ const displayable=(key)=>{
                         }else{return ''}
                       })}
                       <td>
-                        {JSON.parse(localStorage.getItem('user')).role=='manager'?
-                        (<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
+                        {//origin location of START END button
+                          //{JSON.parse(localStorage.getItem('user')).role=='manager'?
+                          //(<button onClick={item.inClass?()=>clockin(item,false):()=>clockin(item,true)} style={item.inClass?{backgroundColor:'red'}:{backgroundColor:'blue'}}>{item.inClass?'End':'Start'}</button>):''}
+                        }
                         {JSON.parse(localStorage.getItem('user')).role=='manager'||JSON.parse(localStorage.getItem('user')).role=='teacher'?
                         (<button onClick={()=>makeComment(item)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button>):''}
                       </td>
