@@ -336,8 +336,9 @@ const Front = ()=>{
                 <div class='mini_overlay' style={{backgroundColor:'238,188,33,0.7'}}>
                     <div class='col' style={{width:'70%'}}>
                             <h1 class='emphasize'>1時間<br/>0円!</h1>
-                            <h1>初回無料！気軽に来てください!</h1>
-                            <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',}}>
+                            <h1>初回無料！</h1>
+                            <h2>気軽に来てください!</h2>
+                            <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',marginTop:'3%'}}>
                                 通常料金: 30分￥1000
                             </span>
                     </div>
