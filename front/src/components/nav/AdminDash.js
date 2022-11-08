@@ -121,7 +121,8 @@ const StaffTable = ()=>{
   }
   const makeComment = (item)=>{
     console.log('raw',item)
-    let temp = delete item.teacher
+    let temp = item
+    delete temp.teacher
     console.log('after',JSON.stringify(temp))
       localStorage.setItem('student',JSON.stringify(temp))
       window.location='/student';
