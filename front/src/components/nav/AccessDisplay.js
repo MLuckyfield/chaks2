@@ -9,13 +9,6 @@ import GoogleMapReact from 'google-map-react'
         <div class='row'>
           <h1 class='col'>ACCESS</h1>
         </div>
-        <div class='col'>
-          <h3 class='col border'>営業時間</h3>
-          火~土：11:00~22:00*
-          日曜日: 13:00~22:00*
-          月曜日: 休み
-          *最終入店時刻: 21:30
-        </div>
         <div class='row'>
           <div class='col'>
           〒102-0074<br/>
@@ -29,6 +22,13 @@ import GoogleMapReact from 'google-map-react'
             半蔵門駅から徒歩１０分<br/>
             飯田橋駅から徒歩１３分<br/>
           </div>
+        </div>
+        <div class='col'>
+          <h3 class='col border'>営業時間</h3>
+          火~土：11:00~22:00*<br/>
+          日曜日: 13:00~22:00*<br/>
+          月曜日: 休み<br/>
+          *最終入店時刻: 21:30<br/>
         </div>
         <div class='row'>
             <Map/>
