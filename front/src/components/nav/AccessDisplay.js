@@ -9,9 +9,9 @@ import GoogleMapReact from 'google-map-react'
         <div class='row'>
           <h1 class='col'>ACCESS</h1>
         </div>
-        <div class='row'>
-          <h2 class='col border'>営業時間</h2>
-          火~土：11:00~22:00* 
+        <div class='col'>
+          <h3 class='col border'>営業時間</h3>
+          火~土：11:00~22:00*
           日曜日: 13:00~22:00*
           月曜日: 休み
           *最終入店時刻: 21:30
