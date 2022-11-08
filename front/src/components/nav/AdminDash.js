@@ -121,8 +121,9 @@ const StaffTable = ()=>{
   }
   const makeComment = (item)=>{
     console.log('raw',item)
-    console.log('after',JSON.stringify(item))
-      localStorage.setItem('student',JSON.stringify(item))
+    let temp = delete item.teacher
+    console.log('after',JSON.stringify(temp))
+      localStorage.setItem('student',JSON.stringify(temp))
       window.location='/student';
       // setTarget(item)
       // console.log(target)
