@@ -10,6 +10,13 @@ import GoogleMapReact from 'google-map-react'
           <h1 class='col'>ACCESS</h1>
         </div>
         <div class='row'>
+          <h2 class='col border'>営業時間</h2>
+          火~土：11:00~22:00* 
+          日曜日: 13:00~22:00*
+          月曜日: 休み
+          *最終入店時刻: 21:30
+        </div>
+        <div class='row'>
           <div class='col'>
           〒102-0074<br/>
           東京都千代田区九段南２－４－１２<br/>

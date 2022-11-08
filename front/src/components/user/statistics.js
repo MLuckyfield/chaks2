@@ -158,7 +158,6 @@ return (
                <AccordionItem incept={true} title={item.title} content={item.content} goals={limit} updateGoals={props.updateGoals}/>
             ))
           ):accordion.map(({ title, content, _id }) => (
-
               <AccordionItem title={title} content={content}  id={_id} goals={limit} updateGoals={props.updateGoals}/>
           )):'no data'}
     </div>

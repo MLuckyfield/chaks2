@@ -274,7 +274,6 @@ const Front = ()=>{
                               <span class='material-icons'>record_voice_over</span>
                               <h2>英語をたくさん話す</h2>
                               <div class='col'>
-
           グループはレベル別に分けられ、講師陣は全員が平等に英語を喋れるように会話をリードします。</div>
                           </div>
                     </div>
@@ -337,9 +336,9 @@ const Front = ()=>{
                 <div class='mini_overlay' style={{backgroundColor:'238,188,33,0.7'}}>
                     <div class='col' style={{width:'70%'}}>
                             <h1 class='emphasize'>1時間<br/>0円!</h1>
-                            <h1>初回無料！</h1>
+                            <h1>初回無料！気軽に来てください!</h1>
                             <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',}}>
-                                気軽に来てください!
+                                通常料金: 30分￥1000
                             </span>
                     </div>
                 </div>
