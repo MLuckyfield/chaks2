@@ -160,7 +160,7 @@ const StaffTable = ()=>{
   )
 }
 const StudentTable = ()=>{
-  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -fluency -progress -goals -students -tags -source -password -createdAt -updatedAt -role -points -active"/>
+  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -fluency -progress -goals -students -tags -source -password -createdAt -updatedAt -role -points -active -statistics"/>
 }
 
 const Dash = ()=>{
@@ -213,7 +213,7 @@ const Dash = ()=>{
     return(
       <div>
         <StaffTable/>
-        <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -fluency -progress -goals -students -tags -source -password -createdAt -updatedAt -role -points -active-statistics -plan -reward"/>
+        <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -fluency -progress -goals -students -tags -source -password -createdAt -updatedAt -role -points -active -statistics -plan -reward"/>
         <StudentTable/>
       </div>
     )
