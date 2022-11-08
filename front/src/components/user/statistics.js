@@ -171,7 +171,7 @@ const AccordionItem=({ title, content,incept, id,goals, updateGoals})=>{
   const [limit, setLimit] = useState(goals);
   const [user,setUser]=useState(()=>{
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
-    .then((result)=>{setUser(result)})
+    .then((result)=>{setUser(result.data.data[0])})
   })
 
   useEffect(()=>{
