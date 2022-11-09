@@ -87,7 +87,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{}).catch((err)=>{})
                 purchased={'$set':{
                   monthly_hours:checkout.line_items.data[0].quantity,
-                  }
+                }}
                 updateUser(identifier,purchased,res)
               }
               console.log(session.metadata.order)
