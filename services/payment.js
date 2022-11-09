@@ -33,38 +33,49 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 
       // Handle the event
       switch (event.type) {
+        case 'customer.created'://untested
+          let new_customer = session.id
+          console.log('new customer create request',session.id,sub_type)
+          purchased = {
+              $set:{
+                stripe:{
+                  customer_id:new_customer,
+                }
+              }
+          }
+          identifier={email:session.email}
+          updateUser(identifier,purchased,res)
+          break;
+        case 'customer.subscription.created'://untested
+          let sub_type = session.items.data[0].price.product
+          console.log('new subscription for',session.id,sub_type)
+          purchased = {
+              $push:{
+                subscriptions:{
+                  name:sub_type,
+                }
+              }
+          }
+          identifier={stripe:{customer_id:session.customer}}
+          updateUser(identifier,purchased,res)
+          break;
         case 'checkout.session.completed': //update account with purchase
           console.log('updating account with purchase')
           await stripe.checkout.sessions.retrieve(session.id,{expand:['line_items.data.price.product']},(err,checkout)=>{
             const metadata=checkout.line_items.data[0].price.product.metadata
-            // console.log('points' in metadata)
-            // console.log('plan' in metadata)
-            // console.log('sub_points' in metadata)
-            // const price_id=session.items.data[0].price.product
-            // if('points' in metadata){
-            //   purchased = {$inc:{points:metadata.points * checkout.line_items.data[0].quantity}}
-            //   console.log('adding points')}
-            if('plan' in metadata){
-              // purchased = {
-              //     plan:metadata.plan,
-              //     stripe:{
-              //       plan_id:session.subscription,
-              //       plan_status:'active',
-              //       plan_start_date:new Date()
-              //     }
-              // }
-              purchased={'$set':{
-                plan:metadata.plan,
-                stripe:{
-                  plan_id:session.subscription,
-                  plan_status:'active',
-                  plan_start_date:new Date()
-                }
-              }
-            }
-              console.log('add plan')
-              User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{}).catch((err)=>{})
-            }
+            // if('plan' in metadata){
+            //   purchased={'$set':{
+            //     plan:metadata.plan,
+            //     stripe:{//to be removed
+            //       plan_id:session.subscription,
+            //       plan_status:'active',
+            //       plan_start_date:new Date()
+            //     }
+            //   }
+            // }
+            //   console.log('add plan')
+            //   User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{}).catch((err)=>{})
+            // }
             if('sub_points' in metadata){
                 let count = (metadata.sub_points* checkout.line_items.data[0].quantity)/30
                 let units = []
@@ -72,14 +83,11 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                   units.push({value:30})
                 }
                 purchased = {$push:{points:units}} //may need to multiple by quantity checkout.lineites
-                console.log('add sub_points',units,session.customer)
+                console.log('add sub_points',units.length,session.customer)
                 User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{}).catch((err)=>{})
                 purchased={'$set':{
                   monthly_hours:checkout.line_items.data[0].quantity,
-                  stripe:{
-                    customer_id:session.customer,
-                    plan_status:'active',
-                    plan_start_date:new Date()}}}
+                  }
                 updateUser(identifier,purchased,res)
               }
               console.log(session.metadata.order)
@@ -92,8 +100,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 
           break;
         case 'customer.subscription.updated':
-          console.log(session.pause_collection)
-          console.log('Relevant product',session.items.data[0].price.product)
+          let sub_type = session.items.data[0].price.product
+          console.log('subscription update for',session.customer,session.items.data[0].price.product)
           //ENGULF BELOW IF STATEMENTS IN A CHECK FOR PRODUCT
           //add subscriptions field as array of objects, each object has subscription data
           //for existing subs, make cron script to transfer stripe object data to subcription array as object
@@ -102,30 +110,40 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           if(session.cancel_at_period_end){ //cancellation expected
             purchased = {
                 $set:{
-                  stripe:{
-                    plan_status:'to_cancel',
+                //   stripe:{
+                //     plan_status:'to_cancel',
+                // },
+                'subscriptions.$':{
+                    status:'to_cancel'
                 }}
             }
           }else if(session.pause_collection){ //pause subscription
             purchased = {
                 $set:{
-                  plan:'standard',
-                  stripe:{
-                    plan_status:'paused',
-                    plan_start_date:session.pause_collection.resumes_at,
+                //   plan:'standard',
+                //   stripe:{
+                //     plan_status:'paused',
+                //     plan_start_date:session.pause_collection.resumes_at,
+                // },
+                'subscriptions.$':{
+                    status:'paused',
+                    start:session.pause_collection.resumes_at,
                 }}
             }
           }else if(session.pause_collection==null){ //continue subscription
             purchased = {
                 $set:{
-                  plan:'premium',
-                  stripe:{
-                    plan_status:'active',
-                    plan_start_date:new Date(),
-                }}
+                  // plan:'premium',
+                  // 'stripe.plan_status':'active',
+                  // 'stripe.plan_start_date':new Date(),
+                  'subscriptions.$':{
+                      status:'active',
+                      start:new Date(),
+                  }
+              }
             }
           }
-          identifier={stripe:{customer_id:session.customer}}
+          identifier={stripe:{customer_id:session.customer},'subscriptions.name':sub_type}
           updateUser(identifier,purchased,res)
           break;
         case 'customer.subscription.deleted':
@@ -144,7 +162,6 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
         default:
           console.log(`Unhandled event type ${event.type}`);
       }
-
       console.log(identifier)
       console.log(purchased)
 
@@ -158,7 +175,7 @@ const updateUser=(user,update,res)=>{
             success: true
           });
       }).catch((err)=>{
-        console.log(err)
+        console.log('payment issue',err)
           return res.status(501).json({
             message: 'Booking saved',
             success: false
