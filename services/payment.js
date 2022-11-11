@@ -28,10 +28,10 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       const session = event.data.object;
       console.log('event recieved from Stripe ' + event.type)
       let purchased = {}
+      let sub_type=''
       //after going through switch statement, update
       let identifier={_id:session.metadata.order}
       console.log(session)
-      let sub_type = session.items.data[0].price.product
 
       // Handle the event
       switch (event.type) {
@@ -49,6 +49,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           updateUser(identifier,purchased,res)
           break;
         case 'customer.subscription.created'://untested
+          sub_type = session.items.data[0].price.product
           console.log('new subscription for',session.id,sub_type)
           purchased = {
               $push:{
@@ -101,7 +102,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 
           break;
         case 'customer.subscription.updated':
-          // let sub_type = session.items.data[0].price.product
+          sub_type = session.items.data[0].price.product        
           console.log('subscription update for',session.customer,session.items.data[0].price.product)
           //ENGULF BELOW IF STATEMENTS IN A CHECK FOR PRODUCT
           //add subscriptions field as array of objects, each object has subscription data
