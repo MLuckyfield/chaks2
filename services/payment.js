@@ -30,8 +30,9 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       let purchased = {}
       //after going through switch statement, update
       let identifier={_id:session.metadata.order}
+      console.log(session.items)
       let sub_type = session.items.data[0].price.product
-      
+
       // Handle the event
       switch (event.type) {
         case 'customer.created'://untested

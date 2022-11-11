@@ -54,14 +54,14 @@ const Booking = ()=>{
       console.log(moment(e).startOf('day'))
              let schedule = [
            {
-             slot: moment(e).startOf('day').add(12,'hours'),
+             slot: moment(e).startOf('day').add(19,'hours'),
            },
            {
-             slot: moment(e).startOf('day').add(13,'hours'),
+             slot: moment(e).startOf('day').add(20,'hours'),
 
            },
            {
-             slot: moment(e).startOf('day').add(14,'hours'),
+             slot: moment(e).startOf('day').add(21,'hours'),
            }
                ]
              if(bookings!=null){
