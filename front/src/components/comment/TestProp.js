@@ -15,7 +15,12 @@ const TestProp = () => {
   useEffect(()=>{
     let current = new Date()
     let d = new Date(current.getYear(),current.getMonth()+1,0).getDate()
-    console.log(d)
+    //get all bookings for the month
+    //create schedule array
+    for(let i=0;i<d;i++){
+      //add bookings to object and add to array
+
+    }
   },[])
 
   return(
