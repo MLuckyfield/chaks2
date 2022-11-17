@@ -15,7 +15,7 @@ const TestProp = () => {
   useEffect(()=>{
     let current = new Date()
     let d = new Date(current.getYear(),current.getMonth(),0)
-    setMonth(d)
+    console.log(d)
   },[])
 
   return(
