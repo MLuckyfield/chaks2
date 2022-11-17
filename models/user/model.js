@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const User = mongoose.model('User', new Schema({
+  //BASIC INFO------------------------------------------------
   email: {
     type: String,
     required: true,
@@ -31,6 +32,7 @@ const User = mongoose.model('User', new Schema({
     default: 'user',
     enum: ['user','teacher','manager','admin']
   },
+  //STUDENT DATA---------------------------------------------------
   profile:{
     likes:{type:String},
     goals:{type:String},
@@ -110,14 +112,22 @@ const User = mongoose.model('User', new Schema({
       default:0
     }
   }],
-  students:[{ //teacher field
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }],
   inClass:{
     type:Boolean,
     default:false
   },
+  //TEACHER DATA-----------------------------------------------
+  students:[{ //teacher field
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  online_schedule:[{
+    day:{type:Number},
+    time:{type:Number}
+  }],
+  online_slots:[{
+    date:{type:Date}
+  }],
   active:{ //teacher field
     type:Boolean,
   },
