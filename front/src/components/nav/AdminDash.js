@@ -284,6 +284,9 @@ const Session =(props)=>{
               <td>{student.last}</td>
               <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
             </tr>
+            <tr>
+              <td>{moment().format("HH:mm")}</td>
+            </tr>
             {student.goals.length>0?(
               student.goals.map((goal,i)=>{
                 return (
