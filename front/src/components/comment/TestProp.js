@@ -8,15 +8,13 @@ import Calendar from 'react-calendar'
 
 const TestProp = () => {
 
-  const [day, setDay]=useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
+  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
 
-  const updateView=(e)=>{
-    setDay(e)
-  }
+
   return(
-    <div>
-      <Calendar onChange={updateView} value={day} minDate={date}/>
+    <div class='row'>
+      {month}
     </div>
 )
 }
