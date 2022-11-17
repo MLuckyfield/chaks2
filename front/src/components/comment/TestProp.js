@@ -8,7 +8,7 @@ import Calendar from 'react-calendar'
 
 const TestProp = () => {
 
-  const [day, setDay]=useState(new Date())
+  const [day, setDay]=useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
 
   const updateView=(e)=>{
