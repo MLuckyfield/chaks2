@@ -10,7 +10,7 @@ const Online_Landing = () => {
         <div class='overlay'>
             <div class='row'>
               <div class='col'>
-                <h3>CHATSHACK is now</h3>
+                <h2>CHATSHACK is now</h2>
                 <h1>ONLINE</h1>
               </div>
             </div>
@@ -19,40 +19,40 @@ const Online_Landing = () => {
       <div class='col'>
         <div class='row'>
           <div class='fixed-row'>
-            <span class="material-icons">task_alt</span><h3>test</h3>
+            <span class="material-icons green">task_alt</span><h2>ネイティブスピーカー</h2>
           </div>
           <div class='fixed-row'>
-            <span class="material-icons">task_alt</span><h3>test</h3>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='fixed-row'>
-            <span class="material-icons">task_alt</span><h3>test</h3>
-          </div>
-          <div class='fixed-row'>
-            <span class="material-icons">task_alt</span><h3>test</h3>
+            <span class="material-icons green">task_alt</span><h2>マンツーマンレッスン</h2>
           </div>
         </div>
         <div class='row'>
           <div class='fixed-row'>
-            <span class="material-icons">task_alt</span><h3>test</h3>
+            <span class="material-icons green">task_alt</span><h2>オンラインフィードバック</h2>
           </div>
           <div class='fixed-row'>
-            <span class="material-icons">task_alt</span><h3>test</h3>
+            <span class="material-icons green">task_alt</span><h2>自由なレッスン</h2>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='fixed-row'>
+            <span class="material-icons green">task_alt</span><h2>優秀な講師陣</h2>
+          </div>
+          <div class='fixed-row'>
+            <span class="material-icons green">task_alt</span><h2>選べるレッスン時間</h2>
           </div>
         </div>
       </div>
       <div class='col'>
         <div class='col'>
-          <h3>step 1</h3>
+          <h2>step 1</h2>
           <p>blah blah</p>
         </div>
         <div class='col'>
-          <h3>step 2</h3>
+          <h2>step 2</h2>
           <p>blah blah</p>
         </div>
         <div class='col'>
-          <h3>step 3</h3>
+          <h2>step 3</h2>
           <p>blah blah</p>
         </div>
       </div>
