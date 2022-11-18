@@ -18,24 +18,24 @@ const Online_Landing = () => {
       </div>
       <div class='col'>
         <div class='row'>
-          <div class='fixed-row'>
-            <span class="material-icons green">task_alt</span><h2>ネイティブスピーカー</h2>
-          </div>
-          <div class='fixed-row'>
-            <span class="material-icons green">task_alt</span><h2>マンツーマンレッスン</h2>
+          <div class='col'>
+            <div class='fixed-row'>
+              <span class="material-icons green">task_alt</span><h2>ネイティブスピーカー</h2>
+            </div>
+            <div class='fixed-row'>
+              <span class="material-icons green">task_alt</span><h2>マンツーマンレッスン</h2>
+            </div>
+            <div class='fixed-row'>
+              <span class="material-icons green">task_alt</span><h2>優秀な講師陣</h2>
+            </div>
           </div>
         </div>
-        <div class='row'>
+        <div class='col'>
           <div class='fixed-row'>
             <span class="material-icons green">task_alt</span><h2>オンラインフィードバック</h2>
           </div>
           <div class='fixed-row'>
             <span class="material-icons green">task_alt</span><h2>自由なレッスン</h2>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='fixed-row'>
-            <span class="material-icons green">task_alt</span><h2>優秀な講師陣</h2>
           </div>
           <div class='fixed-row'>
             <span class="material-icons green">task_alt</span><h2>選べるレッスン時間</h2>
@@ -44,15 +44,15 @@ const Online_Landing = () => {
       </div>
       <div class='col'>
         <div class='col'>
-          <h2>step 1</h2>
+          <span class="material-icons green">looks_1</span><h2>step 1</h2>
           <p>blah blah</p>
         </div>
         <div class='col'>
-          <h2>step 2</h2>
+          <span class="material-icons green">looks_2</span><h2>step 2</h2>
           <p>blah blah</p>
         </div>
         <div class='col'>
-          <h2>step 3</h2>
+          <span class="material-icons green">looks_3</span><h2>step 3</h2>
           <p>blah blah</p>
         </div>
       </div>
