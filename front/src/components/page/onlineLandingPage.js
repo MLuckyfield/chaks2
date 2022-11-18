@@ -44,16 +44,27 @@ const Online_Landing = () => {
       </div>
       <div class='col'>
         <div class='col'>
-          <span class="material-icons green ">looks_one</span><h2>step 1</h2>
-          <p>一ヶ月に利用したい時間を決める</p>
+        <div class='fixed-row align'>
+          <span class="material-icons green ">looks_one</span>
+            <div class='col'>
+              <h2>STEP 1</h2>
+              <p>一ヶ月に利用したい時間を決める</p>
+            </div>
         </div>
-        <div class='col'>
-          <span class="material-icons green ">looks_two</span><h2>step 2</h2>
-          <p>レッスン時間を購入後、レッスンを予約する</p>
+        <div class='fixed-row align'>
+          <span class="material-icons green ">looks_two</span>
+            <div class='col'>
+              <h2>STEP 2</h2>
+              <p>レッスン時間を購入後、レッスンを予約する</p>
+            </div>
         </div>
-        <div class='col'>
-          <span class="material-icons green ">looks_3</span><h2>step 3</h2>
-          <p>当日は、予約後に送られてくるリンクからレッスンを受講する</p>
+        <div class='fixed-row align'>
+          <span class="material-icons green ">looks_3</span>
+            <div class='col'>
+              <h2>STEP 3</h2>
+              <p>当日は、予約後に送られてくるリンクからレッスンを受講する</p>
+              </div>
+            </div>
         </div>
       </div>
       <Signup redirect={'/online'}/>
