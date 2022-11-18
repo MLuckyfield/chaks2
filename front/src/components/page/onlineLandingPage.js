@@ -43,23 +43,23 @@ const Online_Landing = () => {
         </div>
       </div>
       <div class='col slim'>
-        <div class='fixed-row align'>
+        <div class='fixed-row'>
           <span class="material-icons green ">looks_one</span>
-            <div class='col'>
+            <div class='col align'>
               <h2>STEP 1</h2>
               <p>一ヶ月に利用したい時間を決める</p>
             </div>
         </div>
-        <div class='fixed-row align'>
+        <div class='fixed-row'>
           <span class="material-icons green ">looks_two</span>
-            <div class='col'>
+            <div class='col align'>
               <h2>STEP 2</h2>
               <p>レッスン時間を購入後、レッスンを予約する</p>
             </div>
         </div>
-        <div class='fixed-row align'>
+        <div class='fixed-row'>
           <span class="material-icons green ">looks_3</span>
-            <div class='col'>
+            <div class='col align'>
               <h2>STEP 3</h2>
               <p>当日は、予約後に送られてくるリンクからレッスンを受講する</p>
               </div>
