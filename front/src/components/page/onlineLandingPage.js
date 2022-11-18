@@ -16,42 +16,44 @@ const Online_Landing = () => {
             </div>
         </div>
       </div>
-      <div class='row'>
+      <div class='col slim'>
+        <div class='row'>
+            <div class='col'>
+              <div class='fixed-row align'>
+                <span class="material-icons green ">task_alt</span><h2>ネイティブスピーカー</h2>
+              </div>
+              <div class='fixed-row align'>
+                <span class="material-icons green ">task_alt</span><h2>マンツーマンレッスン</h2>
+              </div>
+              <div class='fixed-row align'>
+                <span class="material-icons green ">task_alt</span><h2>優秀な講師陣</h2>
+              </div>
+          </div>
           <div class='col'>
             <div class='fixed-row align'>
-              <span class="material-icons green ">task_alt</span><h2>ネイティブスピーカー</h2>
+              <span class="material-icons green ">task_alt</span><h2>オンラインフィードバック</h2>
             </div>
             <div class='fixed-row align'>
-              <span class="material-icons green ">task_alt</span><h2>マンツーマンレッスン</h2>
+              <span class="material-icons green ">task_alt</span><h2>自由なレッスン</h2>
             </div>
             <div class='fixed-row align'>
-              <span class="material-icons green ">task_alt</span><h2>優秀な講師陣</h2>
+              <span class="material-icons green ">task_alt</span><h2>選べるレッスン時間</h2>
             </div>
-        </div>
-        <div class='col'>
-          <div class='fixed-row align'>
-            <span class="material-icons green ">task_alt</span><h2>オンラインフィードバック</h2>
-          </div>
-          <div class='fixed-row align'>
-            <span class="material-icons green ">task_alt</span><h2>自由なレッスン</h2>
-          </div>
-          <div class='fixed-row align'>
-            <span class="material-icons green ">task_alt</span><h2>選べるレッスン時間</h2>
           </div>
         </div>
       </div>
       <div class='col'>
         <div class='col'>
-          <span class="material-icons green ">looks_1</span><h2>step 1</h2>
-          <p>blah blah</p>
+          <span class="material-icons green ">looks_one</span><h2>step 1</h2>
+          <p>一ヶ月に利用したい時間を決める</p>
         </div>
         <div class='col'>
-          <span class="material-icons green ">looks_2</span><h2>step 2</h2>
-          <p>blah blah</p>
+          <span class="material-icons green ">looks_two</span><h2>step 2</h2>
+          <p>レッスン時間を購入後、レッスンを予約する</p>
         </div>
         <div class='col'>
           <span class="material-icons green ">looks_3</span><h2>step 3</h2>
-          <p>blah blah</p>
+          <p>当日は、予約後に送られてくるリンクからレッスンを受講する</p>
         </div>
       </div>
       <Signup redirect={'/online'}/>
