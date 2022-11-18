@@ -17,25 +17,25 @@ const Online_Landing = () => {
         </div>
       </div>
       <div class='row'>
-          <div class='col align'>
-            <div class='fixed-row'>
+          <div class='col'>
+            <div class='fixed-row align'>
               <span class="material-icons green ">task_alt</span><h2>ネイティブスピーカー</h2>
             </div>
-            <div class='fixed-row'>
+            <div class='fixed-row align'>
               <span class="material-icons green ">task_alt</span><h2>マンツーマンレッスン</h2>
             </div>
-            <div class='fixed-row'>
+            <div class='fixed-row align'>
               <span class="material-icons green ">task_alt</span><h2>優秀な講師陣</h2>
             </div>
         </div>
-        <div class='col align'>
-          <div class='fixed-row'>
+        <div class='col'>
+          <div class='fixed-row align'>
             <span class="material-icons green ">task_alt</span><h2>オンラインフィードバック</h2>
           </div>
-          <div class='fixed-row'>
+          <div class='fixed-row align'>
             <span class="material-icons green ">task_alt</span><h2>自由なレッスン</h2>
           </div>
-          <div class='fixed-row'>
+          <div class='fixed-row align'>
             <span class="material-icons green ">task_alt</span><h2>選べるレッスン時間</h2>
           </div>
         </div>
