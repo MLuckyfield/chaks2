@@ -27,7 +27,6 @@ const Online_Landing = () => {
             <div class='fixed-row'>
               <span class="material-icons green align">task_alt</span><h2>優秀な講師陣</h2>
             </div>
-          </div>
         </div>
         <div class='col'>
           <div class='fixed-row'>
