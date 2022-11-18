@@ -42,8 +42,7 @@ const Online_Landing = () => {
           </div>
         </div>
       </div>
-      <div class='col'>
-        <div class='col'>
+      <div class='col slim'>
         <div class='fixed-row align'>
           <span class="material-icons green ">looks_one</span>
             <div class='col'>
@@ -65,7 +64,6 @@ const Online_Landing = () => {
               <p>当日は、予約後に送られてくるリンクからレッスンを受講する</p>
               </div>
             </div>
-        </div>
       </div>
       <Signup redirect={'/online'}/>
     </div>
