@@ -5,6 +5,7 @@ import Popup from '../utilities/popup'
 
 const PW_Reset = (props)=>{
   const email = useRef('');
+  const store_email = useRef('');
   const security_code = useRef('');
   const password = useRef('');
   const [msg,setMsg] = useState()
@@ -20,6 +21,7 @@ const PW_Reset = (props)=>{
         email: email.current.value
       })
       .then(() => {
+        store_email.current.value=email.current.value
         email.current.value=''
         setConfirmed(true)
         setForm(true)
@@ -36,6 +38,7 @@ const PW_Reset = (props)=>{
     console.log('sending',security_code.current.value)
     axios.post('site_event/reset',
     {
+      // email:store_email.current.value
       security_code: security_code.current.value,
       password: password.current.value
     }).then(()=>{
