@@ -29,7 +29,7 @@ const { Server } = require("socket.io");
         }).save()
         .then((site_event)=>{
           console.log('emailing pw reset',taken.email,site_event._id.toString())
-          email.sendDefault('Password Reset Code',site_event._id.toString(),taken.email)
+          email.sendDefault('CHATSHACK: Password Reset Code',site_event._id.toString(),taken.email)
           //return error after email?
           return res.status(200).json({
             message:'Resetting...',

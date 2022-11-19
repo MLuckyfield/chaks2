@@ -19,9 +19,9 @@ const email = require('../../services/email')
         const time = end.diff(start, 'minutes')
         console.log('resetting, testing expiry',time)
         if(time<120){
-          User.findByIdAndUpdate(site_event,{password:auth.newPass(req.password)})
+          User.findByIdAndUpdate({_id:site_event},{password:auth.newPass(req.password)})
           .then(()=>{
-            Site_Event.findByIdAndDelete(site_event._id).then(()=>{
+            Site_Event.findByIdAndDelete({_id:site_event._id}).then(()=>{
               return res.status(201).json({
                 message: 'password updated',
                 success: true
