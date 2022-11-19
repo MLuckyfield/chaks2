@@ -18,6 +18,7 @@ const { Server } = require("socket.io");
 //Registration
 
     router.post('/reset',async(req,res)=>{
+      console.log('starting reset...')
       req=req.body
       console.log(req)
       let taken = await(exists(req.email));

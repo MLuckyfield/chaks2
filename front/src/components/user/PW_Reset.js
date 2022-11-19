@@ -14,6 +14,7 @@ const PW_Reset = (props)=>{
   const onSubmit = (e) => {
     e.preventDefault();
     setForm(false)
+    console.log('sending',email.current.value)
     axios.post('user/reset',
       {
         email: email.current.value
