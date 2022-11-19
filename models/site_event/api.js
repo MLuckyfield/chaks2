@@ -9,7 +9,7 @@ const email = require('../../services/email')
 
 
     //Get
-    router.get('/reset', async (req, res) => {
+    router.post('/reset', async (req, res) => {
       console.log('final pw reset...',req.query)
       await Site_Event.find(req.query.security_code).then((site_event)=>{
         let start =moment(site_event.createdAt)
@@ -19,12 +19,12 @@ const email = require('../../services/email')
         if(time<120){
           User.findByIdAndUpdate(site_event,{password:bcrypt.hash(site_event.password, 12)})
           .then(()=>{
-            Site_Event.findByIdAndDelete(site_event._id).then(()>{
+            Site_Event.findByIdAndDelete(site_event._id).then(()=>{
               return res.status(201).json({
                 message: 'password updated',
                 success: true
               });
-            })            
+            })
           }).catch((err)=>{
             return res.status(400).json({
               message: 'password update failed',
