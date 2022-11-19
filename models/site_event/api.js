@@ -22,7 +22,7 @@ const email = require('../../services/email')
         if(time<120){
           try{
             console.log('new pw',new_pw)
-            User.findByIdAndUpdate({_id:site_event.user},{password:new_pw},{new:true})
+            User.findByIdAndUpdate(site_event.user,{password:new_pw},{new:true})
             .then((result)=>{
               console.log('user with new pw',result)
               expireReset(req.security_code)
@@ -50,7 +50,7 @@ const email = require('../../services/email')
       })
     });
     const expireReset=(id)=>{
-      Site_Event.findByIdAndDelete({_id:id})
+      Site_Event.findByIdAndDelete(id)
       .then(()=>{
         console.log('reset successfully expired')
         return res.status(201).json({
