@@ -5,7 +5,6 @@ import Popup from '../utilities/popup'
 
 const PW_Reset = (props)=>{
   const email = useRef('');
-  const store_email = useRef('');
   const security_code = useRef('');
   const password = useRef('');
   const [msg,setMsg] = useState()
@@ -21,7 +20,6 @@ const PW_Reset = (props)=>{
         email: email.current.value
       })
       .then(() => {
-        store_email.current.value=email.current.value
         email.current.value=''
         setConfirmed(true)
         setForm(true)

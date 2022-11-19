@@ -22,18 +22,10 @@ const email = require('../../services/email')
         if(time<120){
           try{
             console.log('new pw',new_pw)
-            User.findByIdAndUpdate({_id:site_event.user},{password:new_pw},{new:true})
+            User.findByIdAndUpdate({_id:site_event.user.toString()},{password:new_pw},{new:true})
             .then((result)=>{
               console.log('user with new pw',result)
-              Site_Event.findByIdAndDelete({_id:req.security_code}).then(()=>{
-                console.log('pw reset done')
-                return res.status(201).json({
-                  message: 'password updated',
-                  success: true
-                });
-              }).catch((err)=>{
-                console.log('site_event delete failure',err)
-              })
+              expireReset(req.security_code)
             }).catch((err)=>{
               console.log('update failure',err)
               return res.status(400).json({
@@ -49,6 +41,7 @@ const email = require('../../services/email')
             });
           }
         }else{
+          expireReset(req.security_code)
           return res.status(400).json({
             message: 'password reset link expired',
             success: false
@@ -56,5 +49,16 @@ const email = require('../../services/email')
         }
       })
     });
-
+    const expireReset=(id)=>{
+      Site_Event.findByIdAndDelete({_id:id})
+      .then(()=>{
+        console.log('reset successfully expired')
+        return res.status(201).json({
+          message: 'password updated',
+          success: true
+        });
+      }).catch((err)=>{
+        console.log('site_event delete failure',err)
+      })
+    }
 module.exports = router;
