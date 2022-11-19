@@ -13,7 +13,7 @@ const email = require('../../services/email')
     router.post('/reset', async (req, res) => {
       console.log('final pw reset...',req.body)
       req=req.body
-      await Site_Event.find(req.security_code).then((site_event)=>{
+      await Site_Event.find({_id:req.security_code}).then((site_event)=>{
         let start =moment(site_event.createdAt)
         let end = moment(new Date())
         const time = end.diff(start, 'minutes')
