@@ -22,8 +22,9 @@ const email = require('../../services/email')
         if(time<120){
           try{
             console.log('new pw',new_pw)
-            User.findByIdAndUpdate({_id:req.security_code},{password:new_pw})
-            .then(()=>{
+            User.findByIdAndUpdate({_id:req.security_code},{password:new_pw},{new:true})
+            .then((result)=>{
+              console.log('user with new pw',result)
               Site_Event.findByIdAndDelete({_id:req.security_code}).then(()=>{
                 console.log('pw reset done')
                 return res.status(201).json({
