@@ -10,7 +10,7 @@ const email = require('../../services/email')
 
     //Get
     router.get('/reset', async (req, res) => {
-      // console.log('get all events...',req.query)
+      console.log('final pw reset...',req.query)
       await Site_Event.find(req.query.security_code).then((site_event)=>{
         let start =moment(site_event.createdAt)
         let end = moment(new Date())
