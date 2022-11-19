@@ -35,10 +35,9 @@ const PW_Reset = (props)=>{
     console.log('sending',security_code.current.value)
     axios.post('site_event/reset',
     {
-    params:{
       security_code: security_code.current.value,
       password: password.current.value
-    }}).then(()=>{
+    }).then(()=>{
       window.location='/login'
     })
     .catch((err)=>setMsg([err.message,err.success]))

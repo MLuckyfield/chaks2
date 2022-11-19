@@ -19,10 +19,12 @@ const email = require('../../services/email')
         if(time<120){
           User.findByIdAndUpdate(site_event,{password:bcrypt.hash(site_event.password, 12)})
           .then(()=>{
-            return res.status(201).json({
-              message: 'password updated',
-              success: true
-            });
+            Site_Event.findByIdAndDelete(site_event._id).then(()>{
+              return res.status(201).json({
+                message: 'password updated',
+                success: true
+              });
+            })            
           }).catch((err)=>{
             return res.status(400).json({
               message: 'password update failed',
