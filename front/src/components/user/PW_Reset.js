@@ -24,6 +24,7 @@ const PW_Reset = (props)=>{
         setForm(true)
       })
       .catch((err) => {
+        console.log(err)
         setForm(true)
         setMsg([err.message,err.success]);
       });
