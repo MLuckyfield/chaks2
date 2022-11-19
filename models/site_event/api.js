@@ -11,14 +11,15 @@ const email = require('../../services/email')
 
     //Get
     router.post('/reset', async (req, res) => {
-      console.log('final pw reset...',req.query)
-      await Site_Event.find(req.query.security_code).then((site_event)=>{
+      console.log('final pw reset...',req.body)
+      req=req.body
+      await Site_Event.find(req.security_code).then((site_event)=>{
         let start =moment(site_event.createdAt)
         let end = moment(new Date())
         const time = end.diff(start, 'minutes')
         console.log('resetting, testing expiry',time)
         if(time<120){
-          User.findByIdAndUpdate(site_event,{password:auth.newPass(req.query.password)})
+          User.findByIdAndUpdate(site_event,{password:auth.newPass(req.password)})
           .then(()=>{
             Site_Event.findByIdAndDelete(site_event._id).then(()=>{
               return res.status(201).json({
