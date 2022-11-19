@@ -18,8 +18,9 @@ const email = require('../../services/email')
         let end = moment(new Date())
         const time = end.diff(start, 'minutes')
         console.log('resetting, testing expiry',time)
+        let new_pw = await auth.newPass(req.password)
         if(time<120){
-          User.findByIdAndUpdate({_id:req.security_code},{password:auth.newPass(req.password)})
+          User.findByIdAndUpdate({_id:req.security_code},{password:new_pw})
           .then(()=>{
             Site_Event.findByIdAndDelete({_id:req.security_code}).then(()=>{
               console.log('pw reset done')
