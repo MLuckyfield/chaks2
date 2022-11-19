@@ -30,7 +30,8 @@ const PW_Reset = (props)=>{
       });
   }
 
-  const reset = ()=>{
+  const reset = (e)=>{
+    e.preventDefault();
     console.log('sending',security_code.current.value)
     axios.post('site_event/reset',
     {
@@ -38,7 +39,7 @@ const PW_Reset = (props)=>{
       security_code: security_code.current.value,
       password: password.current.value
     }}).then(()=>{
-      // window.location='/login'
+      window.location='/login'
     })
     .catch((err)=>setMsg([err.message,err.success]))
   }
