@@ -21,6 +21,7 @@ const email = require('../../services/email')
         console.log('resetting, testing expiry',time)
         if(time<120){
           try{
+            console.log('new pw',new_pw)
             User.findByIdAndUpdate({_id:req.security_code},{password:new_pw})
             .then(()=>{
               Site_Event.findByIdAndDelete({_id:req.security_code}).then(()=>{
@@ -46,6 +47,11 @@ const email = require('../../services/email')
               success: false
             });
           }
+        }else{
+          return res.status(400).json({
+            message: 'password reset link expired',
+            success: false
+          });
         }
       })
     });
