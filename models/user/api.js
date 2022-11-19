@@ -35,11 +35,12 @@ const { Server } = require("socket.io");
             success: true
           });
         })
-      }
-      return res.status(400).json({
+        .catch((err)=>{console.log(err)})
+      }else
+      {return res.status(400).json({
         message:'Email not in use',
         success: false
-      });
+      });}
     })
     //user
     router.post('/new', async (req, res) => {
