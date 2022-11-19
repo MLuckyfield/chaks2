@@ -22,6 +22,7 @@ const email = require('../../services/email')
           User.findByIdAndUpdate({_id:site_event},{password:auth.newPass(req.password)})
           .then(()=>{
             Site_Event.findByIdAndDelete({_id:site_event._id}).then(()=>{
+              console.log('pw reset done')
               return res.status(201).json({
                 message: 'password updated',
                 success: true
@@ -34,10 +35,6 @@ const email = require('../../services/email')
             });
           })
         }
-        return res.status(400).json({
-          message: 'password update failed',
-          success: false
-        });
       })
     });
 
