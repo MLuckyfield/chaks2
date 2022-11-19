@@ -21,7 +21,7 @@ const prepareEmail=(subject,text,email)=>{
   };
 }
 const sendDefault = (title,content,email)=>{
-    console.log('email service starting')
+    console.log('email service starting',content,email)
     // console.log(booking)
     const transporter = authenticate()
     // console.log(req)

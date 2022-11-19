@@ -28,7 +28,7 @@ const { Server } = require("socket.io");
           event_type:'pw_reset'
         }).save()
         .then((site_event)=>{
-          console.log('emailing pw reset',taken,site_event)
+          console.log('emailing pw reset',taken.email,site_event._id)
           email.sendDefault('Password Reset',site_event._id,taken.email)
           //return error after email?
           return res.status(200).json({
