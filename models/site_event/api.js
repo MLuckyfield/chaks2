@@ -39,12 +39,12 @@ const email = require('../../services/email')
               });
             })
           }catch(err){
-            console.log('password hash error',err)
+            console.log('update failure',err)
             return res.status(400).json({
               message: 'password update failed',
               success: false
             });
-          })
+          }
         }
       })
     });
