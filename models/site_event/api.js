@@ -27,8 +27,11 @@ const email = require('../../services/email')
                 message: 'password updated',
                 success: true
               });
+            }).catch((err)=>{
+              console.log('site_event delete failure',err)              
             })
           }).catch((err)=>{
+            console.log('update failure',err)
             return res.status(400).json({
               message: 'password update failed',
               success: false
