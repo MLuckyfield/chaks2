@@ -24,7 +24,7 @@ const { Server } = require("socket.io");
       if (taken){
         new Site_Event({
           user:taken._id,
-          event_type:{'pw_reset'}
+          event_type:'pw_reset'
         }).save()
         .then((site_event)=>{
           email.sendDefault('Password Reset',site_event._id)
