@@ -18,11 +18,11 @@ const email = require('../../services/email')
         let start =moment(site_event.createdAt)
         let end = moment(new Date())
         const time = end.diff(start, 'minutes')
-        console.log('resetting, testing expiry',time)
+        console.log('resetting, testing expiry',time, site_event,site_event.user)
         if(time<120){
           try{
             console.log('new pw',new_pw)
-            User.findByIdAndUpdate({_id:site_event.user.toString()},{password:new_pw},{new:true})
+            User.findByIdAndUpdate({_id:site_event.user},{password:new_pw},{new:true})
             .then((result)=>{
               console.log('user with new pw',result)
               expireReset(req.security_code)
