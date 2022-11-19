@@ -126,7 +126,11 @@ const User = mongoose.model('User', new Schema({
     time:{type:Number}
   }],
   online_slots:[{
-    date:{type:Date}
+    date:{type:Date},
+    detail:{
+      type:Schema.Types.ObjectId,
+      ref:'Booking'
+    }
   }],
   active:{ //teacher field
     type:Boolean,

@@ -80,6 +80,7 @@ app.use('/event_info',require('./models/event/api'));
 app.use('/content',require('./models/content/api'));
 app.use('/payment',require('./services/payment'));
 app.use('/material',require('./models/material/api'));
+app.use('/site_event',require('./models/site_event/api'));
 
 //heroku deployment
 app.get("*", (req, res) => {

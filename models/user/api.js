@@ -3,6 +3,7 @@ const auth= require('../../services/authentication');
 const notify= require('../../services/notify');
 const User = require('./model')
 const Material = require('../material/model')
+const Site_Event = require('../site_event/model')
 
 const request = require('request')
 const cron = require('node-cron')
@@ -16,6 +17,29 @@ const { Server } = require("socket.io");
 
 //Registration
 
+    router.post('/reset',async(req,res)=>{
+      req=req.body
+      console.log(req)
+      let taken = await(exists(req.email));
+      if (taken){
+        new Site_Event({
+          user:taken._id,
+          event_type:{'pw_reset'}
+        }).save()
+        .then((site_event)=>{
+          email.sendDefault('Password Reset',site_event._id)
+          //return error after email?
+          return res.status(200).json({
+            message:'Resetting...',
+            success: true
+          });
+        })
+      }
+      return res.status(400).json({
+        message:'Email not in use',
+        success: false
+      });
+    })
     //user
     router.post('/new', async (req, res) => {
       req=req.body
@@ -102,7 +126,7 @@ const { Server } = require("socket.io");
 
     const exists = async(email) => {
       let user = await User.findOne({email});
-      return user ? true:false;
+      return user ? user:false;
     };
 //Login
 

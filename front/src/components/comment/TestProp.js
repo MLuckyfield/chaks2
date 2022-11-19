@@ -22,10 +22,13 @@ const TestProp = () => {
 
     }
   },[])
+  const reset = ()=>{
 
+  }
   return(
     <div class='row'>
       {month}
+      <button onClick={()=>window.location='/reset'} class="solid-first">reset</button>
     </div>
 )
 }

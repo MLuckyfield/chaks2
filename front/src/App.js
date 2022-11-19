@@ -19,7 +19,7 @@ import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
 import Social from './components/utilities/social'
 import Popup from './components/utilities/popup'
-import Signup from './components/user/Signup'
+import PW_Reset from './components/user/Reset'
 import Account from './components/user/account'
 // import Payment from './components/utilities/payment'
 import Profile from './components/user/Profile'
@@ -108,6 +108,7 @@ const App = () => {
           <Route exact path="/blog/*" component={BlogDisplay}/>
           <Route path="/login" component={Login}/>
           <Route path="/online" component={Online_Landing}/>
+          <Route path="/reset" component={PW_Reset}/>
           <SecureRoute path="/products" access={['manager','user']} success={Product_Display} fail={()=><Redirect to='/login'/>}/>
 
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={()=><Redirect to='/login'/>}/>
