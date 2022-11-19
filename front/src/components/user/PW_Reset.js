@@ -37,7 +37,7 @@ const PW_Reset = (props)=>{
       security_code: security_code.current.value,
       password: password.current.value
     }}).then(()=>{
-      window.location='/login'
+      // window.location='/login'
     })
     .catch((err)=>setMsg([err.message,err.success]))
   }
