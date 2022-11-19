@@ -19,7 +19,7 @@ const email = require('../../services/email')
         const time = end.diff(start, 'minutes')
         console.log('resetting, testing expiry',time)
         if(time<120){
-          User.findByIdAndUpdate({_id:site_event},{password:auth.newPass(req.password)})
+          User.findByIdAndUpdate({_id:site_event._id},{password:auth.newPass(req.password)})
           .then(()=>{
             Site_Event.findByIdAndDelete({_id:site_event._id}).then(()=>{
               console.log('pw reset done')
@@ -28,7 +28,7 @@ const email = require('../../services/email')
                 success: true
               });
             }).catch((err)=>{
-              console.log('site_event delete failure',err)              
+              console.log('site_event delete failure',err)
             })
           }).catch((err)=>{
             console.log('update failure',err)
