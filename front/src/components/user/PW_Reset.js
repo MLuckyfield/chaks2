@@ -20,6 +20,7 @@ const PW_Reset = (props)=>{
         email: email.current.value
       })
       .then(() => {
+        email.current.value=''
         setConfirmed(true)
         setForm(true)
       })
