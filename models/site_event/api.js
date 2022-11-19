@@ -38,7 +38,7 @@ const email = require('../../services/email')
                 success: false
               });
             })
-          }catch((err)=>{
+          }catch(err){
             console.log('password hash error',err)
             return res.status(400).json({
               message: 'password update failed',
