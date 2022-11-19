@@ -30,6 +30,10 @@ const email = require('../../services/email')
             });
           })
         }
+        return res.status(400).json({
+          message: 'password update failed',
+          success: false
+        });
       })
     });
 

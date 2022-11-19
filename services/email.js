@@ -12,15 +12,15 @@ const authenticate = ()=>{
     }
   });
 }
-const prepareEmail=(subject,text)=>{
+const prepareEmail=(subject,text,email)=>{
   return {
     from: 'support@chatshack.jp',
-    to: 'support@chatshack.jp',
+    to: email?email:'support@chatshack.jp',
     subject: subject,
     text: text
   };
 }
-const sendDefault = (title,content)=>{
+const sendDefault = (title,content,email)=>{
     console.log('email service starting')
     // console.log(booking)
     const transporter = authenticate()
@@ -30,7 +30,8 @@ const sendDefault = (title,content)=>{
 
     const mailOptions = prepareEmail(
       title,
-      content
+      content,
+      email
     )
     sendEmailNoRes(transporter,mailOptions)
 }
