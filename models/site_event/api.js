@@ -3,6 +3,7 @@ const auth= require('../../services/authentication');
 const Site_Event = require('./model')
 const User = require('../user/model')
 const bcrypt = require('bcrypt')
+const moment = require ('moment')
 
 const request = require('request')
 const email = require('../../services/email')
