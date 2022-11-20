@@ -28,7 +28,14 @@ const TestProp = () => {
   return(
     <div class='row'>
       {month}
-      <button onClick={()=>window.location='/reset'} class="solid-first">reset</button>
+      <div class='col' style={{background:'blue',color:'white'}}>
+        <h1>CHATSHACKにようこそ！</h1>
+        <p>まずは、CHATSHACKの無料レッスンを受けてみてください！予約不要で、お客様の好きなタイミングでご来店いただけます。
+          <br/>心よりお待ちしておりますので、緊張せずお気軽にお越しください。</p>
+        <p>また、ご質問や不安な点がある方のお問い合わせもお待ちしております。<br/>
+        (050 3395 1280)</p>
+        <p>インスタやYouTubeもやっていますので、お楽しみください！</p>
+      </div>
     </div>
 )
 }
