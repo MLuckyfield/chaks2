@@ -11,8 +11,8 @@ const email = require('../../services/email')
 
     //Get
     router.post('/reset', async (req, res) => {
-      console.log('final pw reset...',req.body)
       req=req.body
+      console.log('final pw reset...',req.security_code,req.password)
       let new_pw= await auth.newPass(req.password)
       await Site_Event.find({_id:req.security_code}).then((site_event)=>{
         let start =moment(site_event.createdAt)
