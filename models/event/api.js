@@ -50,7 +50,7 @@ const email = require('../../services/email')
       //           message: `Could not find user: ${err}`,
       //           success: false
       //         });
-            })
+      //       })
     })
     router.post('/update',auth.auth, auth.permission(['manager']),async (req,res)=>{
       await Event.findOneAndUpdate(req.body.filter,req.body.data)
