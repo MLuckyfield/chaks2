@@ -25,7 +25,7 @@ const email = require('../../services/email')
             User.findByIdAndUpdate(site_event[0].user,{password:new_pw},{new:true})
             .then((result)=>{
               console.log('user with new pw',result)
-              expireReset(req.security_code)
+              expireReset(req.security_code,res)
             }).catch((err)=>{
               console.log('update failure',err)
               return res.status(400).json({
@@ -41,7 +41,7 @@ const email = require('../../services/email')
             });
           }
         }else{
-          expireReset(req.security_code)
+          expireReset(req.security_code,res)
           return res.status(400).json({
             message: 'password reset link expired',
             success: false
@@ -49,7 +49,7 @@ const email = require('../../services/email')
         }
       })
     });
-    const expireReset=(id)=>{
+    const expireReset=(id,res)=>{
       Site_Event.findByIdAndDelete(id)
       .then(()=>{
         console.log('reset successfully expired')
