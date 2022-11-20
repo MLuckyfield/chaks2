@@ -2,6 +2,7 @@ import React, { useRef, useState,useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 import Booking from "../utilities/booking";
+import Social from "../utilities/social";
 import Calendar from 'react-calendar'
 
 
@@ -28,13 +29,16 @@ const TestProp = () => {
   return(
     <div class='row'>
       {month}
-      <div class='col' style={{background:'blue',color:'white'}}>
-        <h1>CHATSHACKにようこそ！</h1>
-        <p>まずは、CHATSHACKの無料レッスンを受けてみてください！予約不要で、お客様の好きなタイミングでご来店いただけます。
-          <br/>心よりお待ちしておりますので、緊張せずお気軽にお越しください。</p>
-        <p>また、ご質問や不安な点がある方のお問い合わせもお待ちしております。<br/>
-        (050 3395 1280)</p>
-        <p>インスタやYouTubeもやっていますので、お楽しみください！</p>
+      <div class='col slim' style={{background:'#7ab5d1',color:'white'}}>
+        <div class='col border' style={{alignItems:'flex-start !important'}}>
+          <h1>CHATSHACKにようこそ！</h1>
+          <p>まずは、CHATSHACKの無料レッスンを受けてみてください！予約不要で、お客様の好きなタイミングでご来店いただけます。
+            <br/>心よりお待ちしておりますので、緊張せずお気軽にお越しください。</p>
+          <p>また、ご質問や不安な点がある方のお問い合わせもお待ちしております。
+          (050 3395 1280)</p>
+          <p>インスタやYouTubeもやっていますので、お楽しみください！</p>
+          <Social data={'tiny-logo'}/>
+        </div>
       </div>
     </div>
 )
