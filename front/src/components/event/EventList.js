@@ -174,7 +174,7 @@ const AccordionItem=(props)=>{
     const onSubmit=(e,id,rsvp,user)=>{
       // console.log('rsvp for',id,user)
       e.preventDefault();
-      axios.post('/event_info/rsvp',{params:{filter:id,rsvp:user._id}})
+      axios.post('/event_info/rsvp',{params:{filter:id,first:user.first,last:user.last}})
         .then((res) => {
             setIsAttending(attendance(res.data.data.attendees))
             window.location.reload(true)
@@ -197,7 +197,7 @@ const AccordionItem=(props)=>{
             <div class='col slim'>
             <EditorView content={props.description} readOnly={true}/>
             {user?(
-              isAttending?<div class="border" style={{width:'100%',padding:'8px 30px'}}>Registered!</div>:<div class="relative-btn" onClick={(e)=>{onSubmit(e,props.id,user)}}>RSVP</div>
+              isAttending?<div class="border" style={{width:'100%',padding:'8px 30px'}}>Registered!</div>:<div class="relative-btn" onClick={(e)=>{onSubmit(e,props.name,user)}}>RSVP</div>
             ):''}
             </div>
           </div>}
