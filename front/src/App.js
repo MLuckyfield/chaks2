@@ -303,7 +303,7 @@ const Front = ()=>{
                       <h2>COMMITMENT</h2>
                     </div>
                     <div class='col' style={{height:'38vh',backgroundColor:'#20bada',margin:'0',color:'white',padding:'6% 15%'}}>
-                      最初に、月に何時間勉強したいかを決めて、コミット
+                      最初に、月に何時間勉強したいかを決めて、コミット出来るサブスクスタイル                      
                       <hr/>
                       <p>
                       中途半端に勉強するのではなく、「英語力の成長」を、自分に約束すること。</p>
