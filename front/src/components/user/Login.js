@@ -42,7 +42,7 @@ const Login = () => {
                       <input ref={password} type="password" class="form-control" placeholder="Password" required/>
                     </div>
                     <div class="form-group">
-                      <a href='' onClick={()=>window.location='/reset'} class="solid-first">Forgot Password</button>
+                      <button style={{background:'none',color:'brown',fontSize:'smaller',textDecoration:'underline',width:'50%',border:'none'}} onClick={()=>window.location='/reset'} class="solid-first">Forgot Password</button>
                     </div>
                     {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
 
