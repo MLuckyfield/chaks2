@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import Comment from "../comment/Comment";
 import Profile from "./Profile";
+import Social from "../utilities/social";
 import moment from "moment"
 import {io} from 'socket.io-client';
 const socket = io();
@@ -81,7 +82,22 @@ const StudentComments = () => {
         <button onClick={()=>sendTo('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
         <button onClick={()=>sendTo('6344faac6bf36a9debe60b25')} class='button'>TEST</button>
       </div>
-      <h1>Feedback ({comments?comments.length:'None Yet!'})</h1>
+      <h1>Feedback ({comments?comments.length:
+        <div class='col slim' style={{background:'#7ab5d1',color:'white'}}>
+          <div class='col border' style={{borderColor:'white',display:'block'}}>
+            <h1>CHATSHACKにようこそ！</h1><br/>
+            ご登録いただきありがとうございました！　では、これからどうやってあなたの英語力を向上させるのか？
+            <br/><p>まずは、CHATSHACKの無料レッスンを受けてみてください！予約不要で、お客様の好きなタイミングでご来店いただけます。
+              心よりお待ちしておりますので、緊張せずお気軽にお越しください。</p>
+            <p>また、ご質問や不安な点がある方のお問い合わせもお待ちしております。
+              (050 3395 1280)</p>
+              <p>インスタやYouTubeもやっていますので、お楽しみください！</p>
+            <div calss='col'>
+              <Social data={'tiny-logo'}/>
+            </div>
+          </div>
+        </div>
+      })</h1>
       <div class='col'>
           {comments ? (comments.map(function(item, i){
               return (
