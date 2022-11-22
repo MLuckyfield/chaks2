@@ -30,7 +30,7 @@ const TestProp = () => {
     <div class='row'>
       {month}
       <div class='col slim' style={{background:'#7ab5d1',color:'white'}}>
-        <div class='col border' style={{borderColor:'white'}}>
+        <div class='col border' style={{borderColor:'white',display:'block'}}>
           <h1>CHATSHACKにようこそ！</h1>
           ご登録いただきありがとうございました！　では、これからどうやってあなたの英語力を向上させるのか？
           <br/><p>まずは、CHATSHACKの無料レッスンを受けてみてください！予約不要で、お客様の好きなタイミングでご来店いただけます。
