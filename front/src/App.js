@@ -303,7 +303,7 @@ const Front = ()=>{
                       <h2>COMMITMENT</h2>
                     </div>
                     <div class='col' style={{height:'38vh',backgroundColor:'#20bada',margin:'0',color:'white',padding:'6% 15%'}}>
-                      最初に、月に何時間勉強したいかを決めて、コミット出来るサブスクスタイル                      
+                      最初に、月に何時間勉強したいかを決めて、コミット出来るサブスクスタイル
                       <hr/>
                       <p>
                       中途半端に勉強するのではなく、「英語力の成長」を、自分に約束すること。</p>
@@ -340,7 +340,8 @@ const Front = ()=>{
                             <h1>初回無料！</h1>
                             <h2>気軽に来てください!</h2>
                             <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',marginTop:'3%'}}>
-                                通常料金: 30分￥1000
+                                通常料金: 30分￥1000<br/>
+                                サブスクスタイル
                             </span>
                     </div>
                 </div>
