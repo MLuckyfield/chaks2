@@ -43,7 +43,8 @@ const Online_Landing = () => {
           </div>
         </div>
       </div>
-      <div class='col slim' style={{backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')'}}>
+      <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')'}}>
+        <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.8)'}}>
           <div class='fixed-row' style={{width:'50%'}}>
             <h1 style={{margin:'10% 0'}}>NEXT STEPS</h1>
           </div>
@@ -69,6 +70,7 @@ const Online_Landing = () => {
               </div>
           </div>
         </div>
+      </div>
       <Signup redirect={'/online'}/>
     </div>
 )
