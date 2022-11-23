@@ -72,7 +72,6 @@ const Online_Landing = () => {
       </div>
       <Signup redirect={'/online'}/>
     </div>
-)
-}
+)}
 
 export default Online_Landing;
