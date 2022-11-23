@@ -44,30 +44,32 @@ const Online_Landing = () => {
         </div>
       </div>
       <div class='col slim' style={{backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')'}}>
-        <div class='fixed-row' style={{width:'50%'}}>
-          <h1>NEXT STEPS</h1>
-        </div>
-        <div class='fixed-row' style={{width:'50%'}}>
-          <span class="material-icons green ">looks_one</span>
-            <div class='col align'>
-              <h2>STEP 1</h2>
-              <p>一ヶ月に利用したい時間を決める</p>
-            </div>
-        </div>
-        <div class='fixed-row' style={{width:'50%'}}>
-          <span class="material-icons green ">looks_two</span>
-            <div class='col align'>
-              <h2>STEP 2</h2>
-              <p>レッスン時間を購入後、レッスンを予約する</p>
-            </div>
-        </div>
-        <div class='fixed-row' style={{width:'50%'}}>
-          <span class="material-icons green ">looks_3</span>
-            <div class='col align'>
-              <h2>STEP 3</h2>
-              <p>当日は、予約後に送られてくるリンクからレッスンを受講する</p>
+        <div class='overlay' style={{backgroundColor:'rgba(248,248,255,0.8)'}}>
+          <div class='fixed-row' style={{width:'50%'}}>
+            <h1>NEXT STEPS</h1>
+          </div>
+          <div class='fixed-row' style={{width:'50%'}}>
+            <span class="material-icons green ">looks_one</span>
+              <div class='col align'>
+                <h2>STEP 1</h2>
+                <p>一ヶ月に利用したい時間を決める</p>
               </div>
-            </div>
+          </div>
+          <div class='fixed-row' style={{width:'50%'}}>
+            <span class="material-icons green ">looks_two</span>
+              <div class='col align'>
+                <h2>STEP 2</h2>
+                <p>レッスン時間を購入後、レッスンを予約する</p>
+              </div>
+          </div>
+          <div class='fixed-row' style={{width:'50%'}}>
+            <span class="material-icons green ">looks_3</span>
+              <div class='col align'>
+                <h2>STEP 3</h2>
+                <p>当日は、予約後に送られてくるリンクからレッスンを受講する</p>
+              </div>
+          </div>
+        </div>
       </div>
       <Signup redirect={'/online'}/>
     </div>
