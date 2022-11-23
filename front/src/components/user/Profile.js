@@ -14,7 +14,7 @@ const Profile = () => {
   //     counter+=moment(item.start).diff(moment(item.end), 'hours')
   //   })
   // });
-  const likes = useRef(student.profile.likes);
+  const likes = useRef(student.profile?student.profile.likes:'');
   const goals = useRef(student.profile.goals);
   const personal = useRef(student.profile.personal);
   const level = useRef(student.profile.level);
