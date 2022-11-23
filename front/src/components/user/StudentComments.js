@@ -84,29 +84,32 @@ const StudentComments = () => {
       </div>
       <h1>Feedback ({comments?comments.length:'0'})</h1>
       <div class='col'>
-          {comments ? (comments.map(function(item, i){
-              return (
-                <div class='col feedback'>
-                    <div class=''>{item.comment}</div>
-                    <div class=''>{item.author.first} {item.author.last}</div>
-                    <div class=''>{moment(item.createdAt).format('dddd MMM-DD')}</div>
-                </div>
-              )
-                  })): (
-                    <div class='col slim' style={{background:'#7ab5d1',color:'white'}}>
-                      <div class='col border' style={{borderColor:'white',display:'block'}}>
-                        <h1>CHATSHACKにようこそ！</h1><br/>
-                        ご登録いただきありがとうございました！　では、これからどうやってあなたの英語力を向上させるのか？
-                        <br/><p>まずは、CHATSHACKの無料レッスンを受けてみてください！予約不要で、お客様の好きなタイミングでご来店いただけます。
-                          心よりお待ちしておりますので、緊張せずお気軽にお越しください。</p>
-                        <p>また、ご質問や不安な点がある方のお問い合わせもお待ちしております。
-                          (050 3395 1280)</p>
-                          <p>インスタやYouTubeもやっていますので、お楽しみください！</p>
-                        <div calss='col'>
-                          <Social data={'tiny-logo'}/>
+          {comments ? (
+            comments.length>0?
+            (comments.map(function(item, i){
+                return (
+                  <div class='col feedback'>
+                      <div class=''>{item.comment}</div>
+                      <div class=''>{item.author.first} {item.author.last}</div>
+                      <div class=''>{moment(item.createdAt).format('dddd MMM-DD')}</div>
+                  </div>
+                )
+                    })): (
+                      <div class='col slim' style={{background:'#7ab5d1',color:'white'}}>
+                        <div class='col border' style={{borderColor:'white',display:'block'}}>
+                          <h1>CHATSHACKにようこそ！</h1><br/>
+                          ご登録いただきありがとうございました！　では、これからどうやってあなたの英語力を向上させるのか？
+                          <br/><p>まずは、CHATSHACKの無料レッスンを受けてみてください！予約不要で、お客様の好きなタイミングでご来店いただけます。
+                            心よりお待ちしておりますので、緊張せずお気軽にお越しください。</p>
+                          <p>また、ご質問や不安な点がある方のお問い合わせもお待ちしております。
+                            (050 3395 1280)</p>
+                            <p>インスタやYouTubeもやっていますので、お楽しみください！</p>
+                          <div calss='col'>
+                            <Social data={'tiny-logo'}/>
+                          </div>
                         </div>
-                      </div>
-                    </div>)}
+                      </div>)
+          ):'Loading...'}
       </div>
       </div>
 )
