@@ -14,18 +14,18 @@ const Profile = () => {
   //     counter+=moment(item.start).diff(moment(item.end), 'hours')
   //   })
   // });
-  const likes = useRef();
-  const goals = useRef();
-  const personal = useRef();
-  const level = useRef();
+  const likes = useRef(student.profile.likes);
+  const goals = useRef(student.profile.goals);
+  const personal = useRef(student.profile.personal);
+  const level = useRef(student.profile.level);
 
   const [feedback, setFeedback] = useState();
 
   useEffect(()=>{
-    likes.current.value = student.profile.likes
-    goals.current.value = student.profile.goals
-    personal.current.value = student.profile.personal
-    level.current.value = student.profile.level
+    // likes.current.value = student.profile.likes
+    // goals.current.value = student.profile.goals
+    // personal.current.value = student.profile.personal
+    // level.current.value = student.profile.level
   },[])
 
   const onSubmit = (e) => {
