@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import Signup from "../user/Signup";
 import background from '../../online_background.jpg'
+import environment from '../../online_environment.jpg'
 
 const Online_Landing = () => {
 
@@ -42,7 +43,7 @@ const Online_Landing = () => {
           </div>
         </div>
       </div>
-      <div class='col slim' style={{background:'ghostwhite'}}>
+      <div class='col slim' style={{backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')'}}>
         <div class='fixed-row' style={{width:'50%'}}>
           <h1>NEXT STEPS</h1>
         </div>
