@@ -1,4 +1,3 @@
-import React, { useEffect, useState} from 'react';
 import Signup from "../user/Signup";
 import background from '../../online_background.jpg'
 import environment from '../../online_environment.jpg'
