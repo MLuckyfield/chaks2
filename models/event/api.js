@@ -30,27 +30,27 @@ const email = require('../../services/email')
       }
     });
 
-    // router.post('/rsvp',auth.auth, auth.permission(['manager']),async (req,res)=>{
-    //   // console.log(req)
-    //   req=req.body.params
-    //   let title = req.first+" "+req.last+" RSVPed for "+req.id
-    //   email.sendRSVP(title,'yay!',res)
-    //   // Event.findByIdAndUpdate(req.filter,{'$set':{attendees:req.rsvp._id}},{new:true})
-    //   //       .then((result)=>{
-    //   //         email.sendRSVP(req.rsvp,result.name,res)
-    //   //         return res.status(201).json({
-    //   //           data:result,
-    //   //           message: 'User update',
-    //   //           success: true
-    //   //         });
-    //   //       })
-    //   //       .catch((err)=>{
-    //   //         return res.status(500).json({
-    //   //           message: `Could not find user: ${err}`,
-    //   //           success: false
-    //   //         });
-    //   //       })
-    // })
+    router.post('/rsvp',auth.auth, auth.permission(['manager']),async (req,res)=>{
+      // console.log(req)
+      req=req.body.params
+      let title = req.first+" "+req.last+" RSVPed for "+req.id
+      email.sendRSVP(title,'yay!',res)
+      // Event.findByIdAndUpdate(req.filter,{'$set':{attendees:req.rsvp._id}},{new:true})
+      //       .then((result)=>{
+      //         email.sendRSVP(req.rsvp,result.name,res)
+      //         return res.status(201).json({
+      //           data:result,
+      //           message: 'User update',
+      //           success: true
+      //         });
+      //       })
+      //       .catch((err)=>{
+      //         return res.status(500).json({
+      //           message: `Could not find user: ${err}`,
+      //           success: false
+      //         });
+      //       })
+    })
     router.post('/update',auth.auth, auth.permission(['manager']),async (req,res)=>{
       await Event.findOneAndUpdate(req.body.filter,req.body.data)
           .then(()=>{

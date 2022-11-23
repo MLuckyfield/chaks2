@@ -95,7 +95,7 @@ const StudentComments = () => {
                   </div>
                 )
                     })): (
-                      <div class='col slim' style={{background:'#7ab5d1',color:'white'}}>
+                      <div class='col slim' style={{background:'#89cff0',color:'white'}}>
                         <div class='col border' style={{borderColor:'white',display:'block'}}>
                           <h1>CHATSHACKにようこそ！</h1><br/>
                           ご登録いただきありがとうございました！　では、これからどうやってあなたの英語力を向上させるのか？
