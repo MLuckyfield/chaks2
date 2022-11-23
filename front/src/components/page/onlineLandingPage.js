@@ -46,7 +46,7 @@ const Online_Landing = () => {
       <div class='col slim' style={{backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')'}}>
         <div class='overlay' style={{backgroundColor:'rgba(248,248,255,0.8)'}}>
           <div class='fixed-row' style={{width:'50%'}}>
-            <h1>NEXT STEPS</h1>
+            <h1 style={{margin:'10% 0'}}>NEXT STEPS</h1>
           </div>
           <div class='fixed-row' style={{width:'50%'}}>
             <span class="material-icons green ">looks_one</span>
