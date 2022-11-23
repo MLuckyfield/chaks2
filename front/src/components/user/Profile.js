@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState,useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 
@@ -20,6 +20,13 @@ const Profile = () => {
   const level = useRef();
 
   const [feedback, setFeedback] = useState();
+
+  useEffect(()=>{
+    likes.current.value = student.profile.likes
+    goals.current.value = student.profile.goals
+    personal.current.value = student.profile.personal
+    level.current.value = student.profile.level
+  },[])
 
   const onSubmit = (e) => {
     e.preventDefault();
