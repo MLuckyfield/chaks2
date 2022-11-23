@@ -19,30 +19,33 @@ const Online_Landing = () => {
       <div class='col slim'>
         <div class='row'>
             <div class='col'>
-              <div class='fixed-row align'>
+              <div class='fixed-row align' style={{marginBottom:'10%'}}>
                 <span class="material-icons green ">task_alt</span><h2>ネイティブスピーカー</h2>
               </div>
-              <div class='fixed-row align'>
+              <div class='fixed-row align'  style={{marginBottom:'10%'}}>
                 <span class="material-icons green ">task_alt</span><h2>マンツーマンレッスン</h2>
               </div>
-              <div class='fixed-row align'>
+              <div class='fixed-row align'  style={{marginBottom:'10%'}}>
                 <span class="material-icons green ">task_alt</span><h2>優秀な講師陣</h2>
               </div>
           </div>
           <div class='col'>
-            <div class='fixed-row align'>
+            <div class='fixed-row align' style={{marginBottom:'10%'}}>
               <span class="material-icons green ">task_alt</span><h2>オンラインフィードバック</h2>
             </div>
-            <div class='fixed-row align'>
+            <div class='fixed-row align' style={{marginBottom:'10%'}}>
               <span class="material-icons green ">task_alt</span><h2>自由なレッスン</h2>
             </div>
-            <div class='fixed-row align'>
+            <div class='fixed-row align' style={{marginBottom:'10%'}}>
               <span class="material-icons green ">task_alt</span><h2>選べるレッスン時間</h2>
             </div>
           </div>
         </div>
       </div>
-      <div class='col slim'>
+      <div class='col slim' style={{background:'ghostwhite'}}>
+        <div class='fixed-row' style={{width:'50%'}}>
+          <h1>NEXT STEPS</h1>
+        </div>
         <div class='fixed-row' style={{width:'50%'}}>
           <span class="material-icons green ">looks_one</span>
             <div class='col align'>
