@@ -84,7 +84,7 @@ const StudentComments = () => {
       </div>
       <h1>Feedback ({comments?comments.length:'0'})</h1>
       <div class='col'>
-          {comments.length>0 ? (comments.map(function(item, i){
+          {comments ? (comments.map(function(item, i){
               return (
                 <div class='col feedback'>
                     <div class=''>{item.comment}</div>
