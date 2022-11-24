@@ -102,7 +102,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 
           break;
         case 'customer.subscription.updated':
-          sub_type = session.items.data[0].price.product        
+          sub_type = session.items.data[0].price.product
           console.log('subscription update for',session.customer,session.items.data[0].price.product)
           //ENGULF BELOW IF STATEMENTS IN A CHECK FOR PRODUCT
           //add subscriptions field as array of objects, each object has subscription data
@@ -172,13 +172,13 @@ const updateUser=(user,update,res)=>{
   User.findOneAndUpdate(user,update,{new:true}).then((result)=>{
        console.log('customer updatedpost payment',result)
           return res.status(201).json({
-            data:result,
             message: 'Booking saved',
             success: true
           });
       }).catch((err)=>{
         console.log('payment issue',err)
           return res.status(501).json({
+            data:err,
             message: 'Booking saved',
             success: false
           });
