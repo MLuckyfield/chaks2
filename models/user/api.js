@@ -120,17 +120,14 @@ const { Server } = require("socket.io");
                                mailchimp_hash,
                                { tags: [{ name: req.segment, status: "active" }] }
                              ).then(()=>{
-                               // return res.status(201).json({
-                               //         message: `Success!`,
-                               //         success: true
-                               //       });
+                               console.log('user saved, website okay ready')
+                               return res.status(201).json({
+                                 result,
+                                 message: `Success!`,
+                                 success: true
+                               });
                              })
-                             console.log('user saved, website okay ready')
-                             return res.status(201).json({
-                               result,
-                               message: `Success!`,
-                               success: true
-                             });
+
                            }
                        });
                        // ==mialchimp finished
