@@ -87,7 +87,7 @@ const { Server } = require("socket.io");
                            'email_address': req.email,
                            'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
                            'status': 'subscribed',
-                           'tags':[{name:req.segment,status:'active'}],
+                           'tags':tags,
                            'merge_fields': {
                                'FNAME': req.first,
                                'LNAME': req.last
