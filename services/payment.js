@@ -190,7 +190,7 @@ router.post('/new', async (req, res)=>{
   let line_items={
       price:req.body.product,
       quantity:1,
-      adjustable_quantity:{enabled:true,minimum:1,maximum:99},
+      adjustable_quantity:{enabled:true,minimum:2,maximum:99},
     }
   if(req.body.countable){line_items['adjustable_quantity']={enabled:true,minimum:1}}
   const paymentLink = await stripe.paymentLinks.create({
