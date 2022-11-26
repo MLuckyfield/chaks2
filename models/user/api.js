@@ -87,7 +87,7 @@ const { Server } = require("socket.io");
                            'email_address': req.email,
                            'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
                            'status': 'subscribed',
-                           'tags':tags,
+                           // 'tags':tags,
                            'merge_fields': {
                                'FNAME': req.first,
                                'LNAME': req.last
@@ -108,6 +108,23 @@ const { Server } = require("socket.io");
                              success: false
                            });
                            } else {
+                             console.log('attempting email')
+                             let mailchimp_hash = encrypt(req.email.toLowerCase()).toString()
+                             mailchimp.setConfig({
+                               apiKey: process.env.MAILCHIMP_AUTH,
+                               server: 'us9',
+                             });
+
+                             const response = mailchimp.lists.updateListMemberTags(
+                               "cb86e9b6f5",
+                               mailchimp_hash,
+                               { tags: [{ name: "offline", status: "active" }] }
+                             ).then(()=>{
+                               // return res.status(201).json({
+                               //         message: `Success!`,
+                               //         success: true
+                               //       });
+                             })
                              console.log('user saved, website okay ready')
                              return res.status(201).json({
                                result,
