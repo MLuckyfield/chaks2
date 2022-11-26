@@ -20,6 +20,7 @@ const onSubmit = (e) => {
       first:first.current.value,
       password:password.current.value,
       last:last.current.value,
+      segment:props.segment
     })
     .then((res) => {
       // console.log('response'+res)

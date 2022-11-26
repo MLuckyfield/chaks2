@@ -72,7 +72,7 @@ const Online_Landing = () => {
       </div>
       {localStorage.getItem('user')?
         <div class="btn" style={{position:'relative'}}>購入</div>
-        :<Signup redirect={'/online'}/>
+        :<Signup redirect={'/online'} segment={'online'}/>
       }
     </div>
 )}
