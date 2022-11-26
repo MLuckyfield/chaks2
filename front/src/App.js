@@ -391,7 +391,7 @@ const Front = ()=>{
                 </div>
               </div>
               {localStorage.getItem('user')?'':(
-                <Signup redirect={'/online'} segment={'offline'}/>
+                <Signup redirect={'/dash'} segment={'offline'}/>
               )}
               <AccessDisplay/>
               <div id='faq'  class='master-row'>
