@@ -78,14 +78,16 @@ const { Server } = require("socket.io");
                      let result = auth.createToken(user)
                      // console.log(result)
                      //--MAILCHIMP
-                     console.log('starting mail service')
+                     let tags =[]
+                     tags.push(req.segment)
+                     console.log('starting mail service',req.segment,tags)
                      request({
                        url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
                        json: {
                            'email_address': req.email,
                            'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
                            'status': 'subscribed',
-                           'tags':[req.segment],
+                           'tags':tags,
                            'merge_fields': {
                                'FNAME': req.first,
                                'LNAME': req.last
