@@ -108,7 +108,7 @@ const { Server } = require("socket.io");
                              success: false
                            });
                            } else {
-                             console.log('attempting email')
+                             console.log('attempting email',req.segment)
                              let mailchimp_hash = encrypt(req.email.toLowerCase()).toString()
                              mailchimp.setConfig({
                                apiKey: process.env.MAILCHIMP_AUTH,
@@ -118,7 +118,7 @@ const { Server } = require("socket.io");
                              const response = mailchimp.lists.updateListMemberTags(
                                "cb86e9b6f5",
                                mailchimp_hash,
-                               { tags: [{ name: "offline", status: "active" }] }
+                               { tags: [{ name: req.segment, status: "active" }] }
                              ).then(()=>{
                                // return res.status(201).json({
                                //         message: `Success!`,
