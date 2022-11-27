@@ -58,9 +58,10 @@ app.use(session({
 
 // app.use(express.json());
 app.use((req,res,next)=>{
+  console.log(req)
   console.log(req.rawHeaders[27],'-->',
-              req.originalUrl,' | ',
-              req.user.first,'('+req.user._id+')')
+              req.originalUrl,' | '
+              )
   if(req.originalUrl==='/payment/complete'){
       next()
   }else{
