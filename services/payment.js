@@ -193,7 +193,7 @@ router.post('/new', async (req, res)=>{
   // console.log(req.body.product)
   let line_items={
       price:req.body.product,
-      quantity:1,
+      quantity:2,
       adjustable_quantity:{enabled:true,minimum:2,maximum:99},
     }
   if(req.body.countable){line_items['adjustable_quantity']={enabled:true,minimum:1}}
