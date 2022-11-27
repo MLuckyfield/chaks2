@@ -46,7 +46,7 @@ const { Server } = require("socket.io");
     //user
     router.post('/new', async (req, res) => {
       req=req.body
-      console.log(req)
+      // console.log(req)
       //check if exists
       let taken = await(exists(req.email));
       if (taken){
@@ -63,7 +63,7 @@ const { Server } = require("socket.io");
       try{
 
         Material.find().select('_id').then((materials)=>{
-            console.log('materials',materials)
+            // console.log('materials',materials)
             let upload=[]
             materials.forEach((material, i) => {
               upload.push({ref:material})
@@ -221,15 +221,14 @@ const { Server } = require("socket.io");
       //1. If session started
       if (req.data=='true'){
         // notify.emit(['62bec286e4a871a163c6eaaf_students'],'NEW','Please welcome Shunsuke','')
-        console.log('creating new session')
         session['start'] = new Date()
         await User.findById(req.filter)
           .then((user)=>{
-            console.log('found '+user.first)
+            console.log('clocking in',user.first,user.last)
             user.statistics.push(session)
             User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:true}},{new:true})
                   .then((result)=>{
-                    console.log('updated '+JSON.stringify(result))
+                    // console.log('updated '+JSON.stringify(result))
                     return res.status(201).json({
                       data:result,
                       message: 'User update',
@@ -264,15 +263,15 @@ const { Server } = require("socket.io");
                     billable = (Math.ceil(billable/30))//+1
                     let unpaid=0
                     let temp = result.points.sort((a,b)=>{a.createdAt-b.createdAt})
-                    result.points.forEach((item, i) => {
-                      console.log(item.createdAt)
-                    });
-                    temp.forEach((item, i) => {
-                      console.log(item.createdAt)
-                    });
+                    // result.points.forEach((item, i) => {
+                    //   console.log(item.createdAt)
+                    // });
+                    // temp.forEach((item, i) => {
+                    //   console.log(item.createdAt)
+                    // });
 
                     for(let i =0;i<billable;i++){
-                      console.log('length',result.points,temp)
+                      // console.log('length',result.points,temp)
                       if(temp.length>=1){
                         temp.splice(0,1)
                       }
@@ -280,7 +279,7 @@ const { Server } = require("socket.io");
                     }
                     User.findByIdAndUpdate(req.filter,{'$set':{points:result.points}},{new:true})
                       .then((complete)=>{
-                        console.log('complete',complete)
+                        console.log('clocking out',complete.first,complete.last)
                         return res.status(201).json({
                           data:complete,
                           display:{unpaid:unpaid,billable:billable,remaining:complete.points.length*30},
@@ -302,7 +301,7 @@ const { Server } = require("socket.io");
 
     //Get
     router.get('/all', auth.auth, async (req, res) => {
-      // console.log('running user/all',req.query)
+      console.log('running user/all',req)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
       // console.log('data retrieved:',data)
       return res.status(201).json({
@@ -449,6 +448,7 @@ const { Server } = require("socket.io");
       // })
     // add minutes
     cron.schedule('0 21 * * *',()=>{
+      console.log('SCRIPT: ADDING POINTS: STARTING')
       User.find().then((users)=>{
         users.forEach((user, i) => {
           user.subscriptions.forEach((sub, i) => {
@@ -461,8 +461,11 @@ const { Server } = require("socket.io");
               }
             }
           });
+          User.findByIdAndUpdate(user._id,{'$push':{points:units}}).then(()=>{console.log('points added for',user.first,user.name)})
         });
       })
+      console.log('SCRIPT: ADDING POINTS: COMPLETE')
+
       // console.log('updating keiko')
       // let update= {'$set':{
       //   points:[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}],
@@ -470,7 +473,6 @@ const { Server } = require("socket.io");
       //     customer_id:"cus_Mgk3uWbJps6Bhr"
       //   }
       // }}
-      // User.findByIdAndUpdate('632bc50839e1aa368cd88d25',update).then(()=>{console.log('done')})
     })
 
     //expiry check for lessons
@@ -497,7 +499,7 @@ const { Server } = require("socket.io");
     //automated engagement
     cron.schedule('0 22 * * *',()=>{ //server time is 9 hours ahead
       User.find().then((users)=>{
-        console.log('cron running...',users.length)
+        console.log('SCRIPT: EMAIL ENGAGEMENT: STARTING',users.length)
         // email.sendDefault('Activating Engagement','Sent on '+new Date().toString())
 
         let delay=[]
