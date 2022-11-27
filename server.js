@@ -58,7 +58,6 @@ app.use(session({
 
 // app.use(express.json());
 app.use((req,res,next)=>{
-  console.log(req)
   console.log(req.originalUrl,' | ',req.user?req.user.first+req.user._id:'')
   if(req.originalUrl==='/payment/complete'){
       next()
