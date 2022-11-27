@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const auth= require('../../services/authentication');
-const system= require('../../services/system');
+// const system= require('../../services/system');
 const notify= require('../../services/notify');
 const User = require('./model')
 const Material = require('../material/model')
@@ -19,7 +19,6 @@ const { Server } = require("socket.io");
 //Registration
 
     router.post('/reset',async(req,res)=>{
-      system.start('PW RESET',req)
       req=req.body
       let taken = await(exists(req.email));
       if (taken){
@@ -29,7 +28,6 @@ const { Server } = require("socket.io");
         }).save()
         .then((site_event)=>{
           email.sendDefault('CHATSHACK: Password Reset Code',site_event._id.toString(),taken.email)
-          system.end('PW RESET',req)
           return res.status(200).json({
             message:'Resetting...',
             success: true
@@ -45,7 +43,6 @@ const { Server } = require("socket.io");
     //user
     router.post('/new', async (req, res) => {
       req=req.body
-      system.start('New User Creation',req)
 
       let taken = await(exists(req.email));
       if (taken){
@@ -119,7 +116,6 @@ const { Server } = require("socket.io");
                                mailchimp_hash,
                                { tags: [{ name: req.segment, status: "active" }] }
                              ).then(()=>{
-                               system.end('New User Creation',req)
                                return res.status(201).json({
                                  result,
                                  message: `Success!`,
@@ -154,7 +150,6 @@ const { Server } = require("socket.io");
           async (req, res) => {
             // req=req.body
             let {email, password} = req.body;
-            system.start('User Logging In',req)
 
             //check if exists
             const user = await User.findOne({email});
@@ -175,7 +170,6 @@ const { Server } = require("socket.io");
             if(await auth.validatePass(password, user.password)){
 
               let result = auth.createToken(user)
-              system.end('User Logging In',req)
               return res.status(200).json({
                 result,
                 message: 'Welcome back',
@@ -224,7 +218,6 @@ const { Server } = require("socket.io");
         session['start'] = new Date()
         await User.findById(req.filter)
           .then((user)=>{
-            system.network('Clocking in...',req)
             user.statistics.push(session)
             User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:true}},{new:true})
                   .then((result)=>{
@@ -245,7 +238,6 @@ const { Server } = require("socket.io");
       }
       else{
         //2. if session ended
-        system.network('Clocking out...',req)
         await User.findById(req.filter)
           .then((user)=>{
             user.statistics.reverse()[0].end=new Date()
@@ -301,7 +293,6 @@ const { Server } = require("socket.io");
 
     //Get
     router.get('/all', auth.auth, async (req, res) => {
-      system.network('Loading all users...',req)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields)
       // console.log('data retrieved:',data)
       return res.status(201).json({
@@ -312,7 +303,6 @@ const { Server } = require("socket.io");
     });
     //Get
     router.get('/progress', auth.auth, async (req, res) => {
-      system.network('Updating progress...',req)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields).populate('progress.ref').populate('goals._id')
       console.log('data retrieved:',data)
       return res.status(201).json({
@@ -323,7 +313,6 @@ const { Server } = require("socket.io");
     });
     router.post('/goals', auth.auth, async (req, res) => {
       //get number of goals
-      system.network('Setting goals...',req)
       // if(req.body.goals.length<=3){
         User.findByIdAndUpdate(req.body.filter,req.body.data,{new:true,populate:{path:'goals'}})
               .then((result)=>{
@@ -369,7 +358,6 @@ const { Server } = require("socket.io");
 
     //Get
     router.get('/update_goals', auth.auth, async (req, res) => {
-      system.network('Updating goals...',req)
       let data = await User.findOneAndUpdate(JSON.parse(req.query.filter),JSON.parse(req.query.data),JSON.parse(req.query.find))
       // console.log('data retrieved:',data)
       data.progress.forEach((item, i) => {
@@ -390,7 +378,6 @@ const { Server } = require("socket.io");
     });
     //Get
     router.get('/session', auth.auth, async (req, res) => {
-      system.network('Updating session...',req)
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields).populate({path:'students',model:'User',populate:{path:'goals.ref',model:'Material'}})
       console.log('data retrieved:',data)
       return res.status(201).json({
@@ -401,7 +388,6 @@ const { Server } = require("socket.io");
     });
 
     router.get('/dash',auth.auth,auth.permission(['user','teacher','manager']),async (req,res)=>{
-      system.network('Loading Dash...',req)
       // console.log(req)
       return res.status(200).json({
         message: 'Welcome back',
@@ -411,7 +397,6 @@ const { Server } = require("socket.io");
 
     //rewards status
     cron.schedule('1 1 1 * *',()=>{
-      system.network('Updating VIP status...')
       let gold = 0
       let platinum = 0
       let diamond = 0
@@ -449,8 +434,6 @@ const { Server } = require("socket.io");
       // })
     // add minutes
     cron.schedule('0 21 * * *',()=>{
-      system.start('SCRIPT: adding minutes')
-
       User.find().then((users)=>{
         users.forEach((user, i) => {
           user.subscriptions.forEach((sub, i) => {
@@ -478,8 +461,6 @@ const { Server } = require("socket.io");
 
     //expiry check for lessons
     cron.schedule('0 22 * * *',()=>{
-      system.start('SCRIPT: expiring minutes')
-
       let expired = 0
       User.find().then((users)=>{
         users.forEach((user, i) => {
@@ -501,7 +482,6 @@ const { Server } = require("socket.io");
     //automated engagement
     cron.schedule('0 22 * * *',()=>{ //server time is 9 hours ahead
       User.find().then((users)=>{
-        system.start('SCRIPT: email engagement') 
         // email.sendDefault('Activating Engagement','Sent on '+new Date().toString())
 
         let delay=[]
