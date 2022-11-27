@@ -46,8 +46,7 @@ const Login = () => {
 
                     <button type="submit" class="outline-first">Login</button>
                   </form>
-                  <button style={{background:'none',color:'brown',fontSize:'smaller',textDecoration:'underline',width:'50%',border:'none'}} onClick={()=>window.location='/reset'} class="solid-first">Forgot Password</button>
-                  
+                  <button style={{background:'none',color:'brown',fontSize:'smaller',textDecoration:'underline',width:'50%',border:'none'}} onClick={()=>window.location='/reset'} class="solid-first">Forgot Password</button>                  
                 </div>
 )
 }

@@ -39,11 +39,11 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           let new_customer = session.id
           console.log('new customer create request',session.id,sub_type)
           purchased = {
-              $set:{
+              // $set:{
                 stripe:{
                   customer_id:new_customer,
                 }
-              }
+              // }
           }
           identifier={email:session.email}
           updateUser(identifier,purchased,res)
@@ -111,17 +111,18 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           //
           if(session.cancel_at_period_end){ //cancellation expected
             purchased = {
-                $set:{
+                // $set:{
                 //   stripe:{
                 //     plan_status:'to_cancel',
                 // },
                 'subscriptions.$':{
                     status:'to_cancel'
-                }}
+                }
+              // }
             }
           }else if(session.pause_collection){ //pause subscription
             purchased = {
-                $set:{
+                // $set:{
                 //   plan:'standard',
                 //   stripe:{
                 //     plan_status:'paused',
@@ -130,11 +131,12 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                 'subscriptions.$':{
                     status:'paused',
                     start:session.pause_collection.resumes_at,
-                }}
+                }
+              // }
             }
           }else if(session.pause_collection==null){ //continue subscription
             purchased = {
-                $set:{
+                // $set:{
                   // plan:'premium',
                   // 'stripe.plan_status':'active',
                   // 'stripe.plan_start_date':new Date(),
@@ -142,7 +144,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                       status:'active',
                       start:new Date(),
                   }
-              }
+              // }
             }
           }
           identifier={stripe:{customer_id:session.customer},'subscriptions.name':sub_type}
@@ -150,13 +152,15 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           break;
         case 'customer.subscription.deleted':
           purchased = {
-              $set:{
-                monthly_hours:0,
-                plan:'standard',
-                stripe:{
-                  plan_status:'cancelled',
-                  plan_start_date:new Date(),
-              }}
+              // $set:{
+                // plan:'premium',
+                // 'stripe.plan_status':'active',
+                // 'stripe.plan_start_date':new Date(),
+                'subscriptions.$':{
+                    status:'deactivated',
+                    start:new Date(),
+                }
+            // }
           }
           identifier={stripe:{customer_id:session.customer}}
           updateUser(identifier,purchased,res)
