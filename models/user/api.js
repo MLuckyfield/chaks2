@@ -433,7 +433,7 @@ const { Server } = require("socket.io");
       //   User.findOneAndUpdate({_id:'63673aed57b02a5be9c72b06'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
       // })
     // add minutes
-    cron.schedule('*/10 * * * *',()=>{
+    cron.schedule('*/30 * * * *',()=>{
       console.log('running point update')
       User.find().then((users)=>{
         users.forEach((user, i) => {
