@@ -104,7 +104,7 @@ const { Server } = require("socket.io");
                              success: false
                            });
                            } else {
-                             // console.log('attempting email',req.segment)
+                             console.log('attempting email',response)
                              // let mailchimp_hash = encrypt(req.email.toLowerCase()).toString()
                              // mailchimp.setConfig({
                              //   apiKey: process.env.MAILCHIMP_AUTH,
