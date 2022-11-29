@@ -461,7 +461,7 @@ const { Server } = require("socket.io");
       //     customer_id:"cus_Mgk3uWbJps6Bhr"
       //   }
       // }}
-    })
+    // })
 
     //expiry check for lessons
     cron.schedule('0 22 * * *',()=>{
