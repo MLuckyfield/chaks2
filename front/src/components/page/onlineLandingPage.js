@@ -18,7 +18,7 @@ const Online_Landing = () => {
             </div>
         </div>
       </div>
-      <div class='col slim'>
+      <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'none !important',margin:'none !important',width:'100%'}}>
         <div class='row'>
             <div class='col'>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
@@ -51,6 +51,11 @@ const Online_Landing = () => {
         <div class='row'>
           <div class='col'>
             <h2>teacher one</h2>
+            <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={false} volume={0} muted={true} width={'100%'} playIcon={<div class='mini_overlay' style={{height:'500px',width:'500px',zIndex:'10'}}>hello</div>}/>
+            <p>blah blah</p>
+          </div>
+          <div class='col'>
+            <h2>teacher two</h2>
             <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={false} volume={0} muted={true} width={'100%'} playIcon={<div class='mini_overlay' style={{height:'500px',width:'500px',zIndex:'10'}}>hello</div>}/>
             <p>blah blah</p>
           </div>
