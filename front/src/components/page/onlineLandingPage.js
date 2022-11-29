@@ -13,12 +13,12 @@ const Online_Landing = () => {
               <div class='col'>
                 <h2>CHATSHACK is now</h2>
                 <h1>ONLINE</h1>
-                <a class='solid-first cta' href="#signup" style={{textDecoration:'none',textAlign:'center'}}>MORE</a>
+                <a class='solid-first cta' href="/#signup" style={{textDecoration:'none',textAlign:'center'}}>MORE</a>
               </div>
             </div>
         </div>
       </div>
-      <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'none !important',margin:'none !important',width:'100%'}}>
+      <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'none',margin:'none',width:'100%'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.8)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw'}}>
           <div class='row'>
               <div class='col'>
@@ -63,7 +63,7 @@ const Online_Landing = () => {
           </div>
         </div>
       </div>
-      <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'none !important',margin:'none !important',width:'100%'}}>
+      <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',width:'100%'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.8)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw'}}>
           <div class='fixed-row' style={{width:'50%'}}>
             <h1 style={{margin:'10% 0'}}>NEXT STEPS</h1>
