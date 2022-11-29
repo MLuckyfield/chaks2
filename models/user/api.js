@@ -304,7 +304,7 @@ const { Server } = require("socket.io");
     //Get
     router.get('/progress', auth.auth, async (req, res) => {
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields).populate('progress.ref').populate('goals._id')
-      console.log('data retrieved:',data)
+      // console.log('data retrieved:',data)
       return res.status(201).json({
         data: data,
         message: 'Job saved',
@@ -379,7 +379,7 @@ const { Server } = require("socket.io");
     //Get
     router.get('/session', auth.auth, async (req, res) => {
       let data = await User.find(JSON.parse(req.query.filter)).select(req.body.fields?req.body.fields:req.query.fields).populate({path:'students',model:'User',populate:{path:'goals.ref',model:'Material'}})
-      console.log('data retrieved:',data)
+      // console.log('data retrieved:',data)
       return res.status(201).json({
         data: data,
         message: 'Job saved',
