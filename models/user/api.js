@@ -55,7 +55,6 @@ const { Server } = require("socket.io");
       //encrypt password
       const password = await auth.newPass(req.password)
 
-
       try{
         Material.find().select('_id').then((materials)=>{
             // console.log('materials',materials)
