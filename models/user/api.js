@@ -57,7 +57,6 @@ const { Server } = require("socket.io");
 
 
       try{
-
         Material.find().select('_id').then((materials)=>{
             // console.log('materials',materials)
             let upload=[]
