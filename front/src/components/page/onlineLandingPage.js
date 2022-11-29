@@ -13,7 +13,7 @@ const Online_Landing = () => {
               <div class='col'>
                 <h2>CHATSHACK is now</h2>
                 <h1>ONLINE</h1>
-                <a class='solid-first cta' href="/#signup" style={{textDecoration:'none',textAlign:'center'}}>MORE</a>
+                <a class='solid-first cta' href="#signup" style={{textDecoration:'none',textAlign:'center'}}>MORE</a>
               </div>
             </div>
         </div>
