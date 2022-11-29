@@ -46,7 +46,7 @@ const Online_Landing = () => {
           </div>
         </div>
       </div>
-      <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'none !important',margin:'none !important',width:'100%'}}>
+      <div class='col slim'>
         <div class='fixed-row' style={{width:'50%'}}>
           <h1 style={{margin:'10% 0'}}>TEACHERS</h1>
         </div>
