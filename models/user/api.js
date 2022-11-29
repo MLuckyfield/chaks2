@@ -437,11 +437,12 @@ const { Server } = require("socket.io");
       console.log('running point update')
       User.find().then((users)=>{
         users.forEach((user, i) => {
+          if(user._id=='6324095536b82285890835c2' || user._id=='632d75cbb8480b92ca0b7acc'){
             let units = []
             user.subscriptions.forEach((sub, i) => {
               if(sub.name=='prod_Mf0wgW4xwQ0Yyc' && sub.status=='active'){
                 console.log(user.first,user.last,'must be updated with',user.monthly_hours,'hours:',moment(sub.start).format('DD'),new Date().getDate(),moment(sub.start).format('DD')==new Date().getDate())
-                if(moment(sub.start).format('DD')==new Date().getDate()){
+                if(moment(sub.start).format('DD')<=new Date().getDate()){
                   console.log('update activated')
                   for(let i = 0;i<user.monthly_hours*2;i++){
                     units.push({value:30})
@@ -450,7 +451,7 @@ const { Server } = require("socket.io");
               }
             });
             User.findByIdAndUpdate(user._id,{'$push':{points:units}}).then(()=>{console.log('points added for',user.first,user.last)})
-
+          }
         });
       })
 
