@@ -454,7 +454,6 @@ const { Server } = require("socket.io");
     //       }
     //     });
     //   })
-
       // console.log('updating keiko')
       // let update= {'$set':{
       //   points:[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}],
