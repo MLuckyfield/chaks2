@@ -1,6 +1,7 @@
 import Signup from "../user/Signup";
 import background from '../../online_background.jpg'
 import environment from '../../online_environment.jpg'
+import ReactPlayer from 'react-player/youtube'
 
 const Online_Landing = () => {
 
@@ -39,6 +40,18 @@ const Online_Landing = () => {
             <div class='fixed-row align' style={{marginBottom:'10%'}}>
               <span class="material-icons green ">task_alt</span><h2>選べるレッスン時間</h2>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'none !important',margin:'none !important',width:'100%'}}>
+        <div class='fixed-row' style={{width:'50%'}}>
+          <h1 style={{margin:'10% 0'}}>TEACHERS</h1>
+        </div>
+        <div class='row'>
+          <div class='col'>
+            <h2>teacher one</h2>
+            <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={false} volume={0} muted={true} width={'100%'} playIcon={<div class='mini_overlay' style={{height:'500px',width:'500px',zIndex:'10'}}>hello</div>}/>
+            <p>blah blah</p>
           </div>
         </div>
       </div>
