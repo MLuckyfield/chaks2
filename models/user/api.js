@@ -433,17 +433,15 @@ const { Server } = require("socket.io");
       //   User.findOneAndUpdate({_id:'63673aed57b02a5be9c72b06'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
       // })
     // add minutes
-    cron.schedule('* * * * *',()=>{
+    cron.schedule('0 21 * * *',()=>{
       console.log('running point update')
-      let done= 0;
       User.find().then((users)=>{
         users.forEach((user, i) => {
-          if(user._id=='633e91c3945a79bacb934535' && done==0){
             let units = []
             user.subscriptions.forEach((sub, i) => {
               if(sub.name=='prod_Mf0wgW4xwQ0Yyc' && sub.status=='active'){
                 console.log(user.first,user.last,'must be updated with',user.monthly_hours,'hours:',moment(sub.start).format('DD'),new Date().getDate(),moment(sub.start).format('DD')==new Date().getDate())
-                if(moment(sub.start).format('DD')<=new Date().getDate()){
+                if(moment(sub.start).format('DD')==new Date().getDate()){
                   console.log('update activated')
                   for(let i = 0;i<user.monthly_hours*2;i++){
                     units.push({value:30})
@@ -451,9 +449,8 @@ const { Server } = require("socket.io");
                 }
               }
             });
-            done=1
-            User.findByIdAndUpdate(user._id,{'$push':{points:units}}).then(()=>{console.log('points added for',user.first,user.name)})
-          }
+            User.findByIdAndUpdate(user._id,{'$push':{points:units}}).then(()=>{console.log('points added for',user.first,user.last)})
+
         });
       })
 
