@@ -122,7 +122,6 @@ const { Server } = require("socket.io");
                                  success: true
                                });
                              // })
-
                            }
                        });
                        // ==mialchimp finished
