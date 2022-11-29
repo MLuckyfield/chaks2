@@ -433,12 +433,15 @@ const { Server } = require("socket.io");
       //   User.findOneAndUpdate({_id:'63673aed57b02a5be9c72b06'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
       // })
     // add minutes
-    cron.schedule('0 21 * * *',()=>{
+    cron.schedule('* * * * *',()=>{
+      console.log('running point update')
       User.find().then((users)=>{
         users.forEach((user, i) => {
           user.subscriptions.forEach((sub, i) => {
             if(sub.name=='prod_Mf0wgW4xwQ0Yyc' && sub.status=='active'){
+              consolelog(user.first,user.last,'must be updated with',user.monthly_hours,'hours:',moment(sub.start).format('DD'),new Date().getDate(),moment(sub.start).format('DD')==new Date().getDate())
               if(moment(sub.start).format('DD')==new Date().getDate()){
+                console.log('update activated')
                 let units = []
                 for(let i = 0;i<user.monthly_hours*2;i++){
                   units.push({value:30})

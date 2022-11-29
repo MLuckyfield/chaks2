@@ -97,7 +97,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           });
           break;
         case 'invoice.payment_succeeded':
-          console.log('charge successful',session,session[0].customer,session[0].lines.data[0].quantity)
+          console.log('invoice.payment_succeeded recieved:',session,session[0].customer,session[0].lines.data[0].quantity)
           identifier={'stripe.customer_id':session[0].customer}
           let units = []
           for(let i = 0;i<session[0].lines.data[0].quantity*2;i++){
@@ -105,7 +105,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           }
           purchased = {$push:{points:units}}
           updateUser(identifier,purchased,res)
-          
+
           break;
         case 'customer.subscription.updated':
           sub_type = session.items.data[0].price.product
