@@ -96,10 +96,16 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             console.log('Order complete for: '+session.metadata.order)
           });
           break;
-        case 'charge.succeeded':
-          console.log('charge successful',session)
-          email.sendDefault('BOT|Charge received',session.object.billing_details.email)
-
+        case 'invoice.payment_succeeded':
+          console.log('charge successful',session,session[0].customer,session[0].lines.data[0].quantity)
+          identifier={'stripe.customer_id':session[0].customer}
+          let units = []
+          for(let i = 0;i<session[0].lines.data[0].quantity*2;i++){
+            units.push({value:30})
+          }
+          purchased = {$push:{points:units}}
+          updateUser(identifier,purchased,res)
+          
           break;
         case 'customer.subscription.updated':
           sub_type = session.items.data[0].price.product
