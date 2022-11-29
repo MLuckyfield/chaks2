@@ -435,12 +435,13 @@ const { Server } = require("socket.io");
     // add minutes
     cron.schedule('* * * * *',()=>{
       console.log('running point update')
+      let done= 0;
       User.find().then((users)=>{
         users.forEach((user, i) => {
-          if(user._id=='633e91c3945a79bacb934535'){
+          if(user._id=='633e91c3945a79bacb934535' && done==0){
             user.subscriptions.forEach((sub, i) => {
               if(sub.name=='prod_Mf0wgW4xwQ0Yyc' && sub.status=='active'){
-                consolelog(user.first,user.last,'must be updated with',user.monthly_hours,'hours:',moment(sub.start).format('DD'),new Date().getDate(),moment(sub.start).format('DD')==new Date().getDate())
+                console.log(user.first,user.last,'must be updated with',user.monthly_hours,'hours:',moment(sub.start).format('DD'),new Date().getDate(),moment(sub.start).format('DD')==new Date().getDate())
                 if(moment(sub.start).format('DD')==new Date().getDate()){
                   console.log('update activated')
                   let units = []
@@ -450,6 +451,7 @@ const { Server } = require("socket.io");
                 }
               }
             });
+            done=1
             User.findByIdAndUpdate(user._id,{'$push':{points:units}}).then(()=>{console.log('points added for',user.first,user.name)})
           }
         });
