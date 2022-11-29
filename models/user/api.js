@@ -117,7 +117,7 @@ const { Server } = require("socket.io");
                              //   { tags: [{ name: req.segment, status: "active" }] }
                              // ).then(()=>{
                                return res.status(201).json({
-                                 // result,
+                                 result,
                                  message: `Success!`,
                                  success: true
                                });
