@@ -125,8 +125,7 @@ const { Server } = require("socket.io");
                            }
                        });
                        // ==mialchimp finished
-                   }
-                 );
+                   });
            })
         }catch(err){
              console.log('there was a problem',err)
