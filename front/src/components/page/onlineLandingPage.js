@@ -56,24 +56,24 @@ const Online_Landing = () => {
           <div class='row'>
               <div class='col'>
                 <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                  <span class="material-icons maroon ">task_alt</span><h2>ネイティブスピーカー</h2>
+                  <span class="material-icons green ">task_alt</span><h2>ネイティブスピーカー</h2>
                 </div>
                 <div class='fixed-row align'  style={{marginBottom:'10%'}}>
-                  <span class="material-icons maroon ">task_alt</span><h2>マンツーマンレッスン</h2>
+                  <span class="material-icons green ">task_alt</span><h2>マンツーマンレッスン</h2>
                 </div>
                 <div class='fixed-row align'  style={{marginBottom:'10%'}}>
-                  <span class="material-icons maroon ">task_alt</span><h2>優秀な講師陣</h2>
+                  <span class="material-icons green ">task_alt</span><h2>優秀な講師陣</h2>
                 </div>
             </div>
             <div class='col'>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons maroon ">task_alt</span><h2>オンラインフィードバック</h2>
+                <span class="material-icons green ">task_alt</span><h2>オンラインフィードバック</h2>
               </div>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons maroon ">task_alt</span><h2>自由なレッスン</h2>
+                <span class="material-icons green ">task_alt</span><h2>自由なレッスン</h2>
               </div>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons maroon ">task_alt</span><h2>選べるレッスン時間</h2>
+                <span class="material-icons green ">task_alt</span><h2>選べるレッスン時間</h2>
               </div>
             </div>
           </div>
@@ -102,21 +102,21 @@ const Online_Landing = () => {
             <h1 style={{margin:'10% 0'}}>ラクなご利用方法</h1>
           </div>
           <div class='fixed-row' style={{width:'50%'}}>
-            <span class="material-icons green ">looks_one</span>
+            <span class="material-icons maroon ">looks_one</span>
               <div class='col align'>
                 <p>３０分無料の体験レッスンを</p>
                 <h2>申し込む</h2>
               </div>
           </div>
           <div class='fixed-row' style={{width:'50%'}}>
-            <span class="material-icons green ">looks_two</span>
+            <span class="material-icons maroon ">looks_two</span>
               <div class='col align'>
                 <p>一ヶ月に利用したい時間を決めて</p>
                 <h2>サブスク登録</h2>
               </div>
           </div>
           <div class='fixed-row' style={{width:'50%'}}>
-            <span class="material-icons green ">looks_3</span>
+            <span class="material-icons maroon ">looks_3</span>
               <div class='col align'>
                 <p>好きな時に予約して</p>
                 <h2>英語力向上</h2>
