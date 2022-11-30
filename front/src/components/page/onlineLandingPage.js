@@ -17,7 +17,7 @@ const Online_Landing = () => {
                 <h2>やっと</h2>
                 <h1>上級なオンライン英会話</h1>
                 <h2>登場</h2>
-                <a class='solid-first cta' href="#signup" style={{textDecoration:'none',textAlign:'center'}}>登録!</a>
+                <a href="#signup" style={{textDecoration:'none',textAlign:'center',borderRadius:'50%',width:'70px',height:'70px',background:'black'}}>登録!</a>
               </div>
             </div>
         </div>
@@ -56,24 +56,24 @@ const Online_Landing = () => {
           <div class='row'>
               <div class='col'>
                 <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                  <span class="material-icons green ">task_alt</span><h2>ネイティブスピーカー</h2>
+                  <span class="material-icons maroon ">task_alt</span><h2>ネイティブスピーカー</h2>
                 </div>
                 <div class='fixed-row align'  style={{marginBottom:'10%'}}>
-                  <span class="material-icons green ">task_alt</span><h2>マンツーマンレッスン</h2>
+                  <span class="material-icons maroon ">task_alt</span><h2>マンツーマンレッスン</h2>
                 </div>
                 <div class='fixed-row align'  style={{marginBottom:'10%'}}>
-                  <span class="material-icons green ">task_alt</span><h2>優秀な講師陣</h2>
+                  <span class="material-icons maroon ">task_alt</span><h2>優秀な講師陣</h2>
                 </div>
             </div>
             <div class='col'>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons green ">task_alt</span><h2>オンラインフィードバック</h2>
+                <span class="material-icons maroon ">task_alt</span><h2>オンラインフィードバック</h2>
               </div>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons green ">task_alt</span><h2>自由なレッスン</h2>
+                <span class="material-icons maroon ">task_alt</span><h2>自由なレッスン</h2>
               </div>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons green ">task_alt</span><h2>選べるレッスン時間</h2>
+                <span class="material-icons maroon ">task_alt</span><h2>選べるレッスン時間</h2>
               </div>
             </div>
           </div>
