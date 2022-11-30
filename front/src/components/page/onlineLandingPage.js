@@ -49,6 +49,7 @@ const Online_Landing = () => {
       </div>
       <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.8)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw'}}>
+          <h1>６点の特徴</h1>
           <div class='row'>
               <div class='col'>
                 <div class='fixed-row align' style={{marginBottom:'10%'}}>
@@ -95,27 +96,27 @@ const Online_Landing = () => {
       <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.8)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw'}}>
           <div class='fixed-row' style={{width:'50%'}}>
-            <h1 style={{margin:'10% 0'}}>NEXT STEPS</h1>
+            <h1 style={{margin:'10% 0'}}>ラクなご利用方法</h1>
           </div>
           <div class='fixed-row' style={{width:'50%'}}>
             <span class="material-icons green ">looks_one</span>
               <div class='col align'>
-                <h2>STEP 1</h2>
-                <p>一ヶ月に利用したい時間を決める</p>
+                <p>３０分無料の体験レッスンを</p>
+                <h2>申し込む</h2>
               </div>
           </div>
           <div class='fixed-row' style={{width:'50%'}}>
             <span class="material-icons green ">looks_two</span>
               <div class='col align'>
-                <h2>STEP 2</h2>
-                <p>レッスン時間を購入後、レッスンを予約する</p>
+                <p>一ヶ月に利用したい時間を決めて</p>
+                <h2>サブスク登録</h2>
               </div>
           </div>
           <div class='fixed-row' style={{width:'50%'}}>
             <span class="material-icons green ">looks_3</span>
               <div class='col align'>
-                <h2>STEP 3</h2>
-                <p>当日は、予約後に送られてくるリンクからレッスンを受講する</p>
+                <p>好きな時に予約して</p>
+                <h2>英語力向上</h2>
               </div>
           </div>
         </div>
