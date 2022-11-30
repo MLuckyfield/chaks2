@@ -249,7 +249,7 @@ svg{
 }
 @media (max-width:800px){
   .clean_center{
-    width:100%;
+    width:100% !important;
   }
   .emphasize{
       font-size: 3.5em;
