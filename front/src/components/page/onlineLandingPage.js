@@ -42,6 +42,7 @@ const Online_Landing = () => {
                     <div class='row'>
                       <div class='col'>「文法の間違いもしっかりと直してくれました」</div>
                       <div class='col'>「2時間いても飽きる事は全くありませんでした」</div>
+                      <div class='col'>「2時間いても飽きる事は全くありませんでした」</div>
                     </div>
             </div>
         </div>
