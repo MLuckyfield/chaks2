@@ -14,8 +14,9 @@ const Online_Landing = () => {
         <div class='overlay'>
             <div class='row'>
               <div class='col'>
-                <h2>CHATSHACK is now</h2>
-                <h1>ONLINE</h1>
+                <h2>やっと</h2>
+                <h1>上級なオンライン英会話</h1>
+                <h2>登場</h2>
                 <a class='solid-first cta' href="#signup" style={{textDecoration:'none',textAlign:'center'}}>MORE</a>
               </div>
             </div>
