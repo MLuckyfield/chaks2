@@ -101,21 +101,21 @@ const Online_Landing = () => {
           <div class='fixed-row' style={{width:'50%'}}>
             <h1 style={{margin:'10% 0'}}>ラクなご利用方法</h1>
           </div>
-          <div class='fixed-row' style={{width:'50%'}}>
+          <div class='fixed-row clean_center'>
             <span class="material-icons maroon ">looks_one</span>
               <div class='col align'>
                 <p>３０分無料の体験レッスンを</p>
                 <h2>申し込む</h2>
               </div>
           </div>
-          <div class='fixed-row' style={{width:'50%'}}>
+          <div class='fixed-row clean_center'>
             <span class="material-icons maroon ">looks_two</span>
               <div class='col align'>
                 <p>一ヶ月に利用したい時間を決めて</p>
                 <h2>サブスク登録</h2>
               </div>
           </div>
-          <div class='fixed-row' style={{width:'50%'}}>
+          <div class='fixed-row clean_center'>
             <span class="material-icons maroon ">looks_3</span>
               <div class='col align'>
                 <p>好きな時に予約して</p>

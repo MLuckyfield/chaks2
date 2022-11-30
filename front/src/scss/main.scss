@@ -41,7 +41,9 @@ button{
 .emphasize{
     font-size: 7em;
 }
-
+.clean_center{
+  width:50%;
+}
 select{
   padding: 2%;
   margin: 3%;
@@ -246,6 +248,9 @@ svg{
   color: #eebc21;
 }
 @media (max-width:800px){
+  .clean_center{
+    width:100%;
+  }
   .emphasize{
       font-size: 3.5em;
   }
