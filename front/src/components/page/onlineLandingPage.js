@@ -17,7 +17,7 @@ const Online_Landing = () => {
                 <h2>やっと</h2>
                 <h1>上級なオンライン英会話</h1>
                 <h2>登場</h2>
-                <a href="#signup" style={{textDecoration:'none',textAlign:'center',borderRadius:'50%',width:'70px',height:'70px',background:'black'}}>登録!</a>
+                <a href="#signup" style={{textDecoration:'none',textAlign:'center',borderRadius:'50%',width:'70px',height:'70px',background:'black'}}>V</a>
               </div>
             </div>
         </div>
