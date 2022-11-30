@@ -3,6 +3,8 @@ import background from '../../online_background.jpg'
 import environment from '../../online_environment.jpg'
 import ReactPlayer from 'react-player/youtube'
 import discount from '../../discount.jpg'
+import vincent from '../../vincent.jpg'
+import sonja from '../../sonja.jpg'
 
 const Online_Landing = () => {
 
@@ -76,20 +78,20 @@ const Online_Landing = () => {
           </div>
         </div>
       </div>
-      <div class='col slim'>
+      <div class='col slim dark'>
         <div class='fixed-row' style={{width:'50%'}}>
           <h1 style={{margin:'10% 0'}}>TEACHERS</h1>
         </div>
         <div class='row'>
           <div class='col'>
-            <h2>teacher one</h2>
-            <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={false} volume={0} muted={true} width={'100%'} playIcon={<div class='mini_overlay' style={{height:'500px',width:'500px',zIndex:'10'}}>hello</div>}/>
-            <p>blah blah</p>
+            <img class='avatar' src={vincent}></img>
+            <h2>Vincent</h2>
+            <p>Loves craft beer, playing guitar, and learning about people!</p>
           </div>
           <div class='col'>
-            <h2>teacher two</h2>
-            <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={false} volume={0} muted={true} width={'100%'} playIcon={<div class='mini_overlay' style={{height:'500px',width:'500px',zIndex:'10'}}>hello</div>}/>
-            <p>blah blah</p>
+            <img class='avatar' src={vincent}></img>
+            <h2>Sonja</h2>
+            <p>Avid Youtuber. Loves karaoke, dancing, cosplay and more!</p>
           </div>
         </div>
       </div>
