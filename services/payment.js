@@ -100,7 +100,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           console.log('invoice.payment_succeeded recieved:',session,session.customer,session.lines.data.quantity)
           identifier={'stripe.customer_id':session.customer}
           let units = []
-          for(let i = 0;i<session[0].lines.data.quantity*2;i++){
+          for(let i = 0;i<session.lines.data.quantity*2;i++){
             units.push({value:30})
           }
           purchased = {$push:{points:units}}
