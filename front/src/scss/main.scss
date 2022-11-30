@@ -372,7 +372,8 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-height: 8vh;
+    // min-height: 8vh;
+    height:16vh;
     background-color: black;
 }
 .nav-filler{
