@@ -34,10 +34,10 @@ const Online_Landing = () => {
       </div>
       <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
         <div class='mini_overlay' style={{backgroundColor:'238,188,33,0.7'}}>
-            <div class='col' style={{width:'70%'}}>
-                    <h1 class='emphasize'>安心で楽しい</h1>
+            <div class='col'>
+                    <h1>安心で楽しい</h1>
                     <div class='col'>
-                      <span class='material-icons ratings'>star</span><span class='material-icons ratings'>star</span><span class='material-icons ratings'>star</span><span class='material-icons ratings'>star</span><span class='material-icons ratings'>star</span>
+                      <span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span>
                     </div>
                     <div class='row'>
                       <div class='col'>「文法の間違いもしっかりと直してくれました」</div>
