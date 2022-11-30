@@ -36,7 +36,7 @@ const Online_Landing = () => {
         <div class='mini_overlay' style={{backgroundColor:'238,188,33,0.7'}}>
             <div class='col'>
                     <h1>安心で楽しい</h1>
-                    <div class='col'>
+                    <div class='fixed-row'>
                       <span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span>
                     </div>
                     <div class='row'>
