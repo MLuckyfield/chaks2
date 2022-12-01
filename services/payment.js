@@ -103,7 +103,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           for(let i = 0;i<session.lines.data[0].quantity*2;i++){
             units.push({value:30})
           }
-          purchased = {$push:{points:units}}
+          purchased = {$push:{points:{$each:units}}}
           updateUser(identifier,purchased,res)
           break;
         case 'customer.subscription.updated':
