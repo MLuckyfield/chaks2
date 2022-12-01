@@ -105,7 +105,6 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           }
           purchased = {$push:{points:units}}
           updateUser(identifier,purchased,res)
-
           break;
         case 'customer.subscription.updated':
           sub_type = session.items.data[0].price.product
@@ -180,7 +179,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 })
 const updateUser=(user,update,res)=>{
   User.findOneAndUpdate(user,update,{new:true}).then((result)=>{
-       console.log('customer updatedpost payment')
+       console.log('customer updatedpost payment',result.first,result.last,result.points)
           return res.status(201).json({
             message: 'Booking saved',
             success: true
