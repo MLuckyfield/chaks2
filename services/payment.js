@@ -31,7 +31,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       let sub_type=''
       //after going through switch statement, update
       let identifier={_id:session.metadata.order}
-      console.log(session)
+      // console.log(session)
 
       // Handle the event
       switch (event.type) {
@@ -97,13 +97,14 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           });
           break;
         case 'invoice.payment_succeeded':
-          console.log('invoice.payment_succeeded recieved:',session,session.customer,session.lines.data)
+          console.log('invoice.payment_succeeded recieved:',session.customer,session.lines.data)
           identifier={stripe:{customer_id:session.customer}}
           let units = []
           for(let i = 0;i<session.lines.data[0].quantity*2;i++){
             units.push({value:30})
           }
           purchased = {$push:{points:{$each:units}}}
+          console.log('will add',units)
           updateUser(identifier,purchased,res)
           break;
         case 'customer.subscription.updated':
