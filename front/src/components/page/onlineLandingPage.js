@@ -51,7 +51,7 @@ const Online_Landing = () => {
         </div>
       </div>
       <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
-        <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.8)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',paddingTop:'10%'}}>
+        <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',paddingTop:'10%'}}>
           <h1>６点の特徴</h1>
           <div class='row'>
               <div class='col'>
