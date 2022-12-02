@@ -79,20 +79,22 @@ const Online_Landing = () => {
           </div>
         </div>
       </div>
-      <div class='col slim dark'>
-        <div class='fixed-row' style={{width:'50%'}}>
-          <h1 style={{margin:'10% 0'}}>TEACHERS</h1>
-        </div>
-        <div class='up_row center'>
-          <div class='col'>
-            <img class='avatar' src={vincent}></img>
-            <h2>VINCENT</h2>
-            <p>Born in Canada. TEFL Certified. 3 years teaching experience. Speaks English and French. Loves craft beer, playing guitar, and learning about people!</p>
+      <div class='row dark'>
+        <div class='col slim'>
+          <div class='fixed-row' style={{width:'50%'}}>
+            <h1 style={{margin:'10% 0'}}>TEACHERS</h1>
           </div>
-          <div class='col'>
-            <img class='avatar' src={bre}></img>
-            <h2>BRE</h2>
-            <p>Born in the U.S.! Enjoys watching movies, cooking, and drinking whiskey. Can`t wait to meet you!</p>
+          <div class='up_row center'>
+            <div class='col'>
+              <img class='avatar' src={vincent}></img>
+              <h2>VINCENT</h2>
+              <p>Born in Canada. TEFL Certified. 3 years teaching experience. Speaks English and French. Loves craft beer, playing guitar, and learning about people!</p>
+            </div>
+            <div class='col'>
+              <img class='avatar' src={bre}></img>
+              <h2>BRE</h2>
+              <p>Born in the U.S.! Masters degree student. Enjoys watching movies, cooking, and drinking whiskey. Can`t wait to meet you!</p>
+            </div>
           </div>
         </div>
       </div>
