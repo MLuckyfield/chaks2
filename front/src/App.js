@@ -432,7 +432,7 @@ const Front = ()=>{
                             <img class='avatar' src={bre}></img>
                             <h2>BRE</h2>
                             <h3>INSTRUCTOR</h3>
-                            Born in the U.S.! Enjoys watching movies, cooking, and drinking whiskey. Can`t wait to meet you!
+                            Born in the U.S.! Masters degree student. Enjoys watching movies, cooking, and drinking whiskey. Can`t wait to meet you!
                         </div>
                     </div>
                 </div>
