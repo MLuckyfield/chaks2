@@ -83,7 +83,7 @@ const Online_Landing = () => {
         <div class='fixed-row' style={{width:'50%'}}>
           <h1 style={{margin:'10% 0'}}>TEACHERS</h1>
         </div>
-        <div class='row'>
+        <div class='up_row center'>
           <div class='col'>
             <img class='avatar' src={vincent}></img>
             <h2>Vincent</h2>
