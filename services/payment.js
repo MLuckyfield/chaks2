@@ -98,7 +98,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           break;
         case 'invoice.payment_succeeded':
           console.log('invoice.payment_succeeded recieved:',session.customer,session.lines.data)
-          identifier={'stripe.customer_id':session.customer}
+          // identifier={'stripe.customer_id':session.customer}
+          identifier={email:session.email}
           let units = []
           for(let i = 0;i<session.lines.data[0].quantity*2;i++){
             units.push({value:30})
