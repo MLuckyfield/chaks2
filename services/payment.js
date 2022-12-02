@@ -181,7 +181,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
 })
 const updateUser=(user,update,res)=>{
   User.findOneAndUpdate(user,update,{new:true}).then((result)=>{
-       console.log('updated:',result)
+       console.log('updated:',result?result.first+' '+result.last+' '+result.points)
           return res.status(201).json({
             message: 'Booking saved',
             success: true
