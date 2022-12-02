@@ -112,8 +112,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           //ENGULF BELOW IF STATEMENTS IN A CHECK FOR PRODUCT
           //add subscriptions field as array of objects, each object has subscription data
           //for existing subs, make cron script to transfer stripe object data to subcription array as object
-          //
-          //
+
           if(session.cancel_at_period_end){ //cancellation expected
             purchased = {
                 // $set:{
