@@ -103,8 +103,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           for(let i = 0;i<session.lines.data[0].quantity*2;i++){
             units.push({value:30})
           }
-          // purchased = {$set:{points:units}}
-          purchased={last:'hello'}
+          purchased = {$set:{points:{$each:units}}}
+          // purchased={last:'hello'}
           console.log('will add',units)
           updateUser(identifier,purchased,res)
           break;
