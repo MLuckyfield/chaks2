@@ -175,9 +175,11 @@ select{
 }
 h1, h2, h3{
   letter-spacing: 0.2em;
-  font-weight:10px;
   line-height:1;
   text-align: center;
+}
+h1{
+  font-size: 5em;
 }
 .material-icons{
   font-size:45px;
@@ -248,6 +250,9 @@ svg{
   color: #eebc21;
 }
 @media (max-width:800px){
+  h1{
+    font-size: 2em;
+  }
   .clean_center{
     width:100% !important;
   }
