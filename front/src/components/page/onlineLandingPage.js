@@ -56,24 +56,24 @@ const Online_Landing = () => {
           <div class='row'>
               <div class='col'>
                 <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                  <span class="material-icons green ">done</span><h2>ネイティブスピーカー</h2>
+                  <span class="material-icons green" style={{fontWeight:'1000'}}>done</span><h2>ネイティブスピーカー</h2>
                 </div>
                 <div class='fixed-row align'  style={{marginBottom:'10%'}}>
-                  <span class="material-icons green ">done</span><h2>マンツーマンレッスン</h2>
+                  <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>マンツーマンレッスン</h2>
                 </div>
                 <div class='fixed-row align'  style={{marginBottom:'10%'}}>
-                  <span class="material-icons green ">done</span><h2>優秀な講師陣</h2>
+                  <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>優秀な講師陣</h2>
                 </div>
             </div>
             <div class='col'>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons green ">done</span><h2>オンラインフィードバック</h2>
+                <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>オンラインフィードバック</h2>
               </div>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons green ">done</span><h2>自由なレッスン</h2>
+                <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>自由なレッスン</h2>
               </div>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons green ">done</span><h2>選べるレッスン時間</h2>
+                <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>選べるレッスン時間</h2>
               </div>
             </div>
           </div>
