@@ -91,7 +91,7 @@ const Online_Landing = () => {
           </div>
           <div class='col'>
             <img class='avatar' src={bre}></img>
-            <h2>Bre</h2>
+            <h2>BRE</h2>
             <p>Born in the U.S.! Enjoys watching movies, cooking, and drinking whiskey. Can`t wait to meet you!</p>
           </div>
         </div>

@@ -430,7 +430,7 @@ const Front = ()=>{
                         </div>
                         <div class='col slim'>
                             <img class='avatar' src={bre}></img>
-                            <h2>Bre</h2>
+                            <h2>BRE</h2>
                             <h3>INSTRUCTOR</h3>
                             Born in the U.S.! Enjoys watching movies, cooking, and drinking whiskey. Can`t wait to meet you!
                         </div>
