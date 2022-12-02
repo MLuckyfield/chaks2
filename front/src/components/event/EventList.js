@@ -8,6 +8,7 @@ import moment from "moment"
 import party from '../../event_party.jpg'
 import dj_night from '../../dj_night.jpg'
 import event_game from '../../event_game.jpg'
+import Social from '../utilities/social'
 
 const EventList = () => {
 
@@ -126,6 +127,7 @@ const EventList = () => {
             </div>
         </div>
         </span>:''}
+        <Social data={'tiny-logo'}/>
         <AccessDisplay/>
       </div>
 )
