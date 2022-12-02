@@ -47,7 +47,7 @@ import shunsuke from './shunsuke.jpg'
 import event_game from './event_game.jpg'
 import matt from './matt.jpg'
 import vincent from './vincent.jpg'
-import sonja from './sonja.jpg'
+import bre from './bre.jpg'
 import blog_header from './blog_header.jpg'
 import campaign_header from './campaign_header.jpg'
 import discount from './discount.jpg'
@@ -426,13 +426,13 @@ const Front = ()=>{
                             <img class='avatar' src={vincent}></img>
                             <h2>VINCENT</h2>
                             <h3>INSTRUCTOR</h3>
-                            Born in Canada. Speaks English and French. Loves craft beer, playing guitar, and learning about people!
+                            Born in Canada. TEFL Certified. 3 years teaching experience. Speaks English and French. Loves craft beer, playing guitar, and learning about people!
                         </div>
                         <div class='col slim'>
-                            <img class='avatar' src={sonja}></img>
-                            <h2>SONJA</h2>
+                            <img class='avatar' src={bre}></img>
+                            <h2>Bre</h2>
                             <h3>INSTRUCTOR</h3>
-                            Born in the US. 2 years of English teaching experience. Avid Youtuber. Loves karaoke, dancing, cosplay and more!
+                            Born in the U.S.! Enjoys watching movies, cooking, and drinking whiskey. Can`t wait to meet you!
                         </div>
                     </div>
                 </div>

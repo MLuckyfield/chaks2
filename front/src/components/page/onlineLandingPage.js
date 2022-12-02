@@ -4,7 +4,7 @@ import environment from '../../online_environment.jpg'
 import ReactPlayer from 'react-player/youtube'
 import discount from '../../discount.jpg'
 import vincent from '../../vincent.jpg'
-import sonja from '../../sonja.jpg'
+import bre from '../../bre.jpg'
 
 const Online_Landing = () => {
 
@@ -87,12 +87,12 @@ const Online_Landing = () => {
           <div class='col'>
             <img class='avatar' src={vincent}></img>
             <h2>Vincent</h2>
-            <p>Loves craft beer, playing guitar, and learning about people!</p>
+            <p>Born in Canada. TEFL Certified. 3 years teaching experience. Speaks English and French. Loves craft beer, playing guitar, and learning about people!</p>
           </div>
           <div class='col'>
-            <img class='avatar' src={vincent}></img>
-            <h2>Sonja</h2>
-            <p>Avid Youtuber. Loves karaoke, dancing, cosplay and more!</p>
+            <img class='avatar' src={bre}></img>
+            <h2>Bre</h2>
+            <p>Born in the U.S.! Enjoys watching movies, cooking, and drinking whiskey. Can`t wait to meet you!</p>
           </div>
         </div>
       </div>
