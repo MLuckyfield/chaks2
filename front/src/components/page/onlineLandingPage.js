@@ -17,7 +17,7 @@ const Online_Landing = () => {
                 <h2>やっと</h2>
                 <h1>上級なオンライン英会話</h1>
                 <h2>登場</h2>
-                <a href="#signup" style={{textDecoration:'none',textAlign:'center',borderRadius:'50%',width:'70px',height:'70px',background:'black'}}>V</a>
+                <a href="#signup" style={{textDecoration:'none',textAlign:'center',borderRadius:'50%',width:'70px',height:'70px',background:'black'}}><span class="material-icons">expand_more</span></a>
               </div>
             </div>
         </div>
@@ -86,7 +86,7 @@ const Online_Landing = () => {
         <div class='up_row center'>
           <div class='col'>
             <img class='avatar' src={vincent}></img>
-            <h2>Vincent</h2>
+            <h2>VINCENT</h2>
             <p>Born in Canada. TEFL Certified. 3 years teaching experience. Speaks English and French. Loves craft beer, playing guitar, and learning about people!</p>
           </div>
           <div class='col'>
