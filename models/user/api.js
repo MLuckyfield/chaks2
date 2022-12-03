@@ -12,7 +12,6 @@ const moment = require ('moment')
 const encrypt = require('crypto-js/md5')
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const email = require('../../services/email')
-const { Server } = require("socket.io");
 
 // const io = new Server({ /* options */ });
 
@@ -217,7 +216,7 @@ const { Server } = require("socket.io");
             user.statistics.push(session)
             User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:true}},{new:true})
                   .then((result)=>{
-                    socket.emit('clock',result._id,result.inClass)
+                    io.emit('clock',result._id,result.inClass)
                     return res.status(201).json({
                       data:result,
                       message: 'User update',
@@ -239,7 +238,7 @@ const { Server } = require("socket.io");
             user.statistics.reverse()[0].end=new Date()
             User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:false}},{new:true})
                   .then((result)=>{
-                    socket.emit('clock',result._id,result.inClass)
+                    io.emit('clock',result._id,result.inClass)
                     let start =moment(result.statistics[0].start)
                     let end = moment(result.statistics[0].end)
                     const time = end.diff(start, 'minutes')
