@@ -76,21 +76,18 @@ const StaffTable = ()=>{
          socket.on('updateDash', (id) => {
            axios.get('user/all',{params:{filter:{_id: id}}})
              .then((res)=>{
-               console.log('insession',refStudents())
-               if(students){
-                 setStudents(refStudents().map(x=>{
-                   if(x._id!==res.data.data._id){console.log('no match');return x}
-                   return {...x,inClass:res.data.data.inClass}
-                 }))
-               }
+               refStudents(res)
              })
              .catch(error=>console.log('failed to update dash',error))
          });
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   },[])
-  const refStudents = ()=>{
-    return students
+  const refStudents = (res)=>{
+    setStudents(students.map(x=>{
+      if(x._id!==res.data.data._id){console.log('no match');return x}
+      return {...x,inClass:res.data.data.inClass}
+    }))
   }
   const clockin=(item,status)=>{
     console.log('will send '+item)
