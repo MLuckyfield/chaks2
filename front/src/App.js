@@ -143,13 +143,13 @@ const App = () => {
             }} constraints={{facingMode:'environment'}}/>} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/clock_out" access={['user']} success={()=><QrReader ViewFinder={()=>{return <div class='qr_viewfinder'></div>}} scanDelay={1000} onResult={(result,error)=>{
               if(!!result){
-                console.log('scan success:',result)
+                console.log('scan success:',result,result.text,result.text=='finish')
                 if(result.text=='finish'){
                   let id = JSON.parse(localStorage.getItem('user'))._id
                   axios.get('/user/clock', {params:{filter:id,data:false}})
                     .then((res) => {
                       socket.emit('clock',id,false)
-                      window.location='/student'
+                      window.location='/account'
                       })
                     .catch(error => console.log("error"+error))
                 }
