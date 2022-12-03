@@ -21,17 +21,15 @@ const Account = () => {
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
-          // res.data.data.forEach((item, i) => {
-          //   item['inClass']=false
-          // });
-          // console.log(res.data.data)
-          // setAccount(res.data.data[0])
-          // console.log(res.data.data[0],res.data.data[0].first)
+        socket.on(student._id,(status)=>{
+          setClock(status)
+        })
+
           let user = res.data.data[0]
           setAccount(user)
           res=user.statistics
           setCount(res)
-          console.log('has pounts',user)
+          // console.log('has pounts',user)
           setPoints(user.points.length*30)
           // console.log('Statistics for',res.length)
           let month = new Date().getMonth()
@@ -64,10 +62,6 @@ const Account = () => {
             setMsg(temp[eligible][0]-count +' more sessions for '+eligible+' status!');
             setSessions((count/temp[eligible][0]*100))
           }
-
-          socket.on(student._id,(status)=>{
-            setClock(status)
-          })
         })
       .catch(error => console.log("error"+error))
   },[])

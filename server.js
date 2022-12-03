@@ -18,7 +18,7 @@ const io = new Server(server);
 io.on('connection', (socketio) => {
   console.log('a user connected');
   socketio.on("sendstudent",(student,teacher) => {
-    console.log('student recieved',student,teacher)
+    console.log('student recieved',student.first,student.last)
     io.emit(teacher,student)
   });
   socketio.on('clock',(id,status) => {
