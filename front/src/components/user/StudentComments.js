@@ -68,7 +68,7 @@ const StudentComments = () => {
          let popup = document.getElementById("teacher_select");
          popup.style.display = 'none';
          socket.emit('sendstudent',target,id)
-         socket.emit('clockin',result)//send directly withou tback
+         socket.emit('clock',target._id,true)//send directly withou tback
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   }

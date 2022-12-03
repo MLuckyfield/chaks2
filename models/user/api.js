@@ -216,7 +216,7 @@ const email = require('../../services/email')
             user.statistics.push(session)
             User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:true}},{new:true})
                   .then((result)=>{
-                    io.emit('clock',result._id,result.inClass)
+                    // io.emit('clock',result._id,result.inClass)
                     return res.status(201).json({
                       data:result,
                       message: 'User update',
@@ -238,7 +238,7 @@ const email = require('../../services/email')
             user.statistics.reverse()[0].end=new Date()
             User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:false}},{new:true})
                   .then((result)=>{
-                    io.emit('clock',result._id,result.inClass)
+                    // io.emit('clock',result._id,result.inClass)
                     let start =moment(result.statistics[0].start)
                     let end = moment(result.statistics[0].end)
                     const time = end.diff(start, 'minutes')
