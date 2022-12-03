@@ -5,7 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import discount from '../../discount.jpg'
 import vincent from '../../vincent.jpg'
 import bre from '../../bre.jpg'
-import info from '../../output.jpg'
+import info from '../../output.png'
 
 const Online_Landing = () => {
 
