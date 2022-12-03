@@ -21,13 +21,13 @@ const Account = () => {
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
-        socket.on(student._id,(status)=>{
-          JSON.parse(localStorage.getItem('user')).inClass=status
-          setClock(status)
-        })
+          socket.on(student._id,(status)=>{
+            setClock(status)
+          })
 
           let user = res.data.data[0]
           setAccount(user)
+          setClock(user.inClass)
           res=user.statistics
           setCount(res)
           // console.log('has pounts',user)
