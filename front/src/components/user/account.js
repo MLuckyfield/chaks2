@@ -22,6 +22,7 @@ const Account = () => {
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
         socket.on(student._id,(status)=>{
+          JSON.parse(localStorage.getItem('user')).inClass=status
           setClock(status)
         })
 
