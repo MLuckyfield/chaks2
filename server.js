@@ -22,7 +22,7 @@ io.on('connection', (socketio) => {
     io.emit(teacher,student)
   });
   socketio.on('clock',(id,status) => {
-    console.log('student clocked',result.first,result.last)
+    console.log('student clocked',id)
     io.emit(id,status)
   });
 });
