@@ -138,6 +138,18 @@ const App = () => {
               }
 
             }} constraints={{facingMode:'environment'}}/>} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/clock_out" access={['user']} success={()=><QrReader ViewFinder={()=>{return <div class='qr_viewfinder'></div>}} scanDelay={1000} onResult={(result,error)=>{
+              if(!!result){
+                axios.get('/user/clock', {params:{filter:result.text,data:false}})
+                  .then((res) => {
+                    window.location='/student'
+                    })
+                  .catch(error => console.log("error"+error))
+              }
+              if(!!error){
+                console.log('oops',error)
+              }
+            }} constraints={{facingMode:'environment'}}/>} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/qr-code" access={['user','teacher','manager']} success={()=><QRCode value={localStorage.getItem('user')}/>} fail={()=><Redirect to='/login'/>}/>
       </Router>
 
