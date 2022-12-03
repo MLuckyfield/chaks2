@@ -24,6 +24,7 @@ io.on('connection', (socketio) => {
   socketio.on('clock',(id,status) => {
     console.log('student clocked',id)
     io.emit(id,status)
+    io.emit('updateDash',id)
   });
 });
 app.set('socketio', io)
