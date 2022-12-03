@@ -95,9 +95,9 @@ const Account = () => {
   return(
       <div class='master-row'>
           {clock&&student.first=='student'?
-            <div class='row border'>
+            <div class='col border'>
               you're in class!
-              <div class="btn" onClick={(e)=>{window.location='/clock_out'}}>Finish</div>
+              <div class="btn" style={{position:'relative !important'}} onClick={(e)=>{window.location='/clock_out'}}>Finish</div>
             </div>
           :''}
           <div class='col border'>
