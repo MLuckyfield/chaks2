@@ -28,7 +28,7 @@ const Online_Landing = () => {
           <h1 style={{margin:'10% 0'}}>METHOD</h1>
         </div>
         <div class='row'>
-          <img class='' src={info}></img>
+          <img style={{width:'90vw'}} src={info}></img>
         </div>
       </div>
       <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
