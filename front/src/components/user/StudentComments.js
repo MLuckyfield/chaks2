@@ -23,6 +23,10 @@ const StudentComments = () => {
     socket.on("connect", () => {
       console.log('front socket ready')
     });
+    socket.on('updateDash',(id)=>{
+      axios.get('user/all',{params:{filter:{_id: id}}})
+        .then((result)=>{setTarget(result.data.data[0])})
+    })
     axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data.reverse());
