@@ -2,7 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 import QRCode from 'react-qr-code'
-
+import {io} from 'socket.io-client';
+const socket=io()
 const Account = () => {
 
   //const [Account, setAccount] = useState();
@@ -14,6 +15,7 @@ const Account = () => {
   const [reward,setReward]=useState()
   const [points,setPoints]=useState(0)
   const [msg,setMsg]=useState('')
+  const [clock,setClock]=useState(false)
 
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
@@ -62,6 +64,10 @@ const Account = () => {
             setMsg(temp[eligible][0]-count +' more sessions for '+eligible+' status!');
             setSessions((count/temp[eligible][0]*100))
           }
+
+          socket.on(student._id,(status)=>{
+            setClock(status)
+          })
         })
       .catch(error => console.log("error"+error))
   },[])
@@ -93,11 +99,16 @@ const Account = () => {
   }
   return(
       <div class='master-row'>
+          {clock&&student.first=='student'?
+            <div class='row border'>
+              you're in class!
+            </div>
+          :''}
           <div class='col border'>
               <h1>ACCOUNT</h1>
               {account?
               <div class='col'>
-              
+
                 Plan: {account.plan}  {account.plan.toLowerCase()!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):<div class="btn" style={{position:'relative'}} onClick={(e)=>{toPay(e,'price_1LvguqBVAfieqaobMWOW9cvF',true)}}>購入</div>}<br/>
                 {account.first=='M'?(account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={(e)=>onSubmit(e,'downgrade')}>Downgrade</div>):''}
                 Minutes: {points}

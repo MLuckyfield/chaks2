@@ -21,7 +21,10 @@ io.on('connection', (socketio) => {
     console.log('student recieved',student,teacher)
     io.emit(teacher,student)
   });
-  // io.emit('return','server to frotn okay')
+  socketio.on('clock',(id,status) => {
+    console.log('student clocked',result.first,result.last)
+    io.emit(id,status)
+  });
 });
 app.set('socketio', io)
 app.locals.io = io
