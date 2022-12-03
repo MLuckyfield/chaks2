@@ -57,8 +57,8 @@ const StaffTable = ()=>{
   })
 
   useEffect(() => {
-    let focus = JSON.parse(localStorage.getItem('user'))._id
-    console.log('getting for',focus)
+    // let focus = JSON.parse(localStorage.getItem('user'))._id
+    // console.log('getting for',focus)
     axios.get('user/session',{params:{filter:{role: 'teacher'}}})
       .then((result)=>{
         // console.log('presort',result)
@@ -73,22 +73,20 @@ const StaffTable = ()=>{
          });
          console.log('inSession',inSession)
          setStudents(inSession)
+         localStorage.setItem('dash',inSession)
          socket.on('updateDash', (id) => {
            axios.get('user/all',{params:{filter:{_id: id}}})
              .then((res)=>{
-               refStudents(res)
+               setStudents(localStorage.getItem('dash').map(x=>{
+                 if(x._id!==res.data.data._id){console.log('no match');return x}
+                 return {...x,inClass:res.data.data.inClass}
+               }))
              })
              .catch(error=>console.log('failed to update dash',error))
          });
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   },[])
-  const refStudents = (res)=>{
-    setStudents(students.map(x=>{
-      if(x._id!==res.data.data._id){console.log('no match');return x}
-      return {...x,inClass:res.data.data.inClass}
-    }))
-  }
   const clockin=(item,status)=>{
     console.log('will send '+item)
     axios.get('/user/clock', {params:{filter:item._id,data:status}})
