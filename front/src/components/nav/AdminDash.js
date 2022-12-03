@@ -60,10 +60,13 @@ const StaffTable = ()=>{
     socket.on('updateDash', (id) => {
       axios.get('user/all',{params:{filter:{_id: id}}})
         .then((res)=>{
-          setStudents(students.map(x=>{
-            if(x._id!==res.data.data._id){console.log('no match');return x}
-            return {...x,inClass:res.data.data.inClass}
-          }))
+          console.log('insession',students)
+          if(students){
+            setStudents(students.map(x=>{
+              if(x._id!==res.data.data._id){console.log('no match');return x}
+              return {...x,inClass:res.data.data.inClass}
+            }))
+          }
         })
         .catch(error=>console.log('failed to update dash',error))
     });
