@@ -95,26 +95,26 @@ const Online_Landing = () => {
         </div>
       </div>
       <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
-        <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.8)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw'}}>
+        <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw'}}>
           <div class='fixed-row' style={{width:'50%'}}>
             <h1 style={{margin:'10% 0'}}>ラクなご利用方法</h1>
           </div>
           <div class='fixed-row clean_center'>
-            <span class="material-icons maroon ">looks_one</span>
+            <span class="material-icons green ">looks_one</span>
               <div class='col align'>
                 <p>３０分無料の体験レッスンを</p>
                 <h2>申し込む</h2>
               </div>
           </div>
           <div class='fixed-row clean_center'>
-            <span class="material-icons maroon ">looks_two</span>
+            <span class="material-icons green ">looks_two</span>
               <div class='col align'>
                 <p>一ヶ月に利用したい時間を決めて</p>
                 <h2>サブスク登録</h2>
               </div>
           </div>
           <div class='fixed-row clean_center'>
-            <span class="material-icons maroon ">looks_3</span>
+            <span class="material-icons green ">looks_3</span>
               <div class='col align'>
                 <p>好きな時に予約して</p>
                 <h2>英語力向上</h2>
