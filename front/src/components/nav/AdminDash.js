@@ -57,6 +57,19 @@ const StaffTable = ()=>{
   })
 
   useEffect(() => {
+    socket.on('updateDash', (id) => {
+      axios.get('user/all',{params:{filter:{_id: id}}})
+        .then((result)=>{
+          result = result.data.data[0]
+           console.log('triggered',result)
+           if(students.length>0){
+             setStudents(current=>[result,...current])
+           }else{
+             setStudents([result])
+           }
+        })
+        .catch(error=>console.log('From sendTo teacher:',error))
+    });
     let focus = JSON.parse(localStorage.getItem('user'))._id
     console.log('getting for',focus)
     axios.get('user/session',{params:{filter:{role: 'teacher'}}})
@@ -79,23 +92,6 @@ const StaffTable = ()=>{
   const clockin=(item,status)=>{
     console.log('will send '+item)
     axios.get('/user/clock', {params:{filter:item._id,data:status}})
-      // .then((res) => {
-      //   setStudents(students.map(x=>{
-      //     if(x._id!==res.data.data._id){console.log('no match');return x}
-      //     return {...x,inClass:res.data.data.inClass}
-      //   }))
-      //   let first = res.data.data.statistics.sort((a,b)=>{
-      //     return new Date(b.start)-new Date(a.start)
-      //   })
-      //   let start =moment(new Date(first[0].start)).format("HH:mm")
-      //   let end = moment(new Date(first[0].end)).format("HH:mm")
-      //   const time = end.diff(start, 'minutes')
-      //   let billable = 0
-      //   if(time-40>0){billable=time-40}
-      //   billable = (Math.round(billable/30)*1000)+1000
-      //   if(!status){alert(time+' minutes | ¥'+billable+' Start:'+start.format('HH:MM')+' End:'+end.format('HH:MM'))}
-      // })
-      // .catch(error => console.log("error"+error))
       .then((res) => {
           console.log(res.data.data);
           let change = res.data.data
