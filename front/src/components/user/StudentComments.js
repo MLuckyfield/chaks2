@@ -54,7 +54,7 @@ const StudentComments = () => {
           // billable = (Math.round(billable/30)*1000)+1000
           // console.log('Billable time is',billable,start,end)
           res=res.data.display
-          console.log('register',res)
+          socket.emit('clock',target._id,false)//send directly withou tback
           if(!status){alert('Billable: '+res.billable+' |Unpaid: '+res.unpaid+' |Remaining: '+res.remaining)}
         })
       .catch(error => console.log("error"+error))
