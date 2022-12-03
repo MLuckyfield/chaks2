@@ -57,19 +57,6 @@ const StaffTable = ()=>{
   })
 
   useEffect(() => {
-    socket.on('updateDash', (id) => {
-      axios.get('user/all',{params:{filter:{_id: id}}})
-        .then((res)=>{
-          console.log('insession',students)
-          if(students){
-            setStudents(students.map(x=>{
-              if(x._id!==res.data.data._id){console.log('no match');return x}
-              return {...x,inClass:res.data.data.inClass}
-            }))
-          }
-        })
-        .catch(error=>console.log('failed to update dash',error))
-    });
     let focus = JSON.parse(localStorage.getItem('user'))._id
     console.log('getting for',focus)
     axios.get('user/session',{params:{filter:{role: 'teacher'}}})
@@ -86,6 +73,19 @@ const StaffTable = ()=>{
          });
          console.log('inSession',inSession)
          setStudents(inSession)
+         socket.on('updateDash', (id) => {
+           axios.get('user/all',{params:{filter:{_id: id}}})
+             .then((res)=>{
+               console.log('insession',students)
+               if(students){
+                 setStudents(students.map(x=>{
+                   if(x._id!==res.data.data._id){console.log('no match');return x}
+                   return {...x,inClass:res.data.data.inClass}
+                 }))
+               }
+             })
+             .catch(error=>console.log('failed to update dash',error))
+         });
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   },[])
