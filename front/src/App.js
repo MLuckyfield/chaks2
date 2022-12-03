@@ -56,6 +56,9 @@ import {QrReader} from 'react-qr-reader'
 import QRCode from 'react-qr-code'
 import ReactPlayer from 'react-player/youtube'
 import atmos from './atmosphere.jpg'
+import {io} from 'socket.io-client';
+const socket=io()
+
 const App = () => {
 
     useEffect(() => {
@@ -140,11 +143,15 @@ const App = () => {
             }} constraints={{facingMode:'environment'}}/>} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/clock_out" access={['user']} success={()=><QrReader ViewFinder={()=>{return <div class='qr_viewfinder'></div>}} scanDelay={1000} onResult={(result,error)=>{
               if(!!result){
-                axios.get('/user/clock', {params:{filter:result.text,data:false}})
-                  .then((res) => {
-                    window.location='/student'
-                    })
-                  .catch(error => console.log("error"+error))
+                if(result.text=='finish'){
+                  let id = JSON.parse(localStorage.getItem('user'))._id
+                  axios.get('/user/clock', {params:{filter:id,data:false}})
+                    .then((res) => {
+                      socket.emit('clock',id,false)                      
+                      window.location='/student'
+                      })
+                    .catch(error => console.log("error"+error))
+                }
               }
               if(!!error){
                 console.log('oops',error)
