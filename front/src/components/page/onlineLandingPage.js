@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import discount from '../../discount.jpg'
 import vincent from '../../vincent.jpg'
 import bre from '../../bre.jpg'
+import info from '../../output.jpg'
 
 const Online_Landing = () => {
 
@@ -27,12 +28,7 @@ const Online_Landing = () => {
           <h1 style={{margin:'10% 0'}}>METHOD</h1>
         </div>
         <div class='row'>
-          <div class='col'>
-            INPUT
-          </div>
-          <div class='col'>
-            OUTPUT
-          </div>
+          <img class='' src={info}></img>
         </div>
       </div>
       <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
