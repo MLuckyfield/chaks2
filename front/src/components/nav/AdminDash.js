@@ -59,16 +59,13 @@ const StaffTable = ()=>{
   useEffect(() => {
     socket.on('updateDash', (id) => {
       axios.get('user/all',{params:{filter:{_id: id}}})
-        .then((result)=>{
-          result = result.data.data[0]
-           console.log('triggered',result)
-           if(students.length>0){
-             setStudents(current=>[result,...current])
-           }else{
-             setStudents([result])
-           }
+        .then((res)=>{
+          setStudents(students.map(x=>{
+            if(x._id!==res.data.data._id){console.log('no match');return x}
+            return {...x,inClass:res.data.data.inClass}
+          }))
         })
-        .catch(error=>console.log('From sendTo teacher:',error))
+        .catch(error=>console.log('failed to update dash',error))
     });
     let focus = JSON.parse(localStorage.getItem('user'))._id
     console.log('getting for',focus)
