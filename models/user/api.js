@@ -199,7 +199,7 @@ const email = require('../../services/email')
           })
     })
     //Start and End session
-    router.get('/clock', auth.auth, auth.permission(['admin','manager']), async (req, res) => {
+    router.get('/clock', auth.auth, auth.permission(['user','manager']), async (req, res) => {
       req=req.query
       let session = {}
       // console.log(typeof req.data)
