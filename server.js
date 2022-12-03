@@ -23,8 +23,8 @@ io.on('connection', (socketio) => {
   });
   socketio.on('clock',(id,status) => {
     console.log('student clocked',id)
-    io.emit(id,status)
-    io.emit('updateDash',id)
+    io.emit(id,status)//updates user account screen
+    io.emit('updateDash',id)//updates manager screens clock button
   });
 });
 app.set('socketio', io)
