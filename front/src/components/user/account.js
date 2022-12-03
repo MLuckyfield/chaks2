@@ -15,7 +15,7 @@ const Account = () => {
   const [reward,setReward]=useState()
   const [points,setPoints]=useState(0)
   const [msg,setMsg]=useState('')
-  const [clock,setClock]=useState(false)
+  const [clock,setClock]=useState(JSON.parse(localStorage.getItem('user')).inClass)
 
   useEffect(()=>{
     // console.log('loading account view for '+JSON.stringify(student))
