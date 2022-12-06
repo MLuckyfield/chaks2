@@ -133,7 +133,7 @@ Can't wait to meet you!</p>
       </div>
       {localStorage.getItem('user')?
         <div class='col'>
-          <a href="/https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false" style={{textDecoration:'none',textAlign:'center',width:'80%',height:'70px',background:'black',color:'white'}}>無料登録</a>
+          <a href="/https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false" style={{textDecoration:'none',textAlign:'center',width:'80%',background:'black',color:'white'}}>無料登録</a>
         </div>
         :<Signup redirect={'/https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false'}
                 segment={'online'}
