@@ -43,7 +43,7 @@ const onSubmit = (e) => {
           <div class="master-row form-group border">
               <div class='row'>
                 <div class='col'>
-                  <div class='row'><h1>SUBSCRIBE</h1></div>
+                  <div class='row'><h1>無料登録</h1></div>
                   <div class='row'>
                     <div class='col'>
                       {props.message}
