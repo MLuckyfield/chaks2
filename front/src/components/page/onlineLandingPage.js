@@ -25,7 +25,7 @@ const Online_Landing = () => {
       <div class='col slim'>
         <div class='col' style={{width:'50%'}}>
           <h1 style={{margin:'10% 0'}}>METHOD</h1>
-          <p>確実に英語を伸ばす</p>
+          <h2>確実に英語を伸ばす</h2>
         </div>
         <div class='row'>
           <img style={{width:'90vw'}} src={info}></img>
@@ -79,7 +79,7 @@ const Online_Landing = () => {
       </div>
       <div class='row dark'>
         <div class='col slim'>
-          <div class='fixed-row' style={{width:'50%'}}>
+          <div class='col slim' style={{width:'50%'}}>
             <h1 style={{margin:'10% 0'}}>選び抜かれた講師陣</h1>
             <h2>合格率２％のテストに合格した講師のみを採用しています。
 そんな選び抜かれた講師達がレッスンを提供いたします！</h2>
