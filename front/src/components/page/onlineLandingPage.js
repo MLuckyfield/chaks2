@@ -15,7 +15,7 @@ const Online_Landing = () => {
         <div class='overlay'>
             <div class='row'>
               <div class='col'>
-                <h1>プレミアム<br/>オンライン<br/>英会話</h1>
+                <h1 style={{fontSize:'2em'}}>プレミアム<br/>オンライン<br/>英会話</h1>
                 <h2>Coming soon!</h2>
                 <a href="#signup" style={{textDecoration:'none',textAlign:'center',borderRadius:'50%',width:'70px',height:'70px',background:'black',color:'white'}}><span class="material-icons">expand_more</span></a>
               </div>
