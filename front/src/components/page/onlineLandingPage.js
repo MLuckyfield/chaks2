@@ -25,6 +25,7 @@ const Online_Landing = () => {
       <div class='col slim'>
         <div class='fixed-row' style={{width:'50%'}}>
           <h1 style={{margin:'10% 0'}}>METHOD</h1>
+          <p>確実に英語を伸ばす</p>
         </div>
         <div class='row'>
           <img style={{width:'90vw'}} src={info}></img>
@@ -33,13 +34,14 @@ const Online_Landing = () => {
       <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)'}}>
             <div class='col'>
-                    <h1>安心で楽しい!</h1>
+                    <h1>楽しくて満足！</h1>
                     <div class='fixed-row'>
                       <span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span><span class='material-icons ratings_big'>star</span>
                     </div>
                     <div class='row'>
                       <div class='col'>「文法の間違いもしっかりと直してくれました」</div>
-                      <div class='col'>「2時間いても飽きる事は全くありませんでした」</div>
+                      <div class='col'>「最初は緊張したのですが、先生や他の生徒の方は優しくて、
+とても楽しかったです！」</div>
                       <div class='col'>「2時間いても飽きる事は全くありませんでした」</div>
                     </div>
             </div>
@@ -47,28 +49,29 @@ const Online_Landing = () => {
       </div>
       <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',paddingTop:'10%'}}>
-          <h1>６点の特徴</h1>
+          <h1>Why CHATSHACK ONLINE?</h1>
+          <h2>６つの理由</h2>
           <div class='row'>
               <div class='col'>
                 <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                  <span class="material-icons green" style={{fontWeight:'1000'}}>done</span><h2>ネイティブスピーカー</h2>
+                  <span class="material-icons green" style={{fontWeight:'1000'}}>done</span><h2>選び抜かれた優秀な講師陣</h2>
                 </div>
                 <div class='fixed-row align'  style={{marginBottom:'10%'}}>
-                  <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>マンツーマンレッスン</h2>
+                  <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>マンツーマンにてしっかり指導</h2>
                 </div>
                 <div class='fixed-row align'  style={{marginBottom:'10%'}}>
-                  <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>優秀な講師陣</h2>
+                  <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>様々なオリジナル学習コース</h2>
                 </div>
             </div>
             <div class='col'>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>オンラインフィードバック</h2>
+                <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>成長を振り返れるフィードバック機能</h2>
               </div>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>自由なレッスン</h2>
+                <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>ニーズに合わせたレッスン内容</h2>
               </div>
               <div class='fixed-row align' style={{marginBottom:'10%'}}>
-                <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>選べるレッスン時間</h2>
+                <span class="material-icons green " style={{fontWeight:'1000'}}>done</span><h2>自由に選べるレッスン時間</h2>
               </div>
             </div>
           </div>
@@ -96,19 +99,20 @@ const Online_Landing = () => {
       <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw'}}>
           <div class='fixed-row' style={{width:'50%'}}>
-            <h1 style={{margin:'10% 0'}}>ラクなご利用方法</h1>
+            <h1 style={{margin:'10% 0'}}>利用までの流れ</h1>
+            <h2>（サービス提供開始は２０２３年２月を想定しています）</h2>
           </div>
           <div class='fixed-row clean_center'>
             <span class="material-icons green ">looks_one</span>
               <div class='col align'>
-                <p>３０分無料の体験レッスンを</p>
+                <p>無料体験レッスンへ</p>
                 <h2>申し込む</h2>
               </div>
           </div>
           <div class='fixed-row clean_center'>
             <span class="material-icons green ">looks_two</span>
               <div class='col align'>
-                <p>一ヶ月に利用したい時間を決めて</p>
+                <p>1か月の利用時間を決めて</p>
                 <h2>サブスク登録</h2>
               </div>
           </div>
@@ -123,7 +127,9 @@ const Online_Landing = () => {
       </div>
       {localStorage.getItem('user')?
         <div class="btn" style={{position:'relative'}}>購入</div>
-        :<Signup redirect={'/https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false'} segment={'online'}/>
+        :<Signup redirect={'/https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false'}
+                segment={'online'}
+                message={'オンラインレッスンのリリース情報などはこちらから！特別割引やキャンペーン情報なども、お届けします！ご登録頂くと、オンラインレッスンリリース後に予約システムの利用が可能になります！'}/>
       }
     </div>
 )}
