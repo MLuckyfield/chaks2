@@ -23,7 +23,7 @@ const Online_Landing = () => {
         </div>
       </div>
       <div class='col slim'>
-        <div class='fixed-row' style={{width:'50%'}}>
+        <div class='col' style={{width:'50%'}}>
           <h1 style={{margin:'10% 0'}}>METHOD</h1>
           <p>確実に英語を伸ばす</p>
         </div>
@@ -49,8 +49,8 @@ const Online_Landing = () => {
       </div>
       <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',paddingTop:'10%'}}>
-          <h1>Why CHATSHACK ONLINE?</h1>
-          <h2>６つの理由</h2>
+          <h2>Why CHATSHACK ONLINE?</h2>
+          <h1>６つの理由</h1>
           <div class='row'>
               <div class='col'>
                 <div class='fixed-row align' style={{marginBottom:'10%'}}>
@@ -80,25 +80,32 @@ const Online_Landing = () => {
       <div class='row dark'>
         <div class='col slim'>
           <div class='fixed-row' style={{width:'50%'}}>
-            <h1 style={{margin:'10% 0'}}>TEACHERS</h1>
+            <h1 style={{margin:'10% 0'}}>選び抜かれた講師陣</h1>
+            <h2>合格率２％のテストに合格した講師のみを採用しています。
+そんな選び抜かれた講師達がレッスンを提供いたします！</h2>
           </div>
           <div class='up_row center' style={{marginTop:'0'}}>
             <div class='col'>
               <img class='avatar' src={vincent}></img>
               <h2>VINCENT</h2>
-              <p>Born in Canada. TEFL Certified. 3 years teaching experience. Speaks English and French. Loves craft beer, playing guitar, and learning about people!</p>
+              <p>カナダ出身。TEFLの資格所持者。英会話講師歴３年。
+英語とフランス語が話せます。
+趣味は、クラフトビールとギターと人との交流！
+</p>
             </div>
             <div class='col'>
               <img class='avatar' src={bre}></img>
               <h2>BRE</h2>
-              <p>Born in the U.S.! Masters degree student. Enjoys watching movies, cooking, and drinking whiskey. Can`t wait to meet you!</p>
+              <p>アメリカ出身。修士号取得中。
+趣味は、映画と料理とウィスキーを飲むこと！
+Can't wait to meet you!</p>
             </div>
           </div>
         </div>
       </div>
       <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw'}}>
-          <div class='fixed-row' style={{width:'50%'}}>
+          <div class='col' style={{width:'50%'}}>
             <h1 style={{margin:'10% 0'}}>利用までの流れ</h1>
             <h2>（サービス提供開始は２０２３年２月を想定しています）</h2>
           </div>
