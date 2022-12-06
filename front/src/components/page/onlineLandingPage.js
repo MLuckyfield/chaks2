@@ -79,10 +79,10 @@ const Online_Landing = () => {
       </div>
       <div class='row dark'>
         <div class='col slim'>
-          <div class='col slim' style={{width:'50%'}}>
-            <h1 style={{margin:'10% 0'}}>選び抜かれた講師陣</h1>
-            <h2>合格率２％のテストに合格した講師のみを採用しています。
-そんな選び抜かれた講師達がレッスンを提供いたします！</h2>
+          <div class='col slim'>
+            <h1 style={{margin:'10% 0'}}>選び抜かれた<br/>講師陣</h1>
+            <p>合格率２％のテストに合格した講師のみを採用しています。
+そんな選び抜かれた講師達がレッスンを提供いたします！</p>
           </div>
           <div class='up_row center' style={{marginTop:'0'}}>
             <div class='col'>
