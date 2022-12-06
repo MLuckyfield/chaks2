@@ -46,7 +46,7 @@ const onSubmit = (e) => {
                   <div class='row'><h1>SUBSCRIBE</h1></div>
                   <div class='row'>
                     <div class='col'>
-                        CHATSHACKの最新情報を知りたい方はこちら！特別割引、キャンペーン情報、イベント招待など、お届けします！登録することで先生からのフィードバックが見れたり、予約システムの利用も可能になります！
+                      {props.message}
                     </div>
                   </div>
                 </div>

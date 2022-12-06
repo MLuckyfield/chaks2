@@ -113,7 +113,6 @@ const App = () => {
           <Route path="/online" component={Online_Landing}/>
           <Route path="/reset" component={PW_Reset}/>
           <SecureRoute path="/products" access={['manager','user']} success={Product_Display} fail={()=><Redirect to='/login'/>}/>
-
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/create-event" access={['manager','admin']} success={CreateEvent} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/account" access={['user','manager']} success={Account} fail={()=><Redirect to='/login'/>}/>
@@ -411,7 +410,7 @@ const Front = ()=>{
                 </div>
               </div>
               {localStorage.getItem('user')?'':(
-                <Signup redirect={'/dash'} segment={'offline'}/>
+                <Signup redirect={'/dash'} segment={'offline'} message={'CHATSHACKの最新情報を知りたい方はこちら！特別割引、キャンペーン情報、イベント招待など、お届けします！登録することで先生からのフィードバックが見れたり、予約システムの利用も可能になります！'}/>
               )}
               <AccessDisplay/>
               <div id='faq'  class='master-row'>
