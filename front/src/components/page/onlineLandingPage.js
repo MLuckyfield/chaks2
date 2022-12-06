@@ -17,7 +17,6 @@ const Online_Landing = () => {
               <div class='col'>
                 <h1 style={{fontSize:'2em'}}>プレミアム<br/>オンライン<br/>英会話</h1>
                 <h2>Coming soon!</h2>
-                <a href="#signup" style={{textDecoration:'none',textAlign:'center',borderRadius:'50%',width:'70px',height:'70px',background:'black',color:'white'}}><span class="material-icons">expand_more</span></a>
               </div>
             </div>
         </div>
@@ -51,7 +50,7 @@ const Online_Landing = () => {
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',paddingTop:'10%'}}>
           <h2>Why CHATSHACK ONLINE?</h2>
           <h1>６つの理由</h1>
-          <div class='row'>
+          <div class='row' style={{marginTop:'5%'}}>
               <div class='col'>
                 <div class='fixed-row align' style={{marginBottom:'10%'}}>
                   <span class="material-icons green" style={{fontWeight:'1000'}}>done</span><h2>選び抜かれた優秀な講師陣</h2>
