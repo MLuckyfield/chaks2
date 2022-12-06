@@ -107,7 +107,7 @@ Can't wait to meet you!</p>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw'}}>
           <div class='col' style={{width:'50%'}}>
             <h1 style={{margin:'10% 0'}}>利用までの流れ</h1>
-            <h2>（サービス提供開始は２０２３年２月を想定しています）</h2>
+            <p>（サービス提供開始は２０２３年２月を想定しています）</p>
           </div>
           <div class='fixed-row clean_center'>
             <span class="material-icons green ">looks_one</span>
