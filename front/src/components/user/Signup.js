@@ -26,7 +26,11 @@ const onSubmit = (e) => {
       // console.log('response'+res)
       localStorage.setItem('user', JSON.stringify(res.data.result));
       setMsg([res.data.message,res.data.success]);
-      window.location=props.redirect
+      if(props.redirect.slice(0,4)='http'){
+        window.location.href=props.redirect
+      }else{
+        window.location=props.redirect
+      }
     })
     .catch((err) => {
       setForm(true)
