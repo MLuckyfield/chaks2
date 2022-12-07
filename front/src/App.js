@@ -408,6 +408,12 @@ const Front = ()=>{
                     </div>
                   </div>
                 </div>
+                <div class='col border'>
+                  <h2>ONLINE</h2>
+                  <p>プレミアムオンライン英会話!</p>
+                  <p>サービス提供開始は２０２３年２月を想定しています</p>
+                  <div class="btn" onClick={(e)=>{e.preventDefault();window.location='/online'}}>Details ></div>
+                </div>
               </div>
               {localStorage.getItem('user')?'':(
                 <Signup redirect={'/dash'} segment={'offline'} message={'CHATSHACKの最新情報を知りたい方はこちら！特別割引、キャンペーン情報、イベント招待など、お届けします！登録することで先生からのフィードバックが見れたり、予約システムの利用も可能になります！'}/>
