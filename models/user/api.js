@@ -556,7 +556,7 @@ const email = require('../../services/email')
 
     const mailchimp_email = (mail_tag,user)=>{
       user.subscriptions.forEach((sub, i) => {
-        if(sub.name=='prod_Mf0wgW4xwQ0Yyc' && sub.status='active'){
+        if(sub.name=='prod_Mf0wgW4xwQ0Yyc' && sub.status=='active'){
           let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
           mailchimp.setConfig({
             apiKey:process.env.MAILCHIMP_AUTH,
