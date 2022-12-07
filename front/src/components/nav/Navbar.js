@@ -49,9 +49,9 @@ const Navbar = ()=>{
         </div>
         {user==''||user==null||user==undefined?(
           <ul class="nav-links">
-              <li>{window.location.pathname==='/online'?<a onClick={navSlide} href="/">CAFE&BAR</a>:<a onClick={navSlide} href="/online">ONLINE</a>}</li>
               <li>{window.location.pathname==='/blog'?<a onClick={navSlide} href="/#concept">CONCEPT</a>:<a onClick={navSlide} href="#concept">CONCEPT</a>}</li>
               <li>{window.location.pathname==='/online'?<a onClick={navSlide} href="#concept">FEATURES</a>:<a onClick={navSlide} href="/#concept">VALUES</a>}</li>
+              <li>{window.location.pathname==='/online'?<a onClick={navSlide} href="/">CAFE&BAR</a>:<a onClick={navSlide} href="/online">ONLINE</a>}</li>
               <li><a href="/events">EVENTS</a></li>
               <li><a href="/blog">BLOG</a></li>
               <li><button class='solid-first' style={{fontSize:'13px',width:'100px'}} onClick={()=>window.location='/login'}>LOG IN</button></li>

@@ -408,7 +408,7 @@ const Front = ()=>{
                     </div>
                   </div>
                 </div>
-                <div class='col border'>
+                <div style={{border:'1px solid white'}} class='col'>
                   <h2>ONLINE</h2>
                   <p>プレミアムオンライン英会話!</p>
                   <p>サービス提供開始は２０２３年２月を想定しています</p>
