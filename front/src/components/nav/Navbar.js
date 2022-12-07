@@ -9,7 +9,6 @@ const Navbar = ()=>{
         setUser(JSON.parse(current))
       }
   },[])
-  // const { onLogout } = useAuthDataContext();
   const logout = (e) => {
     e.preventDefault();
     localStorage.setItem('user','');
