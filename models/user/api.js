@@ -555,32 +555,9 @@ const email = require('../../services/email')
     })
 
     const mailchimp_email = (mail_tag,user)=>{
-      let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
-      mailchimp.setConfig({
-        apiKey: process.env.MAILCHIMP_AUTH,
-        server: 'us9',
+      user.subscriptions.forEach((sub, i) => {
+        if(sub.name=='')
       });
-      // let inactive = ''
-      // switch(mail_tag){
-      //   case '1_month_absent':
-      //     break;
-      //   case '2_month_absent':
-      //     inactive='1_month_absent';break;
-      //   case '1_week_no_exp':
-      //     break;
-      //   case '2_week_no_exp':
-      //     inactive='1_week_no_exp';break;
-      //   case '1_month_no_exp':
-      //     inactive='2_week_no_exp';break;
-      //   case '2_month_no_exp':
-      //     inactive='1_month_no_exp';break;
-      // }
-      const response = mailchimp.lists.updateListMemberTags(
-        "cb86e9b6f5",
-        mailchimp_hash,
-        { tags: [{ name: mail_tag, status: "active" }] }
-      ).then(()=>{
-        console.log('Email sent to',user.first,user.last)
-      })
+
     }
 module.exports = router;
