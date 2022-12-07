@@ -1,6 +1,7 @@
 import React, { useState, useEffect ,useRef} from 'react';
 import logo from '../../chatshack.jpg'
 
+
 const Navbar = ()=>{
   const [user, setUser] = useState()
   useEffect(()=>{
