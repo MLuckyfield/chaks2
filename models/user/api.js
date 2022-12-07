@@ -479,7 +479,7 @@ const email = require('../../services/email')
       })
     })
     //automated engagement
-    cron.schedule('0 22 * * *',()=>{ //server time is 9 hours ahead
+    cron.schedule('0 23 * * *',()=>{ //server time is 9 hours ahead
       User.find().then((users)=>{
         // email.sendDefault('Activating Engagement','Sent on '+new Date().toString())
 
@@ -560,6 +560,21 @@ const email = require('../../services/email')
         apiKey: process.env.MAILCHIMP_AUTH,
         server: 'us9',
       });
+      // let inactive = ''
+      // switch(mail_tag){
+      //   case '1_month_absent':
+      //     break;
+      //   case '2_month_absent':
+      //     inactive='1_month_absent';break;
+      //   case '1_week_no_exp':
+      //     break;
+      //   case '2_week_no_exp':
+      //     inactive='1_week_no_exp';break;
+      //   case '1_month_no_exp':
+      //     inactive='2_week_no_exp';break;
+      //   case '2_month_no_exp':
+      //     inactive='1_month_no_exp';break;
+      // }
       const response = mailchimp.lists.updateListMemberTags(
         "cb86e9b6f5",
         mailchimp_hash,

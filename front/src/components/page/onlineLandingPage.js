@@ -135,7 +135,7 @@ Can't wait to meet you!</p>
         <div class='col'>
           <a href="https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false" style={{textDecoration:'none',textAlign:'center',width:'80%',background:'black',color:'white'}}>無料登録</a>
         </div>
-        :<Signup redirect={'/https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false'}
+        :<Signup redirect={'https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false'}
                 segment={'online'}
                 message={'オンラインレッスンのリリース情報などはこちらから！特別割引やキャンペーン情報なども、お届けします！ご登録頂くと、オンラインレッスンリリース後に予約システムの利用が可能になります！'}/>
       }
