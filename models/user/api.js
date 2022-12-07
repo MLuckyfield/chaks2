@@ -556,7 +556,18 @@ const email = require('../../services/email')
 
     const mailchimp_email = (mail_tag,user)=>{
       user.subscriptions.forEach((sub, i) => {
-        if(sub.name=='')
+        if(sub.name=='prod_Mf0wgW4xwQ0Yyc' && sub.status='active'){
+          let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
+          mailchimp.setConfig({
+            apiKey:process.env.MAILCHIMP_AUTH,
+            server:'us9'
+          })
+          const response = mailchimp.lists.updateListMemberTags(
+            'cb86e9b6f5',
+            mailchimp_hash,
+            {tags:[{name:mail_tag,status:'active'}]}
+          ).then(()=>{console.log('Email sent to',user.first,user.last)})
+        }
       });
 
     }
