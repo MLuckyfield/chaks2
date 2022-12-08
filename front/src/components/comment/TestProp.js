@@ -44,7 +44,7 @@ const TestProp = () => {
   return(
     <div class='row'>
     {bookings?bookings.map((item,i)=>{
-      return <div class='dayBox'>{item.day}</div>
+      return <div class='dayBox' border>{item.day}</div>
     }):'Loading...'}
 
     </div>
