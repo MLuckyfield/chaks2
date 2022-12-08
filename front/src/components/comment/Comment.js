@@ -130,7 +130,7 @@ const TeacherSchedule=(props)=>{
     axios.post('/user/update',{filter:{_id:props.target.student},
                                data:{'$push':{online_schedule:shift}}})
       .then((res) => {
-          console.log('success')
+          console.log('success',res.data.data)
           })
       .catch((err) => {
         console.log(err);
