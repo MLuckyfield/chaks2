@@ -7,7 +7,7 @@ const Booking = mongoose.model('Booking', new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  student: {
+  teacher: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
