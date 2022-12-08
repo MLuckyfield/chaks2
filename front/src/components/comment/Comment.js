@@ -130,7 +130,7 @@ const TeacherSchedule=(props)=>{
     axios.post('/user/update',{filter:{_id:props.student._id},
                                data:{'$push':{online_schedule:shift}}})
       .then((res) => {
-          console.log('success')          
+          console.log('success')
           })
       .catch((err) => {
         console.log(err);
@@ -164,7 +164,7 @@ const TeacherSchedule=(props)=>{
             <button type="submit" class="solid-first">Submit</button>
         </form>
       ):(
-        <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();setEditActive(editActive)}}>Add Day</div>
+        <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();console.log(editActive,!editActive);setEditActive(!editActive)}}>Add Day</div>
       )}
     </div>
   )
