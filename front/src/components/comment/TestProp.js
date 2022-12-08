@@ -10,7 +10,8 @@ const TestProp = () => {
 
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
-  const [days,setDays]=useState(()=>{let time = new Date(new Date().getYear(),new Date().getMonth(),0);return time.getDate()})
+  const [day,setDay]=useState(()=>{let time = new Date();return time.getDay()})
+  const [days,setDays]=useState(()=>{let time = new Date(new Date().getYear(),new Date().getMonth(),0);return time.getDate()+1})
 
   useEffect(()=>{
     let current = new Date()
@@ -30,6 +31,7 @@ const TestProp = () => {
   return(
     <div class='row'>
     {month}
+    {day.toString()}
     {date.toString()}
       {days.toString()}
 
