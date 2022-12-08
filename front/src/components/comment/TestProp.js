@@ -24,7 +24,8 @@ const TestProp = () => {
   },[])
   const buildCalendar = ()=>{
     let startingDay = new Date().getDay()
-    let endingDay = days.getDay()
+    let endingDay = new Date(new Date().getYear(),new Date().getMonth(),0).getDate()+1
+    console.log(startingDay,endingDay)
     for(let i=1;i<days+(6-endingDay)+startingDay;i++){
       return <div class='dayBox'>{i}</div>
     }
