@@ -10,7 +10,7 @@ const TestProp = () => {
 
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
-  const [days,setDays]=useState(()=>{let time = new Date();return time.getDate()})
+  const [days,setDays]=useState()
 
   useEffect(()=>{
     let current = new Date()
@@ -21,17 +21,12 @@ const TestProp = () => {
       //add bookings to object and add to array
     }
   },[])
-  const buildCalendar = ()=>{
-    // for(let i =1;i<5;i++){
-    //   return <span></span>
-    // }
+  const reset = ()=>{
 
   }
   return(
     <div class='row'>
-    {month}
-    {date}
-      {days}
+      {month}
 
     </div>
 )

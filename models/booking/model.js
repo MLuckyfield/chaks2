@@ -3,12 +3,13 @@ const Schema = mongoose.Schema;
 
 
 const Booking = mongoose.model('Booking', new Schema({
-  student: {//opinions from others
+  student: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  teacher:{
-    type:String
+  student: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   },
   date: {
     type: Date,
@@ -18,6 +19,9 @@ const Booking = mongoose.model('Booking', new Schema({
     type: String,
     required: true,
   },
+  active:{
+    type:String
+  }
 },{
   timestamps: true,
 }));
