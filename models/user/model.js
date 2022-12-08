@@ -123,14 +123,10 @@ const User = mongoose.model('User', new Schema({
   }],
   online_schedule:[{
     day:{type:Number},
-    time:{type:Number}
-  }],
-  online_slots:[{
-    date:{type:Date},
-    detail:{
-      type:Schema.Types.ObjectId,
-      ref:'Booking'
-    }
+    start_hour:{type:Number},
+    start_minute:{type:Number},
+    end_hour:{type:Number},
+    end_minute:{type:Number},
   }],
   active:{ //teacher field
     type:Boolean,

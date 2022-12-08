@@ -42,9 +42,9 @@ const TestProp = () => {
   },[])
   return(
     <div class='row'>
-    {bookings.map((item,i)=>{
+    {bookings?bookings.map((item,i)=>{
       return <div class='dayBox'>{item.day}</div>
-    })}
+    }):'Loading...'}
 
     </div>
 )
