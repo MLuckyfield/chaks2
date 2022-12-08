@@ -103,7 +103,7 @@ const Comment = () => {
                     </form>
         ):(
           <div class='col'>
-            <TeacherSchedule target={student}/>
+            <TeacherSchedule target={student._id}/>
           </div>
         )}
                 </div>
@@ -127,7 +127,7 @@ const TeacherSchedule=(props)=>{
       end_hour:end_hour.current.value,
       end_minute:end_minute.current.value,
     }
-    axios.post('/user/update',{filter:{_id:props.student._id},
+    axios.post('/user/update',{filter:{_id:props.target.student},
                                data:{'$push':{online_schedule:shift}}})
       .then((res) => {
           console.log('success')

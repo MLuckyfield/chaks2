@@ -22,8 +22,8 @@ const TestProp = () => {
         console.log('bookings retrieved:',data)
         let bookings = []
         //create schedule array
-        let startingDay = new Date().getDay()
-        let endingDay = new Date(new Date().getYear(),new Date().getMonth(),0).getDate()+1
+        let startingDay = new Date(year,month,1).getDay()
+        let endingDay = new Date(year,month,0).getDay()
         for(let i=1;i<days+(6-endingDay)+startingDay;i++){
           let day_bookings = {day:i,bookings:[]}
           data.forEach((booking, i) => {
