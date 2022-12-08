@@ -32,7 +32,6 @@ const TestProp = () => {
     <div class='row'>
     {month}
     {day.toString()}
-    {date.toString()}
       {days.toString()}
 
     </div>
