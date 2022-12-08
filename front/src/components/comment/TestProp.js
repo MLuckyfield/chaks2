@@ -10,7 +10,7 @@ const TestProp = () => {
 
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
-  const [days,setDays]=useState(()=>{let time = new Date(new Date().getYear(),new Date().getMonth(),0);return time})
+  const [days,setDays]=useState(()=>{let time = new Date(new Date().getYear(),new Date().getMonth(),0);return time.getDate()})
 
   useEffect(()=>{
     let current = new Date()
