@@ -30,8 +30,8 @@ const TestProp = () => {
   return(
     <div class='row'>
     {month}
-    {date}
-      {days}
+    {date.toString()}
+      {days.toString()}
 
     </div>
 )
