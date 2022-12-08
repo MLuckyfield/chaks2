@@ -74,10 +74,15 @@ const App = () => {
       analytics_script2.async = true;
       document.head.appendChild(analytics_script2);
 
-      const ads_script = document.createElement('script');
-      ads_script.src = "https://www.googletagmanager.com/gtag/js?id=G-9GGD597BC3";
-      ads_script.async = true;
-      document.head.appendChild(ads_script);
+      const online_ads_script = document.createElement('script');
+      online_ads_script.src = "https://www.googletagmanager.com/gtag/js?id=UA-234212411-1";
+      online_ads_script.async = true;
+      document.head.appendChild(online_ads_script);
+
+      const b2c_ads_script = document.createElement('script');
+      b2c_ads_script.src = "https://www.googletagmanager.com/gtag/js?id=G-9GGD597BC3";
+      b2c_ads_script.async = true;
+      document.head.appendChild(b2c_ads_script);
 
       const ads_script2 = document.createElement('script');
       ads_script2.src = google_ads;
@@ -112,7 +117,6 @@ const App = () => {
           <Route path="/login" component={Login}/>
           <Route path="/online" component={Online_Landing}/>
           <Route path="/reset" component={PW_Reset}/>
-          <SecureRoute path="/products" access={['manager','user']} success={Product_Display} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/create-event" access={['manager','admin']} success={CreateEvent} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/account" access={['user','manager']} success={Account} fail={()=><Redirect to='/login'/>}/>
