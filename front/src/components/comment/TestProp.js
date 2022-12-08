@@ -23,16 +23,18 @@ const TestProp = () => {
     }
   },[])
   const buildCalendar = ()=>{
-    // for(let i =1;i<5;i++){
-    //   return <span></span>
-    // }
-
+    let startingDay = new Date().getDay()
+    let endingDay = days.getDay()
+    for(let i=1;i<days+(6-endingDay)+startingDay;i++){
+      return <div class='dayBox'>{i}</div>
+    }
   }
   return(
     <div class='row'>
     {month}
     {day.toString()}
       {days.toString()}
+      {buildCalendar()}
 
     </div>
 )
