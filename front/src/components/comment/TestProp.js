@@ -24,9 +24,11 @@ const TestProp = () => {
         //create schedule array
         let startingDay = new Date(year,month,1).getDay()
         let endingDay = new Date(year,month,0).getDay()
-        console.log(startingDay,endingDay)
+        console.log(startingDay,endingDay,days)
         for(let i=1;i<days+(6-endingDay)+startingDay;i++){
-          let day_bookings = {day:i,bookings:[]}
+          let day_bookings = {bookings:[]}
+          if(i<startingDay || i>days){day_bookings['day']=' '}
+          else{day_bookings['day']=i}
           data.forEach((booking, i) => {
             //if date of booking matches i create object and add to bookings
             day_bookings.bookings.push({booking})
@@ -44,7 +46,7 @@ const TestProp = () => {
   return(
     <div class='row'>
     {bookings?bookings.map((item,i)=>{
-      return <div class='dayBox' border>{item.day}</div>
+      return <div class='dayBox border'>{item.day}</div>
     }):'Loading...'}
 
     </div>
