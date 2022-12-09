@@ -207,7 +207,7 @@ const Dash = ()=>{
     return(
       <div>
         <StaffTable/>
-        <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -fluency -online_schedule -online_slots -progress -goals -students -tags -source -password -createdAt -updatedAt -role -points -active -statistics -plan -reward -subscriptions"/>
+        <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -fluency -online_schedule -online_slots -progress -goals -students -tags -source -password -createdAt -updatedAt -points -active -statistics -plan -reward -subscriptions"/>
         <StudentTable/>
       </div>
     )
