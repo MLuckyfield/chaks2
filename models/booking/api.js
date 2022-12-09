@@ -85,13 +85,13 @@ cron.schedule('* * * * *',()=>{
   console.log('running bookings')
   User.find({role:'teacher'}).then((teachers)=>{
     //get first and last day as date object, to extract date and day
-    let days =new Date(year,month,0).getDate()
+    let days =new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-`).getDate()
     // let startDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-1`)
     // let endDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${days}`)
     //create new booking array
     let bookings = []
     teachers.forEach((teacher, i) => {
-      console.log(teacher.first,teacher.last)      
+      console.log(teacher.first,teacher.last)
       if(teacher.online_schedule){
         if(teacher.online_schedule.length>0){
           teacher.online_schedule.forEach((shift, i) => {
