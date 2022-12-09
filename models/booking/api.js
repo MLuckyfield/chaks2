@@ -84,16 +84,16 @@ router.get('/all', auth.permission(['user','manager']),async (req, res) => {
 cron.schedule('* * * * *',()=>{
   console.log('running bookings')
   User.find({role:'teacher'}).then((teachers)=>{
-    if(teachers.online_schedule){
-      if(teachers.online_schedule.length>0){
-        //get first and last day as date object, to extract date and day
-        let days =new Date(year,month,0).getDate()
-        // let startDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-1`)
-        // let endDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${days}`)
-        //create new booking array
-        let bookings = []
-        teachers.forEach((teacher, i) => {
-          console.log(teacher.first,teacher.last)
+    //get first and last day as date object, to extract date and day
+    let days =new Date(year,month,0).getDate()
+    // let startDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-1`)
+    // let endDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${days}`)
+    //create new booking array
+    let bookings = []
+    teachers.forEach((teacher, i) => {
+      console.log(teacher.first,teacher.last)      
+      if(teacher.online_schedule){
+        if(teacher.online_schedule.length>0){
           teacher.online_schedule.forEach((shift, i) => {
             //check if schedule is within start and end date
             for(let i =0;i<days;i++){
@@ -114,12 +114,12 @@ cron.schedule('* * * * *',()=>{
               }
             }
           });
-        });
-        //create bookings
-        console.log(bookings)
-        // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
+        }
       }
-    }
+    });
+    //create bookings
+    console.log(bookings)
+    // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
   })
 })
 

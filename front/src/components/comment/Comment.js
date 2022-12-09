@@ -58,7 +58,7 @@ const Comment = () => {
   return(
       <div class='row'>
           <form class='login' onSubmit={onSubmit} style={{width:'80%'}}>
-          {author.role=='manager'?<TeacherSchedule target={student._id}/>:''}
+          {author.role=='manager'&&student.role=='teacher'?<TeacherSchedule target={student._id}/>:''}
           <h2>New Comment for {student.first} ({student.points?student.points.length*30:'0'}minutes left)</h2>
                   <h2>{student.reward} status</h2>
                       <div class='row'>
