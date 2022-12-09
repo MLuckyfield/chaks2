@@ -57,7 +57,7 @@ const Comment = () => {
   }
   return(
       <div class='row'>
-        {student.role=='user'?(
+        {author.role=='teacher'?(
           <form class='login' onSubmit={onSubmit} style={{width:'80%'}}>
           <h2>New Comment for {student.first} ({student.points?student.points.length*30:'0'}minutes left)</h2>
                   <h2>{student.reward} status</h2>
