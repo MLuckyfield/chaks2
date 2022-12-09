@@ -91,8 +91,8 @@ cron.schedule('* * * * *',()=>{
     //create new booking array
     let bookings = []
     teachers.forEach((teacher, i) => {
-      console.log(teacher.first,teacher.last)
       if(teacher.online_schedule){
+        console.log(teacher.first,teacher.last)
         if(teacher.online_schedule.length>0){
           teacher.online_schedule.forEach((shift, i) => {
             //check if schedule is within start and end date
