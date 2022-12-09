@@ -48,7 +48,9 @@ const TestProp = () => {
       <h1>{month},{year}</h1>
       <div class='calendar'>
         {bookings?bookings.map((item,i)=>{
-          return <div class='dayBox border'>{item.day}</div>
+          return <div class='dayBox border'>
+                  {item.day==new Date().getDate()?<span style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span>{item.day}</span>}
+                 </div>
         }):'Loading...'}
       </div>
     </div>

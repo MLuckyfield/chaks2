@@ -84,39 +84,41 @@ router.get('/all', auth.permission(['user','manager']),async (req, res) => {
 cron.schedule('* * * * *',()=>{
   console.log('running bookings')
   User.find({role:'teacher'}).then((teachers)=>{
-    if(teachers.online_schedule.length>0){
-      //get first and last day as date object, to extract date and day
-      let days =new Date(year,month,0).getDate()
-      // let startDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-1`)
-      // let endDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${days}`)
-      //create new booking array
-      let bookings = []
-      teachers.forEach((teacher, i) => {
-        console.log(teacher.first,teacher.last)
-        teacher.online_schedule.forEach((shift, i) => {
-          //check if schedule is within start and end date
-          for(let i =0;i<days;i++){
-            let date = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${i}`)
-            if(date.getDate()==i){
-              //calculate number of slots based on shift length
-              let shift_start = moment(date.setHours(shift.start_hour).setMinutes(shift.start_minute))
-              let shift_end = moment(date.setHours(shift.end_hour).setMinutes(shift.end_minute))
-              let shift_minutes = shift_end.diff(shift_start,'minutes')
-              for(let y=0;y<shift_minutes/30;i++){
-                //add to booking array
-                bookings.push({
-                  teacher:teacher._id,
-                  date: date.setHours(shift.start_hour).setMinutes(shift.start_minute),
-                  status:'draft'
-                })
+    if(teachers.online_schedule){
+      if(teachers.online_schedule.length>0){
+        //get first and last day as date object, to extract date and day
+        let days =new Date(year,month,0).getDate()
+        // let startDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-1`)
+        // let endDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${days}`)
+        //create new booking array
+        let bookings = []
+        teachers.forEach((teacher, i) => {
+          console.log(teacher.first,teacher.last)
+          teacher.online_schedule.forEach((shift, i) => {
+            //check if schedule is within start and end date
+            for(let i =0;i<days;i++){
+              let date = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${i}`)
+              if(date.getDate()==i){
+                //calculate number of slots based on shift length
+                let shift_start = moment(date.setHours(shift.start_hour).setMinutes(shift.start_minute))
+                let shift_end = moment(date.setHours(shift.end_hour).setMinutes(shift.end_minute))
+                let shift_minutes = shift_end.diff(shift_start,'minutes')
+                for(let y=0;y<shift_minutes/30;i++){
+                  //add to booking array
+                  bookings.push({
+                    teacher:teacher._id,
+                    date: date.setHours(shift.start_hour).setMinutes(shift.start_minute),
+                    status:'draft'
+                  })
+                }
               }
             }
-          }
+          });
         });
-      });
-      //create bookings
-      console.log(bookings)
-      // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
+        //create bookings
+        console.log(bookings)
+        // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
+      }
     }
   })
 })
