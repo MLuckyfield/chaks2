@@ -82,6 +82,7 @@ router.get('/all', auth.permission(['user','manager']),async (req, res) => {
 });
 
 cron.schedule('*/5 * * * *',()=>{
+  console.log('running bookings')
   User.find({role:'teacher'}).then((teachers)=>{
     if(teachers.online_schedule.length>0){
       //get first and last day as date object, to extract date and day
@@ -91,6 +92,7 @@ cron.schedule('*/5 * * * *',()=>{
       //create new booking array
       let bookings = []
       teachers.forEach((teacher, i) => {
+        console.log(teacher.first,teacher.last)
         teacher.online_schedule.forEach((shift, i) => {
           //check if schedule is within start and end date
           for(let i =0;i<days;i++){
