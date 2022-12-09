@@ -57,8 +57,10 @@ const Comment = () => {
   }
   return(
       <div class='row'>
-          <form class='login' onSubmit={onSubmit} style={{width:'80%'}}>
-          {author.role=='manager'&&student.role=='teacher'?<TeacherSchedule target={student._id}/>:''}
+      {student.role=='teacher'?(
+        <TeacherSchedule target={student._id}/>
+      ):(
+        <form class='login' onSubmit={onSubmit} style={{width:'80%'}}>
           <h2>New Comment for {student.first} ({student.points?student.points.length*30:'0'}minutes left)</h2>
                   <h2>{student.reward} status</h2>
                       <div class='row'>
@@ -101,7 +103,8 @@ const Comment = () => {
                       <label>{feedback}</label>
                       {active?<button type="submit" class="solid-first">Comment</button>:'Please wait... (manually refresh after 5 seconds)'}
                     </form>
-                </div>
+      )}
+      </div>
 )
 }
 
