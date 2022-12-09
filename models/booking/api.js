@@ -81,7 +81,7 @@ router.get('/all', auth.permission(['user','manager']),async (req, res) => {
   });
 });
 
-cron.schedule('*/5 * * * *',()=>{
+cron.schedule('* * * * *',()=>{
   console.log('running bookings')
   User.find({role:'teacher'}).then((teachers)=>{
     if(teachers.online_schedule.length>0){
