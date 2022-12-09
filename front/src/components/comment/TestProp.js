@@ -47,6 +47,13 @@ const TestProp = () => {
     <div class='col'>
       <h1>{month},{year}</h1>
       <div class='calendar'>
+        <div class='dayBox'>日</div>
+        <div class='dayBox'>月</div>
+        <div class='dayBox'>火</div>
+        <div class='dayBox'>水</div>
+        <div class='dayBox'>木</div>
+        <div class='dayBox'>金</div>
+        <div class='dayBox'>土</div>
         {bookings?bookings.map((item,i)=>{
           return (<div class={item.day>new Date().getDate()?'dayBox border':'dayBox border inactive'}>
                   {item.day==new Date().getDate()?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
