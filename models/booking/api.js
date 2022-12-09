@@ -95,6 +95,7 @@ cron.schedule('* * * * *',()=>{
         console.log(teacher.first,teacher.last)
         if(teacher.online_schedule.length>0){
           teacher.online_schedule.forEach((shift, i) => {
+            console.log('converting',shift)
             //check if schedule is within start and end date
             for(let i =0;i<days;i++){
               let date = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${i}`)
