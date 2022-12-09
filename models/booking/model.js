@@ -19,7 +19,7 @@ const Booking = mongoose.model('Booking', new Schema({
     type: String,
     required: true,
   },
-  active:{
+  status:{
     type:String
   }
 },{
