@@ -22,10 +22,10 @@ const TestProp = () => {
         console.log('bookings retrieved:',data)
         let bookings = []
         //create schedule array
-        let startingDay = new Date(year,month,1).getDay()
-        let endingDay = new Date(year,month,0).getDay()
-        console.log(startingDay,endingDay,days)
-        for(let i=1;i<days+(6-endingDay)+startingDay;i++){
+        let startingDay = new Date(year,month,1).getDay()-1
+        let endingDay = new Date(year,month,0).getDay()-1
+        console.log(month,startingDay,endingDay,days)
+        for(let i=0;i<days+(7-endingDay)+startingDay;i++){
           let day_bookings = {bookings:[]}
           if(i<startingDay || i>days){day_bookings['day']=' '}
           else{day_bookings['day']=i}
