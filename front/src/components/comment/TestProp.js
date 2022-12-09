@@ -27,7 +27,7 @@ const TestProp = () => {
         console.log(year,month,startingDay,endingDay,days)
         for(let i=0;i<days+startingDay+(6-endingDay);i++){
           let day_bookings = {bookings:[]}
-          if(i<startingDay || i>days){day_bookings['day']=' '}
+          if(i<startingDay || i>days+startingDay){day_bookings['day']=' '}
           else{day_bookings['day']=i-(7-startingDay)}
           data.forEach((booking, i) => {
             //if date of booking matches i create object and add to bookings
