@@ -122,7 +122,7 @@ const TeacherSchedule=(props)=>{
       end_hour:end_hour.current.value,
       end_minute:end_minute.current.value,
     }
-    console.log(shift)
+    console.log('shift to be added',shift)
     axios.post('/user/update',{filter:{_id:props.target},
                                data:{'$push':{online_schedule:shift}}})
       .then((res) => {
