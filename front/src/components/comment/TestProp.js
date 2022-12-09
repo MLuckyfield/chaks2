@@ -45,10 +45,11 @@ const TestProp = () => {
   },[])
   return(
     <div class='row'>
-    {bookings?bookings.map((item,i)=>{
-      return <div class='dayBox border'>{item.day}</div>
-    }):'Loading...'}
-
+      <div class='calendar'>
+        {bookings?bookings.map((item,i)=>{
+          return <div class='dayBox border'>{item.day}</div>
+        }):'Loading...'}
+      </div>
     </div>
 )
 }
