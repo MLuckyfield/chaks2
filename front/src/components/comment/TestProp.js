@@ -57,6 +57,9 @@ const TestProp = () => {
         {bookings?bookings.map((item,i)=>{
           return (<div class={item.day>=new Date().getDate()?'dayBox border':'dayBox border inactive'}>
                   {item.day==new Date().getDate()?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
+                  {item.bookings.map((timeslot,i)=>{
+                    return <span>{timeslot.teacher.first} {timeslot.teacher.last} | {moment(timeslot.date).format('HH:MM')}</span>
+                  })}
                  </div>)
         }):'Loading...'}
       </div>
