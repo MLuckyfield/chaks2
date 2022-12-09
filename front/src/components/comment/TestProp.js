@@ -12,7 +12,7 @@ const TestProp = () => {
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day,setDay]=useState(()=>{let time = new Date();return time.getDay()})
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
-  const [days,setDays]=useState(()=>{let time = new Date(year,month,0);return time.getDate()+1})
+  const [days,setDays]=useState(()=>{let time = new Date(year,month,0);return time.getDate()})
   const [bookings,setBookings]=useState()
   useEffect(()=>{
     //get all bookings for the month
@@ -22,8 +22,8 @@ const TestProp = () => {
         console.log('bookings retrieved:',data)
         let bookings = []
         //create schedule array
-        let startingDay = new Date(year,month,1).getDay()
-        let endingDay = new Date(year,month,0).getDay()
+        let startingDay = new Date(year-month-1).getDay()
+        let endingDay = new Date(year-month-days).getDay()
         console.log(year,month,startingDay,endingDay,days)
         for(let i=0;i<days+startingDay+(6-endingDay);i++){
           let day_bookings = {bookings:[]}
