@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,useRef} from 'react';
+import React, { useState ,useRef} from 'react';
 import {axios} from "../../utilities/axios";
 import Social from '../utilities/social'
 import Popup from '../utilities/popup'

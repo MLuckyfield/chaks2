@@ -81,9 +81,9 @@ router.get('/all', auth.permission(['user','manager']),async (req, res) => {
   });
 });
 
-cron.schedule('* * * * *',()=>{
+cron.schedule('*/5 * * * *',()=>{
   console.log('running bookings')
-  User.find({role:'teacher'}).then((teachers)=>{
+  User.find({role:'teacher',online_schedule:{$exists:true}}).then((teachers)=>{
     //get first and last day as date object, to extract date and day
     let year = new Date().getYear()+1900
     let month = new Date().getMonth()+1
@@ -93,16 +93,15 @@ cron.schedule('* * * * *',()=>{
     //create new booking array
     teachers.forEach((teacher, i) => {
       let bookings = []
-      if(teacher.online_schedule){
         console.log(teacher.first,teacher.last)
         if(teacher.online_schedule.length>0){
           teacher.online_schedule.forEach((shift, i) => {
             console.log('converting',shift,days)
             //check if schedule is within start and end date
             for(let i =1;i<days;i++){
-              let date = new Date(`${year}-${month}-${i}`)
-              console.log('within range:',date,i,date.getDate()==i)
-              if(date.getDate()==i){
+              let date = new Date(year,month,i)
+              console.log('within range:',date,shift.day,date.getDate()==shift.day)
+              if(date.getDate()==shift.day){
                 //calculate number of slots based on shift length
                 let shift_start = moment(date).set({h:shift.start_hour,m:shift.start_minute})
                 let shift_end = moment(date).set({h:shift.end_hour,m:shift.end_minute})
@@ -121,7 +120,6 @@ cron.schedule('* * * * *',()=>{
             }
           });
         }
-      }
       //create bookings
       console.log(bookings)
       // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})

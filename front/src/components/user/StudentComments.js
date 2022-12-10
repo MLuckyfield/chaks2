@@ -1,7 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import Comment from "../comment/Comment";
-import Profile from "./Profile";
 import Social from "../utilities/social";
 import moment from "moment"
 import {io} from 'socket.io-client';
@@ -11,7 +10,6 @@ const socket = io();
 const StudentComments = () => {
 
   const [comments, setComments] = useState(null);
-  const [payable,setPayable] = useState(null)
   const [source,setSource] =useState()
   const [target, setTarget]=useState(()=>{
     if (localStorage.getItem('student')){
@@ -20,9 +18,6 @@ const StudentComments = () => {
     }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
   })
   useEffect(() => {
-    socket.on("connect", () => {
-      console.log('front socket ready')
-    });
     socket.on('updateDash',(id)=>{
       axios.get('user/all',{params:{filter:{_id: id}}})
         .then((result)=>{setTarget(result.data.data[0])})
@@ -36,8 +31,6 @@ const StudentComments = () => {
   },[])
 
   const clockin=(status)=>{
-    const vincent=0
-    const sonja=0
     if(status){
       let popup = document.getElementById("teacher_select");
       popup.style.display = 'block';

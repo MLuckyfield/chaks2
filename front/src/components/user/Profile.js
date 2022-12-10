@@ -1,6 +1,5 @@
 import React, { useRef, useState,useEffect } from 'react';
 import {axios} from "../../utilities/axios";
-import moment from "moment"
 
 const Profile = () => {
 
