@@ -87,7 +87,7 @@ cron.schedule('* * * * *',()=>{
     //get first and last day as date object, to extract date and day
     let year = new Date().getYear()+1900
     let month = new Date().getMonth()+1
-    let days =new Date(`${year}-${month}-0`).getDate()
+    let days =new Date(year,month,0).getDate()
     // let startDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-1`)
     // let endDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${days}`)
     //create new booking array
