@@ -112,7 +112,7 @@ cron.schedule('* * * * *',()=>{
                   //add to booking array
                   bookings.push({
                     teacher:teacher._id,
-                    date: date.setHours(shift.start_hour).setMinutes(shift.start_minute),
+                    date: moment(date).set({h:shift.start_hour,m:shift.start_minute})
                     status:'draft'
                   })
                 }
