@@ -92,9 +92,9 @@ cron.schedule('*/5 * * * *',()=>{
     // let endDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${days}`)
     //create new booking array
     teachers.forEach((teacher, i) => {
-      let bookings = []
         console.log(teacher.first,teacher.last)
         if(teacher.online_schedule.length>0){
+          let bookings = []
           teacher.online_schedule.forEach((shift, i) => {
             console.log('converting',shift,days)
             //check if schedule is within start and end date
@@ -119,10 +119,10 @@ cron.schedule('*/5 * * * *',()=>{
               }
             }
           });
+          //create bookings
+          console.log(bookings)
+          // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
         }
-      //create bookings
-      console.log(bookings)
-      // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
     });
   })
 })
