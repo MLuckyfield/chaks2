@@ -112,7 +112,7 @@ cron.schedule('* * * * *',()=>{
                   //add to booking array
                   bookings.push({
                     teacher:teacher._id,
-                    date: moment(date).set({h:shift.start_hour,m:shift.start_minute})
+                    date: moment(date).set({h:shift.start_hour,m:shift.start_minute}),
                     status:'draft'
                   })
                 }
@@ -122,7 +122,7 @@ cron.schedule('* * * * *',()=>{
         }
       }
     });
-    
+
     //create bookings
     console.log(bookings)
     // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
