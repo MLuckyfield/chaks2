@@ -110,6 +110,8 @@ cron.schedule('*/5 * * * *',()=>{
                 console.log('shift time',shift_minutes,loop)
                 console.log('within range:',date,date.getDay(),shift.day,date.getDay()==shift.day)
                 for(let y=1;y<loop+2;y++){
+                  console.log(shift_start,shift_start.hour(),shift_start.minutes())
+
                   //add to booking array
                   bookings.push({
                     teacher:teacher._id,
@@ -117,7 +119,6 @@ cron.schedule('*/5 * * * *',()=>{
                     status:'draft'
                   })
                   // //need to track time in 30 min increments
-                  // console.log(shift_start,shift_start.hour(),shift_start.minutes())
                   shift_start.add(30,'minutes')
                 }
               }
