@@ -103,22 +103,22 @@ cron.schedule('*/5 * * * *',()=>{
               console.log('loop:',i,days)
 
               console.log('within range:',date,date.getDay(),shift.day,date.getDay()==shift.day)
-              if(date.getDay()==shift.day){
-                //calculate number of slots based on shift length
-                let shift_start = moment(date).set({h:shift.start_hour,m:shift.start_minute})
-                let shift_end = moment(date).set({h:shift.end_hour,m:shift.end_minute})
-                let shift_minutes = shift_end.diff(shift_start,'minutes')
-                let loop = shift_minutes/30
-                console.log('shift time',shift_minutes,loop)
-                for(let y=0;y<loop;i++){
-                  //add to booking array
-                  bookings.push({
-                    teacher:teacher._id,
-                    date: moment(date).set({h:shift.start_hour,m:shift.start_minute}),
-                    status:'draft'
-                  })
-                }
-              }
+              // if(date.getDay()==shift.day){
+              //   //calculate number of slots based on shift length
+              //   let shift_start = moment(date).set({h:shift.start_hour,m:shift.start_minute})
+              //   let shift_end = moment(date).set({h:shift.end_hour,m:shift.end_minute})
+              //   let shift_minutes = shift_end.diff(shift_start,'minutes')
+              //   let loop = shift_minutes/30
+              //   console.log('shift time',shift_minutes,loop)
+              //   for(let y=0;y<loop;i++){
+              //     //add to booking array
+              //     bookings.push({
+              //       teacher:teacher._id,
+              //       date: moment(date).set({h:shift.start_hour,m:shift.start_minute}),
+              //       status:'draft'
+              //     })
+              //   }
+              // }
             }
           });
           //create bookings
