@@ -98,7 +98,7 @@ cron.schedule('*/5 * * * *',()=>{
           teacher.online_schedule.forEach((shift, i) => {
             console.log('converting',shift,days)
             //check if schedule is within start and end date
-            for(let i =1;i<days;i++){
+            for(let i =1;i<days+1;i++){
               let date = new Date(`${year}-${month}-${i}`)
               console.log('loop:',i,days)
               if(date.getDay()==shift.day){
@@ -109,15 +109,15 @@ cron.schedule('*/5 * * * *',()=>{
                 let loop = shift_minutes/30
                 console.log('shift time',shift_minutes,loop)
                 console.log('within range:',date,date.getDay(),shift.day,date.getDay()==shift.day)
-                
-                // for(let y=0;y<loop;i++){
-                //   //add to booking array
-                //   bookings.push({
-                //     teacher:teacher._id,
-                //     date: moment(date).set({h:shift.start_hour,m:shift.start_minute}),
-                //     status:'draft'
-                //   })
-                // }
+                for(let y=0;y<loop;i++){
+                  //add to booking array
+                  bookings.push({
+                    teacher:teacher._id,
+                    //need to track time in 30 min increments
+                    date: moment(date).set({h:shift.start_hour,m:shift.start_minute}),
+                    status:'draft'
+                  })
+                }
               }
             }
           });
