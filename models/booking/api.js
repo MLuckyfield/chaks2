@@ -100,6 +100,8 @@ cron.schedule('*/5 * * * *',()=>{
             //check if schedule is within start and end date
             for(let i =1;i<days;i++){
               let date = new Date(`${year}-${month}-${i}`)
+              console.log('loop:',i,days)
+
               console.log('within range:',date,date.getDay(),shift.day,date.getDay()==shift.day)
               if(date.getDay()==shift.day){
                 //calculate number of slots based on shift length
