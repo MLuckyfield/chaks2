@@ -96,21 +96,17 @@ cron.schedule('*/5 * * * *',()=>{
         if(teacher.online_schedule.length>0){
           let bookings = []
           teacher.online_schedule.forEach((shift, i) => {
-            console.log('converting',shift,days)
             //check if schedule is within start and end date
             for(let i =1;i<days+1;i++){
               let date = new Date(`${year}-${month}-${i}`)
-              console.log('loop:',i,days)
               if(date.getDay()==shift.day){
                 //calculate number of slots based on shift length
                 let shift_start = moment(date).set({h:shift.start_hour,m:shift.start_minute})
                 let shift_end = moment(date).set({h:shift.end_hour,m:shift.end_minute})
                 let shift_minutes = shift_end.diff(shift_start,'minutes')
                 let loop = shift_minutes/30
-                console.log('shift time',shift_minutes,loop)
-                console.log('within range:',date,date.getDay(),shift.day,date.getDay()==shift.day)
                 for(let y=1;y<loop+2;y++){
-                  console.log(shift_start,shift_start.hour(),shift_start.minutes())
+                  console.log(shift_start)
 
                   //add to booking array
                   bookings.push({
