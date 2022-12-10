@@ -85,7 +85,9 @@ cron.schedule('* * * * *',()=>{
   console.log('running bookings')
   User.find({role:'teacher'}).then((teachers)=>{
     //get first and last day as date object, to extract date and day
-    let days =new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-`).getDate()
+    let year = new Date().getYear()+1900
+    let month = new Date().getMonth()+1
+    let days =new Date(`${year}-${month}-0`).getDate()
     // let startDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-1`)
     // let endDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${days}`)
     //create new booking array
@@ -98,7 +100,7 @@ cron.schedule('* * * * *',()=>{
             console.log('converting',shift,days)
             //check if schedule is within start and end date
             for(let i =0;i<days;i++){
-              let date = new Date(`${()=> {return new Date().getYear()+1900}}-${()=>{return new Date().getMonth()+1}}-${i}`)
+              let date = new Date(`${year}-${month}-${i}`)
               console.log('within range:',date,i,date.getDate()==i)
               if(date.getDate()==i){
                 //calculate number of slots based on shift length
