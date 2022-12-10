@@ -91,8 +91,8 @@ cron.schedule('* * * * *',()=>{
     // let startDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-1`)
     // let endDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${days}`)
     //create new booking array
-    let bookings = []
     teachers.forEach((teacher, i) => {
+      let bookings = []
       if(teacher.online_schedule){
         console.log(teacher.first,teacher.last)
         if(teacher.online_schedule.length>0){
@@ -107,8 +107,9 @@ cron.schedule('* * * * *',()=>{
                 let shift_start = moment(date).set({h:shift.start_hour,m:shift.start_minute})
                 let shift_end = moment(date).set({h:shift.end_hour,m:shift.end_minute})
                 let shift_minutes = shift_end.diff(shift_start,'minutes')
+                let loop = shift_minutes/30
                 console.log('shift time',shift_minutes,shift_minutes/30)
-                for(let y=0;y<shift_minutes/30;i++){
+                for(let y=0;y<loop;i++){
                   //add to booking array
                   bookings.push({
                     teacher:teacher._id,
@@ -121,11 +122,10 @@ cron.schedule('* * * * *',()=>{
           });
         }
       }
+      //create bookings
+      console.log(bookings)
+      // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
     });
-
-    //create bookings
-    console.log(bookings)
-    // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
   })
 })
 
