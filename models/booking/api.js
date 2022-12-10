@@ -122,6 +122,7 @@ cron.schedule('* * * * *',()=>{
         }
       }
     });
+    
     //create bookings
     console.log(bookings)
     // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
