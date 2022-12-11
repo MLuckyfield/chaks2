@@ -114,9 +114,11 @@ cron.schedule('*/5 * * * *',()=>{
                     date: shift_start,
                     status:'draft'
                   })
-                  console.log(shift_start)
+                  console.log('before',shift_start)
                   // //need to track time in 30 min increments
                   shift_start.add(30,'minutes')
+                  console.log('after',shift_start)
+
                 }
               }
             }
