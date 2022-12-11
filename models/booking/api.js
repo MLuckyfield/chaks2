@@ -109,7 +109,7 @@ cron.schedule('*/5 * * * *',()=>{
 
                 for(let y=1;y<loop+2;y++){
                   //add to booking array
-                  console.log('before',shift_start)
+                  // console.log('before',shift_start)
 
                   let object = {
                     teacher:teacher._id,
@@ -117,17 +117,20 @@ cron.schedule('*/5 * * * *',()=>{
                     status:'draft'
                   }
                   bookings.push(object)
-                  console.log(object)
+                  // console.log(object)
                   // //need to track time in 30 min increments
                   shift_start.add(30,'minutes')
-                  console.log('after',shift_start)
+                  // console.log('after',shift_start)
 
                 }
               }
             }
           });
           //create bookings
-          console.log(bookings)
+          bookings.forEach((item, i) => {
+            console.log(item)
+          });
+
           // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
         }
     });
