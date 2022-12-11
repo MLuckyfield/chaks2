@@ -81,7 +81,7 @@ router.get('/all', auth.permission(['user','manager']),async (req, res) => {
   });
 });
 
-cron.schedule('*/5 * * * *',()=>{
+cron.schedule('*/15 * * * *',()=>{
   console.log('running bookings')
   User.find({role:'teacher',online_schedule:{$exists:true}}).then((teachers)=>{
     //get first and last day as date object, to extract date and day
@@ -127,11 +127,11 @@ cron.schedule('*/5 * * * *',()=>{
             }
           });
           //create bookings
-          bookings.forEach((item, i) => {
-            console.log(item, new Date(item.date))
-          });
+          // bookings.forEach((item, i) => {
+          //   console.log(item, new Date(item.date))
+          // });
 
-          // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
+          Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
         }
     });
   })
