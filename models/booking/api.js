@@ -105,8 +105,8 @@ cron.schedule('*/5 * * * *',()=>{
                 let shift_end = moment(date).set({h:shift.end_hour,m:shift.end_minute})
                 let shift_minutes = shift_end.diff(shift_start,'minutes')
                 let loop = shift_minutes/30
-                console.log(shift_start)
-                
+                console.log('reset as:',shift_start)
+
                 for(let y=1;y<loop+2;y++){
                   //add to booking array
                   bookings.push({
