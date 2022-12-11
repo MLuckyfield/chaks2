@@ -106,21 +106,20 @@ cron.schedule('*/5 * * * *',()=>{
                 let shift_minutes = shift_end.diff(shift_start,'minutes')
                 let loop = shift_minutes/30
                 console.log('reset as:',shift_start)
-                let temp = shift_start
+
                 for(let y=1;y<loop+2;y++){
                   //add to booking array
                   // console.log('before',shift_start)
 
                   let object = {
                     teacher:teacher._id,
-                    date: temp,
+                    date: shift_start.toDate().getTime(),
                     status:'draft'
                   }
                   bookings.push(object)
                   // console.log(object)
                   // //need to track time in 30 min increments
                   shift_start.add(30,'minutes')
-                  temp = shift_start
                   // console.log('after',shift_start)
 
                 }
