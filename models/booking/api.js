@@ -132,7 +132,7 @@ cron.schedule('*/5 * * * *',()=>{
           //   console.log(item, new Date(item.date))
           // });
 
-          Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
+          Booking.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
         }
     });
   })
