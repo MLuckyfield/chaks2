@@ -113,7 +113,7 @@ cron.schedule('*/5 * * * *',()=>{
 
                   let object = {
                     teacher:teacher._id,
-                    date: shift_start.toDate().getTime(),
+                    date: shift_start.toDate(),
                     status:'draft'
                   }
                   bookings.push(object)
@@ -128,7 +128,7 @@ cron.schedule('*/5 * * * *',()=>{
           });
           //create bookings
           bookings.forEach((item, i) => {
-            console.log(item)
+            console.log(item, new Date(item.date))
           });
 
           // Bookings.insertMany(bookings).then(()=>{console.log(bookings.length,'added')})
