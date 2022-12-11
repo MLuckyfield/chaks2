@@ -15,10 +15,6 @@ const Booking = mongoose.model('Booking', new Schema({
     type: Date,
     required: true,
   },
-  lesson: {
-    type: String,
-    required: true,
-  },
   status:{
     type:String
   }
