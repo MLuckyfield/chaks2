@@ -35,6 +35,7 @@ const TestProp = () => {
           bookings.push(day_bookings)
         }
         setBookings(bookings)
+        console.log('ready',bookings)
       })
       .catch((err) => {
         console.log(err);
