@@ -15,7 +15,7 @@ const TestProp = () => {
   const [bookings,setBookings]=useState()
   useEffect(()=>{
     //get all bookings for the month
-    axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(year,month,1),$lte:new Date(`${year}-${month}-${days}`)}}}})
+    axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${days}`)}}}})
       .then((res) => {
         let data = res.data.data
         console.log('bookings retrieved:',data)
