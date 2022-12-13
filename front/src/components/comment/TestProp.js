@@ -30,9 +30,9 @@ const TestProp = () => {
           else{day_bookings['day']=i-(7-startingDay)}
           data.forEach((booking, i) => {
             //if date of booking matches i create object and add to bookings
-            console.log(i+startingDay,booking.date,new Date(booking.date).getDay())
+            console.log(i+startingDay,booking.date,new Date(booking.date),new Date(booking.date).getDay())
             if(i+startingDay==new Date(booking.date).getDay()){
-              day_bookings.bookings.push({booking})
+              day_bookings.bookings.push(booking)
             }
           });
           bookings.push(day_bookings)
