@@ -82,59 +82,59 @@ router.get('/all', auth.permission(['user','manager']),async (req, res) => {
 });
 
 //converting base schedule to booking timeslots
-cron.schedule('*/10 * * * *',()=>{
-  console.log('running bookings')
-  User.find({role:'teacher',online_schedule:{$exists:true}}).then((teachers)=>{
-    //get first and last day as date object, to extract date and day
-    let year = new Date().getYear()+1900
-    let month = new Date().getMonth()+1
-    let days =new Date(year,month,0).getDate()
-    // let startDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-1`)
-    // let endDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${days}`)
-    //create new booking array
-    teachers.forEach((teacher, i) => {
-        console.log(teacher.first,teacher.last)
-        if(teacher.online_schedule.length>0){
-          let bookings = []
-          teacher.online_schedule.forEach((shift, i) => {
-            //check if schedule is within start and end date
-            for(let i =1;i<days+1;i++){
-              let date = new Date(`${year}-${month}-${i}`)
-              if(date.getDay()==shift.day){
-                //calculate number of slots based on shift length
-                let shift_start = moment(date).set({h:shift.start_hour,m:shift.start_minute})
-                let shift_end = moment(date).set({h:shift.end_hour,m:shift.end_minute})
-                let shift_minutes = shift_end.diff(shift_start,'minutes')
-                let loop = shift_minutes/30
-                console.log('reset as:',shift_start)
-
-                for(let y=1;y<loop+2;y++){
-                  //add to booking array
-                  // console.log('before',shift_start)
-
-                  let object = {
-                    teacher:teacher._id,
-                    date: shift_start.toDate(),
-                    status:'draft'
-                  }
-                  bookings.push(object)
-                  console.log(object)
-                  // //need to track time in 30 min increments
-                  shift_start.add(30,'minutes')
-                  // console.log('after',shift_start)
-
-                }
-                //create bookings
-                console.log('inserting',bookings.length,loop,'bookings')
-              }
-            }
-          });
-
-
-          Booking.insertMany(bookings).then(()=>{console.log(bookings.length,'added')}).catch((err)=>console.log('error:',err))
-        }
-    });
-  })
-})
+// cron.schedule('*/10 * * * *',()=>{
+//   console.log('running bookings')
+//   User.find({role:'teacher',online_schedule:{$exists:true}}).then((teachers)=>{
+//     //get first and last day as date object, to extract date and day
+//     let year = new Date().getYear()+1900
+//     let month = new Date().getMonth()+1
+//     let days =new Date(year,month,0).getDate()
+//     // let startDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-1`)
+//     // let endDate = new Date(`${new Date().getYear()+1900}-${new Date().getMonth()+1}-${days}`)
+//     //create new booking array
+//     teachers.forEach((teacher, i) => {
+//         console.log(teacher.first,teacher.last)
+//         if(teacher.online_schedule.length>0){
+//           let bookings = []
+//           teacher.online_schedule.forEach((shift, i) => {
+//             //check if schedule is within start and end date
+//             for(let i =1;i<days+1;i++){
+//               let date = new Date(`${year}-${month}-${i}`)
+//               if(date.getDay()==shift.day){
+//                 //calculate number of slots based on shift length
+//                 let shift_start = moment(date).set({h:shift.start_hour,m:shift.start_minute})
+//                 let shift_end = moment(date).set({h:shift.end_hour,m:shift.end_minute})
+//                 let shift_minutes = shift_end.diff(shift_start,'minutes')
+//                 let loop = shift_minutes/30
+//                 console.log('reset as:',shift_start)
+//
+//                 for(let y=1;y<loop+2;y++){
+//                   //add to booking array
+//                   // console.log('before',shift_start)
+//
+//                   let object = {
+//                     teacher:teacher._id,
+//                     date: shift_start.toDate(),
+//                     status:'draft'
+//                   }
+//                   bookings.push(object)
+//                   console.log(object)
+//                   // //need to track time in 30 min increments
+//                   shift_start.add(30,'minutes')
+//                   // console.log('after',shift_start)
+//
+//                 }
+//                 //create bookings
+//                 console.log('inserting',bookings.length,loop,'bookings')
+//               }
+//             }
+//           });
+//
+//
+//           Booking.insertMany(bookings).then(()=>{console.log(bookings.length,'added')}).catch((err)=>console.log('error:',err))
+//         }
+//     });
+//   })
+// })
 
 module.exports = router;
