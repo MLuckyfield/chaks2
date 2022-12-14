@@ -53,7 +53,7 @@ const TestProp = () => {
   },[])
   return(
     <div class='col'>
-      <div class='row'><button onClick={setMonth(month-1)}>{'<'}</button><h1>{month},{year}</h1><button onClick={setMonth(month+1)}>{'>'}</button></div>
+      <div class='row'><button onClick={()=>setMonth(month-1)}>{'<'}</button><h1>{month},{year}</h1><button onClick={()=>setMonth(month+1)}>{'>'}</button></div>
       <div class='calendar'>
         <div class='labelBox border'>日</div>
         <div class='labelBox border'>月</div>
