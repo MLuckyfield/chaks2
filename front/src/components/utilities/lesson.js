@@ -6,7 +6,7 @@ const Lesson = (props)=>{
 
   return (
     <div class="pop">
-      <div class='btn'>{props.title}</div>
+      {props.status=='final'?<div class='lesson' style={{backgroundColor:'#89CFF0'}}>{props.title}</div>:<div class='lesson' style={{backgroundColor:'grey'}}>{props.title}</div>}
       <input type="checkbox" id={props.num} />
       <div class="modal">
         <div class="modal__inner">
