@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import {axios} from "../../utilities/axios";
-import moment from "moment"
-import Popup from '../utilities/popup'
+import moment from "moment-timezone"
+import Lesson from '../utilities/lesson'
 
 
 
@@ -63,8 +63,8 @@ const TestProp = () => {
         {bookings?bookings.map((item,i)=>{
           return (<div class={item.day>=new Date().getDate()?'dayBox border':'dayBox border inactive'}>
                   {item.day==new Date().getDate()?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
-                  {item.bookings.map((timeslot,i)=>{
-                    return <Popup title={`${timeslot.teacher.first} ${timeslot.teacher.last} | ${moment(timeslot.date).format('HH:MM')}`} num={5} content={
+                  {item.bookings.map((timeslot,y)=>{
+                    return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Tokyo').format('HH:MM')}`} num={y+5} content={
                       <div>
                         予約されたレッスンについては返金いたしかねますのでご了承ください。ただ、予約後のレッスン時間の変更は可能です。時間変更をご希望の方はお手数ですが、下記電話番号にお問い合わせください。050-3395-1289
                       </div>
