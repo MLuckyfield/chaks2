@@ -50,7 +50,7 @@ const TestProp = () => {
         // setFeedback(err.response.data.message);
         });
 
-  },[])
+  },[month])
   return(
     <div class='col'>
       <div class='row'><button onClick={()=>setMonth(month-1)}>{'<'}</button><h1>{month},{year}</h1><button onClick={()=>setMonth(month+1)}>{'>'}</button></div>
