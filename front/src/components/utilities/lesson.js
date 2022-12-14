@@ -1,12 +1,9 @@
-import twitter from '../../sns_logos/twitter_dark.png'
-import youtube from '../../sns_logos/yt_dark.png'
-import instagram from '../../sns_logos/insta_dark.jpg'
 
 const Lesson = (props)=>{
 
   return (
     <div class="pop">
-      {props.status=='final'?<div class='lesson' style={{backgroundColor:'#89CFF0'}}>{props.title}</div>:<div class='lesson' style={{backgroundColor:'grey'}}>{props.title}</div>}
+      {props.status=='final'?<label for={props.num}><div class='lesson' style={{backgroundColor:'#89CFF0'}}>{props.title}</div></label>:<label for={props.num}><div class='lesson open' style={{backgroundColor:'grey'}}>{props.title}</div></label>}
       <input type="checkbox" id={props.num} />
       <div class="modal">
         <div class="modal__inner">
