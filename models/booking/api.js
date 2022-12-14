@@ -138,7 +138,7 @@ cron.schedule('*/15 * * * *',()=>{
 })
 
 //converting draft bookings to live bookings
-cron.schedule('*/20 * * * *',()=>{
+cron.schedule('*/5 * * * *',()=>{
   console.log('approving schedule')
   Booking.find({createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${days}`)}}).then((bookings)=>{
     Booking.updateMany(booking,{status:'final'}).then(()=>{console.log('schedule approved')})

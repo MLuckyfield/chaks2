@@ -36,6 +36,7 @@ const TestProp = () => {
               console.log(today.getDay(),moment(booking.date).day(),today.getDay()==moment(booking.date).day())
               if(today.getDate()==moment(booking.date).date()){
                 day_bookings.bookings.push(booking)
+                console.log('adding',booking.date)
               }
             });
           }
