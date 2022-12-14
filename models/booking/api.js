@@ -108,7 +108,7 @@ router.get('/all', auth.permission(['user','manager']),async (req, res) => {
 //                 let loop = shift_minutes/30
 //                 console.log('reset as:',shift_start)
 //
-//                 for(let y=1;y<loop+2;y++){
+//                 for(let y=1;y<loop+1;y++){
 //                   //add to booking array
 //                   // console.log('before',shift_start)
 //
