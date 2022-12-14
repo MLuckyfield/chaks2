@@ -53,10 +53,11 @@ const TestProp = () => {
         // setFeedback(err.response.data.message);
         });
 
-  },[month])
+  },[])
+  // <div class='row'><button onClick={()=>setMonth(month-1)}>{'<'}</button><h1>{month},{year}</h1><button onClick={()=>setMonth(month+1)}>{'>'}</button></div>
+
   return(
     <div class='col'>
-      <div class='row'><button onClick={()=>setMonth(month-1)}>{'<'}</button><h1>{month},{year}</h1><button onClick={()=>setMonth(month+1)}>{'>'}</button></div>
       <div class='calendar'>
         <div class='labelBox border'>日</div>
         <div class='labelBox border'>月</div>
@@ -66,6 +67,7 @@ const TestProp = () => {
         <div class='labelBox border'>金</div>
         <div class='labelBox border'>土</div>
         {bookings?bookings.map((item,i)=>{
+          //manager bookings calendar
           if(user.role=='manager'){
             return (<div class={item.day>=new Date().getDate()?'dayBox border':'dayBox border inactive'}>
                     {item.day==new Date().getDate()?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
@@ -78,7 +80,10 @@ const TestProp = () => {
                     })}
                    </div>)
           }
-          return <div></div>
+          //user booking calendar
+          else{
+            return <div></div>
+          }
         }):'Loading...'}
       </div>
     </div>
