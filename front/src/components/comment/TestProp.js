@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
-
+moment.tz.setDefault('Asia/Tokyo')
 
 
 const TestProp = () => {
@@ -13,6 +13,7 @@ const TestProp = () => {
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
   const [days,setDays]=useState(()=>{let time = new Date(year,month,0);return time.getDate()})
   const [bookings,setBookings]=useState()
+  const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
   useEffect(()=>{
     //get all bookings for the month
     axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${days}`)}}}})
@@ -61,16 +62,18 @@ const TestProp = () => {
         <div class='labelBox border'>金</div>
         <div class='labelBox border'>土</div>
         {bookings?bookings.map((item,i)=>{
-          return (<div class={item.day>=new Date().getDate()?'dayBox border':'dayBox border inactive'}>
-                  {item.day==new Date().getDate()?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
-                  {item.bookings.map((timeslot,y)=>{
-                    return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Tokyo').format('HH:MM')}`} num={y+5} active={timeslot.status} content={
-                      <div>
-                        {timeslot.teacher.first} {timeslot.teacher.last} {timeslot.status}
-                      </div>
-                    }/>
-                  })}
-                 </div>)
+          if(user.role=='manager'){
+            return (<div class={item.day>=new Date().getDate()?'dayBox border':'dayBox border inactive'}>
+                    {item.day==new Date().getDate()?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
+                    {item.bookings.map((timeslot,y)=>{
+                      return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date).format('HH:MM')}`} num={y+5} active={timeslot.status} content={
+                        <div>
+                          {timeslot.teacher.first} {timeslot.teacher.last} {timeslot.status}
+                        </div>
+                      }/>
+                    })}
+                   </div>)
+          }
         }):'Loading...'}
       </div>
     </div>
