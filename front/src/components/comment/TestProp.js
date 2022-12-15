@@ -82,10 +82,11 @@ const TestProp = () => {
         <div class='labelBox border'>金</div>
         <div class='labelBox border'>土</div>
         {bookings?bookings.map((item,i)=>{
+          let today = new Date()
           //manager bookings calendar
           if(user.role=='manager'){
-            return (<div class={item.day>=new Date().getDate()?'dayBox border':'dayBox border inactive'}>
-                    {new Date(year,month,item.day).getDate()==new Date().getDate()?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
+            return (<div class={item.day>=today.getDate()?'dayBox border':'dayBox border inactive'}>
+                    {new Date(year,month,item.day)==today?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
                       return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date).format('HH:MM')}`} num={y+5} active={timeslot.status} content={
                         <div>
