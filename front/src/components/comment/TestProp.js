@@ -3,6 +3,7 @@ import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
 import ReactPlayer from 'react-player/youtube'
+import banner from '../../banner.jpg'
 
 moment.tz.setDefault('Asia/Tokyo')
 
