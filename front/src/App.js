@@ -3,7 +3,6 @@ import React, { useState, useEffect ,useRef} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Redirect } from 'react-router'
 import {axios} from "./utilities/axios";
-import Product_Display from './components/utilities/product_display'
 
 //import components
 import Login from './components/user/Login'
@@ -17,8 +16,6 @@ import BlogPosts from './components/blog/BlogPosts'
 import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
-import Social from './components/utilities/social'
-import Popup from './components/utilities/popup'
 import PW_Reset from './components/user/PW_Reset'
 import Account from './components/user/account'
 // import Payment from './components/utilities/payment'
@@ -281,7 +278,7 @@ const Front = ()=>{
       // </div>
       return (
         <div>
-              <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div class='mini_overlay' style={{height:'500px',width:'500px',zIndex:'10'}}>hello</div>}/>
+              <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div>HELLO</div>}/>
               <div id='concept' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
                 <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
                     <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
