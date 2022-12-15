@@ -29,12 +29,9 @@ const TestProp = () => {
         const startingDay = new Date(`${year}-${month}-1`).getDay()
         const endingDay = new Date(`${year}-${month}-${days}`).getDay()
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
-          console.log(i)
           let day_bookings = {bookings:[]}
-          if(i<startingDay || i>days){
-            if(days==30 && i>days+startingDay-2){day_bookings['day']=' '}
-            else if(days==31 && i>days+startingDay-1){day_bookings['day']=' '}
-          }
+          console.log(i,month,days,startingDay)
+          if(i<startingDay || i>days+startingDay){day_bookings['day']=' '}
           else{
             if(i==startingDay){
               day_bookings['day']=1
