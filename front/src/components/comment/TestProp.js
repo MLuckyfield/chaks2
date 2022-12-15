@@ -62,9 +62,11 @@ const TestProp = () => {
         url='https://www.youtube.com/watch?v=qgLZwUiLfAs'
         playing={true} volume={0} muted={true} width={'100%'} height={'60vh'}
         playIcon={
-          <div class='mini_overlay'>
-            <h1>The best ever</h1>
-            <button style={{width:'50%',color:'white',backgroundColor:'black'}}>Watch Now</button>
+          <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0.0.8)'}}>
+            <div class='col'>
+              <h1>The best ever</h1>
+              <button style={{width:'50%',color:'white',backgroundColor:'black'}}>Watch Now</button>
+            </div>
           </div>
         } light={banner}/>
       <div class='row'><button onClick={()=>{if(month-1<1){setMonth(1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button onClick={()=>{if(month+1>12){setMonth(1)}else{setMonth(month+1)}}}>{'>'}</button></div>
