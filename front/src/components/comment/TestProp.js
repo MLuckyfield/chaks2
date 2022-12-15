@@ -69,7 +69,7 @@ const TestProp = () => {
             </div>
           </div>
         } light={banner}/>
-      <div class='row'><button class='arrow' onClick={()=>{if(month-1<1){setMonth(1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button class='arrow' onClick={()=>{if(month+1>12){setMonth(1)}else{setMonth(month+1)}}}>{'>'}</button></div>
+      <div class='row'><button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button></div>
       <div class='calendar'>
         <div class='labelBox border'>日</div>
         <div class='labelBox border'>月</div>
