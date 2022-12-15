@@ -35,6 +35,7 @@ const TestProp = () => {
               day_bookings['day']=i=startingDay
             // }
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
+            console.log(today)
             // data.forEach((booking, i) => {
             //   //if date of booking matches i create object and add to bookings
             //   console.log(i)
