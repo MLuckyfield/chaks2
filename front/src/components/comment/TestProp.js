@@ -31,7 +31,10 @@ const TestProp = () => {
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           console.log(i)
           let day_bookings = {bookings:[]}
-          if(i<startingDay || i>days+startingDay-2){day_bookings['day']=' '}
+          if(i<startingDay || i>days){
+            if(days==30 && i>days+startingDay-2){day_bookings['day']=' '}
+            else if(days==31 && i>days+startingDay-1){day_bookings['day']=' '}
+          }
           else{
             if(i==startingDay){
               day_bookings['day']=1
