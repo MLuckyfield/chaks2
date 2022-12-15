@@ -15,6 +15,7 @@ const TestProp = () => {
   const [bookings,setBookings]=useState()
   const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
   useEffect(()=>{
+    console.log('looping')
     //get all bookings for the month
     axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${days}`)}}}})
       .then((res) => {
@@ -36,7 +37,7 @@ const TestProp = () => {
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
             data.forEach((booking, i) => {
               //if date of booking matches i create object and add to bookings
-              console.log(today.getDay(),moment(booking.date).day(),today.getDay()==moment(booking.date).day())
+              console.log(i)
               if(today.getDate()==moment(booking.date).date()){
                 day_bookings.bookings.push(booking)
                 console.log('adding',booking.date)
