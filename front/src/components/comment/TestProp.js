@@ -56,12 +56,12 @@ const TestProp = () => {
         // setFeedback(err.response.data.message);
         });
 
-  },[])
+  },[month])
 
   return(
     <div class='col'>
     <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div>HELLO</div>} light={banner}/>
-      <div class='row'><button onClick={()=>setMonth(month-1)}>{'<'}</button><h1>{month},{year}</h1><button onClick={()=>setMonth(month+1)}>{'>'}</button></div>
+      <div class='row'><button onClick={()=>{if(month-1<1){setMonth(1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button onClick={()=>{if(month+1>12){setMonth(1)}else{setMonth(month+1)}}}>{'>'}</button></div>
       <div class='calendar'>
         <div class='labelBox border'>日</div>
         <div class='labelBox border'>月</div>
