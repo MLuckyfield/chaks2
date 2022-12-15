@@ -28,16 +28,13 @@ const TestProp = () => {
         //create schedule array
         const startingDay = new Date(`${year}-${month}-1`).getDay()
         const endingDay = new Date(`${year}-${month}-${days}`).getDay()
+        let count = 1
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           let day_bookings = {bookings:[]}
           console.log(i,month,days,startingDay)
           if(i<startingDay || i>days+startingDay){day_bookings['day']=' '}
           else{
-            if(i==startingDay){
-              day_bookings['day']=1
-            }else{
-              day_bookings['day']=i-startingDay+1
-            }
+            day_bookings['day']=count
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
             data.forEach((booking, i) => {
               //if date of booking matches i create object and add to bookings
@@ -46,6 +43,7 @@ const TestProp = () => {
                 day_bookings.bookings.push(booking)
               }
             });
+            count++
           }
           bookings.push(day_bookings)
         }
