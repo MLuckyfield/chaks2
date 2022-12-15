@@ -26,14 +26,14 @@ const TestProp = () => {
         const startingDay = new Date(`${year}-${month}-1`).getDay()
         const endingDay = new Date(`${year}-${month}-${days}`).getDay()
         console.log(days+startingDay+(6-endingDay))
-        for(let i=0;i<days+startingDay+(6-endingDay);i++){
+        for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           console.log(i)
           let day_bookings = {bookings:[]}
           if(i<startingDay || i>days+startingDay){day_bookings['day']=' '}
           else{
             // if(i==startingDay){day_bookings['day']=startingDay}
             // else{
-              day_bookings['day']=i=startingDay
+              day_bookings['day']=i+startingDay
             // }
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
             console.log(today)
