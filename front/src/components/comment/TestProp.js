@@ -65,7 +65,7 @@ const TestProp = () => {
         url='https://www.youtube.com/watch?v=qgLZwUiLfAs'
         playing={true} volume={0} muted={true} width={'100%'} height={'60vh'}
         playIcon={
-          <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0.0.8)',display:'flex',alignItems:'center'}}>
+          <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)',display:'flex',alignItems:'center'}}>
             <div class='col'>
               <h1>The best ever</h1>
               <button style={{width:'50%',color:'white',backgroundColor:'black'}}>Watch Now</button>
