@@ -28,7 +28,6 @@ const TestProp = () => {
         //create schedule array
         const startingDay = new Date(`${year}-${month}-1`).getDay()
         const endingDay = new Date(`${year}-${month}-${days}`).getDay()
-        console.log(days+startingDay+(6-endingDay))
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           console.log(i)
           let day_bookings = {bookings:[]}
@@ -39,15 +38,13 @@ const TestProp = () => {
               day_bookings['day']=i+startingDay
             // }
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
-            console.log(today)
-            // data.forEach((booking, i) => {
-            //   //if date of booking matches i create object and add to bookings
-            //   console.log(i)
-            //   if(today.getDate()==moment(booking.date).date()){
-            //     day_bookings.bookings.push(booking)
-            //     console.log('adding',booking.date)
-            //   }
-            // });
+            data.forEach((booking, i) => {
+              //if date of booking matches i create object and add to bookings
+              console.log(i)
+              if(today.getDate()==moment(booking.date).date()){
+                day_bookings.bookings.push(booking)
+              }
+            });
           }
           bookings.push(day_bookings)
         }
@@ -60,12 +57,11 @@ const TestProp = () => {
         });
 
   },[])
-  // <div class='row'><button onClick={()=>setMonth(month-1)}>{'<'}</button><h1>{month},{year}</h1><button onClick={()=>setMonth(month+1)}>{'>'}</button></div>
 
   return(
     <div class='col'>
     <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div>HELLO</div>} light={banner}/>
-
+      <div class='row'><button onClick={()=>setMonth(month-1)}>{'<'}</button><h1>{month},{year}</h1><button onClick={()=>setMonth(month+1)}>{'>'}</button></div>
       <div class='calendar'>
         <div class='labelBox border'>日</div>
         <div class='labelBox border'>月</div>
