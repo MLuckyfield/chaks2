@@ -31,7 +31,7 @@ const TestProp = () => {
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           console.log(i)
           let day_bookings = {bookings:[]}
-          if(i<startingDay || i>days+startingDay){day_bookings['day']=' '}
+          if(i<startingDay || i>days){day_bookings['day']=' '}
           else{
             if(i==startingDay){
               day_bookings['day']=1
@@ -65,7 +65,7 @@ const TestProp = () => {
         url='https://www.youtube.com/watch?v=qgLZwUiLfAs'
         playing={true} volume={0} muted={true} width={'100%'} height={'60vh'}
         playIcon={
-          <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0.0.8)',display:'inherit'}}>
+          <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0.0.8)',display:'flex',alignItems:'center'}}>
             <div class='col'>
               <h1>The best ever</h1>
               <button style={{width:'50%',color:'white',backgroundColor:'black'}}>Watch Now</button>
