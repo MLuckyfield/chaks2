@@ -35,14 +35,14 @@ const TestProp = () => {
               day_bookings['day']=i=startingDay
             // }
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
-            data.forEach((booking, i) => {
-              //if date of booking matches i create object and add to bookings
-              console.log(i)
-              if(today.getDate()==moment(booking.date).date()){
-                day_bookings.bookings.push(booking)
-                console.log('adding',booking.date)
-              }
-            });
+            // data.forEach((booking, i) => {
+            //   //if date of booking matches i create object and add to bookings
+            //   console.log(i)
+            //   if(today.getDate()==moment(booking.date).date()){
+            //     day_bookings.bookings.push(booking)
+            //     console.log('adding',booking.date)
+            //   }
+            // });
           }
           bookings.push(day_bookings)
         }
