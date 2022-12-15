@@ -32,7 +32,7 @@ const TestProp = () => {
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           let day_bookings = {bookings:[]}
           console.log(i,month,days,startingDay)
-          if(i<startingDay || i>days+startingDay){day_bookings['day']=' '}
+          if(i<startingDay || count>days){day_bookings['day']=' '}
           else{
             day_bookings['day']=count
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
