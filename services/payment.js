@@ -60,42 +60,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           }
           identifier={stripe:{customer_id:session.customer}}
           updateUser(identifier,purchased,res)
-          break;
-        case 'checkout.session.completed': //update account with purchase
-          console.log('updating account with purchase')
-          await stripe.checkout.sessions.retrieve(session.id,{expand:['line_items.data.price.product']},(err,checkout)=>{
-            const metadata=checkout.line_items.data[0].price.product.metadata
-            // if('plan' in metadata){
-            //   purchased={'$set':{
-            //     plan:metadata.plan,
-            //     stripe:{//to be removed
-            //       plan_id:session.subscription,
-            //       plan_status:'active',
-            //       plan_start_date:new Date()
-            //     }
-            //   }
-            // }
-            //   console.log('add plan')
-            //   User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{}).catch((err)=>{})
-            // }
-            if('sub_points' in metadata){
-                let count = (metadata.sub_points* checkout.line_items.data[0].quantity)/30
-                let units = []
-                for(let i = 0;i<count;i++){
-                  units.push({value:30})
-                }
-                purchased = {$push:{points:units}} //may need to multiple by quantity checkout.lineites
-                console.log('add sub_points',units.length,session.customer)
-                User.findOneAndUpdate(identifier,purchased,{new:true}).then((result)=>{}).catch((err)=>{})
-                purchased={'$set':{
-                  monthly_hours:checkout.line_items.data[0].quantity,
-                }}
-                updateUser(identifier,purchased,res)
-              }
-              console.log(session.metadata.order)
-            console.log('Order complete for: '+session.metadata.order)
-          });
-          break;
+          break;        
         case 'invoice.payment_succeeded':
           console.log('invoice.payment_succeeded recieved')
           identifier={'stripe.customer_id':session.customer}
