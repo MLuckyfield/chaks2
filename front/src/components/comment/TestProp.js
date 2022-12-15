@@ -31,10 +31,13 @@ const TestProp = () => {
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           console.log(i)
           let day_bookings = {bookings:[]}
-          if(i<startingDay || i>days+startingDay+1){day_bookings['day']=' '}
+          if(i<startingDay || i>days+startingDay){day_bookings['day']=' '}
           else{
-            day_bookings['day']=i-startingDay+1
-
+            if(i==startingDay){
+              day_bookings['day']=startingDay
+            }else{
+              day_bookings['day']=i-startingDay
+            }
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
             data.forEach((booking, i) => {
               //if date of booking matches i create object and add to bookings
@@ -62,7 +65,7 @@ const TestProp = () => {
         url='https://www.youtube.com/watch?v=qgLZwUiLfAs'
         playing={true} volume={0} muted={true} width={'100%'} height={'60vh'}
         playIcon={
-          <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0.0.8)'}}>
+          <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0.0.8)',display:'inherit'}}>
             <div class='col'>
               <h1>The best ever</h1>
               <button style={{width:'50%',color:'white',backgroundColor:'black'}}>Watch Now</button>
