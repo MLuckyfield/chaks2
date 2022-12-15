@@ -82,7 +82,7 @@ const TestProp = () => {
           //manager bookings calendar
           if(user.role=='manager'){
             return (<div class={item.day>=new Date().getDate()?'dayBox border':'dayBox border inactive'}>
-                    {item.day==new Date().getDate()?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
+                    {new Date(year,month,item.day).getDate()==new Date().getDate()?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
                       return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date).format('HH:MM')}`} num={y+5} active={timeslot.status} content={
                         <div>
