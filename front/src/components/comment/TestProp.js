@@ -33,10 +33,8 @@ const TestProp = () => {
           let day_bookings = {bookings:[]}
           if(i<startingDay || i>days+startingDay){day_bookings['day']=' '}
           else{
-            if(i==startingDay){day_bookings['day']=startingDay}
-            else{
-              day_bookings['day']=i+startingDay
-            }
+            day_bookings['day']=i-startingDay
+
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
             data.forEach((booking, i) => {
               //if date of booking matches i create object and add to bookings
@@ -60,7 +58,15 @@ const TestProp = () => {
 
   return(
     <div class='col'>
-    <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div>HELLO</div>} light={banner}/>
+    <ReactPlayer
+        url='https://www.youtube.com/watch?v=qgLZwUiLfAs'
+        playing={true} volume={0} muted={true} width={'100%'} height={'60vh'}
+        playIcon={
+          <div class='video_overlay'>
+            <h1>The best ever</h1>
+            <button>Watch Now</button>
+          </div>
+        } light={banner}/>
       <div class='row'><button onClick={()=>{if(month-1<1){setMonth(1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button onClick={()=>{if(month+1>12){setMonth(1)}else{setMonth(month+1)}}}>{'>'}</button></div>
       <div class='calendar'>
         <div class='labelBox border'>日</div>
