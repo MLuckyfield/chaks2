@@ -31,7 +31,7 @@ const TestProp = () => {
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           console.log(i)
           let day_bookings = {bookings:[]}
-          if(i<startingDay || i>days+startingDay-1){day_bookings['day']=' '}
+          if(i<startingDay || i>days+startingDay-2){day_bookings['day']=' '}
           else{
             if(i==startingDay){
               day_bookings['day']=1
@@ -91,7 +91,8 @@ const TestProp = () => {
                     {item.bookings.map((timeslot,y)=>{
                       return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date).format('HH:MM')}`} num={y+5} active={timeslot.status} content={
                         <div>
-                          {timeslot.teacher.first} {timeslot.teacher.last} {timeslot.status}
+                          {timeslot.teacher.first} {timeslot.teacher.last}<br/>
+                          {moment.tz(timeslot.date).format('HH:MM')} | {timeslot.status}
                         </div>
                       }/>
                     })}
