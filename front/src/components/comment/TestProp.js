@@ -3,6 +3,7 @@ import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
 moment.tz.setDefault('Asia/Tokyo')
+import ReactPlayer from 'react-player/youtube'
 
 
 const TestProp = () => {
@@ -62,7 +63,7 @@ const TestProp = () => {
   return(
     <div class='col'>
     <ReactPlayer url='https://www.youtube.com/watch?v=qgLZwUiLfAs' playing={true} volume={0} muted={true} width={'100%'} height={'60vh'} playIcon={<div>HELLO</div>} light={banner}/>
-    
+
       <div class='calendar'>
         <div class='labelBox border'>日</div>
         <div class='labelBox border'>月</div>
