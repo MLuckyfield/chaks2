@@ -2,8 +2,9 @@ import React, { useState,useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
-moment.tz.setDefault('Asia/Tokyo')
 import ReactPlayer from 'react-player/youtube'
+
+moment.tz.setDefault('Asia/Tokyo')
 
 
 const TestProp = () => {
