@@ -83,6 +83,7 @@ const TestProp = () => {
         <div class='labelBox border'>土</div>
         {bookings?bookings.map((item,i)=>{
           let today = new Date()
+          console.log(new Date(year,month,item.day),today,new Date(year,month,item.day)==today)
           //manager bookings calendar
           if(user.role=='manager'){
             return (<div class={item.day>=today.getDate()?'dayBox border':'dayBox border inactive'}>
