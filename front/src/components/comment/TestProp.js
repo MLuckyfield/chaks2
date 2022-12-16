@@ -88,7 +88,7 @@ const TestProp = () => {
                     {item.bookings.map((timeslot,y)=>{
                       console.log(timeslot,moment.tz(timeslot.date,'Asia/Taipei'))
                       let temp = new Date(timeslot.date)
-                      return <Lesson title={`${timeslot.teacher.first} | ${temp.getHours()}:${temp.getMinutes()}`} num={y+5} active={timeslot.status} content={
+                      return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Taipei')._a[3]}:${moment.tz(timeslot.date,'Asia/Taipei')._a[4]}`} num={y+5} active={timeslot.status} content={
                         <div>
                           {timeslot.teacher.first} {timeslot.teacher.last}<br/>
                           {moment.tz(timeslot.date,'Asia/Taipei').format('HH:MM')} | {timeslot.status}
