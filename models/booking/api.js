@@ -96,7 +96,7 @@ cron.schedule('*/15 * * * *',()=>{
         console.log(teacher.first,teacher.last)
         if(teacher.online_schedule.length>0){
           console.log('has shift')
-          console.log(year,month,days,new Date(year,month,i),new Date(year,month,i).getDay(),shift.day,date.getDay()==shift.day)
+          console.log(year,month,days,new Date(year,month,i),new Date(year,month,i).getDay())
 
           let bookings = []
           teacher.online_schedule.forEach((shift, i) => {
