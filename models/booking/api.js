@@ -99,6 +99,7 @@ cron.schedule('*/15 * * * *',()=>{
           let bookings = []
           teacher.online_schedule.forEach((shift, i) => {
             //check if schedule is within start and end date
+            console.log(shift)
             for(let i =1;i<days+1;i++){
               let date = new Date(`${year}-${month}-${i}`)
               if(date.getDay()==shift.day){

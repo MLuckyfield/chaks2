@@ -83,6 +83,7 @@ const StaffTable = ()=>{
                // }))
                console.log('student logged out',res)
                alert('Billable: '+receipt.billable+' |Unpaid: '+receipt.unpaid+' |Remaining: '+receipt.remaining)
+               window.location='/dash'
              })
              .catch(error=>console.log('failed to update dash',error))
          });

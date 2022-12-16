@@ -47,7 +47,7 @@ const Online_Landing = () => {
         </div>
       </div>
       <div id="values" class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
-        <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',paddingTop:'10%'}}>
+        <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',paddingTop:'10%',color:'black'}}>
           <h2>Why CHATSHACK ONLINE?</h2>
           <h1>６つの理由</h1>
           <div class='row' style={{marginTop:'5%'}}>
@@ -103,7 +103,7 @@ Can't wait to meet you!</p>
         </div>
       </div>
       <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
-        <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw'}}>
+        <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',color:'black'}}>
           <div class='col'>
             <h1 style={{margin:'10% 0'}}>利用までの流れ</h1>
             <p>（サービス提供開始は２０２３年２月を想定しています）</p>
