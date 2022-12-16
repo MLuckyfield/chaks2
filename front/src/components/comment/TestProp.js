@@ -83,8 +83,8 @@ const TestProp = () => {
           // console.log(new Date(year,month,item.day),today,new Date(year,month,item.day)==today)
           //manager bookings calendar
           if(user.role=='manager'){
-            return (<div class={item.day>=today.getDate()?'dayBox border':'dayBox border inactive'}>
-                    {new Date(year,month,item.day)==today?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
+            return (<div class={moment(new Date(year,month,item.day)).format('MM Do YY')>=moment(today).format('MM Do YY')?'dayBox border':'dayBox border inactive'}>
+                    {moment(new Date(year,month,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
                       return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Taipei').format('HH:MM')}`} num={y+5} active={timeslot.status} content={
                         <div>
