@@ -21,7 +21,7 @@ const TestProp = () => {
     console.log('looping')
     setDays(new Date(year,month,0))
     //get all bookings for the month
-    axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${days}`)}}}})
+    axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}}})
       .then((res) => {
         let data = res.data.data
         console.log('bookings retrieved:',data)
