@@ -83,11 +83,12 @@ const TestProp = () => {
           console.log(today,moment(today).format('MM Do YY'),moment(new Date(year,month-1,item.day)).format('MM Do YY'))
           // manager bookings calendar
           if(user.role=='manager'){
-            return (<div class={moment(new Date(year,month-1,item.day)).format('MM Do YY')>=moment(today).format('MM Do YY')?'dayBox border':'dayBox border inactive'}>
+            return (<div class={new Date(year,month-1,item.day).getDate()>=today.getDate()?'dayBox border':'dayBox border inactive'}>
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      console.log(timeslot,moment.tz(timeslot.date,'Asia/Taipei'))                      
-                      return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Taipei').format('HH:MM')}`} num={y+5} active={timeslot.status} content={
+                      console.log(timeslot,moment.tz(timeslot.date,'Asia/Taipei'))
+                      let temp = new Date(timeslot.date)
+                      return <Lesson title={`${timeslot.teacher.first} | ${temp.getHours()}:${temp.getMinutes()}`} num={y+5} active={timeslot.status} content={
                         <div>
                           {timeslot.teacher.first} {timeslot.teacher.last}<br/>
                           {moment.tz(timeslot.date,'Asia/Taipei').format('HH:MM')} | {timeslot.status}
