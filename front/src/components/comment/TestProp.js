@@ -91,7 +91,7 @@ const TestProp = () => {
                       return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Taipei')._a[3]}:${moment.tz(timeslot.date,'Asia/Taipei')._a[4]}`} num={y+5} active={timeslot.status} content={
                         <div>
                           {timeslot.teacher.first} {timeslot.teacher.last}<br/>
-                          {moment.tz(timeslot.date,'Asia/Taipei').format('HH:MM')} | {timeslot.status}
+                          {moment.tz(timeslot.date,'JST').format('HH:MM')} | {timeslot.status}
                         </div>
                       }/>
                     })}
