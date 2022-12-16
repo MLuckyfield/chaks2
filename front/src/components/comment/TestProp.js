@@ -19,9 +19,9 @@ const TestProp = () => {
   const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
   useEffect(()=>{
     let target = new Date(year,month,0)
-    console.log('looping', month,target.getDate())
+    console.log('searching from', new Date(`${year}-${month}-1`),new Date(`${year}-${month}-${target.getDate()}`))
     //get all bookings for the month
-    axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}}})
+    axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${target.getDate()}`)}}}})
       .then((res) => {
         setDays(new Date(year,month,0))
 
@@ -54,7 +54,7 @@ const TestProp = () => {
         setBookings(bookings)
       })
       .catch((err) => {
-        console.log(err);
+        console.log('calendar err',err);
         // setFeedback(err.response.data.message);
         });
 
