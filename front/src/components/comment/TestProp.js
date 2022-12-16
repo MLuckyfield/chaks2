@@ -31,7 +31,7 @@ const TestProp = () => {
         let count = 1
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           let day_bookings = {bookings:[]}
-          console.log(i,month,days,startingDay)
+          console.log(i,year,month,days,count,startingDay)
           if(i<startingDay || count>days){day_bookings['day']=' '}
           else{
             day_bookings['day']=count
