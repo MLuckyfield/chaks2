@@ -18,12 +18,13 @@ const TestProp = () => {
   const [bookings,setBookings]=useState()
   const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
   useEffect(()=>{
-    console.log('looping')
+    let target = new Date(year,month,0)
+    console.log('looping', month,target.getDate())
     //get all bookings for the month
     axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}}})
       .then((res) => {
         setDays(new Date(year,month,0))
-        
+
         let data = res.data.data
         console.log('bookings retrieved:',data)
         let bookings = []
