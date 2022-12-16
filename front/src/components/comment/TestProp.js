@@ -5,9 +5,6 @@ import Lesson from '../utilities/lesson'
 import ReactPlayer from 'react-player/youtube'
 import banner from '../../banner.jpg'
 
-moment.tz.setDefault('Asia/Taipei')
-
-
 const TestProp = () => {
 
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
@@ -89,10 +86,10 @@ const TestProp = () => {
             return (<div class={item.day>=today.getDate()?'dayBox border':'dayBox border inactive'}>
                     {new Date(year,month,item.day)==today?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date).format('HH:MM')}`} num={y+5} active={timeslot.status} content={
+                      return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Taipei').format('HH:MM')}`} num={y+5} active={timeslot.status} content={
                         <div>
                           {timeslot.teacher.first} {timeslot.teacher.last}<br/>
-                          {moment.tz(timeslot.date).format('HH:MM')} | {timeslot.status}
+                          {moment.tz(timeslot.date,'Asia/Taipei').format('HH:MM')} | {timeslot.status}
                         </div>
                       }/>
                     })}
