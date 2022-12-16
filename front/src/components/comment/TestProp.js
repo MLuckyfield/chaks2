@@ -32,6 +32,8 @@ const TestProp = () => {
         const startingDay = new Date(`${year}-${month}-1`).getDay()
         const endingDay = new Date(`${year}-${month}-${days}`).getDay()
         let count = 1
+        console.log(year,month,days,count,startingDay,endingDay)
+
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           let day_bookings = {bookings:[]}
           console.log(i,year,month,days,count,startingDay)
