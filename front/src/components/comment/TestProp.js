@@ -23,14 +23,12 @@ const TestProp = () => {
     //get all bookings for the month
     axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${target.getDate()}`)}}}})
       .then((res) => {
-        setDays(new Date(year,month,0))
-
         let data = res.data.data
         console.log('bookings retrieved:',data)
         let bookings = []
         //create schedule array
         const startingDay = new Date(`${year}-${month}-1`).getDay()
-        const endingDay = new Date(`${year}-${month}-${days}`).getDay()
+        const endingDay = new Date(`${year}-${month}-${target.getDate()}`).getDay()
         let count = 1
         console.log(year,month,days,count,startingDay,endingDay)
 
