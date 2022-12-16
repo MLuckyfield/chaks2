@@ -102,6 +102,7 @@ cron.schedule('*/15 * * * *',()=>{
             console.log(shift)
             for(let i =1;i<days+1;i++){
               let date = new Date(`${year}-${month}-${i}`)
+              console.log(date.getDay(),shift.day,date.getDay()==shift.day)
               if(date.getDay()==shift.day){
                 //calculate number of slots based on shift length
                 let shift_start = moment(date).set({h:shift.start_hour,m:shift.start_minute})
