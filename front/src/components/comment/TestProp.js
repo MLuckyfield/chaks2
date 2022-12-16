@@ -34,7 +34,7 @@ const TestProp = () => {
           let day_bookings = {bookings:[]}
           console.log(i,year,month,target,count,startingDay,endingDay)
 
-          if(i<startingDay || count>target){day_bookings['day']=' '}
+          if(i<startingDay || count>target.getDate()){day_bookings['day']=' '}
           else{
             day_bookings['day']=count
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
