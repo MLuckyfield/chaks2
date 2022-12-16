@@ -81,6 +81,7 @@ const StaffTable = ()=>{
                  if(x._id!==res.data.data._id){console.log('no match');return x}
                  return {...x,inClass:res.data.data.inClass}
                }))
+               alert('Billable: '+res.billable+' |Unpaid: '+res.unpaid+' |Remaining: '+res.remaining)
              })
              .catch(error=>console.log('failed to update dash',error))
          });

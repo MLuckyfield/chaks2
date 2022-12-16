@@ -148,7 +148,7 @@ const App = () => {
                   let id = JSON.parse(localStorage.getItem('user'))._id
                   axios.get('/user/clock', {params:{filter:id,data:false}})
                     .then((res) => {
-                      socket.emit('clock',id,false)
+                      socket.emit('clock',id,false,res.data.display)
                       window.location='/account'
                       })
                     .catch(error => console.log("error"+error))

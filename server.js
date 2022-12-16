@@ -21,10 +21,10 @@ io.on('connection', (socketio) => {
     console.log('student recieved',student.first,student.last)
     io.emit(teacher,student)
   });
-  socketio.on('clock',(id,status) => {
+  socketio.on('clock',(id,status,res) => {
     console.log('student clocked',id)
     io.emit(id,status)//updates user account screen
-    io.emit('updateDash',id)//updates manager screens clock button
+    io.emit('updateDash',id,res)//updates manager screens clock button
   });
 });
 app.set('socketio', io)

@@ -28,12 +28,12 @@ const TestProp = () => {
         let bookings = []
         //create schedule array
         let startingDay = new Date(`${year}-${month}-1`).getDay()
-        let endingDay = new Date(`${year}-${month}-${target.getDate()}`).getDay()
+        let endingDay = target.getDay()
         let count = 1
-        console.log(year,month,target,count,startingDay,endingDay)
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           let day_bookings = {bookings:[]}
-          console.log(i,year,month,target,days,count,startingDay)
+          console.log(i,year,month,target,count,startingDay,endingDay)
+
           if(i<startingDay || count>target){day_bookings['day']=' '}
           else{
             day_bookings['day']=count
