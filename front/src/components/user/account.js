@@ -89,9 +89,6 @@ const Account = () => {
         })
       .catch(error => console.log("error"+error))
   }
-  const contains=(item,value)=>{
-    return (item.name===value)
-  }
   return(
       <div class='master-row'>
           {clock&&student.first=='student'?

@@ -74,13 +74,14 @@ const StaffTable = ()=>{
          console.log('inSession',inSession)
          setStudents(inSession)
          localStorage.setItem('dash',inSession)
-         socket.on('updateDash', (id) => {
+         socket.on('updateDash', (id,res) => {
            axios.get('user/all',{params:{filter:{_id: id}}})
              .then((res)=>{
-               setStudents(localStorage.getItem('dash').map(x=>{
-                 if(x._id!==res.data.data._id){console.log('no match');return x}
-                 return {...x,inClass:res.data.data.inClass}
-               }))
+               // setStudents(localStorage.getItem('dash').map(x=>{
+               //   if(x._id!==res.data.data._id){console.log('no match');return x}
+               //   return {...x,inClass:res.data.data.inClass}
+               // }))
+               console.log('student logged out',res)
                alert('Billable: '+res.billable+' |Unpaid: '+res.unpaid+' |Remaining: '+res.remaining)
              })
              .catch(error=>console.log('failed to update dash',error))
