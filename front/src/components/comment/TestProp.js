@@ -68,8 +68,8 @@ const TestProp = () => {
         playIcon={
           <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)',display:'flex',alignItems:'center'}}>
             <div class='col'>
-              <h1>The best ever</h1>
-              <button style={{width:'50%',color:'white',backgroundColor:'black'}}>Watch Now</button>
+              <h1>英会話教室よりも楽しく<br/>英会話カフェよりもしっかり学べる</h1>
+              <button style={{width:'50%',color:'white',backgroundColor:'black'}}>コンセプト見る</button>
             </div>
           </div>
         } light={banner}/>
