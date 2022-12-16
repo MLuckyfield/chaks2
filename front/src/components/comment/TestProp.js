@@ -14,11 +14,12 @@ const TestProp = () => {
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day,setDay]=useState(()=>{let time = new Date();return time.getDay()})
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
-  const [days,setDays]=useState(()=>{let time = new Date(year,month,0);return time.getDate()})
+
   const [bookings,setBookings]=useState()
   const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
   useEffect(()=>{
     console.log('looping')
+    let days = new Date(year,month,0)
     //get all bookings for the month
     axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${days}`)}}}})
       .then((res) => {
