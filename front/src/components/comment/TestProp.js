@@ -27,15 +27,15 @@ const TestProp = () => {
         console.log('bookings retrieved:',data)
         let bookings = []
         //create schedule array
-        const startingDay = new Date(`${year}-${month}-1`).getDay()
-        const endingDay = new Date(`${year}-${month}-${target.getDate()}`).getDay()
+        let startingDay = new Date(`${year}-${month}-1`).getDay()
+        let endingDay = new Date(`${year}-${month}-${target.getDate()}`).getDay()
         let count = 1
-        console.log(year,month,days,count,startingDay,endingDay)
+        console.log(year,month,target,count,startingDay,endingDay)
 
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           let day_bookings = {bookings:[]}
           console.log(i,year,month,days,count,startingDay)
-          if(i<startingDay || count>days){day_bookings['day']=' '}
+          if(i<startingDay || count>target){day_bookings['day']=' '}
           else{
             day_bookings['day']=count
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
