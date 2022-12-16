@@ -14,7 +14,7 @@ const TestProp = () => {
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day,setDay]=useState(()=>{let time = new Date();return time.getDay()})
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
-  const [days,setDays]=useState(()=>{let time = new Date(year,month,0);return time.getDate()})
+  // const [days,setDays]=useState(()=>{let time = new Date(year,month,0);return time.getDate()})
   const [bookings,setBookings]=useState()
   const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
   useEffect(()=>{
@@ -30,11 +30,10 @@ const TestProp = () => {
         let startingDay = new Date(`${year}-${month}-1`).getDay()
         let endingDay = new Date(`${year}-${month}-${target.getDate()}`).getDay()
         let count = 1
-        console.log(year,month,target,count,startingDay,endingDay)
 
-        for(let i=0;i<(days+startingDay+(6-endingDay));i++){
+        for(let i=0;i<(target+startingDay+(6-endingDay));i++){
           let day_bookings = {bookings:[]}
-          console.log(i,year,month,days,count,startingDay)
+          console.log(i,year,month,target,count,startingDay)
           if(i<startingDay || count>target){day_bookings['day']=' '}
           else{
             day_bookings['day']=count
