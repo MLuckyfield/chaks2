@@ -92,8 +92,8 @@ const Account = () => {
   return(
       <div class='master-row'>
           {clock&&student.first=='student'?
-            <div class='col border'>
-              you're in class!
+            <div class='col' style={{backgroundColor:'#55DF80',fontWeight:'700'}}>
+              YOU"RE IN CLASS!
               <button style={{width:'50%',color:'white',backgroundColor:'black'}} onClick={(e)=>{window.location='/clock_out'}}>Finish</button>
             </div>
           :''}
