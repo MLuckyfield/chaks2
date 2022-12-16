@@ -95,6 +95,7 @@ cron.schedule('*/15 * * * *',()=>{
     teachers.forEach((teacher, i) => {
         console.log(teacher.first,teacher.last)
         if(teacher.online_schedule.length>0){
+          console.log('has shift')
           let bookings = []
           teacher.online_schedule.forEach((shift, i) => {
             //check if schedule is within start and end date
@@ -102,19 +103,17 @@ cron.schedule('*/15 * * * *',()=>{
               let date = new Date(`${year}-${month}-${i}`)
               if(date.getDay()==shift.day){
                 //calculate number of slots based on shift length
-                let shift_start = moment.tz(date,'Asia/Taipei').set({h:shift.start_hour,m:shift.start_minute})
-                let shift_end = moment.tz(date,'Asia/Taipei').set({h:shift.end_hour,m:shift.end_minute})
+                let shift_start = moment(date).set({h:shift.start_hour,m:shift.start_minute})
+                let shift_end = moment(date).set({h:shift.end_hour,m:shift.end_minute})
                 let shift_minutes = shift_end.diff(shift_start,'minutes')
                 let loop = shift_minutes/30
-                console.log('reset as:',shift_start)
-
+                console.log('shift details',shift_start,'to',shift_end)
                 for(let y=1;y<loop+1;y++){
                   //add to booking array
                   // console.log('before',shift_start)
-
                   let object = {
                     teacher:teacher._id,
-                    date: shift_start.toDate(),
+                    date: moment.tz(shift_start,'Asia/Taipei').toDate(),
                     status:'draft'
                   }
                   bookings.push(object)
@@ -122,7 +121,6 @@ cron.schedule('*/15 * * * *',()=>{
                   // //need to track time in 30 min increments
                   shift_start.add(30,'minutes')
                   // console.log('after',shift_start)
-
                 }
                 //create bookings
                 console.log('inserting',bookings.length,loop,'bookings')
