@@ -21,7 +21,7 @@ const TestProp = () => {
     axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${target.getDate()}`)}}}})
       .then((res) => {
         let data = res.data.data
-        console.log('bookings retrieved:',data)
+        // console.log('bookings retrieved:',data)
         let bookings = []
         //create schedule array
         let startingDay = new Date(`${year}-${month}-1`).getDay()
@@ -29,7 +29,7 @@ const TestProp = () => {
         let count = 1
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           let day_bookings = {bookings:[]}
-          console.log(i,year,month,target,count,startingDay,endingDay)
+          // console.log(i,year,month,target,count,startingDay,endingDay)
 
           if(i<startingDay || count>target.getDate()){day_bookings['day']=' '}
           else{
@@ -80,10 +80,10 @@ const TestProp = () => {
         <div class='labelBox border'>土</div>
         {bookings?bookings.map((item,i)=>{
           let today = new Date()
-          // console.log(new Date(year,month,item.day),today,new Date(year,month,item.day)==today)
-          //manager bookings calendar
+          console.log(today,moment(today).format('MM Do YY'),moment(new Date(year,month,item.day)).format('MM Do YY'))
+          // manager bookings calendar
           if(user.role=='manager'){
-            return (<div class={moment(new Date(year,month,item.day)).format('MM Do YY')>=moment(today).format('MM Do YY')?'dayBox border':'dayBox border inactive'}>
+            // return (<div class={moment(new Date(year,month,item.day)).format('MM Do YY')>=moment(today).format('MM Do YY')?'dayBox border':'dayBox border inactive'}>
                     {moment(new Date(year,month,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
                       return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Taipei').format('HH:MM')}`} num={y+5} active={timeslot.status} content={
