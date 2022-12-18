@@ -14,9 +14,9 @@ const Profile = () => {
   //   })
   // });
   const likes = useRef(student.profile?student.profile.likes:'');
-  const goals = useRef(student.profile.goals);
-  const personal = useRef(student.profile.personal);
-  const level = useRef(student.profile.level);
+  const goals = useRef(student.profile?student.profile.goals:'');
+  const personal = useRef(student.profile?student.profile.personal:'');
+  const level = useRef(student.profile?student.profile.level:'');
 
   const [feedback, setFeedback] = useState();
 
