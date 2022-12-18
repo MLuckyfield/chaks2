@@ -266,7 +266,7 @@ const email = require('../../services/email')
                     }
                     User.findByIdAndUpdate(req.filter,{'$set':{points:result.points}},{new:true})
                       .then((complete)=>{
-                        // console.log('clocking out',complete.first,complete.last)
+                        console.log('clocking out',complete.first,complete.last,start,end)
                         return res.status(201).json({
                           data:complete,
                           display:{unpaid:unpaid,billable:billable,remaining:complete.points.length*30},
@@ -490,7 +490,7 @@ const email = require('../../services/email')
           mail_tag=''
           if(user.role=='user' && user.subscriptions){
             if(user.subscriptions.some(u=>u.status=='active')){
-                
+
             }
             else{
               let last = ''
