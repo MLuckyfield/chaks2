@@ -62,27 +62,29 @@ const TestProp = () => {
       <div class='mini_overlay col' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',color:'black'}}>
         <div class='col'>
             <h1 style={{margin:'10% 0'}}>楽しむ方法は簡単</h1>
-          <div class='fixed-row clean_center'>
-            <span class="material-icons green ">looks_one</span>
-              <div class='col align'>
-                <p>予約不要の無料レッスンを</p>
-                <h2>気軽に体験!</h2>
-              </div>
-          </div>
-          <div class='fixed-row clean_center'>
-            <span class="material-icons green ">looks_two</span>
-              <div class='col align'>
-                <p>月に何時間勉強したいかを決めて</p>
-                <h2>サブスク登録!</h2>
-              </div>
-          </div>
-          <div class='fixed-row clean_center'>
-            <span class="material-icons green ">looks_3</span>
-              <div class='col align'>
-                <p>好きな時にご来店</p>
-                <h2>習慣化を図ろう！</h2>
-              </div>
-          </div>
+            <div class='row'>
+                <div class='fixed-row clean_center'>
+                  <span class="material-icons green ">looks_one</span>
+                    <div class='col align'>
+                      <p>予約不要の無料レッスンを</p>
+                      <h2>気軽に体験!</h2>
+                    </div>
+                </div>
+                <div class='fixed-row clean_center'>
+                  <span class="material-icons green ">looks_two</span>
+                    <div class='col align'>
+                      <p>月に何時間勉強したいかを決めて</p>
+                      <h2>サブスク登録!</h2>
+                    </div>
+                </div>
+                <div class='fixed-row clean_center'>
+                  <span class="material-icons green ">looks_3</span>
+                    <div class='col align'>
+                      <p>好きな時にご来店</p>
+                      <h2>習慣化を図ろう！</h2>
+                    </div>
+                </div>
+            </div>
         </div>
       </div>
     </div>
