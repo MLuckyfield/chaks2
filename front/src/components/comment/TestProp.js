@@ -89,17 +89,17 @@ const TestProp = () => {
       <div class='mini_overlay yellow'>
           <div class='col' style={{width:'70%',alignItems:'normal'}}>
                   <h1 class='emphasize' style={{textAlign:'left'}}>1時間<br/>0円!</h1>
-                  <h1 style={{textAlign:'left'}}>初回無料！</h1>
+                  <h1 style={{textAlign:'left'}}>初回無料</h1>
                   <h2 style={{textAlign:'left'}}>気軽に来てください!</h2>
                   <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',margin:'3% 0% 5% 0%',width:'max-content'}}>
                       通常料金: 30分￥1000<br/>
                       サブスクスタイル!
                   </span>
-                  <Popup button={"test"} num={4} content={
+                  <Popup button={"お得になる方法が２"} num={4} content={
                     <div class='col'>
                         <h1 style={{margin:'10% 0'}}>2 discounts!</h1>
                         <div class='col'>
-                            <div class='fixed-row clean_center'>
+                            <div class='fixed-row'>
                                 <div class='col'>
                                   <span class='custom_icon'>1</span>
                                 </div>
@@ -108,14 +108,14 @@ const TestProp = () => {
                                   <p>予約不要の無料レッスンを</p>
                                 </div>
                             </div>
-                            <div class='fixed-row clean_center'>
+                            <div class='fixed-row'>
                               <span class='custom_icon'>2</span>
                                 <div class='col align'>
-                                  <p>月に何時間勉強したいかを決めて</p>
+                                  <p>月に通いたい時間を決めて</p>
                                   <h2>サブスク登録!</h2>
                                 </div>
                             </div>
-                            <div class='fixed-row clean_center'>
+                            <div class='fixed-row'>
                               <span class='custom_icon'>3</span>
                                 <div class='col align'>
                                   <p>好きな時にご来店</p>
