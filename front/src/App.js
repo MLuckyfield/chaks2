@@ -293,7 +293,7 @@ const Front = ()=>{
                 <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
                     <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
                     <div class='col slim center'>
-                        <h1 style={{padding:'5%',border:'1px solid white'}}>他の英会話教室とは一味違う</h1>
+                        <h1 style={{padding:'5%',border:'1px solid white'}}>4点の特徴</h1>
                     </div>
                     <div class='up_row'>
                           <div class='col'>
