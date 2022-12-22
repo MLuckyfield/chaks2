@@ -86,7 +86,7 @@ const TestProp = () => {
     </div>
     <div class='fixed-row'>
         <div class='col w20'>
-          <span class='custom_icon'>`0%`</span>
+          <span>`0%`</span>
         </div>
         <div class='col w80 align'>
           <h2>気軽に体験!</h2>
