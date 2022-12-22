@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
+import Popup from '../utilities/popup'
 import environment from '../../online_environment.jpg'
 import points from '../../pic.png'
 
@@ -88,7 +89,37 @@ const TestProp = () => {
         </div>
       </div>
     </div>
-    <div class='floating'><a href='#signup'>無料<br/>登録</a></div>
+    <Popup button={"test"} num={4} content={
+      <div class='col'>
+          <h1 style={{margin:'10% 0'}}>2 discounts!</h1>
+          <div class='row'>
+              <div class='fixed-row clean_center'>
+                <span class="material-icons green ">looks_one</span>
+                  <div class='col align'>
+                    <p>予約不要の無料レッスンを</p>
+                    <h2>気軽に体験!</h2>
+                  </div>
+              </div>
+              <div class='fixed-row clean_center'>
+                <span class="material-icons green ">looks_two</span>
+                  <div class='col align'>
+                    <p>月に何時間勉強したいかを決めて</p>
+                    <h2>サブスク登録!</h2>
+                  </div>
+              </div>
+              <div class='fixed-row clean_center'>
+                <span class="material-icons green ">looks_3</span>
+                  <div class='col align'>
+                    <p>好きな時にご来店</p>
+                    <h2>習慣化を図ろう！</h2>
+                  </div>
+              </div>
+          </div>
+      </div>
+    }/>
+    <div>1</div>
+    <div>3</div>
+    <div>4</div>
     <div style={{backgroundImage: 'url('+points+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>test</div>
       <div class='row'><button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button></div>
       <div class='calendar'>

@@ -278,6 +278,7 @@ const Front = ()=>{
       // </div>
       return (
         <div>
+        <div class='floating'><a href='#signup'>無料<br/>登録</a></div>
         <ReactPlayer
             url='https://www.youtube.com/watch?v=qgLZwUiLfAs'
             playing={true} volume={0} muted={true} width={'100%'} height={'60vh'}
