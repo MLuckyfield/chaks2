@@ -5,6 +5,7 @@ import Lesson from '../utilities/lesson'
 import Popup from '../utilities/popup'
 import environment from '../../online_environment.jpg'
 import points from '../../pic.png'
+import discount from '../../discount.jpg'
 
 const TestProp = () => {
 
@@ -64,27 +65,22 @@ const TestProp = () => {
         <div class='col'>
             <h1 style={{margin:'10% 0'}}>楽しむ方法は簡単</h1>
             <div class='row'>
-                <div class='fixed-row clean_center'>
-                  <span class="material-icons green ">looks_one</span>
                     <div class='col align'>
+                      <span class="custom_icon">1</span>
                       <p>予約不要の無料レッスンを</p>
                       <h2>気軽に体験!</h2>
                     </div>
-                </div>
-                <div class='fixed-row clean_center'>
-                  <span class="material-icons green ">looks_two</span>
+
                     <div class='col align'>
+                      <span class="custom_icon">2</span>
                       <p>月に何時間勉強したいかを決めて</p>
                       <h2>サブスク登録!</h2>
                     </div>
-                </div>
-                <div class='fixed-row clean_center'>
-                  <span class="material-icons green ">looks_3</span>
                     <div class='col align'>
+                      <span class="custom_icon">3</span>
                       <p>好きな時にご来店</p>
                       <h2>習慣化を図ろう！</h2>
                     </div>
-                </div>
             </div>
         </div>
       </div>
