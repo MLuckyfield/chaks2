@@ -36,7 +36,6 @@ import StylePage from './components/page/StylePage'
 import Statistics from './components/user/statistics'
 import {metaTags} from './components/seo'
 
-
 //import styles
 import './scss/main.scss'
 import banner from './banner.jpg'
@@ -44,6 +43,7 @@ import shunsuke from './shunsuke.jpg'
 import event_game from './event_game.jpg'
 import matt from './matt.jpg'
 import vincent from './vincent.jpg'
+import radka from './radka.jpg'
 import bre from './bre.jpg'
 import blog_header from './blog_header.jpg'
 import campaign_header from './campaign_header.jpg'
@@ -470,6 +470,14 @@ const Front = ()=>{
                             <h2>BRE</h2>
                             <h3>INSTRUCTOR</h3>
                             Born in the U.S.! Masters degree student. Enjoys watching movies, cooking, and drinking whiskey. Can`t wait to meet you!
+                        </div>
+                    </div>
+                    <div class='up_row center'>
+                        <div class='col slim'>
+                            <img class='avatar' src={radka}></img>
+                            <h2>RADKA</h2>
+                            <h3>INSTRUCTOR</h3>
+                            Language maniac. Master's degree student in Second Language Acquisition. Likes journaling, being creative, and playing games!
                         </div>
                     </div>
                 </div>
