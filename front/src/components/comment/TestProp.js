@@ -2,8 +2,6 @@ import React, { useState,useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
-import ReactPlayer from 'react-player/youtube'
-import banner from '../../banner.jpg'
 
 const TestProp = () => {
 
