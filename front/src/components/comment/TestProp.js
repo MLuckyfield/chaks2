@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
+import environment from '../../online_environment.jpg'
 
 const TestProp = () => {
 
