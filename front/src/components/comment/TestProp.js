@@ -87,7 +87,7 @@ const TestProp = () => {
     </div>
     <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
       <div class='mini_overlay yellow'>
-          <div class='col' style={{width:'70%'}}>
+          <div class='col' style={{width:'70%',alignItems:'normal'}}>
                   <h1 class='emphasize' style={{textAlign:'left'}}>1時間<br/>0円!</h1>
                   <h1 style={{textAlign:'left'}}>初回無料！</h1>
                   <h2 style={{textAlign:'left'}}>気軽に来てください!</h2>
