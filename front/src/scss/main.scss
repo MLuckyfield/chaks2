@@ -14,8 +14,17 @@
   color: white;
   position: fixed;
   left:15px;
+  font-size: 25px;
   cursor: pointer;
-  border-radius: 50px;
+  border-radius: 5px;
+  padding:1%;
+  line-height: 1em;
+  bottom: 15px;
+  a{
+    text-decoration: none;
+    color: white;
+
+  }
 }
 .video_overlay{
   background-color: rgba(255,255,255,0.8);
@@ -271,6 +280,10 @@ svg{
   color: #eebc21;
 }
 @media (max-width:800px){
+  .floating{
+    line-height: 1.5em;
+    font-size: 15px;
+  }
   h1{
     font-size: 2em;
   }
