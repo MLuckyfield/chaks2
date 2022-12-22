@@ -285,7 +285,7 @@ const Front = ()=>{
               <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)',display:'flex',alignItems:'center'}}>
                 <div class='col'>
                   <h1 style={{margin:'2%'}}>楽しく身につく<br/>新しい形の英会話</h1>
-                  <button style={{width:'50%',color:'white',backgroundColor:'black', margin:'2%',border:'1px solid black'}}>コンセプト見る</button>
+                  <button style={{width:'50%',color:'white',backgroundColor:'black', margin:'2%',border:'1px solid black',fontWeight:'550'}}>コンセプト見る</button>
                 </div>
               </div>
             } light={banner}/>
