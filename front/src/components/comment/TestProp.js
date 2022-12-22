@@ -65,18 +65,18 @@ const TestProp = () => {
         <div class='col'>
             <h1 style={{margin:'10% 0'}}>楽しむ方法は簡単</h1>
             <div class='row center align'>
-                    <div class='col align'>
+                    <div class='col'>
                       <span class="custom_icon"><span>1</span></span>
                       <p>予約不要の無料レッスンを</p>
                       <h2>気軽に体験!</h2>
                     </div>
 
-                    <div class='col align'>
+                    <div class='col'>
                       <span class="custom_icon">2</span>
                       <p>月に何時間勉強したいかを決めて</p>
                       <h2>サブスク登録!</h2>
                     </div>
-                    <div class='col align'>
+                    <div class='col'>
                       <span class="custom_icon">3</span>
                       <p>好きな時にご来店</p>
                       <h2>習慣化を図ろう！</h2>
@@ -85,7 +85,7 @@ const TestProp = () => {
         </div>
       </div>
     </div>
-    <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
+    <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover',backgroundPosition:'center'}}>
       <div class='mini_overlay yellow'>
           <div class='col' style={{width:'70%',alignItems:'normal'}}>
                   <h1 class='emphasize' style={{textAlign:'left'}}>1時間<br/>0円!</h1>
@@ -98,12 +98,14 @@ const TestProp = () => {
                   <Popup button={"test"} num={4} content={
                     <div class='col'>
                         <h1 style={{margin:'10% 0'}}>2 discounts!</h1>
-                        <div class='row'>
+                        <div class='col'>
                             <div class='fixed-row clean_center'>
-                              <span class='custom_icon'>1</span>
+                                <div class='col'>
+                                  <span class='custom_icon'>1</span>
+                                </div>
                                 <div class='col align'>
-                                  <p>予約不要の無料レッスンを</p>
                                   <h2>気軽に体験!</h2>
+                                  <p>予約不要の無料レッスンを</p>
                                 </div>
                             </div>
                             <div class='fixed-row clean_center'>
