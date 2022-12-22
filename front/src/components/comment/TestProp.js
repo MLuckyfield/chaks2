@@ -62,11 +62,11 @@ const TestProp = () => {
         <div class='col'>
           <h1 style={{margin:'10% 0'}}>楽しむ方法は簡単</h1>
         </div>
-        <div class='fixed-row clean_center'>
+        <div class='row clean_center'>
           <span class="material-icons green ">looks_one</span>
             <div class='col align'>
-              <p>無料レッスンを気軽に</p>
-              <h2>お越し!</h2>
+              <p>予約不要の無料レッスンを</p>
+              <h2>気軽に体験!</h2>
             </div>
         </div>
         <div class='fixed-row clean_center'>
@@ -79,7 +79,7 @@ const TestProp = () => {
         <div class='fixed-row clean_center'>
           <span class="material-icons green ">looks_3</span>
             <div class='col align'>
-              <p>予約不要で,好きな時にご来店</p>
+              <p>好きな時にご来店</p>
               <h2>習慣化を図ろう！</h2>
             </div>
         </div>
