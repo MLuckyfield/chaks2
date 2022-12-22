@@ -73,7 +73,7 @@ const TestProp = () => {
 
                     <div class='col'>
                       <span class="custom_icon">2</span>
-                      <p>月に何時間勉強したいかを決めて</p>
+                      <p>月に通いたい時間を決めて</p>
                       <h2>サブスク登録!</h2>
                     </div>
                     <div class='col'>
