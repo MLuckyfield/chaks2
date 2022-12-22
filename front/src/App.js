@@ -102,7 +102,7 @@ const App = () => {
     return (
       <Router>
         <Navbar/>
-        <div class=''></div>
+        <div class='nav-filler'></div>
           <Route exact path="/ads" component={Front}/>
           <Route exact path="/" component={Front}/>
           <Route path="/events" component={EventList}/>
