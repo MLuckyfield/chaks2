@@ -3,6 +3,7 @@ import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
 import environment from '../../online_environment.jpg'
+import points from '../../pic.png'
 
 const TestProp = () => {
 
@@ -88,6 +89,7 @@ const TestProp = () => {
       </div>
     </div>
     <div>Register Now</div>
+    <div style={{backgroundImage: 'url('+points+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>test</div>
       <div class='row'><button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button></div>
       <div class='calendar'>
         <div class='labelBox border'>日</div>
