@@ -8,6 +8,11 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import 'product_display';
 
+.vertical_banner{
+  text-orientation:upright;
+  writing-mode:vertical-lr;
+  padding: 10% 5%; 
+}
 .floating{
   z-index: 25;
   background-color: black;
@@ -322,7 +327,6 @@ svg{
     font-size: 10px;
     color: '#eebc21'
   }
-
   .photo{
     height:100px;
     width:150px;

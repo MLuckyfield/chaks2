@@ -84,12 +84,39 @@ const TestProp = () => {
         </div>
       </div>
     </div>
-    <div class='fixed-row'>
+    <div class='fixed-row' style={{background:'rgba(175,65,84,1)',color:'white'}}>
         <div class='col w20'>
-          <span>新年入会<br/>キャンペーン</span>
+          <span class='vertical_banner'>新年入会<br/>キャンペーン</span>
         </div>
         <div class='col w80 align'>
+          <p>今なら</p>
           <h1>最大15%割引</h1>
+          <p>申し込み期間限定 1月~2月</p>
+          <Popup button={"詳細"} num={1} content={
+            <div class='col'>
+                <h1 style={{margin:'10% 0'}}>2 discounts!</h1>
+                <div class='col'>
+                    <div class='fixed-row'>
+                        <div class='col w20'>
+                          <span class='custom_icon'>5%</span>
+                        </div>
+                        <div class='col w80 align'>
+                          <h2>友達紹介</h2>
+                          <p>友達を紹介すると両方が５％割引</p>
+                        </div>
+                    </div>
+                    <div class='fixed-row'>
+                        <div class='col w20'>
+                          <span class='custom_icon'>10%</span>
+                        </div>
+                        <div class='col w80 align'>
+                          <h2>学生限定</h2>
+                          <p>学生の方が１０％割引</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          }/>
         </div>
     </div>
     <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover',backgroundPosition:'center'}}>
