@@ -86,12 +86,12 @@ const TestProp = () => {
     </div>
     <div class='fixed-row' style={{background:'rgba(175,65,84,1)',color:'white'}}>
         <div class='col w20'>
-          <span class='vertical_banner'>新年入会<br/>キャンペーン</span>
+          <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新年入会<br/>キャンペーン</span>
         </div>
         <div class='col w80 align'>
           <p>今なら</p>
           <h1>最大15%割引</h1>
-          <p>申し込み期間限定 1月~2月</p>
+          <p style={{marginBottom:'3%'}}>申し込み期間限定 1月~2月</p>
           <Popup button={"詳細"} num={1} content={
             <div class='col'>
                 <h1 style={{margin:'10% 0'}}>2 discounts!</h1>
