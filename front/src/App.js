@@ -278,7 +278,9 @@ const Front = ()=>{
       // </div>
       return (
         <div>
-        <div class='floating'><a href='#signup'>無料<br/>登録</a></div>
+        {localStorage.getItem('user')?'':(
+          <div class='floating'><a href='#signup'>無料<br/>登録</a></div>
+        )}
         <ReactPlayer
             url='https://www.youtube.com/watch?v=qgLZwUiLfAs'
             playing={true} volume={0} muted={true} width={'100%'} height={'60vh'}
@@ -478,6 +480,9 @@ const Front = ()=>{
                             <h2>RADKA</h2>
                             <h3>INSTRUCTOR</h3>
                             Language maniac. Master's degree student in Second Language Acquisition. Likes journaling, being creative, and playing games!
+                        </div>
+                        <div class='col slim'>
+                            
                         </div>
                     </div>
                 </div>

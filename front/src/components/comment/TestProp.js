@@ -129,7 +129,7 @@ const TestProp = () => {
                       通常料金: 30分￥1000<br/>
                       サブスクスタイル!
                   </span>
-                  <Popup button={"お得になる方法が２"} num={4} content={
+                  <Popup button={"割引でお得!"} num={4} content={
                     <div class='col'>
                         <h1 style={{margin:'10% 0'}}>2 discounts!</h1>
                         <div class='col'>
