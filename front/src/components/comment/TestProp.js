@@ -86,11 +86,10 @@ const TestProp = () => {
     </div>
     <div class='fixed-row'>
         <div class='col w20'>
-          <span>`0%`</span>
+          <span>新年入会<br/>キャンペーン</span>
         </div>
         <div class='col w80 align'>
-          <h2>気軽に体験!</h2>
-          <p>予約不要の無料レッスンを</p>
+          <h1>最大15%割引</h1>
         </div>
     </div>
     <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover',backgroundPosition:'center'}}>
@@ -112,8 +111,8 @@ const TestProp = () => {
                                   <span class='custom_icon'>5%</span>
                                 </div>
                                 <div class='col w80 align'>
-                                  <h2>気軽に体験!</h2>
-                                  <p>予約不要の無料レッスンを</p>
+                                  <h2>友達紹介</h2>
+                                  <p>友達を紹介すると両方が５％割引</p>
                                 </div>
                             </div>
                             <div class='fixed-row'>
@@ -121,8 +120,8 @@ const TestProp = () => {
                                   <span class='custom_icon'>10%</span>
                                 </div>
                                 <div class='col w80 align'>
-                                  <h2>気軽に体験!</h2>
-                                  <p>予約不要の無料レッスンを</p>
+                                  <h2>学生限定</h2>
+                                  <p>学生の方が１０％割引</p>
                                 </div>
                             </div>
                         </div>
