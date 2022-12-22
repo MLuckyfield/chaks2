@@ -102,8 +102,7 @@ const App = () => {
     return (
       <Router>
         <Navbar/>
-        <div class='nav-filler'>
-        </div>
+        <div class=''></div>
           <Route exact path="/ads" component={Front}/>
           <Route exact path="/" component={Front}/>
           <Route path="/events" component={EventList}/>
@@ -482,7 +481,7 @@ const Front = ()=>{
                             Language maniac. Master's degree student in Second Language Acquisition. Likes journaling, being creative, and playing games!
                         </div>
                         <div class='col slim'>
-                            
+
                         </div>
                     </div>
                 </div>
