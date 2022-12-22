@@ -58,17 +58,34 @@ const TestProp = () => {
 
   return(
     <div class='col'>
-    <ReactPlayer
-        url='https://www.youtube.com/watch?v=qgLZwUiLfAs'
-        playing={true} volume={0} muted={true} width={'100%'} height={'60vh'}
-        playIcon={
-          <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)',display:'flex',alignItems:'center'}}>
-            <div class='col'>
-              <h1 style={{margin:'2%'}}>楽しく身につく<br/>新しい形の英会話</h1>
-              <button style={{width:'50%',color:'white',backgroundColor:'black', margin:'2%'}}>コンセプト見る</button>
+    <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
+      <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',color:'black'}}>
+        <div class='col'>
+          <h1 style={{margin:'10% 0'}}>楽しむ方法は簡単</h1>
+        </div>
+        <div class='fixed-row clean_center'>
+          <span class="material-icons green ">looks_one</span>
+            <div class='col align'>
+              <p>無料レッスンを気軽に</p>
+              <h2>お越し!</h2>
             </div>
-          </div>
-        } light={banner}/>
+        </div>
+        <div class='fixed-row clean_center'>
+          <span class="material-icons green ">looks_two</span>
+            <div class='col align'>
+              <p>月に何時間勉強したいかを決めて</p>
+              <h2>サブスク登録!</h2>
+            </div>
+        </div>
+        <div class='fixed-row clean_center'>
+          <span class="material-icons green ">looks_3</span>
+            <div class='col align'>
+              <p>予約不要で,好きな時にご来店</p>
+              <h2>習慣化を図ろう！</h2>
+            </div>
+        </div>
+      </div>
+    </div>
       <div class='row'><button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button></div>
       <div class='calendar'>
         <div class='labelBox border'>日</div>
