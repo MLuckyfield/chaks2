@@ -89,37 +89,47 @@ const TestProp = () => {
         </div>
       </div>
     </div>
-    <Popup button={"test"} num={4} content={
-      <div class='col'>
-          <h1 style={{margin:'10% 0'}}>2 discounts!</h1>
-          <div class='row'>
-              <div class='fixed-row clean_center'>
-                <span class='custom_icon'>1</span>
-                  <div class='col align'>
-                    <p>予約不要の無料レッスンを</p>
-                    <h2>気軽に体験!</h2>
-                  </div>
-              </div>
-              <div class='fixed-row clean_center'>
-                <span class='custom_icon'>2</span>
-                  <div class='col align'>
-                    <p>月に何時間勉強したいかを決めて</p>
-                    <h2>サブスク登録!</h2>
-                  </div>
-              </div>
-              <div class='fixed-row clean_center'>
-                <span class='custom_icon'>3</span>                
-                  <div class='col align'>
-                    <p>好きな時にご来店</p>
-                    <h2>習慣化を図ろう！</h2>
-                  </div>
-              </div>
+    <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
+      <div class='mini_overlay yellow'>
+          <div class='col' style={{width:'70%'}}>
+                  <h1 class='emphasize'>1時間<br/>0円!</h1>
+                  <h1>初回無料！</h1>
+                  <h2>気軽に来てください!</h2>
+                  <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',marginTop:'3%'}}>
+                      通常料金: 30分￥1000<br/>
+                      サブスクスタイル!
+                  </span>
+                  <Popup button={"test"} num={4} content={
+                    <div class='col'>
+                        <h1 style={{margin:'10% 0'}}>2 discounts!</h1>
+                        <div class='row'>
+                            <div class='fixed-row clean_center'>
+                              <span class='custom_icon'>1</span>
+                                <div class='col align'>
+                                  <p>予約不要の無料レッスンを</p>
+                                  <h2>気軽に体験!</h2>
+                                </div>
+                            </div>
+                            <div class='fixed-row clean_center'>
+                              <span class='custom_icon'>2</span>
+                                <div class='col align'>
+                                  <p>月に何時間勉強したいかを決めて</p>
+                                  <h2>サブスク登録!</h2>
+                                </div>
+                            </div>
+                            <div class='fixed-row clean_center'>
+                              <span class='custom_icon'>3</span>
+                                <div class='col align'>
+                                  <p>好きな時にご来店</p>
+                                  <h2>習慣化を図ろう！</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  }/>
           </div>
       </div>
-    }/>
-    <span class='custom_icon'>1</span>
-    <div>3</div>
-    <div>4</div>
+    </div>
     <div style={{backgroundImage: 'url('+points+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>test</div>
       <div class='row'><button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button></div>
       <div class='calendar'>
