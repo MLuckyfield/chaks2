@@ -37,6 +37,7 @@
   vertical-align: middle;
   border-radius: 50%;
   align-items: center;
+  display:grid;
 }
 .video_overlay{
   background-color: rgba(255,255,255,0.8);
@@ -327,7 +328,7 @@ svg{
     width:150px;
   }
   .w20{
-    width:85% !important;
+    width:15% !important;
     margin:5%;
     padding:5%;
   }

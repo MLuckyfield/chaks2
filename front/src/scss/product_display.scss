@@ -28,6 +28,9 @@
   transition: width 0.4s ease;
 }
 @media (max-width:800px){
+    .btn{
+      padding: 5%;
+    }
     .plan{
       width:90%;
     }

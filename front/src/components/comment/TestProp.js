@@ -66,11 +66,10 @@ const TestProp = () => {
             <h1 style={{margin:'10% 0'}}>楽しむ方法は簡単</h1>
             <div class='row center align'>
                     <div class='col'>
-                      <span class="custom_icon"><span>1</span></span>
+                      <span class="custom_icon">1</span>
                       <p>予約不要の無料レッスンを</p>
                       <h2>気軽に体験!</h2>
                     </div>
-
                     <div class='col'>
                       <span class="custom_icon">2</span>
                       <p>月に通いたい時間を決めて</p>
@@ -84,6 +83,15 @@ const TestProp = () => {
             </div>
         </div>
       </div>
+    </div>
+    <div class='fixed-row'>
+        <div class='col w20'>
+          <span class='custom_icon'>`0%`</span>
+        </div>
+        <div class='col w80 align'>
+          <h2>気軽に体験!</h2>
+          <p>予約不要の無料レッスンを</p>
+        </div>
     </div>
     <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover',backgroundPosition:'center'}}>
       <div class='mini_overlay yellow'>
@@ -101,7 +109,7 @@ const TestProp = () => {
                         <div class='col'>
                             <div class='fixed-row'>
                                 <div class='col w20'>
-                                  <span class='custom_icon'>1</span>
+                                  <span class='custom_icon'>5%</span>
                                 </div>
                                 <div class='col w80 align'>
                                   <h2>気軽に体験!</h2>
@@ -109,17 +117,12 @@ const TestProp = () => {
                                 </div>
                             </div>
                             <div class='fixed-row'>
-                              <span class='custom_icon'>2</span>
-                                <div class='col align'>
-                                  <p>月に通いたい時間を決めて</p>
-                                  <h2>サブスク登録!</h2>
+                                <div class='col w20'>
+                                  <span class='custom_icon'>10%</span>
                                 </div>
-                            </div>
-                            <div class='fixed-row'>
-                              <span class='custom_icon'>3</span>
-                                <div class='col align'>
-                                  <p>好きな時にご来店</p>
-                                  <h2>習慣化を図ろう！</h2>
+                                <div class='col w80 align'>
+                                  <h2>気軽に体験!</h2>
+                                  <p>予約不要の無料レッスンを</p>
                                 </div>
                             </div>
                         </div>
