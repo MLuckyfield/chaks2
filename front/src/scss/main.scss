@@ -36,6 +36,7 @@
   text-align: center;
   vertical-align: middle;
   border-radius: 50%;
+  align-items: center;
 }
 .video_overlay{
   background-color: rgba(255,255,255,0.8);
@@ -434,7 +435,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     // min-height: 8vh;
-    height:16vh;
+    // height:16vh;
     background-color: black;
 }
 .nav-filler{
