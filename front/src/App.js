@@ -18,7 +18,7 @@ import BlogFront from './components/blog/BlogFront'
 import BlogDisplay from './components/blog/BlogDisplay'
 import PW_Reset from './components/user/PW_Reset'
 import Account from './components/user/account'
-// import Payment from './components/utilities/payment'
+import Popup from './components/utilities/popup'
 import Profile from './components/user/Profile'
 
 import google_analytics from './components/google_analytics'
@@ -38,6 +38,7 @@ import {metaTags} from './components/seo'
 
 //import styles
 import './scss/main.scss'
+import environment from './online_environment.jpg'
 import banner from './banner.jpg'
 import shunsuke from './shunsuke.jpg'
 import event_game from './event_game.jpg'
@@ -275,6 +276,46 @@ const Front = ()=>{
       //           </div>
       //     </div>
       // </div>
+      // <div id='values' class='col border'>
+      //   <div class='col slim center'>
+      //       <h1>私達の価値観</h1>
+      //   </div>
+      //   <div class='row'>
+      //     <div class='col' style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
+      //       <div class='col' style={{height:'20%',backgroundColor:'#53cfe9',margin:'0',color:'white',padding:'6%'}}>
+      //         <h2>COMMITMENT</h2>
+      //       </div>
+      //       <div class='col' style={{height:'38vh',backgroundColor:'#20bada',margin:'0',color:'white',padding:'6% 15%'}}>
+      //         最初に、月に何時間勉強したいかを決めて、コミット出来るサブスクスタイル
+      //         <hr/>
+      //         <p>
+      //         中途半端に勉強するのではなく、「英語力の成長」を、自分に約束すること。</p>
+      //       </div>
+      //     </div>
+      //     <div class='col'  style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
+      //       <div class='col' style={{height:'20%',backgroundColor:'#4484c1',margin:'0',color:'white',padding:'6%'}}>
+      //         <h2>CONSISTENCY</h2>
+      //       </div>
+      //       <div class='col' style={{height:'38vh',backgroundColor:'#3722aa',margin:'0',color:'white',padding:'6% 15%'}}>
+      //         自分が好きな時に、自由にご来店、 習慣化を図ろう！
+      //         <hr/>
+      //         <p>
+      //         １回で５時間勉強するより、５回１時間勉強する方がよい。</p>
+      //       </div>
+      //     </div>
+      //     <div class='col' style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
+      //       <div class='col' style={{height:'20%',backgroundColor:'#f75c70',margin:'0',color:'white',padding:'6%'}}>
+      //         <h2>REWARD</h2>
+      //       </div>
+      //       <div class='col' style={{height:'38vh',backgroundColor:'#dc4a5e',margin:'0',color:'white',padding:'6% 15%'}}>
+      //         英語力を向上しながら、 ボーナスリワードも ゲット！
+      //         <hr/>
+      //         <p>
+      //         モティベーションを下げないように、リワードをもらって楽しく勉強を進める。</p>
+      //       </div>
+      //     </div>
+      //   </div>
+      // </div>
       return (
         <div>
         {localStorage.getItem('user')?'':(
@@ -291,6 +332,40 @@ const Front = ()=>{
                 </div>
               </div>
             } light={banner}/>
+            <div class='fixed-row' style={{background:'rgba(175,65,84,1)',color:'white'}}>
+                <div class='col w20'>
+                  <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新年入会<br/>キャンペーン</span>
+                </div>
+                <div class='col w80 align'>
+                  <p>今なら</p>
+                  <h1>最大15%割引</h1>
+                  <p style={{marginBottom:'3%'}}>期間限定 1月3日~2月28日</p>
+                  <Popup button={"詳細"} num={1} content={
+                    <div class='col'>
+                        <h1 style={{margin:'10% 0'}}>最大15%割引</h1>
+                        <p>４時間以上でご契約されるお客様には以下の割引が適用されます!</p>
+                        <div class='col'>
+                            <div class='fixed-row'>
+                                <div class='col align'>
+                                  <h2>新年入会</h2>
+                                  <ul>
+                                    <li>４時間以上：５％割引</li>
+                                    <li>８時間以上：１０％割引</li>
+                                    <li>１２時間以上：１５％割引</li>
+                                  </ul>
+                                </div>
+                            </div>
+                            <div class='fixed-row'>
+                                <div class='col align'>
+                                  <h2>学生限定</h2>
+                                  <p>さらに！！学生様には追加で１０％割引が適用されます！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  }/>
+                </div>
+            </div>
               <div id='concept' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
                 <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
                     <div class='mini_overlay col' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
@@ -325,56 +400,68 @@ const Front = ()=>{
                     </div>
                 </div>
               </div>
-              <div id='values' class='col border'>
-                <div class='col slim center'>
-                    <h1>私達の価値観</h1>
-                </div>
-                <div class='row'>
-                  <div class='col' style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
-                    <div class='col' style={{height:'20%',backgroundColor:'#53cfe9',margin:'0',color:'white',padding:'6%'}}>
-                      <h2>COMMITMENT</h2>
-                    </div>
-                    <div class='col' style={{height:'38vh',backgroundColor:'#20bada',margin:'0',color:'white',padding:'6% 15%'}}>
-                      最初に、月に何時間勉強したいかを決めて、コミット出来るサブスクスタイル
-                      <hr/>
-                      <p>
-                      中途半端に勉強するのではなく、「英語力の成長」を、自分に約束すること。</p>
-                    </div>
-                  </div>
-                  <div class='col'  style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
-                    <div class='col' style={{height:'20%',backgroundColor:'#4484c1',margin:'0',color:'white',padding:'6%'}}>
-                      <h2>CONSISTENCY</h2>
-                    </div>
-                    <div class='col' style={{height:'38vh',backgroundColor:'#3722aa',margin:'0',color:'white',padding:'6% 15%'}}>
-                      自分が好きな時に、自由にご来店、 習慣化を図ろう！
-                      <hr/>
-                      <p>
-                      １回で５時間勉強するより、５回１時間勉強する方がよい。</p>
-                    </div>
-                  </div>
-                  <div class='col' style={{width:'100%',padding:'0',margin:'0',marginTop:'1%'}}>
-                    <div class='col' style={{height:'20%',backgroundColor:'#f75c70',margin:'0',color:'white',padding:'6%'}}>
-                      <h2>REWARD</h2>
-                    </div>
-                    <div class='col' style={{height:'38vh',backgroundColor:'#dc4a5e',margin:'0',color:'white',padding:'6% 15%'}}>
-                      英語力を向上しながら、 ボーナスリワードも ゲット！
-                      <hr/>
-                      <p>
-                      モティベーションを下げないように、リワードをもらって楽しく勉強を進める。</p>
-                    </div>
+              <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
+                <div class='mini_overlay col' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',color:'black'}}>
+                  <div class='col border'>
+                      <h1 style={{margin:'10% 0'}}>楽しむ方法は簡単</h1>
+                      <div class='row center align'>
+                              <div class='col'>
+                                <span class="custom_icon">1</span>
+                                <p>予約不要の無料レッスンを</p>
+                                <h2>気軽に体験!</h2>
+                              </div>
+                              <div class='col'>
+                                <span class="custom_icon">2</span>
+                                <p>月に通いたい時間を決めて</p>
+                                <h2>サブスク登録!</h2>
+                              </div>
+                              <div class='col'>
+                                <span class="custom_icon">3</span>
+                                <p>好きな時にご来店</p>
+                                <h2>習慣化を図ろう！</h2>
+                              </div>
+                      </div>
                   </div>
                 </div>
               </div>
-              <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
+              <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover',backgroundPosition:'center'}}>
                 <div class='mini_overlay yellow'>
-                    <div class='col' style={{width:'70%'}}>
-                            <h1 class='emphasize'>1時間<br/>0円!</h1>
-                            <h1>初回無料！</h1>
-                            <h2>気軽に来てください!</h2>
-                            <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',marginTop:'3%'}}>
+                    <div class='col' style={{width:'70%',alignItems:'normal'}}>
+                            <h1 class='emphasize' style={{textAlign:'left'}}>1時間<br/>0円!</h1>
+                            <h1 style={{textAlign:'left'}}>初回無料</h1>
+                            <h2 style={{textAlign:'left'}}>気軽に来てください!</h2>
+                            <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',margin:'3% 0% 5% 0%',width:'max-content'}}>
                                 通常料金: 30分￥1000<br/>
-                                サブスクスタイル!
+                                サブスクスタイル!<br/>
+                                コーヒー・紅茶込み
                             </span>
+                            <Popup button={"割引でお得!"} num={4} content={
+                              <div class='col'>
+                                  <h1 style={{margin:'10% 0'}}>お得な割引!</h1>
+                                  <div class='col'>
+                                      <div class='fixed-row' style={{alignItems:'flex-start'}}>
+                                          <div class='col w20'>
+                                            <span class='custom_icon'>5%</span>
+                                          </div>
+                                          <div class='col w80 align'>
+                                            <h2>友人紹介割引</h2>
+                                            <p>ご友人を紹介頂けた場合に本人様とそのご友人に５％の割引を適用します。<br/>
+                                            最大２０％割引いたします！（４名まで紹介可能）<br/>
+                                            ※契約時間が４時間以上の場合のみ適用<br/></p>
+                                          </div>
+                                      </div>
+                                      <div class='fixed-row'>
+                                          <div class='col w20'>
+                                            <span class='custom_icon'>10%</span>
+                                          </div>
+                                          <div class='col w80 align'>
+                                            <h2>学生割引</h2>
+                                            <p>学生様にはすべての契約時間から１０％割引を適用いたします</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            }/>
                     </div>
                 </div>
               </div>
