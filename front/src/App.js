@@ -401,7 +401,7 @@ const Front = ()=>{
                 </div>
               </div>
               <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
-                <div class='mini_overlay col' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',color:'black'}}>
+                <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',color:'black'}}>
                   <div class='col border'>
                       <h1 style={{margin:'10% 0'}}>楽しむ方法は簡単</h1>
                       <div class='row center align'>
