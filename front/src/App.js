@@ -328,7 +328,7 @@ const Front = ()=>{
               <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)',display:'flex',alignItems:'center'}}>
                 <div class='col'>
                   <h1 style={{margin:'2%'}}>楽しく身につく<br/>新しい形の英会話</h1>
-                  <button style={{width:'50%',color:'white',backgroundColor:'black', margin:'2%',border:'1px solid black',fontWeight:'550'}}>コンセプト見る</button>
+                  <button style={{width:'50%',color:'white',backgroundColor:'black', margin:'2%',border:'1px solid black',fontWeight:'550'}}>コンセプトを見る</button>
                 </div>
               </div>
             } light={banner}/>
@@ -490,16 +490,16 @@ const Front = ()=>{
                 <h1 style={{padding:'5%'}}>+もっと楽しく！</h1>
                 <div class='row'>
                   <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
-                    <div class='mini_overlay slim' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
+                    <div class='mini_overlay slim' style={{backgroundColor:'rgba(175,85,64,0.8)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
                       <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                           <h2>EVENTS</h2>
                           <span style={{height:'40px',margin:'5%',textAlign:'center'}}>国際交流で友達を作って、リアルな英会話も楽しめる</span>
-                          <button class='solid-first cta' style={{margin:'5%'}} onClick={()=>window.location='/events'}>もっと見る</button>
+                          <div class="btn" style={{position:'relative',width:'80%'}} v>詳細</div>
                       </div>
                     </div>
                   </div>
                   <div class='col' style={{height:'50vh',backgroundImage: 'url('+blog_header+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
-                    <div class='mini_overlay slim' style={{backgroundColor:'rgba(188,151,151,0.7)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
+                    <div class='mini_overlay slim' style={{backgroundColor:'rgba(175,85,64,0.8)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
                       <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                           <h2>GUIDED COURSE</h2>
                           <span style={{height:'40px',margin:'5%',textAlign:'center'}}>７０個以上の文法やイディオム、１００個以上のトピックでの英語学習が可能</span>
@@ -512,7 +512,7 @@ const Front = ()=>{
                   <h2>ONLINE</h2>
                   <p>プレミアムオンライン英会話!</p>
                   <p>サービス提供開始は２０２３年２月を想定しています</p>
-                  <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/online'}}>詳細</div>
+                  <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/online'}}>もっと見る</div>
                 </div>
               </div>
               {localStorage.getItem('user')?'':(
