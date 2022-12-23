@@ -136,25 +136,17 @@ const TestProp = () => {
                         <h1 style={{margin:'10% 0'}}>お得な割引!</h1>
                         <div class='col'>
                             <div class='fixed-row' style={{alignItems:'flex-start'}}>
-                                <div class='col w20'>
-                                  <span class='custom_icon'>5%</span>
-                                </div>
-                                <div class='col w80 align'>
+                                <div class='col align'>
                                   <h2>友人紹介割引</h2>
-                                  <img src={fluency}></img>
-                                  <p>ご友人を紹介頂けた場合に本人様とそのご友人に５％の割引を適用します。<br/>
-                                  最大２０％割引いたします！（４名まで紹介可能）<br/>
-                                  ※契約時間が４時間以上の場合のみ適用<br/></p>
+                                  <img style={{width:'100%'}} src={fluency}></img>
+                                  <p>講師陣が英会話レベルを４項目で評価！</p>
                                 </div>
                             </div>
                             <div class='fixed-row'>
-                                <div class='col w20'>
-                                  <span class='custom_icon'>10%</span>
-                                </div>
-                                <div class='col w80 align'>
-                                  <h2>学生割引</h2>
-                                  <img src={courses}></img>                                  
-                                  <p>学生様にはすべての契約時間から１０％割引を適用いたします</p>
+                                <div class='col align'>
+                                  <h2>文法やイディオム</h2>
+                                  <img style={{width:'100%'}} src={courses}></img>
+                                  <p>学習したい英文法を設定して使うことで講師が間違いを直してくれるガイドコースも利用可能！</p>
                                 </div>
                             </div>
                         </div>
