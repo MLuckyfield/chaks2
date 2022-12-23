@@ -137,14 +137,14 @@ const TestProp = () => {
                         <div class='col'>
                             <div class='fixed-row' style={{alignItems:'flex-start'}}>
                                 <div class='col align'>
-                                  <h2>友人紹介割引</h2>
+                                  <h2 style={{marginBottom:'5%'}}>講師陣が英会話レベルを４項目で評価！</h2>
                                   <img style={{width:'100%'}} src={fluency}></img>
-                                  <p>講師陣が英会話レベルを４項目で評価！</p>
+                                  <p></p>
                                 </div>
                             </div>
                             <div class='fixed-row'>
                                 <div class='col align'>
-                                  <h2>文法やイディオム</h2>
+                                  <h2 style={{marginBottom:'5%'}}>ガイドコース</h2>
                                   <img style={{width:'100%'}} src={courses}></img>
                                   <p>学習したい英文法を設定して使うことで講師が間違いを直してくれるガイドコースも利用可能！</p>
                                 </div>
