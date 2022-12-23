@@ -132,7 +132,8 @@ const TestProp = () => {
                   <h2 style={{textAlign:'left'}}>気軽に来てください!</h2>
                   <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',margin:'3% 0% 5% 0%',width:'max-content'}}>
                       通常料金: 30分￥1000<br/>
-                      サブスクスタイル!
+                      サブスクスタイル!<br/>
+                      コーヒー・紅茶込み
                   </span>
                   <Popup button={"割引でお得!"} num={4} content={
                     <div class='col'>
