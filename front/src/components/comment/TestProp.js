@@ -5,6 +5,8 @@ import Lesson from '../utilities/lesson'
 import Popup from '../utilities/popup'
 import environment from '../../online_environment.jpg'
 import points from '../../pic.png'
+import fluency from '../../fluency.jpg'
+import courses from '../../courses.jpg'
 import discount from '../../discount.jpg'
 
 const TestProp = () => {
@@ -139,6 +141,7 @@ const TestProp = () => {
                                 </div>
                                 <div class='col w80 align'>
                                   <h2>友人紹介割引</h2>
+                                  <img src={fluency}></img>
                                   <p>ご友人を紹介頂けた場合に本人様とそのご友人に５％の割引を適用します。<br/>
                                   最大２０％割引いたします！（４名まで紹介可能）<br/>
                                   ※契約時間が４時間以上の場合のみ適用<br/></p>
@@ -150,6 +153,7 @@ const TestProp = () => {
                                 </div>
                                 <div class='col w80 align'>
                                   <h2>学生割引</h2>
+                                  <img src={courses}></img>                                  
                                   <p>学生様にはすべての契約時間から１０％割引を適用いたします</p>
                                 </div>
                             </div>
