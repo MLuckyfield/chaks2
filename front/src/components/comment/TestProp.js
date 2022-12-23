@@ -133,7 +133,6 @@ const TestProp = () => {
                   </span>
                   <Popup button={"割引でお得!"} num={4} content={
                     <div class='col'>
-                        <h1 style={{margin:'10% 0'}}>お得な割引!</h1>
                         <div class='col'>
                             <div class='fixed-row' style={{alignItems:'flex-start'}}>
                                 <div class='col align'>
