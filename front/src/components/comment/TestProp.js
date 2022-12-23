@@ -98,10 +98,7 @@ const TestProp = () => {
                 <p>４時間以上でご契約されるお客様には以下の割引が適用されます!</p>
                 <div class='col'>
                     <div class='fixed-row'>
-                        <div class='col w20'>
-                          <span class='custom_icon'>1</span>
-                        </div>
-                        <div class='col w80 align'>
+                        <div class='col align'>
                           <h2>新年入会</h2>
                           <ul>
                             <li>４時間以上：５％割引</li>
@@ -111,10 +108,7 @@ const TestProp = () => {
                         </div>
                     </div>
                     <div class='fixed-row'>
-                        <div class='col w20'>
-                          <span class='custom_icon'>2</span>
-                        </div>
-                        <div class='col w80 align'>
+                        <div class='col align'>
                           <h2>学生限定</h2>
                           <p>さらに！！学生様には追加で１０％割引が適用されます！</p>
                         </div>
@@ -139,7 +133,7 @@ const TestProp = () => {
                     <div class='col'>
                         <h1 style={{margin:'10% 0'}}>お得な割引!</h1>
                         <div class='col'>
-                            <div class='fixed-row'>
+                            <div class='fixed-row' style={{alignItems:'flex-start'}}>
                                 <div class='col w20'>
                                   <span class='custom_icon'>5%</span>
                                 </div>

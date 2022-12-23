@@ -425,7 +425,7 @@ const Front = ()=>{
                   <h2>ONLINE</h2>
                   <p>プレミアムオンライン英会話!</p>
                   <p>サービス提供開始は２０２３年２月を想定しています</p>
-                  <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/online'}}>Details ></div>
+                  <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/online'}}>詳細</div>
                 </div>
               </div>
               {localStorage.getItem('user')?'':(
