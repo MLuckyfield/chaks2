@@ -91,27 +91,32 @@ const TestProp = () => {
         <div class='col w80 align'>
           <p>今なら</p>
           <h1>最大15%割引</h1>
-          <p style={{marginBottom:'3%'}}>申し込み期間限定 1月~2月</p>
+          <p style={{marginBottom:'3%'}}>期間限定 1月3日~2月28日</p>
           <Popup button={"詳細"} num={1} content={
             <div class='col'>
-                <h1 style={{margin:'10% 0'}}>2 discounts!</h1>
+                <h1 style={{margin:'10% 0'}}>最大15%割引</h1>
+                <p>４時間以上でご契約されるお客様には以下の割引が適用されます!</p>
                 <div class='col'>
                     <div class='fixed-row'>
                         <div class='col w20'>
-                          <span class='custom_icon'>5%</span>
+                          <span class='custom_icon'>1</span>
                         </div>
                         <div class='col w80 align'>
-                          <h2>友達紹介</h2>
-                          <p>友達を紹介すると両方が５％割引</p>
+                          <h2>新年入会</h2>
+                          <ul>
+                            <li>４時間以上：５％割引</li>
+                            <li>８時間以上：１０％割引</li>
+                            <li>１２時間以上：１５％割引</li>
+                          </ul>
                         </div>
                     </div>
                     <div class='fixed-row'>
                         <div class='col w20'>
-                          <span class='custom_icon'>10%</span>
+                          <span class='custom_icon'>2</span>
                         </div>
                         <div class='col w80 align'>
                           <h2>学生限定</h2>
-                          <p>学生の方が１０％割引</p>
+                          <p>さらに！！学生様には追加で１０％割引が適用されます！</p>
                         </div>
                     </div>
                 </div>
@@ -131,15 +136,17 @@ const TestProp = () => {
                   </span>
                   <Popup button={"割引でお得!"} num={4} content={
                     <div class='col'>
-                        <h1 style={{margin:'10% 0'}}>2 discounts!</h1>
+                        <h1 style={{margin:'10% 0'}}>お得な割引!</h1>
                         <div class='col'>
                             <div class='fixed-row'>
                                 <div class='col w20'>
                                   <span class='custom_icon'>5%</span>
                                 </div>
                                 <div class='col w80 align'>
-                                  <h2>友達紹介</h2>
-                                  <p>友達を紹介すると両方が５％割引</p>
+                                  <h2>友人紹介割引</h2>
+                                  <p>ご友人を紹介頂けた場合に本人様とそのご友人に５％の割引を適用します。<br/>
+                                  最大２０％割引いたします！（４名まで紹介可能）<br/>
+                                  ※契約時間が４時間以上の場合のみ適用<br/></p>
                                 </div>
                             </div>
                             <div class='fixed-row'>
@@ -147,8 +154,8 @@ const TestProp = () => {
                                   <span class='custom_icon'>10%</span>
                                 </div>
                                 <div class='col w80 align'>
-                                  <h2>学生限定</h2>
-                                  <p>学生の方が１０％割引</p>
+                                  <h2>学生割引</h2>
+                                  <p>学生様にはすべての契約時間から１０％割引を適用いたします</p>
                                 </div>
                             </div>
                         </div>
