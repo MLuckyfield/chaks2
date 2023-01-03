@@ -88,7 +88,7 @@ const TestProp = () => {
       </div>
     </div>
     <div class='fixed-row' style={{backgroundImage: 'url('+campaign+')',backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
-      <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0'}}>
+      <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
         <div class='col w20'>
           <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新年入会<br/>キャンペーン</span>
         </div>
