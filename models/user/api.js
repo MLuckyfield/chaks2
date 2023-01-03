@@ -274,7 +274,6 @@ const email = require('../../services/email')
                           success: true
                         });
                       })
-
                   })
                   .catch((err)=>{
                     return res.status(500).json({
@@ -422,11 +421,13 @@ const email = require('../../services/email')
       })
     })
     //manual point insertion
-      // cron.schedule('*/15 * * * *',()=>{
-      //   console.log('running point update')
-      //   let update=[{value:30},{value:30},{value:30},{value:30}]
-      //   User.findOneAndUpdate({_id:'63673aed57b02a5be9c72b06'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
-      // })
+      cron.schedule('*/15 * * * *',()=>{
+        console.log('running point update')
+        let update=[{value:30},{value:30}]
+        User.findOneAndUpdate({_id:'62c147094744abc4b3111f6a'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
+        let update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
+        User.findOneAndUpdate({_id:'6346840b683a491148a921d8'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
+      })
     // add minutes
     // cron.schedule('*/30 * * * *',()=>{
     //   console.log('running point update')

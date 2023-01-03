@@ -18,6 +18,7 @@ const Account = () => {
   const [clock,setClock]=useState(JSON.parse(localStorage.getItem('user')).inClass)
 
   useEffect(()=>{
+    localStorage.removeItem('clock')
     // console.log('loading account view for '+JSON.stringify(student))
     axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {

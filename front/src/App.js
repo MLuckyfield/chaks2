@@ -146,20 +146,25 @@ const App = () => {
 
             }} constraints={{facingMode:'environment'}}/>} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/clock_out" access={['user']} success={()=><QrReader ViewFinder={()=>{return <div class='qr_viewfinder'></div>}} scanDelay={1000} onResult={(result,error)=>{
-              if(!!result){
-                console.log('scan success:',result,result.text,result.text=='finish')
-                if(result.text=='finish'){
-                  let id = JSON.parse(localStorage.getItem('user'))._id
-                  axios.get('/user/clock', {params:{filter:id,data:false}})
-                    .then((res) => {
-                      socket.emit('clock',id,false,res.data.display)
-                      window.location='/account'
-                      })
-                    .catch(error => console.log("error"+error))
+              if(localStorage.getItem('clock')){
+
+              }else{
+                if(!!result){
+                  localStorage.setItem('clock','read')
+                  console.log('scan success:',result,result.text,result.text=='finish')
+                  if(result.text=='finish'){
+                    let id = JSON.parse(localStorage.getItem('user'))._id
+                    axios.get('/user/clock', {params:{filter:id,data:false}})
+                      .then((res) => {
+                        socket.emit('clock',id,false,res.data.display)
+                        window.location='/account'
+                        })
+                      .catch(error => console.log("error"+error))
+                  }
                 }
-              }
-              if(!!error){
-                console.log('oops',error)
+                if(!!error){
+                  console.log('oops',error)
+                }
               }
             }} constraints={{facingMode:'environment'}}/>} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/qr-code" access={['user','teacher','manager']} success={()=><QRCode value={localStorage.getItem('user')}/>} fail={()=><Redirect to='/login'/>}/>
