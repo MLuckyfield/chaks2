@@ -506,7 +506,7 @@ const Front = ()=>{
                     <div class='mini_overlay slim' style={{backgroundColor:'rgba(175,65,84,0.9)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
                       <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                           <h2>GUIDED COURSE</h2>
-                          <span style={{height:'40px',margin:'5%',textAlign:'center'}}>７０個以上の文法やイディオム、１００個以上のトピックでの英語学習が可能</span>
+                          <span style={{height:'40px',margin:'5%',textAlign:'center'}}>７０個以上の文法やイディオムでの英語学習が可能</span>
                           <Popup button={"割引でお得!"} num={5} content={
                             <div class='col'>
                                 <div class='col'>
