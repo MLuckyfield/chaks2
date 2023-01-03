@@ -336,7 +336,7 @@ const Front = ()=>{
                 </div>
               </div>
             } light={banner}/>
-            <div class='fixed-row' style={{backgroundImage: 'url('+campaign+')',backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
+            <div class='fixed-row' style={{backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
                 <div class='col w20'>
                   <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新年入会<br/>キャンペーン</span>
                 </div>
