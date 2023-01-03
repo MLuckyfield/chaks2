@@ -425,7 +425,7 @@ const email = require('../../services/email')
         console.log('running point update')
         let update=[{value:30},{value:30}]
         User.findOneAndUpdate({_id:'62c147094744abc4b3111f6a'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
-        let update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
+        update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
         User.findOneAndUpdate({_id:'6346840b683a491148a921d8'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
       })
     // add minutes
