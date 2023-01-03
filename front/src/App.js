@@ -49,6 +49,7 @@ import bre from './bre.jpg'
 import blog_header from './blog_header.jpg'
 import campaign_header from './campaign_header.jpg'
 import discount from './discount.jpg'
+import campaign from './campaign.jpg'
 
 import {QrReader} from 'react-qr-reader'
 import QRCode from 'react-qr-code'
@@ -335,7 +336,7 @@ const Front = ()=>{
                 </div>
               </div>
             } light={banner}/>
-            <div class='fixed-row' style={{background:'rgba(175,65,84,1)',color:'white'}}>
+            <div class='fixed-row' style={{backgroundImage: 'url('+campaign+')',backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
                 <div class='col w20'>
                   <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新年入会<br/>キャンペーン</span>
                 </div>
@@ -506,7 +507,26 @@ const Front = ()=>{
                       <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                           <h2>GUIDED COURSE</h2>
                           <span style={{height:'40px',margin:'5%',textAlign:'center'}}>７０個以上の文法やイディオム、１００個以上のトピックでの英語学習が可能</span>
-                          
+                          <Popup button={"割引でお得!"} num={5} content={
+                            <div class='col'>
+                                <div class='col'>
+                                    <div class='fixed-row' style={{alignItems:'flex-start'}}>
+                                        <div class='col align'>
+                                          <h2 style={{marginBottom:'5%'}}>講師陣が英会話レベルを４項目で評価！</h2>
+                                          <img style={{width:'100%'}} src={fluency}></img>
+                                          <p></p>
+                                        </div>
+                                    </div>
+                                    <div class='fixed-row'>
+                                        <div class='col align'>
+                                          <h2 style={{marginBottom:'5%'}}>ガイドコース</h2>
+                                          <img style={{width:'100%'}} src={courses}></img>
+                                          <p>学習したい英文法を設定して使うことで講師が間違いを直してくれるガイドコースも利用可能！</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          }/>
                       </div>
                     </div>
                   </div>
