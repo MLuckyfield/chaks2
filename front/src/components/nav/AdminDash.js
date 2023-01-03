@@ -157,7 +157,7 @@ const StaffTable = ()=>{
   )
 }
 const StudentTable = ()=>{
-  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -fluency -progress -online_schedule -online_slots -goals -students -tags -source -password -createdAt -updatedAt -role -points -active -statistics -subscriptions"/>
+  return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -fluency -progress -online_schedule -online_slots -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
 }
 
 const Dash = ()=>{

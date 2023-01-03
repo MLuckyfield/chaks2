@@ -47,7 +47,7 @@ const makeComment = (item)=>{
 }
 const displayable=(key)=>{
   // console.log(key)
-  if(key!='_id'&&key!='email'&&key!='profile'&&key!='inClass'&&key!='stripe'&&key!='monthly_hours'&&key!='role'){
+  if(key!='_id'&&key!='email'&&key!='profile'&&key!='inClass'&&key!='stripe'&&key!='monthly_hours'&&key!='role'&&key!='points'){
     return true
   }else{return false}
 }
