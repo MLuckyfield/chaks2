@@ -71,7 +71,7 @@ const email = require('../../services/email')
                      let result = auth.createToken(user)
                      // console.log(result)
                      //--MAILCHIMP
-                     let tags =[]
+                     let tags =['inactive']
                      tags.push(req.segment)
                      console.log('starting mail service',req.segment,tags)
                      request({
@@ -421,11 +421,11 @@ const email = require('../../services/email')
       })
     })
     //manual point insertion
-      // cron.schedule('*/15 * * * *',()=>{
-      //   console.log('running point update')
-      //   let update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
-      //   User.findOneAndUpdate({_id:'636de40b70fc14757831d425'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
-      // })
+      cron.schedule('*/15 * * * *',()=>{
+        console.log('running point update')
+        let update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
+        User.findOneAndUpdate({_id:'636de40b70fc14757831d425'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
+      })
     // add minutes
     // cron.schedule('*/30 * * * *',()=>{
     //   console.log('running point update')

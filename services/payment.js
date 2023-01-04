@@ -59,8 +59,19 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
               }
           }
           identifier={stripe:{customer_id:session.customer}}
-          updateUser(identifier,purchased,res)
-          break;        
+          //update tag with active
+          mailchimp.setConfig({
+            apiKey:process.env.MAILCHIMP_AUTH,
+            server:'us9'
+          })
+          const response = mailchimp.lists.updateListMemberTags(
+            'cb86e9b6f5',
+            mailchimp_hash,
+            {tags:[{name:'active',status:'active'}]}
+          ).then(()=>{updateUser(identifier,purchased,res)})
+           .catch(()=>{updateUser(identifier,purchased,res)}})
+
+          break;
         case 'invoice.payment_succeeded':
           console.log('invoice.payment_succeeded recieved')
           identifier={'stripe.customer_id':session.customer}

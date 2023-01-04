@@ -2,13 +2,9 @@ import React, { useState,useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
-import Popup from '../utilities/popup'
-import environment from '../../online_environment.jpg'
 import points from '../../pic.png'
-import fluency from '../../fluency.jpg'
-import courses from '../../courses.jpg'
-import discount from '../../discount.jpg'
-import campaign from '../../campaign.jpg'
+import atmos from './atmosphere.jpg'
+
 
 const TestProp = () => {
 
