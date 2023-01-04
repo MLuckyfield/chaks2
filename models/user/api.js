@@ -266,7 +266,7 @@ const email = require('../../services/email')
                     }
                     User.findByIdAndUpdate(req.filter,{'$set':{points:result.points}},{new:true})
                       .then((complete)=>{
-                        console.log('clocking out',complete.first,complete.last,start,end)
+                        console.log('clocking out',complete.first,complete.last,billable,unpaid)
                         return res.status(201).json({
                           data:complete,
                           display:{unpaid:unpaid,billable:billable,remaining:complete.points.length*30},
@@ -421,13 +421,11 @@ const email = require('../../services/email')
       })
     })
     //manual point insertion
-      // cron.schedule('*/15 * * * *',()=>{
-      //   console.log('running point update')
-      //   let update=[{value:30},{value:30}]
-      //   User.findOneAndUpdate({_id:'62c147094744abc4b3111f6a'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
-      //   update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
-      //   User.findOneAndUpdate({_id:'6346840b683a491148a921d8'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
-      // })
+      cron.schedule('*/15 * * * *',()=>{
+        console.log('running point update')
+        let update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
+        User.findOneAndUpdate({_id:'636de40b70fc14757831d425'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
+      })
     // add minutes
     // cron.schedule('*/30 * * * *',()=>{
     //   console.log('running point update')

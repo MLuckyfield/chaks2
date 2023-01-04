@@ -63,97 +63,54 @@ const TestProp = () => {
 
   return(
     <div class='col'>
-    <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
-      <div class='mini_overlay col' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',color:'black'}}>
-        <div class='col border'>
-            <h1 style={{margin:'10% 0'}}>楽しむ方法は簡単</h1>
-            <div class='row center align'>
-                    <div class='col'>
-                      <span class="custom_icon">1</span>
-                      <p>予約不要の無料レッスンを</p>
-                      <h2>気軽に体験!</h2>
-                    </div>
-                    <div class='col'>
-                      <span class="custom_icon">2</span>
-                      <p>月に通いたい時間を決めて</p>
-                      <h2>サブスク登録!</h2>
-                    </div>
-                    <div class='col'>
-                      <span class="custom_icon">3</span>
-                      <p>好きな時にご来店</p>
-                      <h2>習慣化を図ろう！</h2>
-                    </div>
-            </div>
-        </div>
-      </div>
-    </div>
-    <div class='fixed-row' style={{backgroundImage: 'url('+campaign+')',backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
-      <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
-        <div class='col w20'>
-          <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新年入会<br/>キャンペーン</span>
-        </div>
-        <div class='col w80 align'>
-          <p>今なら</p>
-          <h1>最大15%割引</h1>
-          <p style={{marginBottom:'3%'}}>期間限定 1月3日~2月28日</p>
-          <Popup button={"詳細"} num={1} content={
-            <div class='col'>
-                <h1 style={{margin:'10% 0'}}>最大15%割引</h1>
-                <p>４時間以上でご契約されるお客様には以下の割引が適用されます!</p>
+    <div id='concept' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
+      <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',margin:'0',width:'100%'}}>
+          <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
+          <div class='col slim center'>
+              <h1 style={{padding:'5%',border:'1px solid white'}}>4点の特徴</h1>
+          </div>
+          <div class='up_row'>
                 <div class='col'>
-                    <div class='fixed-row'>
-                        <div class='col align'>
-                          <h2>新年入会</h2>
-                          <ul>
-                            <li>４時間以上：５％割引</li>
-                            <li>８時間以上：１０％割引</li>
-                            <li>１２時間以上：１５％割引</li>
-                          </ul>
-                        </div>
-                    </div>
-                    <div class='fixed-row'>
-                        <div class='col align'>
-                          <h2>学生限定</h2>
-                          <p>さらに！！学生様には追加で１０％割引が適用されます！</p>
-                        </div>
+                    <p>英会話教室よりも</p>
+                    <h2>気軽に</h2>
+                    <div class='col'>
+                      <div class='row'>
+                        <span class="custom_icon">3</span>
+                        予約不要
+                      </div>
+                      <div class='row'>
+                        <span class="custom_icon">3</span>
+                        予約不要
+                      </div>
+                      <div class='row'>
+                        <span class="custom_icon">3</span>
+                        予約不要
+                      </div>
+                      <div class='row'>
+                        <span class="custom_icon">3</span>
+                        予約不要
+                      </div>
                     </div>
                 </div>
-            </div>
-          }/>
-          </div>
-        </div>
-    </div>
-    <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover',backgroundPosition:'center'}}>
-      <div class='mini_overlay yellow'>
-          <div class='col' style={{width:'70%',alignItems:'normal'}}>
-                  <h1 class='emphasize' style={{textAlign:'left'}}>1時間<br/>0円!</h1>
-                  <h1 style={{textAlign:'left'}}>初回無料</h1>
-                  <h2 style={{textAlign:'left'}}>気軽に来てください!</h2>
-                  <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',margin:'3% 0% 5% 0%',width:'max-content'}}>
-                      通常料金: 30分￥1000<br/>
-                      サブスクスタイル!<br/>
-                      コーヒー・紅茶込み
-                  </span>
-                  <Popup button={"割引でお得!"} num={4} content={
+                <div class='col'>
+                    <span class='material-icons'>record_voice_over</span>
+                    <h2>英語をたくさん話す</h2>
                     <div class='col'>
-                        <div class='col'>
-                            <div class='fixed-row' style={{alignItems:'flex-start'}}>
-                                <div class='col align'>
-                                  <h2 style={{marginBottom:'5%'}}>講師陣が英会話レベルを４項目で評価！</h2>
-                                  <img style={{width:'100%'}} src={fluency}></img>
-                                  <p></p>
-                                </div>
-                            </div>
-                            <div class='fixed-row'>
-                                <div class='col align'>
-                                  <h2 style={{marginBottom:'5%'}}>ガイドコース</h2>
-                                  <img style={{width:'100%'}} src={courses}></img>
-                                  <p>学習したい英文法を設定して使うことで講師が間違いを直してくれるガイドコースも利用可能！</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  }/>
+グループはレベル別に分けられ、講師陣は全員が平等に英語を喋れるように会話をリードします。</div>
+                </div>
+          </div>
+          <div class='up_row'>
+                <div class='col'>
+                    <span class='material-icons'>trending_up</span>
+                    <h2>成長を振り返る</h2>
+                    <div class='col'>レッスン後には先生からのフィードバックがオンラインでもらえます。その日に何を学んだのかいつでも振り返ることができます。</div>
+                </div>
+                <div class='col'>
+                    <span class='material-icons'>schedule</span>
+                    <h2>予約不要</h2>
+                    <div class='col'>自由に英会話をしたいときに来て、いつでも退店できるシステムです。</div>
+                </div>
+          </div>
           </div>
       </div>
     </div>
