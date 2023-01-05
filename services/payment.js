@@ -70,7 +70,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             mailchimp_hash,
             {tags:[{name:'active',status:'active'}]}
           ).then(()=>{updateUser(identifier,purchased,res)})
-           .catch(()=>{updateUser(identifier,purchased,res)}})
+           .catch(()=>{updateUser(identifier,purchased,res)})
 
           break;
         case 'invoice.payment_succeeded':
