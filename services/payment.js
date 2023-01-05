@@ -4,6 +4,7 @@ const moment = require ('moment')
 const router = require('express').Router();
 const express = require('express');
 const email = require('./email')
+const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 const HODAI_LIVE=''
 const PREMIUM_LIVE=''
