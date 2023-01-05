@@ -59,7 +59,7 @@ const TestProp = () => {
 
   return(
     <div class='col'>
-    <div class='row'>
+    <div class='col'>
     <h1>CHATSHACKレッスン受講規約</h1>
 
     <h2>第1条（契約の成立）</h2>
