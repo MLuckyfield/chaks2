@@ -60,8 +60,8 @@ const TestProp = () => {
   return(
     <div class='col'>
     <div class='col'>
-    <h1>CHATSHACKレッスン受講規約</h1>
-
+    <h1>CHATSHACK<br/>レッスン<br/>受講規約</h1>
+    <br/>
     <h2>第1条（契約の成立）</h2>
     <div class='col'>1. レッスン受講申込者（以下「申込者」という）は以下の条項を承諾のうえ、CHATSHACKのレッスンに対して受講の申込みを行い、CHATSHACKはこれを承諾します。
     2. 前項の定めにかかわらず、次の各号に掲げる事由に該当するときは、各要件を充たすことを条件として契約が成立するものとします。
