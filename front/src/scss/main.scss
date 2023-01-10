@@ -8,6 +8,15 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import 'product_display';
 
+.list{
+  align-items: flex-start;
+  .list_row{
+    margin:3%;
+    .list_item{
+      margin:1%;
+    }
+  }
+}
 .vertical_banner{
   text-orientation:upright;
   writing-mode:vertical-lr;
@@ -31,7 +40,7 @@
   a{
     text-decoration: none;
     color: white;
-    font-weight: 700;    
+    font-weight: 700;
   }
 }
 .custom_icon{

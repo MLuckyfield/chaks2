@@ -158,22 +158,22 @@ const TestProp = () => {
           <div class='up_row'>
                 <div class='col'>
                     <p>英会話教室よりも</p>
-                    <h2>気軽に</h2>
-                    <div class='col'>
-                      <div class='row'>
-                        <span class="custom_icon"><span class='material-icons'>done</span></span>
+                    <h1>気軽に</h1>
+                    <div class='list'>
+                      <div class='list_row'>
+                        <span class="list_item custom_icon"><span class='material-icons'>done</span></span>
                         予約不要
                       </div>
-                      <div class='row'>
-                        <span class="custom_icon">3</span>
+                      <div class='list_row'>
+                        <span class="list_item custom_icon">3</span>
                         予約不要
                       </div>
-                      <div class='row'>
-                        <span class="custom_icon">3</span>
+                      <div class='list_row'>
+                        <span class="list_item custom_icon">3</span>
                         予約不要
                       </div>
-                      <div class='row'>
-                        <span class="custom_icon">3</span>
+                      <div class='list_row'>
+                        <span class="list_item custom_icon">3</span>
                         予約不要
                       </div>
                     </div>
