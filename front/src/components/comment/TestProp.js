@@ -161,7 +161,7 @@ const TestProp = () => {
                     <h2>気軽に</h2>
                     <div class='col'>
                       <div class='row'>
-                        <span class="custom_icon">3</span>
+                        <span class="custom_icon"><span class='material-icons'>record_voice_over</span></span>
                         予約不要
                       </div>
                       <div class='row'>
