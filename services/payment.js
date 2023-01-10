@@ -61,6 +61,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           }
           identifier={stripe:{customer_id:session.customer}}
           //update tag with active
+          let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
+
           mailchimp.setConfig({
             apiKey:process.env.MAILCHIMP_AUTH,
             server:'us9'
@@ -68,7 +70,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           const response = mailchimp.lists.updateListMemberTags(
             'cb86e9b6f5',
             mailchimp_hash,
-            {tags:[{name:'active',status:'active'}]}
+            {tags:[{name:'active',status:'active'},{name:'inactive',status:'inactive'}]}
           ).then(()=>{updateUser(identifier,purchased,res)})
            .catch(()=>{updateUser(identifier,purchased,res)})
 
@@ -191,7 +193,29 @@ router.post('/new', async (req, res)=>{
      success: true
    });
 })
-
+//fixed via email
+router.post('/fixed', async (req, res)=>{
+  // console.log(req)
+  // console.log(req.body.product)
+  let line_items={
+      price:req.body.product,
+      quantity:req.body.countable,
+      adjustable_quantity:{enabled:true,minimum:req.body.countable,maximum:99},
+    }
+  const paymentLink = await stripe.paymentLinks.create({
+    line_items:[line_items],
+    allow_promotion_codes:true,
+    metadata:{order:req.body.user},
+    // payment_intent_data:{setup_future_usage:'off_session'},
+    after_completion: {type: 'redirect', redirect: {url: 'https://chatshack.jp/account'}},
+  })
+  // console.log('preparing payment link',paymentLink)
+  return res.status(201).json({
+     data: paymentLink,
+     message: 'Booking saved',
+     success: true
+   });
+})
 //upgrade or downgrade the subscription
 router.post('/update_sub', async (req, res)=>{
   req=req.body

@@ -56,12 +56,22 @@ const TestProp = () => {
         });
 
   },[month])
-
+  const toPay=(e,product,countable)=>{
+    e.preventDefault();
+    console.log(product)
+    axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
+      .then((res) => {
+          console.log(res.data.data)
+          window.location.href=res.data.data.url
+          // setMsg([res.data.message,res.data.success]);
+          })
+      .catch((err) => {});
+  }
   return(
     <div class='col'>
     <div class='col'>
     <h1>CHATSHACK<br/>レッスン<br/>受講規約</h1>
-    <br/>
+    <p>
     <h2>第1条（契約の成立）</h2>
     <div class='col'>1. レッスン受講申込者（以下「申込者」という）は以下の条項を承諾のうえ、CHATSHACKのレッスンに対して受講の申込みを行い、CHATSHACKはこれを承諾します。
     2. 前項の定めにかかわらず、次の各号に掲げる事由に該当するときは、各要件を充たすことを条件として契約が成立するものとします。
@@ -134,7 +144,9 @@ const TestProp = () => {
     <div class='col'>1. 本規約に定める事項について疑義が生じた場合、その他本規約に関して争いが生じた場合には、両者協議のうえ、解決するものとします。
     2. 本契約に定めのない事項については、民法その他の法令によるものとします。
     </div>
+    </p>
     ◆上記のCHATSHACKレッスン受講規約に同意の上、レッスンを受講します。
+    <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{toPay(e,'price_1LvguqBVAfieqaobMWOW9cvF',4)}}>詳細</div>
 
     </div>
     <div id='concept' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
