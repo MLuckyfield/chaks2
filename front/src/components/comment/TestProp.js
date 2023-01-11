@@ -174,7 +174,7 @@ const TestProp = () => {
                     <div class='list'>
                       <div class='list_row'>
                         <span class="list_item custom_icon"><span class='material-icons'>done</span></span>
-                        予約不要
+                        <span>予約不要</span>
                       </div>
                       <div class='list_row'>
                         <span class="list_item custom_icon">3</span>
