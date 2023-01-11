@@ -62,7 +62,7 @@ const TestProp = () => {
   const toPay=(e,product,countable)=>{
     e.preventDefault();
     console.log('checkbox is',agrees.current.checked)
-    if(agrees.current.value){
+    if(agrees.current.checked){
       console.log(product)
       axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
         .then((res) => {
