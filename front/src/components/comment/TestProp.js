@@ -60,16 +60,16 @@ const TestProp = () => {
   const toPay=(e,product,countable)=>{
     e.preventDefault();
     console.log('checkbox is',agrees)
-    if(agrees.current.value){
-      console.log(product)
-      axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
-        .then((res) => {
-            console.log(res.data.data)
-            window.location.href=res.data.data.url
-            // setMsg([res.data.message,res.data.success]);
-            })
-        .catch((err) => {});
-    }
+    // if(agrees.current.value){
+    //   console.log(product)
+    //   axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
+    //     .then((res) => {
+    //         console.log(res.data.data)
+    //         window.location.href=res.data.data.url
+    //         // setMsg([res.data.message,res.data.success]);
+    //         })
+    //     .catch((err) => {});
+    // }
   }
   return(
     <div class='col'>
