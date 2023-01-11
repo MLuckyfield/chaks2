@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useRef } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
@@ -8,6 +8,7 @@ import atmos from '../../atmosphere.jpg'
 
 const TestProp = () => {
 
+  const agrees = useRef()
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day,setDay]=useState(()=>{let time = new Date();return time.getDay()})
@@ -58,14 +59,17 @@ const TestProp = () => {
   },[month])
   const toPay=(e,product,countable)=>{
     e.preventDefault();
-    console.log(product)
-    axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
-      .then((res) => {
-          console.log(res.data.data)
-          window.location.href=res.data.data.url
-          // setMsg([res.data.message,res.data.success]);
-          })
-      .catch((err) => {});
+    console.log('checkbox is',agrees.current.value)
+    if(agrees.current.value){
+      console.log(product)
+      axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
+        .then((res) => {
+            console.log(res.data.data)
+            window.location.href=res.data.data.url
+            // setMsg([res.data.message,res.data.success]);
+            })
+        .catch((err) => {});
+    }
   }
   return(
     <div class='col'>
@@ -146,6 +150,9 @@ const TestProp = () => {
     </div>
     </p>
     ◆上記のCHATSHACKレッスン受講規約に同意の上、レッスンを受講します。
+    <label>
+          <input type="checkbox" ref={agrees} />
+    </label>
     <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{toPay(e,'price_1LvguqBVAfieqaobMWOW9cvF',4)}}>詳細</div>
 
     </div>
