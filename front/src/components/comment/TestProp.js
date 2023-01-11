@@ -157,7 +157,7 @@ const TestProp = () => {
     <label>
           <input type="checkbox" ref={agrees} /> I have read and agree to the above terms
     </label>
-    {message?message:''}
+    {message?<div class='row'><input class='bad msg form-control' value={message}></input></div>  :''}
     <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{toPay(e,'price_1LvguqBVAfieqaobMWOW9cvF',4)}}>詳細</div>
 
     </div>
