@@ -9,6 +9,8 @@ import atmos from '../../atmosphere.jpg'
 const TestProp = () => {
 
   const agrees = useRef()
+  const [message,setMessage] = useState()
+
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day,setDay]=useState(()=>{let time = new Date();return time.getDay()})
@@ -60,16 +62,18 @@ const TestProp = () => {
   const toPay=(e,product,countable)=>{
     e.preventDefault();
     console.log('checkbox is',agrees.current.checked)
-    // if(agrees.current.value){
-    //   console.log(product)
-    //   axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
-    //     .then((res) => {
-    //         console.log(res.data.data)
-    //         window.location.href=res.data.data.url
-    //         // setMsg([res.data.message,res.data.success]);
-    //         })
-    //     .catch((err) => {});
-    // }
+    if(agrees.current.value){
+      console.log(product)
+      axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
+        .then((res) => {
+            console.log(res.data.data)
+            window.location.href=res.data.data.url
+            // setMsg([res.data.message,res.data.success]);
+            })
+        .catch((err) => {});
+    }else{
+      setMessage('You must agree to the terms of this subscription.')
+    }
   }
   return(
     <div class='col'>
@@ -151,8 +155,9 @@ const TestProp = () => {
     </p>
     ◆上記のCHATSHACKレッスン受講規約に同意の上、レッスンを受講します。
     <label>
-          <input type="checkbox" ref={agrees} />
+          <input type="checkbox" ref={agrees} /> I have read and agree to the above terms
     </label>
+    {message?message:''}
     <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{toPay(e,'price_1LvguqBVAfieqaobMWOW9cvF',4)}}>詳細</div>
 
     </div>
