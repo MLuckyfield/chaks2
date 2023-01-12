@@ -20,7 +20,7 @@ const TestProp = () => {
     let target = new Date(year,month,0)
     console.log('searching from', new Date(`${year}-${month}-1`),new Date(`${year}-${month}-${target.getDate()}`))
     //get all bookings for the month
-    axios.get('/booking/all',{params:{filter:{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${target.getDate()}`)}}}})
+    axios.get('/booking/all',{params:{filter:{date:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${target.getDate()}`)}}}})
       .then((res) => {
         let data = res.data.data
         // console.log('bookings retrieved:',data)
@@ -39,7 +39,6 @@ const TestProp = () => {
             let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
             data.forEach((booking, i) => {
               //if date of booking matches i create object and add to bookings
-              console.log(i)
               if(today.getDate()==moment(booking.date).date()){
                 day_bookings.bookings.push(booking)
               }
