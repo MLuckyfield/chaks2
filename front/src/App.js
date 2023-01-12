@@ -325,6 +325,40 @@ const Front = ()=>{
       //     </div>
       //   </div>
       // </div>
+  //     <div id='concept' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
+  //       <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',margin:'0',width:'100%'}}>
+  //           <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
+  //           <div class='col slim center'>
+  //               <h1 style={{padding:'5%',border:'1px solid white'}}>4点の特徴</h1>
+  //           </div>
+  //           <div class='up_row'>
+  //                 <div class='col'>
+  //                     <span class='material-icons'>school</span>
+  //                     <h2>しっかり学ぶ</h2>
+  //                     <div class='col'>英会話講師経験のあるネイティブスピーカーがホワイトボードを使って正しい英語を 分かりやすく教えてくれます。</div>
+  //                 </div>
+  //                 <div class='col'>
+  //                     <span class='material-icons'>record_voice_over</span>
+  //                     <h2>英語をたくさん話す</h2>
+  //                     <div class='col'>
+  // グループはレベル別に分けられ、講師陣は全員が平等に英語を喋れるように会話をリードします。</div>
+  //                 </div>
+  //           </div>
+  //           <div class='up_row'>
+  //                 <div class='col'>
+  //                     <span class='material-icons'>trending_up</span>
+  //                     <h2>成長を振り返る</h2>
+  //                     <div class='col'>レッスン後には先生からのフィードバックがオンラインでもらえます。その日に何を学んだのかいつでも振り返ることができます。</div>
+  //                 </div>
+  //                 <div class='col'>
+  //                     <span class='material-icons'>schedule</span>
+  //                     <h2>予約不要</h2>
+  //                     <div class='col'>自由に英会話をしたいときに来て、いつでも退店できるシステムです。</div>
+  //                 </div>
+  //           </div>
+  //           </div>
+  //       </div>
+  //     </div>
       return (
         <div>
         {localStorage.getItem('user')?'':(
@@ -377,40 +411,62 @@ const Front = ()=>{
                   </div>
                 </div>
             </div>
-              <div id='concept' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
-                <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',margin:'0',width:'100%'}}>
-                    <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
-                    <div class='col slim center'>
-                        <h1 style={{padding:'5%',border:'1px solid white'}}>4点の特徴</h1>
-                    </div>
-                    <div class='up_row'>
-                          <div class='col'>
-                              <span class='material-icons'>school</span>
-                              <h2>しっかり学ぶ</h2>
-                              <div class='col'>英会話講師経験のあるネイティブスピーカーがホワイトボードを使って正しい英語を 分かりやすく教えてくれます。</div>
+            <div id='concept' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
+              <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',margin:'0',width:'100%'}}>
+                  <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
+                  <div class='col slim center'>
+                      <h1 style={{padding:'5%',border:'1px solid white'}}>2点の特徴</h1>
+                  </div>
+                  <div class='up_row'>
+                    <div class='col'>
+                        <p>英会話カフェよりも</p>
+                        <h1>しっかり</h1>
+                        <div class='list'>
+                          <div class='list_row'>
+                            <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                            <div class='w80'>ネイティブの講師陣</div>
                           </div>
-                          <div class='col'>
-                              <span class='material-icons'>record_voice_over</span>
-                              <h2>英語をたくさん話す</h2>
-                              <div class='col'>
-          グループはレベル別に分けられ、講師陣は全員が平等に英語を喋れるように会話をリードします。</div>
+                          <div class='list_row'>
+                            <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                            <div class='w80'>レベル分け・最大４名</div>
                           </div>
-                    </div>
-                    <div class='up_row'>
-                          <div class='col'>
-                              <span class='material-icons'>trending_up</span>
-                              <h2>成長を振り返る</h2>
-                              <div class='col'>レッスン後には先生からのフィードバックがオンラインでもらえます。その日に何を学んだのかいつでも振り返ることができます。</div>
+                          <div class='list_row'>
+                            <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                            <div class='w80'>文法・イディオムコース</div>
                           </div>
-                          <div class='col'>
-                              <span class='material-icons'>schedule</span>
-                              <h2>予約不要</h2>
-                              <div class='col'>自由に英会話をしたいときに来て、いつでも退店できるシステムです。</div>
+                          <div class='list_row'>
+                            <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                            <div class='w80'>毎回のフィードバック</div>
                           </div>
+                        </div>
                     </div>
+                    <div class='col'>
+                      <p>英会話教室よりも</p>
+                      <h1>気軽に</h1>
+                      <div class='list'>
+                        <div class='list_row'>
+                          <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                          <div class='w80'>予約不要</div>
+                        </div>
+                        <div class='list_row'>
+                          <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                          <div class='w80'>滞在時間自由</div>
+                        </div>
+                        <div class='list_row'>
+                          <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                          <div class='w80'>明るい雰囲気の店内</div>
+                        </div>
+                        <div class='list_row'>
+                          <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                          <div class='w80'>入会金なし</div>
+                        </div>
+                      </div>
                     </div>
-                </div>
+                  </div>
+
+                  </div>
               </div>
+            </div>
               <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
                 <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',color:'black'}}>
                   <div class='col border'>
