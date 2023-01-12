@@ -106,12 +106,13 @@ const Contract = () => {
         2. 本契約に定めのない事項については、民法その他の法令によるものとします。
         </div>
         </p>
-        ◆上記のCHATSHACKレッスン受講規約に同意の上、レッスンを受講します。
-        <label>
-              <input type="checkbox" ref={agrees} /> I have read and agree to the above terms
-        </label>
-        {message?<div class='row'><input class='bad msg form-control' value={message}></input></div>  :''}
-        <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{toPay(e,'price_1LvguqBVAfieqaobMWOW9cvF',4)}}>詳細</div>
+        <div class='col border'>
+          <label>
+                <input type="checkbox" ref={agrees} /> ◆上記のCHATSHACKレッスン受講規約に同意の上、レッスンを受講します
+          </label>
+          {message?<div class='row'><input class='bad msg form-control' value={message}></input></div>  :''}
+          <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{toPay(e,'price_1LvguqBVAfieqaobMWOW9cvF',4)}}>詳細</div>
+        </div>
       </div>
     </div>
 
