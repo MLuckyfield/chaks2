@@ -171,50 +171,50 @@ const TestProp = () => {
               <h1 style={{padding:'5%',border:'1px solid white'}}>4点の特徴</h1>
           </div>
           <div class='up_row'>
-                <div class='col'>
-                    <p>英会話カフェよりも</p>
-                    <h1>しっかり</h1>
-                    <div class='list'>
-                      <div class='list_row'>
-                        <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                        <div class='w80'>ネイティブの講師陣</div>
-                      </div>
-                      <div class='list_row'>
-                        <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                        <div class='w80'>レベル分け・最大４名</div>
-                      </div>
-                      <div class='list_row'>
-                        <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                        <div class='w80'>文法・イディオムコース</div>
-                      </div>
-                      <div class='list_row'>
-                        <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                        <div class='w80'>毎回のフィードバック</div>
-                      </div>
-                    </div>
-                </div>
-                <div class='col'>
-                  <p>英会話教室よりも</p>
-                  <h1>気軽に</h1>
-                  <div class='list'>
-                    <div class='list_row'>
-                      <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                      <div class='w80'>予約不要</div>
-                    </div>
-                    <div class='list_row'>
-                      <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                      <div class='w80'>滞在時間自由</div>
-                    </div>
-                    <div class='list_row'>
-                      <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                      <div class='w80'>明るい雰囲気の店内</div>
-                    </div>
-                    <div class='list_row'>
-                      <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                      <div class='w80'>予約不要</div>
-                    </div>
+            <div class='col'>
+                <p>英会話カフェよりも</p>
+                <h1>しっかり</h1>
+                <div class='list'>
+                  <div class='list_row'>
+                    <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                    <div class='w80'>ネイティブの講師陣</div>
+                  </div>
+                  <div class='list_row'>
+                    <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                    <div class='w80'>レベル分け・最大４名</div>
+                  </div>
+                  <div class='list_row'>
+                    <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                    <div class='w80'>文法・イディオムコース</div>
+                  </div>
+                  <div class='list_row'>
+                    <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                    <div class='w80'>毎回のフィードバック</div>
                   </div>
                 </div>
+            </div>
+            <div class='col'>
+              <p>英会話教室よりも</p>
+              <h1>気軽に</h1>
+              <div class='list'>
+                <div class='list_row'>
+                  <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                  <div class='w80'>予約不要</div>
+                </div>
+                <div class='list_row'>
+                  <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                  <div class='w80'>滞在時間自由</div>
+                </div>
+                <div class='list_row'>
+                  <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                  <div class='w80'>明るい雰囲気の店内</div>
+                </div>
+                <div class='list_row'>
+                  <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
+                  <div class='w80'>予約不要</div>
+                </div>
+              </div>
+            </div>
           </div>
 
           </div>
