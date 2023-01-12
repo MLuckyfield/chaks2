@@ -17,7 +17,7 @@ const Contract = () => {
      let hours = parseInt(window.location.href.substring(27))
     if(agrees.current.checked && hours >1 && hours<100){
       console.log(product)
-      axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
+      axios.post('/payment/fixed',{user:1212,product:product,countable:hours})
         .then((res) => {
             console.log(res.data.data)
             window.location.href=res.data.data.url
