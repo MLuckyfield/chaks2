@@ -421,11 +421,11 @@ const email = require('../../services/email')
       })
     })
     //manual point insertion
-      // cron.schedule('*/15 * * * *',()=>{
-      //   console.log('running point update')
-      //   let update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
-      //   User.findOneAndUpdate({_id:'636de40b70fc14757831d425'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
-      // })
+      cron.schedule('*/15 * * * *',()=>{
+        console.log('running point update')
+        let update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
+        User.findOneAndUpdate({_id:'633e91c3945a79bacb934535'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
+      })
     // add minutes
     // cron.schedule('*/30 * * * *',()=>{
     //   console.log('running point update')
