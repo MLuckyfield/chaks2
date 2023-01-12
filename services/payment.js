@@ -5,6 +5,7 @@ const router = require('express').Router();
 const express = require('express');
 const email = require('./email')
 const mailchimp = require("@mailchimp/mailchimp_marketing");
+const encrypt = require('crypto-js/md5')
 
 const HODAI_LIVE=''
 const PREMIUM_LIVE=''
