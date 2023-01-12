@@ -142,6 +142,7 @@ cron.schedule('*/15 * * * *',()=>{
 cron.schedule('*/6 * * * *',()=>{
   console.log('approving schedule')
   Booking.find({createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${days}`)}}).then((bookings)=>{
+    console.log('will approve',bookings)
     Booking.updateMany(booking,{status:'final'}).then(()=>{console.log('schedule approved')})
   })
 })
