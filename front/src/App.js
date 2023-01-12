@@ -20,6 +20,7 @@ import PW_Reset from './components/user/PW_Reset'
 import Account from './components/user/account'
 import Popup from './components/utilities/popup'
 import Profile from './components/user/Profile'
+import Contract from './components/utilities/contract'
 
 import google_analytics from './components/google_analytics'
 import google_ads from './components/google_ads'
@@ -117,6 +118,7 @@ const App = () => {
           <Route exact path="/blog/*" component={BlogDisplay}/>
           <Route path="/login" component={Login}/>
           <Route path="/online" component={Online_Landing}/>
+          <Route path="/promo*" component={Contract}/>
           <Route path="/reset" component={PW_Reset}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/create-event" access={['manager','admin']} success={CreateEvent} fail={()=><Redirect to='/login'/>}/>
