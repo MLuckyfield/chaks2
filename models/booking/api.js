@@ -116,7 +116,7 @@ router.get('/all', auth.permission(['user','manager']),async (req, res) => {
 //                   // console.log('before',shift_start)
 //                   let object = {
 //                     teacher:teacher._id,
-//                     date: moment.tz(shift_start,'Asia/Taipei').toDate(),
+//                     date: moment.tz(shift_start,'Asia/Tokyo').toDate(),
 //                     status:'draft'
 //                   }
 //                   bookings.push(object)

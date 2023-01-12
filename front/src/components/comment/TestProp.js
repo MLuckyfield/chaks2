@@ -80,8 +80,8 @@ const TestProp = () => {
                       let temp = new Date(timeslot.date)
                       return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Tokyo')._a[3]}:${moment.tz(timeslot.date,'Asia/Tokyo')._a[4]}`} num={y+5} active={timeslot.status} content={
                         <div>
-                          {timeslot.teacher.first} {timeslot.teacher.last}<br/>
-                          {moment.tz(timeslot.date,'Asia/Tokyo').format('HH:MM')} | {timeslot.status}
+                          <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {moment.tz(timeslot.date,'Asia/Tokyo')._a[3]}:{moment.tz(timeslot.date,'Asia/Tokyo')._a[4]=='0'?'00':moment.tz(timeslot.date,'Asia/Tokyo')._a[4]}</h2><br/>
+                          {timeslot.status}
                           <div class='row'>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault()}}>Reschedule</div>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault()}}>Delete</div>
