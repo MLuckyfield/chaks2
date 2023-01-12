@@ -14,19 +14,19 @@ const Contract = () => {
     console.log('checkbox is',agrees.current.checked)
     console.log('url',window.location.href)
     console.log('target',window.location.href.substring(27))
-
-    // if(agrees.current.checked){
-    //   console.log(product)
-    //   axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
-    //     .then((res) => {
-    //         console.log(res.data.data)
-    //         window.location.href=res.data.data.url
-    //         // setMsg([res.data.message,res.data.success]);
-    //         })
-    //     .catch((err) => {});
-    // }else{
-    //   setMessage('You must agree to the terms of this subscription.')
-    // }
+     let hours = parseInt(window.location.href.substring(27))
+    if(agrees.current.checked && hours >1 && hours<100){
+      console.log(product)
+      axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
+        .then((res) => {
+            console.log(res.data.data)
+            window.location.href=res.data.data.url
+            // setMsg([res.data.message,res.data.success]);
+            })
+        .catch((err) => {});
+    }else{
+      setMessage('You must agree to the terms of this subscription.')
+    }
   }
   return(
     <div class='col'>
