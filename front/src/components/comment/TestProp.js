@@ -16,6 +16,7 @@ const TestProp = () => {
   const [bookings,setBookings]=useState()
   const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
   useEffect(()=>{
+    console.log(moment.tz.names())
     let target = new Date(year,month,0)
     console.log('searching from', new Date(`${year}-${month}-1`),new Date(`${year}-${month}-${target.getDate()}`))
     //get all bookings for the month
