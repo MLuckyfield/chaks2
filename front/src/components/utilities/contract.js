@@ -13,7 +13,7 @@ const Contract = () => {
     e.preventDefault();
     console.log('checkbox is',agrees.current.checked)
     console.log('url',window.location.href)
-    console.log('target',window.location.href.substring(21))
+    console.log('target',window.location.href.substring(27))
 
     // if(agrees.current.checked){
     //   console.log(product)
