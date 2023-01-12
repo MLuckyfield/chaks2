@@ -17,8 +17,9 @@
     margin:3%;
     flex-direction: row;
     display: flex;
-    .list_item{
-      margin:1%;
+    align-items: center;
+    .w80{
+      padding-left: 10%;
     }
   }
 }
