@@ -65,18 +65,18 @@ const TestProp = () => {
     console.log('url',window.location.href)
     console.log('target',window.location.href.substring(21))
 
-    if(agrees.current.checked){
-      console.log(product)
-      axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
-        .then((res) => {
-            console.log(res.data.data)
-            window.location.href=res.data.data.url
-            // setMsg([res.data.message,res.data.success]);
-            })
-        .catch((err) => {});
-    }else{
-      setMessage('You must agree to the terms of this subscription.')
-    }
+    // if(agrees.current.checked){
+    //   console.log(product)
+    //   axios.post('/payment/fixed',{user:1212,product:product,countable:countable})
+    //     .then((res) => {
+    //         console.log(res.data.data)
+    //         window.location.href=res.data.data.url
+    //         // setMsg([res.data.message,res.data.success]);
+    //         })
+    //     .catch((err) => {});
+    // }else{
+    //   setMessage('You must agree to the terms of this subscription.')
+    // }
   }
   return(
     <div class='col'>
@@ -164,62 +164,7 @@ const TestProp = () => {
     <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{toPay(e,'price_1LvguqBVAfieqaobMWOW9cvF',4)}}>詳細</div>
 
     </div>
-    <div id='concept' class='master-row' style={{background:'white',color:'white',paddingTop:'0'}}>
-      <div class='col' style={{backgroundImage: 'url('+atmos+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',margin:'0',width:'100%'}}>
-          <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)',width:'100%',margin:'0'}}>
-          <div class='col slim center'>
-              <h1 style={{padding:'5%',border:'1px solid white'}}>2点の特徴</h1>
-          </div>
-          <div class='up_row'>
-            <div class='col'>
-                <p>英会話カフェよりも</p>
-                <h1>しっかり</h1>
-                <div class='list'>
-                  <div class='list_row'>
-                    <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                    <div class='w80'>ネイティブの講師陣</div>
-                  </div>
-                  <div class='list_row'>
-                    <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                    <div class='w80'>レベル分け・最大４名</div>
-                  </div>
-                  <div class='list_row'>
-                    <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                    <div class='w80'>文法・イディオムコース</div>
-                  </div>
-                  <div class='list_row'>
-                    <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                    <div class='w80'>毎回のフィードバック</div>
-                  </div>
-                </div>
-            </div>
-            <div class='col'>
-              <p>英会話教室よりも</p>
-              <h1>気軽に</h1>
-              <div class='list'>
-                <div class='list_row'>
-                  <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                  <div class='w80'>予約不要</div>
-                </div>
-                <div class='list_row'>
-                  <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                  <div class='w80'>滞在時間自由</div>
-                </div>
-                <div class='list_row'>
-                  <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                  <div class='w80'>明るい雰囲気の店内</div>
-                </div>
-                <div class='list_row'>
-                  <div class='w20'><span class="custom_icon"><span class='material-icons'>done</span></span></div>
-                  <div class='w80'>入会金なし</div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          </div>
-      </div>
-    </div>
     <div style={{backgroundImage: 'url('+points+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>test</div>
       <div class='row'><button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button></div>
       <div class='calendar'>
