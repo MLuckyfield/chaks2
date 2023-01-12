@@ -9,7 +9,6 @@ const Contract = () => {
   const agrees = useRef()
   const [message,setMessage] = useState()
 
-
   const toPay=(e,product,countable)=>{
     e.preventDefault();
     console.log('checkbox is',agrees.current.checked)
