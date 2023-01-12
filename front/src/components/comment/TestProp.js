@@ -76,15 +76,16 @@ const TestProp = () => {
             return (<div class={new Date(year,month-1,item.day).getDate()>=today.getDate()?'dayBox border':'dayBox border inactive'}>
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      console.log(moment.tz(timeslot.date,'Asia/Tokyo'),moment.tz(timeslot.date,'JST'))
+                      console.log(moment.tz(timeslot.date,'Asia/Tokyo'))
                       let temp = new Date(timeslot.date)
                       return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Tokyo')._a[3]}:${moment.tz(timeslot.date,'Asia/Tokyo')._a[4]}`} num={y+5} active={timeslot.status} content={
                         <div>
                           {timeslot.teacher.first} {timeslot.teacher.last}<br/>
                           {moment.tz(timeslot.date,'Asia/Tokyo').format('HH:MM')} | {timeslot.status}
-                          <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault()}}>Reschedule</div>
-                          <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault()}}>Delete</div>
-
+                          <div class='row'>
+                            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault()}}>Reschedule</div>
+                            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault()}}>Delete</div>
+                          </div>
                         </div>
                       }/>
                     })}
