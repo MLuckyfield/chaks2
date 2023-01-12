@@ -83,6 +83,9 @@ const TestProp = () => {
                         <div>
                           {timeslot.teacher.first} {timeslot.teacher.last}<br/>
                           {moment.tz(timeslot.date,'JST').format('HH:MM')} | {timeslot.status}
+                          <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault()}}>Reschedule</div>
+                          <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault()}}>Delete</div>
+
                         </div>
                       }/>
                     })}
