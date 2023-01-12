@@ -16,7 +16,6 @@ const TestProp = () => {
   const [bookings,setBookings]=useState()
   const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
   useEffect(()=>{
-    console.log(moment.tz.names())
     let target = new Date(year,month,0)
     console.log('searching from', new Date(`${year}-${month}-1`),new Date(`${year}-${month}-${target.getDate()}`))
     //get all bookings for the month
@@ -36,7 +35,8 @@ const TestProp = () => {
           if(i<startingDay || count>target.getDate()){day_bookings['day']=' '}
           else{
             day_bookings['day']=count
-            let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
+            let today = new Date(`${year}-${month}-${i-startingDay}`)
+            // let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
             data.forEach((booking, i) => {
               //if date of booking matches i create object and add to bookings
               if(today.getDate()==moment(booking.date).date()){
@@ -70,18 +70,18 @@ const TestProp = () => {
         <div class='labelBox border'>土</div>
         {bookings?bookings.map((item,i)=>{
           let today = new Date()
-          console.log(today,moment(today).format('MM Do YY'),moment(new Date(year,month-1,item.day)).format('MM Do YY'))
+          // console.log(today,moment(today).format('MM Do YY'),moment(new Date(year,month-1,item.day)).format('MM Do YY'))
           // manager bookings calendar
           if(user.role=='manager'){
             return (<div class={new Date(year,month-1,item.day).getDate()>=today.getDate()?'dayBox border':'dayBox border inactive'}>
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      console.log(moment.tz(timeslot.date,'Asia/Taipei'),moment.tz(timeslot.date,'JST'))
+                      console.log(moment.tz(timeslot.date,'Asia/Tokyo'),moment.tz(timeslot.date,'JST'))
                       let temp = new Date(timeslot.date)
-                      return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Taipei')._a[3]}:${moment.tz(timeslot.date,'Asia/Taipei')._a[4]}`} num={y+5} active={timeslot.status} content={
+                      return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Tokyo')._a[3]}:${moment.tz(timeslot.date,'Asia/Tokyo')._a[4]}`} num={y+5} active={timeslot.status} content={
                         <div>
                           {timeslot.teacher.first} {timeslot.teacher.last}<br/>
-                          {moment.tz(timeslot.date,'JST').format('HH:MM')} | {timeslot.status}
+                          {moment.tz(timeslot.date,'Asia/Tokyo').format('HH:MM')} | {timeslot.status}
                           <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault()}}>Reschedule</div>
                           <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault()}}>Delete</div>
 
