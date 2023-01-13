@@ -7,10 +7,9 @@ import Lesson from '../utilities/lesson'
 const TestProp = () => {
 
   //reschedule inputs
-  const new_date = useRef('')
-  const new_hour = useRef('')
-  const new_minute = useRef('')
-  const [test,setTest] = useState('')
+  const [new_date,setNew_date] = useState('')
+  const [new_hour,setNew_hour] = useState('')
+  const [new_minute,setNew_minute] = useState('')
   //calendar display inputs
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
@@ -66,12 +65,12 @@ const TestProp = () => {
   }
   const reschedule = ()=>{
     console.log('test',test)
-    console.log('form',new_date.current.value,new_hour.current.value,new_minute.current.value)
+    console.log('form',new_date,new_hour,new_minute)
     console.log('data',new_date,new_hour,new_minute)
-    let new_slot = new Date(year,month,new_date.current.value)
+    let new_slot = new Date(year,month,new_date)
     console.log('proposed',new_slot)
-    new_slot.setHours(new_hour.current.value)
-    new_slot.setMinutes(new_minute.current.value)
+    new_slot.setHours(new_hour)
+    new_slot.setMinutes(new_minute)
     console.log('adjusted',new_slot)
   }
   return(
@@ -97,10 +96,9 @@ const TestProp = () => {
                         <div>
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
                           {moment(timeslot.date).format('HH:MM')} {timeslot.status}
-                          <input ref={new_date} class="form-control" type="number" placeholder='Date'/>
-                          <input ref={new_hour} class="form-control" type="number" placeholder='Hour'/>
-                          <input ref={new_minute} class="form-control" type="number" placeholder='Minute'/>
-                          <input onChange={e=>setTest(e.target.value)} value={test} class="form-control" type="number" placeholder='test'/>
+                          <input onChange={e=>setNew_date(e.target.value)} value={new_date} class="form-control" type="number" placeholder='Date'/>
+                          <input onChange={e=>setNew_hour(e.target.value)} value={new_hour} class="form-control" type="number" placeholder='Hour'/>
+                          <input onChange={e=>setNew_minute(e.target.value)} value={new_minute} class="form-control" type="number" placeholder='Minute'/>
 
                           <div class='row'>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule()}}>Reschedule</div>
