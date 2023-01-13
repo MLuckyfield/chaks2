@@ -93,7 +93,7 @@ const TestProp = () => {
       .catch((err) => {
         console.log(err);
         });
-  }
+  
   }
   return(
     <div class='col'>
