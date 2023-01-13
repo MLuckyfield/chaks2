@@ -98,7 +98,7 @@ const TestProp = () => {
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
                           {moment(timeslot.date).format('HH:MM')} {timeslot.status}
 
-                          <form class='login' onSubmit={reschedule()}>
+                          <form class='login' onSubmit={()=>reschedule()}>
                                   <div class='row'>
                                       <div class="form-group">
                                         <input class="form-control" type="number" placeholder='Date' ref={new_date}/>
