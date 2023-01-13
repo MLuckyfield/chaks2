@@ -65,6 +65,14 @@ const TestProp = () => {
     if(minute=='0'){minute='00'}
     return `${hour}:${minute}`
   }
+  const reschedule = ()=>{
+    console.log(date.current.value,new_hour.current.value,new_minute.current.value)
+    let new_slot = new Date(year,month,new_date.current.value)
+    console.log('proposed',new_slot)
+    new_slot.setHours(new_hour.current.value)
+    new_slot.setMinutes(new_minute.current.value)
+    console.log('adjusted',new_slot)
+  }
   return(
     <div class='col'>
       <div class='row'><button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button></div>
@@ -94,18 +102,18 @@ const TestProp = () => {
                           <form class='login' >
                                   <div class='row'>
                                       <div class="form-group">
-                                        <input class="form-control" type="number" ref={new_date}/>
+                                        <input class="form-control" type="number" placeholder='Date' ref={new_date}/>
                                       </div>
                                       <div class="form-group">
-                                        <input class="form-control" type="number" ref={new_hour}/>
+                                        <input class="form-control" type="number" placeholder='Hour' ref={new_hour}/>
                                       </div>
                                       <div class="form-group">
-                                        <input class="form-control" type="number" ref={new_minute}/>
+                                        <input class="form-control" type="number" placeholder='Minute' ref={new_minute}/>
                                       </div>
                                   </div>
                               </form>
                           <div class='row'>
-                            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();console.log(new Date(year,month,new_date.current.value,new_hour.current.value,new_hour.current.value))}}>Reschedule</div>
+                            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule()}}>Reschedule</div>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault()}}>Delete</div>
                           </div>
                         </div>
