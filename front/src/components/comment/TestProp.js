@@ -61,7 +61,10 @@ const TestProp = () => {
         });
 
   },[month])
-
+  const displayTime =(hour,minute)=>{
+    if(minute=='0'){minute='00'}
+    return `${hour}:${minute}`
+  }
   return(
     <div class='col'>
       <div class='row'><button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button></div>
@@ -83,9 +86,9 @@ const TestProp = () => {
                     {item.bookings.map((timeslot,y)=>{
                       console.log(moment.tz(timeslot.date,'Asia/Tokyo'))
                       let temp = new Date(timeslot.date)
-                      return <Lesson title={`${timeslot.teacher.first} | ${moment.tz(timeslot.date,'Asia/Tokyo')._a[3]}:${moment.tz(timeslot.date,'Asia/Tokyo')._a[4]}`} num={y+5} active={timeslot.status} content={
+                      return <Lesson title={`${timeslot.teacher.first} | ${displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}`} num={y+5} active={timeslot.status} content={
                         <div>
-                          <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {moment.tz(timeslot.date,'Asia/Tokyo')._a[3]}:{moment.tz(timeslot.date,'Asia/Tokyo')._a[4]=='0'?'00':moment.tz(timeslot.date,'Asia/Tokyo')._a[4]}</h2><br/>
+                          <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
                           {moment(timeslot.date).format('HH:MM')} {timeslot.status}
                           <form class='login'>
                             <input class="form-control" type="number" ref={new_date}/>
@@ -101,7 +104,7 @@ const TestProp = () => {
                                         <input class="form-control" type="number" ref={new_hour}/>
                                       </div>
                                       <div class="form-group">
-                                        <input class="form-control" type="number" ref={new_minute}/>      
+                                        <input class="form-control" type="number" ref={new_minute}/>
                                       </div>
                                       {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
 
