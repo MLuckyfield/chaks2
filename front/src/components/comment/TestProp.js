@@ -12,6 +12,7 @@ const TestProp = () => {
   const new_date = useRef('')
   const new_hour = useRef('')
   const new_minute = useRef('')
+  const test = useRef('')
   //calendar display inputs
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
@@ -66,6 +67,7 @@ const TestProp = () => {
     return `${hour}:${minute}`
   }
   const reschedule = ()=>{
+    console.log('test',test.current.value)
     console.log('form',new_date.current.value,new_hour.current.value,new_minute.current.value)
     console.log('data',new_date,new_hour,new_minute)
     let new_slot = new Date(year,month,new_date.current.value)
@@ -97,9 +99,10 @@ const TestProp = () => {
                         <div>
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
                           {moment(timeslot.date).format('HH:MM')} {timeslot.status}
-                          <input class="form-control" type="number" placeholder='Date' ref={new_date}/>
-                          <input class="form-control" type="number" placeholder='Hour' ref={new_hour}/>
-                          <input class="form-control" type="number" placeholder='Minute' ref={new_minute}/>
+                          <input ref={new_date} class="form-control" type="number" placeholder='Date'/>
+                          <input ref={new_hour} class="form-control" type="number" placeholder='Hour'/>
+                          <input ref={new_minute} class="form-control" type="number" placeholder='Minute'/>
+                          <input ref={test} class="form-control" type="text" placeholder='test'/>
 
                           <div class='row'>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule()}}>Reschedule</div>
