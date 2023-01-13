@@ -87,11 +87,11 @@ const TestProp = () => {
                         <div>
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {moment.tz(timeslot.date,'Asia/Tokyo')._a[3]}:{moment.tz(timeslot.date,'Asia/Tokyo')._a[4]=='0'?'00':moment.tz(timeslot.date,'Asia/Tokyo')._a[4]}</h2><br/>
                           {moment(timeslot.date).format('HH:MM')} {timeslot.status}
-                          <form>
-                            <input type="number" ref={new_date} />
-                            <input type="number" ref={new_hour} />
-                            <input type="number" ref={new_minute} />
-                          </form>                          
+                          <form class='login'>
+                            <input class="form-control" type="number" ref={new_date}>
+                            <input class="form-control" type="number" ref={new_hour}>
+                            <input class="form-control" type="number" ref={new_minute}>
+                          </form>
 
                           <div class='row'>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();console.log(new Date(year,month,new_date.current.value,new_hour.current.value,new_hour.current.value))}}>Reschedule</div>
