@@ -110,7 +110,7 @@ const TestProp = () => {
                                         <input class="form-control" type="number" placeholder='Minute' ref={new_minute}/>
                                       </div>
                                   </div>
-                                  <div class="btn" type='submit' style={{position:'relative',width:'80%',backgroundColor:'blue'}}>Reschedule</div>
+                                  <button class="btn" type='submit' style={{position:'relative',width:'80%',backgroundColor:'blue'}}>Reschedule</button>
 
                               </form>
                           <div class='row'>
