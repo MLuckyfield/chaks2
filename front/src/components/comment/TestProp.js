@@ -2,8 +2,6 @@ import React, { useState,useEffect,useRef } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
-import points from '../../pic.png'
-import atmos from '../../atmosphere.jpg'
 
 
 const TestProp = () => {
@@ -102,7 +100,7 @@ const TestProp = () => {
                           <input ref={new_date} class="form-control" type="number" placeholder='Date'/>
                           <input ref={new_hour} class="form-control" type="number" placeholder='Hour'/>
                           <input ref={new_minute} class="form-control" type="number" placeholder='Minute'/>
-                          <input ref={test} class="form-control" type="text" placeholder='test'/>
+                          <input ref={test} value='chatshack' class="form-control" type="text" placeholder='test'/>
 
                           <div class='row'>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule()}}>Reschedule</div>
