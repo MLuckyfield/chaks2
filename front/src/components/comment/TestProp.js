@@ -96,9 +96,9 @@ const TestProp = () => {
                         <div>
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
                           {moment(timeslot.date).format('HH:MM')} {timeslot.status}
-                          <input class="form-control" type="number" placeholder='Date' onChange={e=>setNew_Date(e.target.value)}/>
-                          <input class="form-control" type="number" placeholder='Hour' onChange={e=>setNew_Hour(e.target.value)}/>
-                          <input class="form-control" type="number" placeholder='Minute' onChange={e=>setNew_Minute(e.target.value)}/>
+                          <input class="form-control" type="number" placeholder='Date' onChange={e=>console.log(e.target.value)}/>
+                          <input class="form-control" type="number" placeholder='Hour' onChange={e=>console.log(e.target.value)}/>
+                          <input class="form-control" type="number" placeholder='Minute' onChange={e=>console.log(e.target.value)}/>
 
                           <div class='row'>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule()}}>Reschedule</div>
@@ -118,5 +118,7 @@ const TestProp = () => {
     </div>
 )
 }
-
+// <input class="form-control" type="number" placeholder='Date' onChange={e=>setNew_Date(e.target.value)}/>
+// <input class="form-control" type="number" placeholder='Hour' onChange={e=>setNew_Hour(e.target.value)}/>
+// <input class="form-control" type="number" placeholder='Minute' onChange={e=>setNew_Minute(e.target.value)}/>
 export default TestProp;
