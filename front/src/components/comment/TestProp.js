@@ -92,7 +92,7 @@ const TestProp = () => {
                           {moment(timeslot.date).format('HH:MM')} {timeslot.status}
 
                           <form class='login' >
-                                  <h2>Welcome Back!</h2>
+                                  <div class='row'>
                                       <div class="form-group">
                                         <input class="form-control" type="number" ref={new_date}/>
                                       </div>
@@ -102,8 +102,8 @@ const TestProp = () => {
                                       <div class="form-group">
                                         <input class="form-control" type="number" ref={new_minute}/>
                                       </div>
-                                      
-                                    </form>
+                                  </div>
+                              </form>
                           <div class='row'>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();console.log(new Date(year,month,new_date.current.value,new_hour.current.value,new_hour.current.value))}}>Reschedule</div>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault()}}>Delete</div>
