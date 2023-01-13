@@ -90,11 +90,7 @@ const TestProp = () => {
                         <div>
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
                           {moment(timeslot.date).format('HH:MM')} {timeslot.status}
-                          <form class='login'>
-                            <input class="form-control" type="number" ref={new_date}/>
-                            <input class="form-control" type="number" ref={new_hour}/>
-                            <input class="form-control" type="number" ref={new_minute}/>
-                          </form>
+                          
                           <form class='login' >
                                   <h2>Welcome Back!</h2>
                                       <div class="form-group">
