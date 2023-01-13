@@ -75,13 +75,13 @@ const TestProp = () => {
         data: {date:new_slot}
       })
       .then((res) => {
-          window.location.reload;
+          window.location.reload();
           })
       .catch((err) => {
         console.log(err);
         });
   }
-  }
+
   return(
     <div class='col'>
       <div class='row'><button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button></div>
