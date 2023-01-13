@@ -65,8 +65,7 @@ const TestProp = () => {
     if(minute=='0'){minute='00'}
     return `${hour}:${minute}`
   }
-  const reschedule = (timeslot)=>{
-    console.log('slot',timeslot)
+  const reschedule = ()=>{
     console.log('form',new_date.current.value,new_hour.current.value,new_minute.current.value)
     console.log('data',new_date,new_hour,new_minute)
     let new_slot = new Date(year,month,new_date.current.value)
@@ -98,22 +97,10 @@ const TestProp = () => {
                         <div>
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
                           {moment(timeslot.date).format('HH:MM')} {timeslot.status}
+                          <input class="form-control" type="number" placeholder='Date' ref={new_date}/>
+                          <input class="form-control" type="number" placeholder='Hour' ref={new_hour}/>
+                          <input class="form-control" type="number" placeholder='Minute' ref={new_minute}/>
 
-                          <form class='login' onSubmit={(e)=>{e.preventDefault();reschedule(timeslot)}}>
-                                  <div class='row'>
-                                      <div class="form-group">
-                                        <input class="form-control" type="number" placeholder='Date' ref={new_date}/>
-                                      </div>
-                                      <div class="form-group">
-                                        <input class="form-control" type="number" placeholder='Hour' ref={new_hour}/>
-                                      </div>
-                                      <div class="form-group">
-                                        <input class="form-control" type="number" placeholder='Minute' ref={new_minute}/>
-                                      </div>
-                                  </div>
-                                  <button class="btn" type='submit' style={{position:'relative',width:'80%',backgroundColor:'blue'}}>Reschedule</button>
-
-                              </form>
                           <div class='row'>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule()}}>Reschedule</div>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault()}}>Delete</div>
