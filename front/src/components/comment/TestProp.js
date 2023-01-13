@@ -90,7 +90,7 @@ const TestProp = () => {
                         <div>
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
                           {moment(timeslot.date).format('HH:MM')} {timeslot.status}
-                          
+
                           <form class='login' >
                                   <h2>Welcome Back!</h2>
                                       <div class="form-group">
@@ -102,9 +102,7 @@ const TestProp = () => {
                                       <div class="form-group">
                                         <input class="form-control" type="number" ref={new_minute}/>
                                       </div>
-                                      {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
-
-                                      <button type="submit" class="outline-first">Login</button>
+                                      
                                     </form>
                           <div class='row'>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();console.log(new Date(year,month,new_date.current.value,new_hour.current.value,new_hour.current.value))}}>Reschedule</div>
