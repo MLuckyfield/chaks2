@@ -3,7 +3,6 @@ import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
 
-
 const TestProp = () => {
 
   //reschedule inputs
@@ -111,7 +110,7 @@ const TestProp = () => {
                           <input onChange={e=>setNew_minute(e.target.value)} value={new_minute} class="form-control" type="number" placeholder='Minute'/>
 
                           <div class='row'>
-                            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule()}}>Reschedule</div>
+                            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule(timeslot)}}>Reschedule</div>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault()}}>Delete</div>
                           </div>
                         </div>
