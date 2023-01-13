@@ -53,23 +53,23 @@ router.post('/new', async (req, res) => {
 
 });
 // //Update
-// router.post('/update', async (req, res) => {
-//
-//   await Booking.findOneAndUpdate(req.body.filter,req.body.data)
-//       .then(()=>{
-//         return res.status(201).json({
-//           message: 'Booking saved',
-//           success: true
-//         });
-//       })
-//       .catch((err)=>{
-//         return res.status(500).json({
-//           message: `Booking creation unsuccessful: ${err}`,
-//           success: false
-//         });
-//       })
-//
-// });
+router.post('/update', async (req, res) => {
+
+  await Booking.findOneAndUpdate(req.body.filter,req.body.data)
+      .then(()=>{
+        return res.status(201).json({
+          message: 'Booking saved',
+          success: true
+        });
+      })
+      .catch((err)=>{
+        return res.status(500).json({
+          message: `Booking creation unsuccessful: ${err}`,
+          success: false
+        });
+      })
+
+});
 //Get
 router.get('/all', auth.permission(['user','manager']),async (req, res) => {
   console.log(req.query)

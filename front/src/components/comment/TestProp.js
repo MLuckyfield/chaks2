@@ -69,7 +69,7 @@ const TestProp = () => {
     new_slot.setHours(new_hour)
     new_slot.setMinutes(new_minute)
     console.log('adjusted',new_slot)
-    axios.post('/user/login',
+    axios.post('/booking/update',
       {
         filter: timeslot._id,
         data: {date:new_slot}
