@@ -100,7 +100,7 @@ const TestProp = () => {
                           <input ref={new_date} class="form-control" type="number" placeholder='Date'/>
                           <input ref={new_hour} class="form-control" type="number" placeholder='Hour'/>
                           <input ref={new_minute} class="form-control" type="number" placeholder='Minute'/>
-                          <input onChange={e=>setTest(e.target.value)} value={test} class="form-control" type="text" placeholder='test'/>
+                          <input onChange={e=>setTest(e.target.value)} value={test} class="form-control" type="number" placeholder='test'/>
 
                           <div class='row'>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule()}}>Reschedule</div>
