@@ -66,7 +66,7 @@ const TestProp = () => {
     return `${hour}:${minute}`
   }
   const reschedule = ()=>{
-    console.log(date.current.value,new_hour.current.value,new_minute.current.value)
+    console.log(new_date.current.value,new_hour.current.value,new_minute.current.value)
     let new_slot = new Date(year,month,new_date.current.value)
     console.log('proposed',new_slot)
     new_slot.setHours(new_hour.current.value)
@@ -92,8 +92,6 @@ const TestProp = () => {
             return (<div class={new Date(year,month-1,item.day).getDate()>=today.getDate()?'dayBox border':'dayBox border inactive'}>
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      console.log(moment.tz(timeslot.date,'Asia/Tokyo'))
-                      let temp = new Date(timeslot.date)
                       return <Lesson title={`${timeslot.teacher.first} | ${displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}`} num={y+5} active={timeslot.status} content={
                         <div>
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
