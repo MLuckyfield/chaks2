@@ -1,8 +1,5 @@
 import React, { useState,useEffect,useRef } from 'react';
 import {axios} from "../../utilities/axios";
-import moment from "moment-timezone"
-
-
 
 const Contract = () => {
 
@@ -25,7 +22,7 @@ const Contract = () => {
             })
         .catch((err) => {});
     }else{
-      setMessage('You must agree to the terms of this subscription.')
+      setMessage('受講規約に同意をお願いいたします')
     }
   }
   return(
@@ -108,7 +105,7 @@ const Contract = () => {
         </p>
         <div class='col border'>
           <label>
-                <input type="checkbox" ref={agrees} /> ◆上記のCHATSHACKレッスン受講規約に同意の上、レッスンを受講します
+                <input type="checkbox" ref={agrees} /> 上記のCHATSHACKレッスン受講規約に同意の上、レッスンを受講します
           </label>
           {message?<div class='row'><input class='bad msg form-control' value={message}></input></div>  :''}
           <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{toPay(e,'price_1LvguqBVAfieqaobMWOW9cvF',4)}}>詳細</div>

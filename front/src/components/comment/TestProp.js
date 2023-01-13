@@ -92,7 +92,21 @@ const TestProp = () => {
                             <input class="form-control" type="number" ref={new_hour}/>
                             <input class="form-control" type="number" ref={new_minute}/>
                           </form>
+                          <form class='login' >
+                                  <h2>Welcome Back!</h2>
+                                      <div class="form-group">
+                                        <input class="form-control" type="number" ref={new_date}/>
+                                      </div>
+                                      <div class="form-group">
+                                        <input class="form-control" type="number" ref={new_hour}/>
+                                      </div>
+                                      <div class="form-group">
+                                        <input class="form-control" type="number" ref={new_minute}/>      
+                                      </div>
+                                      {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
 
+                                      <button type="submit" class="outline-first">Login</button>
+                                    </form>
                           <div class='row'>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();console.log(new Date(year,month,new_date.current.value,new_hour.current.value,new_hour.current.value))}}>Reschedule</div>
                             <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault()}}>Delete</div>
