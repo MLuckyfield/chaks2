@@ -9,7 +9,7 @@ import atmos from '../../atmosphere.jpg'
 const TestProp = () => {
 
   //reschedule inputs
-  const [new_date,setNew_Date] = useState()
+  const [new_date,setNew_Date] = useState('')
   const [new_hour, setNew_Hour] = useRef('')
   const [new_minute,setNew_Minute] = useRef('')
   //calendar display inputs
