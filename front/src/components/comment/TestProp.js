@@ -67,7 +67,7 @@ const TestProp = () => {
   }
   const reschedule = ()=>{
     console.log('form',new_date.current.value,new_hour.current.value,new_minute.current.value)
-    console.log('data',new_date.current,new_hour.current,new_minute.current)
+    console.log('data',new_date,new_hour,new_minute)
     let new_slot = new Date(year,month,new_date.current.value)
     console.log('proposed',new_slot)
     new_slot.setHours(new_hour.current.value)
