@@ -177,24 +177,24 @@ $slides:4;
 .pop label.open:hover {
   color: paleturquoise;
 }
-.pop input {
+.pop .prompt {
   display: none;
 }
-.pop input:checked + .modal {
+.pop .prompt:checked + .modal {
   opacity: 1;
   visibility: visible;
 }
-.pop input:checked + .modal .modal__inner {
+.pop .prompt:checked + .modal .modal__inner {
   -webkit-transform: translate(-50%, -50%) scale(1);
           transform: translate(-50%, -50%) scale(1);
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
-.pop input:checked + .modal .modal__inner p {
+.pop .prompt:checked + .modal .modal__inner p {
   // font-size: 1.25rem;
   line-height: 125%;
 }
-.pop input:checked + .modal label {
+.pop .prompt:checked + .modal label {
   position: absolute;
   top: 0;
   right: 0;
@@ -204,10 +204,10 @@ $slides:4;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
-.pop input:checked + .modal label:hover {
+.pop .prompt:checked + .modal label:hover {
   background: #333333;
 }
-.pop input:checked + .modal .btn {
+.pop .prompt:checked + .modal .btn {
   position: relative;
   bottom: 0;
   right: 0;
