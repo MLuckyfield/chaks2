@@ -108,7 +108,6 @@ const TestProp = () => {
         <div class='labelBox border'>土</div>
         {bookings?bookings.map((item,i)=>{
           let today = new Date()
-          console.log('currently',item)
           // console.log(today,moment(today).format('MM Do YY'),moment(new Date(year,month-1,item.day)).format('MM Do YY'))
           // manager bookings calendar
           if(user.role=='manager'){
