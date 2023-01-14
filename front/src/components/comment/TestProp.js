@@ -116,7 +116,7 @@ const TestProp = () => {
                     {item.bookings.map((timeslot,y)=>{
                       console.log('timeslot',timeslot)
                       return <Lesson title={`${timeslot.teacher.first} | ${displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}`} num={y+5} active={timeslot.status} content={
-                        <div>
+                        <div>{console.log('after return',timeslot)}
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
                           <h3>{timeslot._id} <br/>{timeslot.date}<br/>{timeslot.status}</h3>
                           <form class='login' style={{width:'100%'}}>
