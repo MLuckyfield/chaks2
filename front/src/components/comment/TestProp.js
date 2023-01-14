@@ -118,7 +118,7 @@ const TestProp = () => {
                       return <Lesson title={`${timeslot.teacher.first} | ${displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}`} num={y+5} active={timeslot.status} content={
                         <div>{console.log('after return',timeslot._id,timeslot.date)}
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
-                          <h3>{console.log('finally',timeslot._id)}{timeslot._id} <br/>{timeslot.date}<br/>{timeslot.status}</h3>
+                          <h3>{timeslot._id}{timeslot._id} <br/>{timeslot.date}<br/>{timeslot.status}</h3>
                           <form class='login' style={{width:'100%'}}>
                             <div class='row'>
                               <input onChange={e=>setNew_date(e.target.value)} value={new_date} class="form-control" type="number" placeholder='Date' required/>
