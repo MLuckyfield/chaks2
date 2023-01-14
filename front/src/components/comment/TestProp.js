@@ -93,7 +93,7 @@ const TestProp = () => {
       .catch((err) => {
         console.log(err);
         });
-  
+
   }
   return(
     <div class='col'>
@@ -108,6 +108,7 @@ const TestProp = () => {
         <div class='labelBox border'>土</div>
         {bookings?bookings.map((item,i)=>{
           let today = new Date()
+          console.log('currently',item)
           // console.log(today,moment(today).format('MM Do YY'),moment(new Date(year,month-1,item.day)).format('MM Do YY'))
           // manager bookings calendar
           if(user.role=='manager'){
@@ -117,7 +118,7 @@ const TestProp = () => {
                       return <Lesson title={`${timeslot.teacher.first} | ${displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}`} num={y+5} active={timeslot.status} content={
                         <div>
                           <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
-                          <h3>{timeslot._id} {timeslot.status}</h3>
+                          <h3>{timeslot._id} <br/>{timeslot.date}<br/>{timeslot.status}</h3>
                           <form class='login' style={{width:'100%'}}>
                             <div class='row'>
                               <input onChange={e=>setNew_date(e.target.value)} value={new_date} class="form-control" type="number" placeholder='Date' required/>
