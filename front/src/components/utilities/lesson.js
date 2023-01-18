@@ -17,7 +17,7 @@ const Lesson = (props)=>{
     if(minute=='0'){minute='00'}
     return `${hour}:${minute}`
   }
-  const reschedule = (timeslot)=>{
+  const reschedule = (content)=>{
     console.log('data',new_date,new_hour,new_minute)
     let new_slot = new Date(year,month-1,new_date)
     console.log('proposed',new_slot)
@@ -26,7 +26,7 @@ const Lesson = (props)=>{
     console.log('adjusted',new_slot)
     axios.post('/booking/update',
       {
-        filter: timeslot._id,
+        filter: content._id,
         data: {date:new_slot}
       })
       .then((res) => {
@@ -36,10 +36,10 @@ const Lesson = (props)=>{
         console.log(err);
         });
   }
-  const flagDelete = (timeslot)=>{
+  const flagDelete = (content)=>{
     axios.post('/booking/update',
       {
-        filter: timeslot._id,
+        filter: content._id,
         data: {status:'delete'}
       })
       .then((res) => {
@@ -59,8 +59,8 @@ const Lesson = (props)=>{
         <div class="modal__inner">
 
           <div>
-            <h2>{props.timeslot.teacher.first} {props.timeslot.teacher.last} | {displayTime(moment.tz(props.timeslot.date,'Asia/Tokyo')._a[3],moment.tz(props.timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
-            <h3>{props.timeslot._id} {props.timeslot.date} {props.timeslot.status}</h3>
+            <h2>{props.content.teacher.first} {props.content.teacher.last} | {displayTime(moment.tz(props.content.date,'Asia/Tokyo')._a[3],moment.tz(props.content.date,'Asia/Tokyo')._a[4])}</h2><br/>
+            <h3>{props.content._id} {props.content.date} {props.content.status}</h3>
             <form class='login' style={{width:'100%'}}>
               <div class='row'>
                 <input onChange={e=>setNew_date(e.target.value)} value={new_date} class="form-control" type="number" placeholder='Date' required/>
@@ -69,8 +69,8 @@ const Lesson = (props)=>{
               </div>
             </form>
             <div class='row'>
-              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule(props.timeslot)}}>Reschedule</div>
-              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault();flagDelete(props.timeslot)}}>Delete</div>
+              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule(props.content)}}>Reschedule</div>
+              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault();flagDelete(props.content)}}>Delete</div>
             </div>
           </div>
 
