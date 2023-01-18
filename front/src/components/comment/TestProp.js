@@ -115,23 +115,7 @@ const TestProp = () => {
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
                       console.log('timeslot',timeslot._id, timeslot.date)
-                      return <Lesson title={`${timeslot._id} ${timeslot.teacher.first} | ${displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}`} num={y+5} active={timeslot.status} content={
-                        <div>{console.log('after return',timeslot._id,timeslot.date)}
-                          <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
-                          <h3>{`${timeslot._id} ${timeslot.date} ${timeslot.status}`}</h3>
-                          <form class='login' style={{width:'100%'}}>
-                            <div class='row'>
-                              <input onChange={e=>setNew_date(e.target.value)} value={new_date} class="form-control" type="number" placeholder='Date' required/>
-                              <input onChange={e=>setNew_hour(e.target.value)} value={new_hour} class="form-control" type="number" placeholder='Hour' required/>
-                              <input onChange={e=>setNew_minute(e.target.value)} value={new_minute} class="form-control" type="number" placeholder='Minute' required/>
-                            </div>
-                          </form>
-                          <div class='row'>
-                            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule(timeslot)}}>Reschedule</div>
-                            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault();flagDelete(timeslot)}}>Delete</div>
-                          </div>
-                        </div>
-                      }/>
+                      return <Lesson title={`${timeslot._id} ${timeslot.teacher.first} | ${displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}`} num={y+5} active={timeslot.status} content={timeslot}/>
                     })}
                    </div>)
           }

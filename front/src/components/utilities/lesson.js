@@ -1,5 +1,50 @@
 
+import React, { useState,useEffect,useRef } from 'react';
+import {axios} from "../../utilities/axios";
+
 const Lesson = (props)=>{
+  //reschedule inputs
+  const [new_date,setNew_date] = useState('')
+  const [new_hour,setNew_hour] = useState('')
+  const [new_minute,setNew_minute] = useState('')
+
+  //calendar display inputs
+  const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
+  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
+  
+  const reschedule = (timeslot)=>{
+    console.log('data',new_date,new_hour,new_minute)
+    let new_slot = new Date(year,month-1,new_date)
+    console.log('proposed',new_slot)
+    new_slot.setHours(new_hour)
+    new_slot.setMinutes(new_minute)
+    console.log('adjusted',new_slot)
+    axios.post('/booking/update',
+      {
+        filter: timeslot._id,
+        data: {date:new_slot}
+      })
+      .then((res) => {
+          window.location.reload();
+          })
+      .catch((err) => {
+        console.log(err);
+        });
+  }
+  const flagDelete = (timeslot)=>{
+    axios.post('/booking/update',
+      {
+        filter: timeslot._id,
+        data: {status:'delete'}
+      })
+      .then((res) => {
+          window.location.reload();
+          })
+      .catch((err) => {
+        console.log(err);
+        });
+
+  }
 
   return (
     <div class="pop" style={{textAlign:'center',width:'100% '}}>
@@ -7,7 +52,23 @@ const Lesson = (props)=>{
       <input class='prompt' type="checkbox" id={props.num} />
       <div class="modal">
         <div class="modal__inner">
-                    {props.content}
+
+          <div>
+            <h2>{props.timeslot.teacher.first} {props.timeslot.teacher.last} | {displayTime(moment.tz(props.timeslot.date,'Asia/Tokyo')._a[3],moment.tz(props.timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
+            <h3>{props.timeslot._id} {props.timeslot.date} {props.timeslot.status}</h3>
+            <form class='login' style={{width:'100%'}}>
+              <div class='row'>
+                <input onChange={e=>setNew_date(e.target.value)} value={new_date} class="form-control" type="number" placeholder='Date' required/>
+                <input onChange={e=>setNew_hour(e.target.value)} value={new_hour} class="form-control" type="number" placeholder='Hour' required/>
+                <input onChange={e=>setNew_minute(e.target.value)} value={new_minute} class="form-control" type="number" placeholder='Minute' required/>
+              </div>
+            </form>
+            <div class='row'>
+              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule(props.timeslot)}}>Reschedule</div>
+              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault();flagDelete(props.timeslot)}}>Delete</div>
+            </div>
+          </div>
+
                     <label class="btn-close" for={props.num}>X</label>
 
         </div>
