@@ -1,6 +1,7 @@
 
 import React, { useState,useEffect,useRef } from 'react';
 import {axios} from "../../utilities/axios";
+import moment from "moment-timezone"
 
 const Lesson = (props)=>{
   //reschedule inputs
@@ -11,7 +12,11 @@ const Lesson = (props)=>{
   //calendar display inputs
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
-  
+
+  const displayTime =(hour,minute)=>{
+    if(minute=='0'){minute='00'}
+    return `${hour}:${minute}`
+  }
   const reschedule = (timeslot)=>{
     console.log('data',new_date,new_hour,new_minute)
     let new_slot = new Date(year,month-1,new_date)

@@ -5,10 +5,7 @@ import Lesson from '../utilities/lesson'
 
 const TestProp = () => {
 
-  //reschedule inputs
-  const [new_date,setNew_date] = useState('')
-  const [new_hour,setNew_hour] = useState('')
-  const [new_minute,setNew_minute] = useState('')
+
   //calendar display inputs
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
