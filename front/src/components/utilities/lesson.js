@@ -4,6 +4,8 @@ import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 
 const Lesson = (props)=>{
+
+  const [timeslot,setTimeslot]=useState(props.content)
   //reschedule inputs
   const [new_date,setNew_date] = useState('')
   const [new_hour,setNew_hour] = useState('')
@@ -13,7 +15,7 @@ const Lesson = (props)=>{
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   useEffect(()=>{
-    console.log('recieved',props.content)
+    console.log('recieved',timeslot)
   },[])
   const displayTime =(hour,minute)=>{
     if(minute=='0'){minute='00'}
@@ -61,8 +63,8 @@ const Lesson = (props)=>{
         <div class="modal__inner">
 
           <div>
-            <h2>{props.content.teacher.first} {props.content.teacher.last} | {displayTime(moment.tz(props.content.date,'Asia/Tokyo')._a[3],moment.tz(props.content.date,'Asia/Tokyo')._a[4])}</h2><br/>
-            <h3>{props.content._id} {props.content.date} {props.content.status}</h3>
+            <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
+            <h3>{timeslot._id} {timeslot.date} {timeslot.status}</h3>
             <form class='login' style={{width:'100%'}}>
               <div class='row'>
                 <input onChange={e=>setNew_date(e.target.value)} value={new_date} class="form-control" type="number" placeholder='Date' required/>
@@ -71,8 +73,8 @@ const Lesson = (props)=>{
               </div>
             </form>
             <div class='row'>
-              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule(props.content)}}>Reschedule</div>
-              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault();flagDelete(props.content)}}>Delete</div>
+              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reschedule(timeslot)}}>Reschedule</div>
+              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault();flagDelete(timeslot)}}>Delete</div>
             </div>
           </div>
 
