@@ -5,7 +5,6 @@ import moment from "moment-timezone"
 
 const Lesson = (props)=>{
 
-  const [timeslot,setTimeslot]=useState(props.content)
   //reschedule inputs
   const [new_date,setNew_date] = useState('')
   const [new_hour,setNew_hour] = useState('')
@@ -57,14 +56,14 @@ const Lesson = (props)=>{
 
   return (
     <div class="pop" style={{textAlign:'center',width:'100% '}}>
-      <label for={props.num}><div class='lesson' style={props.status=='final'?{backgroundColor:'#89CFF0'}:(props.status=='booked'?{backgroundColor:'red'}:{backgroundColor:'grey'})}>{props.title}</div></label>
+      <label for={props.num}><div class='lesson' style={props.content.status=='final'?{backgroundColor:'#89CFF0'}:(props.content.status=='booked'?{backgroundColor:'red'}:{backgroundColor:'grey'})}>{props.title}</div></label>
       <input class='prompt' type="checkbox" id={props.num} />
       <div class="modal">
         <div class="modal__inner">
 
           <div>
             <h2>{props.content.teacher.first} {props.content.teacher.last} | {displayTime(moment.tz(props.content.date,'Asia/Tokyo')._a[3],moment.tz(props.content.date,'Asia/Tokyo')._a[4])}</h2><br/>
-            <h3>{console.log('ready',props.num,props.content._id,timeslot._id)} {props.num}{props.content._id} {props.content.date} {props.content.status}</h3>
+            <h3>{props.content._id} {props.content.date} {props.content.status}</h3>
             <form class='login' style={{width:'100%'}}>
               <div class='row'>
                 <input onChange={e=>setNew_date(e.target.value)} value={new_date} class="form-control" type="number" placeholder='Date' required/>
