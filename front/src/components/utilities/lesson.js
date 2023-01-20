@@ -61,10 +61,10 @@ const Lesson = (props)=>{
       <input class='prompt' type="checkbox" id={props.num} />
       <div class="modal">
         <div class="modal__inner">
-        {console.log('ready',props.content._id,timeslot._id)}
+
           <div>
             <h2>{props.content.teacher.first} {props.content.teacher.last} | {displayTime(moment.tz(props.content.date,'Asia/Tokyo')._a[3],moment.tz(props.content.date,'Asia/Tokyo')._a[4])}</h2><br/>
-            <h3>{props.content._id} {props.content.date} {props.content.status}</h3>
+            <h3>{console.log('ready',props.content._id,timeslot._id)} {props.content._id} {props.content.date} {props.content.status}</h3>
             <form class='login' style={{width:'100%'}}>
               <div class='row'>
                 <input onChange={e=>setNew_date(e.target.value)} value={new_date} class="form-control" type="number" placeholder='Date' required/>
