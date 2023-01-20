@@ -64,7 +64,7 @@ const Lesson = (props)=>{
 
           <div>
             <h2>{timeslot.teacher.first} {timeslot.teacher.last} | {displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}</h2><br/>
-            <h3>{timeslot._id} {timeslot.date} {timeslot.status}</h3>
+            <h3>{props.id} {timeslot.date} {timeslot.status}</h3>
             <form class='login' style={{width:'100%'}}>
               <div class='row'>
                 <input onChange={e=>setNew_date(e.target.value)} value={new_date} class="form-control" type="number" placeholder='Date' required/>
