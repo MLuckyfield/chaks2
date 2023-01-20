@@ -23,6 +23,8 @@ const Lesson = (props)=>{
   const reschedule = (content)=>{
     console.log('data',new_date,new_hour,new_minute)
     let new_slot = new Date(year,month-1,new_date)
+    console.log('original',content.date)
+
     console.log('proposed',new_slot)
     new_slot.setHours(new_hour)
     new_slot.setMinutes(new_minute)
