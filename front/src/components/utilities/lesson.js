@@ -25,10 +25,10 @@ const Lesson = (props)=>{
     let new_slot = new Date(year,month-1,new_date)
     console.log('original',content.date)
 
-    console.log('proposed',new_slot)
+    console.log('proposed',moment(new_slot))
     new_slot.setHours(new_hour)
     new_slot.setMinutes(new_minute)
-    console.log('adjusted',new_slot)
+    console.log('adjusted',new_slot,moment(new_slot))
     // axios.post('/booking/update',
     //   {
     //     filter: content._id,
