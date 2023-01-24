@@ -33,7 +33,7 @@ const Lesson = (props)=>{
     console.log('adjusted',new_slot,moment(new_slot))
     axios.post('/booking/update',
       {
-        filter: content._id,
+        filter: {_id:content._id},
         data: {date:new_slot}
       })
       .then((res) => {
