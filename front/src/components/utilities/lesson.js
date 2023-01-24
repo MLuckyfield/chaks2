@@ -46,7 +46,7 @@ const Lesson = (props)=>{
   const reserve=(content)=>{
     axios.post('/booking/update',
       {
-        filter: content._id,
+        filter: {_id:content._id},
         data: {status:'reserved',student:user._id}
       })
       .then((res) => {
@@ -59,7 +59,7 @@ const Lesson = (props)=>{
   const flagDelete = (content)=>{
     axios.post('/booking/update',
       {
-        filter: content._id,
+        filter: {_id:content._id},
         data: {status:'delete'}
       })
       .then((res) => {
