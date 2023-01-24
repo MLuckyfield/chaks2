@@ -73,7 +73,7 @@ const Lesson = (props)=>{
 
   return (
     <div class="pop" style={{textAlign:'center',width:'100% '}}>
-      <label for={props.num}><div class='lesson' style={props.content.status=='final'?{backgroundColor:'#89CFF0'}:(props.content.status=='booked'?{backgroundColor:'red'}:{backgroundColor:'grey'})}>{props.title}</div></label>
+      <label for={props.num}><div class='lesson' style={props.content.status=='available'?{backgroundColor:'#89CFF0'}:(props.content.status=='reserved'?{backgroundColor:'red'}:{backgroundColor:'grey'})}>{props.title}</div></label>
       <input class='prompt' type="checkbox" id={props.num} />
       <div class="modal">
         <div class="modal__inner">
