@@ -31,17 +31,17 @@ const Lesson = (props)=>{
     new_slot.setHours(new_hour)
     new_slot.setMinutes(new_minute)
     console.log('adjusted',new_slot,moment(new_slot))
-    // axios.post('/booking/update',
-    //   {
-    //     filter: content._id,
-    //     data: {date:new_slot}
-    //   })
-    //   .then((res) => {
-    //       window.location.reload();
-    //       })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     });
+    axios.post('/booking/update',
+      {
+        filter: content._id,
+        data: {date:new_slot}
+      })
+      .then((res) => {
+          window.location.reload();
+          })
+      .catch((err) => {
+        console.log(err);
+        });
   }
   const reserve=(content)=>{
     axios.post('/booking/update',
@@ -73,7 +73,7 @@ const Lesson = (props)=>{
 
   return (
     <div class="pop" style={{textAlign:'center',width:'100% '}}>
-      <label for={props.num}><div class='lesson' style={props.content.status=='available'?{backgroundColor:'#89CFF0'}:(props.content.status=='reserved'?{backgroundColor:'red'}:{backgroundColor:'grey'})}>{props.title}</div></label>
+      <label for={props.num}><div class='lesson' style={props.content.status=='available'?{backgroundColor:'#89CFF0'}:(props.content.status=='reserved'?{backgroundColor:'green'}:{backgroundColor:'grey'})}>{props.title}</div></label>
       <input class='prompt' type="checkbox" id={props.num} />
       <div class="modal">
         <div class="modal__inner">
