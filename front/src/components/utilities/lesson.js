@@ -30,11 +30,11 @@ const Lesson = (props)=>{
     console.log('proposed',moment(new_slot))
     new_slot.setHours(new_hour)
     new_slot.setMinutes(new_minute)
-    console.log('adjusted',new_slot,moment(new_slot))
+    console.log('adjusted',new_slot,moment.tz(new_slot,'Asia/Tokyo').toDate())
     axios.post('/booking/update',
       {
         filter: {_id:content._id},
-        data: {date:new_slot}
+        data: {date:moment.tz(new_slot,'Asia/Tokyo').toDate()}
       })
       .then((res) => {
           // window.location.reload();
