@@ -73,9 +73,10 @@ router.post('/delete', async (req, res) => {
 // //Update
 router.post('/update', async (req, res) => {
 
-  await Booking.findOneAndUpdate(req.body.filter,req.body.data)
-      .then(()=>{
+  await Booking.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
+      .then((update)=>{
         return res.status(201).json({
+          data:update,
           message: 'Booking saved',
           success: true
         });

@@ -37,7 +37,8 @@ const Lesson = (props)=>{
         data: {date:new_slot}
       })
       .then((res) => {
-          window.location.reload();
+          // window.location.reload();
+          console.log('new object',res.data.data.date)
           })
       .catch((err) => {
         console.log(err);
