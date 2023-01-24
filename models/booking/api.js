@@ -55,6 +55,7 @@ router.post('/new', async (req, res) => {
 // //Update
 router.post('/update', async (req, res) => {
 
+  console.log('booking update request',req.body.filter,req.body.data)
   await Booking.findOneAndUpdate(req.body.filter,req.body.data)
       .then(()=>{
         return res.status(201).json({
