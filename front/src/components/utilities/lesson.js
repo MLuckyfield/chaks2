@@ -5,6 +5,8 @@ import moment from "moment-timezone"
 
 const Lesson = (props)=>{
 
+  const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
+
   //reschedule inputs
   const [new_date,setNew_date] = useState('')
   const [new_hour,setNew_hour] = useState('')
@@ -41,6 +43,19 @@ const Lesson = (props)=>{
     //     console.log(err);
     //     });
   }
+  const reserve=(content)=>{
+    axios.post('/booking/update',
+      {
+        filter: content._id,
+        data: {status:'reserved',student:user._id}
+      })
+      .then((res) => {
+          window.location.reload();
+          })
+      .catch((err) => {
+        console.log(err);
+        });
+  }
   const flagDelete = (content)=>{
     axios.post('/booking/update',
       {
@@ -62,7 +77,7 @@ const Lesson = (props)=>{
       <input class='prompt' type="checkbox" id={props.num} />
       <div class="modal">
         <div class="modal__inner">
-
+        {user.role=='manager'?
           <div>
             <h2>{props.content.teacher.first} {props.content.teacher.last} | {displayTime(moment.tz(props.content.date,'Asia/Tokyo')._a[3],moment.tz(props.content.date,'Asia/Tokyo')._a[4])}</h2><br/>
             <h3>{props.content._id} {props.content.date} {props.content.status}</h3>
@@ -78,7 +93,15 @@ const Lesson = (props)=>{
               <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault();flagDelete(props.content)}}>Delete</div>
             </div>
           </div>
-
+        :
+        <div>
+          <h2>{props.content.teacher.first} {props.content.teacher.last} | {displayTime(moment.tz(props.content.date,'Asia/Tokyo')._a[3],moment.tz(props.content.date,'Asia/Tokyo')._a[4])}</h2><br/>
+          <h3>{props.content.date}</h3>
+          <div class='row'>
+            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reserve(props.content)}}>Reserve</div>
+          </div>
+        </div>
+      }
                     <label class="btn-close" for={props.num}>X</label>
 
         </div>

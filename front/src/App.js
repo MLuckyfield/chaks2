@@ -126,7 +126,7 @@ const App = () => {
             <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/manage-event" access={['manager','admin']} success={EventList} fail={()=><Redirect to='/login'/>}/>
-            <SecureRoute path="/test" access={['manager','admin']} success={TestProp} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/test" access={['manager','user']} success={TestProp} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/new-blog" access={['teacher','manager','admin']} success={Blog} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/update_profile" access={['teacher','manager','admin']} success={Profile} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/material_admin" access={['manager']} success={Material_Admin} fail={()=><Redirect to='/login'/>}/>
