@@ -57,10 +57,9 @@ const Lesson = (props)=>{
         });
   }
   const flagDelete = (content)=>{
-    axios.post('/booking/update',
+    axios.post('/booking/delete',
       {
-        filter: {_id:content._id},
-        data: {status:'delete'}
+        filter: {_id:content._id}
       })
       .then((res) => {
           window.location.reload();
