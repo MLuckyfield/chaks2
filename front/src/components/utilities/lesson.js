@@ -34,7 +34,7 @@ const Lesson = (props)=>{
     axios.post('/booking/update',
       {
         filter: {_id:content._id},
-        data: {date:moment.tz(new_slot,'Asia/Tokyo').toDate()}
+        data: {date:new_slot}
       })
       .then((res) => {
           // window.location.reload();
