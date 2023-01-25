@@ -114,7 +114,7 @@ const TestProp = () => {
             return (<div class={new Date(year,month-1,item.day).getDate()>=today.getDate()?'dayBox':'dayBox inactive'}>
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      console.log('easy',timeslot.date,new Date(timeslot.date),new Date(timeslot.date).getHours())
+                      console.log('easy',timeslot.date,moment.tz(timeslot.date,'Asia/Tokyo').toDate(),moment.tz(timeslot.date,'Asia/Tokyo').format('HH:MM'))
                       return <Lesson title={`${timeslot.teacher.first} | ${displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}`} num={timeslot.date} content={timeslot}/>
                     })}
                    </div>)
