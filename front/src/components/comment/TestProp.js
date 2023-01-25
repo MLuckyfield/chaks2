@@ -37,10 +37,11 @@ const TestProp = () => {
             let today = new Date(`${year}-${month}-${i-startingDay}`)
             // let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
             data.forEach((booking, i) => {
+              console.log('timestamp',booking.date)
               //if date of booking matches i create object and add to bookings
               if(today.getDate()==moment(booking.date).date()){
-                console.log('converted',moment.tz(booking.date,'Asia/Tokyo').format(),booking.date)
-                booking.date= moment.tz(booking.date,'Asia/Tokyo').toDate()
+                // console.log('converted',moment.tz(booking.date,'Asia/Tokyo').format(),booking.date)
+                // booking.date= moment.tz(booking.date,'Asia/Tokyo').toDate()
                 day_bookings.bookings.push(booking)
               }
             });
