@@ -115,7 +115,7 @@ const TestProp = () => {
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
                       console.log('easy',timeslot.date.hour())
-                      return <Lesson title={`${timeslot.teacher.first} | ${displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}`} num={timeslot.date} content={timeslot}/>
+                      return <Lesson title={`${timeslot.teacher.first} | ${timeslot.date.hour(),timeslot.date.minute()}`} num={timeslot.date} content={timeslot}/>
                     })}
                    </div>)
           }
@@ -125,7 +125,7 @@ const TestProp = () => {
                     {item.bookings.map((timeslot,y)=>{
                       console.log('student display',timeslot.status,timeslot.student)
                       if(timeslot.status=='available' || timeslot.student==user._id){
-                        return <Lesson title={`${timeslot.teacher.first} | ${displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}`} num={timeslot.date} content={timeslot}/>
+                        return <Lesson title={`${timeslot.teacher.first} | ${timeslot.date.hour(),timeslot.date.minute()}`} num={timeslot.date} content={timeslot}/>
                       }
                     })}
                    </div>)

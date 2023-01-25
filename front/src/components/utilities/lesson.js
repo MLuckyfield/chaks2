@@ -79,8 +79,8 @@ const Lesson = (props)=>{
         <div class="modal__inner">
         {user.role=='manager'?
           <div>
-            <h2>{props.content.teacher.first} {props.content.teacher.last} | {displayTime(moment.tz(props.content.date,'Asia/Tokyo')._a[3],moment.tz(props.content.date,'Asia/Tokyo')._a[4])}</h2><br/>
-            <h3>{props.content.date} {props.content.status}</h3>
+            <h2>{props.content.teacher.first} {props.content.teacher.last} | {props.content.hour()}{props.content.minute()}</h2><br/>
+            <h3>{props.content.status}</h3>
             <p>{props.content._id}</p>
             <form class='login' style={{width:'100%'}}>
               <div class='row'>
