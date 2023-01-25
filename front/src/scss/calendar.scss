@@ -3,6 +3,7 @@
     width:14%;
     display:flex;
     flex-direction: column;
+    border:1px solid #D3d3d3;
 }
 .labelBox{
   @extend .dayBox;
@@ -23,6 +24,7 @@
 }
 .lesson{
   text-transform: uppercase;
-  border:1px solid black;
+  border:1px solid white;
   border-radius: 5%;
+  color: white;
 }
