@@ -39,7 +39,7 @@ const TestProp = () => {
             data.forEach((booking, i) => {
               booking.date=moment.utc(booking.date)
               //if date of booking matches i create object and add to bookings
-              if(today.getDate()==booking.date){
+              if(today.getDate()==booking.date.date()){
                 // console.log('converted',moment.tz(booking.date,'Asia/Tokyo').format(),booking.date)
                 // booking.date= moment.tz(booking.date,'Asia/Tokyo').toDate()
                 day_bookings.bookings.push(booking)
