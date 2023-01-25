@@ -30,17 +30,17 @@ const TestProp = () => {
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           let day_bookings = {bookings:[]}
           // console.log(i,year,month,target,count,startingDay,endingDay)
-//convert time
+//
           if(i<startingDay || count>target.getDate()){day_bookings['day']=' '}
           else{
             day_bookings['day']=count
             let today = new Date(`${year}-${month}-${i-startingDay}`)
             // let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
             data.forEach((booking, i) => {
-              booking.date=moment.tz(booking.date,'Asia/Tokyo').toDate()
-              console.log('converted',booking.date)
+              // booking.date=moment.tz(booking.date,'Asia/Tokyo').toDate()
+              console.log('converted',moment.tz(booking.date,'Asia/Tokyo').toDate(),booking.date)
               //if date of booking matches i create object and add to bookings
-              if(today.getDate()==booking.date){
+              if(today.getDate()==moment(booking.date).date()){
                 day_bookings.bookings.push(booking)
               }
             });
