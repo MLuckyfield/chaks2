@@ -38,7 +38,7 @@ const Lesson = (props)=>{
       })
       .then((res) => {
           // window.location.reload();
-          console.log('new object',moment.tz(res.data.data.date,'Asia/Tokyo').toDate(),res.data.data.date,new Date(res.data.data.date))
+          console.log('new object',moment.tz(res.data.data.date,'Asia/Tokyo').format(),res.data.data.date,new Date(res.data.data.date))
           })
       .catch((err) => {
         console.log(err);
