@@ -37,9 +37,9 @@ const TestProp = () => {
             let today = new Date(`${year}-${month}-${i-startingDay}`)
             // let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
             data.forEach((booking, i) => {
-              console.log('timestamp',booking.date,moment.utc(booking.date).hour())
+              booking.date=moment.utc(booking.date)
               //if date of booking matches i create object and add to bookings
-              if(today.getDate()==new Date(booking.date).getDate()){
+              if(today.getDate()==booking.date){
                 // console.log('converted',moment.tz(booking.date,'Asia/Tokyo').format(),booking.date)
                 // booking.date= moment.tz(booking.date,'Asia/Tokyo').toDate()
                 day_bookings.bookings.push(booking)
@@ -114,7 +114,7 @@ const TestProp = () => {
             return (<div class={new Date(year,month-1,item.day).getDate()>=today.getDate()?'dayBox':'dayBox inactive'}>
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      console.log('easy',timeslot.date,moment.tz(timeslot.date,'Asia/Tokyo').toDate(),moment.tz(timeslot.date,'Asia/Tokyo').format('HH:MM'))
+                      console.log('easy',timeslot.date.hour())
                       return <Lesson title={`${timeslot.teacher.first} | ${displayTime(moment.tz(timeslot.date,'Asia/Tokyo')._a[3],moment.tz(timeslot.date,'Asia/Tokyo')._a[4])}`} num={timeslot.date} content={timeslot}/>
                     })}
                    </div>)
