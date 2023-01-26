@@ -23,11 +23,11 @@ const Lesson = (props)=>{
   const reschedule = (content)=>{
     console.log('data',new_date,new_hour,new_minute)
     let new_slot = new Date(year,month-1,new_date)
-    console.log('original',content.date)
-
-    console.log('proposed',moment(new_slot))
-    new_slot.setHours(new_hour)
-    new_slot.setMinutes(new_minute)
+    // console.log('original',content.date)    //
+    // console.log('proposed',moment(new_slot))
+    // new_slot.setHours(new_hour)
+    // new_slot.setMinutes(new_minute)
+    new_slot = moment(new_slot).set({h:new_hour,m:new_minute})
     console.log('adjusted',new_slot,moment.utc(new_slot).toDate())
     axios.post('/booking/update',
       {
@@ -71,7 +71,7 @@ const Lesson = (props)=>{
 
   return (
     <div class="pop" style={{textAlign:'center',width:'100% '}}>
-      <label for={props.num}><div class='lesson' style={props.content.status=='available'?{backgroundColor:'#89CFF0'}:(props.content.status=='reserved'?{backgroundColor:'green'}:{backgroundColor:'grey'})}>{props.title}</div></label>
+      <label for={props.num}><div class='lesson' style={props.content.status=='available'?{backgroundColor:'#89CFF0'}:(props.content.status=='reserved'?{backgroundColor:'lime'}:{backgroundColor:'#D3d3d3'})}>{props.title}</div></label>
       <input class='prompt' type="checkbox" id={props.num} />
       <div class="modal">
         <div class="modal__inner">
