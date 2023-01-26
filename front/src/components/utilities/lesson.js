@@ -72,6 +72,7 @@ const Lesson = (props)=>{
           <div>
             <h2>{props.content.teacher.first} {props.content.teacher.last} | {props.time}</h2><br/>
             <h3>{props.content.status}</h3>
+            <h3>{props.content.student?`${props.content.student.first} ${props.content.student.last}`:''}</h3>
             <p>{props.content._id}</p>
             <form class='login' style={{width:'100%'}}>
               <div class='row'>
