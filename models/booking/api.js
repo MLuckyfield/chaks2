@@ -94,18 +94,34 @@ router.post('/reschedule', async (req, res) => {
 
 });
 // //Update
-router.post('/update', async (req, res) => {
-  await Booking.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
-      .then((update)=>{
-        email.sendDefault(`BOT | Lesson Booked: ${update.date}`)
-      })
-      .catch((err)=>{
-        return res.status(500).json({
-          message: `Booking creation unsuccessful: ${err}`,
-          success: false
-        });
-      })
-
+router.post('/reserve', async (req, res) => {
+  console.log('reserving for',req.body.data.student)
+  User.findById(req.body.data.student).then((student)=>{
+    let points = student.points.sort((a,b)=>{a.createdAt-b.createdAt})
+    if(points.length>=1){
+      points.splice(0,1)
+      User.findById(req.body.data.student,{'$set':{points:points}},{new:true})
+          .then(()=>{
+            await Booking.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
+                .then((update)=>{
+                  email.sendDefault(`BOT | Lesson Booked: ${update.date}`)
+                })
+                .catch((err)=>{
+                  return res.status(500).json({
+                    message: `Booking creation unsuccessful: ${err}`,
+                    success: false
+                  });
+                })
+          })
+          .catch((err)=>{console.log('Booking error: user points failed to deduct')})
+    }
+    else{
+      return res.status(500).json({
+              message: `Booking failed, not enough points`,
+              success: false
+            });
+    }
+  }).catch((err)=>{console.log('Booking error: user not found')})
 });
 //Get
 router.get('/all', auth.permission(['user','manager']),async (req, res) => {

@@ -35,7 +35,7 @@ const Lesson = (props)=>{
         });
   }
   const reserve=(content)=>{
-    axios.post('/booking/update',
+    axios.post('/booking/reserve',
       {
         filter: {_id:content._id},
         data: {status:'reserved',student:user._id}
