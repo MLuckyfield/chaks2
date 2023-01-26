@@ -113,7 +113,7 @@ router.post('/reserve', async (req, res) => {
                   });
                 })
           })
-          .catch((err)=>{console.log('Booking error: user points failed to deduct')})
+          .catch((err)=>{console.log('Booking error: user points failed to deduct',err)})
     }
     else{
       return res.status(500).json({
