@@ -55,14 +55,14 @@ const CourseManagement = () => {
         <div class='row'>
         <Popup button={"Create"} num={1} content={
           <form class='make_blog' onSubmit={onSubmit}>
-                  <h2>New Event</h2>
+                  <h2>New Course</h2>
                       <div class="form-group make_blog">
                         Course Name
                         <input ref={name} type="text" class="form-control" placeholder="Event Name" required/>
                       </div>
                       <div class="form-group make_blog">
                         Thumbnail
-                        <input ref={image} type="text" class="form-control" required/>
+                        <input ref={image} type="text" class="form-control"/>
                       </div>
                       <div class="form-group make_blog">
                         Description
