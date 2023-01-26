@@ -81,7 +81,7 @@ const CourseManagement = () => {
                   <AccordionItem course={course}/>
                 )
               }
-            })): 'Coming soon!'}
+            })): 'No Courses!'}
         </div>
       </div>
 )

@@ -16,7 +16,15 @@ const Account = () => {
   const [points,setPoints]=useState(0)
   const [msg,setMsg]=useState('')
   const [clock,setClock]=useState(JSON.parse(localStorage.getItem('user')).inClass)
-
+  const [courses,setCourses]=useState(()=>{
+    axios.get('/enrolled/all',{params:{filter:{student:student._id}}})
+      .then((res) => {
+          setCourses(res.data.data)
+          })
+      .catch((err) => {
+        console.log(err);
+        });
+  })
   useEffect(()=>{
     localStorage.removeItem('clock')
     // console.log('loading account view for '+JSON.stringify(student))
@@ -108,6 +116,9 @@ const Account = () => {
                 Minutes: {points}
               </div>
             :'Loading account...'}
+            {courses?courses.map(function(course,i){
+              return <div>{course.course.name} {course.status}</div>
+            }):''}
           </div>
           <div>
           Current Reward Level: <span style={{fontWeight:'bold'}}>{account?account.reward:'Loading'}</span><br/>

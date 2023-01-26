@@ -12,6 +12,10 @@ const Course = mongoose.model('Course', new Schema({
   thumbnail:{
     type:String
   },
+  delivery:{
+    type:String,
+    enum:['online','in-person']
+  },
   fee:{
     type:Number
   }

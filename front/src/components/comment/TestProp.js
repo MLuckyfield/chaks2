@@ -2,7 +2,7 @@ import React, { useState,useEffect,useRef } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from '../utilities/lesson'
-import CourseManagement from '../course/Course_Management'
+import CourseManagement from '../course/CourseManagement'
 
 const TestProp = () => {
 
