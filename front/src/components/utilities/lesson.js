@@ -28,7 +28,7 @@ const Lesson = (props)=>{
     console.log('proposed',moment(new_slot))
     new_slot.setHours(new_hour)
     new_slot.setMinutes(new_minute)
-    console.log('adjusted',new_slot,moment.tz(new_slot,'Asia/Tokyo').toDate())
+    console.log('adjusted',new_slot,moment.utc(new_slot).toDate())
     axios.post('/booking/update',
       {
         filter: {_id:content._id},
