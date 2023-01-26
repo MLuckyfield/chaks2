@@ -39,8 +39,9 @@ const TestProp = () => {
             data.forEach((booking, i) => {
               booking.date=moment.utc(booking.date)
               //if date of booking matches i create object and add to bookings
-              console.log('match?',today.getDate(),booking.date.date(),today.getDate()==booking.date.date())
+              // console.log('match?',today.getDate(),booking.date.date(),today.getDate()==booking.date.date())
               if(today.getDate()==booking.date.date()){
+                console.log('matching',today.getDate(),booking)
                 day_bookings.bookings.push(booking)
               }
             });
@@ -113,7 +114,7 @@ const TestProp = () => {
             return (<div class={new Date(year,month-1,item.day).getDate()>=today.getDate()?'dayBox':'dayBox inactive'}>
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      return <Lesson title={`${timeslot.teacher.first} | ${timeslot.date.hour()}:${timeslot.date.minute()}`} num={timeslot.date} content={timeslot}/>
+                      return <Lesson title={`${timeslot.teacher.first} | ${displayTime(timeslot.date.hour(),timeslot.date.minute())}`} num={timeslot.date} time={displayTime(timeslot.date.hour(),timeslot.date.minute())} content={timeslot}/>
                     })}
                    </div>)
           }
@@ -121,7 +122,7 @@ const TestProp = () => {
             return (<div class={new Date(year,month-1,item.day).getDate()>=today.getDate()?'dayBox':'dayBox inactive'}>
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'blue'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      return <Lesson title={`${timeslot.teacher.first} | ${timeslot.date.hour()}:${timeslot.date.minute()}`} num={timeslot.date} content={timeslot}/>
+                      return <Lesson title={`${timeslot.teacher.first} | ${displayTime(timeslot.date.hour(),timeslot.date.minute())}`} num={timeslot.date} time={displayTime(timeslot.date.hour(),timeslot.date.minute())} content={timeslot}/>
                     })}
                    </div>)
           }

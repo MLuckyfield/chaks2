@@ -79,7 +79,7 @@ const Lesson = (props)=>{
         <div class="modal__inner">
         {user.role=='manager'?
           <div>
-            <h2>{props.content.teacher.first} {props.content.teacher.last} | {props.num.hour()}{props.num.minute()}</h2><br/>
+            <h2>{props.content.teacher.first} {props.content.teacher.last} | {props.time}</h2><br/>
             <h3>{props.content.status}</h3>
             <p>{props.content._id}</p>
             <form class='login' style={{width:'100%'}}>
