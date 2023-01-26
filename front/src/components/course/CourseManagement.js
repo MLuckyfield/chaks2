@@ -15,7 +15,7 @@ const CourseManagement = () => {
   const image = useRef('');
   const [description,setDescription]=useState(()=> EditorState.createEmpty())
   const [addLesson,setAddLesson]=useState(()=> EditorState.createEmpty())
-  const [lessons,setLessons]=useState()
+  const [lessons,setLessons]=useState([])
   const [lessonCount,setLessonCount]=useState(1)
   useEffect(()=>{
     axios.get('/program_course/all')
