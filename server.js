@@ -86,6 +86,8 @@ app.use('/content',require('./models/content/api'));
 app.use('/payment',require('./services/payment'));
 app.use('/material',require('./models/material/api'));
 app.use('/site_event',require('./models/site_event/api'));
+app.use('/enrolled',require('./models/enrolled/api'));
+app.use('/program_course',require('./models/course/api'));
 
 //heroku deployment
 app.get("*", (req, res) => {
