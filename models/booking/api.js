@@ -73,7 +73,7 @@ router.post('/delete', async (req, res) => {
 // //reschedule
 router.post('/reschedule', async (req, res) => {
   let new_slot = moment(req.body.data.date).set({h:req.body.data.hour,m:req.body.data.minute})
-  console.log('booking update request',req.body.data,new_slot)
+  console.log('booking update request',new Date(req.body.data.date),new_slot)
 
   await Booking.findOneAndUpdate(req.body.filter,{date:moment.utc(new_slot).toDate()},{new:true})
       .then((update)=>{
