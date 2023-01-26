@@ -11,6 +11,10 @@ const Enrolled = mongoose.model('Enrolled', new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Course'
   },
+  delivery:{
+    type:String,
+    enum:['online','in-person']
+  },
   status_date: {
     type: Date
   },
