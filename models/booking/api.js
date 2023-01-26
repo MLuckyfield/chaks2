@@ -100,7 +100,7 @@ router.post('/reserve', async (req, res) => {
     let points = student.points.sort((a,b)=>{a.createdAt-b.createdAt})
     if(points.length>=1){
       points.splice(0,1)
-      User.findById(req.body.data.student,{'$set':{points:points}},{new:true})
+      User.findByIdAndUpdate(req.body.data.student,{'$set':{points:points}},{new:true})
           .then(()=>{
             Booking.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
                 .then((update)=>{
