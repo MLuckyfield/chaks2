@@ -95,7 +95,7 @@ const Lesson = (props)=>{
         :
         <div>
           <h2>{props.content.teacher.first} {props.content.teacher.last} | {displayTime(moment.tz(props.content.date,'Asia/Tokyo')._a[3],moment.tz(props.content.date,'Asia/Tokyo')._a[4])}</h2><br/>
-          <h3>{props.content.date}{props.content.status}{props.content.student==user._id?'by you!':''}</h3>
+          <h3>{props.content.date}{props.content.status}{props.content.student._id==user._id?'by you!':`${props.content.student.first} ${props.content.student.last}`}</h3>
           <div class='row'>
             {props.content.student==user._id?'':<div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reserve(props.content)}}>Reserve</div>}
           </div>
