@@ -21,14 +21,7 @@ const Lesson = (props)=>{
     return `${hour}:${minute}`
   }
   const reschedule = (content)=>{
-    // console.log('data',new_date,new_hour,new_minute)
-    // let new_slot = new Date(year,month-1,new_date)
-    // // console.log('original',content.date)    //
-    // // console.log('proposed',moment(new_slot))
-    // // new_slot.setHours(new_hour)
-    // // new_slot.setMinutes(new_minute)
-    // new_slot = moment(new_slot).set({h:new_hour,m:new_minute})
-    // console.log('adjusted',new_slot,moment.utc(new_slot).toDate())
+    console.log('data',new Date(year,month-1,new_date))
     axios.post('/booking/reschedule',
       {
         filter: {_id:content._id},
