@@ -72,7 +72,7 @@ router.post('/delete', async (req, res) => {
 });
 // //reschedule
 router.post('/reschedule', async (req, res) => {
-  console.log('booking update request',req.body.data.date,new Date(req.body.date),moment.utc(req.body.data.date).toDate())
+  console.log('booking update request',req.body.data.date,new Date(req.body.data.date),moment.utc(req.body.data.date).toDate())
   await Booking.findOneAndUpdate(req.body.filter,{date:moment.utc(req.body.data.date).toDate()},{new:true})
       .then((update)=>{
         return res.status(201).json({
@@ -91,7 +91,6 @@ router.post('/reschedule', async (req, res) => {
 });
 // //Update
 router.post('/update', async (req, res) => {
-  console.log('booking update request',req.body.data)
   await Booking.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
       .then((update)=>{
         return res.status(201).json({
