@@ -171,40 +171,10 @@ const Dash = ()=>{
   }else if (user.role=='teacher')
   {
 
-    // if (('serviceWorker' in navigator) && ('PushManager' in window)) {
-    //   return navigator.serviceWorker
-    //       .register('/../../utilities/service_worker.js')
-    //       .then((registration)=> {
-    //         console.log('Service worker successfully registered.');
-    //         const subscribeOptions = {
-    //         userVisibleOnly: true,
-    //         applicationServerKey: 'BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDzkrxZJjSgSnfckjBJuBkr3qBUYIHBQFLXYp5Nksh8U'}
-    //
-    //         return registration.pushManager.subscribe(subscribeOptions);;
-    //       })
-    //       .then(function (pushSubscription) {
-    //         console.log(
-    //           'Received PushSubscription: ',
-    //           JSON.stringify(pushSubscription),
-    //         );
-    //         console.log(JSON.stringify(pushSubscription));
-    //       });
-    //       .catch((err)=> {
-    //         console.error('Unable to register service worker.', err);
-    //       });
-    // }
-    // const beamsClient = new PusherPushNotifications.Client({
-    //   instanceId: "d3fef753-d608-4c0b-8b9c-879e7c9e44eb",
-    // });
-    // let streamId = user._id+'_students'
-    // beamsClient
-    //   .start()
-    //   .then((beamsClient) => beamsClient.addDeviceInterest(streamId))
-    //   .then(() => beamsClient.getDeviceInterests())
-    //   .then((interests) => console.log("Current interests:", interests))
-    //   .catch(console.error);
-
-    return <div><Session user={user}/></div>
+    return <div>
+              <Session user={user}/>
+              <Booked user={user}/>
+           </div>
   }else if (user.role=='manager'){
 
     return(
@@ -219,7 +189,44 @@ const Dash = ()=>{
   }
 
 }
+const Booked = (props)=>{
+  const [bookings, setBookings]=useState()
+  const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
+  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
 
+  useEffect(()=>{
+    axios.get('/enrolled/all',{params:{filter:{
+      teacher:props.user._id,
+      date:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}
+  }})
+      .then((res) => {
+          setBookings(res.data.data)
+          })
+      .catch((err) => {
+        console.log(err);
+        });
+  },[])
+  const makeComment = (item)=>{
+      localStorage.setItem('student',JSON.stringify(item))
+      window.location='/student';
+  }
+  return (
+    <div class='col'>
+        <h1>Session</h1>
+        {bookings?bookings.map(function(booking,i){
+          return (
+            <table>
+              <tr>
+                <td>{booking.student.first}</td>
+                <td>{booking.student.last}</td>
+                <td><button onClick={()=>makeComment(booking.student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
+              </tr>
+            </table>
+          )
+        }):''}
+    </div>
+  )
+}
 const Session =(props)=>{
   const [students,setStudents]=useState([])
   useEffect(() => {

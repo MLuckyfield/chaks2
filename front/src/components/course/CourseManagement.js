@@ -75,7 +75,7 @@ const CourseManagement = () => {
         }/>
         </div>
         <div class='col'>
-          {courses.length>1 ? (courses.map(function(course, i){
+          {courses? (courses.map(function(course, i){
               if(i>0){
                 return(
                   <AccordionItem course={course}/>
