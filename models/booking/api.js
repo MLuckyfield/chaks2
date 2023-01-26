@@ -72,10 +72,12 @@ router.post('/delete', async (req, res) => {
 });
 // //reschedule
 router.post('/reschedule', async (req, res) => {
-  let new_slot = moment(new Date(req.body.year,req.body.month,req.body.date)).set({h:req.body.data.hour,m:req.body.data.minute})
-  console.log('booking update request',new Date(req.body.year,req.body.month,req.body.date),new_slot)
+  let filter =req.body.filter
+  let data = req.body.data
+  let new_slot = moment(new Date(data.year,data.month,data.date)).set({h:data.hour,m:data.minute})
+  console.log('booking update request',data.year,data.month,data.date,new Date( data.year, data.month, data.date),new_slot)
 
-  await Booking.findOneAndUpdate(req.body.filter,{date:moment.utc(new_slot).toDate()},{new:true})
+  await Booking.findOneAndUpdate(filter,{date:moment.utc(new_slot).toDate()},{new:true})
       .then((update)=>{
         return res.status(201).json({
           data:update,
