@@ -96,13 +96,13 @@ router.post('/reschedule', async (req, res) => {
 // //Update
 router.post('/reserve', async (req, res) => {
   console.log('reserving for',req.body.data.student)
-  User.findById(req.body.data.student).then((student)=>{
+  await User.findById(req.body.data.student).then((student)=>{
     let points = student.points.sort((a,b)=>{a.createdAt-b.createdAt})
     if(points.length>=1){
       points.splice(0,1)
       User.findById(req.body.data.student,{'$set':{points:points}},{new:true})
           .then(()=>{
-            await Booking.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
+            Booking.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
                 .then((update)=>{
                   email.sendDefault(`BOT | Lesson Booked: ${update.date}`)
                 })
