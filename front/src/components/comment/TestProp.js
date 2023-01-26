@@ -39,9 +39,9 @@ const TestProp = () => {
             data.forEach((booking, i) => {
               booking.date=moment.utc(booking.date)
               //if date of booking matches i create object and add to bookings
-              console.log('match?',today.getDate(),booking.date.date(),today.getDate()==booking.date.date())
+              // console.log('match?',today.getDate(),booking.date.date(),today.getDate()==booking.date.date())
               if(day_bookings.day==booking.date.date()){
-                console.log('matching',today.getDate(),booking)
+                console.log('matching',day_bookings.day,booking,booking.date.date())
                 day_bookings.bookings.push(booking)
               }
             });
