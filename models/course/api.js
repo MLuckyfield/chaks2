@@ -23,7 +23,7 @@ router.post('/new',auth.auth, auth.permission(['manager']),async (req, res) => {
       })
   }
  catch(err){
-   console.log('Course creation failed')
+   console.log('Course creation failed',err)
    return res.status(500).json({
      message: `user creation unsuccessful: ${err}`,
      success: false

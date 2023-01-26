@@ -120,8 +120,8 @@ const TestProp = () => {
             return (<div class={new Date(year,month-1,item.day).getDate()>=today.getDate()?'dayBox':'dayBox inactive'}>
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'tomato'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      console.log('exists?',user._id in timeslot, 'student' in timeslot ==user._id)
-                      if(timeslot.status=='available' ){
+                      console.log('exists?',Object.values(timeslot).includes(user._id))
+                      if(timeslot.status=='available' || Object.values(timeslot).includes(user._id)){
                         return <Lesson title={`${timeslot.teacher.first} | ${displayTime(timeslot.date.hour(),timeslot.date.minute())}`} num={timeslot.date} time={displayTime(timeslot.date.hour(),timeslot.date.minute())} content={timeslot}/>
                       }
                     })}
