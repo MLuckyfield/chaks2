@@ -27,9 +27,8 @@ const Lesson = (props)=>{
         filter: {_id:content._id},
         data: {year:year,month:month-1,date:new_date,hour:new_hour,minute:new_minute}
       })
-      .then((res) => {
-          // window.location.reload();
-          console.log('new object',moment.tz(res.data.data.date,'Asia/Tokyo').format(),res.data.data.date,new Date(res.data.data.date))
+      .then(() => {
+          window.location.reload();
           })
       .catch((err) => {
         console.log(err);
@@ -41,7 +40,7 @@ const Lesson = (props)=>{
         filter: {_id:content._id},
         data: {status:'reserved',student:user._id}
       })
-      .then((res) => {
+      .then(() => {
           window.location.reload();
           })
       .catch((err) => {
@@ -53,7 +52,7 @@ const Lesson = (props)=>{
       {
         filter: {_id:content._id}
       })
-      .then((res) => {
+      .then(() => {
           window.location.reload();
           })
       .catch((err) => {

@@ -97,11 +97,7 @@ router.post('/reschedule', async (req, res) => {
 router.post('/update', async (req, res) => {
   await Booking.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
       .then((update)=>{
-        return res.status(201).json({
-          data:update,
-          message: 'Booking saved',
-          success: true
-        });
+        email.sendDefault(`BOT | Lesson Booked: ${update.date}`)
       })
       .catch((err)=>{
         return res.status(500).json({
