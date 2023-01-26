@@ -3,12 +3,18 @@ import {axios} from "../../utilities/axios";
 import moment from "moment"
 import Popup from '../utilities/popup'
 // import Accordion from '../utilities/accordion'
-import {Editor, EditorState, convertFromRaw, RichUtils} from 'draft-js'
+import {Editor, EditorState, convertToRaw,convertFromRaw, RichUtils} from 'draft-js'
 
 
 const CourseManagement = () => {
 
   const [courses, setCourses]=useState()
+
+  //new course createConnection
+  const name = useRef('');
+  const image = useRef('');
+  const [description,setDescription]=useState(()=> EditorState.createEmpty())
+
   useEffect(()=>{
     axios.get('/course/all')
       .then((res) => {
@@ -18,8 +24,56 @@ const CourseManagement = () => {
         console.log(err);
         });
   },[])
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    axios.post('/program_course/new',
+      {
+        name: name.current.value,
+        thumbnail: image.current.value,
+        description: convertToRaw(description.getCurrentContent()),
+      })
+      .then((res) => {
+        window.location.reload();
+
+          })
+      .catch((err) => {
+        console.log(err);
+        // setFeedback(err.response.data.message);
+        });
+  }
+  const markDescription = (command, editorState)=>{
+    const newState = RichUtils.handleKeyCommand(editorState, command);
+    if (newState) {
+      setDescription(newState);
+      return 'handled';
+    }
+    return 'not-handled';
+  }
   return(
       <div class='col'>
+        <div class='row'>
+        <Popup button={"Create"} num={1} content={
+          <form class='make_blog' onSubmit={onSubmit}>
+                  <h2>New Event</h2>
+                      <div class="form-group make_blog">
+                        Course Name
+                        <input ref={name} type="text" class="form-control" placeholder="Event Name" required/>
+                      </div>
+                      <div class="form-group make_blog">
+                        Thumbnail
+                        <input ref={image} type="text" class="form-control" required/>
+                      </div>
+                      <div class="form-group make_blog">
+                        Description
+                        <div class='editor'>
+                        <Editor editorState={description} onChange={setDescription} handleKeyCommand={markDescription}/>
+                        </div>
+                      </div>
+                      <button type="submit" class="solid-first">Submit</button>
+                    </form>
+        }/>
+        </div>
         <div class='col'>
           {courses.length>1 ? (courses.map(function(course, i){
               if(i>0){

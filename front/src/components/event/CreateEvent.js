@@ -1,10 +1,7 @@
 import React, { useEffect,useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import {Editor, EditorState, convertToRaw, RichUtils} from 'draft-js'
-import DateTimePicker from 'react-datetime-picker'
-import 'react-calendar/dist/Calendar.css'
-import moment from "moment"
-import Calendar from 'react-calendar'
+
 
 const Event = () => {
 
