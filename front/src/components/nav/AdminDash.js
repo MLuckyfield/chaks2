@@ -195,6 +195,7 @@ const Booked = (props)=>{
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
 
   useEffect(()=>{
+    console.log('retrieving bookings for',props.user)
     axios.get('/enrolled/all',{params:{filter:{
       teacher:props.user._id,
       date:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}
@@ -212,7 +213,7 @@ const Booked = (props)=>{
   }
   return (
     <div class='col'>
-        <h1>Session</h1>
+        <h1>Bookings</h1>
         {bookings?bookings.map(function(booking,i){
           return (
             <table>

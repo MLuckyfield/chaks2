@@ -14,9 +14,11 @@ const CourseManagement = () => {
   const name = useRef('');
   const image = useRef('');
   const [description,setDescription]=useState(()=> EditorState.createEmpty())
-
+  const [addLesson,setAddLesson]=useState(()=> EditorState.createEmpty())
+  const [lessons,setLessons]=useState()
+  const [lessonCount,setLessonCount]=useState(1)
   useEffect(()=>{
-    axios.get('/course/all')
+    axios.get('/program_course/all')
       .then((res) => {
           setCourses(res.data.data)
           })
@@ -50,6 +52,22 @@ const CourseManagement = () => {
     }
     return 'not-handled';
   }
+  const markLesson = (command, editorState)=>{
+    const newState = RichUtils.handleKeyCommand(editorState, command);
+    if (newState) {
+      setAddLesson(newState);
+      return 'handled';
+    }
+    return 'not-handled';
+  }
+  const prepLesson=()=>{
+    setLessons(current=>[{
+      id:lessonCount,
+      content:addLesson
+    },...current])
+    setLessonCount(lessonCount+1)
+    setAddLesson(()=>EditorState.createEmpty())
+  }
   return(
       <div class='col'>
         <h1>Course Management</h1>
@@ -70,6 +88,17 @@ const CourseManagement = () => {
                         <div class='editor'>
                         <Editor editorState={description} onChange={setDescription} handleKeyCommand={markDescription}/>
                         </div>
+                      </div>
+                      <hr/>
+                      <div class="form-group make_blog">
+                        Add Lesson
+                        <div class='editor'>
+                        <Editor editorState={addLesson} onChange={setAddLesson} handleKeyCommand={markLesson}/>
+                        </div>
+                        <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();prepLesson()}}>+</div>
+                        {lessons?lessons.map(function(lesson,i){
+                          return <EditorView content={lesson.content} readOnly={true}/>
+                        }):''}
                       </div>
                       <button type="submit" class="solid-first">Submit</button>
                     </form>
