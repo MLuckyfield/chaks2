@@ -88,7 +88,7 @@ const Lesson = (props)=>{
         :
         <div>
           <h2>{props.content.teacher.first} {props.content.teacher.last} |  {props.time}</h2><br/>
-          <h3>{props.content.date}{props.content.status}</h3>
+          <h3>{props.content.status}</h3>
           {props.content.student?
             props.content.student._id==user._id?
             'You are signed up!'  :`${props.content.student.first} ${props.content.student.last}`
