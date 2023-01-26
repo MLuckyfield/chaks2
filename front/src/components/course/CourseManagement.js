@@ -52,7 +52,8 @@ const CourseManagement = () => {
   }
   return(
       <div class='col'>
-        <div class='row'>
+        <h1>Course Management</h1>
+        <div class='row' style={{justifyContent:'end'}}>
         <Popup button={"Create"} num={1} content={
           <form class='make_blog' onSubmit={onSubmit}>
                   <h2>New Course</h2>
