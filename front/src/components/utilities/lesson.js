@@ -15,9 +15,7 @@ const Lesson = (props)=>{
   //calendar display inputs
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
-  useEffect(()=>{
-    console.log('recieved',props.content)
-  },[])
+
   const displayTime =(hour,minute)=>{
     if(minute=='0'){minute='00'}
     return `${hour}:${minute}`
@@ -34,7 +32,7 @@ const Lesson = (props)=>{
     axios.post('/booking/update',
       {
         filter: {_id:content._id},
-        data: {date:new_slot}
+        data: {date:moment.utc(new_slot).toDate()}
       })
       .then((res) => {
           // window.location.reload();

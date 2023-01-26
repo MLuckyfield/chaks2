@@ -9,6 +9,9 @@
   @extend .dayBox;
   font-size: 2em;
   text-align: center;
+  background-color: tomato;
+  color:white;
+  border:1px solid white;
 }
 .calendar{
   display:flex;
