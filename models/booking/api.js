@@ -70,6 +70,25 @@ router.post('/delete', async (req, res) => {
       })
 
 });
+// //reschedule
+router.post('/reschedule', async (req, res) => {
+  console.log('booking update request',req.body.data,moment.utc(req.body.date).toDate())
+  await Booking.findOneAndUpdate(req.body.filter,{date:moment.utc(req.body.date).toDate()},{new:true})
+      .then((update)=>{
+        return res.status(201).json({
+          data:update,
+          message: 'Booking saved',
+          success: true
+        });
+      })
+      .catch((err)=>{
+        return res.status(500).json({
+          message: `Booking creation unsuccessful: ${err}`,
+          success: false
+        });
+      })
+
+});
 // //Update
 router.post('/update', async (req, res) => {
   console.log('booking update request',req.body.data)

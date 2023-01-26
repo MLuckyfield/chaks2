@@ -29,7 +29,7 @@ const Lesson = (props)=>{
     // new_slot.setMinutes(new_minute)
     new_slot = moment(new_slot).set({h:new_hour,m:new_minute})
     console.log('adjusted',new_slot,moment.utc(new_slot).toDate())
-    axios.post('/booking/update',
+    axios.post('/booking/reschedule',
       {
         filter: {_id:content._id},
         data: {date:moment.utc(new_slot).toDate()}
