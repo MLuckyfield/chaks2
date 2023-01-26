@@ -25,7 +25,7 @@ const Lesson = (props)=>{
     axios.post('/booking/reschedule',
       {
         filter: {_id:content._id},
-        data: {date:new Date(year,month-1,new_date),hour:new_hour,minute:new_minute}
+        data: {year:year,month:month-1,date:new_date,hour:new_hour,minute:new_minute}
       })
       .then((res) => {
           // window.location.reload();

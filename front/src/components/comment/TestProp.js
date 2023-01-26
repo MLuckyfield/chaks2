@@ -37,7 +37,7 @@ const TestProp = () => {
             let today = new Date(`${year}-${month}-${i-startingDay}`)
             // let today = new Date(`${year}-${month}-${i-(7-startingDay)}`)
             data.forEach((booking, i) => {
-              booking.date=moment.utc(booking.date)
+              booking.date=moment.utc(booking.date).toDate()
               //if date of booking matches i create object and add to bookings
               // console.log('match?',today.getDate(),booking.date.date(),today.getDate()==booking.date.date())
               if(day_bookings.day==booking.date.date()){
