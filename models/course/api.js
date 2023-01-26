@@ -65,7 +65,7 @@ router.post('/update',auth.auth, auth.permission(['manager']),async (req,res)=>{
 })
 
 //Get
-router.get('/all', auth.permission(['user','manager']),async (req, res) => {
+router.get('/all',async (req, res) => {
   console.log('pulling courses',req.query)
   let data = await Course.find(JSON.parse(req.query.filter))
   return res.status(201).json({
