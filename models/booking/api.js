@@ -72,8 +72,8 @@ router.post('/delete', async (req, res) => {
 });
 // //reschedule
 router.post('/reschedule', async (req, res) => {
-  console.log('booking update request',req.body.date,new Date(req.body.date),moment.utc(req.body.date).toDate())
-  await Booking.findOneAndUpdate(req.body.filter,{date:moment.utc(req.body.date).toDate()},{new:true})
+  console.log('booking update request',req.body.data.date,new Date(req.body.date),moment.utc(req.body.data.date).toDate())
+  await Booking.findOneAndUpdate(req.body.filter,{date:moment.utc(req.body.data.date).toDate()},{new:true})
       .then((update)=>{
         return res.status(201).json({
           data:update,
