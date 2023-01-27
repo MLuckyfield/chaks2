@@ -62,6 +62,7 @@ const CourseManagement = () => {
     return 'not-handled';
   }
   const prepLesson=()=>{
+    console.log('db',convertToRaw(addLesson.getCurrentContent()))
     console.log('before',addLesson)
 
     setLessons(current=>[{
