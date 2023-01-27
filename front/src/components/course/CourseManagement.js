@@ -114,6 +114,7 @@ const CourseManagement = () => {
         </div>
         <div class='col'>
           {courses? (courses.map(function(course, i){
+            console.log('course',course.description,course)
                 return(
                   <AccordionItem course={course}/>
                 )
@@ -138,7 +139,7 @@ const AccordionItem=(props)=>{
         {isActive &&
           <div class='accordion-content'>
             <div class='col slim'>
-              <EditorView content={course.description} readOnly={true}/>        
+              <EditorView content={course.description} readOnly={true}/>
             </div>
           </div>}
       </div>
