@@ -53,6 +53,7 @@ const CourseManagement = () => {
     return 'not-handled';
   }
   const markLesson = (command, editorState)=>{
+    console.log('state',addLesson)
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
       setAddLesson(newState);
@@ -106,7 +107,6 @@ const CourseManagement = () => {
         </div>
         <div class='col'>
           {courses? (courses.map(function(course, i){
-            console.log('course',course)
                 return(
                   <AccordionItem course={course}/>
                 )
