@@ -139,7 +139,7 @@ const AccordionItem=(props)=>{
         {isActive &&
           <div class='accordion-content'>
             <div class='col slim'>
-              <EditorView content={course.description} readOnly={true}/>
+              <EditorView content={course.description[0]} readOnly={true}/>
             </div>
           </div>}
       </div>
