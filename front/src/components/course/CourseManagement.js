@@ -63,7 +63,7 @@ const CourseManagement = () => {
   const prepLesson=()=>{
     setLessons(current=>[{
       id:lessonCount,
-      content:addLesson
+      content:convertToRaw(addLesson.getCurrentContent())
     },...current])
     setLessonCount(lessonCount+1)
     setAddLesson(()=>EditorState.createEmpty())
