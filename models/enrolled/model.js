@@ -15,6 +15,9 @@ const Enrolled = mongoose.model('Enrolled', new Schema({
     type:String,
     enum:['online','in-person']
   },
+  progress:{
+    type:Number
+  },
   status_date: {
     type: Date
   },

@@ -33,6 +33,7 @@ const CourseManagement = () => {
         name: name.current.value,
         thumbnail: image.current.value,
         description: convertToRaw(description.getCurrentContent()),
+        lessons:lessons
       })
       .then((res) => {
         window.location.reload();
@@ -98,8 +99,8 @@ const CourseManagement = () => {
                         <Editor editorState={addLesson} onChange={setAddLesson} handleKeyCommand={markLesson}/>
                         </div>
                         <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();prepLesson()}}>+</div>
-                        {lessons?lessons.map(function(lesson,i){
-                          console.log('lesson',lesson)
+                        {lessons?lessons.map((lesson,i)=>{
+                          console.log('lesson',lesson.content)
                           return (
                             <div>
                               {lesson.id}
@@ -141,17 +142,28 @@ const AccordionItem=(props)=>{
             <div class='col slim'>
               <EditorView content={course.description[0]} readOnly={true}/>
             </div>
+            <div class='row'>
+              <div class='col'>
+                {course.lessons?course.lessons.map((lesson,i)=>{
+                  console.log('loading lesson',i,lesson)
+                  return (<div class='col slim'>
+                    <EditorView content={lesson.content} readOnly={true}/>
+                  </div>  )
+                }):''}
+              </div>
+              <div class='col'>
+              </div>
+            </div>
           </div>}
       </div>
     )
 }
 const EditorView = (props)=>{
   const [editorState,setEditorState] = useState()
-  const [content,setContent]=useState(props.content)
   useEffect(()=>{
     props.content['entityMap']={}
-    setEditorState(EditorState.createWithContent(convertFromRaw(content)))
-    console.log('recieved',content)
+    setEditorState(EditorState.createWithContent(convertFromRaw(props.content)))
+    console.log('recieved',props.content)
   },[])
 
   return(
