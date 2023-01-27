@@ -62,12 +62,16 @@ const CourseManagement = () => {
     return 'not-handled';
   }
   const prepLesson=()=>{
+    console.log('before',addLesson)
+
     setLessons(current=>[{
       id:lessonCount,
       content:convertToRaw(addLesson.getCurrentContent())
     },...current])
     setLessonCount(lessonCount+1)
     setAddLesson(()=>EditorState.createEmpty())
+    console.log('after',addLesson)
+
   }
   return(
       <div class='col'>
