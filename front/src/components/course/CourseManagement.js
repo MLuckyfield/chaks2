@@ -102,7 +102,10 @@ const CourseManagement = () => {
                         </div>
                         <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();prepLesson()}}>+</div>
                         {lessons?lessons.map(function(lesson,i){
-                          return <EditorView content={lesson.content} readOnly={true}/>
+                          return <div>
+                              {lesson.id}
+                              <EditorView content={lesson.content} readOnly={true}/>
+                          </div>
                         }):''}
                       </div>
                       <button type="submit" class="solid-first">Submit</button>

@@ -44,7 +44,7 @@ const Lesson = (props)=>{
           window.location.reload();
           })
       .catch((err) => {
-        console.log(err);
+        console.log('failed',err.data.message);
         });
   }
   const flagDelete = (content)=>{
