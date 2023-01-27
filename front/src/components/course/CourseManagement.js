@@ -62,8 +62,6 @@ const CourseManagement = () => {
   }
   const prepLesson=()=>{
     console.log('db',convertToRaw(addLesson.getCurrentContent()))
-    console.log('before',addLesson)
-
     setLessons(current=>[{
       id:lessonCount,
       content:convertToRaw(addLesson.getCurrentContent())
@@ -101,6 +99,7 @@ const CourseManagement = () => {
                         </div>
                         <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();prepLesson()}}>+</div>
                         {lessons?lessons.map(function(lesson,i){
+                          console.log('lesson',lesson)
                           return <div>
                               {lesson.id}
                               <EditorView content={lesson.content} readOnly={true}/>
