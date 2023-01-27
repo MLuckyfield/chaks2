@@ -28,7 +28,6 @@ const CourseManagement = () => {
   },[])
   const onSubmit = (e) => {
     e.preventDefault();
-
     axios.post('/program_course/new',
       {
         name: name.current.value,
