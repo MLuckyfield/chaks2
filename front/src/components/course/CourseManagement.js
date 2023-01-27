@@ -69,7 +69,7 @@ const CourseManagement = () => {
       content:convertToRaw(addLesson.getCurrentContent())
     },...current])
     setLessonCount(lessonCount+1)
-    setAddLesson(()=>EditorState.createEmpty())
+    setAddLesson(EditorState.createEmpty())
     console.log('after',addLesson)
 
   }
