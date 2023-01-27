@@ -150,7 +150,11 @@ const EditorView = (props)=>{
   },[])
 
   return(
-    <Editor editorState={editorState} readOnly={true}/>
+    <div class='row'>
+      {editorState?(<div>
+          <Editor editorState={editorState} readOnly={true}/>
+      </div>):''}
+    </div>
   )
 }
 export default CourseManagement;
