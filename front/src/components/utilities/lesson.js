@@ -16,6 +16,19 @@ const Lesson = (props)=>{
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
 
+  //reservation options
+  const [options,setOptions]=useState()
+  const option = useRef('')
+  useEffect(()=>{
+    axios.get('/enrolled/all')
+      .then((res) => {
+          res.data.data.append({course:{name:'Free Talk'}})
+          setOptions(res.data.data)
+          })
+      .catch((err) => {
+        console.log(err);
+        });
+  },[])
   const displayTime =(hour,minute)=>{
     if(minute=='0'){minute='00'}
     return `${hour}:${minute}`
@@ -38,7 +51,7 @@ const Lesson = (props)=>{
     axios.post('/booking/reserve',
       {
         filter: {_id:content._id},
-        data: {status:'reserved',student:user._id}
+        data: {status:'reserved',student:user._id,request:option.current.value}
       })
       .then(() => {
           window.location.reload();
@@ -92,7 +105,14 @@ const Lesson = (props)=>{
           {props.content.student?
             props.content.student._id==user._id?
             'You are signed up!'  :`${props.content.student.first} ${props.content.student.last}`
-            :<div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reserve(props.content)}}>Reserve</div>}
+            :<div>
+                <select class='form-control' ref={option}>
+                  {options?options.map((item,i)=>{
+                    <option value={item.course.name}>{item.course.name}</option>
+                  }):''}
+                </select>
+                <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reserve(props.content)}}>Reserve</div>
+             </div>}
         </div>
       }
                     <label class="btn-close" for={props.num}>X</label>

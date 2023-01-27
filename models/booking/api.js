@@ -194,10 +194,11 @@ router.get('/all', auth.permission(['user','manager']),async (req, res) => {
 // //converting draft bookings to live bookings
 cron.schedule('*/6 * * * *',()=>{
   console.log('approving schedule')
-  Booking.find({createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${days}`)}}).then((bookings)=>{
+  Booking.updateMany({status:'draft',
+                      createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${days}`)}},
+                      {status:'available'}).then((bookings)=>{
     console.log('will approve',bookings)
-    Booking.updateMany(booking,{status:'final'}).then(()=>{console.log('schedule approved')})
-  })
+  }).catch((err)=>{console.log('schedule approval failed',err)})
 })
 
 module.exports = router;
