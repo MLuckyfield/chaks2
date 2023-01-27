@@ -79,7 +79,7 @@ const CourseManagement = () => {
                   <h2>New Course</h2>
                       <div class="form-group make_blog">
                         Course Name
-                        <input ref={name} type="text" class="form-control" placeholder="Event Name" required/>
+                        <input ref={name} type="text" class="form-control" required/>
                       </div>
                       <div class="form-group make_blog">
                         Thumbnail
@@ -147,11 +147,11 @@ const AccordionItem=(props)=>{
 }
 const EditorView = (props)=>{
   const [editorState,setEditorState] = useState()
-
+  const [content,setContent]=useState(props.content)
   useEffect(()=>{
     props.content['entityMap']={}
-    setEditorState(EditorState.createWithContent(convertFromRaw(props.content)))
-    console.log('recieved',props.content)
+    setEditorState(EditorState.createWithContent(convertFromRaw(content)))
+    console.log('recieved',content)
   },[])
 
   return(

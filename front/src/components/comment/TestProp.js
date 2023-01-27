@@ -95,15 +95,23 @@ const TestProp = () => {
   // }
   return(
     <div class='col'>
-      <div class='row'><button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button><h1>{month},{year}</h1><button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button></div>
+      {user.role=='manager'?
+      <div class='row'>
+          <button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button>
+          <h1>{month},{year}</h1>
+          <button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button>
+      </div>:
+      <div class='row'>
+          <h1>{month},{year}</h1>
+      </div>}
       <div class='calendar'>
-        <div class='labelBox  '>日</div>
-        <div class='labelBox  '>月</div>
-        <div class='labelBox  '>火</div>
-        <div class='labelBox  '>水</div>
-        <div class='labelBox  '>木</div>
-        <div class='labelBox  '>金</div>
-        <div class='labelBox  '>土</div>
+        <div class='labelBox'>日</div>
+        <div class='labelBox'>月</div>
+        <div class='labelBox'>火</div>
+        <div class='labelBox'>水</div>
+        <div class='labelBox'>木</div>
+        <div class='labelBox'>金</div>
+        <div class='labelBox'>土</div>
         {bookings?bookings.map((item,i)=>{
           let today = new Date()
           // console.log(today,moment(today).format('MM Do YY'),moment(new Date(year,month-1,item.day)).format('MM Do YY'))
@@ -127,7 +135,7 @@ const TestProp = () => {
                         if(timeslot.student){
                           if(Object.values(timeslot.student).includes(user._id)){
                             return <Lesson title={`${timeslot.teacher.first} | ${displayTime(timeslot.date.hour(),timeslot.date.minute())}`} num={timeslot.date} time={displayTime(timeslot.date.hour(),timeslot.date.minute())} content={timeslot}/>
-                            
+
                           }
                         }
                       }
