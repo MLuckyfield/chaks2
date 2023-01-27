@@ -76,6 +76,7 @@ const auth = (req,res,next)=>{
 }
 const permission = (requirements)=>{
   return (req,res,next)=>{
+    console.log('recieved',req)
     console.log('permission check for '+req.user.first+' '+req.user.email)
     if(req.user){
       let access = false
