@@ -69,7 +69,7 @@ const CourseManagement = () => {
       content:convertToRaw(addLesson.getCurrentContent())
     },...current])
     setLessonCount(lessonCount+1)
-    console.log('after',addLesson)
+    console.log('after',lessons)
 
   }
   return(
