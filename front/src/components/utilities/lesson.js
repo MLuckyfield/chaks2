@@ -20,7 +20,7 @@ const Lesson = (props)=>{
   const [options,setOptions]=useState()
   const option = useRef('')
   useEffect(()=>{
-    axios.get('/enrolled/all')
+    axios.get('/enrolled/all',{params:{filter:{student:user._id}}})
       .then((res) => {
           res.data.data.append({course:{name:'Free Talk'}})
           setOptions(res.data.data)

@@ -9,6 +9,7 @@ import {Editor, EditorState, convertToRaw,convertFromRaw, RichUtils} from 'draft
 const CourseManagement = () => {
 
   const [courses, setCourses]=useState()
+  const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
 
   //new course createConnection
   const name = useRef('');
@@ -73,8 +74,9 @@ const CourseManagement = () => {
   }
   return(
       <div class='col'>
-        <h1>Course Management</h1>
+        <h1>Course List</h1>
         <div class='row' style={{justifyContent:'end'}}>
+        {user.role=='manager'||user.role=='teacher'?
         <Popup button={"Create"} num={1} content={
           <form class='make_blog' onSubmit={onSubmit}>
                   <h2>New Course</h2>
@@ -111,7 +113,7 @@ const CourseManagement = () => {
                       </div>
                       <button type="submit" class="solid-first">Submit</button>
                     </form>
-        }/>
+        }/>:''}
         </div>
         <div class='col'>
           {courses? (courses.map(function(course, i){
@@ -128,7 +130,20 @@ const CourseManagement = () => {
 const AccordionItem=(props)=>{
   const [isActive, setIsActive] = useState(false);
   const [course,setCourse]=useState(props.course)
+  const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
+  const [enrolled,setEnrolled]=useState()
 
+  useEffect(()=>{
+    if(user.role=='manager'||user.role=='teacher'){
+      axios.get('/enrolled/all',{params:{filter:{course:course._id}}})
+        .then((res) => {
+            setEnrolled(res.data.data)
+            })
+        .catch((err) => {
+          console.log(err);
+          });
+    }
+  },[])
     return (
       <div class='accordion_item clickable' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
               <div class='fixed-row'>
@@ -151,8 +166,19 @@ const AccordionItem=(props)=>{
                   </div>  )
                 }):''}
               </div>
+              {user.role=='manager'||user.role=='teacher'?
               <div class='col'>
+                {enrolled?enrolled.map((item,i)=>{
+                  <table>
+                    <tr>
+                      <td>{item.student.first}</td>
+                      <td>{item.student.last}</td>
+                    </tr>
+                  </table>
+                })
+                  :'No students enrolled!'}
               </div>
+              :''}
             </div>
           </div>}
       </div>
