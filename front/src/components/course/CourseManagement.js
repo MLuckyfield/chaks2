@@ -106,9 +106,10 @@ const CourseManagement = () => {
         </div>
         <div class='col'>
           {courses? (courses.map(function(course, i){
+            console.log('course',course)
                 return(
                   <AccordionItem course={course}/>
-                )              
+                )
             })): 'No Courses!'}
         </div>
       </div>
