@@ -67,7 +67,7 @@ router.post('/update',auth.auth, auth.permission(['manager']),async (req,res)=>{
 //Get
 router.get('/all',async (req, res) => {
   console.log('pulling courses',req.query)
-  let data = await Course.find(JSON.parse(req.query.filter))
+  let data = await Course.find()
   return res.status(201).json({
     data: data,
     message: 'Course saved',
