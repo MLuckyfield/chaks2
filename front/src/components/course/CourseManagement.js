@@ -100,7 +100,7 @@ const CourseManagement = () => {
                         </div>
                         <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();prepLesson()}}>+</div>
                         {lessons?lessons.map((lesson,i)=>{
-                          console.log('lesson',lesson.content)
+                          console.log('lesson',lessons.length,lesson.content)
                           return (
                             <div>
                               {lesson.id}
@@ -147,7 +147,7 @@ const AccordionItem=(props)=>{
                 {course.lessons?course.lessons.map((lesson,i)=>{
                   console.log('loading lesson',i,lesson)
                   return (<div class='col slim'>
-                    <EditorView content={lesson.content} readOnly={true}/>
+                    <EditorView content={lesson.content[0]} readOnly={true}/>
                   </div>  )
                 }):''}
               </div>
