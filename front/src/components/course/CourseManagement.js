@@ -100,10 +100,12 @@ const CourseManagement = () => {
                         <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();prepLesson()}}>+</div>
                         {lessons?lessons.map(function(lesson,i){
                           console.log('lesson',lesson)
-                          return <div>
+                          return (
+                            <div>
                               {lesson.id}
                               <EditorView content={lesson.content} readOnly={true}/>
-                          </div>
+                            </div>
+                          )
                         }):''}
                       </div>
                       <button type="submit" class="solid-first">Submit</button>
@@ -149,6 +151,7 @@ const EditorView = (props)=>{
   useEffect(()=>{
     props.content['entityMap']={}
     setEditorState(EditorState.createWithContent(convertFromRaw(props.content)))
+    console.log('recieved',props.content)
   },[])
 
   return(
