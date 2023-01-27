@@ -138,15 +138,11 @@ const AccordionItem=(props)=>{
     )
 }
 const EditorView = (props)=>{
-  const [editorState,setEditorState] = useState(()=>{
-    props.content['entityMap']={}
-    return EditorState.createWithContent(convertFromRaw(props.content))
-  })
+  const [editorState,setEditorState] = useState()
 
   useEffect(()=>{
-    // console.log('content',props.content)
-    // setEditorState()
-      // props.content['entityMap']={}
+    props.content['entityMap']={}
+    setEditorState(EditorState.createWithContent(convertFromRaw(props.content)))
   },[])
 
   return(
