@@ -64,8 +64,9 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           //update tag with active
 
           User.find(identifier).then((user)=>{
+            console.log('user newly subscribed',user)
             let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
-            
+
             mailchimp.setConfig({
               apiKey:process.env.MAILCHIMP_AUTH,
               server:'us9'
