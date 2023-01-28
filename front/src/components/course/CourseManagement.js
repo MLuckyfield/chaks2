@@ -259,11 +259,6 @@ const AccordionItem=(props)=>{
     let current_month = 7//new Date().getMonth()
     let starting_month = schedule.timeslots[0].month-1
     let repeats = schedule.repeats
-    // while(starting_month<=current_month){
-    //   next_start.add(repeats,'months')
-    //   starting_month+=repeats
-    //   console.log('schedule calc',next_start,starting_month)
-    // }
     starting_month=moment(new Date(moment().year(),starting_month,1))
     current_month = moment(new Date(moment().year(),current_month,1))
     let gap = Math.abs(current_month.diff(starting_month,'months'))
@@ -271,8 +266,8 @@ const AccordionItem=(props)=>{
     let next_start = starting_month.add(cycles*repeats,'months')
     // next_start = moment(new Date(moment().year(),next_start,1))
     console.log('new calc',starting_month,current_month,gap,cycles,next_start)
-    // if(type=='online'){setOnline_Schedule(next_start)}
-    // else{setOffline_Schedule(next_start)}
+    if(type=='online'){setOnline_Schedule(next_start)}
+    else{setOffline_Schedule(next_start)}
     return <div class='row'>
               <div>Next Start: {next_start.format('M/D')}</div>
               <div>Graduation: {next_start.add(repeats,'months').format('M/D')}</div>
@@ -317,10 +312,10 @@ const AccordionItem=(props)=>{
                   'anytime! study at your own pace with full attention'
                     :channel=='online group'?
                     <div class='col'>
-                      {calculateSchedule(course.online_schedule,'online')}
+                      {online_schedule}
                     </div>
                     :<div class='col'>
-                      {calculateSchedule(course.offline_schedule,'offline')}
+                      {offline_schedule}
                      </div>
                   }</div>
                   {user.role=='user'?
