@@ -256,8 +256,8 @@ const AccordionItem=(props)=>{
     console.log(user.first,'is enrolling in',course.name)
   }
   const calculateSchedule=(schedule,type)=>{
-    let current_month = new Date().getMonth()+1
-    let starting_month = schedule.timeslots[0].month
+    let current_month = new Date().getMonth()
+    let starting_month = schedule.timeslots[0].month-1
     let repeats = schedule.repeats
     let next_start = moment(new Date(moment().year(),starting_month,1))
     // while(starting_month<=current_month){
