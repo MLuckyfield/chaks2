@@ -266,12 +266,12 @@ const AccordionItem=(props)=>{
     let next_start = starting_month.add(cycles*repeats,'months')
     // next_start = moment(new Date(moment().year(),next_start,1))
     console.log('new calc',starting_month,current_month,gap,cycles,next_start)
+    next_start={
+      start:next_start.format('M/D'),
+      graduation:next_start.add(repeats,'months').format('M/D')
+    }
     if(type=='online'){setOnline_Schedule(next_start)}
     else{setOffline_Schedule(next_start)}
-    return <div class='row'>
-              <div>Next Start: {next_start.format('M/D')}</div>
-              <div>Graduation: {next_start.add(repeats,'months').format('M/D')}</div>
-            </div>
   }
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
@@ -312,10 +312,10 @@ const AccordionItem=(props)=>{
                   'anytime! study at your own pace with full attention'
                     :channel=='online group'?
                     <div class='col'>
-                      {online_schedule}
+                      Last enroll & start date: {online_schedule.start}, Graduation date: {online_schedule.graduation}
                     </div>
                     :<div class='col'>
-                      {offline_schedule}
+                     Last enroll & start date: {offline_schedule.start}, Graduation date: {offline_schedule.graduation}
                      </div>
                   }</div>
                   {user.role=='user'?
