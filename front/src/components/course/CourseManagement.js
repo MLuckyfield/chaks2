@@ -253,7 +253,7 @@ const AccordionItem=(props)=>{
   const enroll=()=>{
     console.log(user.first,'is enrolling in',course.name)
   }
-  const calculateSchedule=(schedule,switch)=>{
+  const calculateSchedule=(schedule,i)=>{
     let current_month = new Date().getMonth()+1
     let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
@@ -274,7 +274,7 @@ const AccordionItem=(props)=>{
     next_start = starting_month.add(cycles*repeats,'months')
     next_start = moment(new Date(moment().year(),next_start,1))
     console.log('new calc',gap,cycles,next_start)
-    if(switch=='online'){setOnline_Schedule(next_start)}
+    if(i=='online'){setOnline_Schedule(next_start)}
     else{setOffline_Schedule(next_start)}
     return <div class='row'>
               <div>Next Start: {next_start.format('M/D')}</div>
@@ -315,10 +315,10 @@ const AccordionItem=(props)=>{
                     'anytime! study at your own pace with full attention'
                       :channel=='online group'?
                       <div class='col'>
-                        {calculateSchedule(course.online_schedule)}
+                        {calculateSchedule(course.online_schedule,'online')}
                       </div>
                       :<div class='col'>
-                        {calculateSchedule(course.offline_schedule)}
+                        {calculateSchedule(course.offline_schedule,'offline')}
                        </div>
                     }</div>
                     {user.role=='user'?<div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>:''}
