@@ -60,8 +60,10 @@ const TestProp = () => {
         console.log('calendar err',err);
         // setFeedback(err.response.data.message);
         });
+
+        //load resevation options to send as props to Lesson
         if(user.role=='user'){
-          axios.get('/enrolled/all',{params:{filter:{student:user._id}}})
+          axios.get('/enrolled/all',{params:{filter:{student:user._id,delivery:'online private'}}})
           .then((res) => {
               res.data.data.push({course:{name:'Free Talk'}})
               console.log('options',res.data.data)
