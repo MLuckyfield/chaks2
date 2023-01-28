@@ -270,7 +270,7 @@ const AccordionItem=(props)=>{
   },[])
   const enroll=(channel,product)=>{
     console.log(user.first,'is enrolling in',course.name)
-    axios.post('/payment/',{
+    axios.post('/payment/course',{
       product:product,
       purchase:{
         student:user._id,

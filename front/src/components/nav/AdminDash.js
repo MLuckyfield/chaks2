@@ -201,6 +201,7 @@ const Booked = (props)=>{
       date:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}
   }})
       .then((res) => {
+          console.log('recieved',res.data.data)
           setBookings(res.data.data)
           })
       .catch((err) => {
