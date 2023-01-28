@@ -258,13 +258,9 @@ const AccordionItem=(props)=>{
     while(starting_month<=current_month){
       next_start.add(repeats,'months')
       starting_month+=repeats
-      console.log('schedule calc',i,next_start,starting_month)
+      console.log('schedule calc',next_start,starting_month)
     }
-    let next_enroll = next_start.subtract(1,'months')
-    return <div class='row'>
-                <div>Last enrollment: {next_enroll.format('M/D')}</div>
-                <div>Course Start: {next_start.format('M/D')}</div>
-           </div>
+    return <div>Next Start: {next_start.format('M/D')}</div>
   }
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
