@@ -11,14 +11,15 @@ const CourseManagement = () => {
   const [courses, setCourses]=useState()
   const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
 
-  //new course createConnection
+  //new course
   const name = useRef('');
   const image = useRef('');
   const [description,setDescription]=useState(()=> EditorState.createEmpty())
   const [addLesson,setAddLesson]=useState(()=> EditorState.createEmpty())
   const [lessons,setLessons]=useState([])
   const [lessonCount,setLessonCount]=useState(1)
-
+  const [delivery,setDelivery]=useState([])
+  const channels = ['online private','online group','in-person group']
   useEffect(()=>{
     axios.get('/program_course/all')
       .then((res) => {
@@ -28,6 +29,12 @@ const CourseManagement = () => {
         console.log(err);
         });
   },[])
+  const deliverySetting=(e)=>{
+    const {value, checked}=e.target
+    console.loge(value,'is',checked)
+    if(checked){setDelivery([...delivery,value])}
+    else{setDelivery(delivery.filter((e)=>e!==value))}
+  }
   const onSubmit = (e) => {
     e.preventDefault();
     axios.post('/program_course/new',
@@ -81,6 +88,8 @@ const CourseManagement = () => {
         <Popup button={"Create"} num={1} content={
           <form class='make_blog' onSubmit={onSubmit}>
                   <h2>New Course</h2>
+                      <div class='border'>
+                      <h3>Profile & Lessons</h3>
                       <div class="form-group make_blog">
                         Course Name
                         <input ref={name} type="text" class="form-control" required/>
@@ -111,6 +120,29 @@ const CourseManagement = () => {
                             </div>
                           )
                         }):''}
+                      </div>
+                      </div>
+                      <h3>Schedule & Delivery</h3>
+                      {channels.forEach((channel, i) => {
+                        return <div class='fixed-row'>
+                                  <input type='checkbox' value={channel} onChange={deliverySetting}/>
+                                  <label>{channel}</label>
+                                </div>
+                      })
+                      }
+                      Online
+                      <div class="form-group make_blog">
+                        <input ref={start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
+                        <input ref={start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
+                        <input ref={end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
+                        <input ref={end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
+                      </div>
+                      Offline
+                      <div class="form-group make_blog">
+                        <input ref={start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
+                        <input ref={start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
+                        <input ref={end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
+                        <input ref={end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
                       </div>
                       <button type="submit" class="solid-first">Submit</button>
                     </form>
@@ -144,12 +176,17 @@ const AccordionItem=(props)=>{
           });
     }
   },[])
+  const enroll=()=>{
+    console.log(user.first,user.last,'is enrolling in',course.name)
+  }
     return (
       <div class='accordion_item clickable' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
               <div class='fixed-row'>
                 <img class='photo' src={course.thumbnail}></img>
                 <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
-                  <h3>{course.name}</h3>
+                  <h2>{course.name}</h2>
+                  {user.role=='user'?
+                    <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>+</div>:''}
                 </div>
               </div>
         {isActive &&

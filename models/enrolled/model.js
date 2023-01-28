@@ -14,11 +14,8 @@ const Enrolled = mongoose.model('Enrolled', new Schema({
   online:{
     type:Boolean
   },
-  group:{
-    type:Boolean
-  },
-  progress:{
-    type:Number
+  delivery:{
+    type:String
   },
   status_date: {
     type: Date
