@@ -254,12 +254,13 @@ const AccordionItem=(props)=>{
     let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
     let next_start = moment(new Date(moment().year(),starting_month,1))
-    let next_enroll = ''
     console.log('calc variables',current_month,starting_month,repeats)
-    for(let i=starting_month;i<=current_month;i+=repeats){
+    while(starting_month<=current_month){
       next_start.add(repeats,'months')
-      console.log('schedule calc',i,next_start)
+      starting_month+=repeats
+      console.log('schedule calc',i,next_start,starting_month)
     }
+    let next_enroll = next_start.subtract(1,'months')
     return 'test'
   }
     return (
