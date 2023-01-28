@@ -123,7 +123,7 @@ const CourseManagement = () => {
   }
   return(
       <div class='col'>
-        <h1>Course List</h1>
+        <h1>COURSE LIST</h1>
         <div class='row' style={{justifyContent:'end'}}>
         {user.role!='user'?
         <Popup button={"Create"} num={1} content={
