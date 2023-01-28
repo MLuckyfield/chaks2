@@ -93,9 +93,9 @@ const Lesson = (props)=>{
             'You are signed up!'  :`${props.content.student.first} ${props.content.student.last}`
             :<div>
                 <select class='form-control' ref={option}>
-                {console.log('options recieved',props.options)}
                   {props.options?props.options.map((item,i)=>{
-                    <option value={item.course.name}>{item.course.name}</option>
+                    console.log('options recieved',item)                    
+                    return <option value={item.course.name}>{item.course.name}</option>
                   }):''}
                 </select>
                 <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reserve(props.content)}}>Reserve</div>
