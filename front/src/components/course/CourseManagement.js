@@ -256,10 +256,9 @@ const AccordionItem=(props)=>{
     console.log(user.first,'is enrolling in',course.name)
   }
   const calculateSchedule=(schedule,type)=>{
-    let current_month = new Date().getMonth()
+    let current_month = 6//new Date().getMonth()
     let starting_month = schedule.timeslots[0].month-1
     let repeats = schedule.repeats
-    let next_start = moment(new Date(moment().year(),starting_month,1))
     // while(starting_month<=current_month){
     //   next_start.add(repeats,'months')
     //   starting_month+=repeats
@@ -269,7 +268,7 @@ const AccordionItem=(props)=>{
     current_month = moment(new Date(moment().year(),current_month,1))
     let gap = Math.abs(current_month.diff(starting_month,'months'))
     let cycles = Math.ceil(gap/repeats)
-    next_start = next_start.add(cycles*repeats,'months')
+    let next_start = starting_month.add(cycles*repeats,'months')
     // next_start = moment(new Date(moment().year(),next_start,1))
     console.log('new calc',starting_month,current_month,gap,cycles,next_start)
     // if(type=='online'){setOnline_Schedule(next_start)}
