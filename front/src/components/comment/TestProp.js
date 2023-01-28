@@ -64,6 +64,7 @@ const TestProp = () => {
           axios.get('/enrolled/all',{params:{filter:{student:user._id}}})
           .then((res) => {
               res.data.data.push({course:{name:'Free Talk'}})
+              console.log('options',res.data.data)
               setOptions(res.data.data)
               })
           .catch((err) => {

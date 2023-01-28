@@ -38,7 +38,6 @@ const createToken=(user)=>{
 }
 
 const auth = (req,res,next)=>{
-  console.log('auth recieved','user' in req? req.user:'no user was sent')
   console.log('auth check')
   // console.log(req.headers)
   let proposal = ''
@@ -76,7 +75,6 @@ const auth = (req,res,next)=>{
 }
 const permission = (requirements)=>{
   return (req,res,next)=>{
-    console.log('permission recieved','user' in req? req.user:'no user was sent')
     console.log('permission check for '+req.user.first+' '+req.user.email)
     if(req.user){
       let access = false
