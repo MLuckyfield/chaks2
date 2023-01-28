@@ -17,22 +17,8 @@ const Lesson = (props)=>{
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
 
   //reservation options
-  const [options,setOptions]=useState()
   const option = useRef('')
-  useEffect(()=>{
-    axios.get('/enrolled/all',{params:{filter:{student:user._id}}})
-      .then((res) => {
-          res.data.data.append({course:{name:'Free Talk'}})
-          setOptions(res.data.data)
-          })
-      .catch((err) => {
-        console.log(err);
-        });
-  },[])
-  const displayTime =(hour,minute)=>{
-    if(minute=='0'){minute='00'}
-    return `${hour}:${minute}`
-  }
+  
   const reschedule = (content)=>{
     console.log('data',new Date(year,month-1,new_date))
     axios.post('/booking/reschedule',
@@ -107,7 +93,7 @@ const Lesson = (props)=>{
             'You are signed up!'  :`${props.content.student.first} ${props.content.student.last}`
             :<div>
                 <select class='form-control' ref={option}>
-                  {options?options.map((item,i)=>{
+                  {props.options?props.options.map((item,i)=>{
                     <option value={item.course.name}>{item.course.name}</option>
                   }):''}
                 </select>

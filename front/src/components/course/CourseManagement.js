@@ -18,6 +18,7 @@ const CourseManagement = () => {
   const [addLesson,setAddLesson]=useState(()=> EditorState.createEmpty())
   const [lessons,setLessons]=useState([])
   const [lessonCount,setLessonCount]=useState(1)
+
   useEffect(()=>{
     axios.get('/program_course/all')
       .then((res) => {

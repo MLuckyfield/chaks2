@@ -13,8 +13,14 @@ const TestProp = () => {
   const [day,setDay]=useState(()=>{let time = new Date();return time.getDay()})
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
   const [days,setDays]=useState(()=>{let time = new Date(year,month,0);return time.getDate()})
+
+//general
   const [bookings,setBookings]=useState()
   const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
+
+  //reservation options
+  const [options,setOptions]=useState()
+
   useEffect(()=>{
     let target = new Date(year,month,0)
     console.log('searching from', new Date(`${year}-${month}-1`),new Date(`${year}-${month}-${target.getDate()}`))
@@ -54,7 +60,15 @@ const TestProp = () => {
         console.log('calendar err',err);
         // setFeedback(err.response.data.message);
         });
-
+        if(user.role=='user'){
+          axios.get('/enrolled/all',{params:{filter:{student:user._id}}})
+          .then((res) => {
+              res.data.data.append({course:{name:'Free Talk'}})
+              setOptions(res.data.data)
+              })
+          .catch((err) => {
+            console.log(err);
+            });}
   },[month])
   const displayTime =(hour,minute)=>{
     if(minute=='0'){minute='00'}
@@ -130,11 +144,11 @@ const TestProp = () => {
                     {item.bookings.map((timeslot,y)=>{
                       console.log('exists?',timeslot,user._id,Object.values(timeslot).includes(user._id))
                       if(timeslot.status=='available'){
-                        return <Lesson title={`${timeslot.teacher.first} | ${displayTime(timeslot.date.hour(),timeslot.date.minute())}`} num={timeslot.date} time={displayTime(timeslot.date.hour(),timeslot.date.minute())} content={timeslot}/>
+                        return <Lesson title={`${timeslot.teacher.first} | ${displayTime(timeslot.date.hour(),timeslot.date.minute())}`} num={timeslot.date} time={displayTime(timeslot.date.hour(),timeslot.date.minute())} options={options} content={timeslot}/>
                       }else{
                         if(timeslot.student){
                           if(Object.values(timeslot.student).includes(user._id)){
-                            return <Lesson title={`${timeslot.teacher.first} | ${displayTime(timeslot.date.hour(),timeslot.date.minute())}`} num={timeslot.date} time={displayTime(timeslot.date.hour(),timeslot.date.minute())} content={timeslot}/>
+                            return <Lesson title={`${timeslot.teacher.first} | ${displayTime(timeslot.date.hour(),timeslot.date.minute())}`} num={timeslot.date} time={displayTime(timeslot.date.hour(),timeslot.date.minute())} options={options} content={timeslot}/>
 
                           }
                         }
