@@ -260,8 +260,6 @@ const AccordionItem=(props)=>{
     let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
     let next_start = moment(new Date(moment().year(),starting_month,1))
-    console.log('calc variables',current_month,starting_month,repeats)
-    console.log('starting date',next_start)
     // while(starting_month<=current_month){
     //   next_start.add(repeats,'months')
     //   starting_month+=repeats
@@ -273,7 +271,7 @@ const AccordionItem=(props)=>{
     let cycles = Math.ceil(gap/repeats)
     next_start = next_start.add(cycles*repeats,'months')
     // next_start = moment(new Date(moment().year(),next_start,1))
-    console.log('new calc',gap,cycles,next_start)
+    console.log('new calc',starting_month,gap,cycles,next_start)
     // if(type=='online'){setOnline_Schedule(next_start)}
     // else{setOffline_Schedule(next_start)}
     return <div class='row'>
