@@ -223,7 +223,7 @@ const AccordionItem=(props)=>{
     console.log(user.first,user.last,'is enrolling in',course.name)
   }
     return (
-      <div class='accordion_item clickable' style={{margin:'2%'}} onClick={() => setIsActive(!isActive)}>
+      <div class='accordion_item' style={{margin:'2%'}}>
               <div class='fixed-row'>
                 <img class='photo' src={course.thumbnail}></img>
                 <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
@@ -231,9 +231,11 @@ const AccordionItem=(props)=>{
                   {course.delivery?course.delivery.map((channel,i)=>{
                       return <span>{channel}</span>
                   }):''}
-                  {console.log('display button?',user.role,user.role=='user')}
-                  {user.role=='user'?
-                    <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>:''}
+                  <div class='fixed-row'>
+                    <div class="btn" style={{position:'relative',width:'80%'}} onClick={() => setIsActive(!isActive)}>Details</div>
+                    {user.role=='user'?<div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>:''}
+                  </div>
+
                 </div>
               </div>
         {isActive &&
