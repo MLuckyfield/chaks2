@@ -178,7 +178,15 @@ const CourseManagement = () => {
                         <div class="form-group make_blog">
                         Online Group
                           <input ref={online_month} type="number" class="form-control" min='0' max='24' placeholder='Starting Month' required/>
-                          <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
+                          <select class='form-control' ref={online_day}>
+                            <option class='col slim feedback clickable' value={0}>Sunday</option>
+                            <option class='col slim feedback clickable' value={1}>Monday</option>
+                            <option class='col slim feedback clickable' value={2}>Tuesday</option>
+                            <option class='col slim feedback clickable' value={3}>Wednesday</option>
+                            <option class='col slim feedback clickable' value={4}>Thursday</option>
+                            <option class='col slim feedback clickable' value={5}>Friday</option>
+                            <option class='col slim feedback clickable' value={6}>Saturday</option>
+                          </select>
                           <input ref={online_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
                           <input ref={online_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
                           <input ref={online_end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
@@ -189,7 +197,15 @@ const CourseManagement = () => {
                         <div class="form-group make_blog">
                           Offline Group
                           <input ref={offline_month} type="number" class="form-control" min='0' max='24' placeholder='Starting Month' required/>
-                          <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
+                          <select class='form-control' ref={offline_day}>
+                            <option class='col slim feedback clickable' value={0}>Sunday</option>
+                            <option class='col slim feedback clickable' value={1}>Monday</option>
+                            <option class='col slim feedback clickable' value={2}>Tuesday</option>
+                            <option class='col slim feedback clickable' value={3}>Wednesday</option>
+                            <option class='col slim feedback clickable' value={4}>Thursday</option>
+                            <option class='col slim feedback clickable' value={5}>Friday</option>
+                            <option class='col slim feedback clickable' value={6}>Saturday</option>
+                          </select>
                           <input ref={offline_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
                           <input ref={offline_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
                           <input ref={offline_end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
@@ -266,7 +282,7 @@ const AccordionItem=(props)=>{
                     'anytime! study at your own pace with full attention'
                       :channel=='online group'?
                       <div class='col'>
-                        Next start: 
+                        Next start:
                       </div>
                       :''
                     }</div>
