@@ -160,7 +160,7 @@ const CourseManagement = () => {
                       </div>
                       <h3>Schedule & Delivery</h3>
                       {console.log('channels',channels)}
-                      {channels.forEach((channel, i) => {
+                      {channels.map((channel, i) => {
                         return <div class='fixed-row'>
                                   <input type='checkbox' value={channel} onChange={deliverySetting}/>
                                   <label>{channel}</label>
@@ -220,7 +220,7 @@ const AccordionItem=(props)=>{
     }
   },[])
   const enroll=()=>{
-    console.log(user.first,user.last,'is enrolling in',course.name)
+    console.log(user.first,'is enrolling in',course.name)
   }
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
