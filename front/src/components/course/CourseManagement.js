@@ -266,9 +266,11 @@ const AccordionItem=(props)=>{
                 <img class='photo' src={course.thumbnail}></img>
                 <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
                   <h2>{course.name}</h2>
-                  {course.delivery?course.delivery.map((channel,i)=>{
-                      return <span>{channel}</span>
-                  }):''}
+                  <div class='row'>
+                    {course.delivery?course.delivery.map((channel,i)=>{
+                        return <span style={{backgroundColor:'tomato',color:'white',padding:'1%'}}>{channel}</span>
+                    }):''}
+                  </div>
                   <div class='fixed-row'>
                     <div class="btn" style={{position:'relative',width:'80%'}} onClick={() => setIsActive(!isActive)}>Details</div>
                     {user.role=='user'?<div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>:''}
@@ -285,6 +287,7 @@ const AccordionItem=(props)=>{
             <div class='col border'>
               <h2>Schedule</h2>
               {course.delivery?course.delivery.map((channel,i)=>{
+                console.log('delivery method',channel)
                 return (
                   <div class='fixed-row'>
                     <h3>{channel}</h3>
