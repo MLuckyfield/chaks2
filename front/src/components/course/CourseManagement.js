@@ -124,8 +124,8 @@ const CourseManagement = () => {
         <Popup button={"Create"} num={1} content={
           <form class='make_blog' onSubmit={onSubmit}>
                   <h2>New Course</h2>
-                      <div class='border'>
-                      <h3>Profile & Lessons</h3>
+                      <div class='col border'>
+                      <h3>Profile & Content</h3>
                       <div class="form-group make_blog">
                         Course Name
                         <input ref={name} type="text" class="form-control" required/>
@@ -167,23 +167,25 @@ const CourseManagement = () => {
                                 </div>
                       })
                       }
-                      Online
-                      <div class="form-group make_blog">
-                        <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
-                        <input ref={online_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
-                        <input ref={online_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
-                        <input ref={online_end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
-                        <input ref={online_end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
-                        <input ref={online_repeats} type="number" class="form-control" min='0' max='60' placeholder='Repeats X months' required/>
-                      </div>
-                      Offline
-                      <div class="form-group make_blog">
-                        <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
-                        <input ref={offline_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
-                        <input ref={offline_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
-                        <input ref={offline_end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
-                        <input ref={offline_end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
-                        <input ref={offline_repeats} type="number" class="form-control" min='0' max='60' placeholder='Repeats X months' required/>
+                      <div class='col border'>
+                        Online
+                        <div class="form-group make_blog">
+                          <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
+                          <input ref={online_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
+                          <input ref={online_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
+                          <input ref={online_end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
+                          <input ref={online_end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
+                          <input ref={online_repeats} type="number" class="form-control" min='0' max='60' placeholder='Repeats X months' required/>
+                        </div>
+                        Offline
+                        <div class="form-group make_blog">
+                          <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
+                          <input ref={offline_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
+                          <input ref={offline_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
+                          <input ref={offline_end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
+                          <input ref={offline_end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
+                          <input ref={offline_repeats} type="number" class="form-control" min='0' max='60' placeholder='Repeats X months' required/>
+                        </div>
                       </div>
                       <button type="submit" class="solid-first">Submit</button>
                     </form>
@@ -230,7 +232,7 @@ const AccordionItem=(props)=>{
                       return <span>{channel}</span>
                   }):''}
                   {user.role=='user'?
-                    <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>+</div>:''}
+                    <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>:''}
                 </div>
               </div>
         {isActive &&
