@@ -221,6 +221,7 @@ const Booked = (props)=>{
               <tr>
                 <td>{booking.student.first}</td>
                 <td>{booking.student.last}</td>
+                <td>{booking.request}</td>
                 <td><button onClick={()=>makeComment(booking.student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
               </tr>
             </table>

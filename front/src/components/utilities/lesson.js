@@ -92,9 +92,9 @@ const Lesson = (props)=>{
             props.content.student._id==user._id?
             'You are signed up!'  :`${props.content.student.first} ${props.content.student.last}`
             :<div>
-                <select class='form-control' ref={option}>
+                <select class='form-control' style={{width:'100%'}} ref={option}>
                   {props.options?props.options.map((item,i)=>{
-                    console.log('options recieved',item)                    
+                    console.log('options recieved',item)
                     return <option value={item.course.name}>{item.course.name}</option>
                   }):''}
                 </select>
