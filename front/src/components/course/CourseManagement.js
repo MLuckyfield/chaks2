@@ -268,7 +268,7 @@ const AccordionItem=(props)=>{
                   <h2>{course.name}</h2>
                   <div class='row'>
                     {course.delivery?course.delivery.map((channel,i)=>{
-                        return <span style={{backgroundColor:'tomato',color:'white',padding:'1%'}}>{channel}</span>
+                        return <span style={{backgroundColor:'tomato',color:'white',padding:'1%',margin:'1%',fontSize:'0.8em'}}>{channel}</span>
                     }):''}
                   </div>
                   <div class='fixed-row'>
@@ -296,7 +296,7 @@ const AccordionItem=(props)=>{
                     'anytime! study at your own pace with full attention'
                       :channel=='online group'?
                       <div class='col'>
-                        Schedule:{calculateSchedule(course)}
+                        Schedule:{calculateSchedule(course.online_schedule)}
                       </div>
                       :''
                     }</div>
