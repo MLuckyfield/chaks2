@@ -255,6 +255,7 @@ const AccordionItem=(props)=>{
     let repeats = schedule.repeats
     let next_start = moment(new Date(moment().year(),starting_month,1))
     console.log('calc variables',current_month,starting_month,repeats)
+    console.log('starting date',next_start)
     while(starting_month<=current_month){
       next_start.add(repeats,'months')
       starting_month+=repeats
