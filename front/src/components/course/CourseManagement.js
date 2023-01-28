@@ -255,6 +255,7 @@ const AccordionItem=(props)=>{
     let repeats = schedule.repeats
     let next_start = ''
     let next_enroll = ''
+    console.log('calc variables',current_month,starting_month,repeats)
     for(let i =starting_month;i<=current_month;i+=repeats){
       console.log('schedule calc',i)
     }
