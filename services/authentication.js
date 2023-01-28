@@ -49,10 +49,9 @@ const auth = (req,res,next)=>{
   if(proposal[0]=='Token'){
     let token = proposal[1]
     if(token){
-
         jwt.verify(token,process.env.SECRET, (err, decoded)=>{
           if (err){
-            console.log(err)
+            console.log('permission check decode error',err)
             reject(res,err)
           }else{
             req.user=decoded
