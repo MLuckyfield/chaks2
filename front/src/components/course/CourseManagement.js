@@ -234,6 +234,8 @@ const AccordionItem=(props)=>{
   const [course,setCourse]=useState(props.course)
   const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
   const [enrolled,setEnrolled]=useState()
+  const [online_schedule,setOnline_Schedule]=useState()
+  const [offline_schedule,setOffline_Schedule]=useState()
 
   useEffect(()=>{
     if(user.role!='user'){
@@ -245,11 +247,13 @@ const AccordionItem=(props)=>{
           console.log(err);
           });
     }
+    calculateSchedule(course.online_schedule,'online')
+    calculateSchedule(course.offline_schedule,'offline')
   },[])
   const enroll=()=>{
     console.log(user.first,'is enrolling in',course.name)
   }
-  const calculateSchedule=(schedule)=>{
+  const calculateSchedule=(schedule,switch)=>{
     let current_month = new Date().getMonth()+1
     let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
@@ -263,11 +267,15 @@ const AccordionItem=(props)=>{
     // }
     starting_month=moment(new Date(moment().year(),starting_month,1))
     current_month = moment(new Date(moment().year(),current_month,1))
-    let gap = current_month.diff(starting_month,'months')
+    let gap = ''
+    if(current_month>starting_month){current_month.diff(starting_month,'months')}
+    else{starting_month.diff(current_month,'months')}
     let cycles = Math.ceil(gap/repeats)
     next_start = starting_month.add(cycles*repeats,'months')
     next_start = moment(new Date(moment().year(),next_start,1))
     console.log('new calc',gap,cycles,next_start)
+    if(switch=='online'){setOnline_Schedule(next_start)}
+    else{setOffline_Schedule(next_start)}
     return <div class='row'>
               <div>Next Start: {next_start.format('M/D')}</div>
               <div>Graduation: {next_start.add(repeats,'months').format('M/D')}</div>
@@ -309,7 +317,9 @@ const AccordionItem=(props)=>{
                       <div class='col'>
                         {calculateSchedule(course.online_schedule)}
                       </div>
-                      :''
+                      :<div class='col'>
+                        {calculateSchedule(course.offline_schedule)}
+                       </div>
                     }</div>
                     {user.role=='user'?<div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>:''}
                   </div>
@@ -320,7 +330,6 @@ const AccordionItem=(props)=>{
               <div class='col border'>
                 <h2>Lessons</h2>
                 {course.lessons?course.lessons.map((lesson,i)=>{
-                  console.log('loading lesson',i,lesson)
                   return (<div class='fixed-row'>
                     <span class="custom_icon">{lesson.id}</span>
                     <EditorView content={lesson.content[0]} readOnly={true}/>
@@ -350,7 +359,6 @@ const EditorView = (props)=>{
   useEffect(()=>{
     props.content['entityMap']={}
     setEditorState(EditorState.createWithContent(convertFromRaw(props.content)))
-    console.log('recieved',props.content)
   },[])
 
   return(
