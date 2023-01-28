@@ -19,6 +19,19 @@ const CourseManagement = () => {
   const [lessons,setLessons]=useState([])
   const [lessonCount,setLessonCount]=useState(1)
   const [delivery,setDelivery]=useState([])
+  const online_day = useRef('')
+  const online_start_hour = useRef('')
+  const online_start_minute = useRef('')
+  const online_end_hour = useRef('')
+  const online_end_minute = useRef('')
+  const online_repeats = useRef('')
+  const offline_day= useRef('')
+  const offline_start_hour = useRef('')
+  const offline_start_minute = useRef('')
+  const offline_end_hour = useRef('')
+  const offline_end_minute = useRef('')
+  const offline_repeats = useRef('')
+
   const channels = ['online private','online group','in-person group']
   useEffect(()=>{
     axios.get('/program_course/all')
@@ -42,7 +55,27 @@ const CourseManagement = () => {
         name: name.current.value,
         thumbnail: image.current.value,
         description: convertToRaw(description.getCurrentContent()),
-        lessons:lessons
+        lessons:lessons,
+        online_schedule:{
+          repeats:online_repeats.current.value,
+          timeslots:[{
+            day:online_day.current.value,
+            start_hour:online_start_hour.current.value,
+            start_minute:online_start_minute.current.value,
+            end_hour:online_end_hour.current.value,
+            end_minute:online_end_minute.current.value,
+          }],
+        },
+        offline_schedule:{
+          repeats:offline_repeats.current.value,
+          timeslots:[{
+            day:offline_day.current.value,
+            start_hour:offline_start_hour.current.value,
+            start_minute:offline_start_minute.current.value,
+            end_hour:offline_end_hour.current.value,
+            end_minute:offline_end_minute.current.value,
+          }],
+        }
       })
       .then((res) => {
         window.location.reload();
@@ -132,17 +165,21 @@ const CourseManagement = () => {
                       }
                       Online
                       <div class="form-group make_blog">
-                        <input ref={start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
-                        <input ref={start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
-                        <input ref={end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
-                        <input ref={end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
+                        <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
+                        <input ref={online_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
+                        <input ref={online_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
+                        <input ref={online_end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
+                        <input ref={online_end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
+                        <input ref={online_repeats} type="number" class="form-control" min='0' max='60' placeholder='Repeats X months' required/>
                       </div>
                       Offline
                       <div class="form-group make_blog">
-                        <input ref={start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
-                        <input ref={start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
-                        <input ref={end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
-                        <input ref={end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
+                        <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
+                        <input ref={offline_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
+                        <input ref={offline_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
+                        <input ref={offline_end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
+                        <input ref={offline_end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
+                        <input ref={offline_repeats} type="number" class="form-control" min='0' max='60' placeholder='Repeats X months' required/>
                       </div>
                       <button type="submit" class="solid-first">Submit</button>
                     </form>
