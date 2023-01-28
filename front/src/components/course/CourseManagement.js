@@ -77,7 +77,7 @@ const CourseManagement = () => {
       <div class='col'>
         <h1>Course List</h1>
         <div class='row' style={{justifyContent:'end'}}>
-        {user.role=='manager'||user.role=='teacher'?
+        {user.role!='user'?
         <Popup button={"Create"} num={1} content={
           <form class='make_blog' onSubmit={onSubmit}>
                   <h2>New Course</h2>
@@ -134,7 +134,7 @@ const AccordionItem=(props)=>{
   const [enrolled,setEnrolled]=useState()
 
   useEffect(()=>{
-    if(user.role=='manager'||user.role=='teacher'){
+    if(user.role!='user'){
       axios.get('/enrolled/all',{params:{filter:{course:course._id}}})
         .then((res) => {
             setEnrolled(res.data.data)
@@ -166,7 +166,7 @@ const AccordionItem=(props)=>{
                   </div>  )
                 }):''}
               </div>
-              {user.role=='manager'||user.role=='teacher'?
+              {user.role!='user'?
               <div class='col'>
                 {enrolled?enrolled.map((item,i)=>{
                   <table>
