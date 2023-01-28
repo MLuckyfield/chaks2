@@ -159,6 +159,7 @@ const CourseManagement = () => {
                       </div>
                       </div>
                       <h3>Schedule & Delivery</h3>
+                      {console.log('channels',channels)}
                       {channels.forEach((channel, i) => {
                         return <div class='fixed-row'>
                                   <input type='checkbox' value={channel} onChange={deliverySetting}/>
