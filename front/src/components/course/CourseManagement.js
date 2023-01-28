@@ -249,6 +249,17 @@ const AccordionItem=(props)=>{
   const enroll=()=>{
     console.log(user.first,'is enrolling in',course.name)
   }
+  const calculateSchedule=(schedule)=>{
+    let current_month = new Date().getMonth()
+    let starting_month = schedule.timeslots[0].month
+    let repeats = schedule.repeats
+    let next_start = ''
+    let next_enroll = ''
+    for(let i =starting_month;i<=current_month;i+=repeats){
+      console.log('schedule calc',i)
+    }
+    return 'test'
+  }
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
               <div class='fixed-row'>
@@ -282,7 +293,7 @@ const AccordionItem=(props)=>{
                     'anytime! study at your own pace with full attention'
                       :channel=='online group'?
                       <div class='col'>
-                        Next start:
+                        Schedule:{calculateSchedule(course)}
                       </div>
                       :''
                     }</div>
