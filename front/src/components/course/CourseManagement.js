@@ -306,7 +306,8 @@ const AccordionItem=(props)=>{
                 <h2>Lessons</h2>
                 {course.lessons?course.lessons.map((lesson,i)=>{
                   console.log('loading lesson',i,lesson)
-                  return (<div class='col slim'>
+                  return (<div class='fixed-row'>
+                    <span class="custom_icon">{lesson.id}</span>
                     <EditorView content={lesson.content[0]} readOnly={true}/>
                   </div>  )
                 }):''}
