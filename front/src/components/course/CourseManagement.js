@@ -261,7 +261,10 @@ const AccordionItem=(props)=>{
       console.log('schedule calc',i,next_start,starting_month)
     }
     let next_enroll = next_start.subtract(1,'months')
-    return 'test'
+    return <div class='row'>
+                <div>Last enrollment: {next_enroll.format('M/D')}</div>
+                <div>Course Start: {next_start.format('M/D')}</div>
+           </div>
   }
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
