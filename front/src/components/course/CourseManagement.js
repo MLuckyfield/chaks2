@@ -19,18 +19,20 @@ const CourseManagement = () => {
   const [lessons,setLessons]=useState([])
   const [lessonCount,setLessonCount]=useState(1)
   const [delivery,setDelivery]=useState([])
-  const online_day = useRef('')
-  const online_start_hour = useRef('')
-  const online_start_minute = useRef('')
-  const online_end_hour = useRef('')
-  const online_end_minute = useRef('')
-  const online_repeats = useRef('')
-  const offline_day= useRef('')
-  const offline_start_hour = useRef('')
-  const offline_start_minute = useRef('')
-  const offline_end_hour = useRef('')
-  const offline_end_minute = useRef('')
-  const offline_repeats = useRef('')
+    //--
+    const online_day = useRef('')
+    const online_start_hour = useRef('')
+    const online_start_minute = useRef('')
+    const online_end_hour = useRef('')
+    const online_end_minute = useRef('')
+    const online_repeats = useRef('')
+    //--
+    const offline_day= useRef('')
+    const offline_start_hour = useRef('')
+    const offline_start_minute = useRef('')
+    const offline_end_hour = useRef('')
+    const offline_end_minute = useRef('')
+    const offline_repeats = useRef('')
 
   const channels = ['online private','online group','in-person group']
   useEffect(()=>{
@@ -47,6 +49,7 @@ const CourseManagement = () => {
     console.loge(value,'is',checked)
     if(checked){setDelivery([...delivery,value])}
     else{setDelivery(delivery.filter((e)=>e!==value))}
+    console.log('delivery is',delivery)
   }
   const onSubmit = (e) => {
     e.preventDefault();
@@ -222,6 +225,9 @@ const AccordionItem=(props)=>{
                 <img class='photo' src={course.thumbnail}></img>
                 <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
                   <h2>{course.name}</h2>
+                  {course.delivery?course.delivery.map((channel,i)=>{
+                      return <span>{channel}</span>
+                  }):''}
                   {user.role=='user'?
                     <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>+</div>:''}
                 </div>
