@@ -46,7 +46,7 @@ const CourseManagement = () => {
   },[])
   const deliverySetting=(e)=>{
     const {value, checked}=e.target
-    console.loge(value,'is',checked)
+    console.log(value,'is',checked)
     if(checked){setDelivery([...delivery,value])}
     else{setDelivery(delivery.filter((e)=>e!==value))}
     console.log('delivery is',delivery)
@@ -59,6 +59,7 @@ const CourseManagement = () => {
         thumbnail: image.current.value,
         description: convertToRaw(description.getCurrentContent()),
         lessons:lessons,
+        delivery:delivery,
         online_schedule:{
           repeats:online_repeats.current.value,
           timeslots:[{
@@ -159,33 +160,36 @@ const CourseManagement = () => {
                       </div>
                       </div>
                       <h3>Schedule & Delivery</h3>
-                      {console.log('channels',channels)}
-                      {channels.map((channel, i) => {
-                        return <div class='fixed-row'>
-                                  <input type='checkbox' value={channel} onChange={deliverySetting}/>
-                                  <label>{channel}</label>
-                                </div>
-                      })
-                      }
+                      <div class="form-group make_blog">
+                          {channels.map((channel, i) => {
+                            return <div class='fixed-row'>
+                                      <input type='checkbox' value={channel} onChange={deliverySetting}/>
+                                      <div>{channel}</div>
+                                    </div>
+                          })}
+                      </div>
                       <div class='col border'>
-                        Online
+                        {delivery.includes('online group')?
                         <div class="form-group make_blog">
+                        Online Group
                           <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
                           <input ref={online_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
                           <input ref={online_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
                           <input ref={online_end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
                           <input ref={online_end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
                           <input ref={online_repeats} type="number" class="form-control" min='0' max='60' placeholder='Repeats X months' required/>
-                        </div>
-                        Offline
+                        </div>:''}
+                        {delivery.includes('in-person group')?
                         <div class="form-group make_blog">
+                          Offline Group
                           <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
                           <input ref={offline_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
                           <input ref={offline_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
                           <input ref={offline_end_hour} type="number" class="form-control" min='0' max='24' placeholder='End Hour' required/>
                           <input ref={offline_end_minute} type="number" class="form-control" min='0' max='60' placeholder='End Minute' required/>
                           <input ref={offline_repeats} type="number" class="form-control" min='0' max='60' placeholder='Repeats X months' required/>
-                        </div>
+                        </div>:''}
+
                       </div>
                       <button type="submit" class="solid-first">Submit</button>
                     </form>
