@@ -40,8 +40,8 @@ const Course = mongoose.model('Course', new Schema({
       end_minute:{type:Number},
     }],
   },
-  fee:{
-    type:Number
+  stripe:{
+    type:String
   }
 },{
   timestamps: true,

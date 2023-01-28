@@ -268,9 +268,21 @@ const AccordionItem=(props)=>{
         });
 
   },[])
-  const enroll=()=>{
+  const enroll=(channel,product)=>{
     console.log(user.first,'is enrolling in',course.name)
-    
+    axios.post('/payment/',{
+      product:product,
+      purchase:{
+        student:user._id,
+        course:course._id,
+        delivery:channel
+      }
+    }).then((res) => {
+      window.location.href=res.data.data.url
+            })
+        .catch((err) => {
+          console.log(err);
+          });
   }
   const calculateSchedule=(schedule,attendance,type)=>{
     let current_month = 7//new Date().getMonth()
@@ -292,12 +304,14 @@ const AccordionItem=(props)=>{
     if(type=='online'){setOnline_Schedule(next_start)}
     else{setOffline_Schedule(next_start)}
   }
-  const lockEnroll=(schedule,course)=>{
-    if(schedule.attendance.length>=schedule.limit || schedule.attendance.includes(user._id)){}
+  const lockEnroll=(schedule,channel)=>{
+    if(schedule.attendance.length>=schedule.limit
+      || schedule.attendance.includes(user._id)
+      || user.role!='user'){}
     else{
       return <Popup button={"Enroll"} num={course._id} content={
         <div class='col'>
-          <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>+</div>
+          <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll(channel,course.stripe)}}>Agree & Pay</div>
         </div>
       }/>
     }
@@ -344,13 +358,13 @@ const AccordionItem=(props)=>{
                       <div class='col'>
                         Last enroll & start date: {online_schedule.start}, Graduation date: {online_schedule.graduation}
                       </div>
-                      {lockEnroll(online_schedule,course)}
+                      {lockEnroll(online_schedule,'online group')}
                     </div>
                     :<div>
                       <div class='col'>
                         Last enroll & start date: {offline_schedule.start}, Graduation date: {offline_schedule.graduation}
                        </div>
-                       {lockEnroll(offline_schedule,course)}
+                       {lockEnroll(offline_schedule,'in-person group')}
                      </div>
                   }</div>
                 </div>

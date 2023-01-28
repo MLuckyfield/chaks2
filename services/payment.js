@@ -32,7 +32,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       let purchased = {}
       let sub_type=''
       //after going through switch statement, update
-      let identifier={_id:session.metadata.order}
+      let identifier=''
+      let metadata = session.metadata
       // console.log(session)
 
       // Handle the event
@@ -175,6 +176,27 @@ const updateUser=(user,update,res)=>{
           });
       })
 }
+router.post('/course', async (req, res)=>{
+  // console.log(req)
+  // console.log(req.body.product)
+  let line_items={
+      price:req.body.product,
+      quantity:1,
+    }
+  const paymentLink = await stripe.paymentLinks.create({
+    line_items:[line_items],
+    allow_promotion_codes:true,
+    metadata:req.body.purchase,
+    // payment_intent_data:{setup_future_usage:'off_session'},
+    after_completion: {type: 'redirect', redirect: {url: 'https://chatshack.jp/account'}},
+  })
+  // console.log('preparing payment link',paymentLink)
+  return res.status(201).json({
+     data: paymentLink,
+     message: 'Booking saved',
+     success: true
+   });
+})
 router.post('/new', async (req, res)=>{
   // console.log(req)
   // console.log(req.body.product)
