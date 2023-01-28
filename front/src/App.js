@@ -33,6 +33,7 @@ import TestProp from './components/comment/TestProp'
 import Material_Admin from './components/user/admin'
 import CreateEvent from './components/event/CreateEvent'
 import CampaignPage from './components/page/CampaignPage'
+import CourseManagement from './components/course/CourseManagement'
 import StylePage from './components/page/StylePage'
 import Statistics from './components/user/statistics'
 import {metaTags} from './components/seo'
@@ -120,6 +121,7 @@ const App = () => {
           <Route path="/online" component={Online_Landing}/>
           <Route path="/promo*" component={Contract}/>
           <Route path="/reset" component={PW_Reset}/>
+            <SecureRoute path="/course_management" access={['teacher','manager','admin']} success={CourseManagement} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/create-event" access={['manager','admin']} success={CreateEvent} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/account" access={['user','manager']} success={Account} fail={()=><Redirect to='/login'/>}/>
