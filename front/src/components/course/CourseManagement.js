@@ -20,6 +20,7 @@ const CourseManagement = () => {
   const [lessonCount,setLessonCount]=useState(1)
   const [delivery,setDelivery]=useState([])
     //--
+    const online_limit = useRef('')
     const online_day = useRef('')
     const online_month = useRef('')
     const online_start_hour = useRef('')
@@ -28,6 +29,7 @@ const CourseManagement = () => {
     const online_end_minute = useRef('')
     const online_repeats = useRef('')
     //--
+    const offline_limit = useRef('')
     const offline_day= useRef('')
     const offline_month = useRef('')
     const offline_start_hour = useRef('')
@@ -65,6 +67,7 @@ const CourseManagement = () => {
         online_schedule:{
           repeats:online_repeats.current.value,
           timeslots:[{
+            limit:online_limit.current.value,
             month:online_month.current.value,
             day:online_day.current.value,
             start_hour:online_start_hour.current.value,
@@ -76,6 +79,7 @@ const CourseManagement = () => {
         offline_schedule:{
           repeats:offline_repeats.current.value,
           timeslots:[{
+            limit:offline_limit.current.value,
             month:offline_month.current.value,
             day:offline_day.current.value,
             start_hour:offline_start_hour.current.value,
@@ -177,7 +181,8 @@ const CourseManagement = () => {
                         {delivery.includes('online group')?
                         <div class="form-group make_blog">
                         Online Group
-                          <input ref={online_month} type="number" class="form-control" min='0' max='24' placeholder='Starting Month' required/>
+                          <input ref={online_limit} type="number" class="form-control" min='0' max='10' placeholder='Max class size' required/>
+                          <input ref={online_month} type="number" class="form-control" min='0' max='12' placeholder='Starting Month' required/>
                           <select class='form-control' ref={online_day}>
                             <option class='col slim feedback clickable' value={0}>Sunday</option>
                             <option class='col slim feedback clickable' value={1}>Monday</option>
@@ -196,7 +201,8 @@ const CourseManagement = () => {
                         {delivery.includes('in-person group')?
                         <div class="form-group make_blog">
                           Offline Group
-                          <input ref={offline_month} type="number" class="form-control" min='0' max='24' placeholder='Starting Month' required/>
+                          <input ref={offline_limit} type="number" class="form-control" min='0' max='10' placeholder='Max class size' required/>
+                          <input ref={offline_month} type="number" class="form-control" min='0' max='12' placeholder='Starting Month' required/>
                           <select class='form-control' ref={offline_day}>
                             <option class='col slim feedback clickable' value={0}>Sunday</option>
                             <option class='col slim feedback clickable' value={1}>Monday</option>
@@ -238,24 +244,35 @@ const AccordionItem=(props)=>{
   const [offline_schedule,setOffline_Schedule]=useState()
 
   useEffect(()=>{
-    let filter={student:user._id}
-    if(user.role!='user'){
-      filter={course:course._id}
-    }
-    axios.get('/enrolled/all',{params:{filter:filter}})
+    axios.get('/enrolled/all',{params:{filter:{course:course._id}}})
       .then((res) => {
           setEnrolled(res.data.data)
+          let online_enrolled =[]
+          let offline_enrolled =[]
+          res.data.data.forEach((item, i) => {
+            switch(item.delivery){
+              case 'in-person group':
+                if(item.status=='enrolled'){online_enrolled.push(item)}
+              break;
+              case 'online group':
+              if(item.status=='enrolled'){offline_enrolled.push(item)}
+              break;
+              default:
+            }
+          });
+          calculateSchedule(course.online_schedule,online_enrolled,'online')
+          calculateSchedule(course.offline_schedule,offline_enrolled,'offline')
           })
       .catch((err) => {
         console.log(err);
         });
-    calculateSchedule(course.online_schedule,'online')
-    calculateSchedule(course.offline_schedule,'offline')
+
   },[])
   const enroll=()=>{
     console.log(user.first,'is enrolling in',course.name)
+    
   }
-  const calculateSchedule=(schedule,type)=>{
+  const calculateSchedule=(schedule,attendance,type)=>{
     let current_month = 7//new Date().getMonth()
     let starting_month = schedule.timeslots[0].month-1
     let repeats = schedule.repeats
@@ -268,10 +285,22 @@ const AccordionItem=(props)=>{
     console.log('new calc',starting_month,current_month,gap,cycles,next_start)
     next_start={
       start:next_start.format('M/D'),
-      graduation:next_start.add(repeats,'months').format('M/D')
+      graduation:next_start.add(repeats,'months').format('M/D'),
+      limit:schedule.timeslots[0].limit,
+      attendance:attendance
     }
     if(type=='online'){setOnline_Schedule(next_start)}
     else{setOffline_Schedule(next_start)}
+  }
+  const lockEnroll=(schedule,course)=>{
+    if(schedule.attendance.length>=schedule.limit || schedule.attendance.includes(user._id)){}
+    else{
+      return <Popup button={"Enroll"} num={course._id} content={
+        <div class='col'>
+          <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>+</div>
+        </div>
+      }/>
+    }
   }
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
@@ -311,18 +340,19 @@ const AccordionItem=(props)=>{
                     {channel=='online private'?
                   'anytime! study at your own pace with full attention'
                     :channel=='online group'?
-                    <div class='col'>
-                      Last enroll & start date: {online_schedule.start}, Graduation date: {online_schedule.graduation}
+                    <div>
+                      <div class='col'>
+                        Last enroll & start date: {online_schedule.start}, Graduation date: {online_schedule.graduation}
+                      </div>
+                      {lockEnroll(online_schedule,course)}
                     </div>
-                    :<div class='col'>
-                     Last enroll & start date: {offline_schedule.start}, Graduation date: {offline_schedule.graduation}
+                    :<div>
+                      <div class='col'>
+                        Last enroll & start date: {offline_schedule.start}, Graduation date: {offline_schedule.graduation}
+                       </div>
+                       {lockEnroll(offline_schedule,course)}
                      </div>
                   }</div>
-                  {user.role=='user'?
-                    enrolled.includes(course._id)?
-                      ''
-                    :<div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>
-                  :''}
                 </div>
               )
             }):''}

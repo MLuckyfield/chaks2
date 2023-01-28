@@ -19,6 +19,7 @@ const Course = mongoose.model('Course', new Schema({
   online_schedule:{
     repeats:{type:Number},
     timeslots:[{
+      limit:{type:Number},
       month:{type:Number},
       day:{type:Number},
       start_hour:{type:Number},
@@ -30,6 +31,7 @@ const Course = mongoose.model('Course', new Schema({
   offline_schedule:{
     repeats:{type:Number},
     timeslots:[{
+      limit:{type:Number},
       month:{type:Number},
       day:{type:Number},
       start_hour:{type:Number},
