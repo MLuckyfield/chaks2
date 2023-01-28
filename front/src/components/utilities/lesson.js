@@ -18,7 +18,7 @@ const Lesson = (props)=>{
 
   //reservation options
   const option = useRef('')
-  
+
   const reschedule = (content)=>{
     console.log('data',new Date(year,month-1,new_date))
     axios.post('/booking/reschedule',
@@ -93,6 +93,7 @@ const Lesson = (props)=>{
             'You are signed up!'  :`${props.content.student.first} ${props.content.student.last}`
             :<div>
                 <select class='form-control' ref={option}>
+                {console.log('options recieved',props.options)}
                   {props.options?props.options.map((item,i)=>{
                     <option value={item.course.name}>{item.course.name}</option>
                   }):''}

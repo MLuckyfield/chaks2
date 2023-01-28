@@ -118,7 +118,6 @@ const CourseManagement = () => {
         </div>
         <div class='col'>
           {courses? (courses.map(function(course, i){
-            console.log('course',course.description,course)
                 return(
                   <AccordionItem course={course}/>
                 )
