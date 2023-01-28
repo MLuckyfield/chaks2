@@ -238,22 +238,24 @@ const AccordionItem=(props)=>{
   const [offline_schedule,setOffline_Schedule]=useState()
 
   useEffect(()=>{
+    let filter={student:user._id}
     if(user.role!='user'){
-      axios.get('/enrolled/all',{params:{filter:{course:course._id}}})
-        .then((res) => {
-            setEnrolled(res.data.data)
-            })
-        .catch((err) => {
-          console.log(err);
-          });
+      filter={course:course._id}
     }
+    axios.get('/enrolled/all',{params:{filter:filter}})
+      .then((res) => {
+          setEnrolled(res.data.data)
+          })
+      .catch((err) => {
+        console.log(err);
+        });
     calculateSchedule(course.online_schedule,'online')
     calculateSchedule(course.offline_schedule,'offline')
   },[])
   const enroll=()=>{
     console.log(user.first,'is enrolling in',course.name)
   }
-  const calculateSchedule=(schedule,i)=>{
+  const calculateSchedule=(schedule,type)=>{
     let current_month = new Date().getMonth()+1
     let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
@@ -267,15 +269,13 @@ const AccordionItem=(props)=>{
     // }
     starting_month=moment(new Date(moment().year(),starting_month,1))
     current_month = moment(new Date(moment().year(),current_month,1))
-    let gap = ''
-    if(current_month>starting_month){current_month.diff(starting_month,'months')}
-    else{starting_month.diff(current_month,'months')}
+    let gap = Math.abs(current_month.diff(starting_month,'months'))
     let cycles = Math.ceil(gap/repeats)
     next_start = starting_month.add(cycles*repeats,'months')
     next_start = moment(new Date(moment().year(),next_start,1))
     console.log('new calc',gap,cycles,next_start)
-    if(i=='online'){setOnline_Schedule(next_start)}
-    else{setOffline_Schedule(next_start)}
+    // if(type=='online'){setOnline_Schedule(next_start)}
+    // else{setOffline_Schedule(next_start)}
     return <div class='row'>
               <div>Next Start: {next_start.format('M/D')}</div>
               <div>Graduation: {next_start.add(repeats,'months').format('M/D')}</div>
@@ -306,25 +306,34 @@ const AccordionItem=(props)=>{
             </div>
             <div class='col border'>
               <h2>Schedule</h2>
-              {course.delivery?course.delivery.map((channel,i)=>{
-                return (
-                  <div class='fixed-row'>
-                    <h3>{channel}</h3>
+              {enrolled.includes(course._id)?
+                <div class='col' style={{backgroundColor:'#55DF80',fontWeight:'700',color:'white'}}>
+                  YOU'RE ENROLLED!
+                  <button style={{width:'50%',color:'white',backgroundColor:'black',fontWeight:'700'}} onClick={(e)=>{window.location='/clock_out'}}>FINISH</button>
+                </div>
+            :course.delivery?course.delivery.map((channel,i)=>{
+              return (
+                <div class='fixed-row'>
+                  <h3>{channel}</h3>
+                  <div class='col'>
+                    {channel=='online private'?
+                  'anytime! study at your own pace with full attention'
+                    :channel=='online group'?
                     <div class='col'>
-                      {channel=='online private'?
-                    'anytime! study at your own pace with full attention'
-                      :channel=='online group'?
-                      <div class='col'>
-                        {calculateSchedule(course.online_schedule,'online')}
-                      </div>
-                      :<div class='col'>
-                        {calculateSchedule(course.offline_schedule,'offline')}
-                       </div>
-                    }</div>
-                    {user.role=='user'?<div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>:''}
-                  </div>
-                )
-              }):''}
+                      {calculateSchedule(course.online_schedule,'online')}
+                    </div>
+                    :<div class='col'>
+                      {calculateSchedule(course.offline_schedule,'offline')}
+                     </div>
+                  }</div>
+                  {user.role=='user'?
+                    enrolled.includes(course._id)?
+                      ''
+                    :<div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>
+                  :''}
+                </div>
+              )
+            }):''}
             </div>
             <div class='row'>
               <div class='col border'>
