@@ -21,6 +21,7 @@ const CourseManagement = () => {
   const [delivery,setDelivery]=useState([])
     //--
     const online_day = useRef('')
+    const online_month = useRef('')
     const online_start_hour = useRef('')
     const online_start_minute = useRef('')
     const online_end_hour = useRef('')
@@ -28,6 +29,7 @@ const CourseManagement = () => {
     const online_repeats = useRef('')
     //--
     const offline_day= useRef('')
+    const offline_month = useRef('')
     const offline_start_hour = useRef('')
     const offline_start_minute = useRef('')
     const offline_end_hour = useRef('')
@@ -63,6 +65,7 @@ const CourseManagement = () => {
         online_schedule:{
           repeats:online_repeats.current.value,
           timeslots:[{
+            month:online_month.current.value,
             day:online_day.current.value,
             start_hour:online_start_hour.current.value,
             start_minute:online_start_minute.current.value,
@@ -73,6 +76,7 @@ const CourseManagement = () => {
         offline_schedule:{
           repeats:offline_repeats.current.value,
           timeslots:[{
+            month:offline_month.current.value,
             day:offline_day.current.value,
             start_hour:offline_start_hour.current.value,
             start_minute:offline_start_minute.current.value,
@@ -159,6 +163,8 @@ const CourseManagement = () => {
                         }):''}
                       </div>
                       </div>
+                      <div class='col border'>
+
                       <h3>Schedule & Delivery</h3>
                       <div class="form-group make_blog">
                           {channels.map((channel, i) => {
@@ -168,10 +174,10 @@ const CourseManagement = () => {
                                     </div>
                           })}
                       </div>
-                      <div class='col border'>
                         {delivery.includes('online group')?
                         <div class="form-group make_blog">
                         Online Group
+                          <input ref={online_month} type="number" class="form-control" min='0' max='24' placeholder='Starting Month' required/>
                           <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
                           <input ref={online_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
                           <input ref={online_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
@@ -182,6 +188,7 @@ const CourseManagement = () => {
                         {delivery.includes('in-person group')?
                         <div class="form-group make_blog">
                           Offline Group
+                          <input ref={offline_month} type="number" class="form-control" min='0' max='24' placeholder='Starting Month' required/>
                           <input ref={online_day} type="number" class="form-control" min='0' max='24' placeholder='Day' required/>
                           <input ref={offline_start_hour} type="number" class="form-control" min='0' max='24' placeholder='Start Hour' required/>
                           <input ref={offline_start_minute} type="number" class="form-control" min='0' max='60' placeholder='Start Minute' required/>
@@ -244,11 +251,32 @@ const AccordionItem=(props)=>{
               </div>
         {isActive &&
           <div class='accordion-content'>
-            <div class='col slim'>
+            <div class='col slim border'>
+              <h2>Description</h2>
               <EditorView content={course.description[0]} readOnly={true}/>
             </div>
+            <div class='col border'>
+              <h2>Schedule</h2>
+              {course.delivery?course.delivery.map((channel,i)=>{
+                return (
+                  <div class='fixed-row'>
+                    <h3>{channel}</h3>
+                    <div class='col'>
+                      {channel=='online private'?
+                    'anytime! study at your own pace with full attention'
+                      :channel=='online group'?
+                      <div class='col'>
+                        Next start: 
+                      </div>
+                      :''
+                    }</div>
+                  </div>
+                )
+              }):''}
+            </div>
             <div class='row'>
-              <div class='col'>
+              <div class='col border'>
+                <h2>Lessons</h2>
                 {course.lessons?course.lessons.map((lesson,i)=>{
                   console.log('loading lesson',i,lesson)
                   return (<div class='col slim'>

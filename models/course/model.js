@@ -12,13 +12,14 @@ const Course = mongoose.model('Course', new Schema({
     id:{type:Number},
     content:[]
   }],
-  delivery:{
+  delivery:[{
     type:String,
     enum:['online private','online group','in-person group']
-  },
+  }],
   online_schedule:{
     repeats:{type:Number},
     timeslots:[{
+      month:{type:Number},
       day:{type:Number},
       start_hour:{type:Number},
       start_minute:{type:Number},
@@ -29,6 +30,7 @@ const Course = mongoose.model('Course', new Schema({
   offline_schedule:{
     repeats:{type:Number},
     timeslots:[{
+      month:{type:Number},
       day:{type:Number},
       start_hour:{type:Number},
       start_minute:{type:Number},
