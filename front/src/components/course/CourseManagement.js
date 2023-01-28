@@ -261,7 +261,10 @@ const AccordionItem=(props)=>{
       starting_month+=repeats
       console.log('schedule calc',next_start,starting_month)
     }
-    return <div>Next Start: {next_start.format('M/D')}</div>
+    return <div class='row'>
+              <div>Next Start: {next_start.format('M/D')}</div>
+              <div>Graduation: {next_start.add(repeats,'months').format('M/D')}</div>
+            </div>
   }
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
