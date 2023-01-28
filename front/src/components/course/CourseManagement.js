@@ -231,6 +231,7 @@ const AccordionItem=(props)=>{
                   {course.delivery?course.delivery.map((channel,i)=>{
                       return <span>{channel}</span>
                   }):''}
+                  {console.log('display button?',use.role,user.role=='user')}
                   {user.role=='user'?
                     <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>:''}
                 </div>
