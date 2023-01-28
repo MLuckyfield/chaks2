@@ -250,14 +250,15 @@ const AccordionItem=(props)=>{
     console.log(user.first,'is enrolling in',course.name)
   }
   const calculateSchedule=(schedule)=>{
-    let current_month = new Date().getMonth()
+    let current_month = new Date().getMonth()+1
     let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
-    let next_start = ''
+    let next_start = moment(new Date(moment().year(),starting_month,1))
     let next_enroll = ''
     console.log('calc variables',current_month,starting_month,repeats)
-    for(let i =starting_month;i<=current_month;i+=repeats){
-      console.log('schedule calc',i)
+    for(let i=starting_month;i<=current_month;i+=repeats){
+      next_start.add(repeats,'months')
+      console.log('schedule calc',i,next_start)
     }
     return 'test'
   }
@@ -269,12 +270,11 @@ const AccordionItem=(props)=>{
                   <h2>{course.name}</h2>
                   <div class='row'>
                     {course.delivery?course.delivery.map((channel,i)=>{
-                        return <span style={{backgroundColor:'tomato',color:'white',padding:'1%',margin:'1%',fontSize:'0.8em'}}>{channel}</span>
+                        return <span class='tag' style={channel=='online private'?{backgroundColor:'tomato'}:channel=='online group'?{backgroundColor:'#89CFF0'}:{backgroundColor:'lime'}}>{channel}</span>
                     }):''}
                   </div>
                   <div class='fixed-row'>
                     <div class="btn" style={{position:'relative',width:'80%'}} onClick={() => setIsActive(!isActive)}>Details</div>
-                    {user.role=='user'?<div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>:''}
                   </div>
 
                 </div>
@@ -288,7 +288,6 @@ const AccordionItem=(props)=>{
             <div class='col border'>
               <h2>Schedule</h2>
               {course.delivery?course.delivery.map((channel,i)=>{
-                console.log('delivery method',channel)
                 return (
                   <div class='fixed-row'>
                     <h3>{channel}</h3>
@@ -297,10 +296,11 @@ const AccordionItem=(props)=>{
                     'anytime! study at your own pace with full attention'
                       :channel=='online group'?
                       <div class='col'>
-                        Schedule:{calculateSchedule(course.online_schedule)}
+                        {calculateSchedule(course.online_schedule)}
                       </div>
                       :''
                     }</div>
+                    {user.role=='user'?<div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll()}}>Enroll</div>:''}
                   </div>
                 )
               }):''}
