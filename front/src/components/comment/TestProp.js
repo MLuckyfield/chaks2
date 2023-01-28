@@ -63,7 +63,7 @@ const TestProp = () => {
         if(user.role=='user'){
           axios.get('/enrolled/all',{params:{filter:{student:user._id}}})
           .then((res) => {
-              res.data.data.append({course:{name:'Free Talk'}})
+              res.data.data.push({course:{name:'Free Talk'}})
               setOptions(res.data.data)
               })
           .catch((err) => {
