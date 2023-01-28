@@ -271,7 +271,7 @@ const AccordionItem=(props)=>{
     let cycles = Math.ceil(gap/repeats)
     next_start = next_start.add(cycles*repeats,'months')
     // next_start = moment(new Date(moment().year(),next_start,1))
-    console.log('new calc',starting_month,gap,cycles,next_start)
+    console.log('new calc',starting_month,current_month,gap,cycles,next_start)
     // if(type=='online'){setOnline_Schedule(next_start)}
     // else{setOffline_Schedule(next_start)}
     return <div class='row'>
