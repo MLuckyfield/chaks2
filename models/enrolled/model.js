@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 
 const Enrolled = mongoose.model('Enrolled', new Schema({
-  student: {
+  student: {//6346840b683a491148a921d8
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  course: {
+  course: {//63d4c68b3421e21c3a1db4a4
     type: Schema.Types.ObjectId,
     ref: 'Course'
   },

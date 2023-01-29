@@ -269,19 +269,31 @@ const AccordionItem=(props)=>{
   },[])
   const enroll=(channel,product)=>{
     console.log(user.first,'is enrolling in',course.name)
-    axios.post('/payment/course',{
-      product:product,
-      purchase:{
-        student:user._id,
-        course:course._id,
-        delivery:channel
-      }
-    }).then((res) => {
-      window.location.href=res.data.data.url
-            })
-        .catch((err) => {
-          console.log(err);
-          });
+    // axios.post('/payment/course',{
+    //   product:product,
+    //   purchase:{
+    //     student:user._id,
+    //     course:course._id,
+    //     delivery:channel
+    //   }
+    // }).then((res) => {
+    //   window.location.href=res.data.data.url
+    //         })
+    //     .catch((err) => {
+    //       console.log(err);
+    //       });
+      axios.post('/enrolled/new',{
+          student:user._id,
+          course:course._id,
+          delivery:channel,
+          status_date:new Date(),
+          status:'enrolled'
+      }).then((res) => {
+        window.location.href=res.data.data.url
+              })
+          .catch((err) => {
+            console.log(err);
+            });
   }
   const calculateSchedule=(schedule,attendance,type)=>{
     let current_month = 7//new Date().getMonth()
@@ -378,11 +390,9 @@ const AccordionItem=(props)=>{
                   <div class='display'>
                     <h3>START</h3>
                   </div>
+                  <div class='connector'></div>
                 </div>
-                <div class='fixed-row blanklesson'>
-                  <div class='box'></div>
-                  <div class='display'></div>
-                </div>
+
                 {course.lessons?course.lessons.map((lesson,i)=>{
                   return (
                     <span>
