@@ -175,7 +175,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     }
                     console.log('course payment: will upload:',purchased)
                     try{
-                      await new Enrolled(purchased).save()
+                       new Enrolled(purchased).save()
                         .then(()=>{
                           console.log('Course payment: Enrolled success')
                           return res.status(201).json({
