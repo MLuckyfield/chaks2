@@ -1,7 +1,6 @@
 
 import React, { useState,useEffect,useRef } from 'react';
 import {axios} from "../../utilities/axios";
-import moment from "moment-timezone"
 
 const Lesson = (props)=>{
 

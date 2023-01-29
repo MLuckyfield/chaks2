@@ -381,9 +381,9 @@ const AccordionItem=(props)=>{
                 </div>
                 {course.lessons?course.lessons.map((lesson,i)=>{
                   return (
-                    <div class='fixed-row'>
-                      <div class='col border'></div>
-                      <div class='col border'>
+                    <div class='fixed-row lesson'>
+                      <div class='box'></div>
+                      <div class='display'>
                         <h3>{lesson.id}<EditorView content={lesson.content[0]} readOnly={true}/></h3>
                       </div>
                     </div>
