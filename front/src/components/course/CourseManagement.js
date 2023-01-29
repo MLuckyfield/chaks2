@@ -379,17 +379,24 @@ const AccordionItem=(props)=>{
                     <h3>START</h3>
                   </div>
                 </div>
-                <div class='fixed-row lesson'>
+                <div class='fixed-row blanklesson'>
                   <div class='box'></div>
+                  <div class='display'></div>
                 </div>
                 {course.lessons?course.lessons.map((lesson,i)=>{
                   return (
-                    <div class='fixed-row lesson'>
-                      <div class='box'></div>
-                      <div class='display'>
-                        <h3>{lesson.id}<EditorView content={lesson.content[0]} readOnly={true}/></h3>
+                    <span>
+                      <div class='fixed-row lesson'>
+                        <div class='box'></div>
+                        <div class='display'>
+                          <h3>{lesson.id}<EditorView content={lesson.content[0]} readOnly={true}/></h3>
+                        </div>
                       </div>
-                    </div>
+                      <div class='fixed-row blanklesson'>
+                        <div class='box'></div>
+                        <div class='display'></div>
+                      </div>
+                    </span>
                 )
                 }):''}
                 <div class='fixed-row lesson'>
