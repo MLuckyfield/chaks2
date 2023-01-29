@@ -77,39 +77,6 @@ const TestProp = () => {
     if(minute=='0'){minute='00'}
     return `${hour}:${minute}`
   }
-  // const reschedule = (timeslot)=>{
-  //   console.log('data',new_date,new_hour,new_minute)
-  //   let new_slot = new Date(year,month-1,new_date)
-  //   console.log('proposed',new_slot)
-  //   new_slot.setHours(new_hour)
-  //   new_slot.setMinutes(new_minute)
-  //   console.log('adjusted',new_slot)
-  //   axios.post('/booking/update',
-  //     {
-  //       filter: timeslot._id,
-  //       data: {date:new_slot}
-  //     })
-  //     .then((res) => {
-  //         window.location.reload();
-  //         })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       });
-  // }
-  // const flagDelete = (timeslot)=>{
-  //   axios.post('/booking/update',
-  //     {
-  //       filter: timeslot._id,
-  //       data: {status:'delete'}
-  //     })
-  //     .then((res) => {
-  //         window.location.reload();
-  //         })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       });
-  //
-  // }
   return(
     <div class='col'>
       {user.role=='manager'?

@@ -1,4 +1,5 @@
 const User = require('../models/user/model')
+const Enrolled = require('../models/user/enrolled')
 const stripe = require('stripe')(process.env.STRIPE);
 const moment = require ('moment')
 const router = require('express').Router();
@@ -154,6 +155,45 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           identifier={stripe:{customer_id:session.customer}}
           updateUser(identifier,purchased,res)
           break;
+        case 'checkout.session.complete':
+          let payment_link = stripe.paymentLinks.listLineItems(session.payment_link)
+          console.log('course payment:',payment_link)
+          let course = payment_link.line_items.data[0].price.product
+          let delivery = payment_link.metadata
+          //metadata must have ._id,channel,type
+          identifier={stripe:{customer_id:session.customer}}
+          if(delivery.type=='course'){
+            User.findOne(identifier)
+                .then((user)=>{
+                  console.log('course payment, found user',user.first,user.last)
+                    purchased = {
+                      student:user._id,
+                      course:delivery._id,
+                      delivery:delivery.channel,
+                      status_date:new Date(),
+                      status:'enrolled'
+                    }
+                    console.log('course payment: will upload:',purchased)
+                    try{
+                      await new Enrolled(purchased).save()
+                        .then(()=>{
+                          console.log('Course payment: Enrolled success')
+                          return res.status(201).json({
+                            message: `Success!`,
+                            success: true
+                          });
+                        })
+                    }
+                   catch(err){
+                     console.log('Course payment: Enrolled failed')
+                     return res.status(500).json({
+                       message: `user creation unsuccessful: ${err}`,
+                       success: false
+                     });
+                    }
+                })
+          }else{console.log('payment ignored, not a course')}
+        break;
         default:
           console.log(`Unhandled event type ${event.type}`);
       }

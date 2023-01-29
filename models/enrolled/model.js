@@ -21,6 +21,9 @@ const Enrolled = mongoose.model('Enrolled', new Schema({
     type:String,
     enum:['enrolled','active','complete'],
     default:'enrolled'
+  },
+  progress:{
+    type:Number
   }
 },{
   timestamps: true,
