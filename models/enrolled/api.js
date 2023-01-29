@@ -66,8 +66,8 @@ router.post('/update',auth.auth,async (req,res)=>{
 
 //Get
 router.get('/all', auth.auth,async (req, res) => {
-  console.log('enrolled all request',req.query.filter)
   let data = await Enrolled.find(req.query.filter?JSON.parse(req.query.filter):'').populate('student').populate('course')
+  console.log('enrolled all request',req.query.filter,data)
   return res.status(201).json({
     data: data,
     message: 'Enrolled saved',
