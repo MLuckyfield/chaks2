@@ -341,7 +341,6 @@ const AccordionItem=(props)=>{
                   <div class='fixed-row'>
                     <div class="btn" style={{position:'relative',width:'80%'}} onClick={() => setIsActive(!isActive)}>Details</div>
                   </div>
-
                 </div>
               </div>
         {isActive &&
@@ -420,12 +419,15 @@ const AccordionItem=(props)=>{
                 </div>
               </div>
               {user.role!='user'?
-              <div class='col'>
+              <div class='col border'>
+                <h2>Students</h2>
                 {enrolled?enrolled.map((item,i)=>{
                   <table>
                     <tr>
                       <td>{item.student.first}</td>
                       <td>{item.student.last}</td>
+                      <td>{item.progress}</td>
+                      <td><div class="btn" style={{position:'relative',width:'80%',backgroundColor:'lime',color:'white'}}>+</div></td>
                     </tr>
                   </table>
                 })
