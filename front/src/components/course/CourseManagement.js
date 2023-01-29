@@ -389,7 +389,10 @@ const AccordionItem=(props)=>{
                       <div class='fixed-row lesson'>
                         <div class='box'></div>
                         <div class='display'>
-                          <h3>{lesson.id}<EditorView content={lesson.content[0]} readOnly={true}/></h3>
+                          <h3>{lesson.id}</h3>
+                          <p>
+                            <EditorView content={lesson.content[0]} readOnly={true}/>
+                          </p>
                         </div>
                       </div>
                       <div class='fixed-row blanklesson'>
