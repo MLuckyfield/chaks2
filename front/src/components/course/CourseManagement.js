@@ -373,9 +373,9 @@ const AccordionItem=(props)=>{
             <div class='row'>
               <div class='col border'>
                 <h2>Lessons</h2>
-                <div class='fixed-row'>
-                  <div class='col border'></div>
-                  <div class='col border'>
+                <div class='fixed-row lesson'>
+                  <div class='box'></div>
+                  <div class='display'>
                     <h3>START</h3>
                   </div>
                 </div>
@@ -389,10 +389,10 @@ const AccordionItem=(props)=>{
                     </div>
                 )
                 }):''}
-                <div class='fixed-row'>
-                  <div class='col border'></div>
-                  <div class='col border'>
-                    <h3>GRADUATE</h3>
+                <div class='fixed-row lesson'>
+                  <div class='box'></div>
+                  <div class='display'>
+                    <h3>GRADUATION</h3>
                   </div>
                 </div>
               </div>
