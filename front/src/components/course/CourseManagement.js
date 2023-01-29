@@ -398,7 +398,7 @@ const AccordionItem=(props)=>{
                   <div class='connector'></div>
                 </div>
 
-                {course.lessons?course.lessons.map((lesson,i)=>{
+                {course.lessons?course.lessons.sort((a,b)=>a.id-b.id).map((lesson,i)=>{
                   return (
                       <div class='fixed-row lesson'>
                         <div class='box'></div>
