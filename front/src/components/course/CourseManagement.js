@@ -251,10 +251,10 @@ const AccordionItem=(props)=>{
           res.data.data.forEach((item, i) => {
             switch(item.delivery){
               case 'in-person group':
-                if(item.status=='enrolled'){online_enrolled.push(item)}
+                if(item.status=='enrolled'){offline_enrolled.push(item)}
               break;
               case 'online group':
-              if(item.status=='enrolled'){offline_enrolled.push(item)}
+              if(item.status=='enrolled'){online_enrolled.push(item)}
               break;
               default:
             }
@@ -399,7 +399,7 @@ const AccordionItem=(props)=>{
                         <div class='box'></div>
                         <div class='display'>
                           <div class='fixed-row'>
-                            <h3>{lesson.id}</h3>                          
+                            <h3>{lesson.id}</h3>
                             <EditorView content={lesson.content[0]} readOnly={true}/>
                           </div>
                         </div>
