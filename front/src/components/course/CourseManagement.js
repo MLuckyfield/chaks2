@@ -372,12 +372,15 @@ const AccordionItem=(props)=>{
             </div>
             <div class='row'>
               <div class='col border'>
-                <h2>Lessons</h2>
+                <h2 style={{marginBottom:'5%'}}>Lessons</h2>
                 <div class='fixed-row lesson'>
                   <div class='box'></div>
                   <div class='display'>
                     <h3>START</h3>
                   </div>
+                </div>
+                <div class='fixed-row lesson'>
+                  <div class='box'></div>
                 </div>
                 {course.lessons?course.lessons.map((lesson,i)=>{
                   return (
