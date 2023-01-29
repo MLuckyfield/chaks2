@@ -5,7 +5,6 @@ import Popup from '../utilities/popup'
 // import Accordion from '../utilities/accordion'
 import {Editor, EditorState, convertToRaw,convertFromRaw, RichUtils} from 'draft-js'
 
-
 const CourseManagement = () => {
 
   const [courses, setCourses]=useState()
