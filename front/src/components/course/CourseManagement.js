@@ -381,7 +381,7 @@ const AccordionItem=(props)=>{
               )
             }):''}
             </div>
-            <div class='row'>
+            <div class='up_row'>
               <div class='col border'>
                 <h2 style={{marginBottom:'5%'}}>Lessons</h2>
                 <div class='fixed-row lesson'>
