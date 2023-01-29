@@ -259,6 +259,7 @@ const AccordionItem=(props)=>{
               default:
             }
           });
+          console.log('enrolled',res.data.data,online_enrolled,offline_enrolled)
           calculateSchedule(course.online_schedule,online_enrolled,'online')
           calculateSchedule(course.offline_schedule,offline_enrolled,'offline')
           })
@@ -289,7 +290,7 @@ const AccordionItem=(props)=>{
           status_date:new Date(),
           status:'enrolled'
       }).then((res) => {
-        window.location.href=res.data.data.url
+        window.location.reload()
               })
           .catch((err) => {
             console.log(err);
@@ -305,7 +306,7 @@ const AccordionItem=(props)=>{
     let cycles = Math.ceil(gap/repeats)
     let next_start = starting_month.add(cycles*repeats,'months')
     // next_start = moment(new Date(moment().year(),next_start,1))
-    console.log('new calc',starting_month,current_month,gap,cycles,next_start)
+    // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
     next_start={
       start:next_start.format('M/D'),
       graduation:next_start.add(repeats,'months').format('M/D'),
@@ -384,7 +385,7 @@ const AccordionItem=(props)=>{
             <div class='up_row'>
               <div class='col border'>
                 <h2 style={{marginBottom:'5%'}}>Lessons</h2>
-                <div class='fixed-row lesson'>
+                <div class='fixed-row lesson' style={{marginTop:'0%'}}>
                   <div class='box'></div>
                   <div class='display'>
                     <h3>START</h3>
