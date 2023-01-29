@@ -422,6 +422,7 @@ const AccordionItem=(props)=>{
               {user.role!='user'?
               <div class='col border'>
                 <h2>Students</h2>
+                {console.log('enrolled display',enrolled)}
                 {enrolled?enrolled.map((item,i)=>{
                   <table>
                     <tr>
