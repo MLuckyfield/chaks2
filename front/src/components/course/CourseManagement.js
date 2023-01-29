@@ -317,8 +317,13 @@ const AccordionItem=(props)=>{
     else{setOffline_Schedule(next_start)}
   }
   const lockEnroll=(schedule,channel)=>{
+    let isEnrolled=false
+    enrolled.forEach((item, i) => {
+      if(item.student._id==user._id){isEnrolled=true}
+    });
+
     if(schedule.attendance.length>=schedule.limit
-      || schedule.attendance.includes(user._id)
+      || isEnrolled==true
       || user.role!='user'){}
     else{
       return <Popup button={"Enroll"} num={course._id} content={
