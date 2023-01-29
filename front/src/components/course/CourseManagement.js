@@ -422,16 +422,17 @@ const AccordionItem=(props)=>{
               {user.role!='user'?
               <div class='col border'>
                 <h2>Students</h2>
-                {console.log('enrolled display',enrolled)}
                 {enrolled?enrolled.map((item,i)=>{
-                  <table>
-                    <tr>
-                      <td>{item.student.first}</td>
-                      <td>{item.student.last}</td>
-                      <td>{item.progress}</td>
-                      <td><div class="btn" style={{position:'relative',width:'80%',backgroundColor:'lime',color:'white'}}>+</div></td>
-                    </tr>
-                  </table>
+                  return (
+                    <table>
+                      <tr>
+                        <td>{item.student.first}</td>
+                        <td>{item.student.last}</td>
+                        <td>{item.progress}</td>
+                        <td><div class="btn" style={{position:'relative',width:'80%',backgroundColor:'lime',color:'white'}}>+</div></td>
+                      </tr>
+                    </table>
+                  )
                 })
                   :'No students enrolled!'}
               </div>
