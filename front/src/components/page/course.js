@@ -59,18 +59,14 @@ const Online_Landing = () => {
               <div class='row center align'>
                       <div class='col'>
                         <span class="custom_icon">1</span>
-                        <p>下記より無料登録を行ってください</p>
+                        <p>下記より無料登録を行って,受講したいコースやコース日をご確認ください</p>
                       </div>
                       <div class='col'>
                         <span class="custom_icon">2</span>
-                        <p>登録後、右上のコース詳細ページより、受講したいコースやコース日をご確認ください</p>
-                      </div>
-                      <div class='col'>
-                        <span class="custom_icon">3</span>
                         <p>受講したいコースの "申し込み" をクリックし、受講規約をご確認の上、決済を完了してください</p>
                       </div>
                       <div class='col'>
-                        <span class="custom_icon">4</span>
+                        <span class="custom_icon">3</span>
                         <p>レッスンのお時間になりましたら、コース詳細ページより"レッスンへ参加"をクリックし、ZOOMにてレッスンへご参加ください</p>
                       </div>
               </div>
