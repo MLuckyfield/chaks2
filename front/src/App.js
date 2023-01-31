@@ -30,6 +30,7 @@ import hotjar from './components/hotjar'
 //import pages
 import EventList from './components/event/EventList'
 import Online_Landing from './components/page/onlineLandingPage'
+import Course_Landing from './components/page/course'
 import TestProp from './components/comment/TestProp'
 import Material_Admin from './components/user/admin'
 import CreateEvent from './components/event/CreateEvent'
@@ -114,12 +115,12 @@ const App = () => {
           <Route exact path="/ads" component={Front}/>
           <Route exact path="/" component={Front}/>
           <Route path="/events" component={EventList}/>
-          <Route path="/campaigns" component={CampaignPage}/>
           <Route path="/about" component={StylePage}/>
           <Route exact path="/blog" component={BlogFront}/>
           <Route exact path="/blog/*" component={BlogDisplay}/>
           <Route path="/login" component={Login}/>
           <Route path="/online" component={Online_Landing}/>
+          <Route path="/courses" component={Course_Landing}/>
           <Route path="/promo*" component={Contract}/>
           <Route path="/reset" component={PW_Reset}/>
             <SecureRoute path="/private" access={['teacher','manager','user']} success={Calendar} fail={()=><Redirect to='/login'/>}/>
