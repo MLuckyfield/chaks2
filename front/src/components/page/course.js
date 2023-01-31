@@ -22,7 +22,7 @@ const Online_Landing = () => {
       <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(0,0,0,0.3)'}}>
             <div class='col border'>
-                    <h1>コース型レッスンとは</h1>
+                    <h1>コースとは</h1>
                     <p>毎週決まった日時に決まったテーマを中心にレッスンをいたします！
 
 コースの種類は、文法（初級～中級）、日常英会話（初級～上級）、ビジネス英語、TOEIC対策コースなどがあります。

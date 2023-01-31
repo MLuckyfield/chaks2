@@ -325,11 +325,13 @@ const AccordionItem=(props)=>{
       || isEnrolled==true
       || user.role!='user'){}
     else{
-      return <Popup button={"Enroll"} num={course._id} content={
-        <div class='col'>
-          <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll(channel,course.stripe)}}>Agree & Pay</div>
-        </div>
-      }/>
+      if(user.role){
+        return <Popup button={"Enroll"} num={course._id} content={
+          <div class='col'>
+            <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll(channel,course.stripe)}}>Agree & Pay</div>
+          </div>
+        }/>
+      }
     }
   }
     return (
