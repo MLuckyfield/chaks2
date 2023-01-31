@@ -1,11 +1,9 @@
 import Signup from "../user/Signup";
 import background from '../../online_background.jpg'
 import environment from '../../online_environment.jpg'
-import ReactPlayer from 'react-player/youtube'
 import discount from '../../discount.jpg'
-import vincent from '../../vincent.jpg'
-import bre from '../../bre.jpg'
-import info from '../../output.png'
+import CourseManagement from '../course/CourseManagement'
+
 
 const Online_Landing = () => {
 
@@ -52,6 +50,7 @@ const Online_Landing = () => {
           </div>
         </div>
       </div>
+      <CourseManagement/>
       <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',color:'black'}}>
           <div class='col border'>
