@@ -15,8 +15,8 @@ const Online_Landing = () => {
         <div class='overlay'>
             <div class='row'>
               <div class='col'>
-                <h1 style={{fontSize:'2em'}}>プレミアム<br/>オンライン<br/>英会話</h1>
-                <h2>Coming soon!</h2>
+                <h1 style={{fontSize:'2em'}}>オリジナル<br/>コース</h1>
+                <h2>TOEIC,文法,ビジネス,など</h2>
               </div>
             </div>
         </div>
