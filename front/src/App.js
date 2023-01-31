@@ -559,7 +559,7 @@ const Front = ()=>{
                   </div>
                   <div class='row'>Google Reviews</div>
               </div>
-              <div class='col dark' style={{width:'100%',margin:'0'}}>
+              <div id='products' class='col dark' style={{width:'100%',margin:'0'}}>
                 <h1 style={{padding:'5%'}}>+もっと楽しく！</h1>
                 <div class='row'>
                   <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
