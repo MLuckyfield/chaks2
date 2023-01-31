@@ -4,7 +4,6 @@ import AccessDisplay from '../nav/AccessDisplay'
 
 const CampaignPage = () => {
 
-
   return(
     <div>
       <div id='concept'  class='master-row' style={{backgroundColor:'#EEBC21',color:'white',paddingTop:'10%'}}>
