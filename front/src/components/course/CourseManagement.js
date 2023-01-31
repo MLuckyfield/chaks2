@@ -167,7 +167,6 @@ const CourseManagement = () => {
                       </div>
                       </div>
                       <div class='col border'>
-
                       <h3>Schedule & Delivery</h3>
                       <div class="form-group make_blog">
                           {channels.map((channel, i) => {
@@ -297,7 +296,7 @@ const AccordionItem=(props)=>{
             });
   }
   const calculateSchedule=(schedule,attendance,type)=>{
-    let current_month = 7//new Date().getMonth()
+    let current_month = new Date().getMonth()
     let starting_month = schedule.timeslots[0].month-1
     let repeats = schedule.repeats
     starting_month=moment(new Date(moment().year(),starting_month,1))
