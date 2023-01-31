@@ -346,18 +346,18 @@ const AccordionItem=(props)=>{
                     }):''}
                   </div>
                   <div class='fixed-row'>
-                    <div class="btn" style={{position:'relative',width:'80%'}} onClick={() => setIsActive(!isActive)}>Details</div>
+                    <div class="btn" style={{position:'relative',width:'80%'}} onClick={() => setIsActive(!isActive)}>詳細</div>
                   </div>
                 </div>
               </div>
         {isActive &&
           <div class='accordion-content'>
             <div class='col slim border'>
-              <h2>Description</h2>
+              <h2>コース詳細</h2>
               <EditorView content={course.description[0]} readOnly={true}/>
             </div>
             <div class='col border'>
-              <h2>Schedule</h2>
+              <h2>日程</h2>
               {enrolled.includes(course._id)?
                 <div class='col' style={{backgroundColor:'#55DF80',fontWeight:'700',color:'white'}}>
                   YOU'RE ENROLLED!
@@ -369,17 +369,17 @@ const AccordionItem=(props)=>{
                   <h3>{channel}</h3>
                   <div class='col'>
                     {channel=='online private'?
-                  'anytime! study at your own pace with full attention'
+                  'いつでも受講可能！自分のペースで進めましょう！'
                     :channel=='online group'?
                     <div>
                       <div class='col'>
-                        Last enroll & start date: {online_schedule.start}, Graduation date: {online_schedule.graduation}
+                        申込締切日＆コース開始日: {online_schedule.start}, コース卒業日: {online_schedule.graduation}
                       </div>
                       {lockEnroll(online_schedule,'online group')}
                     </div>
                     :<div>
                       <div class='col'>
-                        Last enroll & start date: {offline_schedule.start}, Graduation date: {offline_schedule.graduation}
+                        申込締切日＆コース開始日: {offline_schedule.start}, コース卒業日: {offline_schedule.graduation}
                        </div>
                        {lockEnroll(offline_schedule,'in-person group')}
                      </div>
@@ -394,7 +394,7 @@ const AccordionItem=(props)=>{
                 <div class='fixed-row lesson' style={{marginTop:'0%'}}>
                   <div class='box'></div>
                   <div class='display'>
-                    <h3>START</h3>
+                    <h3>開始</h3>
                   </div>
                   <div class='connector'></div>
                 </div>
@@ -416,7 +416,7 @@ const AccordionItem=(props)=>{
                 <div class='fixed-row lesson'>
                   <div class='box'></div>
                   <div class='display'>
-                    <h3>GRADUATION</h3>
+                    <h3>卒業</h3>
                   </div>
                 </div>
               </div>
