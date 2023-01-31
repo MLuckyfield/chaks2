@@ -73,7 +73,7 @@ router.post('/delete', async (req, res) => {
 // //create new
 router.post('/create', async (req, res) => {
   let data = req.body
-  let new_slot = moment(new Date(new Date().getFullYear(),data.month,data.date)).set({h:data.hour,m:data.minute})
+  let new_slot = moment(new Date(new Date().getFullYear(),data.month,data.date)).month(data.month).set({h:data.hour,m:data.minute})
   console.log('booking update request',data.month,data.date,new Date().getFullYear(),new_slot)
 
   await Booking.insertMany({
