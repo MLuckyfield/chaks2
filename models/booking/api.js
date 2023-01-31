@@ -70,6 +70,29 @@ router.post('/delete', async (req, res) => {
       })
 
 });
+// //create new
+router.post('/create', async (req, res) => {
+  let data = req.body
+  let new_slot = moment(new Date(new Date().year(),data.month,data.date)).set({h:data.hour,m:data.minute})
+  console.log('booking update request',data.month,data.date,new Date(),new_slot)
+
+  await Booking.insertMany({
+      date: moment.utc(new_slot).toDate(),
+  }).then((update)=>{
+    return res.status(201).json({
+      data:update,
+      message: 'Booking saved',
+      success: true
+    });
+  })
+  .catch((err)=>{
+    return res.status(500).json({
+      message: `Booking creation unsuccessful: ${err}`,
+      success: false
+    });
+  })
+
+});
 // //reschedule
 router.post('/reschedule', async (req, res) => {
   let filter =req.body.filter
@@ -189,65 +212,65 @@ cron.schedule('*/15 * * * *',()=>{
   })
 })
 
-cron.schedule('*15 * * * *',()=>{
-  console.log('running temporary bookings')
-  let bookings=[
-    {
-      date:moment(new Date()).month(2).set({h:13,m:00})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:13,m:30})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:14,m:00})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:14,m:30})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:15,m:00})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:15,m:30})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:16,m:00})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:16,m:30})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:17,m:00})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:17,m:30})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:18,m:00})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:18,m:30})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:19,m:00})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:19,m:30})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:20,m:00})
-    },
-    {
-      date:moment(new Date()).month(2).set({h:20,m:30})
-    },
-  ]
-  Booking.insertMany(bookings).then(()=>{console.log(bookings.length,'added')}).catch((err)=>console.log('error:',err))
-
-})
+// cron.schedule('*15 * * * *',()=>{
+//   console.log('running temporary bookings')
+//   let bookings=[
+//     {
+//       date:moment(new Date()).month(2).set({h:13,m:00})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:13,m:30})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:14,m:00})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:14,m:30})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:15,m:00})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:15,m:30})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:16,m:00})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:16,m:30})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:17,m:00})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:17,m:30})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:18,m:00})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:18,m:30})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:19,m:00})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:19,m:30})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:20,m:00})
+//     },
+//     {
+//       date:moment(new Date()).month(2).set({h:20,m:30})
+//     },
+//   ]
+//   Booking.insertMany(bookings).then(()=>{console.log(bookings.length,'added')}).catch((err)=>console.log('error:',err))
+//
+// })
 // //converting draft bookings to live bookings
 cron.schedule('0 0 1 * *',()=>{
   console.log('approving schedule')
-  Booking.updateMany({status:'draft',
+  Booking.updateMany({status:'draft'},
                       {status:'available'}).then((bookings)=>{
     console.log('approved',bookings)
   }).catch((err)=>{console.log('schedule approval failed',err)})

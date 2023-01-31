@@ -5,6 +5,12 @@ import Lesson from './lesson'
 
 const Calendar = () => {
 
+  //new timeslot
+  const new_month = useRef('')
+  const new_date = useRef('')
+  const new_hour = useRef('')
+  const new_minute = useRef('')
+
   //calendar display inputs
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
@@ -18,7 +24,17 @@ const Calendar = () => {
 
   //reservation options
   const [options,setOptions]=useState()
-
+  const createNewTime=()=>{
+    axios.post('/booking/create',
+    {
+      month:new_month.current.value,
+      date:new_date.current.value,
+      hour:new_hour.current.value,
+      minute:new_minute.current.value,
+    }).then(()=>{
+      window.location.reload()
+    }).catch((err)=>console.log(err))
+  }
   useEffect(()=>{
     let target = new Date(year,month,0)
     console.log('searching from', new Date(`${year}-${month}-1`),new Date(`${year}-${month}-${target.getDate()}`))
@@ -84,6 +100,29 @@ const Calendar = () => {
           <button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button>
           <h1>{month},{year}</h1>
           <button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button>
+          {user.role!='user'?
+          <Popup button={"Create"} num={1} content={
+            <form class='make_blog' onSubmit={createNewTime}>
+              <h2>New Timeslot</h2>
+                  <div class="form-group make_blog">
+                    Month
+                    <input ref={new_month} type="text" class="form-control" required/>
+                  </div>
+                  <div class="form-group make_blog">
+                    Date
+                    <input ref={new_date} type="text" class="form-control"/>
+                  </div>
+                  <div class="form-group make_blog">
+                    Hour
+                    <input ref={new_hour} type="text" class="form-control"/>
+                  </div>
+                  <div class="form-group make_blog">
+                    Minute
+                    <input ref={new_minute} type="text" class="form-control"/>
+                  </div>
+                  <button type="submit" class="solid-first">Submit</button>
+              </form>
+          }/>:''}
       </div>:
       <div class='row'>
           <h1>{month},{year}</h1>
