@@ -8,7 +8,7 @@ const cron = require('node-cron')
 const moment = require ('moment-timezone')
 
 //Create
-router.post('/new',auth.auth, auth.permission(['manager']),async (req, res) => {
+router.post('/new',auth.auth, auth.permission(['teacher','manager']),async (req, res) => {
   req=req.body
 
   try{
