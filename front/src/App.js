@@ -123,8 +123,8 @@ const App = () => {
           <Route path="/courses" component={Course_Landing}/>
           <Route path="/promo*" component={Contract}/>
           <Route path="/reset" component={PW_Reset}/>
-            <SecureRoute path="/private" access={['teacher','manager','user']} success={Calendar} fail={()=><Redirect to='/login'/>}/>
-            <SecureRoute path="/course_management" access={['teacher','manager','admin']} success={CourseManagement} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/private" access={['user','teacher','manager','user']} success={Calendar} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/course_management" access={['user','teacher','manager','admin']} success={CourseManagement} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/create-event" access={['manager','admin']} success={CreateEvent} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/account" access={['user','manager']} success={Account} fail={()=><Redirect to='/login'/>}/>

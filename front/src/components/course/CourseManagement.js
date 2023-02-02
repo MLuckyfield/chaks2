@@ -423,7 +423,7 @@ const AccordionItem=(props)=>{
 
               １．最大受講⽣５名までのグループを１名の講師が担当します。<br/>
 
-              ２．オンラインコース型英会話レッスンは、決まった日時に決まったテーマについて担当講師がCHATSHACKの定める通信手段を用いてオンラインにて受講⽣グループに対し、指導をするものです。<br/> 
+              ２．オンラインコース型英会話レッスンは、決まった日時に決まったテーマについて担当講師がCHATSHACKの定める通信手段を用いてオンラインにて受講⽣グループに対し、指導をするものです。<br/>
 
 
               <h2>第６条（オンラインレッスンの通信環境）</h2>
@@ -656,6 +656,7 @@ const AccordionItem=(props)=>{
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
               <div class='fixed-row'>
+              {console.log('thumbnail',course.thumbnail)}
                 <img class='photo' src={getImage(course.thumbnail)}></img>
                 <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
                   <h2>{course.name}</h2>
