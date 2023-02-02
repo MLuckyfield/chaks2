@@ -94,6 +94,7 @@ const Calendar = () => {
     if(minute=='0'){minute='00'}
     return `${hour}:${minute}`
   }
+
   return(
     <div class='col'>
       {user.role=='manager'?

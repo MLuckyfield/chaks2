@@ -2,6 +2,14 @@ import React, { useRef, useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 import Popup from '../utilities/popup'
+import c63d8a9bb08888da9ab29e3b5 from '../../images/beginner_grammar.jpg'
+import c63d8a88908888da9ab29e246 from '../../images/grammar_intermediate.jpg'
+import c63d8ce7567f52c71c5993d06 from '../../images/conversation_advanced.jpg'
+import c63d8e2bb5477ceaa842cd862 from '../../images/conversattion_intermediate.jpg'
+import c63d8e1775477ceaa842cd7b0 from '../../images/conversation_beginner.jpg'
+import c63d8e3be5477ceaa842cd923 from '../../images/business_english.jpg'
+import c63d9e6973b82a57ec2c4ded8 from '../../images/test_prep.jpg'
+import c63d9e7503b82a57ec2c4df9f from '../../images/test_prep.jpg'
 // import Accordion from '../utilities/accordion'
 import {Editor, EditorState, convertToRaw,convertFromRaw, RichUtils} from 'draft-js'
 
@@ -320,7 +328,29 @@ const AccordionItem=(props)=>{
     enrolled.forEach((item, i) => {
       if(item.student._id==user._id){isEnrolled=true}
     });
-
+    const getImage=(url)=>{
+      // console.log(url)
+      switch(url){
+        case 'c63d8a9bb08888da9ab29e3b5':
+          return c63d8a9bb08888da9ab29e3b5;
+        case 'c63d8a88908888da9ab29e246':
+          return c63d8a88908888da9ab29e246;
+        case 'c63d8ce7567f52c71c5993d06':
+          return c63d8ce7567f52c71c5993d06;
+        case 'c63d8e2bb5477ceaa842cd862':
+          return c63d8e2bb5477ceaa842cd862;
+        case 'c63d8e1775477ceaa842cd7b0':
+          return c63d8e1775477ceaa842cd7b0;
+        case 'c63d8e3be5477ceaa842cd923':
+          return c63d8e3be5477ceaa842cd923;
+        case 'c63d9e6973b82a57ec2c4ded8':
+          return c63d9e6973b82a57ec2c4ded8;
+        case 'c63d9e7503b82a57ec2c4df9f':
+          return c63d9e7503b82a57ec2c4df9f;
+        default:
+          console.log('No image found')
+      }
+    }
     if(schedule.attendance.length>=schedule.limit
       || isEnrolled==true
       || user.role!='user'){}
@@ -626,7 +656,7 @@ const AccordionItem=(props)=>{
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
               <div class='fixed-row'>
-                <img class='photo' src={course.thumbnail}></img>
+                <img class='photo' src={getImage(course.thumbnail)}></img>
                 <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
                   <h2>{course.name}</h2>
                   <div class='row'>
