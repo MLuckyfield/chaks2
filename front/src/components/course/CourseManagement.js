@@ -334,7 +334,7 @@ const AccordionItem=(props)=>{
       || user.role!='user'){}
     else{
       if(user.role){
-        return <Popup button={"Enroll"} num={course._id} content={
+        return <Popup button={"申し込む"} num={course._id} content={
           <div class='col'>
            {channel=='online group'?(
              <div class='col'>
@@ -624,7 +624,7 @@ const AccordionItem=(props)=>{
           2. 本契約に定めのない事項については、民法その他の法令によるものとします。<br/>
 
        </div>}
-            <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll(channel,course.stripe)}}>Agree & Pay</div>
+            <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll(channel,course.stripe)}}>同意して決済へ進む</div>
           </div>
         }/>
       }

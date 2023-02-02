@@ -21,7 +21,7 @@ const Booking = mongoose.model('Booking', new Schema({
   status:{
     type:String,
     enum:['draft','available','reserved'],
-    default:'draft'
+    default:'available'
   }
 },{
   timestamps: true,
