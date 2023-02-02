@@ -312,10 +312,12 @@ const AccordionItem=(props)=>{
     let gap = Math.abs(current_month.diff(starting_month,'months'))
     let cycles = Math.ceil(gap/repeats)
     let next_start = starting_month.add(cycles*repeats,'months')
+    next_start.hour(schedule.timeslots[0].hour)
+    next_start.minute(schedule.timeslots[0].minute)
     // next_start = moment(new Date(moment().year(),next_start,1))
     // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
     next_start={
-      start:next_start.format('M/D, every ddd@HH:mm'),
+      start:next_start.format('M/D, ddd@HH:mm'),
       graduation:next_start.add(repeats,'months').format('M/D'),
       limit:schedule.timeslots[0].limit,
       attendance:attendance
@@ -656,7 +658,6 @@ const AccordionItem=(props)=>{
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
               <div class='fixed-row'>
-              {console.log('thumbnail',course.thumbnail)}
                 <img class='photo' src={getImage(course.thumbnail)}></img>
                 <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
                   <h2>{course.name}</h2>
