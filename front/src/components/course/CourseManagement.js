@@ -277,19 +277,19 @@ const AccordionItem=(props)=>{
   },[])
   const enroll=(channel,product)=>{
     console.log(user.first,'is enrolling in',course.name)
-    // axios.post('/payment/course',{
-    //   product:product,
-    //   purchase:{
-    //     student:user._id,
-    //     course:course._id,
-    //     delivery:channel
-    //   }
-    // }).then((res) => {
-    //   window.location.href=res.data.data.url
-    //         })
-    //     .catch((err) => {
-    //       console.log(err);
-    //       });
+    axios.post('/payment/course',{
+      product:product,
+      purchase:{
+        student:user._id,
+        course:course._id,
+        delivery:channel
+      }
+    }).then((res) => {
+      window.location.href=res.data.data.url
+            })
+        .catch((err) => {
+          console.log(err);
+          });
       axios.post('/enrolled/new',{
           student:user._id,
           course:course._id,
@@ -312,8 +312,9 @@ const AccordionItem=(props)=>{
     let gap = Math.abs(current_month.diff(starting_month,'months'))
     let cycles = Math.ceil(gap/repeats)
     let next_start = starting_month.add(cycles*repeats,'months')
-    next_start.hour(schedule.timeslots[0].hour)
-    next_start.minute(schedule.timeslots[0].minute)
+    next_start.hours(schedule.timeslots[0].hour)
+    next_start.minutes(schedule.timeslots[0].minute)
+    console.log('will display',next_start)
     // next_start = moment(new Date(moment().year(),next_start,1))
     // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
     next_start={
