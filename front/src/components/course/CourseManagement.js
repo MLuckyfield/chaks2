@@ -290,18 +290,18 @@ const AccordionItem=(props)=>{
         .catch((err) => {
           console.log(err);
           });
-      axios.post('/enrolled/new',{
-          student:user._id,
-          course:course._id,
-          delivery:channel,
-          status_date:new Date(),
-          status:'enrolled'
-      }).then((res) => {
-        window.location.reload()
-              })
-          .catch((err) => {
-            console.log(err);
-            });
+      // axios.post('/enrolled/new',{
+      //     student:user._id,
+      //     course:course._id,
+      //     delivery:channel,
+      //     status_date:new Date(),
+      //     status:'enrolled'
+      // }).then((res) => {
+      //   window.location.reload()
+      //         })
+      //     .catch((err) => {
+      //       console.log(err);
+      //       });
   }
   const calculateSchedule=(schedule,attendance,type)=>{
     let current_month = new Date().getMonth()
