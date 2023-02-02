@@ -145,7 +145,7 @@ const Calendar = () => {
             return (<div class={new Date(year,month-1,item.day).getDate()>=today.getDate()?'dayBox':'dayBox inactive'}>
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'tomato'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      console.log('date is',y,timeslot.date)
+                      console.log(,'date is',y,timeslot._id,timeslot.date)
                       return <Lesson title={`${timeslot.teacher?timeslot.teacher.first:''}  ${displayTime(timeslot.date.hour(),timeslot.date.minute())}`} num={timeslot.date} time={displayTime(timeslot.date.hour(),timeslot.date.minute())} content={timeslot}/>
                     })}
                    </div>)
