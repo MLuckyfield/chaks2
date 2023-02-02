@@ -328,29 +328,7 @@ const AccordionItem=(props)=>{
     enrolled.forEach((item, i) => {
       if(item.student._id==user._id){isEnrolled=true}
     });
-    const getImage=(url)=>{
-      // console.log(url)
-      switch(url){
-        case 'c63d8a9bb08888da9ab29e3b5':
-          return c63d8a9bb08888da9ab29e3b5;
-        case 'c63d8a88908888da9ab29e246':
-          return c63d8a88908888da9ab29e246;
-        case 'c63d8ce7567f52c71c5993d06':
-          return c63d8ce7567f52c71c5993d06;
-        case 'c63d8e2bb5477ceaa842cd862':
-          return c63d8e2bb5477ceaa842cd862;
-        case 'c63d8e1775477ceaa842cd7b0':
-          return c63d8e1775477ceaa842cd7b0;
-        case 'c63d8e3be5477ceaa842cd923':
-          return c63d8e3be5477ceaa842cd923;
-        case 'c63d9e6973b82a57ec2c4ded8':
-          return c63d9e6973b82a57ec2c4ded8;
-        case 'c63d9e7503b82a57ec2c4df9f':
-          return c63d9e7503b82a57ec2c4df9f;
-        default:
-          console.log('No image found')
-      }
-    }
+
     if(schedule.attendance.length>=schedule.limit
       || isEnrolled==true
       || user.role!='user'){}
@@ -651,6 +629,29 @@ const AccordionItem=(props)=>{
           </div>
         }/>
       }
+    }
+  }
+  const getImage=(url)=>{
+    // console.log(url)
+    switch(url){
+      case 'c63d8a9bb08888da9ab29e3b5':
+        return c63d8a9bb08888da9ab29e3b5;
+      case 'c63d8a88908888da9ab29e246':
+        return c63d8a88908888da9ab29e246;
+      case 'c63d8ce7567f52c71c5993d06':
+        return c63d8ce7567f52c71c5993d06;
+      case 'c63d8e2bb5477ceaa842cd862':
+        return c63d8e2bb5477ceaa842cd862;
+      case 'c63d8e1775477ceaa842cd7b0':
+        return c63d8e1775477ceaa842cd7b0;
+      case 'c63d8e3be5477ceaa842cd923':
+        return c63d8e3be5477ceaa842cd923;
+      case 'c63d9e6973b82a57ec2c4ded8':
+        return c63d9e6973b82a57ec2c4ded8;
+      case 'c63d9e7503b82a57ec2c4df9f':
+        return c63d9e7503b82a57ec2c4df9f;
+      default:
+        console.log('No image found')
     }
   }
     return (
