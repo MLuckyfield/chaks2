@@ -150,6 +150,8 @@ router.post('/reserve', async (req, res) => {
 router.get('/all', auth.permission(['user','manager']),async (req, res) => {
   console.log(req.query)
   let data = await Booking.find(JSON.parse(req.query.filter)).populate('student').populate('teacher')
+
+  console.log('retrivied',data.length,'bookings')
   return res.status(201).json({
     data: data,
     message: 'Booking saved',
