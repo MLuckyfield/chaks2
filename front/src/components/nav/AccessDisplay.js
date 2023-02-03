@@ -25,10 +25,10 @@ import GoogleMapReact from 'google-map-react'
         </div>
         <div class='col'>
           <h3 class='col border'>営業時間</h3>
-          火~土：11:00~22:00*<br/>
-          日曜日: 13:00~22:00*<br/>
+          火~金：11:00~22:00*<br/>
+          土日: 13:00~22:00*<br/>
           月曜日: 休み<br/>
-          *最終入店時刻: 21:30<br/>
+          *最終入店時刻: 21:00<br/>
         </div>
         <div class='row'>
             <Map/>
