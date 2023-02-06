@@ -287,11 +287,6 @@ const AccordionItem=(props)=>{
     console.log(user.first,'is enrolling in',course.name)
     axios.post('/payment/course',{
       product:product,
-      purchase:{
-        student:user._id,
-        course:course._id,
-        delivery:channel
-      }
     }).then((res) => {
       window.location.href=res.data.data.url
             })
@@ -672,7 +667,7 @@ const AccordionItem=(props)=>{
                   <h2>{course.name}</h2>
                   <div class='row'>
                     {course.delivery?course.delivery.map((channel,i)=>{
-                        return <span class='tag' style={channel=='online private'?{backgroundColor:'tomato'}:channel=='online group'?{backgroundColor:'#89CFF0'}:{backgroundColor:'lime'}}>{channel}</span>
+                        return <span class='tag' style={channel.channel=='online private'?{backgroundColor:'tomato'}:channel.channel=='online group'?{backgroundColor:'#89CFF0'}:{backgroundColor:'lime'}}>{channel.channel}</span>
                     }):''}
                   </div>
                   <div class='fixed-row'>
@@ -696,11 +691,11 @@ const AccordionItem=(props)=>{
             :course.delivery?course.delivery.map((channel,i)=>{
               return (
                 <div class='fixed-row'>
-                  <h3>{channel}</h3>
+                  <h3>{channel.channel}</h3>
                   <div class='col'>
-                    {channel=='online private'?
+                    {channel.channel=='online private'?
                   'いつでも受講可能！自分のペースで進めましょう！'
-                    :channel=='online group'?
+                    :channel.channel=='online group'?
                     <div>
                       <div class='col'>
                         申込締切日＆コース開始日: {online_schedule.start}, コース卒業日: {online_schedule.graduation}
