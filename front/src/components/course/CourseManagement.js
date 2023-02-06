@@ -689,6 +689,7 @@ const AccordionItem=(props)=>{
                   <button style={{width:'50%',color:'white',backgroundColor:'black',fontWeight:'700'}} onClick={(e)=>{window.location='/clock_out'}}>FINISH</button>
                 </div>
             :course.delivery?course.delivery.map((channel,i)=>{
+              console.log('course',course.name,channel)
               return (
                 <div class='fixed-row'>
                   <h3>{channel.channel}</h3>
