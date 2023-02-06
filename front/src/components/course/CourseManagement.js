@@ -70,7 +70,15 @@ const CourseManagement = () => {
         thumbnail: image.current.value,
         description: convertToRaw(description.getCurrentContent()),
         lessons:lessons,
-        delivery:delivery,
+        delivery:()=>{
+          let temp = []
+          delivery.forEach((channel, i) => {
+            temp.push({
+              channel:channel
+            })
+          });
+          return temp;
+        },
         online_schedule:{
           repeats:online_repeats.current.value,
           timeslots:[{

@@ -13,8 +13,11 @@ const Course = mongoose.model('Course', new Schema({
     content:[]
   }],
   delivery:[{
-    type:String,
-    enum:['online private','online group','in-person group']
+    channel:{
+      type:String,
+      enum:['online private','online group','in-person group']
+    },
+    stripe:{type:String}
   }],
   online_schedule:{
     repeats:{type:Number},
@@ -39,9 +42,6 @@ const Course = mongoose.model('Course', new Schema({
       end_hour:{type:Number},
       end_minute:{type:Number},
     }],
-  },
-  stripe:{
-    type:String
   }
 },{
   timestamps: true,
