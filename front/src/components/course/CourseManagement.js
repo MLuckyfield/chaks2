@@ -321,7 +321,7 @@ const AccordionItem=(props)=>{
     let next_start = starting_month.add(cycles*repeats,'months')
     next_start.hours(schedule.timeslots[0].start_hour)
     next_start.minutes(schedule.timeslots[0].start_minute)
-    let firstday = moment().month(3).startOf('month').isoWeekday(1)
+    let firstday = moment().month(next_start.month()).startOf('month').isoWeekday(schedule.timeslots[0].day)
     while(firstday.date() > 7){
       firstday=firstday.isoWeekday(-6)
     }
