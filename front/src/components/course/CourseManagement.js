@@ -669,6 +669,7 @@ const AccordionItem=(props)=>{
         console.log('No image found')
     }
   }
+  //申込締切日＆
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
               <div class='fixed-row'>
@@ -708,13 +709,13 @@ const AccordionItem=(props)=>{
                     :channel.channel=='online group'?
                     <div class='fixed-row'>
                       <div class='col'>
-                        申込締切日＆コース開始日: {online_schedule.start}, コース卒業日: {online_schedule.graduation}
+                        コース開始日: {online_schedule.start}, コース卒業日: {online_schedule.graduation}
                       </div>
                       {lockEnroll(online_schedule,channel)}
                     </div>
                     :<div class='fixed-row'>
                       <div class='col'>
-                        申込締切日＆コース開始日: {offline_schedule.start}, コース卒業日: {offline_schedule.graduation}
+                        コース開始日: {offline_schedule.start}, コース卒業日: {offline_schedule.graduation}
                        </div>
                        {lockEnroll(offline_schedule,channel)}
                      </div>
