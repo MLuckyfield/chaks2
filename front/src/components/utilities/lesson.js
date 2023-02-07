@@ -85,7 +85,7 @@ const Lesson = (props)=>{
           </div>
         :
         <div>
-          <h2>{props.content.teacher.first} {props.content.teacher.last} |  {props.time}</h2><br/>
+          <h2>{props.content.teacher?`${props.content.teacher.first}`:''} {props.content.teacher.last} |  {props.time}</h2><br/>
           <h3>{props.content.status}</h3>
           {props.content.student?
             props.content.student._id==user._id?
