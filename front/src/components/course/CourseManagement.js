@@ -325,12 +325,13 @@ const AccordionItem=(props)=>{
     while(firstday.date() > 7){
       firstday=firstday.isoWeekday(-6)
     }
-    console.log('firstday',firstday)
-    next_start.day(firstday.day())
+    console.log('firstday',firstday,firstday.date())
+    next_start.day(firstday.date())
     // next_start = moment(new Date(moment().year(),next_start,1))
     // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
     next_start={
       start:next_start.format('M/D, ddd@HH:mm'),
+      time:next_start.format('ddd@HH:mm'),
       graduation:next_start.add(repeats,'months').format('M/D'),
       limit:schedule.timeslots[0].limit,
       attendance:attendance
@@ -709,13 +710,13 @@ const AccordionItem=(props)=>{
                     :channel.channel=='online group'?
                     <div class='fixed-row'>
                       <div class='col'>
-                        コース開始日: {online_schedule.start}, コース卒業日: {online_schedule.graduation}
+                        コース開始日: {online_schedule.start}<br/>コース卒業日: {online_schedule.graduation}
                       </div>
                       {lockEnroll(online_schedule,channel)}
                     </div>
                     :<div class='fixed-row'>
                       <div class='col'>
-                        コース開始日: {offline_schedule.start}, コース卒業日: {offline_schedule.graduation}
+                        コース開始日: {offline_schedule.start}<br/>コース卒業日: {offline_schedule.graduation}
                        </div>
                        {lockEnroll(offline_schedule,channel)}
                      </div>
