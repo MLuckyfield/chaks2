@@ -20,6 +20,7 @@ const CourseManagement = () => {
   //new course
   const name = useRef('');
   const image = useRef('');
+  const price = useRef('');
   const [description,setDescription]=useState(()=> EditorState.createEmpty())
   const [addLesson,setAddLesson]=useState(()=> EditorState.createEmpty())
   const [lessons,setLessons]=useState([])
@@ -77,6 +78,7 @@ const CourseManagement = () => {
         description: convertToRaw(description.getCurrentContent()),
         lessons:lessons,
         delivery:temp,
+        price:price.current.value,
         online_schedule:{
           repeats:online_repeats.current.value,
           timeslots:[{
@@ -151,6 +153,10 @@ const CourseManagement = () => {
                       <div class="form-group make_blog">
                         Course Name
                         <input ref={name} type="text" class="form-control" required/>
+                      </div>
+                      <div class="form-group make_blog">
+                        Pricing
+                        <input ref={price} type="text" class="form-control" required/>
                       </div>
                       <div class="form-group make_blog">
                         Thumbnail

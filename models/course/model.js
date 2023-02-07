@@ -8,6 +8,9 @@ const Course = mongoose.model('Course', new Schema({
   thumbnail:{
     type:String
   },
+  price:{
+    type:Number
+  },
   lessons:[{
     id:{type:Number},
     content:[]
