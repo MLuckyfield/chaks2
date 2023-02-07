@@ -2,14 +2,13 @@ import React, { useRef, useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 import Popup from '../utilities/popup'
-import c63d8a9bb08888da9ab29e3b5 from '../../images/beginner_grammar.jpg'
-import c63d8a88908888da9ab29e246 from '../../images/grammar_intermediate.jpg'
-import c63d8ce7567f52c71c5993d06 from '../../images/conversation_advanced.jpg'
-import c63d8e2bb5477ceaa842cd862 from '../../images/conversation_intermediate.jpg'
-import c63d8e1775477ceaa842cd7b0 from '../../images/conversation_beginner.jpg'
-import c63d8e3be5477ceaa842cd923 from '../../images/business_english.jpg'
-import c63d9e6973b82a57ec2c4ded8 from '../../images/test_prep.jpg'
-import c63d9e7503b82a57ec2c4df9f from '../../images/test_prep.jpg'
+import img_beginner_grammar from '../../images/beginner_grammar.jpg'
+import img_intermediate_grammar from '../../images/grammar_intermediate.jpg'
+import img_advanced_conversation from '../../images/conversation_advanced.jpg'
+import img_intermediate_conversation from '../../images/conversation_intermediate.jpg'
+import img_beginner_conversation from '../../images/conversation_beginner.jpg'
+import img_business_english from '../../images/business_english.jpg'
+import img_test_prep from '../../images/test_prep.jpg'
 // import Accordion from '../utilities/accordion'
 import {Editor, EditorState, convertToRaw,convertFromRaw, RichUtils} from 'draft-js'
 
@@ -637,22 +636,20 @@ const AccordionItem=(props)=>{
   const getImage=(url)=>{
     // console.log(url)
     switch(url){
-      case 'c63d8a9bb08888da9ab29e3b5':
-        return c63d8a9bb08888da9ab29e3b5;
-      case 'c63d8a88908888da9ab29e246':
-        return c63d8a88908888da9ab29e246;
-      case 'c63d8ce7567f52c71c5993d06':
-        return c63d8ce7567f52c71c5993d06;
-      case 'c63d8e2bb5477ceaa842cd862':
-        return c63d8e2bb5477ceaa842cd862;
-      case 'c63d8e1775477ceaa842cd7b0':
-        return c63d8e1775477ceaa842cd7b0;
-      case 'c63d8e3be5477ceaa842cd923':
-        return c63d8e3be5477ceaa842cd923;
-      case 'c63d9e6973b82a57ec2c4ded8':
-        return c63d9e6973b82a57ec2c4ded8;
-      case 'c63d9e7503b82a57ec2c4df9f':
-        return c63d9e7503b82a57ec2c4df9f;
+      case 'img_intermediate_grammar':
+        return img_intermediate_grammar;
+      case 'img_beginner_grammar':
+        return img_beginner_grammar;
+      case 'img_advanced_conversation':
+        return img_advanced_conversation;
+      case 'img_intermediate_conversation':
+        return img_intermediate_conversation;
+      case 'img_beginner_conversation':
+        return img_beginner_conversation;
+      case 'img_business_english':
+        return img_business_english;
+      case 'img_test_prep':
+        return img_test_prep;
       default:
         console.log('No image found')
     }
