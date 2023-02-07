@@ -102,6 +102,19 @@ const Calendar = () => {
           <button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button>
           <h1>{month},{year}</h1>
           <button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button>
+      </div>:
+      <div class='col'>
+          <h2>ONLINE PRIVATE</h2>
+          <h2>{month},{year}</h2>
+      </div>}
+      <div class='row'>
+        <div class='col'>
+          <div class='fixed-row'>
+            <div class='timeslot' style={{backgroundColor:'#89CFF0'}}>予約可能</div>
+            <div class='timeslot' style={{backgroundColor:'lime'}}>予約済み</div>
+          </div>
+        </div>
+        <div class='col'>
           {user.role!='user'?
           <Popup button={"Create"} num={1} content={
             <form class='make_blog' onSubmit={createNewTime}>
@@ -125,12 +138,8 @@ const Calendar = () => {
                   <button type="submit" class="solid-first">Submit</button>
               </form>
           }/>:''}
-      </div>:
-      <div class='row'>
-          <h1>{month},{year}</h1>
-      </div>}
-      <div class='timeslot' style={{backgroundColor:'#89CFF0'}}>予約可能</div>
-      <div class='timeslot' style={{backgroundColor:'lime'}}>予約済み</div>
+        </div>
+      </div>
       <div class='calendar'>
         <div class='labelBox'>日</div>
         <div class='labelBox'>月</div>
