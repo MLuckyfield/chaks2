@@ -700,9 +700,9 @@ const AccordionItem=(props)=>{
                 </div>
             :course.delivery?course.delivery.map((channel,i)=>{
               return (
-                <div class='fixed-row'>
+                <div class='row'>
                   <h3>{channel.channel}</h3>
-                  <div class='col'>
+                  <div class='fixed-row'>
                     {channel.channel=='online private'?
                   'いつでも受講可能！自分のペースで進めましょう！'
                     :channel.channel=='online group'?
