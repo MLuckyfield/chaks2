@@ -287,10 +287,10 @@ const AccordionItem=(props)=>{
         });
 
   },[])
-  const enroll=(channel,product)=>{
+  const enroll=(channel)=>{
     console.log(user.first,'is enrolling in',course.name)
     axios.post('/payment/course',{
-      product:product,
+      product:channel.stripe,
     }).then((res) => {
       window.location.href=res.data.data.url
             })
@@ -636,7 +636,7 @@ const AccordionItem=(props)=>{
               2. 本契約に定めのない事項については、民法その他の法令によるものとします。<br/>
 
            </div>}
-                <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll(channel,course.stripe)}}>同意して決済へ進む</div>
+                <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll(channel)}}>同意して決済へ進む</div>
               </div>
             }/>
         </div>
@@ -694,7 +694,6 @@ const AccordionItem=(props)=>{
                   <button style={{width:'50%',color:'white',backgroundColor:'black',fontWeight:'700'}} onClick={(e)=>{window.location='/clock_out'}}>FINISH</button>
                 </div>
             :course.delivery?course.delivery.map((channel,i)=>{
-              console.log('course',course.name,channel)
               return (
                 <div class='fixed-row'>
                   <h3>{channel.channel}</h3>
@@ -702,17 +701,17 @@ const AccordionItem=(props)=>{
                     {channel.channel=='online private'?
                   'いつでも受講可能！自分のペースで進めましょう！'
                     :channel.channel=='online group'?
-                    <div>
+                    <div class='fixed-row'>
                       <div class='col'>
                         申込締切日＆コース開始日: {online_schedule.start}, コース卒業日: {online_schedule.graduation}
                       </div>
-                      {lockEnroll(online_schedule,'online group')}
+                      {lockEnroll(online_schedule,channel)}
                     </div>
                     :<div>
                       <div class='col'>
                         申込締切日＆コース開始日: {offline_schedule.start}, コース卒業日: {offline_schedule.graduation}
                        </div>
-                       {lockEnroll(offline_schedule,'in-person group')}
+                       {lockEnroll(offline_schedule,channel)}
                      </div>
                   }</div>
                 </div>
