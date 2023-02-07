@@ -326,7 +326,7 @@ const AccordionItem=(props)=>{
       firstday=firstday.isoWeekday(-6)
     }
     console.log('firstday',firstday,firstday.date())
-    next_start.day(firstday.date())
+    next_start.date(firstday.date())
     // next_start = moment(new Date(moment().year(),next_start,1))
     // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
     next_start={
@@ -710,13 +710,13 @@ const AccordionItem=(props)=>{
                     :channel.channel=='online group'?
                     <div class='fixed-row'>
                       <div class='col'>
-                        コース開始日: {online_schedule.start}<br/>コース卒業日: {online_schedule.graduation}
+                        コース開始日: {online_schedule.start}<br/>毎週の: {offline_schedule.time}<br/>コース卒業日: {online_schedule.graduation}
                       </div>
                       {lockEnroll(online_schedule,channel)}
                     </div>
                     :<div class='fixed-row'>
                       <div class='col'>
-                        コース開始日: {offline_schedule.start}<br/>コース卒業日: {offline_schedule.graduation}
+                        コース開始日: {offline_schedule.start}<br/>毎週の: {offline_schedule.time}<br/>コース卒業日: {offline_schedule.graduation}
                        </div>
                        {lockEnroll(offline_schedule,channel)}
                      </div>
