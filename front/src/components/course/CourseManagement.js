@@ -331,7 +331,7 @@ const AccordionItem=(props)=>{
     // next_start = moment(new Date(moment().year(),next_start,1))
     // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
     next_start={
-      start:next_start.format('M/D, ddd@HH:mm'),
+      start:next_start.format('M/D'),
       time:next_start.format('ddd@HH:mm'),
       graduation:next_start.add(repeats,'months').format('M/D'),
       limit:schedule.timeslots[0].limit,
