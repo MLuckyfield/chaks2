@@ -169,7 +169,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
                     purchased = {
                       student:user._id,
                       course:delivery._id,
-                      delivery:delivery.channel,
+                      delivery:delivery.channel.channel,
                       status_date:new Date(),
                       status:'enrolled'
                     }

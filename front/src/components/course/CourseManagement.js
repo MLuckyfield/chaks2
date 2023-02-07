@@ -707,7 +707,7 @@ const AccordionItem=(props)=>{
                       </div>
                       {lockEnroll(online_schedule,channel)}
                     </div>
-                    :<div>
+                    :<div class='fixed-row'>
                       <div class='col'>
                         申込締切日＆コース開始日: {offline_schedule.start}, コース卒業日: {offline_schedule.graduation}
                        </div>

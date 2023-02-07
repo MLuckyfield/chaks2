@@ -81,8 +81,8 @@ const Calendar = () => {
           axios.get('/enrolled/all',{params:{filter:{student:user._id,delivery:'online private'}}})
           .then((res) => {
               res.data.data.push(
-                {course:{name:'Free Talk'}},
-                {course:{name:'Proof Reading'}})
+                {course:{name:'自由会話: 講師と自由なトピックで会話をお楽しみいただけます'}},
+                {course:{name:'校正: 英文の書類やメールなどを講師と一緒に添削できます'}})
               console.log('options',res.data.data)
               setOptions(res.data.data)
               })
@@ -129,8 +129,8 @@ const Calendar = () => {
       <div class='row'>
           <h1>{month},{year}</h1>
       </div>}
-      <div class='timeslot' style={{backgroundColor:'#89CFF0'}}>available</div>
-      <div class='timeslot' style={{backgroundColor:'lime'}}>your bookings</div>
+      <div class='timeslot' style={{backgroundColor:'#89CFF0'}}>予約可能</div>
+      <div class='timeslot' style={{backgroundColor:'lime'}}>予約済み</div>
       <div class='calendar'>
         <div class='labelBox'>日</div>
         <div class='labelBox'>月</div>
