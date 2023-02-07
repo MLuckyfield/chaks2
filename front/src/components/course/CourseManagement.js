@@ -319,13 +319,14 @@ const AccordionItem=(props)=>{
     let gap = Math.abs(current_month.diff(starting_month,'months'))
     let cycles = Math.ceil(gap/repeats)
     let next_start = starting_month.add(cycles*repeats,'months')
+    if(next_start.month()==current_month){next_start.add(1,'months')}
     next_start.hours(schedule.timeslots[0].start_hour)
     next_start.minutes(schedule.timeslots[0].start_minute)
     let firstday = moment().month(next_start.month()).startOf('month').isoWeekday(schedule.timeslots[0].day)
     while(firstday.date() > 7){
       firstday=firstday.isoWeekday(-6)
     }
-    console.log('firstday',firstday,firstday.date())
+    // console.log('firstday',firstday,firstday.date())
     next_start.date(firstday.date())
     // next_start = moment(new Date(moment().year(),next_start,1))
     // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
