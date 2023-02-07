@@ -67,7 +67,7 @@ const Lesson = (props)=>{
         <div class="modal__inner">
         {user.role=='manager'?
           <div>
-            <h2>{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last}`:''} | {props.time}</h2><br/>
+            <h2>{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last} |`:''} {props.time}</h2><br/>
             <h3>{props.content.status}</h3>
             <h3>{props.content.student?`${props.content.student.first} ${props.content.student.last}`:''}</h3>
             <p>{props.content._id}</p>
@@ -85,7 +85,7 @@ const Lesson = (props)=>{
           </div>
         :
         <div>
-          <h2>{props.content.teacher?`${props.content.teacher.first}`:''} {props.content.teacher.last} |  {props.time}</h2><br/>
+          <h2>{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last} |`:''} {props.time}</h2><br/>
           <h3>{props.content.status}</h3>
           {props.content.student?
             props.content.student._id==user._id?
