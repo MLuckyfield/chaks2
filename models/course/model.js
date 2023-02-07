@@ -9,7 +9,7 @@ const Course = mongoose.model('Course', new Schema({
     type:String
   },
   price:{
-    type:Number
+    type:String
   },
   lessons:[{
     id:{type:Number},
