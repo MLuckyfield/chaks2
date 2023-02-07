@@ -129,6 +129,8 @@ const Calendar = () => {
       <div class='row'>
           <h1>{month},{year}</h1>
       </div>}
+      <div class='timeslot' style={{backgroundColor:'#89CFF0'}}>available</div>
+      <div class='timeslot' style={{backgroundColor:'lime'}}>your bookings</div>
       <div class='calendar'>
         <div class='labelBox'>日</div>
         <div class='labelBox'>月</div>
