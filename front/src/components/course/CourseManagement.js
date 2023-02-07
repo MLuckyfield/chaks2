@@ -64,21 +64,20 @@ const CourseManagement = () => {
   }
   const onSubmit = (e) => {
     e.preventDefault();
+    let temp = []
+    delivery.forEach((channel, i) => {
+      temp.push({
+        channel:channel
+      })
+    });
+    console.log('course options to be sent',temp)
     axios.post('/program_course/new',
       {
         name: name.current.value,
         thumbnail: image.current.value,
         description: convertToRaw(description.getCurrentContent()),
         lessons:lessons,
-        delivery:()=>{
-          let temp = []
-          delivery.forEach((channel, i) => {
-            temp.push({
-              channel:channel
-            })
-          });
-          return temp;
-        },
+        delivery:temp,
         online_schedule:{
           repeats:online_repeats.current.value,
           timeslots:[{
