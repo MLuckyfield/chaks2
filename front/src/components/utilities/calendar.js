@@ -104,7 +104,7 @@ const Calendar = () => {
           <button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button>
       </div>:
       <div class='col'>
-          <h2>ONLINE PRIVATE</h2>
+          <h1>ONLINE PRIVATE</h1>
           <h2>{month},{year}</h2>
       </div>}
       <div class='row'>
