@@ -16,7 +16,7 @@ const Online_Landing = () => {
             <div class='row'>
               <div class='col'>
                 <h1 style={{fontSize:'2em'}}>プレミアム<br/>オンライン<br/>英会話</h1>
-                <h2>Coming soon!</h2>
+                <h2>申し込み中!</h2>
               </div>
             </div>
         </div>
