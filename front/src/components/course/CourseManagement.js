@@ -674,17 +674,19 @@ const AccordionItem=(props)=>{
   //申込締切日＆
     return (
       <div class='accordion_item' style={{margin:'2%'}}>
-              <div class='fixed-row'>
-                <img class='photo' src={getImage(course.thumbnail)}></img>
-                <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
-                  <h2>{course.name}</h2>
-                  <div class='row'>
-                    {course.delivery?course.delivery.map((channel,i)=>{
-                        return <span class='tag' style={channel.channel=='online private'?{backgroundColor:'tomato'}:channel.channel=='online group'?{backgroundColor:'#89CFF0'}:{backgroundColor:'lime'}}>{channel.channel}</span>
-                    }):''}
-                  </div>
-                  <div class='fixed-row'>
-                    <div class="btn" style={{position:'relative',width:'80%'}} onClick={() => setIsActive(!isActive)}>詳細</div>
+              <div class='col'>
+                <h1>{course.name}</h1>
+                <div class='fixed-row'>
+                  <img class='photo' src={getImage(course.thumbnail)}></img>
+                  <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
+                    <div class='row'>
+                      {course.delivery?course.delivery.map((channel,i)=>{
+                          return <span class='tag' style={channel.channel=='online private'?{backgroundColor:'tomato'}:channel.channel=='online group'?{backgroundColor:'#89CFF0'}:{backgroundColor:'lime'}}>{channel.channel}</span>
+                      }):''}
+                    </div>
+                    <div class='fixed-row'>
+                      <div class="btn" style={{position:'relative',width:'80%'}} onClick={() => setIsActive(!isActive)}>詳細</div>
+                    </div>
                   </div>
                 </div>
               </div>
