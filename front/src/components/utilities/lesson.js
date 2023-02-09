@@ -67,9 +67,10 @@ const Lesson = (props)=>{
         <div class="modal__inner">
         {user.role=='manager'?
           <div>
-            <h1>{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last} |`:''}</h1>
-            <h2>{props.num.format('M/D, dddd')}|{props.time}</h2><br/>
-            <h3 style={{border:'1px solid black',padding:'2%',width:'fit-content'}}>{props.content.status}</h3>
+            <h1>TEACHER{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last} |`:''}</h1>
+            <h2>{props.time}</h2>
+            <span>{props.num.format('M/D, dddd')}</span>
+            <span style={{border:'1px solid black',padding:'2%',width:'fit-content'}}>{props.content.status}</span>
             <h3>{props.content.student?`${props.content.student.first} ${props.content.student.last}`:''}</h3>
             <p>{props.content._id}</p>
             <form class='login' style={{width:'100%'}}>
