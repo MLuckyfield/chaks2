@@ -326,7 +326,7 @@ const AccordionItem=(props)=>{
     while(firstday.date() > 7){
       firstday=firstday.isoWeekday(-6)
     }
-    console.log('firstday',firstday,schedule.timeslots[0].day)
+    console.log('firstday',firstday,firstday.date(),schedule.timeslots[0].day)
     next_start.date(firstday.date())
     // next_start = moment(new Date(moment().year(),next_start,1))
     // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
