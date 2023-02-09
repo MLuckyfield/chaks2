@@ -68,9 +68,9 @@ const Lesson = (props)=>{
         {user.role=='manager'?
           <div>
             <h1>TEACHER{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last} |`:''}</h1>
-            <h2>{props.time}</h2>
             <span>{props.num.format('M/D, dddd')}</span>
-            <span style={{border:'1px solid black',padding:'2%',width:'fit-content'}}>{props.content.status}</span>
+            <h2>{props.time}</h2>
+            <span style={{border:'1px solid black',padding:'2%',width:'fit-content'}}>{props.content.status.toUpperCase()}</span>
             <h3>{props.content.student?`${props.content.student.first} ${props.content.student.last}`:''}</h3>
             <p>{props.content._id}</p>
             <form class='login' style={{width:'100%'}}>
