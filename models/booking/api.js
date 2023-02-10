@@ -270,12 +270,12 @@ router.get('/all', auth.permission(['user','manager']),async (req, res) => {
 //
 // })
 // //converting draft bookings to live bookings
-cron.schedule('*/5 * * * *',()=>{
-  console.log('approving schedule')
-  Booking.updateMany({status:'draft'},
-                      {status:'available'}).then((bookings)=>{
-    console.log('approved',bookings)
-  }).catch((err)=>{console.log('schedule approval failed',err)})
-})
+// cron.schedule('*/5 * * * *',()=>{
+//   console.log('approving schedule')
+//   Booking.updateMany({status:'draft'},
+//                       {status:'available'}).then((bookings)=>{
+//     console.log('approved',bookings)
+//   }).catch((err)=>{console.log('schedule approval failed',err)})
+// })
 
 module.exports = router;

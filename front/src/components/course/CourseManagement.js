@@ -327,7 +327,7 @@ const AccordionItem=(props)=>{
     }
     next_start=starting_month
     console.log('middle',next_start,next_start.month(),current_month)
-    if(next_start.month()==current_month){next_start.add(1,'months')}
+    // if(next_start.month()==current_month){next_start.add(1,'months')}
 
     let firstday = moment().month(next_start.month()).startOf('month').isoWeekday(schedule.timeslots[0].day)
     while(firstday.date() > 7){
