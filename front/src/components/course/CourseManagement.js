@@ -318,9 +318,9 @@ const AccordionItem=(props)=>{
     current_month = moment(new Date(moment().year(),current_month,1))
     let gap = Math.abs(current_month.diff(starting_month,'months'))
     let cycles = Math.ceil(gap/repeats)
-    console.log('before',gap,cycles)
+    console.log('before',current_month,starting_month,gap,cycles)
     let next_start = starting_month.add(cycles*repeats,'months')
-    console.log('middle',next_start)    
+    console.log('middle',next_start,next_start.month(),current_month)
     if(next_start.month()==current_month){next_start.add(1,'months')}
     console.log('after',next_start)
 
@@ -336,7 +336,7 @@ const AccordionItem=(props)=>{
     next_start={
       start:firstday.format('M/D'),
       time:firstday.format('ddd@HH:mm'),
-      graduation:firstday.add(repeats,'months').format('M/D'),
+      graduation:firstday.add(repeats*4,'weeks').format('M/D'),
       limit:schedule.timeslots[0].limit,
       attendance:attendance
     }
