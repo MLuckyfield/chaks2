@@ -66,7 +66,7 @@ const Lesson = (props)=>{
       <div class="modal">
         <div class="modal__inner">
         {user.role=='manager'?
-          <div>
+          <div style={{display:'flex',alignItems:'center',flexDirection:'column'}}>
             <h1>TEACHER{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last} |`:''}</h1>
             <h2>{props.time}</h2>
             <h2 style={{size:'13px'}}>{props.num.format('M/D, dddd')}</h2>
@@ -86,10 +86,10 @@ const Lesson = (props)=>{
             </div>
           </div>
         :
-        <div>
-          <h1>TEACHER{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last} |`:''}</h1>
+        <div style={{display:'flex',alignItems:'center',flexDirection:'column'}}>
+          <h1>{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last} |`:'予約'}</h1>
           <h2>{props.time}</h2>
-          <h2 style={{size:'13px'}}>{props.num.format('M/D, dddd')}</h2>
+          <h2 style={{fontSize:'1em'}}>{props.num.format('M/D, dddd')}</h2>
           <span style={{border:'1px solid black',padding:'2%',width:'fit-content',fontSize:'13px',fontWeight:'800'}}>{props.content.status.toUpperCase()}</span>
           {props.content.student?
             props.content.student._id==user._id?
@@ -101,7 +101,7 @@ const Lesson = (props)=>{
                     return <option value={item.course.name}>{item.course.name}</option>
                   }):''}
                 </select>
-                <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reserve(props.content)}}>予約 (2ポイント)</div>
+                <div class="btn" style={{position:'relative',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reserve(props.content)}}>予約 (2ポイント)</div>
              </div>}
         </div>
       }
