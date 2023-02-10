@@ -133,12 +133,12 @@ router.get('/all',async (req, res) => {
 // })
 
 // //converting draft Courses to live Courses
-cron.schedule('*/6 * * * *',()=>{
-  console.log('approving schedule')
-  Course.find({createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${days}`)}}).then((Courses)=>{
-    console.log('will approve',Courses)
-    Course.updateMany(Course,{status:'final'}).then(()=>{console.log('schedule approved')})
-  })
-})
+// cron.schedule('*/6 * * * *',()=>{
+//   console.log('approving schedule')
+//   Course.find({createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${days}`)}}).then((Courses)=>{
+//     console.log('will approve',Courses)
+//     Course.updateMany(Course,{status:'final'}).then(()=>{console.log('schedule approved')})
+//   })
+// })
 
 module.exports = router;

@@ -341,6 +341,7 @@ const AccordionItem=(props)=>{
     else{setOffline_Schedule(next_start)}
   }
   const lockEnroll=(schedule,channel)=>{
+    channel=channel.channel
     let isEnrolled=false
     enrolled.forEach((item, i) => {
       if(item.student._id==user._id){isEnrolled=true}
@@ -715,9 +716,11 @@ const AccordionItem=(props)=>{
                   <h3>{channel.channel}</h3>
                   <div class='fixed-row'>
                     {channel.channel=='online private'?
-                      <div class='col'>
-                      {lockEnroll({attendance:[]},channel)}
-                      いつでも受講可能！自分のペースで進めましょう！
+                      <div class='fixed-row'>
+                        <div class='col'>
+                          いつでも受講可能！自分のペースで進めましょう！
+                        </div>
+                        {lockEnroll({attendance:[]},channel)}
                       </div>
                     :channel.channel=='online group'?
                     <div class='fixed-row'>
