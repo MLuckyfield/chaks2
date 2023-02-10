@@ -352,10 +352,11 @@ const AccordionItem=(props)=>{
     else{
       if(user.role){
         return <div class='col'>
-            {course.price}
+            {channel=='online private'?'￥10,000':course.price}
             <Popup button={"申し込む"} num={course._id} content={
               <div class='col'>
                {channel=='online group'?(
+                 channel=='online private'?
                  <div class='col'>
                  <h1>CHATSHACKオンラインコース型レッスン受講規約</h1>
 
@@ -506,6 +507,11 @@ const AccordionItem=(props)=>{
 
                   2. 本契約に定めのない事項については、民法その他の法令によるものとします。<br/>
 
+                 </div>
+                 :<div class='col'>
+                 このコースに申し込むと、オンラインプライベートレッスンでこのコースを選択することができます。
+あなたのペースで楽しくしっかり学びたい方はこちらからコースの申し込みをしてください。
+コース申し込み後、オンラインプライベートレッスンを予約する際にこのコースを選択することができます。
                  </div>
                ):
              <div class='col'>
@@ -709,7 +715,10 @@ const AccordionItem=(props)=>{
                   <h3>{channel.channel}</h3>
                   <div class='fixed-row'>
                     {channel.channel=='online private'?
-                  'いつでも受講可能！自分のペースで進めましょう！'
+                      <div class='col'>
+                      {lockEnroll({attendance:[]},channel)}
+                      いつでも受講可能！自分のペースで進めましょう！
+                      </div>
                     :channel.channel=='online group'?
                     <div class='fixed-row'>
                       <div class='col'>
