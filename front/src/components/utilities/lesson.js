@@ -69,7 +69,7 @@ const Lesson = (props)=>{
           <div>
             <h1>TEACHER{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last} |`:''}</h1>
             <h2>{props.time}</h2>
-            <h3>{props.num.format('M/D, dddd')}</h3>
+            <h2 style={{size:'13px'}}>{props.num.format('M/D, dddd')}</h2>
             <span style={{border:'1px solid black',padding:'2%',width:'fit-content',fontSize:'13px',fontWeight:'800'}}>{props.content.status.toUpperCase()}</span>
             <h3>{props.content.student?`${props.content.student.first} ${props.content.student.last}`:''}</h3>
             <p>{props.content._id}</p>
