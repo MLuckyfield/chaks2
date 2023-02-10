@@ -329,15 +329,16 @@ const AccordionItem=(props)=>{
     while(firstday.date() > 7){
       firstday=firstday.subtract(7,'days')
     }
-    firstday.hours(schedule.timeslots[0].start_hour)
-    firstday.minutes(schedule.timeslots[0].start_minute)
+    next_start.hours(schedule.timeslots[0].start_hour)
+    next_start.minutes(schedule.timeslots[0].start_minute)
+    next_start.date(firstday.date())
     // next_start.date(firstday.date())
     // next_start = moment(new Date(moment().year(),next_start,1))
     // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
     next_start={
-      start:firstday.format('M/D'),
-      time:firstday.format('ddd@HH:mm'),
-      graduation:firstday.add(repeats*4,'weeks').format('M/D'),
+      start:next_start.format('M/D'),
+      time:next_start.format('ddd@HH:mm'),
+      graduation:next_start.add(repeats*4,'weeks').format('M/D'),
       limit:schedule.timeslots[0].limit,
       attendance:attendance
     }
