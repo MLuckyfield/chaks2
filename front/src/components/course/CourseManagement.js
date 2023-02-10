@@ -320,22 +320,24 @@ const AccordionItem=(props)=>{
     let cycles = Math.ceil(gap/repeats)
     let next_start = starting_month.add(cycles*repeats,'months')
     if(next_start.month()==current_month){next_start.add(1,'months')}
-    next_start.hours(schedule.timeslots[0].start_hour)
-    next_start.minutes(schedule.timeslots[0].start_minute)
+    // next_start.hours(schedule.timeslots[0].start_hour)
+    // next_start.minutes(schedule.timeslots[0].start_minute)
     let firstday = moment().month(next_start.month()).startOf('month').isoWeekday(schedule.timeslots[0].day)
     console.log('firstday before',next_start.month(),schedule.timeslots[0].day, firstday)
 
     while(firstday.date() > 7){
       firstday=firstday.subtract(7,'days')
     }
+    firstday.hours(schedule.timeslots[0].start_hour)
+    firstday.minutes(schedule.timeslots[0].start_minute)
     console.log('firstday',firstday)
-    next_start.date(firstday.date())
+    // next_start.date(firstday.date())
     // next_start = moment(new Date(moment().year(),next_start,1))
     // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
     next_start={
-      start:next_start.format('M/D'),
-      time:next_start.format('ddd@HH:mm'),
-      graduation:next_start.add(repeats,'months').format('M/D'),
+      start:firstday.format('M/D'),
+      time:firstday.format('ddd@HH:mm'),
+      graduation:firstday.add(repeats,'months').format('M/D'),
       limit:schedule.timeslots[0].limit,
       attendance:attendance
     }
