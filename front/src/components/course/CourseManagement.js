@@ -316,24 +316,17 @@ const AccordionItem=(props)=>{
     let repeats = schedule.repeats
     starting_month=moment(new Date(moment().year(),starting_month,1))
     current_month = moment(new Date(moment().year(),current_month,1))
-    let gap;
-    let next_start;
-    if(starting_month.month()>current_month.month()){
-    }else{
-      gap = current_month.diff(starting_month,'months')
+
+    if(starting_month.month()<=current_month.month()){
+      let gap = current_month.diff(starting_month,'months')
       let cycles = Math.ceil(gap/repeats)
-      console.log('before',starting_month,starting_month.month(),gap,cycles,repeats)
       starting_month.add(cycles*repeats,'months')
     }
-    next_start=starting_month
-    console.log('middle',next_start,next_start.month(),current_month)
-    // if(next_start.month()==current_month){next_start.add(1,'months')}
 
-    let firstday = moment().month(next_start.month()).startOf('month').isoWeekday(schedule.timeslots[0].day)
+    let firstday = moment().month(starting_month.month()).startOf('month').isoWeekday(schedule.timeslots[0].day)
     while(firstday.date() > 7){
       firstday=firstday.subtract(7,'days')
     }
-    console.log('after',next_start,firstday)
 
     firstday.hours(schedule.timeslots[0].start_hour)
     firstday.minutes(schedule.timeslots[0].start_minute)
@@ -341,7 +334,7 @@ const AccordionItem=(props)=>{
     // next_start.date(firstday.date())
     // next_start = moment(new Date(moment().year(),next_start,1))
     // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
-    next_start={
+    let next_start={
       start:firstday.format('M/D'),
       time:firstday.format('ddd@HH:mm'),
       graduation:firstday.add(repeats*4,'weeks').format('M/D'),
