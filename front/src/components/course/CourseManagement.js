@@ -316,7 +316,7 @@ const AccordionItem=(props)=>{
     let repeats = schedule.repeats
     starting_month=moment(new Date(moment().year(),starting_month,1))
     current_month = moment(new Date(moment().year(),current_month,1))
-    console.log('start',starting_month)
+    console.log('start',starting_month, schedule.timeslots[0].month,starting_month.format('M/D'))
     //if course is active
     if(starting_month.month()<=current_month.month()){
       let gap = current_month.diff(starting_month,'months')
@@ -324,7 +324,7 @@ const AccordionItem=(props)=>{
       starting_month.add(cycles*repeats,'months')
     }
     //find the first of day in month
-    let firstday = moment().month(starting_month.month()).startOf('month').isoWeekday(schedule.timeslots[0].day)
+    let firstday = starting_month.startOf('month').isoWeekday(schedule.timeslots[0].day)
     while(firstday.date() > 7){
       firstday=firstday.subtract(7,'days')
     }
