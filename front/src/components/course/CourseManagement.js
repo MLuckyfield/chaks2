@@ -319,7 +319,8 @@ const AccordionItem=(props)=>{
     let gap = Math.abs(current_month.diff(starting_month,'months'))
     let cycles = Math.ceil(gap/repeats)
     console.log('before',starting_month,starting_month.month(),gap,cycles,repeats)
-    let next_start = starting_month.add(cycles*repeats,'months')
+    starting_month.add(cycles*repeats,'months')
+    let next_start = starting_month
     console.log('middle',next_start,next_start.month(),current_month)
     if(next_start.month()==current_month){next_start.add(1,'months')}
     console.log('after',next_start)
