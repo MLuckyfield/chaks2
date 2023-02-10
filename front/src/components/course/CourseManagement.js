@@ -331,7 +331,7 @@ const AccordionItem=(props)=>{
     //set time
     firstday.hours(schedule.timeslots[0].start_hour)
     firstday.minutes(schedule.timeslots[0].start_minute)
-
+    console.log('compare',starting_month,firstday)
     let next_start={
       start:firstday.format('M/D'),
       time:firstday.format('ddd@HH:mm'),
