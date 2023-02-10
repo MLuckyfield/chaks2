@@ -323,10 +323,12 @@ const AccordionItem=(props)=>{
     next_start.hours(schedule.timeslots[0].start_hour)
     next_start.minutes(schedule.timeslots[0].start_minute)
     let firstday = moment().month(next_start.month()).startOf('month').isoWeekday(schedule.timeslots[0].day)
+    console.log('firstday before',next_start.month(),schedule.timeslots[0].day, firstday)
+
     while(firstday.date() > 7){
       firstday=firstday.isoWeekday(-6)
     }
-    console.log('firstday',firstday,firstday.date(),schedule.timeslots[0].day)
+    console.log('firstday',firstday)
     next_start.date(firstday.date())
     // next_start = moment(new Date(moment().year(),next_start,1))
     // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
