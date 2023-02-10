@@ -312,7 +312,7 @@ const AccordionItem=(props)=>{
   }
   const calculateSchedule=(schedule,attendance,type)=>{
     let current_month = new Date().getMonth()
-    let starting_month = schedule.timeslots[0].month-1
+    let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
     starting_month=moment(new Date(moment().year(),starting_month,1))
     current_month = moment(new Date(moment().year(),current_month,1))
