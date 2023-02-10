@@ -106,6 +106,8 @@ const Calendar = () => {
       <div class='col'>
           <h1>ONLINE PRIVATE</h1>
           <h2>{month},{year}</h2>
+          <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>現在、iPhoneユーザーの方々が予約できない事象が発生しております。
+早急に復旧いたしますので、今しばらくお待ちください。</span>
       </div>}
       <div class='row'>
         <div class='col'>

@@ -87,8 +87,10 @@ const Lesson = (props)=>{
           </div>
         :
         <div>
-          <h2>{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last} |`:''} {props.time}</h2><br/>
-          <h3>{props.content.status}</h3>
+          <h1>TEACHER{props.content.teacher?`${props.content.teacher.first} ${props.content.teacher.last} |`:''}</h1>
+          <h2>{props.time}</h2>
+          <h2 style={{size:'13px'}}>{props.num.format('M/D, dddd')}</h2>
+          <span style={{border:'1px solid black',padding:'2%',width:'fit-content',fontSize:'13px',fontWeight:'800'}}>{props.content.status.toUpperCase()}</span>
           {props.content.student?
             props.content.student._id==user._id?
             'You are signed up!'  :`${props.content.student.first} ${props.content.student.last}`
