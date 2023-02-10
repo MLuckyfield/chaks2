@@ -312,28 +312,26 @@ const AccordionItem=(props)=>{
   }
   const calculateSchedule=(schedule,attendance,type)=>{
     let current_month = new Date().getMonth()
-    let starting_month = schedule.timeslots[0].month-1
+    let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
     starting_month=moment(new Date(moment().year(),starting_month,1))
     current_month = moment(new Date(moment().year(),current_month,1))
 
+    //if course is active
     if(starting_month.month()<=current_month.month()){
       let gap = current_month.diff(starting_month,'months')
       let cycles = Math.ceil(gap/repeats)
       starting_month.add(cycles*repeats,'months')
     }
-
+    //find the first of day in month
     let firstday = moment().month(starting_month.month()).startOf('month').isoWeekday(schedule.timeslots[0].day)
     while(firstday.date() > 7){
       firstday=firstday.subtract(7,'days')
     }
-
+    //set time
     firstday.hours(schedule.timeslots[0].start_hour)
     firstday.minutes(schedule.timeslots[0].start_minute)
-    // next_start.date(firstday.date())
-    // next_start.date(firstday.date())
-    // next_start = moment(new Date(moment().year(),next_start,1))
-    // console.log('new calc',starting_month,current_month,gap,cycles,next_start)
+
     let next_start={
       start:firstday.format('M/D'),
       time:firstday.format('ddd@HH:mm'),
