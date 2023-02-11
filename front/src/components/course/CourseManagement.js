@@ -257,35 +257,37 @@ const AccordionItem=(props)=>{
   const [isActive, setIsActive] = useState(false);
   const [course,setCourse]=useState(props.course)
   const [user,setUser]=useState(props.user)
-  const [enrolled,setEnrolled]=useState()
+  const [enrolled,setEnrolled]=useState([])
   const [online_schedule,setOnline_Schedule]=useState()
   const [offline_schedule,setOffline_Schedule]=useState()
 
   useEffect(()=>{
-    axios.get('/enrolled/all',{params:{filter:{course:course._id}}})
-      .then((res) => {
-          setEnrolled(res.data.data)
-          let online_enrolled =[]
-          let offline_enrolled =[]
-          res.data.data.forEach((item, i) => {
-            switch(item.delivery){
-              case 'in-person group':
-                if(item.status=='enrolled'){offline_enrolled.push(item)}
-              break;
-              case 'online group':
-              if(item.status=='enrolled'){online_enrolled.push(item)}
-              break;
-              default:
-            }
-          });
-          console.log('enrolled',res.data.data,online_enrolled,offline_enrolled)
-          calculateSchedule(course.online_schedule,online_enrolled,'online')
-          calculateSchedule(course.offline_schedule,offline_enrolled,'offline')
-          })
-      .catch((err) => {
-        console.log(err);
-        });
-
+    if(user){
+      console.log('course list, user found')
+        axios.get('/enrolled/all',{params:{filter:{course:course._id}}})
+          .then((res) => {
+              setEnrolled(res.data.data)
+              let online_enrolled =[]
+              let offline_enrolled =[]
+              res.data.data.forEach((item, i) => {
+                switch(item.delivery){
+                  case 'in-person group':
+                    if(item.status=='enrolled'){offline_enrolled.push(item)}
+                  break;
+                  case 'online group':
+                  if(item.status=='enrolled'){online_enrolled.push(item)}
+                  break;
+                  default:
+                }
+              });
+              console.log('enrolled',res.data.data,online_enrolled,offline_enrolled)
+              calculateSchedule(course.online_schedule,online_enrolled,'online')
+              calculateSchedule(course.offline_schedule,offline_enrolled,'offline')
+              })
+          .catch((err) => {
+            console.log(err);
+            });
+    }console.log('no user signed in')
   },[])
   const enroll=(channel)=>{
     console.log(user.first,'is enrolling in',course.name)
