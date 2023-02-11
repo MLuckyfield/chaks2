@@ -328,9 +328,9 @@ const AccordionItem=(props)=>{
     //find the first of day in month
     let firstday = starting_month
     firstday.startOf('month').isoWeekday(schedule.timeslots[0].day)
-    while(firstday.date() > 7){
-      firstday=firstday.subtract(7,'days')
-    }
+    // while(firstday.date() > 7){
+    //   firstday=firstday.subtract(7,'days')
+    // }
     console.log('final',firstday.format('M/D'),firstday)
     //set time
     firstday.hours(schedule.timeslots[0].start_hour)
