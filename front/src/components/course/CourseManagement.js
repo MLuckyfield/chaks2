@@ -324,6 +324,7 @@ const AccordionItem=(props)=>{
       starting_month.add(cycles*repeats,'months')
       console.log('condition triggered',starting_month.month(),current_month.month(),gap,cycles)
     }
+    console.log('compare',starting_month.format('M/D'))
     //find the first of day in month
     let firstday = starting_month.isoWeekday(schedule.timeslots[0].day)
     while(firstday.date() > 7){
@@ -332,7 +333,6 @@ const AccordionItem=(props)=>{
     //set time
     firstday.hours(schedule.timeslots[0].start_hour)
     firstday.minutes(schedule.timeslots[0].start_minute)
-    console.log('compare',starting_month.format('M/D'),firstday.format('M/D'))
     let next_start={
       start:firstday.format('M/D'),
       time:firstday.format('ddd@HH:mm'),
