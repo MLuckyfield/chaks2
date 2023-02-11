@@ -29,7 +29,7 @@ const Online_Landing = () => {
             </div>
             :<div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
             <h2>COURSES</h2>
-                <span style={{height:'40px',margin:'5%',textAlign:'center'}}>ビジネス英語、TOEIC対策コースなど,日時に決まったテーマを中心にレッスンをいたします！</span>
+                <span style={{height:'40px',margin:'5%',textAlign:'center'}}>ビジネス英語、TOEIC対策コースなどにレッスンをいたします！</span>
                 <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/courses'}}>詳細</div>
             </div>}
             </div>

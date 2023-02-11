@@ -32,6 +32,7 @@ const User = mongoose.model('User', new Schema({
     default: 'user',
     enum: ['user','teacher','manager','admin']
   },
+  segment:{type:String},
   //STUDENT DATA---------------------------------------------------
   profile:{
     likes:{type:String},

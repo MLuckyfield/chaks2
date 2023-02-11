@@ -142,9 +142,9 @@ const CourseManagement = () => {
   }
   return(
       <div class='col'>
-        <h1>COURSE LIST</h1>
+        <h1>COURSE LIST ({courses?courses.length:'Loading...'})</h1>
         <div class='row' style={{justifyContent:'end'}}>
-        {user.role!='user'?
+        {user.role=='manager'||user.role=='teacher'?
         <Popup button={"Create"} num={1} content={
           <form class='make_blog' onSubmit={onSubmit}>
                   <h2>New Course</h2>
