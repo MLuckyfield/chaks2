@@ -49,6 +49,7 @@ import event_game from './event_game.jpg'
 import matt from './matt.jpg'
 import vincent from './vincent.jpg'
 import radka from './radka.jpg'
+import cedric from './cedric.jpg'
 import bre from './bre.jpg'
 import blog_header from './blog_header.jpg'
 import campaign_header from './campaign_header.jpg'
@@ -549,7 +550,10 @@ const Front = ()=>{
                             Language maniac. Master's degree student in Second Language Acquisition. Likes journaling, being creative, and playing games!
                         </div>
                         <div class='col slim'>
-
+                            <img class='avatar' src={cedric}></img>
+                            <h2>CEDRIC</h2>
+                            <h3>INSTRUCTOR</h3>
+                            From Australia. 8 years teaching experience. Enjoys sports, training, and music. Let's have a great time.
                         </div>
                     </div>
                 </div>
