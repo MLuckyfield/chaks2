@@ -319,6 +319,7 @@ const AccordionItem=(props)=>{
     console.log('start',starting_month, schedule.timeslots[0].month,starting_month.format('M/D'))
     //if course is active
     if(starting_month.month()<=current_month.month()){
+      console.log('condition triggered',starting_month.month(),current_month.month())
       let gap = current_month.diff(starting_month,'months')
       let cycles = Math.ceil(gap/repeats)
       starting_month.add(cycles*repeats,'months')
