@@ -286,7 +286,7 @@ const AccordionItem=(props)=>{
           .catch((err) => {
             console.log(err);
             });
-    
+
   },[])
   const enroll=(channel)=>{
     console.log(user.first,'is enrolling in',course.name)
@@ -312,6 +312,7 @@ const AccordionItem=(props)=>{
       //       });
   }
   const calculateSchedule=(schedule,attendance,type)=>{
+    console.log('calculate request')
     let current_month = new Date().getMonth()
     let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
