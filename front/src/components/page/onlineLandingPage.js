@@ -12,6 +12,9 @@ const Online_Landing = () => {
 
   return(
     <div>
+    {localStorage.getItem('user')?'':(
+      <div class='floating'><a href='#signup'>無料<br/>登録</a></div>
+    )}
       <div id='header' class='transparent' style={{backgroundImage:'url('+background+')'} }>
         <div class='overlay'>
             <div class='row'>

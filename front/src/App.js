@@ -34,7 +34,7 @@ import Course_Landing from './components/page/course'
 import TestProp from './components/comment/TestProp'
 import Material_Admin from './components/user/admin'
 import CreateEvent from './components/event/CreateEvent'
-import CampaignPage from './components/page/CampaignPage'
+import CrossSell from './components/page/Cross_Sell'
 import CourseManagement from './components/course/CourseManagement'
 import StylePage from './components/page/StylePage'
 import Statistics from './components/user/statistics'
@@ -450,53 +450,7 @@ const Front = ()=>{
                   </div>
                   <div class='row'>Google Reviews</div>
               </div>
-              <div id='products' class='col dark' style={{width:'100%',margin:'0'}}>
-                <h1 style={{padding:'5%'}}>+もっと楽しく！</h1>
-                <div class='row'>
-                  <div class='col' style={{height:'50vh',backgroundImage: 'url('+event_game+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
-                    <div class='mini_overlay slim' style={{backgroundColor:'rgba(175,65,84,0.9)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
-                      <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                          <h2>EVENTS</h2>
-                          <span style={{height:'40px',margin:'5%',textAlign:'center'}}>国際交流で友達を作って、リアルな英会話も楽しめる</span>
-                          <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/events'}}>詳細</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class='col' style={{height:'50vh',backgroundImage: 'url('+blog_header+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
-                    <div class='mini_overlay slim' style={{backgroundColor:'rgba(175,65,84,0.9)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
-                      <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                          <h2>GUIDED COURSE</h2>
-                          <span style={{height:'40px',margin:'5%',textAlign:'center'}}>７０個以上の文法やイディオムでの英語学習が可能</span>
-                          <Popup button={"詳細!"} num={5} content={
-                            <div class='col'>
-                                <div class='col'>
-                                    <div class='fixed-row' style={{alignItems:'flex-start'}}>
-                                        <div class='col align'>
-                                          <h2 style={{marginBottom:'5%'}}>講師陣が英会話レベルを４項目で評価！</h2>
-                                          <img style={{width:'100%'}} src={fluency}></img>
-                                          <p></p>
-                                        </div>
-                                    </div>
-                                    <div class='fixed-row'>
-                                        <div class='col align'>
-                                          <h2 style={{marginBottom:'5%'}}>ガイドコース</h2>
-                                          <img style={{width:'100%'}} src={courses}></img>
-                                          <p>学習したい英文法を設定して使うことで講師が間違いを直してくれるガイドコースも利用可能！</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          }/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div style={{border:'1px solid white'}} class='col'>
-                  <h2>ONLINE</h2>
-                  <p>プレミアムオンライン英会話!</p>
-                  <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/online'}}>もっと見る</div>
-                </div>
-              </div>
+              <CrossSell/>
               {localStorage.getItem('user')?'':(
                 <Signup redirect={'/dash'} segment={'offline'} message={'CHATSHACKの最新情報を知りたい方はこちら！特別割引、キャンペーン情報、イベント招待など、お届けします！登録することで先生からのフィードバックが見れたり、予約システムの利用も可能になります！'}/>
               )}

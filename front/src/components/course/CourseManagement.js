@@ -354,6 +354,9 @@ const AccordionItem=(props)=>{
     else{
       if(user.role){
         return <div class='col'>
+        {user.role=='manager'?'':(
+          <div class='floating'><a href='#signup'>無料<br/>登録</a></div>
+        )}
             {channel=='online private'?'￥10,000':course.price}
             <Popup button={"申し込む"} num={course._id} content={
               <div class='col'>

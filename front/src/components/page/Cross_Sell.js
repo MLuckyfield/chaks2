@@ -23,28 +23,9 @@ const Online_Landing = () => {
         <div class='col' style={{height:'50vh',backgroundImage: 'url('+blog_header+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
           <div class='mini_overlay slim' style={{backgroundColor:'rgba(175,65,84,0.9)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
             <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                <h2>GUIDED COURSE</h2>
-                <span style={{height:'40px',margin:'5%',textAlign:'center'}}>７０個以上の文法やイディオムでの英語学習が可能</span>
-                <Popup button={"詳細!"} num={5} content={
-                  <div class='col'>
-                      <div class='col'>
-                          <div class='fixed-row' style={{alignItems:'flex-start'}}>
-                              <div class='col align'>
-                                <h2 style={{marginBottom:'5%'}}>講師陣が英会話レベルを４項目で評価！</h2>
-                                <img style={{width:'100%'}} src={fluency}></img>
-                                <p></p>
-                              </div>
-                          </div>
-                          <div class='fixed-row'>
-                              <div class='col align'>
-                                <h2 style={{marginBottom:'5%'}}>ガイドコース</h2>
-                                <img style={{width:'100%'}} src={courses}></img>
-                                <p>学習したい英文法を設定して使うことで講師が間違いを直してくれるガイドコースも利用可能！</p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                }/>
+                <h2>COURSES</h2>
+                <span style={{height:'40px',margin:'5%',textAlign:'center'}}>ビジネス英語、TOEIC対策コースなど,日時に決まったテーマを中心にレッスンをいたします！</span>
+                <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/courses'}}>詳細</div>
             </div>
           </div>
         </div>
@@ -64,5 +45,24 @@ const Online_Landing = () => {
 
     </div>
 )}
-
+// <Popup button={"詳細!"} num={5} content={
+//   <div class='col'>
+//       <div class='col'>
+//           <div class='fixed-row' style={{alignItems:'flex-start'}}>
+//               <div class='col align'>
+//                 <h2 style={{marginBottom:'5%'}}>講師陣が英会話レベルを４項目で評価！</h2>
+//                 <img style={{width:'100%'}} src={fluency}></img>
+//                 <p></p>
+//               </div>
+//           </div>
+//           <div class='fixed-row'>
+//               <div class='col align'>
+//                 <h2 style={{marginBottom:'5%'}}>ガイドコース</h2>
+//                 <img style={{width:'100%'}} src={courses}></img>
+//                 <p>学習したい英文法を設定して使うことで講師が間違いを直してくれるガイドコースも利用可能！</p>
+//               </div>
+//           </div>
+//       </div>
+//   </div>
+// }/>
 export default Online_Landing;
