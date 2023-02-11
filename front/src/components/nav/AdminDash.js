@@ -162,6 +162,8 @@ const StudentTable = ()=>{
 
 const Dash = ()=>{
   const user = JSON.parse(localStorage.getItem('user'))
+  const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
+  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+2})
   if (user.role=='user'){
     return(
       <div>
@@ -181,6 +183,8 @@ const Dash = ()=>{
       <div>
         <StaffTable/>
         <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -fluency -online_schedule -online_slots -progress -goals -students -tags -source -password -createdAt -updatedAt -points -active -statistics -plan -reward -subscriptions"/>
+        <Table name='New This Month' api='/user/all' filter={{date:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${0}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
+
         <StudentTable/>
       </div>
     )
