@@ -20,11 +20,17 @@ const Online_Landing = () => {
         </div>
         <div class='col' style={{height:'50vh',backgroundImage: 'url('+blog_header+')',backgroundSize:'cover',backgroundPosition:'center center',padding:'0',width:'100%'}}>
           <div class='mini_overlay slim' style={{backgroundColor:'rgba(175,65,84,0.9)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
+            {window.location.pathname='/courses'?
             <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
+                <h2>ONLINE</h2>
+                <p>プレミアムオンライン英会話!</p>
+                <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/online'}}>もっと見る</div>
+            </div>
+            :<div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                 <h2>COURSES</h2>
                 <span style={{height:'40px',margin:'5%',textAlign:'center'}}>ビジネス英語、TOEIC対策コースなど,日時に決まったテーマを中心にレッスンをいたします！</span>
                 <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/courses'}}>詳細</div>
-            </div>
+            </div>}
           </div>
         </div>
       </div>
