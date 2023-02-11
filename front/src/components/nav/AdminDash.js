@@ -174,7 +174,10 @@ const Dash = ()=>{
       <div>
         <StaffTable/>
         <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -fluency -online_schedule -online_slots -progress -goals -students -tags -source -password -createdAt -updatedAt -points -active -statistics -plan -reward -subscriptions"/>
-        <Table name='New This Month' api='/user/all' filter={{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
+        <div class='row'>
+            <Table name='New This Month' api='/user/all' filter={{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
+            <Table name='Last Month' api='/user/all' filter={{createdAt:{$gte:new Date(`${year}-${month-1}-1`),$lte:new Date(`${year}-${month-1}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
+        </div>
         <StudentTable/>
       </div>
     )
