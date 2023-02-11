@@ -316,7 +316,7 @@ const AccordionItem=(props)=>{
     let repeats = schedule.repeats
     starting_month=moment(new Date(moment().year(),starting_month,1))
     current_month = moment(new Date(moment().year(),current_month,1))
-    console.log('start',starting_month, schedule.timeslots[0].month,starting_month.format('M/D'))
+    console.log('start',current_month.format('M/D'),starting_month.format('M/D'))
     //if course is active
     if(starting_month.month()<current_month.month()){
       let gap = Math.abs(current_month.diff(starting_month,'months'))
