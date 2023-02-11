@@ -325,7 +325,7 @@ const AccordionItem=(props)=>{
       console.log('condition triggered',starting_month.month(),current_month.month(),gap,cycles)
     }
     //find the first of day in month
-    let firstday = starting_month.startOf('month').isoWeekday(schedule.timeslots[0].day)
+    let firstday = starting_month.isoWeekday(schedule.timeslots[0].day)
     while(firstday.date() > 7){
       firstday=firstday.subtract(7,'days')
     }
