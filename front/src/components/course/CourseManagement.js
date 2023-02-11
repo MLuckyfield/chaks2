@@ -350,7 +350,8 @@ const AccordionItem=(props)=>{
 
     if(schedule.attendance.length>=schedule.limit
       || isEnrolled==true
-      || user.role!='user'){}
+      || user.role=='manager'
+      || user.role=='teacher'){}
     else{
       if(user.role){
         return <div class='col'>
@@ -773,7 +774,7 @@ const AccordionItem=(props)=>{
                   </div>
                 </div>
               </div>
-              {user.role!='user'?
+              {user.role=='teacher'||user.role=='manager'?
               <div class='col border'>
                 <h2>Students</h2>
                 {enrolled?enrolled.map((item,i)=>{
