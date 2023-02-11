@@ -179,7 +179,7 @@ const Dash = ()=>{
             <h2>New</h2>
           <div class='up_row'>
               <Table name={moment().month(month-1).format('MMMM')} api='/user/all' filter={{createdAt:{$gte:new Date(`${year}-${month-1}-1`),$lte:new Date(`${year}-${month-1}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
-              <Table name={moment().format('MMMM')} api='/user/all' filter={{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
+              <Table name={moment().month(month).format('MMMM')} api='/user/all' filter={{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
           </div>
         </div>
         {display?<StudentTable/>:<div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();setDisplay(true)}}>Emergency Show All Students</div>}
