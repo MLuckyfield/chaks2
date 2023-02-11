@@ -23,9 +23,9 @@ const Online_Landing = () => {
             <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
             {window.location.pathname==='/courses'?
             <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                <h2>ONLINE</h2>
-                <p>プレミアムオンライン英会話!</p>
-                <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/online'}}>もっと見る</div>
+                <h2>CAFE&BAR</h2>
+                <p>楽しく身につく, 新しい形の英会話!</p>
+                <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/'}}>もっと見る</div>
             </div>
             :<div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
             <h2>COURSES</h2>
