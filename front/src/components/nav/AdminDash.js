@@ -153,6 +153,7 @@ const StudentTable = ()=>{
 
 const Dash = ()=>{
   const user = JSON.parse(localStorage.getItem('user'))
+  const [display,setDisplay]=useState(false)
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   if (user.role=='user'){
@@ -181,7 +182,8 @@ const Dash = ()=>{
               <Table name={moment().month(month-1).format('MMMM')} api='/user/all' filter={{createdAt:{$gte:new Date(`${year}-${month-1}-1`),$lte:new Date(`${year}-${month-1}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
           </div>
         </div>
-        <StudentTable/>
+        {display?<StudentTable/>:<div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();setDisplay(true)}}>Emergency Show All Students</div>}
+
       </div>
     )
   }else{
