@@ -2,8 +2,6 @@ import Popup from '../utilities/popup'
 
 import event_game from '../../event_game.jpg'
 import blog_header from '../../blog_header.jpg'
-import fluency from '../../fluency.jpg'
-import courses from '../../courses.jpg'
 
 const Online_Landing = () => {
 

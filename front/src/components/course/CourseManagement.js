@@ -15,7 +15,7 @@ import {Editor, EditorState, convertToRaw,convertFromRaw, RichUtils} from 'draft
 const CourseManagement = () => {
 
   const [courses, setCourses]=useState()
-  const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
+  const [user,setUser]=useState(localStorage.getItem('user')?JSON.parse(localStorage.getItem('user')):{role:'',_id:1})
 
   //new course
   const name = useRef('');
@@ -245,7 +245,7 @@ const CourseManagement = () => {
         <div class='col'>
           {courses? (courses.map(function(course, i){
                 return(
-                  <AccordionItem course={course}/>
+                  <AccordionItem course={course} user={user}/>
                 )
             })): 'No Courses!'}
         </div>
@@ -256,7 +256,7 @@ const CourseManagement = () => {
 const AccordionItem=(props)=>{
   const [isActive, setIsActive] = useState(false);
   const [course,setCourse]=useState(props.course)
-  const [user,setUser]=useState(JSON.parse(localStorage.getItem('user')))
+  const [user,setUser]=useState(props.user)
   const [enrolled,setEnrolled]=useState()
   const [online_schedule,setOnline_Schedule]=useState()
   const [offline_schedule,setOffline_Schedule]=useState()
@@ -354,9 +354,6 @@ const AccordionItem=(props)=>{
     else{
       if(user.role){
         return <div class='col'>
-        {user.role=='manager'?'':(
-          <div class='floating'><a href='#signup'>無料<br/>登録</a></div>
-        )}
             {channel=='online private'?'￥10,000':course.price}
             <Popup button={"申し込む"} num={course._id} content={
               <div class='col'>

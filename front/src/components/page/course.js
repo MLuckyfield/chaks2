@@ -3,6 +3,7 @@ import background from '../../online_background.jpg'
 import environment from '../../online_environment.jpg'
 import discount from '../../discount.jpg'
 import CourseManagement from '../course/CourseManagement'
+import CrossSell from "../page/Cross_Sell";
 
 
 const Online_Landing = () => {
@@ -72,6 +73,7 @@ const Online_Landing = () => {
           </div>
         </div>
       </div>
+      <CrossSell/>
       {localStorage.getItem('user')?''
         :<Signup redirect={'/dash'} segment={'offline'} message={'CHATSHACKの最新情報を知りたい方はこちら！特別割引、キャンペーン情報、イベント招待など、お届けします！登録することで先生からのフィードバックが見れたり、予約システムの利用も可能になります！'}/>
       }
