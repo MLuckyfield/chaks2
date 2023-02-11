@@ -163,7 +163,7 @@ const StudentTable = ()=>{
 const Dash = ()=>{
   const user = JSON.parse(localStorage.getItem('user'))
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
-  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+2})
+  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()})
   if (user.role=='user'){
     return(
       <div>
