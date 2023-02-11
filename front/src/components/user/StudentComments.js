@@ -69,6 +69,8 @@ const StudentComments = () => {
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   }
+  //<button onClick={()=>sendTo('6344faac6bf36a9debe60b25')} class='button'>TEST</button>
+
   return(
     <div class='master-row'>
       <div class='col'>
@@ -79,7 +81,7 @@ const StudentComments = () => {
         <button onClick={()=>sendTo('63218b02f17f3f46bf91af22')} class='button'>Bre</button>
         <button onClick={()=>sendTo('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
         <button onClick={()=>sendTo('63882dbd8a0031a501d54140')} class='button'>Radka</button>
-        <button onClick={()=>sendTo('6344faac6bf36a9debe60b25')} class='button'>TEST</button>
+        <button onClick={()=>sendTo('63e718f7ccf275b1babaa770')} class='button'>Cedric</button>
       </div>
       <h1>Feedback ({comments?comments.length:'0'})</h1>
       <div class='col'>
