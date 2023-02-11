@@ -262,7 +262,6 @@ const AccordionItem=(props)=>{
   const [offline_schedule,setOffline_Schedule]=useState()
 
   useEffect(()=>{
-    if(user){
       console.log('course list, user found')
         axios.get('/enrolled/all',{params:{filter:{course:course._id}}})
           .then((res) => {
@@ -287,7 +286,7 @@ const AccordionItem=(props)=>{
           .catch((err) => {
             console.log(err);
             });
-    }console.log('no user signed in')
+    
   },[])
   const enroll=(channel)=>{
     console.log(user.first,'is enrolling in',course.name)

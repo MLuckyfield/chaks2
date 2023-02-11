@@ -174,7 +174,6 @@ const Dash = ()=>{
     return(
       <div>
         <StaffTable/>
-        <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -fluency -online_schedule -online_slots -progress -goals -students -tags -source -password -createdAt -updatedAt -points -active -statistics -plan -reward -subscriptions"/>
         <div class='col'>
             <h1>New</h1>
           <div class='up_row' style={{margin:'0% !important'}}>
@@ -182,6 +181,8 @@ const Dash = ()=>{
               <Table name={moment().month(month-1).format('MMMM')} api='/user/all' filter={{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
           </div>
         </div>
+        <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -fluency -online_schedule -online_slots -progress -goals -students -tags -source -password -createdAt -updatedAt -points -active -statistics -plan -reward -subscriptions"/>
+        
         {display?<StudentTable/>:<div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();setDisplay(true)}}>Emergency Show All Students</div>}
 
       </div>
