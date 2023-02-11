@@ -1,4 +1,5 @@
 import Signup from "../user/Signup";
+import CrossSell from "../page/Cross_Sell";
 import background from '../../online_background.jpg'
 import environment from '../../online_environment.jpg'
 import ReactPlayer from 'react-player/youtube'
@@ -131,6 +132,7 @@ Can't wait to meet you!</p>
           </div>
         </div>
       </div>
+      <CrossSell/>
       {localStorage.getItem('user')?
         <div class='col'>
           <a href="https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false" style={{textDecoration:'none',textAlign:'center',width:'80%',background:'black',color:'white'}}>無料登録</a>
