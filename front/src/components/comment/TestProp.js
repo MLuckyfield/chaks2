@@ -26,17 +26,16 @@ const TestProp = () => {
     <div class='col border'>
         <h1>ACCOUNT</h1>
         {account?
-        <span>
+          <div class='row'>
+          ポイント: 20
+          </div>:'Loading account...'}
+        {account?
           <div class='row'>
             <div class='col'><h2>Subscriptions</h2></div>
             <div class='col'>{account.subscriptions.length>0?account.subscriptions.map((sub,i)=>{
-              return <div class='row'>{sub.name} since {moment(sub.start).format('M/D')}</div>
+              return <div class='fixed-row'>{sub.name} since {moment(sub.start).format('M/D')}</div>
             }):'You are not subscribed!'} </div>
           </div>
-          <div class='row'>
-          ポイント: 20
-          </div>
-        </span>
       :'Loading account...'}
       <div class='row'>
         <div class='col'><h2>Courses</h2></div>
