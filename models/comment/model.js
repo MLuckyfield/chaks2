@@ -15,6 +15,11 @@ const Comment = mongoose.model('Comment', new Schema({
     type: String,
     required: true,
   },
+  channel:{
+    type:String,
+    enum:['online','in-person'],
+    default:'in-person'
+  }
 },{
   timestamps: true,
 }));
