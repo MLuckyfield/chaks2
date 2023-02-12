@@ -170,7 +170,6 @@ const Dash = ()=>{
               <Booked user={user}/>
            </div>
   }else if (user.role=='manager'){
-    console.log('admindash: new users',new Date(`${year}-${month}-1`),new Date(`${year}-${month}-${0}`))
     return(
       <div>
         <StaffTable/>

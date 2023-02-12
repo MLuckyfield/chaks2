@@ -1,7 +1,6 @@
 import React, { useState,useEffect,useRef } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
-import Course from '../page/course'
 
 const TestProp = () => {
   const [account,setAccount]=useState(JSON.parse(localStorage.getItem('user')))
