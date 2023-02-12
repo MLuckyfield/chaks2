@@ -355,7 +355,7 @@ const AccordionItem=(props)=>{
       if(item.student._id==user._id){isEnrolled=true}
     });
 
-    if(user){
+    if(user.role=='user'){
       if(schedule.attendance.length>=schedule.limit
         || isEnrolled==true
         || user.role=='manager'
