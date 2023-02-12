@@ -371,7 +371,7 @@ const AccordionItem=(props)=>{
         if(user.role){
           return <div class='col'>
               {channel=='online private'?'￥10,000':course.price}
-              <Popup button={"申し込む"} num={course._id} content={
+              <Popup button={"申し込む"} num={channel.concat(course._id)} content={
                 <div class='col'>
                  {channel=='online private'?<div class='col'>
                  このコースに申し込むと、オンラインプライベートレッスンでこのコースを選択することができます。
