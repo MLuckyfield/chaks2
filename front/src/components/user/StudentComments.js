@@ -72,11 +72,9 @@ const StudentComments = () => {
   //<button onClick={()=>sendTo('6344faac6bf36a9debe60b25')} class='button'>TEST</button>
 
   return(
-    <div class='master-row'>
-      <div class='col'>
-        {JSON.parse(localStorage.getItem('user')).role=='manager'? (<button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red',width:'80%'}:{backgroundColor:'blue',width:'80%'}}>{target.inClass?'End':'Start'}</button>):''}
-        {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<Comment/>:''}
-      </div>
+    <div class='col'>
+        {JSON.parse(localStorage.getItem('user')).role=='manager'? (<div class='col'><button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red',width:'80%'}:{backgroundColor:'blue',width:'80%'}}>{target.inClass?'End':'Start'}</button></div>):''}
+        {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<div class='col'><Comment/></div>:''}
       <div id='teacher_select'>
         <button onClick={()=>sendTo('63218b02f17f3f46bf91af22')} class='button'>Bre</button>
         <button onClick={()=>sendTo('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
