@@ -137,7 +137,7 @@ Can't wait to meet you!</p>
       </div>
       <CrossSell/>
       {localStorage.getItem('user')?
-        <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/private'}}>予約!</div>
+        <div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();window.location='/private'}}>予約!</div>
         :<Signup redirect={'/private'}
                 segment={'online'}
                 message={'オンラインレッスンのリリース情報などはこちらから！特別割引やキャンペーン情報なども、お届けします！ご登録頂くと、オンラインレッスンリリース後に予約システムの利用が可能になります！'}/>

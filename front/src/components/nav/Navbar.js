@@ -59,7 +59,7 @@ const Navbar = ()=>{
         ):(
           <ul class="nav-links">
               {user.role!='user'?(<li style={{padding:'3% 7%'}}><a href='/dash'><span class="material-icons">group</span></a></li>):''}
-              {user.role=='manager'?(<li style={{padding:'3% 7%'}}><a href='/manage-blog'><span class="material-icons">edit</span></a></li>):''}
+              {user.role=='manager'?(<li style={{padding:'3% 7%'}}><a href='/manage-blog'><div><span class="material-icons">edit</span><span>BLOG</span></div></a></li>):''}
               {user.role=='manager'?(<li style={{padding:'3% 7%'}}><a href='/create-event'><span class="material-icons">celebration</span></a></li>):''}
               {user.role=='manager'?(<li style={{padding:'3% 7%'}}><a href='/qr-reader'><span class="material-icons">qr_code_scanner</span></a></li>):''}
               {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/dash'><span class="material-icons">home</span></a></li>):''}
