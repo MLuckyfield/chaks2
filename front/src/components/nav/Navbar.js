@@ -58,17 +58,17 @@ const Navbar = ()=>{
           </ul>
         ):(
           <ul class="nav-links">
-              {user.role!='user'?(<li style={{padding:'3% 7%'}}><a href='/dash'><div class='col'><span class="material-icons">group</span><span style={{fontSize:'10px'}}>STUDENTS</span></div></a></li>):''}
-              {user.role=='manager'?(<li style={{padding:'3% 7%'}}><a href='/manage-blog'><div class='col'><span class="material-icons">edit</span><span style={{fontSize:'10px'}}>BLOG</span></div></a></li>):''}
-              {user.role=='manager'?(<li style={{padding:'3% 7%'}}><a href='/create-event'><div class='col'><span class="material-icons">celebration</span><span style={{fontSize:'10px'}}>EVENTS</span></div></a></li>):''}
-              {user.role=='manager'?(<li style={{padding:'3% 7%'}}><a href='/qr-reader'><div class='col'><span class="material-icons">qr_code_scanner</span><span style={{fontSize:'10px'}}>SCAN</span></div></a></li>):''}
-              {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/dash'><div class='col'><span class="material-icons">home</span><span style={{fontSize:'10px'}}>HOME</span></div></a></li>):''}
-              {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/course'><div class='col'><span class="material-icons">trending_up</span><span style={{fontSize:'10px'}}>STATS</span></div></a></li>):''}
-              {user.role?(<li style={{padding:'3% 7%'}}><a href='/private'><div class='col'><span class="material-icons">edit_calendar</span><span style={{fontSize:'10px'}}>ONLINE</span></div></a></li>):''}
-              {user.role?(<li style={{padding:'3% 7%'}}><a href='/course_management'><div class='col'><span class="material-icons">school</span><span style={{fontSize:'10px'}}>COURSES</span></div></a></li>):''}
-              {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/events'><div class='col'><span class="material-icons">info</span><span style={{fontSize:'10px'}}>EVENTS</span></div></a></li>):''}
-              {user.role=='user'?(<li style={{padding:'3% 7%'}}><a href='/account'><div class='col'><span class="material-icons">qr_code_scanner</span><span style={{fontSize:'10px'}}>ACCOUNT</span></div></a></li>):''}
-              <li style={{padding:'3% 7%'}}><a href='#' onClick={logout}><div class='col'><span class="material-icons">logout</span><span style={{fontSize:'10px'}}>LOGOUT</span></div></a></li>
+              {user.role!='user'?(<li style={{padding:'3% 3%'}}><a href='/dash'><div class='col'><span class="material-icons">group</span><span style={{fontSize:'10px'}}>STUDENTS</span></div></a></li>):''}
+              {user.role=='manager'?(<li style={{padding:'3% 3%'}}><a href='/manage-blog'><div class='col'><span class="material-icons">edit</span><span style={{fontSize:'10px'}}>BLOG</span></div></a></li>):''}
+              {user.role=='manager'?(<li style={{padding:'3% 3%'}}><a href='/create-event'><div class='col'><span class="material-icons">celebration</span><span style={{fontSize:'10px'}}>EVENTS</span></div></a></li>):''}
+              {user.role=='manager'?(<li style={{padding:'3% 3%'}}><a href='/qr-reader'><div class='col'><span class="material-icons">qr_code_scanner</span><span style={{fontSize:'10px'}}>SCAN</span></div></a></li>):''}
+              {user.role=='user'?(<li style={{padding:'3% 3%'}}><a href='/dash'><div class='col'><span class="material-icons">home</span><span style={{fontSize:'10px'}}>HOME</span></div></a></li>):''}
+              {user.role=='user'?(<li style={{padding:'3% 3%'}}><a href='/course'><div class='col'><span class="material-icons">trending_up</span><span style={{fontSize:'10px'}}>STATS</span></div></a></li>):''}
+              {user.role?(<li style={{padding:'3% 3%'}}><a href='/private'><div class='col'><span class="material-icons">edit_calendar</span><span style={{fontSize:'10px'}}>ONLINE</span></div></a></li>):''}
+              {user.role?(<li style={{padding:'3% 3%'}}><a href='/course_management'><div class='col'><span class="material-icons">school</span><span style={{fontSize:'10px'}}>COURSES</span></div></a></li>):''}
+              {user.role=='user'?(<li style={{padding:'3% 3%'}}><a href='/events'><div class='col'><span class="material-icons">info</span><span style={{fontSize:'10px'}}>EVENTS</span></div></a></li>):''}
+              {user.role=='user'?(<li style={{padding:'3% 3%'}}><a href='/account'><div class='col'><span class="material-icons">qr_code_scanner</span><span style={{fontSize:'10px'}}>ACCOUNT</span></div></a></li>):''}
+              <li style={{padding:'3% 3%'}}><a href='#' onClick={logout}><div class='col'><span class="material-icons">logout</span><span style={{fontSize:'10px'}}>LOGOUT</span></div></a></li>
           </ul>
         )}
         <div class="burger" onClick={navSlide}>
