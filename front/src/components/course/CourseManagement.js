@@ -143,6 +143,14 @@ const CourseManagement = () => {
   return(
       <div class='col'>
         <h1>COURSE LIST ({courses?courses.length:'Loading...'})</h1>
+        {user?<div class='col border'>
+                <h2>コースとは</h2>
+                <p>毎週決まった日時に決まったテーマを中心にレッスンをいたします！日時はコースによって違いますので、以下よりご確認ください！</p>
+                <p>楽しむ方法は簡単!
+                  <br/>1. 受講したいコースの "申し込み" をクリックし、受講規約をご確認の上、決済を完了してください!
+                  <br/>2. 当日に、オンライングループの場合は、レッスン開始の１０分前、ZOOMリンクをクリック！グループの場合は、レッスン開始の１０分前、ご来店をお願い致します！
+                </p>
+        </div>:''}
         <div class='row' style={{justifyContent:'end'}}>
         {user.role=='manager'||user.role=='teacher'?
         <Popup button={"Create"} num={1} content={
