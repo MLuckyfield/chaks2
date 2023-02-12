@@ -380,7 +380,7 @@ const AccordionItem=(props)=>{
                  </div>:console.log('not online private')}
                  {channel=='in-person group'?
                  <div class='col'>
-                 <h1>CHATSHACK対面コース型レッスン受講規約</h1>
+                 <h1>CHATSHACK対面<br/>コース型レッスン<br/>受講規約</h1>
 
                   <h2>第１条（契約の成立）</h2>
 
@@ -516,7 +516,7 @@ const AccordionItem=(props)=>{
                </div>:console.log('not in-person group',channel)}
                    {channel=='online group'?
                    <div class='col'>
-                   <h1>CHATSHACKオンラインコース型レッスン受講規約</h1>
+                   <h1>CHATSHACK<br/>オンライン<br/>コース型レッスン<br/>受講規約</h1>
 
 
                     <h2>第１条（契約の成立）</h2>
