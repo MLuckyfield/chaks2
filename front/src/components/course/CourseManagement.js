@@ -249,7 +249,9 @@ const CourseManagement = () => {
                       </div>
                       <button type="submit" class="solid-first">Submit</button>
                     </form>
-        }/>:''}
+        }/>:
+        <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=494d35378d&attribution=false'}}>FEEDBACK</div>
+      }
         </div>
         <div class='col'>
           {courses? (courses.map(function(course, i){
@@ -374,6 +376,7 @@ const AccordionItem=(props)=>{
               <Popup button={"申し込む"} num={channel.concat(course._id)} content={
                 <div class='col'>
                  {channel=='online private'?<div class='col'>
+                 <h1>ライベートレッスン</h1>
                  このコースに申し込むと、オンラインプライベートレッスンでこのコースを選択することができます。
 あなたのペースで楽しくしっかり学びたい方はこちらからコースの申し込みをしてください。
 コース申し込み後、オンラインプライベートレッスンを予約する際にこのコースを選択することができます。
