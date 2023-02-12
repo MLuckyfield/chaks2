@@ -117,7 +117,7 @@ const Calendar = () => {
           </div>
         </div>
         <div class='col'>
-          {user.role!='user'?
+          {user.role=='manager'||user.role=='teacher'?
           <Popup button={"Create"} num={1} content={
             <form class='make_blog' onSubmit={createNewTime}>
               <h2>New Timeslot</h2>
@@ -139,7 +139,9 @@ const Calendar = () => {
                   </div>
                   <button type="submit" class="solid-first">Submit</button>
               </form>
-          }/>:''}
+          }/>:
+          <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false'}}>FEEDBACK</div>        
+          }
         </div>
       </div>
       <div class='calendar'>
