@@ -173,17 +173,19 @@ const Dash = ()=>{
     return(
       <div>
         <StaffTable/>
-        <div class='col'>
-          Activity
+        <div class='col border'>
+          <h2>Activity</h2>
           <div class='up_row' style={{margin:'0% !important'}}>
               <Table name={'Enrolled'} api='/enrolled/all' filter={{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -teacher"/>
               <Table name={'Bookings'} api='/booking/all' filter={{status:'reserved',createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -course -progress"/>
           </div>
-          New Accounts
-          <div class='up_row' style={{margin:'0% !important'}}>
-              <Table name={moment().month(month-2).format('MMMM')} api='/user/all' filter={{role:'user',createdAt:{$gte:new Date(`${year}-${month-1}-1`),$lte:new Date(`${year}-${month-1}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
-              <Table name={moment().month(month-1).format('MMMM')} api='/user/all' filter={{role:'user',createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
-          </div>
+        </div>
+        <div class='col border'>
+        <h2>New Accounts</h2>
+        <div class='up_row' style={{margin:'0% !important'}}>
+            <Table name={moment().month(month-2).format('MMMM')} api='/user/all' filter={{role:'user',createdAt:{$gte:new Date(`${year}-${month-1}-1`),$lte:new Date(`${year}-${month-1}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
+            <Table name={moment().month(month-1).format('MMMM')} api='/user/all' filter={{role:'user',createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
+        </div>
         </div>
         <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -fluency -online_schedule -online_slots -progress -goals -students -tags -source -password -createdAt -updatedAt -points -active -statistics -plan -reward -subscriptions"/>
 

@@ -53,7 +53,7 @@ const displayable=(key)=>{
 }
   return (
     <div class='col'>
-      <h1>{props.name} ({data?data.length:''})</h1>
+      <h2>{props.name} ({data?data.length:''})</h2>
       <div class='up_row'>
         <table>
           {target?(
