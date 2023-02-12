@@ -28,7 +28,7 @@ const TestProp = () => {
         {account?
         <div class='col'>
         {console.log('subscriptions',account,account.subscriptions)}
-          Subscriptions:{account.subscriptions.length>0?account.subscsriptions.map((sub,i)=>{
+          Subscriptions:{account.subscriptions.length>0?account.subscriptions.map((sub,i)=>{
             return <div class='row'>{sub.name} {moment(sub.start).format('M/D')}</div>
           }):'You are not subscribed!'}
           ポイント: 20
