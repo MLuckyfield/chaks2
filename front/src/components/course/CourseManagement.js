@@ -146,7 +146,8 @@ const CourseManagement = () => {
         {user?<div class='col border'>
                 <h2>コースとは</h2>
                 <p>毎週決まった日時に決まったテーマを中心にレッスンをいたします！日時はコースによって違いますので、以下よりご確認ください！</p>
-                <p>楽しむ方法は簡単!
+                <h2>楽しむ方法は簡単!</h2>
+                <p>
                   <br/>1. 受講したいコースの "申し込み" をクリックし、受講規約をご確認の上、決済を完了してください!
                   <br/>2. 当日に、オンライングループの場合は、レッスン開始の１０分前、ZOOMリンクをクリック！グループの場合は、レッスン開始の１０分前、ご来店をお願い致します！
                 </p>
@@ -295,10 +296,8 @@ const AccordionItem=(props)=>{
               console.log('load err',err);
               });
         }
-
             calculateSchedule(course.online_schedule,'online')
             calculateSchedule(course.offline_schedule,'offline')
-
   },[])
   const enroll=(channel)=>{
     console.log(user.first,'is enrolling in',course.name)
@@ -706,6 +705,7 @@ const AccordionItem=(props)=>{
                 <div class='fixed-row'>
                   <img class='photo' src={getImage(course.thumbnail)}></img>
                   <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
+                  {online_schedule.start}開始!
                     <div class='row'>
                       {course.delivery?course.delivery.map((channel,i)=>{
                           return <span class='tag' style={channel.channel=='online private'?{backgroundColor:'tomato'}:channel.channel=='online group'?{backgroundColor:'#89CFF0'}:{backgroundColor:'lime'}}>{channel.channel}</span>

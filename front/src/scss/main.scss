@@ -259,7 +259,7 @@ h1{
   font-size: 3em;
 }
 .material-icons{
-  font-size:45px;
+  font-size:35px;
 }
 .map-marker{
   position: absolute;
@@ -529,9 +529,6 @@ nav {
 // }
 
 @media screen and (max-width: 800px) {
-    .material-icons{
-      font-size:50px;
-    }
     .menu-icons{
       font-size:20px;
     }
