@@ -513,7 +513,7 @@ const AccordionItem=(props)=>{
 
                   2. 本契約に定めのない事項については、民法その他の法令によるものとします。<br/>
 
-               </div>:console.log('not online private')}
+               </div>:console.log('not in-person group',channel)}
                    {channel=='online group'?
                    <div class='col'>
                    <h1>CHATSHACKオンラインコース型レッスン受講規約</h1>
@@ -666,7 +666,7 @@ const AccordionItem=(props)=>{
                     2. 本契約に定めのない事項については、民法その他の法令によるものとします。<br/>
 
                    </div>
-                   : console.log('not online private')}
+                   : console.log('not online group',channel)}
                   <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll(channel)}}>同意して決済へ進む</div>
                 </div>
               }/>
