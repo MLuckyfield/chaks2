@@ -284,7 +284,7 @@ const AccordionItem=(props)=>{
               calculateSchedule(course.offline_schedule,offline_enrolled,'offline')
               })
           .catch((err) => {
-            console.log(err);
+            console.log('load err',err);
             });
 
   },[])
