@@ -43,8 +43,8 @@ const Navbar = ()=>{
               {user==''||user==null||user==undefined?<div class='logo-basic'>CHATSHACK</div>:''}
               {user==''||user==null||user==undefined?'':
               (<div class='col profile_display'>
-              <span>Welcome {user.first}</span>
-              <span>{user.role!='user'?user.role:'student'}</span></div>)}
+              <span style={{fontSize:'13px'}}>Welcome {user.first}</span>
+              <span style={{fontSize:'13px'}}>{user.role!='user'?user.role:'student'}</span></div>)}
           </div>
         </div>
         {user==''||user==null||user==undefined?(
