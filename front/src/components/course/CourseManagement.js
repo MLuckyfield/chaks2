@@ -377,7 +377,7 @@ const AccordionItem=(props)=>{
                  このコースに申し込むと、オンラインプライベートレッスンでこのコースを選択することができます。
 あなたのペースで楽しくしっかり学びたい方はこちらからコースの申し込みをしてください。
 コース申し込み後、オンラインプライベートレッスンを予約する際にこのコースを選択することができます。
-                 </div>:''}
+                 </div>:console.log('not online private')}
                  {channel=='in-person group'?
                  <div class='col'>
                  <h1>CHATSHACK対面コース型レッスン受講規約</h1>
@@ -513,7 +513,7 @@ const AccordionItem=(props)=>{
 
                   2. 本契約に定めのない事項については、民法その他の法令によるものとします。<br/>
 
-               </div>:''}
+               </div>:console.log('not online private')}
                    {channel=='online group'?
                    <div class='col'>
                    <h1>CHATSHACKオンラインコース型レッスン受講規約</h1>
@@ -666,7 +666,7 @@ const AccordionItem=(props)=>{
                     2. 本契約に定めのない事項については、民法その他の法令によるものとします。<br/>
 
                    </div>
-                   : ''}
+                   : console.log('not online private')}
                   <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();enroll(channel)}}>同意して決済へ進む</div>
                 </div>
               }/>
