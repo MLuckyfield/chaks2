@@ -272,12 +272,12 @@ const AccordionItem=(props)=>{
 
   useEffect(()=>{
       console.log('course list, user found')
+      let online_enrolled =[]
+      let offline_enrolled =[]
         if(user){
           axios.get('/enrolled/all',{params:{filter:{course:course._id}}})
             .then((res) => {
                 setEnrolled(res.data.data)
-                let online_enrolled =[]
-                let offline_enrolled =[]
                 res.data.data.forEach((item, i) => {
                   switch(item.delivery){
                     case 'in-person group':
@@ -296,8 +296,8 @@ const AccordionItem=(props)=>{
               console.log('load err',err);
               });
         }
-            calculateSchedule(course.online_schedule,'online')
-            calculateSchedule(course.offline_schedule,'offline')
+            calculateSchedule(course.online_schedule,online_enrolled,'online')
+            calculateSchedule(course.offline_schedule,offline_enrolled,'offline')
   },[])
   const enroll=(channel)=>{
     console.log(user.first,'is enrolling in',course.name)
@@ -322,7 +322,7 @@ const AccordionItem=(props)=>{
       //       console.log(err);
       //       });
   }
-  const calculateSchedule=(schedule,type)=>{
+  const calculateSchedule=(schedule,attendance,type)=>{
     let current_month = new Date().getMonth()
     let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
@@ -349,7 +349,7 @@ const AccordionItem=(props)=>{
       time:firstday.format('ddd@HH:mm'),
       graduation:firstday.add(repeats*4,'weeks').format('M/D'),
       limit:schedule.timeslots[0].limit,
-      // attendance:attendance
+      attendance:attendance
     }
     if(type=='online'){setOnline_Schedule(next_start)}
     else{setOffline_Schedule(next_start)}
