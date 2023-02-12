@@ -263,29 +263,33 @@ const AccordionItem=(props)=>{
 
   useEffect(()=>{
       console.log('course list, user found')
-        axios.get('/enrolled/all',{params:{filter:{course:course._id}}})
-          .then((res) => {
-              setEnrolled(res.data.data)
-              let online_enrolled =[]
-              let offline_enrolled =[]
-              res.data.data.forEach((item, i) => {
-                switch(item.delivery){
-                  case 'in-person group':
-                    if(item.status=='enrolled'){offline_enrolled.push(item)}
-                  break;
-                  case 'online group':
-                  if(item.status=='enrolled'){online_enrolled.push(item)}
-                  break;
-                  default:
-                }
+        if(user){
+          axios.get('/enrolled/all',{params:{filter:{course:course._id}}})
+            .then((res) => {
+                setEnrolled(res.data.data)
+                let online_enrolled =[]
+                let offline_enrolled =[]
+                res.data.data.forEach((item, i) => {
+                  switch(item.delivery){
+                    case 'in-person group':
+                      if(item.status=='enrolled'){offline_enrolled.push(item)}
+                    break;
+                    case 'online group':
+                    if(item.status=='enrolled'){online_enrolled.push(item)}
+                    break;
+                    default:
+                  }
+                });
+                console.log('enrolled',res.data.data,online_enrolled,offline_enrolled)
+
+                })
+            .catch((err) => {
+              console.log('load err',err);
               });
-              console.log('enrolled',res.data.data,online_enrolled,offline_enrolled)
-              calculateSchedule(course.online_schedule,online_enrolled,'online')
-              calculateSchedule(course.offline_schedule,offline_enrolled,'offline')
-              })
-          .catch((err) => {
-            console.log('load err',err);
-            });
+        }
+
+            calculateSchedule(course.online_schedule,'online')
+            calculateSchedule(course.offline_schedule,'offline')
 
   },[])
   const enroll=(channel)=>{
@@ -311,7 +315,7 @@ const AccordionItem=(props)=>{
       //       console.log(err);
       //       });
   }
-  const calculateSchedule=(schedule,attendance,type)=>{
+  const calculateSchedule=(schedule,type)=>{
     let current_month = new Date().getMonth()
     let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
@@ -338,7 +342,7 @@ const AccordionItem=(props)=>{
       time:firstday.format('ddd@HH:mm'),
       graduation:firstday.add(repeats*4,'weeks').format('M/D'),
       limit:schedule.timeslots[0].limit,
-      attendance:attendance
+      // attendance:attendance
     }
     if(type=='online'){setOnline_Schedule(next_start)}
     else{setOffline_Schedule(next_start)}
