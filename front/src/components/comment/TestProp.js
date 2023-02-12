@@ -13,7 +13,7 @@ const TestProp = () => {
         });
   })
   const [courses,setCourses]=useState(()=>{
-    axios.get('/enrolled/all',{params:{filter:{student:account._id}}})
+    axios.get('/enrolled/all',{params:{filter:{student:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
           setCourses(res.data.data)
           })
