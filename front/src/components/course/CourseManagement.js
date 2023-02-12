@@ -705,7 +705,6 @@ const AccordionItem=(props)=>{
                 <div class='fixed-row'>
                   <img class='photo' src={getImage(course.thumbnail)}></img>
                   <div class='col' style={{width:'50vw',borderLeft:'solid 3px black',paddingTop:'5%'}}>
-                  {online_schedule.start}開始!
                     <div class='row'>
                       {course.delivery?course.delivery.map((channel,i)=>{
                           return <span class='tag' style={channel.channel=='online private'?{backgroundColor:'tomato'}:channel.channel=='online group'?{backgroundColor:'#89CFF0'}:{backgroundColor:'lime'}}>{channel.channel}</span>
