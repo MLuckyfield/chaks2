@@ -18,6 +18,7 @@ const TestProp = () => {
         <h1>ACCOUNT</h1>
         {account?
         <div class='col'>
+        {console.log('subscriptions',account.subscriptions)}
           Subscriptions:{account.subscriptions.length>0?account.subscsriptions.map((sub,i)=>{
             return <div class='row'>{sub.name} {moment(sub.start).format('M/D')}</div>
           }):'You are not subscribed!'}
