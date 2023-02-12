@@ -120,21 +120,25 @@ const Account = () => {
               return <div>{course.course.name} {course.status}</div>
             }):''}
           </div>
-          <div>
+          <QRCode value={JSON.parse(localStorage.getItem('user'))._id}/>
+          
+          <div class='col border'>
+          <h1>REWARDS</h1>
           Current Reward Level: <span style={{fontWeight:'bold'}}>{account?account.reward:'Loading'}</span><br/>
           <span>You are eligible for {reward}.</span><br/>
           <span>{msg} {moment().endOf('month').diff(moment(),'days')} days left</span>
             <div class="progress-container">
               <div class="progress" style={{width:`${sessions}%`}}></div>
             </div>
+            VIP Rewards:
+            <div class='col'>
+              <ul>
+                <li>Diamond: <span>500円</span>ドリンク１杯<span>無料</span> ＋ スナック<span>無料</span> ＋ 全メニュー <span>5%</span>オフ</li>
+                <li>Platinum: <span>500円</span>ドリンク１杯<span>無料</span> ＋ 全メニュー <span>5%</span>オフ</li>
+                <li>Gold: <span>500円</span> ドリンク１杯<span>無料</span></li>
+              </ul>
+            </div>
           </div>
-          VIP Rewards:
-          <ul>
-            <li>Diamond: <span>500円</span>ドリンク１杯<span>無料</span> ＋ スナック<span>無料</span> ＋ 全メニュー <span>5%</span>オフ</li>
-            <li>Platinum: <span>500円</span>ドリンク１杯<span>無料</span> ＋ 全メニュー <span>5%</span>オフ</li>
-            <li>Gold: <span>500円</span> ドリンク１杯<span>無料</span></li>
-          </ul>
-          <QRCode value={JSON.parse(localStorage.getItem('user'))._id}/>
       </div>
 )
 }

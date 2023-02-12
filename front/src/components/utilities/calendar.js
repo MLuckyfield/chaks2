@@ -108,6 +108,9 @@ const Calendar = () => {
           <h2>{month},{year}</h2>
           <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>現在、iPhoneユーザーの方々が予約できない事象が発生しております。
 早急に復旧いたしますので、今しばらくお待ちください。</span>
+          {user.points.length<2?
+            <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>You need more points!</span>
+            :''}
       </div>}
       <div class='row'>
         <div class='col'>
@@ -140,7 +143,7 @@ const Calendar = () => {
                   <button type="submit" class="solid-first">Submit</button>
               </form>
           }/>:
-          <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false'}}>FEEDBACK</div>        
+          <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false'}}>FEEDBACK</div>
           }
         </div>
       </div>
