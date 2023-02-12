@@ -52,7 +52,7 @@ const displayable=(key)=>{
   }else{return false}
 }
   return (
-    <div class='master-row'>
+    <div class='row'>
       <h1>{props.name} ({data?data.length:''})</h1>
       <div class='up_row'>
         <table>
