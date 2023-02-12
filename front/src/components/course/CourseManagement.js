@@ -312,7 +312,6 @@ const AccordionItem=(props)=>{
       //       });
   }
   const calculateSchedule=(schedule,attendance,type)=>{
-    console.log('calculate request')
     let current_month = new Date().getMonth()
     let starting_month = schedule.timeslots[0].month
     let repeats = schedule.repeats
@@ -343,6 +342,8 @@ const AccordionItem=(props)=>{
     }
     if(type=='online'){setOnline_Schedule(next_start)}
     else{setOffline_Schedule(next_start)}
+    console.log('calculate request',next_start)
+
   }
   const lockEnroll=(schedule,channel)=>{
     let isEnrolled=false
