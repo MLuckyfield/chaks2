@@ -373,7 +373,7 @@ const AccordionItem=(props)=>{
               {channel=='online private'?'￥10,000':course.price}
               <Popup button={"申し込む"} num={course._id} content={
                 <div class='col'>
-                 {channel='online private'?<div class='col'>
+                 {channel=='online private'?<div class='col'>
                  このコースに申し込むと、オンラインプライベートレッスンでこのコースを選択することができます。
 あなたのペースで楽しくしっかり学びたい方はこちらからコースの申し込みをしてください。
 コース申し込み後、オンラインプライベートレッスンを予約する際にこのコースを選択することができます。
