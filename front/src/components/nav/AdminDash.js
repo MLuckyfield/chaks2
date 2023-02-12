@@ -175,7 +175,12 @@ const Dash = ()=>{
       <div>
         <StaffTable/>
         <div class='col'>
-            <h1>New</h1>
+          Activity
+          <div class='up_row' style={{margin:'0% !important'}}>
+              <Table name={'Enrolled'} api='/enrolled/all' filter={{createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -teacher"/>
+              <Table name={'Bookings'} api='/booking/all' filter={{status:'reserved',createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -course -progress"/>
+          </div>
+          New Accounts
           <div class='up_row' style={{margin:'0% !important'}}>
               <Table name={moment().month(month-2).format('MMMM')} api='/user/all' filter={{role:'user',createdAt:{$gte:new Date(`${year}-${month-1}-1`),$lte:new Date(`${year}-${month-1}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
               <Table name={moment().month(month-1).format('MMMM')} api='/user/all' filter={{role:'user',createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
