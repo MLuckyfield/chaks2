@@ -26,17 +26,24 @@ const TestProp = () => {
     <div class='col border'>
         <h1>ACCOUNT</h1>
         {account?
-        <div class='col'>
-        {console.log('subscriptions',account,account.subscriptions)}
-          Subscriptions:{account.subscriptions.length>0?account.subscriptions.map((sub,i)=>{
-            return <div class='row'>{sub.name} {moment(sub.start).format('M/D')}</div>
-          }):'You are not subscribed!'}
+        <span>
+          <div class='row'>
+            <div class='col'><h2>Subscriptions</h2></div>
+            <div class='col'>{account.subscriptions.length>0?account.subscriptions.map((sub,i)=>{
+              return <div class='row'>{sub.name} since {moment(sub.start).format('M/D')}</div>
+            }):'You are not subscribed!'} </div>
+          </div>
+          <div class='row'>
           ポイント: 20
-        </div>
+          </div>
+        </span>
       :'Loading account...'}
-      {courses?courses.map(function(course,i){
-        return <div>{course.course.name} {course.status}</div>
-      }):''}
+      <div class='row'>
+        <div class='col'><h2>Courses</h2></div>
+        <div class='col'>{courses?courses.map(function(course,i){
+          return <div>{course.course.name} {course.status}</div>
+        }):'You are not enrolled!'}</div>
+      </div>
     </div>
   )
 }
