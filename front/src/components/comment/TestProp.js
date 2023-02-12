@@ -6,7 +6,8 @@ const TestProp = () => {
   const [account,setAccount]=useState(()=>{
     axios.get('/user/all',{params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
-          return res.data.data[0]
+          console.log('found',res.data.data)
+          setAccount(res.data.data[0])
           })
       .catch((err) => {
         console.log(err);
