@@ -251,7 +251,10 @@ const CourseManagement = () => {
                       <button type="submit" class="solid-first">Submit</button>
                     </form>
         }/>:
-        <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=494d35378d&attribution=false'}}>FEEDBACK</div>
+        <div class='fixed-row'>
+          <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=494d35378d&attribution=false'}}>FEEDBACK</div>
+          <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='#faq'}}>FAQ</div>
+        </div>
       }
         </div>
         <div class='col'>
