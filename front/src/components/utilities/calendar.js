@@ -42,7 +42,7 @@ const Calendar = () => {
     console.log('searching from', new Date(year,month,new Date().getDate()),new Date(year,month,target.getDate()),target)
     //get all bookings for the month
     // axios.get('/booking/all',{params:{filter:{date:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${target.getDate()}`)}}}})
-    axios.get('/booking/all',{params:{filter:{date:{$gte:new Date(year,month,new Date().getDate()),$lte:new Date(year,month,target.getDate())}}}})
+    axios.get('/booking/all',{params:{filter:{date:{$gte:new Date(year,month,1),$lte:new Date(year,month,target.getDate())}}}})
       .then((res) => {
         let data = res.data.data
         // console.log('bookings retrieved:',data)
