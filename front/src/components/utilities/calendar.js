@@ -48,7 +48,7 @@ const Calendar = () => {
         // console.log('bookings retrieved:',data)
         let bookings = []
         //create schedule array
-        let startingDay = new Date(`${year}-${month}-1`).getDay()
+        let startingDay = new Date(year,month,1).getDay()
         let endingDay = target.getDay()
         let count = 1
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
