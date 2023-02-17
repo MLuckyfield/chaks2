@@ -3,10 +3,13 @@ import React, {useState} from 'react'
 const Accordion =(props)=>{
 
 return (
-    <div id={props.id} class='accordion'>
-          {props.accordionData.map(({ title, content }) => (
-            <AccordionItem title={title} content={content} />
-          ))}
+    <div class='col'>
+      <h2>{props.title}</h2>
+      <div id={props.id} class='accordion'>
+            {props.accordionData.map(({ title, content }) => (
+              <AccordionItem title={title} content={content} />
+            ))}
+      </div>
     </div>
 );
 }

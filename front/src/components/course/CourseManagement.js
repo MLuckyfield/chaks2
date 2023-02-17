@@ -261,7 +261,7 @@ const CourseManagement = () => {
                 )
             })): 'No Courses!'}
         </div>
-        <FAQ id='faq' accordionData={[{
+        <FAQ id='faq' title={'FAQ'} accordionData={[{
           title: 'コースとはなんですか？',
           content: `コースとは毎週決まった日時に決まったテーマを中心についてレッスンをいたします。なので、お客様の弱点を重点的に強化することができます！また、コースの受講期間も決まっておりゴールが見えている為コミットすることができます。`,
         },
