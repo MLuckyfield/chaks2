@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 const Accordion =(props)=>{
 
 return (
-    <div class='accordion'>
+    <div id={props.id} class='accordion'>
           {props.accordionData.map(({ title, content }) => (
             <AccordionItem title={title} content={content} />
           ))}

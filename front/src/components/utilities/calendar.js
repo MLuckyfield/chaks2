@@ -3,6 +3,7 @@ import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Lesson from './lesson'
 import Popup from '../utilities/popup'
+import Accordion from '../utilities/accordion'
 
 const Calendar = () => {
 
@@ -40,7 +41,8 @@ const Calendar = () => {
     let target = new Date(year,month,0)
     console.log('searching from', new Date(year,month,1),new Date(year,month,target.getDate()))
     //get all bookings for the month
-    axios.get('/booking/all',{params:{filter:{date:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${target.getDate()}`)}}}})
+    // axios.get('/booking/all',{params:{filter:{date:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${target.getDate()}`)}}}})
+    axios.get('/booking/all',{params:{filter:{date:{$gte:new Date(year,month,1),$lte:new Date(year,month,target.getDate())}}}})
       .then((res) => {
         let data = res.data.data
         // console.log('bookings retrieved:',data)
@@ -200,6 +202,26 @@ const Calendar = () => {
           }
         }):'Loading...'}
       </div>
+      <Accordion id='faq' accordionData={[{
+        title: 'コースとはなんですか？',
+        content: `コースとは毎週決まった日時に決まったテーマを中心についてレッスンをいたします。なので、お客様の弱点を重点的に強化することができます！また、コースの受講期間も決まっておりゴールが見えている為コミットすることができます。`,
+      },
+      {
+      title: 'どのようにコースに申し込みができますか？',
+      content: `コースリストより参加したいコースをお選びください。そのコースの"申し込み"をクリックし、受講規約をご確認の上、決済を完了してください！`,
+      },
+      {
+      title: 'コースはオンラインですかオフラインですか？',
+      content: `コースレッスンはオンライン、オフラインどちらでも受講することができます。ただし、最初に選択された方法でしか受講することができません。ご承知おきください。`,
+      },
+      {
+      title: 'コースには途中参加することはできますか？',
+      content: `コースへの途中参加は基本的にはできません。`,
+      },
+      {
+      title: 'コースの日程はどこで確認できますか？',
+      content: `コースリストより各コースの実施日時が記載されております。ご確認ください。`,
+      }]}/>
     </div>
 )
 }
