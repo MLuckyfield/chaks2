@@ -102,12 +102,12 @@ const Calendar = () => {
       {user.role=='manager'?
       <div class='row'>
           <button class='arrow' onClick={()=>{if(month-1<1){setMonth(1);setYear(year-1)}else{setMonth(month-1)}}}>{'<'}</button>
-          <h1>{month},{year}</h1>
+          <h1>{month+1},{year}</h1>
           <button class='arrow' onClick={()=>{if(month+1>12){setMonth(1);setYear(year+1)}else{setMonth(month+1)}}}>{'>'}</button>
       </div>:
       <div class='col'>
           <h1>ONLINE PRIVATE</h1>
-          <h2>{month},{year}</h2>
+          <h2>{month+1},{year}</h2>
           <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>現在、iPhoneユーザーの方々が予約できない事象が発生しております。
 早急に復旧いたしますので、今しばらくお待ちください。</span>
           {user?<div class='col border'>
