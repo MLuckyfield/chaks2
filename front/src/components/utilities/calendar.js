@@ -14,7 +14,7 @@ const Calendar = () => {
   const new_minute = useRef('')
 
   //calendar display inputs
-  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+2})
+  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day,setDay]=useState(()=>{let time = new Date();return time.getDay()})
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
@@ -39,7 +39,7 @@ const Calendar = () => {
   }
   useEffect(()=>{
     let target = new Date(year,month,0)
-    console.log('searching from', new Date(year,month,1),new Date(year,month,target.getDate()))
+    console.log('searching from', new Date(year,month,1),new Date(year,month,target.getDate()),target)
     //get all bookings for the month
     // axios.get('/booking/all',{params:{filter:{date:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${target.getDate()}`)}}}})
     axios.get('/booking/all',{params:{filter:{date:{$gte:new Date(year,month,1),$lte:new Date(year,month,target.getDate())}}}})
