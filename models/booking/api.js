@@ -147,7 +147,7 @@ router.post('/reserve', async (req, res) => {
   }).catch((err)=>{console.log('Booking error: user not found')})
 });
 //Get
-router.get('/all', auth.permission(['user','manager']),async (req, res) => {
+router.get('/all', auth.permission(['user','teacher','manager']),async (req, res) => {
   console.log(req.query)
   let data = await Booking.find(JSON.parse(req.query.filter)).populate('student').populate('teacher')
 

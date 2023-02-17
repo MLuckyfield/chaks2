@@ -108,7 +108,23 @@ const StudentComments = () => {
                           </div>
                         </div>
                       </div>)
-          ):'Loading...'}
+          ):
+          <div class='col slim' style={{background:'#89cff0',color:'white'}}>
+            <div class='col border' style={{borderColor:'white',display:'block'}}>
+              <h1>CHATSHACKにようこそ！</h1><br/>
+              ご登録いただきありがとうございました！
+CHATSHACKのオンラインレッスンは優れた講師とのマンツーマンです！
+オンラインレッスンは完全予約制です。ポイントを購入してさっそくレッスンを予約してみましょう！
+              <br/><p>オンラインレッスンのほかにも、CHATSHACKの対面レッスンやコースなども活用して英語力を向上させましょう！
+対面レッスンは予約不要なので、お客様のタイミングでご来店いただけます！</p>
+              <p>スタッフはみんなフレンドリーなので、緊張せずにお気軽にお越しください！また、ご質問や不安な点がある方のお問い合わせもお待ちしております。
+                (050 3395 1280)</p>
+                <p>インスタやYouTubeもやっていますので、お楽しみください！</p>
+              <div calss='col'>
+                <Social data={'tiny-logo'}/>
+              </div>
+            </div>
+          </div>}
       </div>
       </div>
 )

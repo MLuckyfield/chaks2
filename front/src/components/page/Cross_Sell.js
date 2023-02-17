@@ -13,7 +13,7 @@ const Online_Landing = () => {
           <div class='mini_overlay slim' style={{backgroundColor:'rgba(175,65,84,0.9)',display:'flex',alignItems:'center',justifyContent:'center',border:'1px solid white'}}>
             <div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
                 <h2>EVENTS</h2>
-                <span style={{height:'40px',margin:'5%',textAlign:'center'}}>国際交流で友達を作って、リアルな英会話も楽しめる</span>
+                <span style={{height:'40px',margin:'5%',textAlign:'center'}}>国際交流でリアルな英語を体験しよう</span>
                 <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/events'}}>詳細</div>
             </div>
           </div>
@@ -29,7 +29,7 @@ const Online_Landing = () => {
             </div>
             :<div style={{border:'1px solid white',width:'97%',height:'97%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
             <h2>COURSES</h2>
-                <span style={{height:'40px',margin:'5%',textAlign:'center'}}>ビジネス英語、TOEIC対策コースなどにレッスンをいたします！</span>
+                <span style={{height:'40px',margin:'5%',textAlign:'center'}}>ビジネス英語、TOEIC対策コースなど！</span>
                 <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='/courses'}}>詳細</div>
             </div>}
             </div>

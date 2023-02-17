@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 import Popup from '../utilities/popup'
+import FAQ from '../utilities/accordion'
 import img_beginner_grammar from '../../images/beginner_grammar.jpg'
 import img_intermediate_grammar from '../../images/grammar_intermediate.jpg'
 import img_advanced_conversation from '../../images/conversation_advanced.jpg'

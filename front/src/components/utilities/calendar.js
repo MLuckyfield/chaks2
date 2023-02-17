@@ -38,7 +38,7 @@ const Calendar = () => {
   }
   useEffect(()=>{
     let target = new Date(year,month,0)
-    console.log('searching from', new Date(`${year}-${month}-1`),new Date(`${year}-${month}-${target.getDate()}`))
+    console.log('searching from', new Date(year,month,1),new Date(year,month,target.getDate()))
     //get all bookings for the month
     axios.get('/booking/all',{params:{filter:{date:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${target.getDate()}`)}}}})
       .then((res) => {
@@ -108,6 +108,15 @@ const Calendar = () => {
           <h2>{month},{year}</h2>
           <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>現在、iPhoneユーザーの方々が予約できない事象が発生しております。
 早急に復旧いたしますので、今しばらくお待ちください。</span>
+          {user?<div class='col border'>
+                  <h2>コースとは</h2>
+                  <p>毎週決まった日時に決まったテーマを中心にレッスンをいたします！日時はコースによって違いますので、以下よりご確認ください！</p>
+                  <h2>楽しむ方法は簡単!</h2>
+                  <p>
+                    <br/>1. 受講したいコースの "申し込み" をクリックし、受講規約をご確認の上、決済を完了してください!
+                    <br/>2. 当日に、オンライングループの場合は、レッスン開始の１０分前、ZOOMリンクをクリック！グループの場合は、レッスン開始の１０分前、ご来店をお願い致します！
+                  </p>
+          </div>:''}
           {user.points.length<2?
             <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>You need more points!</span>
             :''}
