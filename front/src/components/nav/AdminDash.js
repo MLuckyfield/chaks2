@@ -177,7 +177,7 @@ const Dash = ()=>{
           <h2>Activity</h2>
           <div class='up_row' style={{margin:'0% !important'}}>
               <Table name={'Enrolled'} api='/enrolled/all' filter={{createdAt:{$gte:new Date(`${year}/${month}/1`),$lte:new Date(`${year}/${month}/${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -course"/>
-              <Table name={'Bookings'} api='/booking/all' filter={{status:'reserved',createdAt:{$gte:new Date(`${year}/${month}/1`),$lte:new Date(`${year}/${month}/${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -teacher"/>
+              <Table name={'Bookings'} api='/booking/all' filter={{status:'reserved',createdAt:{$gte:new Date(`${year}/${month}/1`),$lte:new Date(`${year}/${month}/${new Date(year,month,0).getDate()}`)}}} fields="date -__v"/>
           </div>
         </div>
         <div class='col border'>
