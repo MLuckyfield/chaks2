@@ -116,6 +116,8 @@ const Calendar = () => {
                     <br/>1. 受講したいコースの "申し込み" をクリックし、受講規約をご確認の上、決済を完了してください!
                     <br/>2. 当日に、オンライングループの場合は、レッスン開始の１０分前、ZOOMリンクをクリック！グループの場合は、レッスン開始の１０分前、ご来店をお願い致します！
                   </p>
+                  <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='#faq'}}>FAQ</div>
+                  
           </div>:''}
           {user.points.length<2?
             <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>You need more points!</span>
@@ -154,7 +156,6 @@ const Calendar = () => {
           }/>:
           <div class='fixed-row'>
             <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='https://us9.list-manage.com/survey?u=803e460f5dec6935e2fc8e187&id=b6aaf771a8&attribution=false'}}>FEEDBACK</div>
-            <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='#faq'}}>FAQ</div>
           </div>
           }
         </div>
