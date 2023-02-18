@@ -101,7 +101,10 @@ const Lesson = (props)=>{
                     return <option value={item.course.name}>{item.course.name}</option>
                   }):''}
                 </select>
-                <div class="btn" style={{position:'relative',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reserve(props.content)}}>予約 (2ポイント)</div>
+                {props.points<2?
+                  <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>You need more points!</span>
+                  :
+                <div class="btn" style={{position:'relative',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reserve(props.content)}}>予約 (2ポイント)</div>}
              </div>}
         </div>
       }
