@@ -94,7 +94,7 @@ const Lesson = (props)=>{
           {props.content.student?
             props.content.student._id==user._id?
             'You are signed up!'  :`${props.content.student.first} ${props.content.student.last}`
-            :<div>
+            :<div style={{display:'flex',alignItems:'center',flexDirection:'column'}}>
                 <select class='form-control' style={{width:'100%'}} ref={option}>
                   {props.options?props.options.map((item,i)=>{
                     console.log('options recieved',item)
@@ -102,7 +102,7 @@ const Lesson = (props)=>{
                   }):''}
                 </select>
                 {props.points<2?
-                  <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>You need more points!</span>
+                  <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>ポイントが足りません！</span>
                   :
                 <div class="btn" style={{position:'relative',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();reserve(props.content)}}>予約 (2ポイント)</div>}
              </div>}
