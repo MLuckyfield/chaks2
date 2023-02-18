@@ -147,7 +147,7 @@ router.post('/reserve', async (req, res) => {
     else{
       console.log(`Booking failed, not enough points`)
       return res.status(500).json({
-              message: `Booking failed, not enough points`,
+              message: `Booking failed, not enough points ${points.length}`,
               success: false
             });
     }

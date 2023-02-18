@@ -90,9 +90,12 @@ const adjustPoints = ()=>{
         {JSON.parse(localStorage.getItem('user')).role=='manager'?
         <Popup button={"Points"} num={1} content={
           <form class='make_blog'>
-            <input ref={points} type="number" min='1' class="form-control" required/>
-            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();adjustPoints(true)}}>+</div>
-            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault();adjustPoints(false)}}>-</div>
+            <h2>Adjust Points</h2>
+            <input ref={points} type="number" min='1' class="form-control" placeholder='Enter number of points' required/>
+            <div class='fixed-row'>
+              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();adjustPoints(true)}}>+</div>
+              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault();adjustPoints(false)}}>-</div>
+            </div>
           </form>
         }/>:''}
         {JSON.parse(localStorage.getItem('user')).role=='manager'? (<div class='col'><button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red',width:'80%'}:{backgroundColor:'blue',width:'80%'}}>{target.inClass?'End':'Start'}</button></div>):''}
