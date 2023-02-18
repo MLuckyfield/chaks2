@@ -79,7 +79,7 @@ const adjustPoints = ()=>{
       value:30
     })
   }
-  axios.post('user/update',{filter:target._id,data:{'$push':{points:changes}}})
+  axios.post('user/update',{filter:{_id:target._id},data:{'$push':{points:changes}}})
     .then((result)=>{
        window.location.reload()
     })
