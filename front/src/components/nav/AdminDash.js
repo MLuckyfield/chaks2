@@ -150,6 +150,7 @@ const StaffTable = ()=>{
 const StudentTable = ()=>{
   return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -fluency -progress -online_schedule -online_slots -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
 }
+// <Table name={'Bookings'} api='/booking/all' filter={{status:'reserved',createdAt:{$gte:new Date(`${year}/${month}/1`),$lte:new Date(`${year}/${month}/${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -teacher -date"/>
 //
 const Dash = ()=>{
   const user = JSON.parse(localStorage.getItem('user'))
@@ -177,7 +178,6 @@ const Dash = ()=>{
           <h2>Activity</h2>
           <div class='up_row' style={{margin:'0% !important'}}>
               <Table name={'Enrolled'} api='/enrolled/all' filter={{createdAt:{$gte:new Date(`${year}/${month}/1`),$lte:new Date(`${year}/${month}/${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -course"/>
-              <Table name={'Bookings'} api='/booking/all' filter={{status:'reserved',createdAt:{$gte:new Date(`${year}/${month}/1`),$lte:new Date(`${year}/${month}/${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -teacher -date"/>
           </div>
         </div>
         <div class='col border'>

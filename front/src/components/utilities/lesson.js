@@ -29,7 +29,7 @@ const Lesson = (props)=>{
           window.location.reload();
           })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err.response.data.message);
         });
   }
   const reserve=(content)=>{
