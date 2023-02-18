@@ -185,6 +185,7 @@ const email = require('../../services/email')
       // console.log(req)
       await User.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
           .then((result)=>{
+            console.log(result.first,result.last,'updated')
             return res.status(201).json({
               data:result,
               message: 'User update',
@@ -192,6 +193,7 @@ const email = require('../../services/email')
             });
           })
           .catch((err)=>{
+            console.log(result.first,result.last,'update failed')
             return res.status(500).json({
               message: `User failed to update: ${err}`,
               success: false
