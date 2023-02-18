@@ -109,15 +109,16 @@ const Calendar = () => {
           <h1>ONLINE PRIVATE</h1>
           <h2>{month+1},{year}</h2>
           {user?<div class='col border'>
-                  <h2>コースとは</h2>
-                  <p>毎週決まった日時に決まったテーマを中心にレッスンをいたします！日時はコースによって違いますので、以下よりご確認ください！</p>
+                  <h2>オンラインレッスンとは</h2>
+                  <p>完全予約制のマンツーマンレッスンになります。レッスン内容は予約の際に選んで頂けます！</p>
                   <h2>楽しむ方法は簡単!</h2>
                   <p>
-                    <br/>1. 受講したいコースの "申し込み" をクリックし、受講規約をご確認の上、決済を完了してください!
-                    <br/>2. 当日に、オンライングループの場合は、レッスン開始の１０分前、ZOOMリンクをクリック！グループの場合は、レッスン開始の１０分前、ご来店をお願い致します！
+                    <br/>1. ２ポイント以上あることを確認してください。（ポイントはサブスク登録後に付与されます。）
+                    <br/>2. 予約ページより予約したい時間とレッスン内容を選択してレッスンを予約してください。
+                    <br/>3. レッスンのお時間になりましたら、予約ページの予約した時間をクリックし、ZOOMリンクよりご参加ください！
                   </p>
                   <div class="btn" style={{position:'relative',width:'80%'}} onClick={(e)=>{e.preventDefault();window.location='#faq'}}>FAQ</div>
-                  
+
           </div>:''}
           {user.points.length<2?
             <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>You need more points!</span>

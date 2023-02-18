@@ -20,7 +20,7 @@ const Online_Landing = () => {
             <div class='row'>
               <div class='col'>
                 <h1 style={{fontSize:'2em'}}>プレミアム<br/>オンライン<br/>英会話</h1>
-                <h2>申し込み中!</h2>
+                <h2>申込受付中</h2>
               </div>
             </div>
         </div>
@@ -110,13 +110,13 @@ Can't wait to meet you!</p>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',color:'black'}}>
           <div class='col'>
             <h1 style={{margin:'10% 0'}}>利用までの流れ</h1>
-            <p>（サービス提供開始は２０２３年２月を想定しています）</p>
+            <p>申込受付中!</p>
           </div>
           <div class='fixed-row clean_center'>
             <span class="material-icons green ">looks_one</span>
               <div class='col align'>
-                <p>無料体験レッスンへ</p>
-                <h2>申し込む</h2>
+                <p>下記より無料登録して</p>
+                <h2>体験レッスンを申し込む</h2>
               </div>
           </div>
           <div class='fixed-row clean_center'>
