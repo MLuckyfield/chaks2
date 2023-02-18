@@ -139,6 +139,7 @@ router.post('/reserve', async (req, res) => {
           .catch((err)=>{console.log('Booking error: user points failed to deduct',err)})
     }
     else{
+      console.log(`Booking failed, not enough points`)
       return res.status(500).json({
               message: `Booking failed, not enough points`,
               success: false
