@@ -15,6 +15,7 @@ const Table = (props)=> {
     if(data==null){
       axios.get(props.api, {params:{filter:props.filter,fields:props.fields}})
         .then((res) => {
+          console.log(props.name,res.data.data)
             // res.data.data.forEach((item, i) => {
             //   item['inClass']=false
             // });
