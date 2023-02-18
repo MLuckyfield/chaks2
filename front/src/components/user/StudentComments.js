@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useRef,useState} from 'react';
 import {axios} from "../../utilities/axios";
 import Comment from "../comment/Comment";
 import Social from "../utilities/social";
@@ -81,11 +81,7 @@ const adjustPoints = ()=>{
   }
   axios.post('user/update',{filter:target._id,data:{'$push':{points:changes}}})
     .then((result)=>{
-       console.log(result)
-       let popup = document.getElementById("teacher_select");
-       popup.style.display = 'none';
-       socket.emit('sendstudent',target,id)
-       socket.emit('clock',target._id,true)//send directly withou tback
+       window.location.reload()
     })
     .catch(error=>console.log('From sendTo teacher:',error))
 }
