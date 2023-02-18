@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react';
 import {axios} from "../../utilities/axios";
 import Comment from "../comment/Comment";
 import Social from "../utilities/social";
+import Popup from '../utilities/popup'
 import moment from "moment"
 import {io} from 'socket.io-client';
 const socket = io();
@@ -9,6 +10,7 @@ const socket = io();
 
 const StudentComments = () => {
 
+  const points = useRef('');
   const [comments, setComments] = useState(null);
   const [source,setSource] =useState()
   const [target, setTarget]=useState(()=>{
@@ -70,9 +72,33 @@ const StudentComments = () => {
       .catch(error=>console.log('From sendTo teacher:',error))
   }
   //<button onClick={()=>sendTo('6344faac6bf36a9debe60b25')} class='button'>TEST</button>
-
+const adjustPoints = ()=>{
+  let changes = []
+  for(let i =0;i<points.current.value;i++){
+    changes.push({
+      value:30
+    })
+  }
+  axios.post('user/update',{filter:target._id,data:{'$push':{points:changes}}})
+    .then((result)=>{
+       console.log(result)
+       let popup = document.getElementById("teacher_select");
+       popup.style.display = 'none';
+       socket.emit('sendstudent',target,id)
+       socket.emit('clock',target._id,true)//send directly withou tback
+    })
+    .catch(error=>console.log('From sendTo teacher:',error))
+}
   return(
     <div class='col'>
+        {JSON.parse(localStorage.getItem('user')).role=='manager'?
+        <Popup button={"Points"} num={1} content={
+          <form class='make_blog'>
+            <input ref={points} type="number" min='1' class="form-control" required/>
+            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();adjustPoints(true)}}>+</div>
+            <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault();adjustPoints(false)}}>-</div>
+          </form>
+        }/>:''}
         {JSON.parse(localStorage.getItem('user')).role=='manager'? (<div class='col'><button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red',width:'80%'}:{backgroundColor:'blue',width:'80%'}}>{target.inClass?'End':'Start'}</button></div>):''}
         {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<div class='col'><Comment/></div>:''}
       <div id='teacher_select'>

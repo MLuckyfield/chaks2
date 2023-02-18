@@ -127,7 +127,13 @@ router.post('/reserve', async (req, res) => {
           .then(()=>{
             Booking.findOneAndUpdate(req.body.filter,req.body.data,{new:true})
                 .then((update)=>{
-                  email.sendDefault(`BOT | Lesson Booked: ${student.first} ${student.last}`)
+                  // email.sendDefault(`BOT | Lesson Booked: ${student.first} ${student.last}`)
+                  console.log('booking confirmed')
+                  return res.status(201).json({
+                    data: update,
+                    message: 'Booking saved',
+                    success: true
+                  });
                 })
                 .catch((err)=>{
                   return res.status(500).json({
