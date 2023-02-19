@@ -72,14 +72,16 @@ const StudentComments = () => {
       .catch(error=>console.log('From sendTo teacher:',error))
   }
   //<button onClick={()=>sendTo('6344faac6bf36a9debe60b25')} class='button'>TEST</button>
-const adjustPoints = ()=>{
+const adjustPoints = (add)=>{
   let changes = []
   for(let i =0;i<points.current.value;i++){
     changes.push({
       value:30
     })
   }
-  axios.post('user/update',{filter:{_id:target._id},data:{'$push':{points:changes}}})
+  let update = {'$pull':{points:changes}}
+  if(add){update={'$push':{points:changes}}}
+  axios.post('user/update',{filter:{_id:target._id},data:update})
     .then((result)=>{
        window.location.reload()
     })
