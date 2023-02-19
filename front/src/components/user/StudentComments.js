@@ -79,9 +79,7 @@ const adjustPoints = (add)=>{
       value:30
     })
   }
-  let update = {'$pull':{points:changes}}
-  if(add){update={'$push':{points:changes}}}
-  axios.post('user/update',{filter:{_id:target._id},data:update})
+  axios.post('user/update',{filter:{_id:target._id},data:{'$push':{points:changes}}})
     .then((result)=>{
        window.location.reload()
     })
@@ -95,8 +93,7 @@ const adjustPoints = (add)=>{
             <h2>Adjust Points</h2>
             <input ref={points} type="number" min='1' class="form-control" placeholder='Enter number of points' required/>
             <div class='fixed-row'>
-              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();adjustPoints(true)}}>+</div>
-              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'red'}} onClick={(e)=>{e.preventDefault();adjustPoints(false)}}>-</div>
+              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();adjustPoints()}}>+</div>
             </div>
           </form>
         }/>:''}
