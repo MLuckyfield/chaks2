@@ -101,6 +101,7 @@ const Lesson = (props)=>{
                     return <option value={item.course.name}>{item.course.name}</option>
                   }):''}
                 </select>
+                {console.log('points',props.points)}
                 {props.points<2?
                   <span style={{border:'1px solid red',color:'red',padding:'2%',width:'fit-content'}}>ポイントが足りません！</span>
                   :
