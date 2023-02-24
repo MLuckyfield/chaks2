@@ -2,7 +2,6 @@ import React, { useEffect, useRef,useState} from 'react';
 import {axios} from "../../utilities/axios";
 import Comment from "../comment/Comment";
 import Social from "../utilities/social";
-import Popup from '../utilities/popup'
 import moment from "moment"
 import {io} from 'socket.io-client';
 const socket = io();
