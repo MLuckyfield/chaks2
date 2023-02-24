@@ -3,7 +3,7 @@ import CrossSell from "../page/Cross_Sell";
 import background from '../../online_background.jpg'
 import environment from '../../online_environment.jpg'
 import ReactPlayer from 'react-player/youtube'
-import discount from '../../discount.jpg'
+import discount from '../../online_discount.jpg'
 import vincent from '../../vincent.jpg'
 import bre from '../../bre.jpg'
 import info from '../../output.png'
