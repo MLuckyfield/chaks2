@@ -106,6 +106,19 @@ Can't wait to meet you!</p>
           </div>
         </div>
       </div>
+      <div id='intro' class='row' style={{color:'white',backgroundImage: 'url('+discount+')',backgroundSize:'cover',backgroundPosition:'center'}}>
+        <div class='mini_overlay yellow'>
+            <div class='col' style={{width:'70%',alignItems:'normal'}}>
+                    <h1 class='emphasize' style={{textAlign:'left'}}>30分<br/>0円!</h1>
+                    <h1 style={{textAlign:'left'}}>初回無料</h1>
+                    <h2 style={{textAlign:'left'}}>気軽に申し込むください!</h2>
+                    <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',margin:'3% 0% 5% 0%',width:'max-content'}}>
+                        通常料金: 30分￥2000<br/>
+                        サブスクスタイル!<br/>
+                    </span>
+            </div>
+        </div>
+      </div>
       <div class='col slim' style={{backgroundSize:'cover',backgroundColor:'ghostwhite',backgroundImage:'url('+environment+')',padding:'0',margin:'0',width:'100%'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(248,248,255,0.93)',display:'flex',alignItems:'center',flexDirection:'column',width:'100vw',color:'black'}}>
           <div class='col'>
