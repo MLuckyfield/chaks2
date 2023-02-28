@@ -75,7 +75,7 @@ const TestProp = () => {
             <p>今なら</p>
             <h1>初月３０％割引!</h1>
             <p style={{marginBottom:'3%'}}>期間限定 3月1日～3月31日</p>
-            <Popup button={"詳細"} num={1} content={
+            <Popup button={"詳細"} num={2} content={
               <div class='col'>
                   <h1 style={{margin:'10% 0'}}>初月３０%割引</h1>
                   <p>3月中にご契約されるお客様には３０％割引が適用されます！</p>
