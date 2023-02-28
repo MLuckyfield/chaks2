@@ -3,6 +3,7 @@ import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Popup from '../utilities/popup'
 import instructor from '../../images/OUTPUT.jpg'
+import campaign from '../../images/sakura.jpg'
 
 const TestProp = () => {
   const [account,setAccount]=useState(()=>{
@@ -57,8 +58,45 @@ const TestProp = () => {
             <Popup button={"詳細"} num={1} content={
               <div class='col'>
                   <h1 style={{margin:'10% 0'}}>プレミアム英会話なら<br/>ハイクラスな教師</h1>
-                  <p>４時間以上でご契約されるお客様には以下の割引が適用されます!</p>
+                  <p>講師は英会話講師の経験があり、トレーニングを受けいるため
+                  教え方が上手なだけでなく英語の知識も豊富です。会話を楽しくスムーズにリードし、細かい英文法などもしっかりと教えてくれます！</p>
                   <img src={instructor}></img>
+              </div>
+            }/>
+            </div>
+          </div>
+      </div>
+      <div class='fixed-row' style={{backgroundImage: 'url('+campaign+')',backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
+        <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
+          <div class='col w20'>
+            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新年入会<br/>キャンペーン</span>
+          </div>
+          <div class='col w80 align'>
+            <p>今なら</p>
+            <h1>初月３０％割引!</h1>
+            <p style={{marginBottom:'3%'}}>期間限定 3月1日～3月31日</p>
+            <Popup button={"詳細"} num={1} content={
+              <div class='col'>
+                  <h1 style={{margin:'10% 0'}}>初月３０%割引</h1>
+                  <p>3月中にご契約されるお客様には３０％割引が適用されます！</p>
+                  <div class='col'>
+                      <div class='fixed-row'>
+                          <div class='col align'>
+                            <h2>割引例</h2>
+                            <ul>
+                              <li>４時間プラン：通常8,000円が3月限定で5,600円</li>
+                              <li>８時間プラン：通常16,000円が3月限定で11,200円</li>
+                              <li>１２時間プラン：通常24,000円が3月限定で16,800円</li>
+                            </ul>
+                          </div>
+                      </div>
+                      <div class='fixed-row'>
+                          <div class='col align'>
+                            <h2>学生限定</h2>
+                            <p>さらに！！学生様には追加で１０％割引が適用されます！</p>
+                          </div>
+                      </div>
+                  </div>
               </div>
             }/>
             </div>
