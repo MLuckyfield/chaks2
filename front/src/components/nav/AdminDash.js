@@ -150,7 +150,6 @@ const StaffTable = ()=>{
 const StudentTable = ()=>{
   return <Table name='Students' api='/user/all' filter={{role: 'user'}} fields="-__v -fluency -progress -online_schedule -online_slots -goals -students -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
 }
-// <Table name={'Bookings'} api='/booking/all' filter={{status:'reserved',createdAt:{$gte:new Date(`${year}/${month}/1`),$lte:new Date(`${year}/${month}/${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -teacher -date"/>
 //
 const Dash = ()=>{
   const user = JSON.parse(localStorage.getItem('user'))
@@ -188,6 +187,7 @@ const Dash = ()=>{
         </div>
         </div>
         <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -fluency -online_schedule -online_slots -progress -goals -students -tags -source -password -createdAt -updatedAt -points -active -statistics -plan -reward -subscriptions"/>
+        <Table name={'Bookings'} api='/booking/all' filter={{status:'reserved',date:{$gte:new Date(`${year}/${month}/1`),$lte:new Date(`${year}/${month}/${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -teacher -date"/>
 
         {display?<StudentTable/>:<div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();setDisplay(true)}}>Emergency Show All Students</div>}
 

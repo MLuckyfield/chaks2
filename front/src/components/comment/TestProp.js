@@ -49,7 +49,7 @@ const TestProp = () => {
       <div class='fixed-row' style={{backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
           <div class='col w20'>
-            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>POINT<br/>1</span>
+            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>POINT</span>
           </div>
           <div class='col w80 align'>
             <p>ただのネイティブではなく</p>
