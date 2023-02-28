@@ -69,7 +69,7 @@ const TestProp = () => {
       <div class='fixed-row' style={{backgroundImage: 'url('+campaign+')',backgroundSize:'cover',backgroundColor:'rgba(255,102,128,0.6)',color:'white'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
           <div class='col w20'>
-            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新年入会<br/>キャンペーン</span>
+            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>3月限定<br/>キャンペーン</span>
           </div>
           <div class='col w80 align'>
             <p>今なら</p>
