@@ -67,42 +67,28 @@ const TestProp = () => {
             </div>
           </div>
       </div>
-      <div class='fixed-row' style={{backgroundImage: 'url('+campaign+')',backgroundSize:'cover',backgroundColor:'rgba(255,102,128,0.6)',color:'white'}}>
+      <div class='fixed-row' style={{backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
           <div class='col w20'>
-            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新規入会<br/>キャンペーン</span>
+            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>POINT</span>
           </div>
           <div class='col w80 align'>
-            <p>今なら</p>
-            <h1>初月３０％割引!</h1>
-            <p style={{marginBottom:'3%'}}>期間限定 3月1日～3月31日</p>
-            <Popup button={"詳細"} num={2} content={
+            <p>ただのネイティブではなく</p>
+            <h1>選び抜かれた<br/>講師陣</h1>
+            <p style={{marginBottom:'3%'}}>合格率２％のテストに合格した講師のみを採用しています</p>
+            <Popup button={"詳細"} num={1} content={
               <div class='col'>
-                  <h1 style={{margin:'10% 0'}}>初月３０%割引</h1>
-                  <p>3月中にご契約されるお客様には３０％割引が適用されます！</p>
-                  <div class='col'>
-                      <div class='fixed-row'>
-                          <div class='col align'>
-                            <h2>割引例</h2>
-                            <ul>
-                              <li>４時間プラン：通常8,000円が3月限定で5,600円</li>
-                              <li>８時間プラン：通常16,000円が3月限定で11,200円</li>
-                              <li>１２時間プラン：通常24,000円が3月限定で16,800円</li>
-                            </ul>
-                          </div>
-                      </div>
-                      <div class='fixed-row'>
-                          <div class='col align'>
-                            <h2>学生限定</h2>
-                            <p>さらに！！学生様には追加で１０％割引が適用されます！</p>
-                          </div>
-                      </div>
-                  </div>
+                  <h1 style={{margin:'10% 0'}}>プレミアム英会話なら<br/>ハイクラスな教師</h1>
+                  <p>講師は英会話講師の経験があり、トレーニングを受けいるため
+                  教え方が上手なだけでなく英語の知識も豊富です。会話を楽しくスムーズにリードし、細かい英文法などもしっかりと教えてくれます！</p>
+                  <img style={{width:'200%'}} src={instructor}></img>
+                  <div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();window.location='#team'}}>チームを見る</div>
               </div>
             }/>
             </div>
           </div>
       </div>
+      
     </div>
   )
 }

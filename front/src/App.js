@@ -54,7 +54,7 @@ import bre from './bre.jpg'
 import blog_header from './blog_header.jpg'
 import campaign_header from './campaign_header.jpg'
 import discount from './discount.jpg'
-import campaign from './campaign.jpg'
+import campaign from './images/sakura.jpg'
 
 import {QrReader} from 'react-qr-reader'
 import QRCode from 'react-qr-code'
@@ -271,27 +271,27 @@ const Front = ()=>{
                 </div>
               </div>
             } light={banner}/>
-            <div class='fixed-row' style={{backgroundImage: 'url('+campaign+')',backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
+            <div class='fixed-row' style={{backgroundImage: 'url('+campaign+')',backgroundSize:'cover',backgroundColor:'rgba(255,102,128,0.6)',color:'white'}}>
               <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
                 <div class='col w20'>
-                  <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新年入会<br/>キャンペーン</span>
+                  <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新規入会<br/>キャンペーン</span>
                 </div>
                 <div class='col w80 align'>
                   <p>今なら</p>
-                  <h1>最大15%割引</h1>
-                  <p style={{marginBottom:'3%'}}>期間限定 1月3日~2月28日</p>
-                  <Popup button={"詳細"} num={1} content={
+                  <h1>初月３０％割引!</h1>
+                  <p style={{marginBottom:'3%'}}>期間限定 3月1日～3月31日</p>
+                  <Popup button={"詳細"} num={2} content={
                     <div class='col'>
-                        <h1 style={{margin:'10% 0'}}>最大15%割引</h1>
-                        <p>４時間以上でご契約されるお客様には以下の割引が適用されます!</p>
+                        <h1 style={{margin:'10% 0'}}>初月３０%割引</h1>
+                        <p>3月中にご契約されるお客様には３０％割引が適用されます！</p>
                         <div class='col'>
                             <div class='fixed-row'>
                                 <div class='col align'>
-                                  <h2>新年入会</h2>
+                                  <h2>割引例</h2>
                                   <ul>
-                                    <li>４時間以上：５％割引</li>
-                                    <li>８時間以上：１０％割引</li>
-                                    <li>１２時間以上：１５％割引</li>
+                                    <li>４時間プラン：通常8,000円が3月限定で5,600円</li>
+                                    <li>８時間プラン：通常16,000円が3月限定で11,200円</li>
+                                    <li>１２時間プラン：通常24,000円が3月限定で16,800円</li>
                                   </ul>
                                 </div>
                             </div>
