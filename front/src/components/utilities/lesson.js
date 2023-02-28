@@ -93,7 +93,7 @@ const Lesson = (props)=>{
           <span style={{border:'1px solid black',padding:'2%',width:'fit-content',fontSize:'13px',fontWeight:'800'}}>{props.content.status.toUpperCase()}</span>
           {props.content.student?
             props.content.student._id==user._id?
-            <div>You are signed up!<a href='https://us05web.zoom.us/j/7973308497?pwd=MXZ4UDF4V0FMaFNDU3pQR1FwZnV0UT09'>Click Here to Join Zoom Lesson</a></div>  :`${props.content.student.first} ${props.content.student.last}`
+            <div>You are signed up!<div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();window.location='https://us05web.zoom.us/j/7973308497?pwd=MXZ4UDF4V0FMaFNDU3pQR1FwZnV0UT09'}}>Join Now</div><a href='https://us05web.zoom.us/j/7973308497?pwd=MXZ4UDF4V0FMaFNDU3pQR1FwZnV0UT09'>Click Here to Join Zoom Lesson</a></div>  :`${props.content.student.first} ${props.content.student.last}`
             :<div style={{display:'flex',alignItems:'center',flexDirection:'column'}}>
                 <select class='form-control' style={{width:'100%'}} ref={option}>
                   {props.options?props.options.map((item,i)=>{
