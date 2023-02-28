@@ -60,7 +60,8 @@ const TestProp = () => {
                   <h1 style={{margin:'10% 0'}}>プレミアム英会話なら<br/>ハイクラスな教師</h1>
                   <p>講師は英会話講師の経験があり、トレーニングを受けいるため
                   教え方が上手なだけでなく英語の知識も豊富です。会話を楽しくスムーズにリードし、細かい英文法などもしっかりと教えてくれます！</p>
-                  <img src={instructor}></img>
+                  <img style={{width:'200%'}} src={instructor}></img>
+                  <div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();window.location='#team'}}>チームを見る</div>
               </div>
             }/>
             </div>
