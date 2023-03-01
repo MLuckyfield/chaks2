@@ -14,7 +14,7 @@ const Calendar = () => {
   const new_minute = useRef('')
 
   //calendar display inputs
-  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
+  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day,setDay]=useState(()=>{let time = new Date();return time.getDay()})
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
