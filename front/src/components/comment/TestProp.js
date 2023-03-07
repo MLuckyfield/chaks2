@@ -76,7 +76,7 @@ const TestProp = () => {
           <div class='col w80 align'>
             <h1>ニーズに合わせる</h1>
             <p style={{marginBottom:'3%'}}>完全マンツーマンレッスンなので、お客様のご希望に沿ったレッスンをご提供しています!</p>
-            <Popup button={"詳細"} num={1} content={
+            <Popup button={"詳細"} num={2} content={
               <div class='col'>
                   <h1 style={{margin:'10% 0'}}>好きに選べる<br/>レッスン内容</h1>
                   <p>各コースを購入していただければ、コースの内容のレッスンをすることも可能です。文法コース、日常英会話コース、ビジネス英語コース、TOEIC対策コース等ございます。</p>
@@ -95,7 +95,7 @@ const TestProp = () => {
           <div class='col w80 align'>
             <h1>効果的な学び方</h1>
             <p style={{marginBottom:'3%'}}>学習システム</p>
-            <Popup button={"詳細"} num={1} content={
+            <Popup button={"詳細"} num={3} content={
               <div class='col'>
                 <h1 style={{margin:'10% 0'}}>確実に英語を伸ばす</h1>
                 <img style={{width:'200%'}} src={info}></img>
