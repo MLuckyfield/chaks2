@@ -4,6 +4,7 @@ import moment from "moment-timezone"
 import Popup from '../utilities/popup'
 import instructor from '../../images/OUTPUT.jpg'
 import campaign from '../../images/sakura.jpg'
+import info from '../../output.png'
 
 const TestProp = () => {
   const [account,setAccount]=useState(()=>{
@@ -49,7 +50,7 @@ const TestProp = () => {
       <div class='fixed-row' style={{backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
           <div class='col w20'>
-            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>POINT</span>
+            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>POINT<br/>1</span>
           </div>
           <div class='col w80 align'>
             <p>ただのネイティブではなく</p>
@@ -70,17 +71,15 @@ const TestProp = () => {
       <div class='fixed-row' style={{backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
           <div class='col w20'>
-            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>POINT</span>
+            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>POINT<br/>2</span>
           </div>
           <div class='col w80 align'>
-            <p>ただのネイティブではなく</p>
-            <h1>選び抜かれた<br/>講師陣</h1>
-            <p style={{marginBottom:'3%'}}>合格率２％のテストに合格した講師のみを採用しています</p>
+            <h1>ニーズに合わせる</h1>
+            <p style={{marginBottom:'3%'}}>完全マンツーマンレッスンなので、お客様のご希望に沿ったレッスンをご提供しています!</p>
             <Popup button={"詳細"} num={1} content={
               <div class='col'>
-                  <h1 style={{margin:'10% 0'}}>プレミアム英会話なら<br/>ハイクラスな教師</h1>
-                  <p>講師は英会話講師の経験があり、トレーニングを受けいるため
-                  教え方が上手なだけでなく英語の知識も豊富です。会話を楽しくスムーズにリードし、細かい英文法などもしっかりと教えてくれます！</p>
+                  <h1 style={{margin:'10% 0'}}>好きに選べる<br/>レッスン内容</h1>
+                  <p>各コースを購入していただければ、コースの内容のレッスンをすることも可能です。文法コース、日常英会話コース、ビジネス英語コース、TOEIC対策コース等ございます。</p>
                   <img style={{width:'200%'}} src={instructor}></img>
                   <div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();window.location='#team'}}>チームを見る</div>
               </div>
@@ -88,7 +87,27 @@ const TestProp = () => {
             </div>
           </div>
       </div>
-      
+      <div class='fixed-row' style={{backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
+        <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
+          <div class='col w20'>
+            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>POINT<br/>3</span>
+          </div>
+          <div class='col w80 align'>
+            <h1>効果的な学び方</h1>
+            <p style={{marginBottom:'3%'}}>学習システム</p>
+            <Popup button={"詳細"} num={1} content={
+              <div class='col'>
+                <h1 style={{margin:'10% 0'}}>確実に英語を伸ばす</h1>
+                <img style={{width:'200%'}} src={info}></img>
+                <h1 style={{margin:'10% 0'}}>好きに選べる<br/>レッスン内容</h1>
+                <p>CHATSHACKのオンラインシステムでは、全てのレッスンのフィードバックをご覧いただけます。
+レッスン中の自分の間違えなどをいつでも確認することができるため、アウトプットだけではなくインプットも含めた効率的な学習が可能です。</p>
+                <img style={{width:'200%'}} src={instructor}></img>
+              </div>
+            }/>
+            </div>
+          </div>
+      </div>
     </div>
   )
 }
