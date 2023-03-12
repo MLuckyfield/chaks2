@@ -80,7 +80,7 @@ const Calendar = () => {
 
         //load resevation options to send as props to Lesson
         if(user.role=='user'){
-          axios.get('/enrolled/all',{params:{filter:{student:user._id,'delivery.$':{channel:'online private'}}}})
+          axios.get('/enrolled/all',{params:{filter:{student:user._id,delivery:'online private',status:'active'}}})
           .then((res) => {
               res.data.data.push(
                 {course:{name:'自由会話: 講師と自由なトピックで会話をお楽しみいただけます'}},
