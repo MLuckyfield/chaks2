@@ -22,7 +22,7 @@ import Popup from './components/utilities/popup'
 import Profile from './components/user/Profile'
 import Contract from './components/utilities/contract'
 import Calendar from './components/utilities/calendar'
-
+import Japanese_Signup from './components/user/Signup'
 import google_analytics from './components/google_analytics'
 import google_ads from './components/google_ads'
 import hotjar from './components/hotjar'
@@ -124,6 +124,7 @@ const App = () => {
           <Route path="/courses" component={Course_Landing}/>
           <Route path="/promo*" component={Contract}/>
           <Route path="/reset" component={PW_Reset}/>
+          <Route path="/japanese" component={<Japanese_Signup segment={'japanese'}/>}/>
             <SecureRoute path="/private" access={['user','teacher','manager']} success={Calendar} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/course_management" access={['user','teacher','manager','admin']} success={CourseManagement} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={()=><Redirect to='/login'/>}/>

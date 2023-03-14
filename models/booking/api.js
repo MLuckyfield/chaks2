@@ -7,6 +7,11 @@ const email = require('../../services/email')
 const cron = require('node-cron')
 const moment = require ('moment-timezone')
 
+
+router.post('/trial_booking', async (req,res)=>{
+  req=req.body
+  email.sendDefault('New Trial Lesson Request')
+})
 //Create
 router.post('/new', async (req, res) => {
   req = req.body
