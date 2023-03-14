@@ -30,6 +30,7 @@ const createToken=(user)=>{
     email: user.email,
     role: user.role,
     points:user.points,
+    segment:user.segment,
     token: token,
     expiresIn: 168
   };
