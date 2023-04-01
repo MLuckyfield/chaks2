@@ -2,6 +2,7 @@ import React, { useState,useEffect,useRef } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Popup from '../utilities/popup'
+import Trial from '../user/TrialRequest'
 import instructor from '../../images/OUTPUT.jpg'
 import campaign from '../../images/sakura.jpg'
 import info from '../../output.png'
@@ -108,6 +109,7 @@ const TestProp = () => {
             </div>
           </div>
       </div>
+      <Trial/>
     </div>
   )
 }

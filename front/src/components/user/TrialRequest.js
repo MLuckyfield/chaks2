@@ -5,10 +5,10 @@ import Popup from '../utilities/popup'
 
 const Signup = (props)=>{
   const mobile = useRef('');
-  const month = useRef('');
-  const day = useRef('');
-  const hour = useRef('');
-  const minutes = useRef('');
+  const month = useRef(new Date().getMonth());
+  const day = useRef(new Date().getDay());
+  const hour = useRef(new Date().getHour());
+  const minutes = useRef(new Date().getMinute());
   const [msg,setMsg] = useState()
   const [form,setForm] = useState(true)
 
@@ -65,6 +65,19 @@ const onSubmit = (e) => {
               </div>
               <div class='row'>
                 <input ref={password} class='form-control' type='Password' placeholder='Password' required/>
+              </div>
+              <hr/>
+              <div class='row'>
+                <input ref={month} class='form-control' type='Number' placeholder='Month' required/>
+              </div>
+              <div class='row'>
+                <input ref={day} class='form-control' type='Number' placeholder='Day' required/>
+              </div>
+              <div class='row'>
+                <input ref={hour} class='form-control' type='Number' placeholder='Hour' required/>
+              </div>
+              <div class='row'>
+                <input ref={minutes} class='form-control' type='Number' placeholder='Minutes' required/>
               </div>
                 {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                 <Popup title={"個人情報取り扱いについて"} num={1} content={
