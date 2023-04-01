@@ -73,9 +73,9 @@ const onSubmit = (e) => {
               </div>
               <hr/>
               <div class='row'>
-                <input ref={month} min=`{month.current.value}` max='12' class='form-control' type='Number' placeholder='Month' required/>
-                <input ref={day} min=`{month.current.value}` max='31' class='form-control' type='Number' placeholder='Day' required/>
-                <input ref={hour} min=`{hour.current.value}` max='21' class='form-control' type='Number' placeholder='Hour' required/>
+                <input ref={month} min={month.current.value} max='12' class='form-control' type='Number' placeholder='Month' required/>
+                <input ref={day} min={month.current.value} max='31' class='form-control' type='Number' placeholder='Day' required/>
+                <input ref={hour} min={hour.current.value} max='21' class='form-control' type='Number' placeholder='Hour' required/>
               </div>
               <div class='row'>
                 <input ref={mobile} minlength='11' maxlength='11' class='form-control' type='Number' placeholder='Mobile' required/>
