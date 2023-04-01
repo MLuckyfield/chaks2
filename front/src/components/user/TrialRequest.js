@@ -5,6 +5,9 @@ import Popup from '../utilities/popup'
 
 const Signup = (props)=>{
   const mobile = useRef('');
+  const first = useRef('');
+  const last = useRef('');
+  const email = useRef('');
   const month = useRef(new Date().getMonth());
   const day = useRef(new Date().getDay());
   const hour = useRef(new Date().getHour());
@@ -17,7 +20,10 @@ const onSubmit = (e) => {
   setForm(false)
   axios.post('booking/trial_booking',
     {
-      user: email.current.value,
+      first: first.current.value,
+      last: last.current.value,
+      mobile: mobile.current.value,
+      email: email.current.value,
       month: month.current.value,
       day: day.current.value,
       hour: hour.current.value,
@@ -68,16 +74,13 @@ const onSubmit = (e) => {
               </div>
               <hr/>
               <div class='row'>
-                <input ref={month} class='form-control' type='Number' placeholder='Month' required/>
-              </div>
-              <div class='row'>
-                <input ref={day} class='form-control' type='Number' placeholder='Day' required/>
-              </div>
-              <div class='row'>
-                <input ref={hour} class='form-control' type='Number' placeholder='Hour' required/>
-              </div>
-              <div class='row'>
+                <input ref={month} min=`{month}` max='12' class='form-control' type='Number' placeholder='Month' required/>
+                <input ref={day} min=`{month}` max='31' class='form-control' type='Number' placeholder='Day' required/>
+                <input ref={hour} min=`{hour}` max='21' class='form-control' type='Number' placeholder='Hour' required/>
                 <input ref={minutes} class='form-control' type='Number' placeholder='Minutes' required/>
+              </div>
+              <div class='row'>
+                <input ref={mobile} minlength='11' maxlength='11' class='form-control' type='Number' placeholder='Mobile' required/>
               </div>
                 {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
                 <Popup title={"個人情報取り扱いについて"} num={1} content={
