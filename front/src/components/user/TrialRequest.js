@@ -24,6 +24,7 @@ const onSubmit = (e) => {
       last: last.current.value,
       mobile: mobile.current.value,
       email: email.current.value,
+      password: password.current.value,
       month: month.current.value,
       day: day.current.value,
       hour: hour.current.value,
