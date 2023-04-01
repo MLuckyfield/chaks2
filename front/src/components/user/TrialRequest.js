@@ -8,6 +8,7 @@ const Signup = (props)=>{
   const first = useRef('');
   const last = useRef('');
   const email = useRef('');
+  const password = useRef('');
   const month = useRef(new Date().getMonth());
   const day = useRef(new Date().getDay());
   const hour = useRef(new Date().getHour());

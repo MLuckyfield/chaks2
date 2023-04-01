@@ -35,7 +35,19 @@ const sendDefault = (title,content,email)=>{
     )
     sendEmailNoRes(transporter,mailOptions)
 }
-const sendEmail=(transporter,mailOptions,res,data)=>{
+const sendTrial = (trial,res)=>{
+  let title = ''
+  let content = ''
+  const mailOptions = prepareEmail(
+    trial,
+    content,
+    trial.email
+  )
+  sendEmail(mailOptions,res)
+}
+const sendEmail=(mailOptions,res,data)=>{
+  const transporter = authenticate()
+
   transporter.sendMail(mailOptions, function(error, info){
       if (error) {
         console.log(error)
@@ -55,7 +67,6 @@ const sendEmail=(transporter,mailOptions,res,data)=>{
 const sendBooking = (user,req,res)=>{
     console.log('email service starting')
     // console.log(booking)
-    const transporter = authenticate()
     // console.log(req)
     // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a'))
     // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a').toString())
@@ -64,12 +75,11 @@ const sendBooking = (user,req,res)=>{
       'BOT| New Booking for ' +user.first+' '+user.last+ '| Teacher: ' + req.teacher+' @ '+timezone.tz(req.date,'Asia/Tokyo').format('dddd, MMM DD @ h:mm a').toString(),
       user.first+' '+user.last+' wants to learn '+req.lesson
     )
-    sendEmail(transporter,mailOptions,res)
+    sendEmail(mailOptions,res)
 }
 const sendRSVP = (user,event,res)=>{
     console.log('email service starting')
     // console.log(booking)
-    const transporter = authenticate()
     // console.log(req)
     // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a'))
     // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a').toString())
@@ -78,12 +88,11 @@ const sendRSVP = (user,event,res)=>{
       'BOT|New RSVP for ' +event.name+' | ' + user.first,
       user.first+' will join '+event.name
     )
-    sendEmail(transporter,mailOptions,res,event)
+    sendEmail(mailOptions,res,event)
 }
 const reportEngagement = (mada,delay)=>{
     console.log('email service starting')
     // console.log(booking)
-    const transporter = authenticate()
     // console.log(req)
     // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a'))
     // console.log(moment(req.date).format('dddd, MMM DD @ h:mm a').toString())
@@ -102,11 +111,13 @@ const reportEngagement = (mada,delay)=>{
       'BOT|Daily Report: Email Engagement',
       report
     )
-    sendEmailNoRes(transporter,mailOptions)
+    sendEmailNoRes(mailOptions)
 }
-const sendEmailNoRes=(transporter,mailOptions,data)=>{
+const sendEmailNoRes=(mailOptions,data)=>{
+  const transporter = authenticate()
+
   transporter.sendMail(mailOptions, function(error, info){
       if (error) {console.log(error)} else {console.log('email sent')}
     })
 }
-module.exports={sendDefault,sendBooking, sendRSVP, reportEngagement}
+module.exports={sendDefault,sendBooking, sendTrial, sendRSVP, reportEngagement}

@@ -11,8 +11,7 @@ const moment = require ('moment-timezone')
 router.post('/trial_booking', async (req,res)=>{
   req=req.body
   console.log('trial booking requested',req)
-  // let content = req.first + ' ' + req.last+ ' ('+req.mobile+') '+' requested a trial lesson for ' + req.month + ' ' + req.day+ ' ' + req.hour + ' ' + req.minutes + ''
-  // email.sendDefault('New Trial Lesson Request', content, 'support@chatshack.jp')
+  // email.sendTrial(req.email)
 })
 //Create
 router.post('/new', async (req, res) => {
