@@ -11,8 +11,8 @@ const Signup = (props)=>{
   const password = useRef('');
   const month = useRef(new Date().getMonth());
   const day = useRef(new Date().getDay());
-  const hour = useRef(new Date().getHour());
-  const minutes = useRef(new Date().getMinute());
+  const hour = useRef(new Date().getHours());
+  const minutes = useRef(new Date().getMinutes());
   const [msg,setMsg] = useState()
   const [form,setForm] = useState(true)
 

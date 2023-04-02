@@ -4,6 +4,7 @@ const auth= require('../../services/authentication');
 const notify= require('../../services/notify');
 const User = require('./model')
 const Material = require('../material/model')
+const Booking = require('../booking/model')
 const Course = require('../course/model')
 const Enrolled = require('../enrolled/model')
 const Site_Event = require('../site_event/model')
@@ -103,23 +104,32 @@ const email = require('../../services/email')
                              success: false
                            });
                            } else {
-                             console.log('attempting email',response)
-                             // let mailchimp_hash = encrypt(req.email.toLowerCase()).toString()
-                             // mailchimp.setConfig({
-                             //   apiKey: process.env.MAILCHIMP_AUTH,
-                             //   server: 'us9',
-                             // });
-                             //
-                             // const response = mailchimp.lists.updateListMemberTags(
-                             //   "cb86e9b6f5",
-                             //   mailchimp_hash,
-                             //   { tags: [{ name: req.segment, status: "active" }] }
-                             // ).then(()=>{
-                               return res.status(201).json({
-                                 result,
-                                 message: `Success!`,
-                                 success: true
-                               });
+                             /////////////////NEW UNTESTED CODE
+                             try{
+                               new Booking({
+                                 student:user,
+                                 date: new Date(req.month,req.day,new Date().getYear()),
+                                 trial:true,
+                                 //online or offline or japanese flag
+                                 role: 'user'
+                               }).save().then((booking)=>{
+                                 return res.status(201).json({
+                                   result,
+                                   message: `Success!`,
+                                   success: true
+                                 });
+                               })
+                             }
+                             catch(err){
+                                  console.log('there was a problem',err)
+                                  return res.status(500).json({
+                                    message: `user creation unsuccessful: ${err}`,
+                                    success: false
+                                  });
+                                }
+                              /////////////////END OF NEW UNTESTED CODE
+                                });
+
                              // })
                            }
                        });
