@@ -105,30 +105,30 @@ const email = require('../../services/email')
                            });
                            } else {
                              /////////////////NEW UNTESTED CODE
-                             try{
-                               new Booking({
-                                 student:user,
-                                 date: new Date(req.month,req.day,new Date().getYear()),
-                                 trial:true,
-                                 //online or offline or japanese flag
-                                 role: 'user'
-                               }).save().then((booking)=>{
-                                 return res.status(201).json({
-                                   result,
-                                   message: `Success!`,
-                                   success: true
-                                 });
-                               })
-                             }
-                             catch(err){
-                                  console.log('there was a problem',err)
-                                  return res.status(500).json({
-                                    message: `user creation unsuccessful: ${err}`,
-                                    success: false
-                                  });
-                                }
+                             // try{
+                             //   new Booking({
+                             //     student:user,
+                             //     date: new Date(req.month,req.day,new Date().getYear()),
+                             //     trial:true,
+                             //     //online or offline or japanese flag
+                             //     role: 'user'
+                             //   }).save().then((booking)=>{
+                             //     return res.status(201).json({
+                             //       result,
+                             //       message: `Success!`,
+                             //       success: true
+                             //     });
+                             //   })
+                             // }
+                             // catch(err){
+                             //      console.log('there was a problem',err)
+                             //      return res.status(500).json({
+                             //        message: `user creation unsuccessful: ${err}`,
+                             //        success: false
+                             //      });
+                             //    }
                               /////////////////END OF NEW UNTESTED CODE
-                                });
+
 
                              // })
                            }
