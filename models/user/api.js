@@ -131,6 +131,11 @@ const email = require('../../services/email')
 
 
                              // })
+                             return res.status(201).json({
+                                   result,
+                                   message: `Success!`,
+                                   success: true
+                                 });
                            }
                        });
                        // ==mialchimp finished
