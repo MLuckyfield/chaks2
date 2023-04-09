@@ -65,7 +65,6 @@ import courses from './courses.jpg'
 import {io} from 'socket.io-client';
 const socket=io()
 
-
 const App = () => {
 
     useEffect(() => {

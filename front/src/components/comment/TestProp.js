@@ -6,8 +6,12 @@ import Trial from '../user/TrialRequest'
 import instructor from '../../images/OUTPUT.jpg'
 import campaign from '../../images/sakura.jpg'
 import info from '../../output.png'
+import {useSelector, useDispatch} from 'react-redux'
+import actions from "../../utilities/actions";
 
 const TestProp = () => {
+
+  const user = useSelector(state => state.rootReducer)
   const [account,setAccount]=useState(()=>{
     axios.get('/user/all',{params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
@@ -27,9 +31,14 @@ const TestProp = () => {
         console.log(err);
         });
   })
+  //USEFFECT and insert dispatch
+  useEffect(()=>{
+    dispatch(actions.setCurrentUser({name:'happy'}))
+  })
+  //useselector
   return (
     <div class='col border'>
-        <h1>ACCOUNT</h1>
+        <h1>ACCOUNT ({user.user.name})</h1>
         {account?
           <div class='row'>
           ポイント: 20
