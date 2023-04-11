@@ -10,6 +10,4 @@ const rootReducer = (state = {user:''}, action) =>{
   }
 };
 
-module.exports = {
-  rootReducer
-}
+export default rootReducer
