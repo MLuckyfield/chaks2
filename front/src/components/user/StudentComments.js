@@ -102,12 +102,12 @@ const adjustPoints = (add)=>{
         {JSON.parse(localStorage.getItem('user')).role=='manager'? (<div class='col'><button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red',width:'80%'}:{backgroundColor:'blue',width:'80%'}}>{target.inClass?'End':'Start'}</button></div>):''}
         {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<div class='col'><Comment/></div>:''}
       <div id='teacher_select'>
-        <button onClick={()=>sendTo('63218b02f17f3f46bf91af22')} class='button'>Bre</button>
         <button onClick={()=>sendTo('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
         <button onClick={()=>sendTo('63882dbd8a0031a501d54140')} class='button'>Radka</button>
-        <button onClick={()=>sendTo('63e718f7ccf275b1babaa770')} class='button'>Cedric</button>
         <button onClick={()=>sendTo('640d4ff6470b0e234739c640')} class='button'>Liza</button>
+        <button onClick={()=>sendTo('64327746ee94db5a26b715c0')} class='button'>Mimmi</button>
         <button onClick={()=>sendTo('641129d948fed7fcee0cf312')} class='button'>Futaba</button>
+        <button onClick={()=>sendTo('628f3e7b8981f84051396159')} class='button'>Shunsuke</button>
       </div>
       <h1>Feedback ({comments?comments.length:'0'})</h1>
       <div class='col'>
