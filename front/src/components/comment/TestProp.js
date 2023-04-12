@@ -11,7 +11,7 @@ import actions from "../../utilities/actions";
 
 const TestProp = () => {
 
-  const user = useSelector(state => state.rootReducer)
+  const user = ''
   const dispatch = useDispatch()
   const [account,setAccount]=useState(()=>{
     axios.get('/user/all',{params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
@@ -36,6 +36,7 @@ const TestProp = () => {
   useEffect(()=>{
     dispatch(actions.setCurrentUser({name:'happy'}))
     console.log('dispatch activated')
+    user = useSelector(state => state.rootReducer)
   })
   //useselector
   return (
