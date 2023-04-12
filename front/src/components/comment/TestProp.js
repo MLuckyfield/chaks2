@@ -35,6 +35,7 @@ const TestProp = () => {
   //USEFFECT and insert dispatch
   useEffect(()=>{
     dispatch(actions.setCurrentUser({name:'happy'}))
+    console.log('dispatch activated')
   })
   //useselector
   return (

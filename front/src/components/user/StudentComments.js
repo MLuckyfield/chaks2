@@ -106,6 +106,7 @@ const adjustPoints = (add)=>{
         <button onClick={()=>sendTo('63882dbd8a0031a501d54140')} class='button'>Radka</button>
         <button onClick={()=>sendTo('640d4ff6470b0e234739c640')} class='button'>Liza</button>
         <button onClick={()=>sendTo('64327746ee94db5a26b715c0')} class='button'>Mimmi</button>
+        <button onClick={()=>sendTo('6432522fee94db5a26b6291b')} class='button'>Momo</button>
         <button onClick={()=>sendTo('641129d948fed7fcee0cf312')} class='button'>Futaba</button>
         <button onClick={()=>sendTo('628f3e7b8981f84051396159')} class='button'>Shunsuke</button>
       </div>
