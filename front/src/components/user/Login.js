@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {useDispatch} from 'react-redux'
 import {axios} from "../../utilities/axios";
-import {setCurrentUser} from "../../utilities/actions";
+import action from "../../utilities/actions";
 
 const Login = () => {
 
@@ -24,7 +24,7 @@ const Login = () => {
       })
       .then((res) => {
           localStorage.setItem('user', JSON.stringify(res.data.result));
-          dispatch(setCurrentUser(res.data.result))
+          dispatch(action.setCurrentUser(res.data.result))
           window.location='/dash';
           })
       .catch((err) => {

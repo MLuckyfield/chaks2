@@ -1,4 +1,4 @@
-export const setCurrentUser = (user) =>{
+const setCurrentUser = (user) =>{
   console.log('action activated')
 
   return {
@@ -7,6 +7,6 @@ export const setCurrentUser = (user) =>{
   }
 }
 
-// module.exports = {
-//   setCurrentUser
-// }
+module.exports = {
+  setCurrentUser
+}
