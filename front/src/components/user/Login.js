@@ -25,7 +25,7 @@ const Login = () => {
       .then((res) => {
           localStorage.setItem('user', JSON.stringify(res.data.result));
           dispatch(action.setCurrentUser(res.data.result))
-          window.location='/dash';
+          // window.location='/dash';
           })
       .catch((err) => {
         console.log(err);
