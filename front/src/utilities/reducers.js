@@ -1,4 +1,6 @@
-const rootReducer = (state = {user:''}, action) =>{
+import {combineReducers} from 'redux'
+
+const userReducer = (state = {user:''}, action) =>{
   switch (action.type) {
     case "setCurrentUser":
       console.log('reducer activated')
@@ -10,5 +12,6 @@ const rootReducer = (state = {user:''}, action) =>{
       return state;
   }
 };
+const rootReducer = combineReducers({userReducer})
 
 export default rootReducer

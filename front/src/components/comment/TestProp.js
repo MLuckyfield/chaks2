@@ -36,9 +36,10 @@ const TestProp = () => {
   useEffect(()=>{
     dispatch(actions.setCurrentUser({name:'happy'}))
     console.log('dispatch activated')
-    user = useSelector(state => state.rootReducer)
   })
   //useselector
+  user = useSelector(state => state.userReducer)
+
   return (
     <div class='col border'>
         <h1>ACCOUNT ({user.user.name})</h1>
