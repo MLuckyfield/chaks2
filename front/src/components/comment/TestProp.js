@@ -6,7 +6,7 @@ import Trial from '../user/TrialRequest'
 import instructor from '../../images/OUTPUT.jpg'
 import campaign from '../../images/sakura.jpg'
 import info from '../../output.png'
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 import actions from "../../utilities/actions";
 
 const TestProp = () => {
@@ -31,11 +31,6 @@ const TestProp = () => {
       .catch((err) => {
         console.log(err);
         });
-  })
-  //USEFFECT and insert dispatch
-  useEffect(()=>{
-    dispatch(actions.setCurrentUser({name:'happy'}))
-    console.log('dispatch activated')
   })
   //useselector
   const user = useSelector(state => state.userReducer)

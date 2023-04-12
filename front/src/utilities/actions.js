@@ -1,4 +1,4 @@
-const setCurrentUser = (user) =>{
+export const setCurrentUser = (user) =>{
   console.log('action activated')
 
   return {

@@ -1,8 +1,11 @@
 import React, { useRef, useState } from 'react';
+import {useDispatch} from 'react-redux'
 import {axios} from "../../utilities/axios";
+import {setCurrentUser} from "../../utilities/actions";
 
 const Login = () => {
 
+  const dispatch = useDispatch()
   //const [email, setEmail] = useState();
   //const [password, setPassword] = useState();
   const email = useRef('');
@@ -21,6 +24,7 @@ const Login = () => {
       })
       .then((res) => {
           localStorage.setItem('user', JSON.stringify(res.data.result));
+          dispatch(setCurrentUser(res.data.result))
           window.location='/dash';
           })
       .catch((err) => {
@@ -46,7 +50,7 @@ const Login = () => {
 
                     <button type="submit" class="outline-first">Login</button>
                   </form>
-                  <button style={{background:'none',color:'brown',fontSize:'smaller',textDecoration:'underline',width:'50%',border:'none'}} onClick={()=>window.location='/reset'} class="solid-first">Forgot Password</button>                  
+                  <button style={{background:'none',color:'brown',fontSize:'smaller',textDecoration:'underline',width:'50%',border:'none'}} onClick={()=>window.location='/reset'} class="solid-first">Forgot Password</button>
                 </div>
 )
 }
