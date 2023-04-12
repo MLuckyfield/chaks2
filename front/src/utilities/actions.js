@@ -7,6 +7,6 @@ export const setCurrentUser = (user) =>{
   }
 }
 
-module.exports = {
-  setCurrentUser
-}
+// module.exports = {
+//   setCurrentUser
+// }
