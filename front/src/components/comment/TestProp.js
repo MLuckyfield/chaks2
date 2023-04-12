@@ -36,7 +36,7 @@ const TestProp = () => {
 
   return (
     <div class='col border'>
-        <h1>ACCOUNT ({user.user.name})</h1>
+        <h1>ACCOUNT ({user.user.first})</h1>
         {account?
           <div class='row'>
           ポイント: 20
