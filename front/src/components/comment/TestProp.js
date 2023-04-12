@@ -12,6 +12,7 @@ import actions from "../../utilities/actions";
 const TestProp = () => {
 
   const user = useSelector(state => state.rootReducer)
+  const dispatch = useDispatch()
   const [account,setAccount]=useState(()=>{
     axios.get('/user/all',{params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
       .then((res) => {
