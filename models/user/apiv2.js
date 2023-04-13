@@ -278,7 +278,7 @@ const email = require('../../services/email')
                       success: true
                     });
                   })
-              }
+              })
             //ERROR 1: cannot find user
               .catch((err)=>{
                 return res.status(500).json({
