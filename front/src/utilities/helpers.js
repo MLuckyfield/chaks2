@@ -3,7 +3,7 @@
 import {io} from 'socket.io-client';
 const socket=io()
 
-const notify = (channel, payload) => {
+export const notify = (channel, payload) => {
   socket.on(channel,(payload)=>{
     setClock(payload)
   })
@@ -18,9 +18,6 @@ const setCurrentUser = (user) =>{
     payload: user
   }
 }
-const getCurrentUser = ()=>{
+export const getCurrentUser = ()=>{
   return JSON.parse(localStorage.getItem('user'))
-}
-module.exports = {
-  setCurrentUser,getCurrentUser,notify
 }
