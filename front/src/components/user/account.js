@@ -10,16 +10,16 @@ const Account = () => {
 
   //const [Account, setAccount] = useState();
   //const [password, setPassword] = useState();
-  const [student, setStudent] = useState(helpers.getCurrentUser);
+  const [user, setUser] = useState(helpers.getCurrentUser);
   const [account,setAccount]=useState()
   const [sessions,setSessions]=useState(0)
   const [count,setCount]=useState(0)
   const [reward,setReward]=useState()
   const [points,setPoints]=useState(0)
   const [msg,setMsg]=useState('')
-  const [clock,setClock]=useState(helpers.getCurrentUser).inClass);
+  const [clock,setClock]=useState(helpers.getCurrentUser);
   const [courses,setCourses]=useState(()=>{
-    axios.get('/enrolled/all',{params:{filter:{student:student._id}}})
+    axios.get('/enrolled/all',{params:{filter:{user:user._id}}})
       .then((res) => {
           setCourses(res.data.data)
           })
@@ -29,20 +29,20 @@ const Account = () => {
   })
   useEffect(()=>{
     localStorage.removeItem('clock')
-    // console.log('loading account view for '+JSON.stringify(student))
+    // console.log('loading account view for '+JSON.stringify(user))
     axios.get('user/all', {params:{filter:{_id:helpers.getCurrentUser)._id}}})
       .then((res) => {
-          socket.on(student._id,(status)=>{
+          socket.on(user._id,(status)=>{
             setClock(status)
           })
 
-          let user = res.data.data[0]
-          setAccount(user)
-          setClock(user.inClass)
-          res=user.statistics
+          let userData = res.data.data[0]
+          setAccount(userData)
+          setClock(userData.inClass)
+          res=userData.statistics
           setCount(res)
-          // console.log('has pounts',user)
-          setPoints(user.points.length)
+          // console.log('has pounts',userData)
+          setPoints(userData.points.length)
           // console.log('Statistics for',res.length)
           let month = new Date().getMonth()
           let count = 0
@@ -66,8 +66,8 @@ const Account = () => {
           setReward(eligible)
           let next = temp[eligible][1]
           let word = 'unlock'
-          if(eligible==user.reward){word='keep'}
-          if(count>=temp[user.reward][0]){
+          if(eligible==userData.reward){word='keep'}
+          if(count>=temp[userData.reward][0]){
             setMsg(temp[next][0]-count +' more sessions for '+next+' status!');
             setSessions((count/temp[next][0])*100)}
           else{
@@ -80,7 +80,7 @@ const Account = () => {
   const toPay=(e,product,countable)=>{
     e.preventDefault();
     console.log(product)
-    axios.post('/payment/new',{user:student._id,product:product,countable:countable})
+    axios.post('/payment/new',{user:user._id,product:product,countable:countable})
       .then((res) => {
           console.log(res.data.data)
           window.location.href=res.data.data.url
@@ -93,7 +93,7 @@ const Account = () => {
   }
   const onSubmit=(e,action)=>{
     // console.log(action)
-    axios.post('payment/update_sub', {params:{filter:{_id:student._id},fields:'first stripe plan'}})
+    axios.post('payment/update_sub', {params:{filter:{_id:user._id},fields:'first stripe plan'}})
       .then((res) => {
           console.log(res.data.data[0])
           setAccount(res.data.data[0])
@@ -115,7 +115,7 @@ const Account = () => {
 
                 Plan: {account.plan}  {account.plan.toLowerCase()!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):<div class="btn" style={{position:'relative'}} onClick={(e)=>{toPay(e,'price_1LvguqBVAfieqaobMWOW9cvF',true)}}>購入</div>}<br/>
                 {account.first=='M'?(account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={(e)=>onSubmit(e,'downgrade')}>Downgrade</div>):''}
-                ポイント: {account.points.length}
+                ポイント: {user.points}
               </div>
             :'Loading account...'}
             {courses?courses.map(function(course,i){

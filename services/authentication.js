@@ -29,7 +29,7 @@ const createToken=(user)=>{
     first: user.first,
     email: user.email,
     role: user.role,
-    points:user.points,
+    points:user.points.length,
     segment:user.segment,
     token: token,
     expiresIn: 168
