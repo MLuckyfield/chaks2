@@ -17,7 +17,7 @@ const Account = () => {
   const [reward,setReward]=useState()
   const [points,setPoints]=useState(0)
   const [msg,setMsg]=useState('')
-  const [clock,setClock]=useState(helpers.getCurrentUser).inClass)
+  const [clock,setClock]=useState(helpers.getCurrentUser).inClass);
   const [courses,setCourses]=useState(()=>{
     axios.get('/enrolled/all',{params:{filter:{student:student._id}}})
       .then((res) => {
@@ -115,7 +115,7 @@ const Account = () => {
 
                 Plan: {account.plan}  {account.plan.toLowerCase()!='standard'?moment(account.stripe.plan_start_date).format('dddd, MMM DD, YYYY'):<div class="btn" style={{position:'relative'}} onClick={(e)=>{toPay(e,'price_1LvguqBVAfieqaobMWOW9cvF',true)}}>購入</div>}<br/>
                 {account.first=='M'?(account.plan=='premium'?<div class="btn" onClick={(e)=>{onSubmit(e,'upgrade')}}>Upgrade</div>:<div class="btn" onClick={(e)=>onSubmit(e,'downgrade')}>Downgrade</div>):''}
-                ポイント: {points}
+                ポイント: {account.points.length}
               </div>
             :'Loading account...'}
             {courses?courses.map(function(course,i){
