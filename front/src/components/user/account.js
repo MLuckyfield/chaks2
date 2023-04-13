@@ -123,7 +123,7 @@ const Account = () => {
               return <div>{course.course.name} {course.status}</div>
             }):''}
           </div>
-          <QRCode value={helpers.getCurrentUser)._id}/>
+          <QRCode value={helpers.getCurrentUser._id}/>
 
           <div class='col border'>
           <h1>REWARDS</h1>
