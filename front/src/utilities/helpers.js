@@ -1,5 +1,6 @@
 
 import * as constants from './constants'
+import {axios} from "./axios";
 
 //currentUser related helpers
 export const setCurrentUser = (user) =>{
