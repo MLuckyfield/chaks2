@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
+import {getCurrentUser} from '../../utilities/helpers'
 import QRCode from 'react-qr-code'
 import {io} from 'socket.io-client';
 const socket=io()
-import {getCurrentUser} from '../../utilities/helpers'
 
 const Account = () => {
 
