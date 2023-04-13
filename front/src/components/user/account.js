@@ -4,7 +4,7 @@ import moment from "moment"
 import QRCode from 'react-qr-code'
 import {io} from 'socket.io-client';
 const socket=io()
-import {getCurrentUser, notify} from '../../utilities/helpers'
+import {getCurrentUser} from '../../utilities/helpers'
 
 const Account = () => {
 
@@ -32,10 +32,9 @@ const Account = () => {
     // console.log('loading account view for '+JSON.stringify(user))
     axios.get('user/all', {params:{filter:{_id: getCurrentUser._id}}})
       .then((res) => {
-           notify(user._id,status)
-          // socket.on(user._id,(status)=>{
-          //   setClock(status)
-          // })
+          socket.on(user._id,(status)=>{
+            setClock(status)
+          })
 
           let userData = res.data.data[0]
           setAccount(userData)
