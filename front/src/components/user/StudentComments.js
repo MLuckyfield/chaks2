@@ -4,8 +4,8 @@ import Comment from "../comment/Comment";
 import Popup from "../utilities/popup";
 import Social from "../utilities/social";
 import moment from "moment"
-import {getCurrentUser} from '../../utilities/helpers'
-import * from '../../utilities/helpers'
+import {getCurrentUser, checkPermission} from '../../utilities/helpers'
+import * from '../../utilities/constants'
 import {io} from 'socket.io-client';
 const socket = io();
 
@@ -106,7 +106,7 @@ const adjustPoints = (add)=>{
           <div class='col'><button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red',width:'80%'}:{backgroundColor:'blue',width:'80%'}}>{target.inClass?'End':'Start'}</button></div>
         </div>
         :''}
-        {user.role>=TEACHER?<div class='col'><Comment/></div>:''}
+        {checkPermission(user.role,TEACHER)?<div class='col'><Comment/></div>:''}
       <div id='teacher_select'>
         <button onClick={()=>sendTo('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
         <button onClick={()=>sendTo('63882dbd8a0031a501d54140')} class='button'>Radka</button>
