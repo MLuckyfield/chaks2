@@ -4,18 +4,20 @@ import moment from "moment"
 import QRCode from 'react-qr-code'
 import {io} from 'socket.io-client';
 const socket=io()
+import helpers from '../../utilities/helpers'
+
 const Account = () => {
 
   //const [Account, setAccount] = useState();
   //const [password, setPassword] = useState();
-  const [student, setStudent] = useState(JSON.parse(localStorage.getItem('user')));
+  const [student, setStudent] = useState(helpers.getCurrentUser);
   const [account,setAccount]=useState()
   const [sessions,setSessions]=useState(0)
   const [count,setCount]=useState(0)
   const [reward,setReward]=useState()
   const [points,setPoints]=useState(0)
   const [msg,setMsg]=useState('')
-  const [clock,setClock]=useState(JSON.parse(localStorage.getItem('user')).inClass)
+  const [clock,setClock]=useState(helpers.getCurrentUser).inClass)
   const [courses,setCourses]=useState(()=>{
     axios.get('/enrolled/all',{params:{filter:{student:student._id}}})
       .then((res) => {
@@ -28,7 +30,7 @@ const Account = () => {
   useEffect(()=>{
     localStorage.removeItem('clock')
     // console.log('loading account view for '+JSON.stringify(student))
-    axios.get('user/all', {params:{filter:{_id:JSON.parse(localStorage.getItem('user'))._id}}})
+    axios.get('user/all', {params:{filter:{_id:helpers.getCurrentUser)._id}}})
       .then((res) => {
           socket.on(student._id,(status)=>{
             setClock(status)
@@ -120,8 +122,8 @@ const Account = () => {
               return <div>{course.course.name} {course.status}</div>
             }):''}
           </div>
-          <QRCode value={JSON.parse(localStorage.getItem('user'))._id}/>
-          
+          <QRCode value={helpers.getCurrentUser)._id}/>
+
           <div class='col border'>
           <h1>REWARDS</h1>
           Current Reward Level: <span style={{fontWeight:'bold'}}>{account?account.reward:'Loading'}</span><br/>
