@@ -5,7 +5,7 @@ import Popup from "../utilities/popup";
 import Social from "../utilities/social";
 import moment from "moment"
 import {getCurrentUser, checkPermission,endSession} from '../../utilities/helpers'
-import * from '../../utilities/constants'
+import * as constants from '../../utilities/constants'
 import {io} from 'socket.io-client';
 const socket = io();
 
@@ -124,7 +124,7 @@ const adjustPoints = (add)=>{
         </div>
           </div>
         :''}
-        {checkPermission(user.role,TEACHER)?<div class='col'><Comment/></div>:''}
+        {checkPermission(user.role,constants.TEACHER)?<div class='col'><Comment/></div>:''}
 
 
       <h1>Feedback ({comments?comments.length:'0'})</h1>

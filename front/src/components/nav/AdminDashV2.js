@@ -98,7 +98,7 @@ const StaffTable = ()=>{
           <td>{comment.student.teacher.first}</td>
           <td>{moment(new Date(comment.createdAt)).format("MMM Do HH:mm")}</td>
           <td>{comment.hasOwnProperty('end')?'Pending feedback':<button onClick={endSession(comment.student._id)} style={{backgroundColor:'red'}}>End</button>}</td>
-          <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
+          <td><button onClick={()=>makeComment(comment.student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
         </tr>)
       }):'None. :('}
       </table>
