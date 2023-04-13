@@ -5,7 +5,7 @@ import { Redirect } from 'react-router'
 import {axios} from "./utilities/axios";
 //testing V2
 import AdminDash from './components/nav/AdminDashV2'
-import StudentComments from './components/user/StudentCommentsV2'
+import StudentComments from './components/user/StudentCommentsv2'
 
 //import components
 import Login from './components/user/Login'
