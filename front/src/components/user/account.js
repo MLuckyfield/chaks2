@@ -122,6 +122,7 @@ const Account = () => {
               return <div>{course.course.name} {course.status}</div>
             }):''}
           </div>
+          {console.log('recieved',getCurrentUser,getCurrentUser._id)}
           <QRCode value={getCurrentUser._id}/>
 
           <div class='col border'>
