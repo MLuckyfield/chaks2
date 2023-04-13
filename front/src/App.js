@@ -3,15 +3,16 @@ import React, { useState, useEffect ,useRef} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Redirect } from 'react-router'
 import {axios} from "./utilities/axios";
+//testing V2
+import AdminDash from './components/nav/AdminDashV2'
+import StudentComments from './components/user/StudentCommentsV2'
 
 //import components
 import Login from './components/user/Login'
 import Signup from './components/user/Signup'
 import Navbar from './components/nav/Navbar'
-import AdminDash from './components/nav/AdminDash'
 import SecureRoute from './components/nav/SecureRoute'
 import AccessDisplay from './components/nav/AccessDisplay'
-import StudentComments from './components/user/StudentComments'
 import BlogPosts from './components/blog/BlogPosts'
 import Blog from './components/blog/Blog'
 import BlogFront from './components/blog/BlogFront'

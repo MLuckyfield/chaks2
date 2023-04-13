@@ -13,12 +13,17 @@ const Comment = mongoose.model('Comment', new Schema({
   },
   comment: {
     type: String,
-    required: true,
   },
   channel:{
     type:String,
     enum:['online','in-person'],
     default:'in-person'
+  },
+  status:{
+    type:String
+  },
+  end:{
+    type:Date
   }
 },{
   timestamps: true,

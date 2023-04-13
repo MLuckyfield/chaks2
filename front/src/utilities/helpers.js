@@ -1,5 +1,5 @@
 
-import * from './constants'
+import * as constants from './constants'
 
 //currentUser related helpers
 export const setCurrentUser = (user) =>{
@@ -12,16 +12,29 @@ export const getCurrentUser = ()=>{
 export const checkPermission = (user, accessLevel) => {
   switch (user) {
     case 'user':
-      user = USER
+      user = constants.USER
       break;
     case 'teacher':
-      user = TEACHER
+      user = constants.TEACHER
       break;
     case 'manager':
-      user = MANAGER
+      user = constants.MANAGER
+      break;
+    case 'director':
+      user = constants.DIRECTOR
       break;
     default:
-      user = USER
+      user = constants.USER
   }
   return user >= accessLevel;
+}
+
+const endSession=(studentId)=>{
+  // console.log('will send '+JSON.stringify(target))
+  axios.get('/user/endSession', {params:{student:studentId}})
+    .then((res) => {
+        res=res.data.display
+        alert('Billable: '+res.billable+' |Unpaid: '+res.unpaid+' |Remaining: '+res.remaining)
+      })
+    .catch(error => console.log("error"+error))
 }

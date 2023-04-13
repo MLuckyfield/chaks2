@@ -4,8 +4,8 @@ import Comment from "../comment/Comment";
 import Popup from "../utilities/popup";
 import Social from "../utilities/social";
 import moment from "moment"
-import {getCurrentUser, checkPermission} from '../../utilities/helpers'
-import * as constants from '../../utilities/constants'
+import {getCurrentUser, checkPermission,endSession} from '../../utilities/helpers'
+import * from '../../utilities/constants'
 import {io} from 'socket.io-client';
 const socket = io();
 
@@ -16,6 +16,7 @@ const StudentComments = () => {
   const [user,setUser] = useState(getCurrentUser())
   const [comments, setComments] = useState(null);
   const [source,setSource] =useState()
+  const [inSession,setInSession]=useState(false)
   const [target, setTarget]=useState(()=>{
     if (localStorage.getItem('student')){
       setSource('student')
@@ -23,58 +24,59 @@ const StudentComments = () => {
     }else{setSource('user');return user}
   })
   useEffect(() => {
-    socket.on('updateDash',(id)=>{
-      axios.get('user/all',{params:{filter:{_id: id}}})
-        .then((result)=>{setTarget(result.data.data[0])})
+    socket.on('startSession',(comment)=>{
+        if(target._id==comment.student){
+          inSession=true
+        }
+    })
+    socket.on('endSession',(studentId,teacherId)=>{
+        if(target._id==student){
+          inSession=false
+        }
     })
     axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data.reverse());
+          res.data.data.forEach((comment, i) => {
+            if(comment.hasOwnProperty('end')){}
+            else{setInSession(true)}
+          });
+
         })
         .catch(error => console.log("error"+error.data.message))
 
   },[])
 
-  const clockin=(status)=>{
-    if(status){
-      let popup = document.getElementById("teacher_select");
-      popup.style.display = 'block';
-    }
-    // console.log('will send '+JSON.stringify(target))
-    axios.get('/user/clock', {params:{filter:target._id,data:status}})
-      .then((res) => {
-          // console.log(res.data.data);
-          setTarget(res.data.data)
-          localStorage.setItem(source,JSON.stringify(res.data.data))
-          // if(status==true){setPayable(null)}
-          // else{setPayable(res.data.data.statistics[0])}
-          // let start =moment(res.data.data.statistics[0].start)
-          // let end = moment(res.data.data.statistics[0].end)
-          // const time = end.diff(start, 'minutes')
-          // let billable = 0
-          // if(time-40>0){billable=time-40}
-          // billable = (Math.round(billable/30)*1000)+1000
-          // console.log('Billable time is',billable,start,end)
-          res=res.data.display
-          socket.emit('clock',target._id,false)//send directly withou tback
-          if(!status){alert('Billable: '+res.billable+' |Unpaid: '+res.unpaid+' |Remaining: '+res.remaining)}
-        })
-      .catch(error => console.log("error"+error))
-  }
-  const sendTo=(id)=>{
-    let params = {filter:{_id: id},data:{'$push':{students:target._id}}}
-    console.log(id,params)
-    axios.post('user/update',params)
-      .then((result)=>{
-         console.log(result)
-         let popup = document.getElementById("teacher_select");
-         popup.style.display = 'none';
-         socket.emit('sendstudent',target,id)
-         socket.emit('clock',target._id,true)//send directly withou tback
+  // const endSession=(studentId)=>{
+  //   // console.log('will send '+JSON.stringify(target))
+  //   axios.get('/user/endSession', {params:{student:studentId}})
+  //     .then((res) => {
+  //         // console.log(res.data.data);
+  //         // setTarget(res.data.data)
+  //         localStorage.setItem(source,JSON.stringify(res.data.data))
+  //         // if(status==true){setPayable(null)}
+  //         // else{setPayable(res.data.data.statistics[0])}
+  //         // let start =moment(res.data.data.statistics[0].start)
+  //         // let end = moment(res.data.data.statistics[0].end)
+  //         // const time = end.diff(start, 'minutes')
+  //         // let billable = 0
+  //         // if(time-40>0){billable=time-40}
+  //         // billable = (Math.round(billable/30)*1000)+1000
+  //         // console.log('Billable time is',billable,start,end)
+  //         res=res.data.display
+  //         socket.emit('clock',studentId,false)//send directly withou tback
+  //         // if(!status){alert('Billable: '+res.billable+' |Unpaid: '+res.unpaid+' |Remaining: '+res.remaining)}
+  //       })
+  //     .catch(error => console.log("error"+error))
+  // }
+  const startSession=(teacherId)=>{
+    axios.post('user/startSession',{params:{teacher:teacherId,student:target._id}})
+      .then((comment)=>{
+         setComments(comments => [...comments],comment)
       })
-      .catch(error=>console.log('From sendTo teacher:',error))
+      .catch(error=>console.log('From startSession teacher:',error))
   }
-  //<button onClick={()=>sendTo('6344faac6bf36a9debe60b25')} class='button'>TEST</button>
+  //<button onClick={()=>startSession('6344faac6bf36a9debe60b25')} class='button'>TEST</button>
 const adjustPoints = (add)=>{
   let changes = []
   for(let i =0;i<points.current.value;i++){
@@ -86,7 +88,7 @@ const adjustPoints = (add)=>{
     .then((result)=>{
        window.location.reload()
     })
-    .catch(error=>console.log('From sendTo teacher:',error))
+    .catch(error=>console.log('From startSession teacher:',error))
 }
 
 
@@ -103,19 +105,28 @@ const adjustPoints = (add)=>{
               </div>
             </form>
           }/>
-          <div class='col'><button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red',width:'80%'}:{backgroundColor:'blue',width:'80%'}}>{target.inClass?'End':'Start'}</button></div>
+          <div class='col'>
+          {inSession?
+            <button onClick={endSession(target._id)} style={{backgroundColor:'red',width:'80%'}}>End</button>
+            :
+            <Popup button={"Start"} num={2} content={
+              <div class='col'>
+                <button onClick={()=>startSession('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
+                <button onClick={()=>startSession('63882dbd8a0031a501d54140')} class='button'>Radka</button>
+                <button onClick={()=>startSession('640d4ff6470b0e234739c640')} class='button'>Liza</button>
+                <button onClick={()=>startSession('64327746ee94db5a26b715c0')} class='button'>Mimmi</button>
+                <button onClick={()=>startSession('6432522fee94db5a26b6291b')} class='button'>Momo</button>
+                <button onClick={()=>startSession('641129d948fed7fcee0cf312')} class='button'>Futaba</button>
+                <button onClick={()=>startSession('628f3e7b8981f84051396159')} class='button'>Shunsuke</button>
+              </div>
+            }/>
+          }
         </div>
+          </div>
         :''}
-        {checkPermission(user.role,constants.TEACHER)?<div class='col'><Comment/></div>:''}
-      <div id='teacher_select'>
-        <button onClick={()=>sendTo('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
-        <button onClick={()=>sendTo('63882dbd8a0031a501d54140')} class='button'>Radka</button>
-        <button onClick={()=>sendTo('640d4ff6470b0e234739c640')} class='button'>Liza</button>
-        <button onClick={()=>sendTo('64327746ee94db5a26b715c0')} class='button'>Mimmi</button>
-        <button onClick={()=>sendTo('6432522fee94db5a26b6291b')} class='button'>Momo</button>
-        <button onClick={()=>sendTo('641129d948fed7fcee0cf312')} class='button'>Futaba</button>
-        <button onClick={()=>sendTo('628f3e7b8981f84051396159')} class='button'>Shunsuke</button>
-      </div>
+        {checkPermission(user.role,TEACHER)?<div class='col'><Comment/></div>:''}
+
+
       <h1>Feedback ({comments?comments.length:'0'})</h1>
       <div class='col'>
           {comments ? (

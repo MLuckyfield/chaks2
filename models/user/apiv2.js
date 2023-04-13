@@ -219,112 +219,76 @@ const email = require('../../services/email')
           })
     })
     //Start and End session
-    router.get('/clock', auth.auth, auth.permission(['user','manager']), async (req, res) => {
+    router.get('/startSession', auth.auth,auth.permission(['user','manager']), async (req, res) =>{
       req=req.query
-      let session = {}
-      // console.log(typeof req.data)
-      // console.log(req.data==true)
-      // console.log(req.data===true)
-      // console.log(req.filter)
+      new Comment({
+        student: req.student,
+        author:req.teacher,
+        status: 'pending',
+      }).save()
+      .then((comment)=>{
+        io.emit('startSession',comment)
+        return res.status(201).json({
+          data:comment,
+          message: 'User update',
+          success: true
+        });
+      })
+      .catch((err)=>{
+        return res.status(500).json({
+          message: `User failed to update: ${err}`,
+          success: false
+        });
+      })
+    })
+    router.get('/endSession', auth.auth,auth.permission(['user','manager']), async (req, res) =>{
+      req=req.query
+      //1. update comment with end time
+      await Comment.findOneAndUpdate({student:req.student,end:{'$exists':false}},{end:new Date()},{new:true})
+        .then((session)=>{
 
-      //1. If session started
-      if (req.data=='true'){
-        // notify.emit(['62bec286e4a871a163c6eaaf_students'],'NEW','Please welcome Shunsuke','')
-        session['start'] = new Date()
-        await User.findById(req.filter)
-          .then((user)=>{
-            user.statistics.push(session)
-            User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:true}},{new:true})
-                  .then((result)=>{
-                    // io.emit('clock',result._id,result.inClass)
+      //2. find student points remaining
+        User.findById(req.student)
+              .then((result)=>{
+          //2a. calculate owed time
+                let start =moment(session.createdAt)
+                let end = moment(session.end)
+                const time = end.diff(start, 'minutes')
+                let billable = time-10
+                if(billable<=0){billable=30}
+                billable = (Math.ceil(billable/30))//+1
+                let unpaid=0
+                let temp = result.points.sort((a,b)=>{a.createdAt-b.createdAt})
+          //2b. remove owed time or increment unpaid time
+                for(let i =0;i<billable;i++){
+                  // console.log('length',result.points,temp)
+                  if(temp.length>=1){
+                    temp.splice(0,1)
+                  }
+                  else{unpaid++}
+                }
+      //3. update with new points and notify any unpaid amount
+                User.findByIdAndUpdate(req.filter,{'$set':{points:temp}},{new:true})
+                  .then((complete)=>{
+                    io.emit('endSession',session)
                     return res.status(201).json({
-                      data:result,
+                      data:complete,
+                      display:{unpaid:unpaid,billable:billable,remaining:complete.points.length*30},
                       message: 'User update',
                       success: true
                     });
                   })
-                  .catch((err)=>{
-                    return res.status(500).json({
-                      message: `User failed to update: ${err}`,
-                      success: false
-                    });
-                  })
-          })
+              }
+            //ERROR 1: cannot find user
+              .catch((err)=>{
+                return res.status(500).json({
+                  message: `Could not find user: ${err}`,
+                  success: false
+                });
+              })
+        })
+    })
 
-        //test code
-        // new Comment({
-        //   student: req.filter,
-        //   status: 'pending',
-        //
-        // }).save()
-        //.then((result)=>{
-          // io.emit('clock',result._id,result.inClass)
-        //   return res.status(201).json({
-        //     data:result,
-        //     message: 'User update',
-        //     success: true
-        //   });
-        // })
-        // .catch((err)=>{
-        //   return res.status(500).json({
-        //     message: `User failed to update: ${err}`,
-        //     success: false
-        //   });
-        // })
-      }
-      else{
-        //2. if session ended
-        await User.findById(req.filter)
-          .then((user)=>{
-            user.statistics.reverse()[0].end=new Date()
-            User.findByIdAndUpdate(req.filter,{'$set':{statistics:user.statistics,inClass:false}},{new:true})
-                  .then((result)=>{
-                    // io.emit('clock',result._id,result.inClass)
-                    let start =moment(result.statistics[0].start)
-                    let end = moment(result.statistics[0].end)
-                    const time = end.diff(start, 'minutes')
-                    let billable = time-10
-                    if(billable<=0){billable=30}
-                    // console.log('billing',time,time-10,billable/30,Math.ceil(billable/30))
-                    // let billable = 0
-                    // if(time-40>0){billable=time-40}
-                    billable = (Math.ceil(billable/30))//+1
-                    let unpaid=0
-                    let temp = result.points.sort((a,b)=>{a.createdAt-b.createdAt})
-                    // result.points.forEach((item, i) => {
-                    //   console.log(item.createdAt)
-                    // });
-                    // temp.forEach((item, i) => {
-                    //   console.log(item.createdAt)
-                    // });
-
-                    for(let i =0;i<billable;i++){
-                      // console.log('length',result.points,temp)
-                      if(temp.length>=1){
-                        temp.splice(0,1)
-                      }
-                      else{unpaid++}
-                    }
-                    User.findByIdAndUpdate(req.filter,{'$set':{points:result.points}},{new:true})
-                      .then((complete)=>{
-                        console.log('clocking out',complete.first,complete.last,billable,unpaid)
-                        return res.status(201).json({
-                          data:complete,
-                          display:{unpaid:unpaid,billable:billable,remaining:complete.points.length*30},
-                          message: 'User update',
-                          success: true
-                        });
-                      })
-                  })
-                  .catch((err)=>{
-                    return res.status(500).json({
-                      message: `Could not find user: ${err}`,
-                      success: false
-                    });
-                  })
-          })
-      }
-    });
 
     //Get
     router.get('/all', auth.auth, async (req, res) => {
