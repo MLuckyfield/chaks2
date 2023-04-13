@@ -4,6 +4,7 @@ import Comment from "../comment/Comment";
 import Popup from "../utilities/popup";
 import Social from "../utilities/social";
 import moment from "moment"
+import {getCurrentUser} from '../../utilities/helpers'
 import {io} from 'socket.io-client';
 const socket = io();
 
@@ -11,13 +12,14 @@ const socket = io();
 const StudentComments = () => {
 
   const points = useRef('');
+  const [user,setUser] = useState(getCurrentUser())
   const [comments, setComments] = useState(null);
   const [source,setSource] =useState()
   const [target, setTarget]=useState(()=>{
     if (localStorage.getItem('student')){
       setSource('student')
       return JSON.parse(localStorage.getItem('student'))
-    }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
+    }else{setSource('user');return user}
   })
   useEffect(() => {
     socket.on('updateDash',(id)=>{
@@ -89,7 +91,7 @@ const adjustPoints = (add)=>{
 
   return(
     <div class='col'>
-        {JSON.parse(localStorage.getItem('user')).role=='manager'?
+        {user.role=='manager'?
         <Popup button={"Points"} num={1} content={
           <form class='make_blog'>
             <h2>Adjust Points</h2>
@@ -99,8 +101,8 @@ const adjustPoints = (add)=>{
             </div>
           </form>
         }/>:''}
-        {JSON.parse(localStorage.getItem('user')).role=='manager'? (<div class='col'><button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red',width:'80%'}:{backgroundColor:'blue',width:'80%'}}>{target.inClass?'End':'Start'}</button></div>):''}
-        {JSON.parse(localStorage.getItem('user')).role=='teacher'||JSON.parse(localStorage.getItem('user')).role=='manager'?<div class='col'><Comment/></div>:''}
+        {user.role=='manager'? (<div class='col'><button onClick={target.inClass?()=>clockin(false):()=>clockin(true)} style={target.inClass?{backgroundColor:'red',width:'80%'}:{backgroundColor:'blue',width:'80%'}}>{target.inClass?'End':'Start'}</button></div>):''}
+        {user.role=='teacher'||user.role=='manager'?<div class='col'><Comment/></div>:''}
       <div id='teacher_select'>
         <button onClick={()=>sendTo('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
         <button onClick={()=>sendTo('63882dbd8a0031a501d54140')} class='button'>Radka</button>
