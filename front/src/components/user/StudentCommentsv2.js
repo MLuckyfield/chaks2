@@ -29,8 +29,8 @@ const StudentComments = () => {
           inSession=true
         }
     })
-    socket.on('endSession',(studentId,teacherId)=>{
-        if(target._id==student){
+    socket.on('endSession',(comment)=>{
+        if(target._id==comment.student){
           inSession=false
         }
     })
