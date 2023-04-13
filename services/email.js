@@ -3,6 +3,7 @@ const nodemailer = require('nodemailer');
 const moment = require ('moment')
 const timezone = require ('moment-timezone')
 
+//email builder functions
 const authenticate = ()=>{
   return nodemailer.createTransport({
     service: 'gmail',
@@ -20,6 +21,8 @@ const prepareEmail=(subject,text,email)=>{
     text: text
   };
 }
+
+//emails with no res requirement
 const sendDefault = (title,content,email)=>{
     console.log('email service starting',content,email)
     // console.log(booking)
@@ -35,6 +38,14 @@ const sendDefault = (title,content,email)=>{
     )
     sendEmailNoRes(transporter,mailOptions)
 }
+const sendEmailNoRes=(mailOptions,data)=>{
+  const transporter = authenticate()
+
+  transporter.sendMail(mailOptions, function(error, info){
+      if (error) {console.log(error)} else {console.log('email sent')}
+    })
+}
+//send email with res
 const sendTrial = (trial,res)=>{
   let title = ''
   let content = ''
@@ -113,11 +124,5 @@ const reportEngagement = (mada,delay)=>{
     )
     sendEmailNoRes(mailOptions)
 }
-const sendEmailNoRes=(mailOptions,data)=>{
-  const transporter = authenticate()
 
-  transporter.sendMail(mailOptions, function(error, info){
-      if (error) {console.log(error)} else {console.log('email sent')}
-    })
-}
 module.exports={sendDefault,sendBooking, sendTrial, sendRSVP, reportEngagement}

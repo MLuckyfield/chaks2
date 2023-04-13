@@ -10,5 +10,6 @@ const setCurrentUser = (user) =>{
   }
 }
 export const getCurrentUser = ()=>{
+  console.log('current user',JSON.parse(localStorage.getItem('user')))
   return JSON.parse(localStorage.getItem('user'))
 }
