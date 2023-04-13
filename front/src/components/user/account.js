@@ -15,9 +15,8 @@ const Account = () => {
   const [sessions,setSessions]=useState(0)
   const [count,setCount]=useState(0)
   const [reward,setReward]=useState()
-  const [points,setPoints]=useState(0)
   const [msg,setMsg]=useState('')
-  const [clock,setClock]=useState(  getCurrentUser());
+  const [clock,setClock]=useState();
   const [courses,setCourses]=useState(()=>{
     axios.get('/enrolled/all',{params:{filter:{user:user._id}}})
       .then((res) => {
@@ -30,7 +29,7 @@ const Account = () => {
   useEffect(()=>{
     localStorage.removeItem('clock')
     // console.log('loading account view for '+JSON.stringify(user))
-    axios.get('user/all', {params:{filter:{_id:  user._id}}})
+    axios.get('user/all', {params:{filter:{_id: user._id}}})
       .then((res) => {
           socket.on(user._id,(status)=>{
             setClock(status)
@@ -38,11 +37,10 @@ const Account = () => {
 
           let userData = res.data.data[0]
           setAccount(userData)
+          setUser(userData)
           setClock(userData.inClass)
           res=userData.statistics
           setCount(res)
-          // console.log('has pounts',userData)
-          setPoints(userData.points.length)
           // console.log('Statistics for',res.length)
           let month = new Date().getMonth()
           let count = 0

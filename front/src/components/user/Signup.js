@@ -2,6 +2,7 @@ import React, { useState ,useRef} from 'react';
 import {axios} from "../../utilities/axios";
 import Social from '../utilities/social'
 import Popup from '../utilities/popup'
+import {setCurrentUser} from '../../utilities/helpers'
 
 const Signup = (props)=>{
   const email = useRef('');
@@ -24,7 +25,7 @@ const onSubmit = (e) => {
     })
     .then((res) => {
       // console.log('response'+res)
-      localStorage.setItem('user', JSON.stringify(res.data.result));
+      setCurrentUser(res.data.result);
       setMsg([res.data.message,res.data.success]);
       if(props.redirect.slice(0,4)=='http'){
         window.location.href=props.redirect

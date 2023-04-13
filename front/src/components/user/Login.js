@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import {useDispatch} from 'react-redux'
 import {axios} from "../../utilities/axios";
 import action from "../../utilities/actions";
+import {setCurrentUser} from '../../utilities/helpers'
 
 const Login = () => {
 
@@ -23,7 +24,7 @@ const Login = () => {
         password: password.current.value
       })
       .then((res) => {
-          localStorage.setItem('user', JSON.stringify(res.data.result));
+          setCurrentUser(res.data.result);
           // dispatch(action.setCurrentUser(res.data.result))
           window.location='/dash';
           })
