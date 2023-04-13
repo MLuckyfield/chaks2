@@ -30,11 +30,12 @@ const Account = () => {
   useEffect(()=>{
     localStorage.removeItem('clock')
     // console.log('loading account view for '+JSON.stringify(user))
-    axios.get('user/all', {params:{filter:{_id:helpers.getCurrentUser)._id}}})
+    axios.get('user/all', {params:{filter:{_id:helpers.getCurrentUser._id}}})
       .then((res) => {
-          socket.on(user._id,(status)=>{
-            setClock(status)
-          })
+          helpers.notify(user._id,status)
+          // socket.on(user._id,(status)=>{
+          //   setClock(status)
+          // })
 
           let userData = res.data.data[0]
           setAccount(userData)
