@@ -1,10 +1,16 @@
-const User = require('../models/user/model')
-const nodemailer = require('nodemailer');
-const moment = require ('moment')
-const timezone = require ('moment-timezone')
+const { Server } = require("socket.io");
 
-const initiate = (socketio)=>{
-
+let io;
+const initiate = (server)=>{
+  io = new Server(server);
 }
 
-module.exports={initiate,}
+const startSession = (comment)=>{
+  io.emit('startSession', comment)
+}
+
+const endSession = (comment)=>{
+  io.emit('endSession', comment)
+}
+
+module.exports={initiate,startSession,endSession}

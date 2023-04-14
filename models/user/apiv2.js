@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const auth= require('../../services/authentication');
+const socket= require('../../services/socket');
 // const system= require('../../services/system');
 const notify= require('../../services/notify');
 const User = require('./model')
@@ -227,7 +228,7 @@ const email = require('../../services/email')
         status: 'pending',
       }).save()
       .then((comment)=>{
-        io.emit('startSession',comment)
+        socket.startSession(comment)
         return res.status(201).json({
           data:comment,
           message: 'User update',
@@ -270,7 +271,7 @@ const email = require('../../services/email')
       //3. update with new points and notify any unpaid amount
                 User.findByIdAndUpdate(req.filter,{'$set':{points:temp}},{new:true})
                   .then((complete)=>{
-                    io.emit('endSession',session)
+                    socket.endSession(comment)                    
                     return res.status(201).json({
                       data:complete,
                       display:{unpaid:unpaid,billable:billable,remaining:complete.points.length*30},

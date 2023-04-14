@@ -6,6 +6,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const path = require("path")//heroku deployment7
 const auth= require('./services/authentication');
+const socket = require('./services/socket');
 const http = require('http')
 const { Server } = require("socket.io");
 // const cron = require('node-cron')
@@ -13,22 +14,23 @@ require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app)
-const io = new Server(server);
-
-io.on('connection', (socketio) => {
-  console.log('a user connected');
-  socketio.on("sendstudent",(student,teacher) => {
-    console.log('student recieved',student.first,student.last)
-    io.emit(teacher,student)
-  });
-  socketio.on('clock',(id,status,res) => {
-    console.log('student clocked',id)
-    io.emit(id,status)//updates user account screen
-    io.emit('updateDash',id,res)//updates manager screens clock button
-  });
-});
-app.set('socketio', io)
-app.locals.io = io
+socket.initiate(server)
+// const io = new Server(server);
+//
+// io.on('connection', (socketio) => {
+//   console.log('a user connected');
+//   socketio.on("sendstudent",(student,teacher) => {
+//     console.log('student recieved',student.first,student.last)
+//     io.emit(teacher,student)
+//   });
+//   socketio.on('clock',(id,status,res) => {
+//     console.log('student clocked',id)
+//     io.emit(id,status)//updates user account screen
+//     io.emit('updateDash',id,res)//updates manager screens clock button
+//   });
+// });
+// app.set('socketio', io)
+// app.locals.io = io
 const port = process.env.PORT || 5000;
 //setup middleware
 app.use(cors({
@@ -78,7 +80,7 @@ app.disable('x-powered-by');
 //app.use('/exercises',exercisesRouter);
 //app.use('/users',usersRouter);
 
-app.use('/user',require('./models/user/api'));
+app.use('/user',require('./models/user/apiv2'));
 app.use('/comment',auth.auth,require('./models/comment/api'));
 app.use('/booking',auth.auth,require('./models/booking/api'));
 app.use('/event_info',require('./models/event/api'));
