@@ -31,7 +31,7 @@ export const checkPermission = (user, accessLevel) => {
 }
 
 export const endSession=(studentId)=>{
-  // console.log('will send '+JSON.stringify(target))
+  console.log('endSession called')
   axios.get('/user/endSession', {params:{student:studentId}})
     .then((res) => {
         res=res.data.display

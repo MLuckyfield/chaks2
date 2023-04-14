@@ -78,6 +78,7 @@ const StudentComments = () => {
     axios.get('user/startSession',{params:{teacher:teacherId,student:target._id}})
       .then((comment)=>{
          setComments(comments => [...comments],comment)
+         window.location.reload()
       })
       .catch(error=>console.log('From startSession teacher:',error))
   }
@@ -137,7 +138,13 @@ const adjustPoints = (add)=>{
             comments.length>0?
             (comments.map(function(comment, i){
               //if comment exists
-                
+              // if(comment.hasOwnProperty('comment')){
+              //     if(comment.status=='approved'){
+              //
+              //     }
+              // }else{
+              //
+              // }
                 return (
                   <div class='col feedback'>
                       <div class=''>{comment.comment}</div>

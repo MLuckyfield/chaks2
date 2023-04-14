@@ -393,22 +393,24 @@ const email = require('../../services/email')
         success: true
       });
     })
-// cron.schedule('*/15 * * * *',()=>{
-//   Course.find().then((courses)=>{
-//     courses.forEach((course,i)=>{
-//       let item = {
-//         student:'6346840b683a491148a921d8',
-//         course:course._id,
-//         delivery:'online private',
-//         status:'active'
-//     }
-//       new Enrolled(item).save()
-//       .then(()=>{
-//         console.log('created enroll',item)
-//       })
-//     })
-//   })
-// })
+    //DB management cron
+cron.schedule('*/15 * * * *',()=>{
+  // Course.find().then((courses)=>{
+  //   courses.forEach((course,i)=>{
+  //     let item = {
+  //       student:'6346840b683a491148a921d8',
+  //       course:course._id,
+  //       delivery:'online private',
+  //       status:'active'
+  //   }
+  //     new Enrolled(item).save()
+  //     .then(()=>{
+  //       console.log('created enroll',item)
+  //     })
+  //   })
+  // })
+  Comment.updateMany({},{status:'approved'}).then((console.log('comments approved')))
+})
     //rewards status
     cron.schedule('1 1 1 * *',()=>{
       let gold = 0

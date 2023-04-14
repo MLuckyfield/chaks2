@@ -20,7 +20,9 @@ const Comment = mongoose.model('Comment', new Schema({
     default:'in-person'
   },
   status:{
-    type:String
+    type:String,
+    enum:['pending','draft','approved'],
+    default:'pending'
   },
   end:{
     type:Date
