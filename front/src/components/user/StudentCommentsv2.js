@@ -34,7 +34,7 @@ const StudentComments = () => {
       socket.on('endSession',(comment)=>{
         console.log('endSession triggered StudentComment')
           if(target._id==comment.student){
-            setSession(false)
+            setInSession(false)
           }
       })
     }
@@ -135,18 +135,19 @@ const adjustPoints = (add)=>{
       <div class='col'>
           {comments ? (
             comments.length>0?
-            (comments.map(function(item, i){
+            (comments.map(function(comment, i){
+              //if comment exists
+                
                 return (
-                  //if comment exists
                   <div class='col feedback'>
-                      <div class=''>{item.comment}</div>
-                      <div class=''>{item.author.first} {item.author.last}</div>
-                      <div class=''>{moment(item.createdAt).format('dddd MMM-DD')}</div>
+                      <div class=''>{comment.comment}</div>
+                      <div class=''>{comment.author.first} {comment.author.last}</div>
+                      <div class=''>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
                   </div>
-                  //if no comment
+                    //if comment drafted
+                  //if doesnt exist
                       //if comment is yours -> editable
                       //if comment is not yours -> greyed out
-                  //if comment drafted
                 )
                     })): (
                       <div class='col slim' style={{background:'#89cff0',color:'white'}}>
