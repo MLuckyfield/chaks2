@@ -287,6 +287,13 @@ const email = require('../../services/email')
                 });
               })
         })
+        //ERROR 2: no unended session
+          .catch((err)=>{
+            return res.status(500).json({
+              message: `No open sessions: ${err}`,
+              success: false
+            });
+          })
     })
 
 

@@ -38,7 +38,6 @@ const StudentComments = () => {
     axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data.reverse());
-          setListenForSocket(true)
           res.data.data.forEach((comment, i) => {
             if(comment.hasOwnProperty('end')){}
             else{setInSession(true)}
