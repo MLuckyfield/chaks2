@@ -125,7 +125,7 @@ const adjustPoints = (add)=>{
           </div>
         :''}
         {checkPermission(user.role,constants.TEACHER)?<div class='col'><Comment/></div>:''}
-
+        {user.role=='manager'?<div class='col'><Comment/></div>:''}
 
       <h1>Feedback ({comments?comments.length:'0'})</h1>
       <div class='col'>
