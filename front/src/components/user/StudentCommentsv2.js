@@ -70,7 +70,7 @@ const StudentComments = () => {
   //     .catch(error => console.log("error"+error))
   // }
   const startSession=(teacherId)=>{
-    axios.post('user/startSession',{params:{teacher:teacherId,student:target._id}})
+    axios.get('user/startSession',{params:{teacher:teacherId,student:target._id}})
       .then((comment)=>{
          setComments(comments => [...comments],comment)
       })
