@@ -27,6 +27,7 @@ export const checkPermission = (user, accessLevel) => {
     default:
       user = constants.USER
   }
+  console.log(user >= accessLevel)
   return user >= accessLevel;
 }
 

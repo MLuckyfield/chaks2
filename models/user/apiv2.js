@@ -247,7 +247,6 @@ const email = require('../../services/email')
       //1. update comment with end time
       await Comment.findOneAndUpdate({student:req.student,end:{'$exists':false}},{end:new Date()},{new:true})
         .then((session)=>{
-
       //2. find student points remaining
         User.findById(req.student)
               .then((result)=>{
@@ -271,7 +270,7 @@ const email = require('../../services/email')
       //3. update with new points and notify any unpaid amount
                 User.findByIdAndUpdate(req.filter,{'$set':{points:temp}},{new:true})
                   .then((complete)=>{
-                    socket.endSession(comment)                    
+                    socket.endSession(comment)
                     return res.status(201).json({
                       data:complete,
                       display:{unpaid:unpaid,billable:billable,remaining:complete.points.length*30},
