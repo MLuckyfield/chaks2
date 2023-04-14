@@ -269,11 +269,11 @@ const email = require('../../services/email')
                 }
       //3. update with new points and notify any unpaid amount
                 User.findByIdAndUpdate(req.filter,{'$set':{points:temp}},{new:true})
-                  .then((complete)=>{
-                    socket.endSession(comment)
+                  .then((user)=>{
+                    socket.endSession(session)
                     return res.status(201).json({
-                      data:complete,
-                      display:{unpaid:unpaid,billable:billable,remaining:complete.points.length*30},
+                      data:user,
+                      display:{unpaid:unpaid,billable:billable,remaining:user.points.length*30},
                       message: 'User update',
                       success: true
                     });

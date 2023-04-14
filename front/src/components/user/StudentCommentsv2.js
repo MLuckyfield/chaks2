@@ -16,7 +16,6 @@ const StudentComments = () => {
   const [user,setUser] = useState(getCurrentUser())
   const [comments, setComments] = useState(null);
   const [source,setSource] =useState()
-  const [listenForSocket,setListenForSocket] = useState(false)
   const [inSession,setInSession]=useState(false)
   const [target, setTarget]=useState(()=>{
     if (localStorage.getItem('student')){
@@ -25,7 +24,6 @@ const StudentComments = () => {
     }else{setSource('user');return user}
   })
   useEffect(() => {
-    if(listenForSocket){
       socket.on('startSession',(comment)=>{
           if(target._id==comment.student){
             setInSession(true)
@@ -37,7 +35,6 @@ const StudentComments = () => {
             setInSession(false)
           }
       })
-    }
     axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data.reverse());
