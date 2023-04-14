@@ -113,7 +113,7 @@ const adjustPoints = (add)=>{
           }/>
           <div class='col'>
           {inSession?
-            <button onClick={endSession(target._id)} style={{backgroundColor:'red',width:'80%'}}>End</button>
+            <button onClick={()=>endSession(target._id)} style={{backgroundColor:'red',width:'80%'}}>End</button>
             :
             <Popup button={"Start"} num={2} content={
               <div class='col'>
@@ -140,16 +140,23 @@ const adjustPoints = (add)=>{
               //if comment exists
               // if(comment.hasOwnProperty('comment')){
               //     if(comment.status=='approved'){
-              //
+              //       return (
+              //         <div class='col feedback'>
+              //             <div class=''>{comment.comment}</div>
+              //             <div class=''>{comment.author.first} {comment.author.last}</div>
+              //             <div class=''>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
+              //         </div>
+              //       )
               //     }
               // }else{
               //
               // }
                 return (
                   <div class='col feedback'>
-                      <div class=''>{comment.comment}</div>
+                      <div class=''>{comment.hasOwnProperty('comment')?comment.comment:'NEW COMMENT HERE'}</div>
                       <div class=''>{comment.author.first} {comment.author.last}</div>
                       <div class=''>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
+                      {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?'APPROVE':''}
                   </div>
                     //if comment drafted
                   //if doesnt exist
