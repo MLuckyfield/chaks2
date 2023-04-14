@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
+import {checkPermission} from '../../utilities/helpers'
+import * as constants from '../../utilities/constants'
 
 const Comment = () => {
 
@@ -57,7 +59,7 @@ const Comment = () => {
   }
   return(
       <div class='row'>
-      {student.role=='teacher'?(
+      {checkPermission(student.role,constants.TEACHER)?(
         <TeacherSchedule target={student._id}/>
       ):(
         <form class='login' onSubmit={onSubmit} style={{width:'80%'}}>

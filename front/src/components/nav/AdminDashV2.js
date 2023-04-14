@@ -47,8 +47,9 @@ const StaffTable = ()=>{
       return JSON.parse(localStorage.getItem('student'))
     }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
   })
-
+  const [listenForSocket,setListenForSocket] = useState(false)
   useEffect(() => {
+    if(listenForSocket){
     socket.on('startSession',(comment)=>{
       setComments(comments.map(x=>{
         if(x.student._id!==comment.student){console.log('no match');return x}
@@ -56,15 +57,17 @@ const StaffTable = ()=>{
       }))
     })
     socket.on('endSession',(comment)=>{
+      console.log('endSession triggered AdminDash')
       setComments(comments.map(x=>{
         if(x.student._id!==comment.student){console.log('no match');return x}
         return comment
       }))
-    })
+    })}
     axios.get('comment/getInSession')
       .then((result)=>{
         result = result.data.data
          setComments(result)
+         setListenForSocket(true)
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   },[])
