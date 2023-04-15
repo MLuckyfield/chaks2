@@ -273,7 +273,7 @@ const email = require('../../services/email')
                   .then((user)=>{
                     socket.endSession(session)
                     return res.status(201).json({
-                      display:{unpaid:unpaid,billable:billable,remaining:user.points.length},
+                      display:{unpaid:unpaid,billable:billable,remaining:user.hasOwnProperty('points')?user.points.length:0},
                       message: 'User update',
                       success: true
                     });
@@ -416,7 +416,7 @@ cron.schedule('*/15 * * * *',()=>{
   //     })
   //   })
   // })
-  Comment.updateMany({},{status:'approved'}).then((console.log('comments approved')))
+  // Comment.updateMany({},{status:'approved'}).then((console.log('comments approved')))
 })
     //rewards status
     cron.schedule('1 1 1 * *',()=>{
