@@ -9,7 +9,7 @@ const Comment = (props) => {
   const [comment, setcomment] = useState(props.comment);
   const commentContent = useRef(props.comment.comment);
   const [active,setActive]=useState(true)
-
+  const [user,setUser]=useState(getCurrentUser())
 
   const onSubmit = (commentId, e) => {
     e.preventDefault();
@@ -32,6 +32,7 @@ const Comment = (props) => {
   return(
     <div class='col feedback'>
         <div class='col'>{comment.status=='approved'?comment.comment:(
+          checkPermission(user.role,constants.TEACHER)?
           <form onSubmit={(e)=>onSubmit(comment._id,e)} style={{width:'80%'}}>
           <h2>New Comment</h2>
           <h3>{comment.status}</h3>
@@ -42,11 +43,11 @@ const Comment = (props) => {
             <input type="text" class="form-control" placeholder={`${props.student.first} ${props.student.last}`} disabled/>
           </div>
           {active?<button type="submit" class="solid-first">Comment</button>:'Please wait... (manually refresh after 5 seconds)'}
-          </form>
+          </form>:'Feedback in progress - please check within 24 hours!'
         )}</div>
         <div class=''>{comment.author.first} {comment.author.last}</div>
         <div class=''>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
-        {comment.status=='draft'&&checkPermission(getCurrentUser().role,constants.MANAGER)?'APPROVE':''}
+        {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?'APPROVE':''}
     </div>
 )
 }
