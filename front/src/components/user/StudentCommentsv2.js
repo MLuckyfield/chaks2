@@ -175,7 +175,7 @@ const onSubmit = (commentId, e) => {
                           <textarea ref={comment} type="text" class="form-control" placeholder="Comment: make sure to include 1) encouragement (1+ things they did well) 2) key topics you discussed 3) improvement points/English things you explained" required/>
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-control" placeholder={`${student.first} ${student.last}`} disabled/>
+                          <input type="text" class="form-control" placeholder={`${target.first} ${target.last}`} disabled/>
                         </div>
                         {active?<button type="submit" class="solid-first">Comment</button>:'Please wait... (manually refresh after 5 seconds)'}
                         </form>

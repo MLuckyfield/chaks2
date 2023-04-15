@@ -34,6 +34,7 @@ export const endSession=(studentId)=>{
   console.log('endSession called')
   axios.get('/user/endSession', {params:{student:studentId}})
     .then((res) => {
+      console.log('end ession recieved',res.data)
         res=res.data.display
         alert('Billable: '+res.billable+' |Unpaid: '+res.unpaid+' |Remaining: '+res.remaining)
       })
