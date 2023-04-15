@@ -12,7 +12,9 @@ const socket = io();
 
 const StudentComments = () => {
 
+  const [active,setActive]=useState(true)
   const points = useRef('');
+  const comment = useRef('');
   const [user,setUser] = useState(getCurrentUser())
   const [comments, setComments] = useState(null);
   const [source,setSource] =useState()
@@ -93,6 +95,24 @@ const adjustPoints = (add)=>{
     .catch(error=>console.log('From startSession teacher:',error))
 }
 
+const onSubmit = (commentId, e) => {
+  e.preventDefault();
+  setActive(false)
+  axios.post('/comment/update',
+    {
+      commentId:commentId,
+      comment: comment.current.value,
+    })
+    .then((res) => {
+        console.log('done')
+        // setFeedback(res.data.message);
+        window.location.reload()
+        })
+    .catch((err) => {
+      console.log(err);
+      // setFeedback(err.response.data.message);
+      });
+}
 
   return(
     <div class='col'>
@@ -149,7 +169,17 @@ const adjustPoints = (add)=>{
               // }
                 return (
                   <div class='col feedback'>
-                      <div class=''>{comment.hasOwnProperty('comment')?comment.comment:'NEW COMMENT HERE'}</div>
+                      <div class=''>{comment.status!='draft'?comment.comment:(
+                        <form class='login' onSubmit={(e)=>onSubmit(comment._id,e)} style={{width:'80%'}}>
+                        <div class="form-group">
+                          <textarea ref={comment} type="text" class="form-control" placeholder="Comment: make sure to include 1) encouragement (1+ things they did well) 2) key topics you discussed 3) improvement points/English things you explained" required/>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder={`${student.first} ${student.last}`} disabled/>
+                        </div>
+                        {active?<button type="submit" class="solid-first">Comment</button>:'Please wait... (manually refresh after 5 seconds)'}
+                        </form>
+                      )}</div>
                       <div class=''>{comment.author.first} {comment.author.last}</div>
                       <div class=''>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
                       {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?'APPROVE':''}

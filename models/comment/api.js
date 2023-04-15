@@ -71,23 +71,23 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
 
 });
 // //Update
-// router.post('/update', async (req, res) => {
-//
-//   await Comment.findOneAndUpdate(req.body.filter,req.body.data)
-//       .then(()=>{
-//         return res.status(201).json({
-//           message: 'Comment saved',
-//           success: true
-//         });
-//       })
-//       .catch((err)=>{
-//         return res.status(500).json({
-//           message: `Comment creation unsuccessful: ${err}`,
-//           success: false
-//         });
-//       })
-//
-// });
+router.post('/update', async (req, res) => {
+  req=req.body
+  await Comment.findByIdAndUpdate(req.commentId,req.comment)
+      .then(()=>{
+        return res.status(201).json({
+          message: 'Comment saved',
+          success: true
+        });
+      })
+      .catch((err)=>{
+        return res.status(500).json({
+          message: `Comment creation unsuccessful: ${err}`,
+          success: false
+        });
+      })
+
+});
 //Get
 router.get('/all', async (req, res) => {
   console.log(req.query)
