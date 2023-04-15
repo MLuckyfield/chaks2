@@ -73,7 +73,7 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
 // //Update
 router.post('/update', async (req, res) => {
   req=req.body
-  await Comment.findByIdAndUpdate(req.commentId,req.comment)
+  await Comment.findByIdAndUpdate(req.commentId,{comment:req.comment})
       .then(()=>{
         return res.status(201).json({
           message: 'Comment saved',

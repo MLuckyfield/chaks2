@@ -146,7 +146,6 @@ const onSubmit = (commentId, e) => {
         </div>
           </div>
         :''}
-        {checkPermission(user.role,constants.TEACHER)?<div class='col'><Comment/></div>:''}
 
       <h1>Feedback ({comments?comments.length:'0'})</h1>
       <div class='col'>
@@ -170,11 +169,11 @@ const onSubmit = (commentId, e) => {
                 return (
                   <div class='col feedback'>
                       <div class='col'>{comment.status=='approved'?comment.comment:(
-                        <form class='login' onSubmit={(e)=>onSubmit(comment._id,e)} style={{width:'80%'}}>
-                        <div class="form-group">
+                        <form onSubmit={(e)=>onSubmit(comment._id,e)} style={{width:'80%'}}>
+                        <div>
                           <textarea ref={comment} type="text" class="form-control" placeholder="Comment: make sure to include 1) encouragement (1+ things they did well) 2) key topics you discussed 3) improvement points/English things you explained" required/>
                         </div>
-                        <div class="form-group">
+                        <div>
                           <input type="text" class="form-control" placeholder={`${target.first} ${target.last}`} disabled/>
                         </div>
                         {active?<button type="submit" class="solid-first">Comment</button>:'Please wait... (manually refresh after 5 seconds)'}
