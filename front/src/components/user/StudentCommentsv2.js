@@ -46,7 +46,7 @@ const StudentComments = () => {
           });
 
         })
-        .catch(error => console.log("error"+error.data.message))
+        .catch(error => console.log("error"+error))
 
   },[])
 

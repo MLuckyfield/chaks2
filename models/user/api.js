@@ -444,6 +444,7 @@ const email = require('../../services/email')
 //       })
 //     })
 //   })
+
 // })
     //rewards status
     cron.schedule('1 1 1 * *',()=>{

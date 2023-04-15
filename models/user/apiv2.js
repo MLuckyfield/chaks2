@@ -416,7 +416,7 @@ cron.schedule('*/15 * * * *',()=>{
   //     })
   //   })
   // })
-  // Comment.updateMany({},{status:'approved'}).then((console.log('comments approved')))
+  Comment.updateMany({},{end:new Date()}).then((console.log('comments approved')))
 })
     //rewards status
     cron.schedule('1 1 1 * *',()=>{
