@@ -253,6 +253,7 @@ const email = require('../../services/email')
           //2a. calculate owed time
                 let start =moment(session.createdAt)
                 let end = moment(session.end)
+                console.log('time',start,end)
                 const time = end.diff(start, 'minutes')
                 let billable = time-10
                 if(billable<=0){billable=30}
@@ -272,8 +273,7 @@ const email = require('../../services/email')
                   .then((user)=>{
                     socket.endSession(session)
                     return res.status(201).json({
-                      data:user,
-                      display:{unpaid:unpaid,billable:billable,remaining:user.points.length*30},
+                      display:{unpaid:unpaid,billable:billable,remaining:user.points.length},
                       message: 'User update',
                       success: true
                     });
