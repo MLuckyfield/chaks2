@@ -1,6 +1,6 @@
 import React, { useEffect, useRef,useState} from 'react';
 import {axios} from "../../utilities/axios";
-import Comment from "../comment/Comment";
+import Comment from "../comment/CommentV2";
 import Popup from "../utilities/popup";
 import Social from "../utilities/social";
 import moment from "moment"
@@ -95,24 +95,24 @@ const adjustPoints = (add)=>{
     .catch(error=>console.log('From startSession teacher:',error))
 }
 
-const onSubmit = (commentId, e) => {
-  e.preventDefault();
-  setActive(false)
-  axios.post('/comment/update',
-    {
-      commentId:commentId,
-      comment: comment.current.value,
-    })
-    .then((res) => {
-        console.log('done')
-        // setFeedback(res.data.message);
-        window.location.reload()
-        })
-    .catch((err) => {
-      console.log(err);
-      // setFeedback(err.response.data.message);
-      });
-}
+// const onSubmit = (commentId, e) => {
+//   e.preventDefault();
+//   setActive(false)
+//   axios.post('/comment/update',
+//     {
+//       commentId:commentId,
+//       comment: comment.current.value,
+//     })
+//     .then((res) => {
+//         console.log('done')
+//         // setFeedback(res.data.message);
+//         window.location.reload()
+//         })
+//     .catch((err) => {
+//       console.log(err);
+//       // setFeedback(err.response.data.message);
+//       });
+// }
 
   return(
     <div class='col'>
@@ -167,24 +167,7 @@ const onSubmit = (commentId, e) => {
               //
               // }
                 return (
-                  <div class='col feedback'>
-                      <div class='col'>{comment.status=='approved'?comment.comment:(
-                        <form onSubmit={(e)=>onSubmit(comment._id,e)} style={{width:'80%'}}>{comment.current.value=comment.comment}
-                        <h2>New Comment</h2>
-                        <h3>{comment.status}</h3>
-                        <div>
-                          <textarea ref={comment} type="text" class="form-control" placeholder="Comment: make sure to include 1) encouragement (1+ things they did well) 2) key topics you discussed 3) improvement points/English things you explained" required/>
-                        </div>
-                        <div>
-                          <input type="text" class="form-control" placeholder={`${target.first} ${target.last}`} disabled/>
-                        </div>
-                        {active?<button type="submit" class="solid-first">Comment</button>:'Please wait... (manually refresh after 5 seconds)'}
-                        </form>
-                      )}</div>
-                      <div class=''>{comment.author.first} {comment.author.last}</div>
-                      <div class=''>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
-                      {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?'APPROVE':''}
-                  </div>
+                  <Comment comment={comment} student={target}/>
                     //if comment drafted
                   //if doesnt exist
                       //if comment is yours -> editable
