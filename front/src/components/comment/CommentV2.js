@@ -8,6 +8,7 @@ const Comment = (props) => {
 
   const [comment, setcomment] = useState(props.comment);
   const commentContent = useRef(props.comment.comment);
+  const [active,setActive]=useState(true)
 
 
   const onSubmit = (commentId, e) => {

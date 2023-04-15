@@ -152,26 +152,8 @@ const adjustPoints = (add)=>{
           {comments ? (
             comments.length>0?
             (comments.map(function(comment, i){
-              //if comment exists
-              // if(comment.hasOwnProperty('comment')){
-              //     if(comment.status=='approved'){
-              //       return (
-              //         <div class='col feedback'>
-              //             <div class=''>{comment.comment}</div>
-              //             <div class=''>{comment.author.first} {comment.author.last}</div>
-              //             <div class=''>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
-              //         </div>
-              //       )
-              //     }
-              // }else{
-              //
-              // }
                 return (
                   <Comment comment={comment} student={target}/>
-                    //if comment drafted
-                  //if doesnt exist
-                      //if comment is yours -> editable
-                      //if comment is not yours -> greyed out
                 )
                     })): (
                       <div class='col slim' style={{background:'#89cff0',color:'white'}}>
