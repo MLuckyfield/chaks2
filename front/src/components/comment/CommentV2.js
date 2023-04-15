@@ -17,7 +17,7 @@ const Comment = (props) => {
     axios.post('/comment/update',
       {
         commentId:commentId,
-        comment: comment.current.value,
+        comment: commentContent.current.value,
       })
       .then((res) => {
           console.log('done')
