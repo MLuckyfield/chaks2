@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
-import {checkPermission} from '../../utilities/helpers'
+import {checkPermission,getCurrentUser} from '../../utilities/helpers'
 import * as constants from '../../utilities/constants'
 
 const Comment = (props) => {
@@ -46,7 +46,7 @@ const Comment = (props) => {
         )}</div>
         <div class=''>{comment.author.first} {comment.author.last}</div>
         <div class=''>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
-        {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?'APPROVE':''}
+        {comment.status=='draft'&&checkPermission(getCurrentUser().role,constants.MANAGER)?'APPROVE':''}
     </div>
 )
 }
