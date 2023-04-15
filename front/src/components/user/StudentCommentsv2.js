@@ -169,7 +169,9 @@ const onSubmit = (commentId, e) => {
                 return (
                   <div class='col feedback'>
                       <div class='col'>{comment.status=='approved'?comment.comment:(
-                        <form onSubmit={(e)=>onSubmit(comment._id,e)} style={{width:'80%'}}>
+                        <form onSubmit={(e)=>onSubmit(comment._id,e)} style={{width:'80%'}}>{comment.current.value=comment.comment}
+                        <h2>New Comment</h2>
+                        <h3>{comment.status}</h3>
                         <div>
                           <textarea ref={comment} type="text" class="form-control" placeholder="Comment: make sure to include 1) encouragement (1+ things they did well) 2) key topics you discussed 3) improvement points/English things you explained" required/>
                         </div>
