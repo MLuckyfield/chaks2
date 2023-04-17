@@ -7,13 +7,13 @@ import * as constants from '../../utilities/constants'
 const Comment = (props) => {
 
   const [comment, setcomment] = useState(props.comment);
-  const commentContent = useRef({value:props.comment.hasOwnProperty('comment')?props.comment.comment:''});
+  const commentContent = useRef({value:''});
   const [active,setActive]=useState(true)
   const [user,setUser]=useState(getCurrentUser())
 
   useEffect(()=>{
     console.log('comment recieved',props.comment.hasOwnProperty('comment'),comment, commentContent)
-    // commentContent.current.value=props.comment.hasOwnProperty('comment')?props.comment.comment:''
+    commentContent.current.value=props.comment.hasOwnProperty('comment')?props.comment.comment:''
   },[])
 
   const draftComment = (commentId, e) => {
