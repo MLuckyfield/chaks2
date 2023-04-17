@@ -7,7 +7,7 @@ import * as constants from '../../utilities/constants'
 const Comment = (props) => {
 
   const [comment, setcomment] = useState(props.comment);
-  const commentContent = useRef(null);
+  const commentContent = useRef({value:''});
   const [active,setActive]=useState(true)
   const [user,setUser]=useState(getCurrentUser())
 
