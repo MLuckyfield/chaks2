@@ -14,7 +14,6 @@ const StudentComments = () => {
 
   const [active,setActive]=useState(true)
   const points = useRef('');
-  const comment = useRef('');
   const [user,setUser] = useState(getCurrentUser())
   const [comments, setComments] = useState(null);
   const [source,setSource] =useState()
@@ -90,7 +89,7 @@ const adjustPoints = (add)=>{
   }
   axios.post('user/update',{filter:{_id:target._id},data:{'$push':{points:changes}}})
     .then((result)=>{
-       window.location.reload()
+       // window.location.reload()
     })
     .catch(error=>console.log('From startSession teacher:',error))
 }
