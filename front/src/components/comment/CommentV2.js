@@ -7,19 +7,37 @@ import * as constants from '../../utilities/constants'
 const Comment = (props) => {
 
   const [comment, setcomment] = useState(props.comment);
-  const commentContent = useRef({value:''});
+  const commentContent = useRef({value:props.comment.hasOwnProperty('comment')?props.comment.comment:''});
   const [active,setActive]=useState(true)
   const [user,setUser]=useState(getCurrentUser())
 
   useEffect(()=>{
     console.log('comment recieved',props.comment.hasOwnProperty('comment'),comment, commentContent)
-    commentContent.current.value=props.comment.hasOwnProperty('comment')?props.comment.comment:''
+    // commentContent.current.value=props.comment.hasOwnProperty('comment')?props.comment.comment:''
   },[])
 
-  const onSubmit = (commentId, e) => {
+  const draftComment = (commentId, e) => {
     e.preventDefault();
     setActive(false)
-    axios.post('/comment/update',
+    axios.post('/comment/draftComment',
+      {
+        commentId:commentId,
+        comment: commentContent.current.value,
+      })
+      .then((res) => {
+          console.log('done')
+          // setFeedback(res.data.message);
+          window.location.reload()
+          })
+      .catch((err) => {
+        console.log(err);
+        // setFeedback(err.response.data.message);
+        });
+  }
+  const approveComment = (commentId, e) => {
+    e.preventDefault();
+    setActive(false)
+    axios.post('/comment/approveComment',
       {
         commentId:commentId,
         comment: commentContent.current.value,
@@ -38,7 +56,7 @@ const Comment = (props) => {
     <div class='col feedback'>{console.log('comment',commentContent)}
         <div class='col'>{comment.status=='approved'?comment.comment:(
           checkPermission(user.role,constants.TEACHER)?
-          <form onSubmit={(e)=>onSubmit(comment._id,e)} style={{width:'80%'}}>
+          <form onSubmit={(e)=>draftComment(comment._id,e)} style={{width:'80%'}}>
           <h2>New Comment</h2>
           <h3>{comment.status}</h3>
           <div>
@@ -52,7 +70,7 @@ const Comment = (props) => {
         )}</div>
         <div class=''>{comment.author.first} {comment.author.last}</div>
         <div class=''>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
-        {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?'APPROVE':''}
+        {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?<button onClick={(e)=>approveComment(comment._id,e)} class="solid-first">Approve</button>:''}
     </div>
 )
 }

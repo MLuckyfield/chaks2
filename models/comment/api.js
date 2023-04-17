@@ -71,9 +71,27 @@ router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
 
 });
 // //Update
-router.post('/update', async (req, res) => {
+router.post('/draftComment', async (req, res) => {
   req=req.body
-  await Comment.findByIdAndUpdate(req.commentId,{comment:req.comment},{new:true})
+  await Comment.findByIdAndUpdate(req.commentId,{comment:req.comment,status:'draft'},{new:true})
+      .then((comment)=>{
+        console.log('revised comment',comment)
+        return res.status(201).json({
+          message: 'Comment saved',
+          success: true
+        });
+      })
+      .catch((err)=>{
+        return res.status(500).json({
+          message: `Comment creation unsuccessful: ${err}`,
+          success: false
+        });
+      })
+
+});
+router.post('/approveComment', async (req, res) => {
+  req=req.body
+  await Comment.findByIdAndUpdate(req.commentId,{status:'approved'},{new:true})
       .then((comment)=>{
         console.log('revised comment',comment)
         return res.status(201).json({
