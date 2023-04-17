@@ -13,7 +13,7 @@ const Comment = (props) => {
 
   useEffect(()=>{
     console.log('comment recieved',props.comment)
-    commentContent.current.value = props.comment.comment
+    commentContent.current.value = props.comment.hasOwnProperty('comment')?props.comment.comment:''
   },[])
 
   const onSubmit = (commentId, e) => {
