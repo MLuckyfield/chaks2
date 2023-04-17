@@ -12,7 +12,7 @@ const Comment = (props) => {
   const [user,setUser]=useState(getCurrentUser())
 
   useEffect(()=>{
-    console.log('comment recieved',props.comment, commentContent)
+    console.log('comment recieved',props.comment.hasOwnProperty('comment').props.comment.comment, commentContent)
   },[])
 
   const onSubmit = (commentId, e) => {
