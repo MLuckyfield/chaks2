@@ -7,9 +7,14 @@ import * as constants from '../../utilities/constants'
 const Comment = (props) => {
 
   const [comment, setcomment] = useState(props.comment);
-  const commentContent = useRef(props.comment.comment);
+  const commentContent = useRef();
   const [active,setActive]=useState(true)
   const [user,setUser]=useState(getCurrentUser())
+
+  useEffect(()=>{
+    console.log('comment recieved',props.comment)
+    commentContent.current.value = props.comment.comment
+  },[])
 
   const onSubmit = (commentId, e) => {
     e.preventDefault();
