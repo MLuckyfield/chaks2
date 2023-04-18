@@ -34,13 +34,45 @@ const TestProp = () => {
   //useselector
   const user = useSelector(state => state.userReducer)
   const [hours,setHours] = useState(4)
+  // const [estimate,setEstimate] = useState(hours*2000)
   return (
     <div class='col border'>
-      <div class='col form'>
+      <div class='calculator'>
         <h1>Calculator</h1>
-        <input onChange={(e)=>setHours(e.target.value)} value={hours} type='number' min='4'></input>
-        <div>{hours*2000}</div>
+        <div class='fixed-row'>
+          <div>In 1 month</div>
+          <input onChange={(e)=>setHours(e.target.value)} value={hours} type='number' min='4'></input>
+          <div>hours</div>
+        </div>
+        <div class='row'>Based Cost: {hours*2000}</div>
+        {hours>12?<div>{hours*2000*0.1}</div>:
+          hours>8?<div>{hours*2000*0.5}</div>:
+            'get discounts from 8 hours or more!'}
+        <div class='price_display'>{hours*2000}</div>
+        <div class='row'>Students get an extra 10% off!</div>
+        <div class='row'>Earn 1000yen credit per referall (sign up over 4 hours)!</div>
       </div>
+      <div class="scrollable">
+        <table class='comparison'>
+          <thead>
+            <tr>
+              <th>DATA1</th>
+              <th>DATA2</th>
+              <th>DATA3</th>
+              <th>DATA4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Some values</td>
+              <td>Some values</td>
+              <td>Some values</td>
+              <td>Some values</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
         <h1>ACCOUNT ({user.user.first})</h1>
         {account?
           <div class='row'>
