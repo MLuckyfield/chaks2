@@ -1,9 +1,9 @@
 //teacher profiles
-import shunsuke from '../../shunsuke.jpg'
-import vincent from '../../vincent.jpg'
-import radka from '../../radka.jpg'
-import cedric from '../../cedric.jpg'
-import bre from '../../bre.jpg'
+import shunsuke from '../shunsuke.jpg'
+import vincent from '../vincent.jpg'
+import radka from '../radka.jpg'
+import cedric from '../cedric.jpg'
+import bre from '../bre.jpg'
 export const PROFILES = {
         _62fb3ed3bc7766179393b277:vincent,
         _63882dbd8a0031a501d54140:radka,
