@@ -80,7 +80,7 @@ app.disable('x-powered-by');
 //app.use('/exercises',exercisesRouter);
 //app.use('/users',usersRouter);
 
-app.use('/user',require('./models/user/apiv2'));
+app.use('/user',require('./models/user/api'));
 app.use('/comment',auth.auth,require('./models/comment/api'));
 app.use('/booking',auth.auth,require('./models/booking/api'));
 app.use('/event_info',require('./models/event/api'));
