@@ -68,9 +68,9 @@ const Comment = (props) => {
           {active?<button type="submit" class="solid-first">Comment</button>:'Please wait... (manually refresh after 5 seconds)'}
           </form>:'Feedback in progress - please check within 24 hours!'
         )}</div>
-        <div class='fixed-row'>
-          <div class='w20'><img class='avatar' src={constants.PROFILES[`_${comment.author._id}`]}></img></div>
-          <div class='w80'>{comment.author.first} {comment.author.last}</div>
+        <div class="chip">
+          <img src={constants.PROFILES[`_${comment.author._id}`]} alt="Person" width="96" height="96">
+          {comment.author.first} {comment.author.last}
         </div>
         <div class=''>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
         {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?<button onClick={(e)=>approveComment(comment._id,e)} class="solid-first">Approve</button>:''}
