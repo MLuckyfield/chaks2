@@ -55,26 +55,14 @@ const Comment = (props) => {
   return(
     <div class='col feedback'>
         <div class='col'>
-          {comment.status=='approved'?comment.comment:(
-            checkPermission(user.role,constants.TEACHER)?
-            <form onSubmit={(e)=>draftComment(comment._id,e)} style={{width:'80%'}}>
-            <h2>New Comment</h2>
-            <h3>{comment.status}</h3>
-            <div>
-              <textarea ref={commentContent} type="text" class="form-control" placeholder="Comment: make sure to include 1) encouragement (1+ things they did well) 2) key topics you discussed 3) improvement points/English things you explained" required/>
-            </div>
-            <div>
-              <input type="text" class="form-control" placeholder={`${props.student.first} ${props.student.last}`} disabled/>
-            </div>
-            {active?<button type="submit" class="solid-first">Comment</button>:'Please wait... (manually refresh after 5 seconds)'}
-            </form>:'Feedback in progress - please check within 24 hours!'
-          )}
+          {comment.status=='approved'?comment.comment:'Feedback in progress - please check within 24 hours!'
+          }
         </div>
         <div class="chip">
           <img src={constants.PROFILES[`_${comment.author._id}`]} alt="Person" width="96" height="96"></img>
           {comment.author.first} {comment.author.last}
+          <div style={{fontSize:'0.8em'}}>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
         </div>
-        <div class=''>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
         {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?<button onClick={(e)=>approveComment(comment._id,e)} class="solid-first">Approve</button>:''}
     </div>
 )
