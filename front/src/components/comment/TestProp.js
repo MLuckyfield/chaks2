@@ -45,11 +45,11 @@ const TestProp = () => {
           <div>hours</div>
         </div>
         <div class='row'>Based Cost: {hours*2000}</div>
-        {hours>12?<div class='row'>-{hours*2000*0.1} Over 12 hour discount (10%)</div>:
-          hours>8?<div class='row'>-{hours*2000*0.05} Over 8 hour discount (5%)</div>:
+        {hours>=12?<div class='row'>-{hours*2000*0.1} Over 12 hour discount (10%)</div>:
+          hours>=8?<div class='row'>-{hours*2000*0.05} Over 8 hour discount (5%)</div>:
             'get discounts from 8 hours or more!'}
-        {hours>12?<div class='price_display'>{hours*2000*0.9}</div>:
-          hours>8?<div class='price_display'>{hours*2000*0.95}</div>:
+        {hours>=12?<div class='price_display'>{hours*2000*0.9}</div>:
+          hours>=8?<div class='price_display'>{hours*2000*0.95}</div>:
                   <div class='price_display'>{hours*2000}</div>}
         <div class='row'>Students get an extra 10% off!</div>
         <div class='row'>Earn 1000yen credit per referall (sign up over 4 hours)!</div>

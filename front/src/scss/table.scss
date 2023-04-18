@@ -7,7 +7,7 @@
     position: sticky;
     left: 0;
     background: white;
-    
+
   }
 
   tr:nth-child(odd) td {
@@ -23,7 +23,7 @@ table {
   display:block;
   height:80%;
 	width:80%;
-	border:1px solid grey;
+	// border:1px solid grey;
 }
 .cell_highlight{
   background:lightgrey;
