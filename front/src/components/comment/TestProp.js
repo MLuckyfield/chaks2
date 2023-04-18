@@ -39,7 +39,7 @@ const TestProp = () => {
       <div class='col form'>
         <h1>Calculator</h1>
         <input ref={calculator} type='number' min='4'></input>
-        <div>{cal.current.value*2000}</div>
+        <div>{calculator.current.value*2000}</div>
       </div>
         <h1>ACCOUNT ({user.user.first})</h1>
         {account?
