@@ -3,6 +3,7 @@ import shunsuke from '../shunsuke.jpg'
 import vincent from '../vincent.jpg'
 import radka from '../radka.jpg'
 import cedric from '../cedric.jpg'
+import matt from '../matt.jpg'
 import bre from '../bre.jpg'
 export const PROFILES = {
         _62fb3ed3bc7766179393b277:vincent,
