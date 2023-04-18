@@ -3,7 +3,7 @@
 }
 
 .comparison{
-  tr>th:first-child,tr>td:first-child {
+  tr>th:first-child,tr>th:nth-child(2),tr>td:first-child,tr>td:nth-child(2) {
     position: sticky;
     left: 0;
     background: white;

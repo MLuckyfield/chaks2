@@ -44,10 +44,16 @@ const TestProp = () => {
           <input onChange={(e)=>setHours(e.target.value)} value={hours} type='number' min='4'></input>
           <div>hours</div>
         </div>
-        <div class='row'>Based Cost: {hours*2000}</div>
-        {hours>=12?<div class='row'>-{hours*2000*0.1} Over 12 hour discount (10%)</div>:
-          hours>=8?<div class='row'>-{hours*2000*0.05} Over 8 hour discount (5%)</div>:
-            'get discounts from 8 hours or more!'}
+        <table>
+          <tr>
+              <td>{hours*2000}</td><td>Base Cost</td>
+          </tr>
+          <tr>
+          {hours>=12?<tr><td>-{hours*2000*0.1}</td><td>Over 12 hour discount (10%)</td></tr>:
+            hours>=8?<tr><td>-{hours*2000*0.05}</td><td>Over 8 hour discount (5%)</td></tr>:
+              'get discounts from 8 hours or more!'}
+          </tr>
+        </table>
         {hours>=12?<div class='price_display'>{hours*2000*0.9}</div>:
           hours>=8?<div class='price_display'>{hours*2000*0.95}</div>:
                   <div class='price_display'>{hours*2000}</div>}
