@@ -120,7 +120,7 @@ router.get('/all', async (req, res) => {
 
 router.get('/getInSession', auth.permission(['manager']),async (req, res) => {
   console.log(req.query)
-  let data = await Comment.find({comment:{'$exists':false}}).populate('author').populate('student')
+  let data = await Comment.find({status:{'$ne':'approved'}}).populate('author').populate('student')
   return res.status(201).json({
     data: data,
     message: 'Comment saved',
