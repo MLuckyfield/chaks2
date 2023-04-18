@@ -269,7 +269,7 @@ const email = require('../../services/email')
                   else{unpaid++}
                 }
       //3. update with new points and notify any unpaid amount
-                User.findByIdAndUpdate(req.filter,{'$set':{points:temp}},{new:true})
+                User.findByIdAndUpdate(req.student,{'$set':{points:temp}},{new:true})
                   .then((user)=>{
                     socket.endSession(session)
                     return res.status(201).json({
