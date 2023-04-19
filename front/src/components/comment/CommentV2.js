@@ -55,7 +55,7 @@ const Comment = (props) => {
   return(
     <div class='col feedback'>
         <div class='col'>
-          {comment.status=='approved'?comment.comment:(
+          {comment.status!='approved'?(
             checkPermission(user.role,constants.TEACHER)?
             <form onSubmit={(e)=>draftComment(comment._id,e)} style={{width:'80%'}}>
             <h2>New Comment</h2>
@@ -68,7 +68,7 @@ const Comment = (props) => {
             </div>
             {active?<button type="submit" class="solid-first">Comment</button>:'Please wait... (manually refresh after 5 seconds)'}
             </form>:'Feedback in progress - please check within 24 hours!'
-          )}
+          ):comment.comment}
         </div>
         <div class="chip">
           <img src={constants.PROFILES[`_${comment.author._id}`]} alt="Person" width="96" height="96"></img>

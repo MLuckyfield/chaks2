@@ -147,7 +147,7 @@ const Dash = ()=>{
             <Table name={moment().month(month-1).format('MMMM')} api='/user/all' filter={{role:'user',createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -comments -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
         </div>
         </div>
-        <Table name='Teachers' api='/user/all' filter={{role: 'teacher'}} fields="-__v -students -fluency -online_schedule -online_slots -progress -goals -comments -tags -source -password -createdAt -updatedAt -points -active -statistics -plan -reward -subscriptions"/>
+        <Table name='Teachers' api='/user/all' filter={{role: 'teacher',active:{'$ne':false}} fields="-__v -segment -students -fluency -online_schedule -online_slots -progress -goals -comments -tags -source -password -createdAt -updatedAt -points -active -statistics -plan -reward -subscriptions"/>
 
         {display?<StudentTable/>:<div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();setDisplay(true)}}>Emergency Show All comments</div>}
 

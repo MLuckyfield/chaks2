@@ -1,3 +1,5 @@
+
+//scrollable sales table with frozen columns
 .scrollable {
   overflow-x: auto;
 }
@@ -5,7 +7,7 @@
 .comparison{
   tr>th:first-child,tr>th:nth-child(2),tr>td:first-child,tr>td:nth-child(2) {
     position: sticky;
-    left: 0;
+    // left: 0;
     background: white;
 
   }
@@ -18,7 +20,11 @@
      background: lightgrey;
   }
 }
-
+//price caluation Table
+table.price_display{
+  font-size: 1em;
+}
+//generic table
 table {
   display:block;
   height:80%;
