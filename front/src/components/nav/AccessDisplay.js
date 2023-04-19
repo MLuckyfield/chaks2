@@ -56,9 +56,8 @@ import GoogleMapReact from 'google-map-react'
           <LocationPin lat={location.lat} lng={location.lng} text='ChatShack'/>
       </GoogleMapReact>:'loading'}
   </div>
-  )
-
-  }
+  )}
+  
   const LocationPin=({text})=>{
   return <div class='map-marker'><span class='material-icons'>location_on</span></div>
   }
