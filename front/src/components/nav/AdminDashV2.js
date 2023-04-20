@@ -11,9 +11,9 @@ import {axios} from "../../utilities/axios";
 import moment from "moment"
 import {endSession} from '../../utilities/helpers'
 import {useSelector,useDispatch} from 'react-redux'
+import actions from "../../utilities/actions";
 
 const socket = io();
-const dispatch = useDispatch()
 
 const Admin = () => {
 
@@ -50,6 +50,7 @@ const SessionTable = ()=>{
     }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
   })
   let session = useSelector(state => state.userReducer)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const updateSession = (comment)=>{
