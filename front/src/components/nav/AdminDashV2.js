@@ -38,7 +38,7 @@ const Admin = () => {
 
 }
 
-const StaffTable = ()=>{
+const SessionTable = ()=>{
   const [comments, setComments] = useState();
   const [source,setSource] =useState()
   const [target, setTarget]=useState(()=>{
@@ -56,7 +56,7 @@ const StaffTable = ()=>{
       }))
     })
     socket.on('endSession',(comment)=>{
-      console.log('endSession triggered AdminDash')
+      console.log('endSession triggered AdminDash',comments,comment)
       setComments(comments.map(x=>{
         if(x.student._id!==comment.student){console.log('no match');return x}
         return comment
@@ -133,7 +133,7 @@ const Dash = ()=>{
   }else if (user.role=='manager'){
     return(
       <div>
-        <StaffTable/>
+        <SessionTable/>
         <div class='col border'>
           <h2>Activity</h2>
           <div class='up_row' style={{margin:'0% !important'}}>
