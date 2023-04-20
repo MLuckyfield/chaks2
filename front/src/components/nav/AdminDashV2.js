@@ -13,6 +13,7 @@ import {endSession} from '../../utilities/helpers'
 import {useSelector,useDispatch} from 'react-redux'
 
 const socket = io();
+const dispatch = useDispatch()
 
 const Admin = () => {
 
@@ -49,7 +50,7 @@ const SessionTable = ()=>{
     }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
   })
   let session = useSelector(state => state.userReducer)
-  
+
   useEffect(() => {
     const updateSession = (comment)=>{
       console.log('unknown',session)
