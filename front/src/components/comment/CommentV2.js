@@ -55,7 +55,7 @@ const Comment = (props) => {
   return(
     <div class='col feedback'>
         <div class='col'>
-          {comment.status!='approved'?(
+          {comment.status=='approved'?(
             checkPermission(user.role,constants.TEACHER)?
             <form onSubmit={(e)=>draftComment(comment._id,e)} style={{width:'80%'}}>
             <h2>New Comment</h2>
