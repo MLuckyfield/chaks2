@@ -48,14 +48,16 @@ const SessionTable = ()=>{
       return JSON.parse(localStorage.getItem('student'))
     }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
   })
-
+  let session = useSelector(state => state.userReducer)
+  
   useEffect(() => {
     const updateSession = (comment)=>{
-      console.log('unknown',target)
-      setComments(...comments.map(x=>{
+      console.log('unknown',session)
+      dispatch(action.updateInSession(session.inSession.map(x=>{
         if(x.student._id!==comment.student){console.log('no match');return x}
         return comment
-      }))
+      })))
+
     }
     socket.on('startSession',(comment)=>{
       console.log('test access',target,comments)
@@ -68,8 +70,8 @@ const SessionTable = ()=>{
     axios.get('comment/getInSession')
       .then((result)=>{
         result = result.data.data
-         setComments(result)
-         // dispatch(action.updateInSession(result))
+         // setComments(result)
+         dispatch(action.updateInSession(result))
 
       })
       .catch(error=>console.log('From sendTo teacher:',error))
