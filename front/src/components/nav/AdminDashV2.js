@@ -11,7 +11,7 @@ import {axios} from "../../utilities/axios";
 import moment from "moment"
 import {endSession} from '../../utilities/helpers'
 import {useSelector,useDispatch} from 'react-redux'
-import actions from "../../utilities/actions";
+import action from "../../utilities/actions";
 
 const socket = io();
 
