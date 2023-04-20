@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import {axios} from "../../utilities/axios";
 import Table from '../utilities/table'
 import Navbar from './Navbar'
-import StudentComments from '../user/StudentComments'
+import StudentComments from '../user/StudentCommentsv2'
 // import { useEffect, useState} from 'react';
 import { Switch,BrowserRouter as Router, Route} from 'react-router-dom';
 import * as PusherPushNotifications from "@pusher/push-notifications-web";
