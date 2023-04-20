@@ -4,8 +4,8 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Redirect } from 'react-router'
 import {axios} from "./utilities/axios";
 //testing V2
-import AdminDash from './components/nav/AdminDash'
-import StudentComments from './components/user/StudentComments'
+import AdminDash from './components/nav/AdminDashV2'
+import StudentComments from './components/user/StudentCommentsv2'
 
 //import components
 import Login from './components/user/Login'
@@ -480,7 +480,7 @@ const Front = ()=>{
                             <h2>MATT</h2>
                             <h3>CO-FOUNDER</h3>
                             <span class='subtitle'> Research, Product, Branding, Finance, HR, IT</span>
-                            Born in Canada. Masters degree in Business. Went to 11 schools within 12 years in 5 countries. Has too many hobbies & interests - ask me!
+                            Born in Canada. MBA. Went to 11 schools within 12 years in 5 countries. Has too many hobbies & interests - ask me!
                         </div>
                     </div>
                     <div class='up_row center'>
