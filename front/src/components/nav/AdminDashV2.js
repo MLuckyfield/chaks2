@@ -49,16 +49,15 @@ const SessionTable = ()=>{
       return JSON.parse(localStorage.getItem('student'))
     }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
   })
-  let session = useSelector(state => state.userReducer)
-  const dispatch = useDispatch()
 
   useEffect(() => {
     const updateSession = (comment)=>{
-      console.log('unknown',session)
-      dispatch(action.updateInSession(session.inSession.map(x=>{
-        if(x.student._id!==comment.student){console.log('no match');return x}
-        return comment
-      })))
+      window.location.reload()
+      // console.log('unknown',session)
+      // dispatch(action.updateInSession(session.inSession.map(x=>{
+      //   if(x.student._id!==comment.student){console.log('no match');return x}
+      //   return comment
+      // })))
 
     }
     socket.on('startSession',(comment)=>{
