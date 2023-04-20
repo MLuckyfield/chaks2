@@ -1,12 +1,16 @@
 const setCurrentUser = (user) =>{
-  console.log('action activated')
-
   return {
     type: "setCurrentUser",
     payload: user
   }
 }
 
+const updateInSession = (session) =>{
+  return {
+    type: "updateInSession",
+    payload: session
+  }
+}
 module.exports = {
-  setCurrentUser
+  setCurrentUser,updateInSession
 }

@@ -10,6 +10,7 @@ import {io} from 'socket.io-client';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
 import {endSession} from '../../utilities/helpers'
+import {useSelector,useDispatch} from 'react-redux'
 
 const socket = io();
 
@@ -38,8 +39,8 @@ const Admin = () => {
 
 }
 
-const SessionTable = (props)=>{
-  const [comments, setComments] = useState(props.comments);
+const SessionTable = ()=>{
+  const [comments, setComments] = useState();
   const [source,setSource] =useState()
   const [target, setTarget]=useState(()=>{
     if (localStorage.getItem('student')){
@@ -47,25 +48,27 @@ const SessionTable = (props)=>{
       return JSON.parse(localStorage.getItem('student'))
     }else{setSource('user');return JSON.parse(localStorage.getItem('user'))}
   })
+  const updateSession = (comment)=>{
+    setComments(comments.map(x=>{
+      if(x.student._id!==comment.student){console.log('no match');return x}
+      return comment
+    }))
+  }
   useEffect(() => {
     socket.on('startSession',(comment)=>{
       console.log('test access',target,comments)
-      setComments(comments.map(x=>{
-        if(x.student._id!==comment.student){console.log('no match');return x}
-        return comment
-      }))
+      updateSession(comment)
     })
     socket.on('endSession',(comment)=>{
       console.log('endSession triggered AdminDash',comments,comment)
-      setComments(comments.map(x=>{
-        if(x.student._id!==comment.student){console.log('no match');return x}
-        return comment
-      }))
+      updateSession(comment)
     })
     axios.get('comment/getInSession')
       .then((result)=>{
         result = result.data.data
          setComments(result)
+         // dispatch(action.updateInSession(result))
+
       })
       .catch(error=>console.log('From sendTo teacher:',error))
   },[])
@@ -117,16 +120,7 @@ const Dash = ()=>{
   const [display,setDisplay]=useState(false)
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
-  const [comments,setComments]=useState()
-  useEffect(()=>{
-    if(user.role=='manager'){
-      axios.get('comment/getInSession')
-        .then((result)=>{
-          result = result.data.data
-           setComments(result)
-        })
-    }
-  },[])
+
   if (user.role=='user'){
     return(
       <div>
@@ -143,7 +137,7 @@ const Dash = ()=>{
   }else if (user.role=='manager'){
     return(
       <div>
-        <SessionTable comments={comments}/>
+        <SessionTable/>
         <div class='col border'>
           <h2>Activity</h2>
           <div class='up_row' style={{margin:'0% !important'}}>

@@ -8,6 +8,12 @@ const userReducer = (state = {user:''}, action) =>{
         ...state,
         user: action.payload
       };
+      case "updateInSession":
+        console.log('updateInSession activated')
+        return {
+          ...state,
+          inSession: action.payload
+        };
 
     default:
       return state;
