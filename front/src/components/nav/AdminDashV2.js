@@ -71,8 +71,8 @@ const SessionTable = ()=>{
     axios.get('comment/getInSession')
       .then((result)=>{
         result = result.data.data
-         // setComments(result)
-         dispatch(action.updateInSession(result))
+         setComments(result)
+         // dispatch(action.updateInSession(result))
 
       })
       .catch(error=>console.log('From sendTo teacher:',error))
