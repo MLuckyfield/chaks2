@@ -39,7 +39,11 @@ const Admin = () => {
 }
 
 const SessionTable = ()=>{
-  const [comments, setComments] = useState();
+  const [comments, setComments] = useState(axios.get('comment/getInSession')
+    .then((result)=>{
+      result = result.data.data
+       return result
+    }));
   const [source,setSource] =useState()
   const [target, setTarget]=useState(()=>{
     if (localStorage.getItem('student')){
