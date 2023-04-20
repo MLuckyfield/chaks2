@@ -38,12 +38,8 @@ const Admin = () => {
 
 }
 
-const SessionTable = ()=>{
-  const [comments, setComments] = useState(axios.get('comment/getInSession')
-    .then((result)=>{
-      result = result.data.data
-       return result
-    }));
+const SessionTable = (props)=>{
+  const [comments, setComments] = useState(props.comments);
   const [source,setSource] =useState()
   const [target, setTarget]=useState(()=>{
     if (localStorage.getItem('student')){
@@ -121,6 +117,16 @@ const Dash = ()=>{
   const [display,setDisplay]=useState(false)
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
+  const [comments,setComments]=useState()
+  useEffect(()=>{
+    if(user.role=='manager'){
+      axios.get('comment/getInSession')
+        .then((result)=>{
+          result = result.data.data
+           setComments(result)
+        })
+    }
+  },[])
   if (user.role=='user'){
     return(
       <div>
@@ -137,7 +143,7 @@ const Dash = ()=>{
   }else if (user.role=='manager'){
     return(
       <div>
-        <SessionTable/>
+        <SessionTable comments={comments}/>
         <div class='col border'>
           <h2>Activity</h2>
           <div class='up_row' style={{margin:'0% !important'}}>
