@@ -401,7 +401,7 @@ const email = require('../../services/email')
       });
     })
     //DB management cron
-cron.schedule('*/15 * * * *',()=>{
+cron.schedule('*/5 * * * *',()=>{
   // Course.find().then((courses)=>{
   //   courses.forEach((course,i)=>{
   //     let item = {
@@ -416,7 +416,7 @@ cron.schedule('*/15 * * * *',()=>{
   //     })
   //   })
   // })
-  Comment.updateMany({},{status:'approved'}).then((console.log('comments approved')))
+  Comment.updateMany({},{status:'approved',end:new Date()}).then((console.log('comments approved')))
   // Comment.updateMany({'$ne':{'$exists':{}}},{status:'approved'}).then((console.log('comments approved')))
 })
     //rewards status
