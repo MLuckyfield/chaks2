@@ -45,17 +45,22 @@ import {metaTags} from './components/seo'
 import './scss/main.scss'
 import environment from './online_environment.jpg'
 import banner from './banner.jpg'
-import shunsuke from './shunsuke.jpg'
 import event_game from './event_game.jpg'
-import matt from './matt.jpg'
-import vincent from './vincent.jpg'
-import radka from './radka.jpg'
-import cedric from './cedric.jpg'
-import bre from './bre.jpg'
 import blog_header from './blog_header.jpg'
 import campaign_header from './campaign_header.jpg'
 import discount from './discount.jpg'
 import campaign from './images/sakura.jpg'
+//teacher profiles
+import shunsuke from './images/staff/shunsuke.jpg'
+import vincent from './images/staff/vincent.jpg'
+import radka from './images/staff/radka.jpg'
+import cedric from './images/staff/cedric.jpg'
+import matt from './images/staff/matt.jpg'
+import liza from './images/staff/liza.jpg'
+import mimmi from './images/staff/mimmi.jpg'
+import bre from './images/staff/bre.jpg'
+import momo from './images/staff/momo.jpg'
+import futaba from './images/staff/futaba.jpg'
 
 import {QrReader} from 'react-qr-reader'
 import QRCode from 'react-qr-code'
@@ -509,6 +514,20 @@ const Front = ()=>{
                             <h2>CEDRIC</h2>
                             <h3>INSTRUCTOR</h3>
                             From Australia. 8 years teaching experience. Enjoys sports, training, and music. Let's have a great time.
+                        </div>
+                    </div>
+                    <div class='up_row center'>
+                        <div class='col slim'>
+                            <img class='avatar' src={liza}></img>
+                            <h2>LIZA</h2>
+                            <h3>INSTRUCTOR</h3>
+                            Born in the US. Enjoys taking walks and playing Animal Crossing. Lets have fun together.
+                        </div>
+                        <div class='col slim'>
+                            <img class='avatar' src={mimmi}></img>
+                            <h2>MIMMI</h2>
+                            <h3>INSTRUCTOR</h3>
+                            From California. Graduated with an English Literature degree. Enjoys traveling and exploring different countries and cultures. Likes hiking and spending time outdoors.
                         </div>
                     </div>
                 </div>
