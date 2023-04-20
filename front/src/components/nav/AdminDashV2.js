@@ -51,6 +51,7 @@ const SessionTable = ()=>{
 
   useEffect(() => {
     const updateSession = (comment)=>{
+      console.log('unknown',target)
       setComments(...comments.map(x=>{
         if(x.student._id!==comment.student){console.log('no match');return x}
         return comment
