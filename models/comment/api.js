@@ -8,70 +8,75 @@ const request = require('request')
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 //Create
-router.post('/new', auth.permission(['teacher','manager']),async (req, res) => {
+router.post('/new', auth.permission(['manager']),async (req, res) => {
   req = req.body
   // console.log('recieved: '+JSON.stringify(req))
 
   await Comment.insertMany({
-      comment: req.comment,
-      student: req.student._id,
-      author: req.author._id
+      student: req.student,
+      author: req.author
+  }).then(()=>{
+    return res.status(201).json({
+              message: 'new comment',
+              success: true
+            });
   })
-      .then(()=>{
-        User.findOneAndUpdate({_id:req.author._id},{'$pull':{students:req.student._id}},{new:true})
-            .then((result)=>{
-              console.log('removing',req.student._id,'from',req.author._id,result)
-              Comment.find({student:req.student._id}).then((result)=>{
-                // let mailchimp_hash = encrypt(req.student.email.toLowerCase()).toString()
-                // console.log(req.student.email)
-                // console.log(encrypt(req.student.email).toString())
-                if (result.length==1){
-                  console.log('sending feedback email...')
-                  let mailchimp_hash = encrypt(req.student.email.toLowerCase()).toString()
-                  mailchimp.setConfig({
-                    apiKey: process.env.MAILCHIMP_AUTH,
-                    server: 'us9',
-                  });
-
-                  const response = mailchimp.lists.updateListMemberTags(
-                    "cb86e9b6f5",
-                    mailchimp_hash,
-                    { tags: [{ name: "finished_trial", status: "active" }] }
-                  ).then(()=>{
-                    // return res.status(201).json({
-                    //         message: `Success!`,
-                    //         success: true
-                    //       });
-                  })
-                }
-              })
-              // return res.status(201).json({
-              //   data:result,
-              //   message: 'User update',
-              //   success: true
-              // });
-            })
-            .catch((err)=>{
-              return res.status(500).json({
-                message: `User failed to update: ${err}`,
-                success: false
-              });
-            })
-        // return res.status(201).json({
-        //   message: 'Feedback uploaded!',
-        //   success: true
-        // });
-      })
-      .catch((err)=>{
-        return res.status(500).json({
-          message: `Upload failure: ${err}`,
-          success: false
-        });
-      })
+  //code to send email on first comment
+      // .then(()=>{
+      //   User.findOneAndUpdate({_id:req.author._id},{'$pull':{students:req.student._id}},{new:true})
+      //       .then((result)=>{
+      //         console.log('removing',req.student._id,'from',req.author._id,result)
+      //         Comment.find({student:req.student._id}).then((result)=>{
+      //           // let mailchimp_hash = encrypt(req.student.email.toLowerCase()).toString()
+      //           // console.log(req.student.email)
+      //           // console.log(encrypt(req.student.email).toString())
+      //           if (result.length==1){
+      //             console.log('sending feedback email...')
+      //             let mailchimp_hash = encrypt(req.student.email.toLowerCase()).toString()
+      //             mailchimp.setConfig({
+      //               apiKey: process.env.MAILCHIMP_AUTH,
+      //               server: 'us9',
+      //             });
+      //
+      //             const response = mailchimp.lists.updateListMemberTags(
+      //               "cb86e9b6f5",
+      //               mailchimp_hash,
+      //               { tags: [{ name: "finished_trial", status: "active" }] }
+      //             ).then(()=>{
+      //               // return res.status(201).json({
+      //               //         message: `Success!`,
+      //               //         success: true
+      //               //       });
+      //             })
+      //           }
+      //         })
+      //         // return res.status(201).json({
+      //         //   data:result,
+      //         //   message: 'User update',
+      //         //   success: true
+      //         // });
+      //       })
+      //       .catch((err)=>{
+      //         return res.status(500).json({
+      //           message: `User failed to update: ${err}`,
+      //           success: false
+      //         });
+      //       })
+      //   // return res.status(201).json({
+      //   //   message: 'Feedback uploaded!',
+      //   //   success: true
+      //   // });
+      // })
+      // .catch((err)=>{
+      //   return res.status(500).json({
+      //     message: `Upload failure: ${err}`,
+      //     success: false
+      //   });
+      // })
 
 });
 // //Update
-router.post('/draftComment', async (req, res) => {
+router.post('/draftComment', auth.permission(['teacher','manager']),async (req, res) => {
   req=req.body
   await Comment.findByIdAndUpdate(req.commentId,{comment:req.comment,status:'draft'},{new:true})
       .then((comment)=>{
@@ -89,7 +94,7 @@ router.post('/draftComment', async (req, res) => {
       })
 
 });
-router.post('/approveComment', async (req, res) => {
+router.post('/approveComment', auth.permission(['manager']),async (req, res) => {
   req=req.body
   await Comment.findByIdAndUpdate(req.commentId,{status:'approved'},{new:true})
       .then((comment)=>{

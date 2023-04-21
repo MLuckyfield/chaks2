@@ -93,7 +93,15 @@ const adjustPoints = (add)=>{
     })
     .catch(error=>console.log('From startSession teacher:',error))
 }
-
+const manualComment = (teacherId)=>{
+  axios.post('/comment/new',
+    {
+      student: target._id,
+      author: teacherId,
+    }).then(()=>{
+      window.location.reload()
+    })
+}
 // const onSubmit = (commentId, e) => {
 //   e.preventDefault();
 //   setActive(false)
@@ -117,6 +125,7 @@ const adjustPoints = (add)=>{
     <div class='col'>
         {user.role=='manager'?
         <div class='row border'>
+          <div class='col'>
           <Popup button={"Points"} num={1} content={
             <form class='make_blog'>
               <h2>Adjust Points</h2>
@@ -125,6 +134,18 @@ const adjustPoints = (add)=>{
                 <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();adjustPoints()}}>+</div>
               </div>
             </form>
+          }/>
+          </div>
+          <Popup button={"Add Comment"} num={3} content={
+            <div class='col'>
+              <button onClick={()=>startSession('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
+              <button onClick={()=>startSession('63882dbd8a0031a501d54140')} class='button'>Radka</button>
+              <button onClick={()=>startSession('640d4ff6470b0e234739c640')} class='button'>Liza</button>
+              <button onClick={()=>startSession('64327746ee94db5a26b715c0')} class='button'>Mimmi</button>
+              <button onClick={()=>startSession('6432522fee94db5a26b6291b')} class='button'>Momo</button>
+              <button onClick={()=>startSession('641129d948fed7fcee0cf312')} class='button'>Futaba</button>
+              <button onClick={()=>startSession('628f3e7b8981f84051396159')} class='button'>Shunsuke</button>
+            </div>
           }/>
           <div class='col'>
           {inSession?

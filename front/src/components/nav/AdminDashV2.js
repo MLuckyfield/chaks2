@@ -51,22 +51,11 @@ const SessionTable = ()=>{
   })
 
   useEffect(() => {
-    const updateSession = (comment)=>{
-      window.location.reload()
-      // console.log('unknown',session)
-      // dispatch(action.updateInSession(session.inSession.map(x=>{
-      //   if(x.student._id!==comment.student){console.log('no match');return x}
-      //   return comment
-      // })))
-
-    }
     socket.on('startSession',(comment)=>{
-      console.log('test access',target,comments)
-      updateSession(comment)
+      window.location.reload()
     })
     socket.on('endSession',(comment)=>{
-      console.log('endSession triggered AdminDash',comments,comment)
-      updateSession(comment)
+      window.location.reload()
     })
     axios.get('comment/getInSession')
       .then((result)=>{
