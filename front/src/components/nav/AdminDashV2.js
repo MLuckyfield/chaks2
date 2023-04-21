@@ -12,6 +12,7 @@ import moment from "moment"
 import {endSession} from '../../utilities/helpers'
 import {useSelector,useDispatch} from 'react-redux'
 import action from "../../utilities/actions";
+import helpers from "../../utilities/helpers";
 
 const socket = io();
 
@@ -200,9 +201,9 @@ const Booked = (props)=>{
 const Session =(props)=>{
   const [comments,setComments]=useState([])
   useEffect(() => {
-    let target = JSON.parse(localStorage.getItem('user'))._id
+    let target = helpers.getCurrentUser()._id
     console.log('getting for',target)
-    axios.get('user/session',{params:{filter:{_id: target}}})
+    axios.get('/comment/teacherSession',{params:{filter:{teacherId: target}}})
       .then((result)=>{
         result = result.data.data[0].comments
          console.log('comments retrieved: ',result)

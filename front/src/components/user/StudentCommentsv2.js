@@ -146,6 +146,7 @@ const manualComment = (teacherId)=>{
               <button onClick={()=>manualComment('628f3e7b8981f84051396159')} class='button'>Shunsuke</button>
             </div>
           }/>
+          ポイント: {target?target.points.length}}
           </div>
 
           <div class='col'>

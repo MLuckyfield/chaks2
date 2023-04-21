@@ -123,6 +123,16 @@ router.get('/all', async (req, res) => {
     success: true
   });
 });
+//Get
+router.get('/teacherSession', async (req, res) => {
+  req=req.query.filter
+  let data = await Comment.find({author:req.teacherId,status:{'$ne':'approved'}}).populate('author').populate('student')
+  return res.status(201).json({
+    data: data,
+    message: 'Comment saved',
+    success: true
+  });
+});
 
 router.get('/getInSession', auth.permission(['manager']),async (req, res) => {
   console.log(req.query)
