@@ -9,10 +9,9 @@ import * as PusherPushNotifications from "@pusher/push-notifications-web";
 import {io} from 'socket.io-client';
 import {axios} from "../../utilities/axios";
 import moment from "moment"
-import {endSession} from '../../utilities/helpers'
+import {getCurrentUser,endSession} from '../../utilities/helpers'
 import {useSelector,useDispatch} from 'react-redux'
 import action from "../../utilities/actions";
-import helpers from "../../utilities/helpers";
 
 const socket = io();
 
@@ -201,7 +200,7 @@ const Booked = (props)=>{
 const Session =(props)=>{
   const [comments,setComments]=useState([])
   useEffect(() => {
-    let target = helpers.getCurrentUser()._id
+    let target = getCurrentUser()._id
     console.log('getting for',target)
     axios.get('/comment/teacherSession',{params:{filter:{teacherId: target}}})
       .then((result)=>{
