@@ -14,7 +14,8 @@ router.post('/new', auth.permission(['manager']),async (req, res) => {
 
   await Comment.insertMany({
       student: req.student,
-      author: req.author
+      author: req.author,
+      end:new Date()
   }).then(()=>{
     return res.status(201).json({
               message: 'new comment',

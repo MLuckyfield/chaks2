@@ -135,7 +135,6 @@ const manualComment = (teacherId)=>{
               </div>
             </form>
           }/>
-          </div>
           <Popup button={"Add Comment"} num={3} content={
             <div class='col'>
               <button onClick={()=>manualComment('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
@@ -147,6 +146,8 @@ const manualComment = (teacherId)=>{
               <button onClick={()=>manualComment('628f3e7b8981f84051396159')} class='button'>Shunsuke</button>
             </div>
           }/>
+          </div>
+
           <div class='col'>
           {inSession?
             <button onClick={()=>endSession(target._id)} style={{backgroundColor:'red',width:'80%'}}>End</button>
