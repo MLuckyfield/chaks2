@@ -237,10 +237,8 @@ const Session =(props)=>{
             <tr>
               <td>{comment.student.first}</td>
               <td>{comment.student.last}</td>
-              <td><button onClick={()=>makeComment(comment.student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
-            </tr>
-            <tr>
               <td>{moment(comment.createdAt).format("HH:mm")}</td>
+              <td><button onClick={()=>makeComment(comment.student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
             </tr>
             {comment.student.goals.length>0?(
               comment.student.goals.map((goal,i)=>{
@@ -252,7 +250,7 @@ const Session =(props)=>{
                   </tr>
                 )
               })
-            ):'No goals set!'}
+            ):''}
           </table>
         )
       }):'No comments in session'}
