@@ -204,74 +204,32 @@ const Session =(props)=>{
     console.log('getting for',target)
     axios.get('/comment/teacherSession',{params:{filter:{teacherId: target}}})
       .then((result)=>{
-        result = result.data.data[0].comments
+        result = result.data.data
          console.log('comments retrieved: ',result)
          setComments(result)
       })
       .catch(error=>console.log('From sendTo teacher:',error))
-    socket.on("connect", () => {
-      console.log('front socket ready')
-      // socket.emit('sendstudent','tada')
-    });
-    socket.on(target, (id) => {
-      axios.get('user/session',{params:{filter:{_id: id}}})
-        .then((result)=>{
-          result = result.data.data[0]
-           console.log('triggered',result)
-           if(comments.length>0){
-             setComments(current=>[result,...current])
-           }else{
-             setComments([result])
-           }
-        })
-        .catch(error=>console.log('From sendTo teacher:',error))
-    });
   },[])
-  const makeComment = (item)=>{
-      localStorage.setItem('student',JSON.stringify(item))
+  const makeComment = (student)=>{
+      localStorage.setItem('student',JSON.stringify(student))
       window.location='/student';
       // setTarget(item)
       // console.log(target)
   }
 
-  const updateProgress = (e,student,goal,trigger)=>{
-      e.preventDefault()
-      let update = {'$inc':{'progress.$[el].success':1}}
-      if(trigger=='fail'){update={'$inc':{'progress.$[el].fail':1}}}
-      console.log('update progress',student,goal)
-      axios.get('user/update_goals',{params:{filter:{_id: student},data:update,find:{arrayFilters:[{'el.ref':goal}],new:true}},goal:goal})
-        .then((result)=>{
-          // result = result.data.data[0]
-           console.log('triggered',goal,result)
-        })
-        .catch(error=>console.log('From sendTo teacher:',error))
-      // setTarget(item)
-      // console.log(target)
-  }
   return (
     <div class='col'><h1>Session</h1><p></p>
-      {comments?comments.map((student,i)=>{
+      {comments?comments.map((comment,i)=>{
         return (
           <table>
             <tr>
-              <td>{student.first}</td>
-              <td>{student.last}</td>
-              <td><button onClick={()=>makeComment(student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
+              <td>{comment.student.first}</td>
+              <td>{comment.student.last}</td>
+              <td><button onClick={()=>makeComment(comment.student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
             </tr>
             <tr>
-              <td>{moment(student.statistics[0].start).format("HH:mm")}</td>
+              <td>{comment.createdAt).format("HH:mm")}</td>
             </tr>
-            {student.goals.length>0?(
-              student.goals.map((goal,i)=>{
-                return (
-                  <tr>
-                    <td>{goal.ref.name}</td>
-                    <td><button onClick={(e)=>updateProgress(e,student._id,goal.ref._id)} class='round_button' style={{background:'green'}}>+</button></td>
-                    <td><button onClick={(e)=>updateProgress(e,student._id,goal.ref._id,'fail')} class='round_button' style={{background:'red'}}>-</button></td>
-                  </tr>
-                )
-              })
-            ):'No goals set!'}
           </table>
         )
       }):'No comments in session'}
