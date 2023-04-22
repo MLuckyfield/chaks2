@@ -125,9 +125,9 @@ router.get('/all', async (req, res) => {
 });
 //Get
 router.get('/teacherSession', async (req, res) => {
-  req=req.query.filter
-  let data = await Comment.find({author:req.teacherId,status:{'$ne':'approved'}}).populate('author').populate('student')
-  console.log('found',data,'for',req.teacherId,req)
+  // req=JSON.parse(req.query.filter)
+  let data = await Comment.find(req.query.filter).populate('author').populate('student')
+  console.log('found',data,'for',req.query.filter)
   return res.status(201).json({
     data: data,
     message: 'Comment saved',

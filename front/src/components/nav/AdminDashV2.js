@@ -105,7 +105,7 @@ const SessionTable = ()=>{
   )
 }
 const StudentTable = ()=>{
-  return <Table name='comments' api='/user/all' filter={{role: 'user'}} fields="-__v -fluency -progress -online_schedule -online_slots -goals -comments -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
+  return <Table name='comments' api='/user/all' filter={{role: 'user'}} fields="-__v -fluency -students -progress -online_schedule -online_slots -goals -comments -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
 }
 // <Table name={'Bookings'} api='/booking/all' filter={{status:'reserved',date:{$gte:new Date(`${year}/${month+1}/1`),$lte:new Date(`${year}/${month+1}/${new Date(year,month+1,0).getDate()}`)}}} fields="-student -teacher"/>
 //
@@ -132,22 +132,22 @@ const Dash = ()=>{
     return(
       <div>
         <SessionTable/>
-        <div class='col border'>
-          <h2>Activity</h2>
-          <div class='up_row' style={{margin:'0% !important'}}>
-              <Table name={'Enrolled'} api='/enrolled/all' filter={{createdAt:{$gte:new Date(`${year}/${month}/1`),$lte:new Date(`${year}/${month}/${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -course"/>
-          </div>
-        </div>
+        // <div class='col border'>
+        //   <h2>Activity</h2>
+        //   <div class='up_row' style={{margin:'0% !important'}}>
+        //       <Table name={'Enrolled'} api='/enrolled/all' filter={{createdAt:{$gte:new Date(`${year}/${month}/1`),$lte:new Date(`${year}/${month}/${new Date(year,month,0).getDate()}`)}}} fields="-__v -student -course"/>
+        //   </div>
+        // </div>
         <div class='col border'>
         <h2>New Accounts</h2>
         <div class='up_row' style={{margin:'0% !important'}}>
-            <Table name={moment().month(month-2).format('MMMM')} api='/user/all' filter={{role:'user',createdAt:{$gte:new Date(`${year}-${month-1}-1`),$lte:new Date(`${year}-${month-1}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -comments -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
-            <Table name={moment().month(month-1).format('MMMM')} api='/user/all' filter={{role:'user',createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -progress -online_schedule -online_slots -plan -reward -goals -comments -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
+            <Table name={moment().month(month-2).format('MMMM')} api='/user/all' filter={{role:'user',createdAt:{$gte:new Date(`${year}-${month-1}-1`),$lte:new Date(`${year}-${month-1}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -students -progress -online_schedule -online_slots -plan -reward -goals -comments -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
+            <Table name={moment().month(month-1).format('MMMM')} api='/user/all' filter={{role:'user',createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month}-${new Date(year,month,0).getDate()}`)}}} fields="-__v -fluency -students -progress -online_schedule -online_slots -plan -reward -goals -comments -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
         </div>
         </div>
         <Table name='Teachers' api='/user/all' filter={{role: 'teacher',active:{'$ne':false}}} fields="-__v -segment -students -fluency -online_schedule -online_slots -progress -goals -comments -tags -source -password -createdAt -updatedAt -points -active -statistics -plan -reward -subscriptions"/>
 
-        {display?<StudentTable/>:<div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();setDisplay(true)}}>Emergency Show All comments</div>}
+        {display?<StudentTable/>:<div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();setDisplay(true)}}>Emergency - Show All</div>}
 
       </div>
     )
