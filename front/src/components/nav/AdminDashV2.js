@@ -123,10 +123,9 @@ const Dash = ()=>{
     )
   }else if (user.role=='teacher')
   {
-
+    // <Booked user={user}/>
     return <div>
               <Session user={user}/>
-              // <Booked user={user}/>
            </div>
   }else if (user.role=='manager'){
     return(
@@ -202,7 +201,7 @@ const Session =(props)=>{
   useEffect(() => {
     let target = getCurrentUser()._id
     console.log('getting for',target)
-    axios.get('/comment/teacherSession',{params:{filter:{teacherId: target}}})
+    axios.get('/comment/teacherSession',{params:{filter:{author: target,status:{'$ne':'approved'}}}}})
       .then((result)=>{
         result = result.data.data
          console.log('comments retrieved: ',result)
