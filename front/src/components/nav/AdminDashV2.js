@@ -240,7 +240,7 @@ const Session =(props)=>{
               <td><button onClick={()=>makeComment(comment.student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
             </tr>
             <tr>
-              <td>{comment.createdAt.format("HH:mm")}</td>
+              <td>{moment(comment.createdAt).format("HH:mm")}</td>
             </tr>
             {comment.student.goals.length>0?(
               comment.student.goals.map((goal,i)=>{
