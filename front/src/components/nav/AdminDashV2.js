@@ -216,7 +216,20 @@ const Session =(props)=>{
       // setTarget(item)
       // console.log(target)
   }
-
+  const updateProgress = (e,student,goal,trigger)=>{
+      e.preventDefault()
+      let update = {'$inc':{'progress.$[el].success':1}}
+      if(trigger=='fail'){update={'$inc':{'progress.$[el].fail':1}}}
+      console.log('update progress',student,goal)
+      axios.get('user/update_goals',{params:{filter:{_id: student},data:update,find:{arrayFilters:[{'el.ref':goal}],new:true}},goal:goal})
+        .then((result)=>{
+          // result = result.data.data[0]
+           console.log('triggered',goal,result)
+        })
+        .catch(error=>console.log('From sendTo teacher:',error))
+      // setTarget(item)
+      // console.log(target)
+  }
   return (
     <div class='col'><h1>Session</h1><p></p>
       {comments?comments.map((comment,i)=>{
@@ -228,8 +241,19 @@ const Session =(props)=>{
               <td><button onClick={()=>makeComment(comment.student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
             </tr>
             <tr>
-              <td>{comment.createdAt).format("HH:mm")}</td>
+              <td>{comment.createdAt.format("HH:mm")}</td>
             </tr>
+            {comment.student.goals.length>0?(
+              comment.student.goals.map((goal,i)=>{
+                return (
+                  <tr>
+                    <td>{goal.ref.name}</td>
+                    <td><button onClick={(e)=>updateProgress(e,comment.student._id,goal.ref._id)} class='round_button' style={{background:'green'}}>+</button></td>
+                    <td><button onClick={(e)=>updateProgress(e,comment.student._id,goal.ref._id,'fail')} class='round_button' style={{background:'red'}}>-</button></td>
+                  </tr>
+                )
+              })
+            ):'No goals set!'}
           </table>
         )
       }):'No comments in session'}
