@@ -126,7 +126,7 @@ const Dash = ()=>{
 
     return <div>
               <Session user={user}/>
-              <Booked user={user}/>
+              // <Booked user={user}/>
            </div>
   }else if (user.role=='manager'){
     return(
