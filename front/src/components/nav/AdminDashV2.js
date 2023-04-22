@@ -201,7 +201,7 @@ const Session =(props)=>{
   useEffect(() => {
     let target = getCurrentUser()._id
     console.log('getting for',target)
-    axios.get('/comment/teacherSession',{params:{filter:{author: target,status:{'$ne':'approved'}}}})
+    axios.get('/comment/teacherSession',{params:{filter:target}})
       .then((result)=>{
         result = result.data.data
          console.log('comments retrieved: ',result)
