@@ -52,6 +52,23 @@ const Comment = (props) => {
         // setFeedback(err.response.data.message);
         });
   }
+  const reassignTeacher = (comment, e) => {
+    e.preventDefault();
+    axios.post('/comment/reassignTeacher',
+      {
+        commentId:comment._id,
+        teacherId: comment.author._id,
+      })
+      .then((res) => {
+          console.log('done')
+          // setFeedback(res.data.message);
+          window.location.reload()
+          })
+      .catch((err) => {
+        console.log(err);
+        // setFeedback(err.response.data.message);
+        });
+  }
   return(
     <div class='col feedback'>
         <div class='col'>
@@ -72,7 +89,14 @@ const Comment = (props) => {
             :'Feedback in progress - please check within 24 hours!'
           )}
         </div>
-        {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?<button onClick={(e)=>approveComment(comment._id,e)} class="solid-first">Approve</button>:''}
+        {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?
+        <div class='col'>
+          <button onClick={(e)=>approveComment(comment._id,e)} class="solid-first">Approve</button>
+        </div>:''}
+        {comment.status=='pending'&&checkPermission(user.role,constants.MANAGER)?
+        <div class='col'>
+          <button onClick={(e)=>reassignTeacher(comment,e)} class="solid-first">Reassign</button>
+        </div>:''}
         <div class="chip">
           <img src={constants.PROFILES[`_${comment.author._id}`]} alt="Person" width="96" height="96"></img>
           {comment.author.first} {comment.author.last}

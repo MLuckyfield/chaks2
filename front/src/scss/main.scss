@@ -35,6 +35,7 @@
     }
   }
 }
+
 .vertical_banner{
   text-orientation:upright;
   writing-mode:vertical-lr;
@@ -328,6 +329,16 @@ svg{
   font-size:100px;
   padding-bottom: 7%;
   color: #eebc21;
+}
+.dropdown{
+  &:hover{
+    .dropdown-content{
+      display:block;
+    }
+  }
+}
+.dropdown-content{
+  display:none;
 }
 @media (max-width:800px){
   .floating{

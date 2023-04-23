@@ -113,6 +113,24 @@ router.post('/approveComment', auth.permission(['manager']),async (req, res) => 
       })
 
 });
+router.post('/reassignTeacher', auth.permission(['manager']),async (req, res) => {
+  req=req.body
+  await Comment.findByIdAndUpdate(req.commentId,{author:req.teacherId},{new:true})
+      .then((comment)=>{
+        console.log('revised comment',comment)
+        return res.status(201).json({
+          message: 'Comment saved',
+          success: true
+        });
+      })
+      .catch((err)=>{
+        return res.status(500).json({
+          message: `Comment creation unsuccessful: ${err}`,
+          success: false
+        });
+      })
+
+});
 //Get
 router.get('/all', async (req, res) => {
   console.log(req.query)
