@@ -228,6 +228,7 @@ const PerformanceView = ()=>{
             day_sessions['day']=count
             //loop through all sessions
             data.forEach((session, i) => {
+              console.log('session',i,session)
               session.createdAt=moment.utc(session.createdAt)
               //session is for today, determine if it was repeat or trial, and add to list
               if(day_sessions.day==session.createdAt.date()){
