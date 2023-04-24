@@ -184,13 +184,15 @@ const TabContainer = ()=>{
 
   return (
     <div class='container'>
-      <div class='fixed-row'>
-        <div class='tabNav' onClick={()=>setActiveTab('ops')}>Ops</div>
-        <div class='tabNav' onClick={()=>setActiveTab('performance')}>Performance</div>
-        <div class='tabNav' onClick={()=>setActiveTab('analytics')}>Analytics</div>
-      </div>
       <div class='col'>
-        {activeTab=='ops'?<OpsView/>:''}
+        <div class='fixed-row'>
+          <div class='tabNav clickable' onClick={()=>setActiveTab('ops')}>Ops</div>
+          <div class='tabNav clickable' onClick={()=>setActiveTab('performance')}>Performance</div>
+          <div class='tabNav clickable' onClick={()=>setActiveTab('analytics')}>Analytics</div>
+        </div>
+        <div class='col'>
+          {activeTab=='ops'?<OpsView/>:''}
+        </div>
       </div>
     </div>
   )
