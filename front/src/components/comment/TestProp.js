@@ -211,45 +211,46 @@ const PerformanceView = ()=>{
 //general
   const [sessionsData,setSessionsData]=useState()
 
-  axios.get('/comment/allSessions',{params:{filter:{createdAt:{$gte:new Date(year,month,1),$lte:new Date(year,month,target.getDate())}}}})
-    .then((res) => {
-      let data = res.data.data
-      let sessions = []
-      let startingDay = new Date(year,month,1).getDay()
-      let endingDay = target.getDay()
-      let count = 1
+  useEffect(()=>{
+    axios.get('/comment/allSessions',{params:{filter:{createdAt:{$gte:new Date(year,month,1),$lte:new Date(year,month,target.getDate())}}}})
+      .then((res) => {
+        let data = res.data.data
+        let sessions = []
+        let startingDay = new Date(year,month,1).getDay()
+        let endingDay = target.getDay()
+        let count = 1
 
-      //determine number of days in month and loop through
-      for(let i=0;i<(days+startingDay+(6-endingDay));i++){
-        let day_sessions = {repeats:0,trials:0}
-        //
-        if(i<startingDay || count>target.getDate()){day_sessions['day']=' '}
-        else{
-          day_sessions['day']=count
-          //loop through all sessions
-          data.forEach((session, i) => {
-            session.createdAt=moment.utc(session.createdAt)
-            //session is for today, determine if it was repeat or trial, and add to list
-            if(day_sessions.day==session.createdAt.date()){
-              if(day_sessions.day==moment.utc(session.student.createdAt).date()){
-                day_sessions.trials++
-              }else{
-                day_sessions.repeats++
+        //determine number of days in month and loop through
+        for(let i=0;i<(days+startingDay+(6-endingDay));i++){
+          let day_sessions = {repeats:0,trials:0}
+          //
+          if(i<startingDay || count>target.getDate()){day_sessions['day']=' '}
+          else{
+            day_sessions['day']=count
+            //loop through all sessions
+            data.forEach((session, i) => {
+              session.createdAt=moment.utc(session.createdAt)
+              //session is for today, determine if it was repeat or trial, and add to list
+              if(day_sessions.day==session.createdAt.date()){
+                if(day_sessions.day==moment.utc(session.student.createdAt).date()){
+                  day_sessions.trials++
+                }else{
+                  day_sessions.repeats++
+                }
               }
-            }
-          });
-          count++
+            });
+            count++
+          }
+          sessions.push(day_sessions)
         }
-        sessions.push(day_sessions)
-      }
-      console.log('ready',sessions)
-      setSessionsData(sessions)
-    })
-    .catch((err) => {
-      console.log('calendar err',err);
-      // setFeedback(err.response.data.message);
-      });
-},[])
+        console.log('ready',sessions)
+        setSessionsData(sessions)
+      })
+      .catch((err) => {
+        console.log('calendar err',err);
+        // setFeedback(err.response.data.message);
+        });
+  })
 
   return (
     <div class='calendar'>
