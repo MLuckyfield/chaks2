@@ -218,7 +218,7 @@ const PerformanceView = ()=>{
         let startingDay = new Date(year,month,1).getDay()
         let endingDay = target.getDay()
         let count = 1
-
+        console.log('recieve data',data)
         //determine number of days in month and loop through
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           let day_sessions = {repeats:0,trials:0}
