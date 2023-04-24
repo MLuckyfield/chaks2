@@ -3,6 +3,7 @@ import {axios} from "../../utilities/axios";
 import moment from "moment"
 import {checkPermission,getCurrentUser} from '../../utilities/helpers'
 import * as constants from '../../utilities/constants'
+import Popup from '../utilities/popup'
 
 const Comment = (props) => {
 

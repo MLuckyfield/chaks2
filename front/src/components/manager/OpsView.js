@@ -1,6 +1,7 @@
 import Table from '../utilities/table'
 import SessionTable from './SessionTable'
 import moment from "moment"
+import React, { useRef, useState, useEffect } from 'react';
 
 const OpsView =()=>{
   const [display,setDisplay]=useState(false)
@@ -19,7 +20,8 @@ const OpsView =()=>{
       </div>
       <Table name='Teachers' api='/user/all' filter={{role: 'teacher',active:{'$ne':false}}} fields="-__v -segment -students -fluency -online_schedule -online_slots -progress -goals -comments -tags -source -password -createdAt -updatedAt -points -active -statistics -plan -reward -subscriptions"/>
 
-      {display?<StudentTable/>:<div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();setDisplay(true)}}>Emergency - Show All</div>}
+      {display?<Table name='comments' api='/user/all' filter={{role: 'user'}} fields="-__v -fluency -students -progress -online_schedule -online_slots -goals -comments -tags -source -password -createdAt -updatedAt -role -active -statistics -subscriptions"/>
+      :<div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();setDisplay(true)}}>Emergency - Show All</div>}
 
     </div>
   )
