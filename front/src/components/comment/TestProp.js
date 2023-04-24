@@ -3,7 +3,7 @@ import {axios} from "../../utilities/axios";
 import moment from "moment-timezone"
 import Popup from '../utilities/popup'
 import Trial from '../user/TrialRequest'
-import OpsView from '../manager/SessionTable'
+import OpsView from '../manager/OpsView'
 import instructor from '../../images/OUTPUT.jpg'
 import campaign from '../../images/sakura.jpg'
 import info from '../../output.png'
