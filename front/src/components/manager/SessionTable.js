@@ -69,3 +69,4 @@ const SessionTable = ()=>{
     </div>
   )
 }
+export default SessionTable;

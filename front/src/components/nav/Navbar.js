@@ -70,11 +70,12 @@ const Navbar = ()=>{
                 {user.role=='manager'?(<li style={{padding:'3% 3%'}}></li>):''}
                 {user.role=='manager'?(<li style={{padding:'3% 3%'}}><a href='/qr-reader'><div class='col'><span class="material-icons">qr_code_scanner</span><span style={{fontSize:'10px'}}>SCAN</span></div></a></li>):''}
                 {user.role=='manager'?(<li style={{padding:'3% 3%'}} class='dropdown'>
+                  Create
+                  </li>):''}
                   <div class='dropdown-content'>
                     <a href='/manage-blog'><div class='col'><span class="material-icons">edit</span><span style={{fontSize:'10px'}}>BLOG</span></div></a>
                     <a href='/create-event'><div class='col'><span class="material-icons">celebration</span><span style={{fontSize:'10px'}}>EVENTS</span></div></a>
                   </div>
-                  </li>):''}
                 {user.role=='user'?(<li style={{padding:'3% 3%'}}><a href='/dash'><div class='col'><span class="material-icons">home</span><span style={{fontSize:'10px'}}>HOME</span></div></a></li>):''}
                 {user.role=='user'?(<li style={{padding:'3% 3%'}}><a href='/course'><div class='col'><span class="material-icons">trending_up</span><span style={{fontSize:'10px'}}>STATS</span></div></a></li>):''}
                 {user.role?(<li style={{padding:'3% 3%'}}><a href='/private'><div class='col'><span class="material-icons">edit_calendar</span><span style={{fontSize:'10px'}}>ONLINE</span></div></a></li>):''}

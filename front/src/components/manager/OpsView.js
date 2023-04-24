@@ -24,3 +24,4 @@ const OpsView =()=>{
     </div>
   )
 }
+export default OpsView;
