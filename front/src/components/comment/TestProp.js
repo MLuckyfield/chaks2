@@ -38,6 +38,7 @@ const TestProp = () => {
   // const [estimate,setEstimate] = useState(hours*2000)
   return (
     <div class='col border'>
+    <TabContainer/>
       <div class='calculator'>
         <h1>Calculator</h1>
         <div class='fixed-row'>
