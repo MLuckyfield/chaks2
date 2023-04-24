@@ -191,12 +191,81 @@ const TabContainer = ()=>{
           <div class='tabNav clickable' onClick={()=>setActiveTab('analytics')}>Analytics</div>
         </div>
         <div class='container'>
-          {activeTab=='ops'?<OpsView/>:''}
+          {activeTab=='ops'?<OpsView/>:(
+            activeTab=='performance'?<PerformanceView/>:'Analytics'
+          )}
         </div>
       </div>
     </div>
   )
 }
 
+const PerformanceView = ()=>{
+  //calendar display inputs
+  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()})
+  const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
+  const [day,setDay]=useState(()=>{let time = new Date();return time.getDay()})
+  const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
+  const [days,setDays]=useState(()=>{let time = new Date(year,month,0);return time.getDate()})
+
+//general
+  const [sessionsData,setSessionsData]=useState()
+
+  axios.get('/comment/allSessions',{params:{filter:{createdAt:{$gte:new Date(year,month,1),$lte:new Date(year,month,target.getDate())}}}})
+    .then((res) => {
+      let data = res.data.data
+      let sessions = []
+      let startingDay = new Date(year,month,1).getDay()
+      let endingDay = target.getDay()
+      let count = 1
+
+      //determine number of days in month and loop through
+      for(let i=0;i<(days+startingDay+(6-endingDay));i++){
+        let day_sessions = {repeats:0,trials:0}
+        //
+        if(i<startingDay || count>target.getDate()){day_sessions['day']=' '}
+        else{
+          day_sessions['day']=count
+          //loop through all sessions
+          data.forEach((session, i) => {
+            session.createdAt=moment.utc(session.createdAt)
+            //session is for today, determine if it was repeat or trial, and add to list
+            if(day_sessions.day==session.createdAt.date()){
+              if(day_sessions.day==moment.utc(session.student.createdAt).date()){
+                day_sessions.trials++
+              }else{
+                day_sessions.repeats++
+              }
+            }
+          });
+          count++
+        }
+        sessions.push(day_sessions)
+      }
+      console.log('ready',sessions)
+      setSessionsData(sessions)
+    })
+    .catch((err) => {
+      console.log('calendar err',err);
+      // setFeedback(err.response.data.message);
+      });
+},[])
+
+  return (
+    <div class='calendar'>
+      <div class='labelBox'>日</div>
+      <div class='labelBox'>月</div>
+      <div class='labelBox'>火</div>
+      <div class='labelBox'>水</div>
+      <div class='labelBox'>木</div>
+      <div class='labelBox'>金</div>
+      <div class='labelBox'>土</div>
+      {sessionsData?sessionsData.map((session,i)=>{
+        return <div class='dayBox'>
+               </div>
+      }):'Loading...'}
+    </div>
+  )
+}
 
 export default TestProp;

@@ -142,6 +142,16 @@ router.get('/all', async (req, res) => {
   });
 });
 //Get
+router.get('/allSessions', async (req, res) => {
+  console.log(req.query)
+  let data = await Comment.find(req.query.filter).populate('student')
+  return res.status(201).json({
+    data: data,
+    message: 'Comment saved',
+    success: true
+  });
+});
+//Get
 router.get('/teacherSession', async (req, res) => {
   // req=JSON.parse(req.query.filter)
   let data = await Comment.find({author: req.query.filter,status:{'$ne':'approved'}}).populate('author').populate('student')
