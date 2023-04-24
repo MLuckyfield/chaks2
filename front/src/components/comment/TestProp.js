@@ -212,6 +212,7 @@ const PerformanceView = ()=>{
   const [sessionsData,setSessionsData]=useState()
 
   useEffect(()=>{
+    let target = new Date(year,month,0)
     axios.get('/comment/allSessions',{params:{filter:{createdAt:{$gte:new Date(year,month,1),$lte:new Date(year,month,target.getDate())}}}})
       .then((res) => {
         let data = res.data.data
