@@ -9,7 +9,7 @@ const OpsView =()=>{
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
 
   return(
-    <div>
+    <div class='col'>
       <SessionTable/>
       <div class='col border'>
       <h2>New Accounts</h2>

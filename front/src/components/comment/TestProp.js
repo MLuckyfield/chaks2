@@ -190,7 +190,7 @@ const TabContainer = ()=>{
           <div class='tabNav clickable' onClick={()=>setActiveTab('performance')}>Performance</div>
           <div class='tabNav clickable' onClick={()=>setActiveTab('analytics')}>Analytics</div>
         </div>
-        <div class='col'>
+        <div class='container'>
           {activeTab=='ops'?<OpsView/>:''}
         </div>
       </div>
