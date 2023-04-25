@@ -106,7 +106,7 @@ const Comment = (props) => {
             </div>
           }/>
         </div>:''}
-        <div class="chip">
+        <div class="chip">{console.log('profile',constants.PROFILES[`_${comment.author._id}`])}
           <img src={constants.PROFILES[`_${comment.author._id}`].image} alt="Person" width="96" height="96"></img>
           {comment.author.first} {comment.author.last}
         </div>
