@@ -248,7 +248,7 @@ const PerformanceView = ()=>{
         count++
         console.log(count,day_sessions)
         sessions.push(day_sessions)
-      })
+      }
       console.log('ready',sessions)
       setSessionsData(sessions)
       }
