@@ -219,6 +219,7 @@ const PerformanceView = ()=>{
         let endingDay = target.getDay()
         let count = 1
         console.log('recieve data',data)
+        console.log('days to run',days+startingDay+(6-endingDay))
         //determine number of days in month and loop through
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           let day_sessions = {repeats:0,trials:0}
@@ -267,6 +268,8 @@ const PerformanceView = ()=>{
       <div class='labelBox'>土</div>
       {sessionsData?sessionsData.map((session,i)=>{
         return <div class='dayBox'>
+                  {session.repeats}
+                  {session.trials}
                </div>
       }):'Loading...'}
     </div>
