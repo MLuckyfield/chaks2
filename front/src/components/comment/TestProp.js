@@ -213,21 +213,21 @@ const PerformanceView = ()=>{
     let target = new Date(year,month,0)
     axios.get('/comment/allSessions',{params:{filter:{createdAt:{$gte:new Date(year,month,1),$lte:new Date(year,month,target.getDate())}}}})
       .then((res) => {
-        let data = res.data.data
-        let sessions = []
-        let startingDay = new Date(year,month,1).getDay()
-        let endingDay = target.getDay()
-        let count = 1
-        console.log('recieve data',data)
-        console.log('days to run',days+startingDay+(6-endingDay))
-        //determine number of days in month and loop through
-        for(let i=0;i<(days+startingDay+(6-endingDay));i++){
-          let day_sessions = {repeats:0,trials:0}
-          //
-        //
-      }
-      console.log('ready',sessions)
-      setSessionsData(sessions)
+      //   let data = res.data.data
+      //   let sessions = []
+      //   let startingDay = new Date(year,month,1).getDay()
+      //   let endingDay = target.getDay()
+      //   let count = 1
+      //   console.log('recieve data',data)
+      //   console.log('days to run',days+startingDay+(6-endingDay))
+      //   //determine number of days in month and loop through
+      //   for(let i=0;i<(days+startingDay+(6-endingDay));i++){
+      //     let day_sessions = {repeats:0,trials:0}
+      //     //
+      //   //
+      // }
+      // console.log('ready',sessions)
+      // setSessionsData(sessions)
       }
       .catch((err) => {
         console.log('calendar err',err);
