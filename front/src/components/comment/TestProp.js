@@ -231,14 +231,14 @@ const PerformanceView = ()=>{
               console.log('session',i,session)
               session.createdAt=moment.utc(session.createdAt)
               //session is for today, determine if it was repeat or trial, and add to list
-              if(day_sessions.day==session.createdAt.date
-                session.student?
-                if(day_sessions.day==moment.utc(session.student.createdAt).date()){
-                  day_sessions.trials++
-                }else{
-                  day_sessions.repeats++
-                }
-                :day_sessions.repeats++
+              if(day_sessions.day==session.createdAt.date)
+                if(session.student){
+                  if(day_sessions.day==moment.utc(session.student.createdAt).date()){
+                    day_sessions.trials++
+                  }else{
+                    day_sessions.repeats++
+                  }
+                }else{day_sessions.repeats++}
 
               }
             });
