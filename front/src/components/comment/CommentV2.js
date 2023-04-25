@@ -100,7 +100,7 @@ const Comment = (props) => {
             <div class='col'>
               {Object.keys(constants.PROFILES).map((teacherId,i)=>{
                 if(constants.PROFILES[teacherId].active){
-                  return <button onClick={()=>reassignTeacher(teacherId.slice(1)} class='button'>{constants.PROFILES[teacherId].name}</button>
+                  return <button onClick={()=>reassignTeacher(teacherId.slice(1)) class='button'>{constants.PROFILES[teacherId].name}</button>
                 }
               })}
             </div>
@@ -111,7 +111,6 @@ const Comment = (props) => {
           {comment.author.first} {comment.author.last}
         </div>
         <div style={{fontSize:'0.8em'}}>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
-
     </div>
 )
 }
