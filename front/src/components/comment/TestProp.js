@@ -224,30 +224,7 @@ const PerformanceView = ()=>{
         for(let i=0;i<(days+startingDay+(6-endingDay));i++){
           let day_sessions = {repeats:0,trials:0}
           //
-          if(i<startingDay || count>target.getDate()){day_sessions['day']=' '}
-          else{
-            day_sessions['day']=count
-            //loop through all sessions
-            data.forEach((session, y) => {
-              // console.log('session',i,session.student)
-              session.createdAt=moment.utc(session.createdAt)
-              //session is for today, determine if it was repeat or trial, and add to list
-              if(day_sessions.day==session.createdAt.date){
-                if(session.student){
-                  if(session.student!=null){
-                    if(day_sessions.day==moment.utc(session.student.createdAt).date()){
-                      day_sessions.trials++
-                    }else{
-                      day_sessions.repeats++
-                    }
-                  }else{day_sessions.repeats++}
-                }else{day_sessions.repeats++}
-              }
-            });
-        }
-        count++
-        console.log(count,day_sessions)
-        sessions.push(day_sessions)
+        //
       }
       console.log('ready',sessions)
       setSessionsData(sessions)
