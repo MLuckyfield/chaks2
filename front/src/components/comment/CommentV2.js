@@ -99,10 +99,10 @@ const Comment = (props) => {
           <Popup button={"Reassign"} num={4} content={
             <div class='col'>
               {Object.keys(constants.PROFILES).map((teacherId,i)=>{
-                 return <button onClick={()=>reassignTeacher(teacherId.slice(1)} class='button'>{constants.PROFILES[teacherId].name}</button>
-
+                if(constants.PROFILES[teacherId].active){
+                  return <button onClick={()=>reassignTeacher(teacherId.slice(1)} class='button'>{constants.PROFILES[teacherId].name}</button>
+                }
               })}
-              
             </div>
           }/>
         </div>:''}
