@@ -70,6 +70,12 @@ const Comment = (props) => {
         // setFeedback(err.response.data.message);
         });
   }
+
+    // {Object.keys(constants.PROFILES).map((teacherId,i)=>{
+    //   if(constants.PROFILES[teacherId].active){
+    //     return <button onClick={()=>reassignTeacher(teacherId.slice(1))} class='button'>{constants.PROFILES[teacherId].name}</button>
+    //   }
+    // })}
   return(
     <div class='col feedback'>
         <div class='col'>
@@ -98,11 +104,6 @@ const Comment = (props) => {
         <div class='col'>
           <Popup button={"Reassign"} num={4} content={
             <div class='col'>
-              // {Object.keys(constants.PROFILES).map((teacherId,i)=>{
-              //   if(constants.PROFILES[teacherId].active){
-              //     return <button onClick={()=>reassignTeacher(teacherId.slice(1))} class='button'>{constants.PROFILES[teacherId].name}</button>
-              //   }
-              // })}
               <button onClick={()=>reassignTeacher('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
               <button onClick={()=>reassignTeacher('63882dbd8a0031a501d54140')} class='button'>Radka</button>
               <button onClick={()=>reassignTeacher('640d4ff6470b0e234739c640')} class='button'>Liza</button>
