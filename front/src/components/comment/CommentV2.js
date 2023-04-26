@@ -115,7 +115,7 @@ const Comment = (props) => {
           }/>
         </div>:''}
         <div class="chip">{console.log('profile',constants.PROFILES[`_${comment.author._id}`])}
-          <img src={constants.PROFILES[`_${comment.author._id}`].image} alt="Person" width="96" height="96"></img>
+          <img src={constants.PROFILES[`_${comment.author._id}`]} alt="Person" width="96" height="96"></img>
           {comment.author.first} {comment.author.last}
         </div>
         <div style={{fontSize:'0.8em'}}>{moment(comment.createdAt).format('dddd MMM-DD')}</div>
