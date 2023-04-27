@@ -18,7 +18,7 @@ const Calendar = () => {
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
   const [day,setDay]=useState(()=>{let time = new Date();return time.getDay()})
   const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
-  const [days,setDays]=useState(()=>{let time = new Date(year,month,0);return time.getDate()})
+  const [days,setDays]=useState(()=>{let time = new Date(year,month+1,0);return time.getDate()})
 
 //general
   const [bookings,setBookings]=useState()
@@ -51,7 +51,9 @@ const Calendar = () => {
         let startingDay = new Date(year,month,1).getDay()
         let endingDay = target.getDay()
         let count = 1
-        for(let i=0;i<(days+startingDay+(6-endingDay));i++){
+        console.log('recieve data',year,month,days,startingDay,endingDay)
+
+        for(let i=0;i<(days+startingDay);i++){
           let day_bookings = {bookings:[]}
           // console.log(i,year,month,target,count,startingDay,endingDay)
 //
@@ -70,7 +72,7 @@ const Calendar = () => {
           }
           bookings.push(day_bookings)
         }
-        console.log('ready',bookings)
+        // console.log('ready',bookings)
         setBookings(bookings)
       })
       .catch((err) => {
@@ -174,7 +176,6 @@ const Calendar = () => {
             return (<div class={new Date(year,month-1,item.day).getDate()>=today.getDate()?'dayBox':'dayBox inactive'}>
                     {moment(new Date(year,month-1,item.day)).format('MM Do YY')==moment(today).format('MM Do YY')?<span class='day_tag' style={{color:'white',backgroundColor:'tomato'}}>{item.day}</span>:<span class='day_tag'>{item.day}</span>}
                     {item.bookings.map((timeslot,y)=>{
-                      console.log('date is',y,timeslot._id,timeslot.date)
                       return <Lesson title={`${timeslot.teacher?timeslot.teacher.first:''}  ${displayTime(timeslot.date.hour(),timeslot.date.minute())}`} num={timeslot.date} points={user.points.length} time={displayTime(timeslot.date.hour(),timeslot.date.minute())} content={timeslot}/>
                     })}
                    </div>)

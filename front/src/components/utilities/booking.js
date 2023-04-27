@@ -26,7 +26,7 @@ const Booking = ()=>{
       e.preventDefault();
       setDisable(true)
       console.log('activating...')
-      console.log(appointment)
+      // console.log(appointment)
       axios.post('/booking/new',{
           student:student,
           teacher:appointment.teacher,
@@ -87,16 +87,16 @@ const Booking = ()=>{
                      // }
                  });
              });}
-             console.log(schedule)
+             // console.log(schedule)
                    setAvailable(schedule);
 
     }
   }
   const updateAppointment=(item)=>{
     setAppointment(available[item])
-    console.log(item)
-    console.log(available[item])
-    console.log(appointment)
+    // console.log(item)
+    // console.log(available[item])
+    // console.log(appointment)
   }
   const prepBooking=(data)=>{
       if(moment(data).format('dddd')=='Monday'){

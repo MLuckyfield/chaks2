@@ -29,7 +29,12 @@ table {
   display:block;
   height:80%;
 	width:80%;
-	// border:1px solid grey;
+  tr:first-child{
+    position: sticky;
+    background-color: lightblue;
+    color:white;
+
+  }
 }
 .cell_highlight{
   background:lightgrey;
@@ -45,7 +50,7 @@ tr{
 	padding:2% 0;
 
 	&:nth-of-type(odd) {
-		background:lighten(rgba(89,89,89,1),40%);
+		background:lighten(lightgrey,13%);
 	}
 }
 td, th {
