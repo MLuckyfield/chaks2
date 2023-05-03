@@ -10,6 +10,12 @@ textarea{
 }
 form{
   margin:0;
+  select{
+    background: white;
+  }
+  label{
+    width:20%;
+  }
   .form-group{
     // display: flex;
     // align-items: is-left;
@@ -23,18 +29,22 @@ form{
     {
       font-size:1em;
       padding-left: 5%;
-      margin: 4% 0%;
+      margin: 4%;
       height:60px;
       width: 100%;
-      border: 1px solid $five;
+      border: 1px solid lighten(lightgrey,10%);
       transition: box-shadow 0.1s ease-in-out;
       &:hover{
         box-shadow: 0 0 0 1px rgba(128,0,0,1);
-      }
-      .input:focus{
-        box-shadow: 0 0 0 1px rgba(128,0,0,1);
         outline-width: none;
       }
+      input{
+        &:focus{
+          box-shadow: 0 0 0 1px rgba(128,0,0,1);
+          outline-width: none;
+        }
+      }
+
       textarea{
         height:20vh;
       }

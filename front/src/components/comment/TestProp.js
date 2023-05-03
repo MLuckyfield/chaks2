@@ -5,6 +5,7 @@ import Popup from '../utilities/popup'
 import Trial from '../user/TrialRequest'
 import PerformanceView from '../manager/PerformanceView'
 import OpsView from '../manager/OpsView'
+import { Redirect } from 'react-router'
 import instructor from '../../images/OUTPUT.jpg'
 import campaign from '../../images/sakura.jpg'
 import info from '../../output.png'
@@ -39,7 +40,8 @@ const TestProp = () => {
   // const [estimate,setEstimate] = useState(hours*2000)
   return (
     <div class='col border'>
-    <TabContainer/>
+    <ViewTrials/>
+    <Trial/>
       <div class='calculator'>
         <h1>Calculator</h1>
         <div class='fixed-row'>
@@ -180,20 +182,45 @@ const TestProp = () => {
 
 }
 
-const TabContainer = ()=>{
-  const [activeTab,setActiveTab]=useState('ops')
+const ViewTrials = ()=>{
+  const [trials,setTrials]=useState()
+  useEffect(()=>{
+    axios.get('/booking/new_trial',{params:{filter:{trial:true}}})
+      .then((res) => {
+          setTrials(res.data.data)
+          console.log(res.data.data)
+          })
+      .catch((err) => {
+        console.log(err);
+        });
+  },[])
+  const showTrial = (e, trial)=>{
+    e.preventDefault()
+    localStorage.setItem('trial',JSON.stringify(trial))
+    window.location='/trial'
+  }
 
   return (
-    <div class='container'>
       <div class='col'>
-        <div class='fixed-row'>
-          <div class='tabNav clickable' onClick={()=>setActiveTab('ops')}>Ops</div>
-          <div class='tabNav clickable' onClick={()=>setActiveTab('performance')}>Performance</div>
-          <div class='tabNav clickable' onClick={()=>setActiveTab('analytics')}>Analytics</div>
-        </div>
-        {activeTab=='ops'?<div class='container'><OpsView/></div>:<PerformanceView/>}
+      <h1>Trials</h1>
+      <table>
+        <tr>
+          <th>First</th>
+          <th>Last</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+        {trials?trials.map((trial,i)=>{
+          return <tr>
+                    <td>{trial.first}</td>
+                    <td>{trial.last}</td>
+                    <td>{trial.status}</td>
+                    <td><button onClick={(e)=>showTrial(e,trial)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
+                 </tr>
+        }):''}
+      </table>
       </div>
-    </div>
   )
 }
 

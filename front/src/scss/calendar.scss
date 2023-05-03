@@ -10,6 +10,14 @@
     display:flex;
     flex-direction: column;
     border:1px solid #D3d3d3;
+    min-height: 50px;
+    &:hover{
+      box-shadow: 0 0 0 1px rgba(128,0,0,1);
+      outline-width: none;
+    }
+}
+.disabled{
+  background: lighten(lightgrey,15%);
 }
 .labelBox{
   @extend .dayBox;

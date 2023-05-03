@@ -17,10 +17,10 @@ const onSubmit = (e) => {
   setForm(false)
   axios.post('user/new',
     {
-      email: email.current.value,
       first:first.current.value,
-      password:password.current.value,
       last:last.current.value,
+      password:password.current.value,
+      email: email.current.value,
       segment:props.segment
     })
     .then((res) => {

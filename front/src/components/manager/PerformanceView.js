@@ -89,7 +89,7 @@ const PerformanceView = ()=>{
   return (
     <div class='col'>
       <h1>{month+1},{year}</h1>
-      (Trials: {totalTrials}| Repeats: {totalRepeats})
+      (Trials: {totalTrials} | Repeats: {totalRepeats})
       <div class='calendar'>
         <div class='labelBox'>日</div>
         <div class='labelBox'>月</div>

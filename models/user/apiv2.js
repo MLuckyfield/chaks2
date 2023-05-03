@@ -44,6 +44,19 @@ const email = require('../../services/email')
         success: false
       });}
     })
+    // router.post('/new-v2', async (req, res) => {
+    //   console.log('trial converted',req.body)
+    //   Comment.insertMany({
+    //       student: user,
+    //       author: req.teacher,
+    //       end:new Date()
+    //   }).then(()=>{
+    //     return res.status(200).json({
+    //       message:'Resetting...',
+    //       success: true
+    //     });
+    //   })
+    // });
     //user
     router.post('/new', async (req, res) => {
       req=req.body
@@ -73,6 +86,13 @@ const email = require('../../services/email')
               role: 'user'
             }).save()
                .then((user)=>{
+                 Comment.insertMany({
+                   student: user,
+                   author: req.teacher,
+                   end:new Date(),
+                   trial:true
+                 }).then(()=>{
+                   Booking.findOneAndUpdate(req.trial._id,{status:'delivered'}).then(()=>{
                      let result = auth.createToken(user)
                      // console.log(result)
                      //--MAILCHIMP
@@ -106,33 +126,6 @@ const email = require('../../services/email')
                              success: false
                            });
                            } else {
-                             /////////////////NEW UNTESTED CODE
-                             // try{
-                             //   new Booking({
-                             //     student:user,
-                             //     date: new Date(req.month,req.day,new Date().getYear()),
-                             //     trial:true,
-                             //     //online or offline or japanese flag
-                             //     role: 'user'
-                             //   }).save().then((booking)=>{
-                             //     return res.status(201).json({
-                             //       result,
-                             //       message: `Success!`,
-                             //       success: true
-                             //     });
-                             //   })
-                             // }
-                             // catch(err){
-                             //      console.log('there was a problem',err)
-                             //      return res.status(500).json({
-                             //        message: `user creation unsuccessful: ${err}`,
-                             //        success: false
-                             //      });
-                             //    }
-                              /////////////////END OF NEW UNTESTED CODE
-
-
-                             // })
                              return res.status(201).json({
                                    result,
                                    message: `Success!`,
@@ -141,7 +134,9 @@ const email = require('../../services/email')
                            }
                        });
                        // ==mialchimp finished
-                   });
+                   })
+                 })
+               });
            })
         }catch(err){
              console.log('there was a problem',err)
@@ -151,7 +146,7 @@ const email = require('../../services/email')
              });
            }
 
-           });
+ });
 
     const exists = async(email) => {
       let user = await User.findOne({email});

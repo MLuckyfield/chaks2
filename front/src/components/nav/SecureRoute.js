@@ -2,8 +2,9 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 const SecureRoute = ({ access, success, fail, japanese, ...options }) => {
 //const { user } = useAuthDataContext();
-
+// console.log(localStorage.removeItem('user'))
 let user = localStorage.getItem('user');
+// console.log('failed',user,user==undefined,typeof user)
 if(user == '' || user == null || user == undefined){
   return <Route {...options} component={fail} />;
 }else{

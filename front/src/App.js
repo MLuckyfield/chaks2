@@ -1,15 +1,15 @@
 
 import React, { useState, useEffect ,useRef} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import { Redirect } from 'react-router'
 import {axios} from "./utilities/axios";
+import { Redirect } from 'react-router'
 //testing V2
 import AdminDash from './components/nav/AdminDashV2'
 import StudentComments from './components/user/StudentCommentsv2'
 
 //import components
 import Login from './components/user/Login'
-import Signup from './components/user/Signup'
+import Signup from './components/user/TrialRequest'
 import Navbar from './components/nav/Navbar'
 import SecureRoute from './components/nav/SecureRoute'
 import AccessDisplay from './components/nav/AccessDisplay'
@@ -24,6 +24,7 @@ import Profile from './components/user/Profile'
 import Contract from './components/utilities/contract'
 import Calendar from './components/utilities/calendar'
 import Japanese_Signup from './components/user/Signup'
+import TrialView from './components/manager/TrialView'
 import google_analytics from './components/google_analytics'
 import google_ads from './components/google_ads'
 import hotjar from './components/hotjar'
@@ -136,6 +137,7 @@ const App = () => {
             <SecureRoute path="/create-event" access={['manager','admin']} success={CreateEvent} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/account" access={['user','manager']} success={Account} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/student" access={['teacher','manager','admin']} success={StudentComments} fail={()=><Redirect to='/login'/>}/>
+            <SecureRoute path="/trial" access={['manager']} success={TrialView} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/manage-blog" access={['teacher','manager','admin']} success={BlogPosts} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/manage-event" access={['manager','admin']} success={EventList} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/test" access={['manager','user']} success={TestProp} fail={()=><Redirect to='/login'/>}/>
@@ -264,7 +266,7 @@ const Front = ()=>{
       return (
         <div>
         {localStorage.getItem('user')?'':(
-          <div class='floating'><a href='#signup'>無料<br/>登録</a></div>
+          <div class='floating'><a href='#signup'>無料<br/>体験</a></div>
         )}
         <ReactPlayer
             url='https://www.youtube.com/watch?v=qgLZwUiLfAs'

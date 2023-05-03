@@ -13,19 +13,34 @@ const Booking = mongoose.model('Booking', new Schema({
   },
   date: {
     type: Date,
-    required: true,
   },
   request:{
     type:String
   },
   status:{
     type:String,
-    enum:['draft','available','reserved'],
+    enum:['draft','available','requested','reserved','delivered'],
     default:'available'
+  },
+  //trial info only
+  first:{
+    type:String
+  },
+  last:{
+    type:String
+  },
+  email:{
+    type:String
+  },
+  mobile:{
+    type:Number
   },
   trial:{
     type:Boolean,
-  }
+  },
+  segment:{
+    type:String,
+  },
 },{
   timestamps: true,
 }));

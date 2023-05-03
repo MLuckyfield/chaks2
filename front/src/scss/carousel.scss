@@ -113,6 +113,31 @@ $slides:4;
     width: 100%;
   }
 }
+.popup{
+  z-index: 100;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(169, 169, 169, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  -webkit-transition: opacity 500ms ease-in-out;
+  transition: opacity 500ms ease-in-out;
+  .modal{
+    background:white;
+    height: fit-content;
+    width: fit-content;
+    padding: 5%;
+    display: flex;
+    align-items: center;
+  }
+}
 .pop .modal {
   z-index: 2;
   opacity: 0;

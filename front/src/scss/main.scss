@@ -36,7 +36,13 @@
     }
   }
 }
-
+.successBox{
+  padding: 10%;
+  text-align: center;
+  background: lightgreen;
+  color: white;
+  border: 1px solid white;
+}
 .vertical_banner{
   text-orientation:upright;
   writing-mode:vertical-lr;

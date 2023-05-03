@@ -137,13 +137,11 @@ const manualComment = (teacherId)=>{
           }/>
           <Popup button={"Add Comment"} num={3} content={
             <div class='col'>
-              <button onClick={()=>manualComment('62fb3ed3bc7766179393b277')} class='button'>Vincent</button>
-              <button onClick={()=>manualComment('63882dbd8a0031a501d54140')} class='button'>Radka</button>
-              <button onClick={()=>manualComment('640d4ff6470b0e234739c640')} class='button'>Liza</button>
-              <button onClick={()=>manualComment('64327746ee94db5a26b715c0')} class='button'>Mimmi</button>
-              <button onClick={()=>manualComment('6432522fee94db5a26b6291b')} class='button'>Momo</button>
-              <button onClick={()=>manualComment('641129d948fed7fcee0cf312')} class='button'>Futaba</button>
-              <button onClick={()=>manualComment('628f3e7b8981f84051396159')} class='button'>Shunsuke</button>
+              {Object.entries(constants.PROFILES).map((teacher, i) => {
+                if(teacher[1].active){
+                  return <button onClick={()=>manualComment(teacher[0].substring(1))} class='button'>{teacher[1].name}</button>
+                }
+              })}
             </div>
           }/>
           ポイント: {target.hasOwnProperty('points')?target.points.length:"Load Error. We're fixing it now!"}

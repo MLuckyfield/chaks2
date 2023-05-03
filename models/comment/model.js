@@ -26,6 +26,9 @@ const Comment = mongoose.model('Comment', new Schema({
   },
   end:{
     type:Date
+  },
+  trial:{
+    type:Boolean
   }
 },{
   timestamps: true,

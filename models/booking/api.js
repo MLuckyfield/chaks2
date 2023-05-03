@@ -7,12 +7,39 @@ const email = require('../../services/email')
 const cron = require('node-cron')
 const moment = require ('moment-timezone')
 
-
-router.post('/trial_booking', async (req,res)=>{
+//trial endpoints
+router.post('/new_trial', async (req,res)=>{
   req=req.body
-  console.log('trial booking requested',req)
+  // moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour)
+  console.log('trial booking requested',req,moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour))
+  Booking.insertMany({
+      first:req.first,
+      last:req.last,
+      mobile:req.mobile,
+      email:req.email,
+      segment:req.segment,
+      date:moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour),
+      trial:true,
+      status:'reserved'
+  })
+  .then(()=>{
+    return res.status(201).json({
+      message: 'Booking saved',
+      success: true
+    });
+  })
   // email.sendTrial(req.email)
 })
+router.get('/new_trial', auth.auth,auth.permission(['manager']),async (req, res) => {
+  console.log(req.query)
+  let data = await Booking.find(JSON.parse(req.query.filter))
+  console.log(data)
+  return res.status(201).json({
+    data: data,
+    message: 'Booking saved',
+    success: true
+  });
+});
 //Create
 router.post('/new', async (req, res) => {
   req = req.body

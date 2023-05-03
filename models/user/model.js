@@ -11,6 +11,9 @@ const User = mongoose.model('User', new Schema({
     lowercase: true,
     unique: true
   },
+  mobile:{
+    type:Number
+  },
   password: {
     type: String,
     required:true
@@ -33,6 +36,7 @@ const User = mongoose.model('User', new Schema({
     enum: ['user','teacher','manager','admin']
   },
   segment:{type:String},
+  location:{type:String},
   //STUDENT DATA---------------------------------------------------
   profile:{
     likes:{type:String},

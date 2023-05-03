@@ -4,7 +4,24 @@ const setCurrentUser = (user) =>{
     payload: user
   }
 }
-
+const setTrialDay = (day) =>{
+  return {
+    type: "setTrialDay",
+    payload: day
+  }
+}
+const setTrialMonth = (month) =>{
+  return {
+    type: "setTrialMonth",
+    payload: month
+  }
+}
+const setTrialHour = (hour) =>{
+  return {
+    type: "setTrialHour",
+    payload: hour
+  }
+}
 const updateInSession = (session) =>{
   return {
     type: "updateInSession",
@@ -12,5 +29,5 @@ const updateInSession = (session) =>{
   }
 }
 module.exports = {
-  setCurrentUser,updateInSession
+  setCurrentUser,updateInSession,setTrialMonth,setTrialDay,setTrialHour
 }

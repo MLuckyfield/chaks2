@@ -82,7 +82,7 @@ app.disable('x-powered-by');
 
 app.use('/user',require('./models/user/apiv2'));
 app.use('/comment',auth.auth,require('./models/comment/api'));
-app.use('/booking',auth.auth,require('./models/booking/api'));
+app.use('/booking',require('./models/booking/api'));
 app.use('/event_info',require('./models/event/api'));
 app.use('/content',require('./models/content/api'));
 app.use('/payment',require('./services/payment'));

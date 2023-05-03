@@ -52,13 +52,17 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           identifier={email:session.email}
           updateUser(identifier,purchased,res)
           break;
-        case 'customer.subscription.created'://untested
+
+        //NEW SUBSCRIPTION
+        case 'customer.subscription.created':
           sub_type = session.items.data[0].price.product
           console.log('new subscription for',session.id,sub_type)
           purchased = {
               $push:{
                 subscriptions:{
                   name:sub_type,
+                  start:new Date(),
+                  status:'active'
                 }
               }
           }
