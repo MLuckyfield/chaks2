@@ -10,7 +10,7 @@ const DateTimePicker = (props) => {
 
   //new timeslot
   const hour = useRef('')
-  const [timeslots,setTimeslots] =useState([11,12,13,14,15,16,17,18,19,20,21])
+  const [timeslots,setTimeslots] =useState([11,12,13,14,15,16,17,18,19,20])
   //calendar display inputs
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
@@ -45,9 +45,10 @@ const DateTimePicker = (props) => {
 
   return(
     <div class='col'>
-      <div class='popup' onClick={()=>console.log('closd')}>
+      <div class='popup'>
         <div class="modal col">
           <h1>{month+1}月{year}</h1>
+          <h2>日を選択してください</h2>
           <div class='calendar'>
             <div class='labelBox'>日</div>
             <div class='labelBox'>月</div>
@@ -75,14 +76,19 @@ const DateTimePicker = (props) => {
                    }
             }):'Loading...'}
           </div>
+          <br/>
+          <div class='col'>
+            <p>月曜日は定休日となります。<br/>
+            11時～20時の間で予約時間を選択してください。</p>
+            <button class='form-control outline-first' style={{width:'20%'}} onClick={(e)=>{e.preventDefault();props.closeFunction();}} class="solid-first">戻る</button>
+          </div>
         </div>
-        月曜日は定休日となります。<br/>
-        11時～21時の間で予約時間を選択してください。
       </div>
       {showContent?
         <div class="popup">
             <div class='col' style={{width:'fit-content',minWidth:'350px',backgroundColor:'white',display:'flex'}}>
                 <h1>{localStorage.getItem('month')}月 {localStorage.getItem('day')}日</h1>
+                時間を選択してください
                 {moment().day()==localStorage.getItem('day') && moment().hour()>21?
                 '21時以降は予約を受け付けておりません。':
                 <div class='fixed-row'>

@@ -1,6 +1,6 @@
 import Table from '../utilities/table'
 import SessionTable from './SessionTable'
-import moment from "moment"
+import moment from "moment-timezone"
 import React, { useRef, useState, useEffect } from 'react';
 import {axios} from "../../utilities/axios";
 import * as constants from '../../utilities/constants'
@@ -54,6 +54,7 @@ const TrialView =()=>{
   return(
     <div class='col'>
     <h1>TRIAL</h1>
+    <h2>{moment.utc(trial.date).format("MMM Do HH:mm")}</h2>
     <form onSubmit={onSubmit}>
       {created?
         <div class="master-row form-group border successBox">
