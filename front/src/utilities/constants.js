@@ -9,6 +9,7 @@ import mimmi from '../images/staff/mimmi.jpg'
 import bre from '../images/staff/bre.jpg'
 import momo from '../images/staff/momo.jpg'
 import futaba from '../images/staff/futaba.jpg'
+import sonja from '../images/staff/sonja.jpg'
 export const PROFILES = {
         _62fb3ed3bc7766179393b277:{image:vincent,name:'Vincent',active:true},
         _63882dbd8a0031a501d54140:{image:radka,name:'Radka',active:true},
@@ -20,6 +21,7 @@ export const PROFILES = {
         _64327746ee94db5a26b715c0:{image:mimmi,name:'Mimmi',active:true},
         _6432522fee94db5a26b6291b:{image:momo,name:'Momo',active:true},
         _641129d948fed7fcee0cf312:{image:futaba,name:'Futaba',active:true},
+        _62900e59f7fadacf7159f379:{image:sonja,name:'Sonja',active:false},
 };
 
 export const SERVICES = ['English','Japanese'];

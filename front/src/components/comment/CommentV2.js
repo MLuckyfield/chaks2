@@ -78,7 +78,11 @@ const Comment = (props) => {
     // })}
     const loadProfileImage =(person)=>{
       let teacher = constants.PROFILES[`_${person}`];
-      return teacher.image
+      if(teacher){
+        console.log('loading teacher imag',person,teacher)
+        return teacher.image
+      }
+      return ''
     }
   return(
     <div class='col feedback'>
