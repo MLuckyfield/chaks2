@@ -242,6 +242,15 @@ const Front = ()=>{
       const [msg,setMsg] = useState()
       const [form,setForm] = useState(true)
 
+      useEffect(()=>{
+        if(localStorage.getItem('user')){}
+        else{
+          localStorage.removeItem('year')
+          localStorage.removeItem('month')
+          localStorage.removeItem('day')
+          localStorage.removeItem('hour')
+        }
+      },[])
       const onSubmit = (e) => {
         e.preventDefault();
         setForm(false)

@@ -75,7 +75,7 @@ const onSubmit = (e) => {
                 <input ref={mobile} minlength='11' maxlength='11' class='form-control' type='tel' placeholder='電話番号' required/>
               </div>
               <div class='row'>
-                <label class='form-control' style={{textAlign:'center',border:'none',fontSize:'1em',fontWeight:'bold',width:'100%'}}>{localStorage.getItem('year')?moment(`${localStorage.getItem('year')}-${localStorage.getItem('month')}-${localStorage.getItem('day')}`).hour(localStorage.getItem('hour')).format("MMM Do HH:mm"):'時間を選択してください'}</label>
+                <label class='form-control' style={{textAlign:'center',border:'none',fontSize:'1em',fontWeight:'bold',width:'100%'}}>{localStorage.getItem('hour')?moment(`${localStorage.getItem('year')}-${localStorage.getItem('month')}-${localStorage.getItem('day')}`).hour(localStorage.getItem('hour')).format("MMM Do HH:mm"):'時間を選択してください'}</label>
                 <button class='form-control outline-first' style={{width:'100%'}} onClick={(e)=>{e.preventDefault();setShowDateTimePicker(true)}}>選択する</button>
               </div>
                 {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
