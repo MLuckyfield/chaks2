@@ -31,6 +31,7 @@ const ViewTrials = ()=>{
           <th>First</th>
           <th>Last</th>
           <th>Date</th>
+          <th>Service</th>
           <th>Status</th>
           <th></th>
         </tr>
@@ -39,6 +40,7 @@ const ViewTrials = ()=>{
                     <td>{trial.first}</td>
                     <td>{trial.last}</td>
                     <td>{moment.utc(trial.date).format("MMM Do HH:mm")}</td>
+                    <td>{trial.segment}</td>
                     <td>{trial.status}</td>
                     <td><button onClick={(e)=>showTrial(e,trial)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>
                  </tr>

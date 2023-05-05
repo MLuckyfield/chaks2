@@ -1,4 +1,4 @@
-import Signup from "../user/Signup";
+import Signup from "../user/TrialRequest";
 import CrossSell from "../page/Cross_Sell";
 import background from '../../online_background.jpg'
 import environment from '../../online_environment.jpg'
