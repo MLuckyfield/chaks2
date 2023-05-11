@@ -17,7 +17,7 @@ export const PROFILES = {
         _63218b02f17f3f46bf91af22:{image:bre,name:'Bre',active:false},
         _628c7aefc378ce2a01df6ac7:{image:matt,name:'Matt',active:true},
         _628f3e7b8981f84051396159:{image:shunsuke,name:'Shunsuke',active:true},
-        _640d4ff6470b0e234739c640:{image:liza,name:'Liza',active:true},
+        _640d4ff6470b0e234739c640:{image:liza,name:'Liza',active:false},
         _64327746ee94db5a26b715c0:{image:mimmi,name:'Mimmi',active:true},
         _6432522fee94db5a26b6291b:{image:momo,name:'Momo',active:true},
         _641129d948fed7fcee0cf312:{image:futaba,name:'Futaba',active:true},

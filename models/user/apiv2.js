@@ -57,6 +57,39 @@ const email = require('../../services/email')
     //     });
     //   })
     // });
+    router.post('/newTeacher', async (req, res) => {
+      req=req.body
+
+      let taken = await(exists(req.email));
+      if (taken){
+        return res.status(400).json({
+          message:'Email already in use',
+          success: false
+        });
+      }
+      const password = await auth.newPass(req.password)
+      try{
+        new User({
+          ...req,
+          password: password,
+          role: 'teacher',
+          active:false
+        }).save()
+        .then(()=>{
+          return res.status(201).json({
+                message: `Success!`,
+                success: true
+              });
+        })
+      }catch(err){
+        console.log('there was a problem',err)
+        return res.status(500).json({
+          message: `user creation unsuccessful: ${err}`,
+          success: false
+        });
+      }
+    })
+
     //user
     router.post('/new', async (req, res) => {
       req=req.body

@@ -38,8 +38,6 @@ const Admin = () => {
         </div>
       </div>
     )
-
-
 }
 
 const SessionTable = ()=>{

@@ -11,6 +11,7 @@ const DateTimePicker = (props) => {
   //new timeslot
   const hour = useRef('')
   const [timeslots,setTimeslots] =useState([11,12,13,14,15,16,17,18,19,20])
+  const [weekend_timeslots,setWeekendTimeslots] =useState([13,14,15,16,17,18,19,20])
   //calendar display inputs
   const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()})
   const [date,setDate] = useState(()=>{let time = new Date();time.setDate(time.getDate()+2);return time})
@@ -95,6 +96,7 @@ const DateTimePicker = (props) => {
                   <select class='form-control' ref={hour} style={{maxWidth:'100px'}}required>
                   {console.log('test',moment().day()==localStorage.getItem('day'))}
                   {moment().day()==localStorage.getItem('day')?
+                      moment().
                       timeslots.map((item,i)=>{
                         if(item>moment().hour()){
                           return <option value={item}>{item}</option>
