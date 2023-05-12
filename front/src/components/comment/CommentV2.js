@@ -114,7 +114,7 @@ const Comment = (props) => {
             <div class='col'>
               {Object.entries(constants.PROFILES).map((teacher, i) => {
                 if(teacher[1].active){
-                  return <button onClick={()=>reassignTeacher(teacher[0].substring(1))} class='button'>{teacher[1].name}</button>
+                  return <button onClick={(e)=>reassignTeacher(teacher[0].substring(1),e)} class='button'>{teacher[1].name}</button>
                 }
               })}
             </div>

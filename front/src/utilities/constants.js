@@ -22,6 +22,7 @@ export const PROFILES = {
         _6432522fee94db5a26b6291b:{image:momo,name:'Momo',active:true},
         _641129d948fed7fcee0cf312:{image:futaba,name:'Futaba',active:true},
         _62900e59f7fadacf7159f379:{image:sonja,name:'Sonja',active:false},
+        _645ccb04a971b39b6c46a843:{image:'',name:'Nick',active:true}
 };
 
 export const SERVICES = ['English','Japanese'];

@@ -30,7 +30,7 @@ const TrialView =()=>{
   const onSubmit = (e) => {
     e.preventDefault();
     setForm(false)
-    localStorage.removeItem('trial')
+    // localStorage.removeItem('trial')
     axios.post('user/new',
       {
         first: first.current.value,
@@ -46,8 +46,9 @@ const TrialView =()=>{
         setCreated(true)
       })
       .catch((err) => {
+        console.log('problem',err)
         setForm(true)
-        setMsg([err.message,err.success]);
+        setMsg([err.response.data.message,err.success]);
       });
   }
 

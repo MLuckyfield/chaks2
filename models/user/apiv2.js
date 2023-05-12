@@ -93,9 +93,10 @@ const email = require('../../services/email')
     //user
     router.post('/new', async (req, res) => {
       req=req.body
-
+      console.log('new account request')
       let taken = await(exists(req.email));
       if (taken){
+        console.log('user exists')
         return res.status(400).json({
           message:'Email already in use',
           success: false
@@ -106,6 +107,8 @@ const email = require('../../services/email')
       const password = await auth.newPass(req.password)
 
       try{
+        console.log('--starting')
+
         Material.find().select('_id').then((materials)=>{
             // console.log('materials',materials)
             let upload=[]
@@ -119,12 +122,16 @@ const email = require('../../services/email')
               role: 'user'
             }).save()
                .then((user)=>{
+                 console.log('user made')
+
                  Comment.insertMany({
                    student: user,
                    author: req.teacher,
                    end:new Date(),
                    trial:true
                  }).then(()=>{
+                   console.log('comment made')
+
                    Booking.findOneAndUpdate(req.trial._id,{status:'delivered'}).then(()=>{
                      let result = auth.createToken(user)
                      // console.log(result)
@@ -169,7 +176,10 @@ const email = require('../../services/email')
                        // ==mialchimp finished
                    })
                  })
-               });
+               })
+               .catch((err)=>{
+                 console.log('err',err)
+               })
            })
         }catch(err){
              console.log('there was a problem',err)
