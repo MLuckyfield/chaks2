@@ -23,17 +23,17 @@ router.post('/new_trial', async (req,res)=>{
       status:'reserved'
   })
   .then(()=>{
-    return res.status(201).json({
-      message: 'Booking saved',
-      success: true
-    });
+    email.sendTrial(req.first+req.last,moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour),1,res)
+  })
+  .catch((err)=>{
+    email.sendTrial(req.first+req.last,moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour),0,res)
   })
   // email.sendTrial(req.email)
 })
 router.get('/new_trial', auth.auth,auth.permission(['manager']),async (req, res) => {
   console.log(req.query)
   let data = await Booking.find(JSON.parse(req.query.filter))
-  console.log(data)
+
   return res.status(201).json({
     data: data,
     message: 'Booking saved',
