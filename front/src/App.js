@@ -30,6 +30,7 @@ import google_ads from './components/google_ads'
 import hotjar from './components/hotjar'
 
 //import pages
+import Japanese from './components/page/japanese'
 import EventList from './components/event/EventList'
 import Online_Landing from './components/page/onlineLandingPage'
 import Course_Landing from './components/page/course'
@@ -130,7 +131,7 @@ const App = () => {
           <Route path="/courses" component={Course_Landing}/>
           <Route path="/promo*" component={Contract}/>
           <Route path="/reset" component={PW_Reset}/>
-          <Route path="/japanese" component={()=><Japanese_Signup segment={'japanese'} redirect={'/dash'}/>}/>
+          <Route path="/japanese" component={Japanese}/>
             <SecureRoute path="/private" access={['user','teacher','manager']} success={Calendar} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/course_management" access={['user','teacher','manager','admin']} success={CourseManagement} fail={()=><Redirect to='/login'/>}/>
             <SecureRoute path="/dash" access={['user','teacher','manager','admin']} success={AdminDash} fail={()=><Redirect to='/login'/>}/>

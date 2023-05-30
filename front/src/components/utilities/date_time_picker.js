@@ -90,22 +90,37 @@ const DateTimePicker = (props) => {
             <div class='col' style={{width:'fit-content',minWidth:'350px',backgroundColor:'white',display:'flex'}}>
                 <h1>{localStorage.getItem('month')}月 {localStorage.getItem('day')}日</h1>
                 時間を選択してください
-                {moment().day()==localStorage.getItem('day') && moment().hour()>21?
+                {moment().date()==localStorage.getItem('day') && moment().hour()>21?
                 '21時以降は予約を受け付けておりません。':
                 <div class='fixed-row'>
                   <select class='form-control' ref={hour} style={{maxWidth:'100px'}}required>
-                  {console.log('test',moment().day()==localStorage.getItem('day'))}
-                  {moment().day()==localStorage.getItem('day')?
-                      moment().
-                      timeslots.map((item,i)=>{
-                        if(item>moment().hour()){
+                  //logic for determining which timeslots are available
+                  {moment().day()>4?(
+                    //if weekend
+                    moment().date()==localStorage.getItem('day')?//if selected day is today, show slots from next hour
+                        weekend_timeslots.map((item,i)=>{
+                          if(item>moment().hour()){
+                            return <option value={item}>{item}</option>
+                          }
+                      }):
+                      weekend_timeslots.map((item,i)=>{
+                        console.log(item,i)
                           return <option value={item}>{item}</option>
-                        }
-                    }):
-                    timeslots.map((item,i)=>{
-                      console.log(item,i)
-                        return <option value={item}>{item}</option>
-                  })}
+                    })
+                  ):(//if weekday
+                    moment().date()==localStorage.getItem('day')?//if selected day is today, show slots from next hour
+                        timeslots.map((item,i)=>{
+                          if(item>moment().hour()){
+                            return <option value={item}>{item}</option>
+                          }
+                      }):
+                      timeslots.map((item,i)=>{
+                        console.log(item,i)
+                          return <option value={item}>{item}</option>
+                    })
+                  )
+
+                  }
                   </select>
                   <span>時から</span>
                 </div>}
