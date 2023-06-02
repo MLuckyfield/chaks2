@@ -89,7 +89,11 @@ const adjustPoints = (add)=>{
   }
   axios.post('user/update',{filter:{_id:target._id},data:{'$push':{points:changes}}})
     .then((result)=>{
-       // window.location.reload()
+      console.log('update',result)
+      let update = JSON.parse(localStorage.getItem('student'))
+      update.points=result.data.data.points
+      localStorage.setItem('student',JSON.stringify(update))
+       window.location.reload()
     })
     .catch(error=>console.log('From startSession teacher:',error))
 }

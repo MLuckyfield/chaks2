@@ -66,7 +66,7 @@ const DateTimePicker = (props) => {
                        </div>
               }
               else if(day.date>=today.getDate()){
-                return <div class='dayBox clickable' onClick={()=>{localStorage.setItem('day',day.date);localStorage.setItem('month',month+1);localStorage.setItem('year',year);setShowContent(true)}}>
+                return <div class='dayBox clickable' onClick={()=>{localStorage.setItem('day',day.day);localStorage.setItem('date',day.date);localStorage.setItem('month',month+1);localStorage.setItem('year',year);setShowContent(true)}}>
                         <span class='day_tag' style={day.date==today.getDate()?{color:'white',backgroundColor:'tomato'}:{}}>{day.date}</span>
                        </div>
                    }
@@ -95,8 +95,8 @@ const DateTimePicker = (props) => {
                 <div class='fixed-row'>
                   <select class='form-control' ref={hour} style={{maxWidth:'100px'}}required>
                   //logic for determining which timeslots are available
-                  {moment().day()>4?(
-                    //if weekend
+                  //if weekend
+                  {localStorage.getItem('day')==0||localStorage.getItem('day')==6?(
                     moment().date()==localStorage.getItem('day')?//if selected day is today, show slots from next hour
                         weekend_timeslots.map((item,i)=>{
                           if(item>moment().hour()){

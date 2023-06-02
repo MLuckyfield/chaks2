@@ -11,6 +11,7 @@ import campaign from '../../images/sakura.jpg'
 import info from '../../output.png'
 import {useSelector} from 'react-redux'
 import actions from "../../utilities/actions";
+import logo from '../../chatshack.jpg'
 //test
 const TestProp = () => {
 
@@ -34,14 +35,95 @@ const TestProp = () => {
         console.log(err);
         });
   })
+
+  const competitors = [
+    {},
+    {
+      name:'CHATSHACK',
+      starting_cost:0,
+      hourly:(hours)=>{return 8000/((hours/50)*60)},
+      condition:'',
+      other:'',
+      goal:'',
+      teacher:'',
+      reservation:true,
+      duration:'気軽',
+      correction:'',
+      feedback:''
+    },
+    {
+      name:'Lancul',
+      starting_cost:10000,
+      hourly:(hours)=>{return 8000/((hours/50)*60)},
+      condition:'',
+      other:'',
+      goal:'',
+      teacher:'',
+      reservation:true,
+      duration:'50分',
+      correction:'',
+      feedback:''
+    },
+    {
+      name:'Mickyhouse',
+      starting_cost:0,
+      hourly:(hours)=>{return hours>9?1600:2000},
+      condition:'',
+      other:'',
+      goal:'',
+      teacher:'',
+      reservation:false,
+      duration:'気軽',
+      correction:false,
+      feedback:false
+    },
+    {
+      name:'Bertlitz',
+      starting_cost:33000,
+      hourly:(hours)=>{return 6270},
+      condition:'',
+      other:'',
+      goal:'',
+      teacher:'',
+      reservation:true,
+      duration:'40分',
+      correction:'',
+      feedback:''
+    },
+    {
+      name:'AEON',
+      starting_cost:15950,
+      hourly:(hours)=>{return 12375/4},
+      condition:'',
+      other:'',
+      goal:'',
+      teacher:'',
+      reservation:true,
+      duration:'50分',
+      correction:true,
+      feedback:false
+    },
+    {
+      name:'ECC',
+      starting_cost:15000,
+      hourly:(hours)=>{return 17600/4},
+      condition:'',
+      other:'',
+      goal:'',
+      teacher:'',
+      reservation:true,
+      duration:'40分',
+      correction:false,
+      feedback:true
+    }
+  ]
   //useselector
   const user = useSelector(state => state.userReducer)
   const [hours,setHours] = useState(4)
-  // const [estimate,setEstimate] = useState(hours*2000)
+  const [estimate,setEstimate] = useState()
+
   return (
     <div class='col border'>
-    <ViewTrials/>
-    <Trial/>
       <div class='calculator'>
         <h1>Calculator</h1>
         <div class='fixed-row'>
@@ -69,114 +151,71 @@ const TestProp = () => {
         <table class='comparison'>
           <thead>
             <tr>
-              <th>DATA1</th>
-              <th>DATA2</th>
-              <th>DATA3</th>
-              <th>DATA4</th>
-              <th>DATA4</th>
-              <th>DATA4</th>
-              <th>DATA4</th>
-              <th>DATA4</th>
-              <th>DATA4</th>
+              {competitors.map(school=>{
+                return school.name=='CHATSHACK'?<th><img style={{with:'50px',height:'50px'}} src={logo} alt="Avatar"></img></th>:<th>{school.name}</th>
+              })}
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Some values</td>
-              <td>Some values</td>
-              <td>Some values</td>
-              <td>Some values</td>
-              <td>Some values</td>
-              <td>Some values</td>
-              <td>Some values</td>
-              <td>Some values</td>
-              <td>Some values</td>
-            </tr>
+            {Object.keys(competitors[1]).map(key=>{
+              return key=='name'?'':
+               <tr><td>{key}</td>{
+                competitors.map((school, i) => {
+                  console.log(key, typeof school[key])
+                  return school.name==null?'':(
+                    key=='hourly'?<td>{new Intl.NumberFormat('ja-JP',{style:'currency',currency:'JPY'}).format(Math.round(school.hourly(hours)))}~</td>:(
+                      typeof school[key] =='boolean'?//translate boolean types to icons
+                        <td>{school[key]?
+                          <span class="material-icons" style={{color:'lime'}}>radio_button_unchecked</span>
+                          :<span class="material-icons"  style={{color:'red'}}>close</span>}</td>
+                        :(
+                      typeof school[key]=='number'?
+                        <td>{new Intl.NumberFormat('ja-JP',{style:'currency',currency:'JPY'}).format(school[key])}</td>
+                        :<td>{school[key]}</td>
+                        ))
+                  )
+                })
+              }</tr>
+            })}
           </tbody>
         </table>
       </div>
-
-        <h1>ACCOUNT ({user.user.first})</h1>
-        {account?
-          <div class='row'>
-          ポイント: 20
-          </div>:'Loading account...'}
-        {account?
-          <div class='row'>
-            <div class='col'><h2>Subscriptions</h2></div>
-            <div class='col'>{account.subscriptions.length>0?account.subscriptions.map((sub,i)=>{
-              return <div class='fixed-row'>{sub.name} since {moment(sub.start).format('M/D')}</div>
-            }):'You are not subscribed!'} </div>
-          </div>
-      :'Loading account...'}
-      <div class='row'>
-        <div class='col'><h2>Courses</h2></div>
-        <div class='col'>{courses?courses.map(function(course,i){
-          return <div>{course.course.name} {course.status}</div>
-        }):'You are not enrolled!'}</div>
-      </div>
-      <div class='fixed-row' style={{backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
+      <div class='fixed-row' style={{backgroundImage: 'url('+campaign+')',backgroundSize:'cover',backgroundColor:'rgba(255,102,128,0.6)',color:'white'}}>
         <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
           <div class='col w20'>
-            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>POINT<br/>1</span>
+            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>新規入会<br/>キャンペーン</span>
           </div>
           <div class='col w80 align'>
-            <p>ただのネイティブではなく</p>
-            <h1>選び抜かれた<br/>講師陣</h1>
-            <p style={{marginBottom:'3%'}}>合格率２％のテストに合格した講師のみを採用しています</p>
-            <Popup button={"詳細"} num={1} content={
-              <div class='col'>
-                  <h1 style={{margin:'10% 0'}}>プレミアム英会話なら<br/>ハイクラスな教師</h1>
-                  <p>講師は英会話講師の経験があり、トレーニングを受けいるため
-                  教え方が上手なだけでなく英語の知識も豊富です。会話を楽しくスムーズにリードし、細かい英文法などもしっかりと教えてくれます！</p>
-                  <img style={{width:'200%'}} src={instructor}></img>
-                  <div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();window.location='#team'}}>チームを見る</div>
-              </div>
-            }/>
-            </div>
-          </div>
-      </div>
-      <div class='fixed-row' style={{backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
-        <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
-          <div class='col w20'>
-            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>POINT<br/>2</span>
-          </div>
-          <div class='col w80 align'>
-            <h1>ニーズに合わせる</h1>
-            <p style={{marginBottom:'3%'}}>完全マンツーマンレッスンなので、お客様のご希望に沿ったレッスンをご提供しています!</p>
+            <p>選び抜かれた講師陣</p>
+            <h1>２％</h1>
+            <p style={{marginBottom:'3%'}}>合格率２％のテストに合格した講師のみ</p>
             <Popup button={"詳細"} num={2} content={
               <div class='col'>
-                  <h1 style={{margin:'10% 0'}}>好きに選べる<br/>レッスン内容</h1>
-                  <p>各コースを購入していただければ、コースの内容のレッスンをすることも可能です。文法コース、日常英会話コース、ビジネス英語コース、TOEIC対策コース等ございます。</p>
-                  <img style={{width:'200%'}} src={instructor}></img>
-                  <div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();window.location='#team'}}>チームを見る</div>
+                  <h1 style={{margin:'10% 0'}}>初月３０%割引</h1>
+                  <p>4月中にご契約されるお客様には３０％割引が適用されます！</p>
+                  <div class='col'>
+                      <div class='fixed-row'>
+                          <div class='col align'>
+                            <h2>割引例</h2>
+                            <ul>
+                              <li>４時間プラン：通常8,000円が3月限定で5,600円</li>
+                              <li>８時間プラン：通常16,000円が3月限定で11,200円</li>
+                              <li>１２時間プラン：通常24,000円が3月限定で16,800円</li>
+                            </ul>
+                          </div>
+                      </div>
+                      <div class='fixed-row'>
+                          <div class='col align'>
+                            <h2>学生限定</h2>
+                            <p>さらに！！学生様には追加で１０％割引が適用されます！</p>
+                          </div>
+                      </div>
+                  </div>
               </div>
             }/>
             </div>
           </div>
       </div>
-      <div class='fixed-row' style={{backgroundColor:'rgba(175,65,84,1)',color:'white'}}>
-        <div class='mini_overlay' style={{backgroundColor:'rgba(175,65,84,0.6)',width:'100%',margin:'0',display:'flex'}}>
-          <div class='col w20'>
-            <span class='vertical_banner' style={{background:'rgba(238,222,33,1)'}}>POINT<br/>3</span>
-          </div>
-          <div class='col w80 align'>
-            <h1>効果的な学び方</h1>
-            <p style={{marginBottom:'3%'}}>学習システム</p>
-            <Popup button={"詳細"} num={3} content={
-              <div class='col'>
-                <h1 style={{margin:'10% 0'}}>確実に英語を伸ばす</h1>
-                <img style={{width:'200%'}} src={info}></img>
-                <h1 style={{margin:'10% 0'}}>好きに選べる<br/>レッスン内容</h1>
-                <p>CHATSHACKのオンラインシステムでは、全てのレッスンのフィードバックをご覧いただけます。
-レッスン中の自分の間違えなどをいつでも確認することができるため、アウトプットだけではなくインプットも含めた効率的な学習が可能です。</p>
-                <img style={{width:'200%'}} src={instructor}></img>
-              </div>
-            }/>
-            </div>
-          </div>
-      </div>
-      <Trial/>
     </div>
   )
 

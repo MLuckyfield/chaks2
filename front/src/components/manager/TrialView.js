@@ -12,6 +12,7 @@ const TrialView =()=>{
   const last = useRef();
   const email = useRef();
   const password = useRef();
+  const password_check = useRef();
   const segment = useRef({value:''});
   const teacher = useRef();
   const [msg,setMsg] = useState()
@@ -29,27 +30,31 @@ const TrialView =()=>{
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setForm(false)
-    // localStorage.removeItem('trial')
-    axios.post('user/new',
-      {
-        first: first.current.value,
-        last: last.current.value,
-        mobile: mobile.current.value,
-        email: email.current.value,
-        teacher:teacher.current.value,
-        password:password.current.value,
-        segment:segment.current.value,
-        trial:trial,
-      })
-      .then(() => {
-        setCreated(true)
-      })
-      .catch((err) => {
-        console.log('problem',err)
-        setForm(true)
-        setMsg([err.response.data.message,err.success]);
-      });
+    if(password.current.value==password_check.current.value){//if password check passes
+      setForm(false)
+      axios.post('user/new',
+        {
+          first: first.current.value,
+          last: last.current.value,
+          mobile: mobile.current.value,
+          email: email.current.value,
+          teacher:teacher.current.value,
+          password:password.current.value,
+          segment:segment.current.value,
+          trial:trial,
+        })
+        .then(() => {
+          setCreated(true)
+        })
+        .catch((err) => {
+          console.log('problem',err)
+          setForm(true)
+          setMsg([err.response.data.message,err.success]);
+        });
+    }
+    else{
+      setMsg(['Password is not the same',false])
+    }
   }
 
   return(
@@ -99,7 +104,9 @@ const TrialView =()=>{
           <div class='row'>
             <input ref={password} class='form-control' type='Password' placeholder='パスワード' required/>
           </div>
-
+          <div class='row'>
+            <input ref={password_check} class='form-control' type='Password' placeholder='パスワード' required/>
+          </div>
             {msg?<div class='row'><input class={msg[1]?'msg form-control':'bad msg form-control'} value={msg[0]}></input></div>  :''}
 
             <div class='row'>

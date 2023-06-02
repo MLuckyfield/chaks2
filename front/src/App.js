@@ -297,7 +297,7 @@ const Front = ()=>{
                 <div class='col w80 align'>
                   <p>今なら</p>
                   <h1>初月３０％割引!</h1>
-                  <p style={{marginBottom:'3%'}}>期間限定 4月2日～4月30日</p>
+                  <p style={{marginBottom:'3%'}}>期間限定 6月2日～6月30日</p>
                   <Popup button={"詳細"} num={2} content={
                     <div class='col'>
                         <h1 style={{margin:'10% 0'}}>初月３０%割引</h1>

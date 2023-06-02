@@ -4,8 +4,10 @@ import moment from "moment-timezone"
 
 const ViewTrials = ()=>{
   const [trials,setTrials]=useState()
+  const [year,setYear]=useState(()=>{let time = new Date();return time.getYear()+1900})
+  const [month, setMonth]=useState(()=>{let time = new Date();return time.getMonth()+1})
   useEffect(()=>{
-    axios.get('/booking/new_trial',{params:{filter:{trial:true}}})
+    axios.get('/booking/new_trial',{params:{filter:{trial:true,createdAt:{$gte:new Date(`${year}-${month}-1`),$lte:new Date(`${year}-${month+1}-${new Date(year,month-1,0).getDate()}`)}}}})
       .then((res) => {
           setTrials(res.data.data)
           console.log(res.data.data)
