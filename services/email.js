@@ -36,7 +36,7 @@ const sendDefault = (title,content,email)=>{
       content,
       email
     )
-    sendEmailNoRes(transporter,mailOptions)
+    sendEmailNoRes(mailOptions,transporter)
 }
 const sendEmailNoRes=(mailOptions,data)=>{
   const transporter = authenticate()
