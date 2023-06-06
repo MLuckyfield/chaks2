@@ -46,9 +46,9 @@ const sendEmailNoRes=(mailOptions,data)=>{
     })
 }
 //send email with res
-const sendTrial = (student,mobile,date,status,res)=>{
+const sendTrial = (student,email,mobile,date,status,res)=>{
   let title = `New trial! Booking: ${status==1?'success':'fail'}`
-  let content = `${student} booked a trial for ${date}: ${mobile}`
+  let content = `${student} booked a trial for ${date}: ${mobile} ${email}`
   const mailOptions = prepareEmail(
     title,
     content
