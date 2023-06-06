@@ -97,7 +97,7 @@ const DateTimePicker = (props) => {
                   //logic for determining which timeslots are available
                   //if weekend
                   {localStorage.getItem('day')==0||localStorage.getItem('day')==6?(
-                    moment().date()==localStorage.getItem('day')?//if selected day is today, show slots from next hour
+                    moment().date()==localStorage.getItem('date')?//if selected day is today, show slots from next hour
                         weekend_timeslots.map((item,i)=>{
                           if(item>moment().hour()){
                             return <option value={item}>{item}</option>
@@ -108,7 +108,7 @@ const DateTimePicker = (props) => {
                           return <option value={item}>{item}</option>
                     })
                   ):(//if weekday
-                    moment().date()==localStorage.getItem('day')?//if selected day is today, show slots from next hour
+                    moment().date()==localStorage.getItem('date')?//if selected day is today, show slots from next hour
                         timeslots.map((item,i)=>{
                           if(item>moment().hour()){
                             return <option value={item}>{item}</option>
