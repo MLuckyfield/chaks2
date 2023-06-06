@@ -88,7 +88,7 @@ const DateTimePicker = (props) => {
       {showContent?
         <div class="popup">
             <div class='col' style={{width:'fit-content',minWidth:'350px',backgroundColor:'white',display:'flex'}}>
-                <h1>{localStorage.getItem('month')}月 {localStorage.getItem('day')}日</h1>
+                <h1>{localStorage.getItem('month')}月 {localStorage.getItem('date')}日</h1>
                 時間を選択してください
                 {moment().date()==localStorage.getItem('day') && moment().hour()>21?
                 '21時以降は予約を受け付けておりません。':

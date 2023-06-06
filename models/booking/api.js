@@ -23,10 +23,10 @@ router.post('/new_trial', async (req,res)=>{
       status:'reserved'
   })
   .then(()=>{
-    email.sendTrial(req.first+req.last,moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour),1,res)
+    email.sendTrial(req.first+req.last,req.mobile,moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour),1,res)
   })
   .catch((err)=>{
-    email.sendTrial(req.first+req.last,moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour),0,res)
+    email.sendTrial(req.first+req.last,req.mobile,moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour),0,res)
   })
   // email.sendTrial(req.email)
 })
