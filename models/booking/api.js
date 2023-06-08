@@ -6,6 +6,8 @@ const auth= require('../../services/authentication');
 const email = require('../../services/email')
 const cron = require('node-cron')
 const moment = require ('moment-timezone')
+const mailchimp = require("@mailchimp/mailchimp_marketing");
+const request = require('request')
 
 //trial endpoints
 router.post('/new_trial', async (req,res)=>{
@@ -23,9 +25,39 @@ router.post('/new_trial', async (req,res)=>{
       status:'reserved'
   })
   .then(()=>{
-    email.sendTrial(req.first+req.last,req.email,req.mobile,moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour),1,res)
+    //--MAILCHIMP
+    let tags =['inactive','trial_requested']
+    tags.push(req.segment)
+    console.log('starting mail service',req.segment,tags)
+    request({
+      url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
+      json: {
+          'email_address': req.email,
+          'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
+          'status': 'subscribed',
+          'tags':tags,
+          'merge_fields': {
+              'FNAME': req.first,
+              'LNAME': req.last,
+              'KEY_DATE': moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour).format("MMM Do HH:mm"),
+              'KEY_HOUR':req.hour
+          }
+      },
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
+      }
+  }, function(error, response, body){
+    console.log('mailchimp error:',error)
+    console.log('mailchimp body:',body)
+    console.log('mailchimp response:',response.allow)
+        email.sendTrial(req.first+req.last,req.email,req.mobile,moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour),1,res)
+      });
+      // ==mialchimp finished
   })
   .catch((err)=>{
+    console.log('mailchimp error:',err)
     email.sendTrial(req.first+req.last,req.email,req.mobile,moment.utc(`${req.year}-${req.month}-${req.day}`).hour(req.hour),0,res)
   })
   // email.sendTrial(req.email)

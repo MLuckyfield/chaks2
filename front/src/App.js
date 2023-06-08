@@ -3,6 +3,7 @@ import React, { useState, useEffect ,useRef} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {axios} from "./utilities/axios";
 import { Redirect } from 'react-router'
+import moment from "moment-timezone"
 //testing V2
 import AdminDash from './components/nav/AdminDashV2'
 import StudentComments from './components/user/StudentCommentsv2'
@@ -297,7 +298,7 @@ const Front = ()=>{
                 <div class='col w80 align'>
                   <p>今なら</p>
                   <h1>初月３０％割引!</h1>
-                  <p style={{marginBottom:'3%'}}>期間限定 6月2日～6月30日</p>
+                  <p style={{marginBottom:'3%'}}>期間限定 {moment().startOf('month').format('MM月DD日')}～{moment().endOf('month').format('MM月DD日')}</p>
                   <Popup button={"詳細"} num={2} content={
                     <div class='col'>
                         <h1 style={{margin:'10% 0'}}>初月３０%割引</h1>

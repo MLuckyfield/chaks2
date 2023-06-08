@@ -31,13 +31,14 @@ const onSubmit = (e) => {
       segment:props.segment,
       year: localStorage.getItem('year'),
       month: localStorage.getItem('month'),
-      day: localStorage.getItem('day'),
+      day: localStorage.getItem('date'),
       hour: localStorage.getItem('hour'),
     })
     .then((res) => {
       localStorage.removeItem('year')
       localStorage.removeItem('month')
       localStorage.removeItem('day')
+      localStorage.removeItem('date')
       localStorage.removeItem('hour')
       setCreated(true)
     })

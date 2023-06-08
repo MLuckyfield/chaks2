@@ -56,6 +56,7 @@ const SessionTable = ()=>{
           <th> </th>
         </tr>
       {comments?comments.map((comment,i)=>{
+        console.log('loading',comment._id,comments)
         return (<tr>
           <td>{comment.student.first}</td>
           <td>{comment.student.last}</td>
