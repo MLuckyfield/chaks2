@@ -15,8 +15,9 @@ const request = require('request')
 const cron = require('node-cron')
 const moment = require ('moment')
 const encrypt = require('crypto-js/md5')
-const mailchimp = require("@mailchimp/mailchimp_marketing");
+const mailchimp = require("../../services/mailchimp");
 const email = require('../../services/email')
+const constants = require('../../services/constants')
 
 // const io = new Server({ /* options */ });
 
@@ -131,50 +132,32 @@ const email = require('../../services/email')
                    trial:true
                  }).then(()=>{
                    console.log('comment made')
-
-                   Booking.findOneAndUpdate(req.trial._id,{status:'delivered'}).then(()=>{
-                     let result = auth.createToken(user)
-                     // console.log(result)
-                     //--MAILCHIMP
-                     let tags =['inactive']
-                     tags.push(req.segment)
-                     console.log('starting mail service',req.segment,tags)
-                     request({
-                       url: 'https://us9.api.mailchimp.com/3.0/lists/cb86e9b6f5/members',
-                       json: {
-                           'email_address': req.email,
-                           'user': `anystring: ${process.env.MAILCHIMP_AUTH}`,
-                           'status': 'subscribed',
-                           'tags':tags,
-                           'merge_fields': {
-                               'FNAME': req.first,
-                               'LNAME': req.last
-                           }
-                       },
-                       method: 'POST',
-                       headers: {
-                           'Content-Type': 'application/json',
-                           'Authorization': `apikey ${process.env.MAILCHIMP_AUTH}`
-                       }
-                   }, function(error, response, body){
-                     console.log('mail service complete')
-                         if (error) {
-                           console.log('user saved, not loaded to mailchimp: '+req.email)
-                           return res.status(500).json({
-                             result,
-                             message: `user saved but mailchimp failed: ${err}`,
-                             success: false
-                           });
-                           } else {
+                   //add to mailchimp
+                   //----------------------------------untested
+                   let result = auth.createToken(user)
+                   mailchimp.addTag(user.email,constants.TRIAL_COMPLETED,
+                         ()=>{
+                           if(req.trial){//if there was a reservation
+                             Booking.findOneAndUpdate(req.trial._id,{status:'delivered'}).then(()=>{
                              return res.status(201).json({
                                    result,
                                    message: `Success!`,
                                    success: true
-                                 });
-                           }
-                       });
-                       // ==mialchimp finished
-                   })
+                                 })
+                            })
+                          }//otherwise there was no reservation
+                           return res.status(201).json({
+                                 result,
+                                 message: `Success!`,
+                                 success: true
+                               })
+                             },
+                         (e)=>{return res.status(501).json({
+                               result,
+                               message: `${e}!`,
+                               success: false
+                             });})
+                             //----------------------------------untested end
                  })
                })
                .catch((err)=>{
@@ -260,18 +243,25 @@ const email = require('../../services/email')
     //Start and End session
     router.get('/startSession', auth.auth,auth.permission(['user','manager']), async (req, res) =>{
       req=req.query
+      //prepare a new comment
       new Comment({
         student: req.student,
         author:req.teacher,
         status: 'pending',
       }).save()
       .then((comment)=>{
-        socket.startSession(comment)
-        return res.status(201).json({
-          data:comment,
-          message: 'User update',
-          success: true
-        });
+        //update user lastvisit time
+        console.log('UPDATING STUDENT WITH LAST TIME',req.student)
+         User.findByIdAndUpdate(req.student,{lastVisit:moment.utc(moment())},{new:true})
+         .then((newUser)=>{
+           console.log('UPDATING STUDENT RESULT',newUser)
+           socket.startSession(comment)
+           return res.status(201).json({
+             data:comment,
+             message: 'User update',
+             success: true
+           });
+         })
       })
       .catch((err)=>{
         return res.status(500).json({
@@ -488,42 +478,7 @@ const email = require('../../services/email')
         email.sendDefault('BOT|Monthly Rewards','Gold: '+gold+', Platinum: '+platinum+', Diamond: '+diamond)
       })
     })
-    //manual point insertion
-      // cron.schedule('*/15 * * * *',()=>{
-      //   console.log('running point update')
-      //   let update=[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}]
-      //   User.findOneAndUpdate({_id:'633e91c3945a79bacb934535'},{'$push':{points:update}}).then(()=>console.log('point intervention done'))
-      // })
-    // add minutes
-    // cron.schedule('*/30 * * * *',()=>{
-    //   console.log('running point update')
-    //   User.find().then((users)=>{
-    //     users.forEach((user, i) => {
-    //       if(user._id=='6324095536b82285890835c2' || user._id=='632d75cbb8480b92ca0b7acc'){
-    //         let units = []
-    //         user.subscriptions.forEach((sub, i) => {
-    //           if(sub.name=='prod_Mf0wgW4xwQ0Yyc' && sub.status=='active'){
-    //             console.log(user.first,user.last,'must be updated with',user.monthly_hours,'hours:',moment(sub.start).format('DD'),new Date().getDate(),moment(sub.start).format('DD')==new Date().getDate())
-    //             if(moment(sub.start).format('DD')<=new Date().getDate()){
-    //               console.log('update activated')
-    //               for(let i = 0;i<user.monthly_hours*2;i++){
-    //                 units.push({value:30})
-    //               }
-    //             }
-    //           }
-    //         });
-    //         User.findByIdAndUpdate(user._id,{'$push':{points:units}}).then(()=>{console.log('points added for',user.first,user.last)})
-    //       }
-    //     });
-    //   })
-      // console.log('updating keiko')
-      // let update= {'$set':{
-      //   points:[{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30},{value:30}],
-      //   stripe:{
-      //     customer_id:"cus_Mgk3uWbJps6Bhr"
-      //   }
-      // }}
-    // })
+
 
     //expiry check for lessons
     cron.schedule('0 22 * * *',()=>{
@@ -545,100 +500,73 @@ const email = require('../../services/email')
         email.sendDefault('BOT|Expired Lessons',expired)
       })
     })
-    //automated engagement
-    cron.schedule('0 23 * * *',()=>{ //server time is 9 hours ahead
-      User.find().then((users)=>{
-        // email.sendDefault('Activating Engagement','Sent on '+new Date().toString())
+    //EMAIL AUTOMATIONS
+    //automated engagement for completed trials that didnt sign up
+    // cron.schedule('0 18 * * *',()=>{ //server time is 9 hours ahead
+    //   let date = new Date();
+    //   date.setDate(date.getDate() - 30);
+    //   console.log('emailing all users who completed the trial but have not signed up since',date)
+    // //get all users who made an account within  the last month
+    //   User.find({createdAt:{$gte:date}}).then(users=>{
+    //     console.log(users.length)
+    //     let contact = 0
+    //     users.forEach((user, i) => {
+    //       //if they dont have a subcription
+    //       if(user.subscriptions.length==0){
+    //         contact++
+    //         // check the last visit time
+    //         let time = moment().diff(user.lastVisit,'days')//user.lastVisit doesnt exist
+    //         let tag = ''
+    //         switch (time) {
+    //           case time>=14:
+    //             tag = constants.TRIAL_COMPLETED_2_Week
+    //             break;
+    //           case time>=7:
+    //             tag = constants.TRIAL_COMPLETED_1_Week
+    //             break;
+    //           case time>=3:
+    //             tag = constants.TRIAL_COMPLETED_3_DAYS
+    //             break;
+    //           default:
+    //         }
+    //         console.log('send',user._id,time,tag,user.createdAt)//mailchimp.addTag(user.email,tag)
+    //       }
+    //     });
+    //     console.log(users.length,'were processed, only',contact,'will be contacted')
+    //   }).catch(err=>console.log(err))
+    // })
 
-        let delay=[]
-        let mada=[]
-        let mail_tag = ''
-        users.forEach((user, i) => {
-          mail_tag=''
-          if(user.role=='user' && user.subscriptions){
-            if(user.subscriptions.some(u=>u.status=='active')){
-
-            }
-            else{
-              let last = ''
-              let visited = user.statistics && user.statistics.length>0
-              if(visited){
-                let absent = moment(new Date()).diff(moment(user.statistics[0].end),'days')
-                  if(absent>=30 && absent<60){
-                    mail_tag='1_month_absent'
-                    delay.push({
-                        name:user.first+" "+user.last,
-                        duration: absent
-                    })
-                    // mailchimp_email(mailchimp_hash,mail_tag,user)
-                  }
-                  if(absent>=60){
-                    mail_tag='2_month_absent'
-                    delay.push({
-                        name:user.first+" "+user.last,
-                        duration: absent
-                    })
-                    // mailchimp_email(mailchimp_hash,mail_tag,user)
-                  }
-                  console.log(user.first,user.last,'has not visited for',absent,mail_tag)
-
-                  if(mail_tag!=''){
-                    console.log('sending email to',user.first,user.last)
-                    mailchimp_email(mail_tag,user)
-                  }
-              }else{
-                //user has not visited EVER
-                let duration = moment(new Date()).diff(moment(user.createdAt),'days')
-                //1 week email
-                if(duration>=7 && duration<14){
-                  mail_tag='1_week_no_exp'
-                }
-                //2 week email
-                if(duration>=14 && duration<21){
-                  mail_tag='2_week_no_exp'
-                }
-                //1 month
-                if(duration>=30 && duration<60){
-                  mail_tag='1_month_no_exp'
-                }
-                //2 month
-                if(duration>=60){
-                  mail_tag='2_month_no_exp'
-                }
-                mada.push({
-                    name:user.first+" "+user.last,
-                    duration: duration
-                })
-                if(mail_tag!=''){
-                  console.log('sending email to',user.first,user.last)
-                  mailchimp_email(mail_tag,user)
-                }
-                console.log(user.first,user.last,'has not visited yet.',duration,'days since registration.',mail_tag)
-
-              }
-            }
-          }
-        });
-        console.log('Delayed:',delay.length,' | Not Yet:',mada.length)
-        email.reportEngagement(mada,delay)
-        console.log('cron complete at',moment(new Date()).format('MM DD'))
-      })
-      console.log('running')
-    })
-
+    //automated engagement for no show trials - depends on update to delivered working on new account creation
+    // cron.schedule('0 18 * * *',()=>{ //server time is 9 hours ahead
+    //   console.log('running no show engagement')
+    //     Bookings.find({trial:true,status:'delivered'}).then(trials=>{
+    //       let date = new Date();
+    //       date.setDate(date.getDate() - 30);
+    //       trials.forEach((trial, i) => {
+    //         let time = moment().diff(trial.date,'days')//user.lastVisit doesnt exist
+    //         switch (time) {
+    //           case time>=14:
+    //             tag = constants.TRIAL_NO_SHOW_2_Week
+    //             break;
+    //           case time>=7:
+    //             tag = constants.TRIAL_NO_SHOW_1_Week
+    //             break;
+    //           case time>=3:
+    //             tag = constants.TRIAL_NO_SHOW_3_DAYS
+    //             break;
+    //           case time>=1:
+    //             tag = constants.TRIAL_NO_SHOW
+    //             break;
+    //           default:
+    //         }
+    //       });
+    //       console.log(users.length,'were processed')
+    //     }).catch(err=>console.log(err))
+    // })
     const mailchimp_email = (mail_tag,user)=>{
       user.subscriptions.forEach((sub, i) => {
         if(sub.name=='prod_Mf0wgW4xwQ0Yyc' && sub.status=='active'){
-          let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
-          mailchimp.setConfig({
-            apiKey:process.env.MAILCHIMP_AUTH,
-            server:'us9'
-          })
-          const response = mailchimp.lists.updateListMemberTags(
-            'cb86e9b6f5',
-            mailchimp_hash,
-            {tags:[{name:mail_tag,status:'active'}]}
-          ).then(()=>{console.log('Email sent to',user.first,user.last)})
+          mailchimp.addTags(user.email,mail_tag)
         }
       });
 

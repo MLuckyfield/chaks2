@@ -36,6 +36,11 @@ const StudentComments = () => {
             setInSession(false)
           }
       })
+    axios.get('user/all', {params:{filter:{_id: target._id}}})
+    .then(res=>{
+      setTarget(res.data.data[0])
+    }).catch(err=>console.log(err))
+
     axios.get('/comment/all', {params:{filter:target._id}})
       .then((res) => {
           setComments(res.data.data.reverse());
@@ -79,7 +84,14 @@ const StudentComments = () => {
       })
       .catch(error=>console.log('From startSession teacher:',error))
   }
-  //<button onClick={()=>startSession('6344faac6bf36a9debe60b25')} class='button'>TEST</button>
+  const giveGift = (e)=>{
+    e.preventDefault()
+    axios.post('user/update',{filter:{_id:target._id},data:{'$push':{gifts:'1yr_anniversary'}}})
+      .then((result)=>{
+        window.location.reload()
+      })
+      .catch(error=>console.log('Gift error:',error))
+  }
 const adjustPoints = (add)=>{
   let changes = []
   for(let i =0;i<points.current.value;i++){
@@ -106,27 +118,10 @@ const manualComment = (teacherId)=>{
       window.location.reload()
     })
 }
-// const onSubmit = (commentId, e) => {
-//   e.preventDefault();
-//   setActive(false)
-//   axios.post('/comment/update',
-//     {
-//       commentId:commentId,
-//       comment: comment.current.value,
-//     })
-//     .then((res) => {
-//         console.log('done')
-//         // setFeedback(res.data.message);
-//         window.location.reload()
-//         })
-//     .catch((err) => {
-//       console.log(err);
-//       // setFeedback(err.response.data.message);
-//       });
-// }
 
   return(
     <div class='col'>
+        {console.log('user details',user)}
         {user.role=='manager'?
         <div class='row border'>
           <div class='col'>
@@ -165,6 +160,12 @@ const manualComment = (teacherId)=>{
               </div>
             }/>
           }
+          {'gifts' in target?
+            (target.gifts.includes('1yr_anniversary')?
+            <div>1 year anniversary gift recieved</div>
+            :
+            <button onClick={(e)=>giveGift(e)} style={{backgroundColor:'green',width:'80%'}}>Give Anniversary Gift!</button>
+          ):''}
         </div>
           </div>
         :''}

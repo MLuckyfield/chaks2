@@ -38,6 +38,10 @@ const User = mongoose.model('User', new Schema({
   segment:{type:String},
   location:{type:String},
   //STUDENT DATA---------------------------------------------------
+  lastVisit:{
+    type:Date,
+    default:new Date()
+  },
   profile:{
     likes:{type:String},
     goals:{type:String},
@@ -89,6 +93,9 @@ const User = mongoose.model('User', new Schema({
       type:Number,
       default:1
     }
+  },
+  gifts:{
+    type:[String]
   },
   goals:[{
     ref:{//opinions from others
