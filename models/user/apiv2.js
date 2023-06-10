@@ -18,6 +18,7 @@ const encrypt = require('crypto-js/md5')
 const mailchimp = require("../../services/mailchimp");
 const email = require('../../services/email')
 const constants = require('../../services/constants')
+const log = require('../../services/log')
 
 // const io = new Server({ /* options */ });
 
@@ -97,6 +98,7 @@ const constants = require('../../services/constants')
       console.log('new account request')
       let taken = await(exists(req.email));
       if (taken){
+        log.saveUserAction('registration','email in use',req.first,req.last,req.email)
         console.log('user exists')
         return res.status(400).json({
           message:'Email already in use',
@@ -137,22 +139,27 @@ const constants = require('../../services/constants')
                    let result = auth.createToken(user)
                    mailchimp.addTag(user.email,constants.TRIAL_COMPLETED,
                          ()=>{
+                           console.log('trial to be updated',req.trial)
                            if(req.trial){//if there was a reservation
-                             Booking.findOneAndUpdate(req.trial._id,{status:'delivered'}).then(()=>{
+                             Booking.findByIdAndUpdate(req.trial._id,{status:'delivered'},{new:true}).then((trial)=>{
+                               console.log('new',trial)
                              return res.status(201).json({
                                    result,
                                    message: `Success!`,
                                    success: true
                                  })
                             })
+                          }else{
+                            return res.status(201).json({
+                                  result,
+                                  message: `Success!`,
+                                  success: true
+                                })
                           }//otherwise there was no reservation
-                           return res.status(201).json({
-                                 result,
-                                 message: `Success!`,
-                                 success: true
-                               })
-                             },
-                         (e)=>{return res.status(501).json({
+                        },
+                         (e)=>{
+                           log.saveUserAction('registration',e,user.first,user.last,user._id)
+                           return res.status(501).json({
                                result,
                                message: `${e}!`,
                                success: false
@@ -161,11 +168,11 @@ const constants = require('../../services/constants')
                  })
                })
                .catch((err)=>{
-                 console.log('err',err)
+                 log.saveUserAction('registration',err,req.first,req.last,req.email)
                })
            })
         }catch(err){
-             console.log('there was a problem',err)
+          log.saveUserAction('registration',err,req.first,req.last,req.email)
              return res.status(500).json({
                message: `user creation unsuccessful: ${err}`,
                success: false
@@ -537,11 +544,11 @@ const constants = require('../../services/constants')
     // })
 
     //automated engagement for no show trials - depends on update to delivered working on new account creation
-    // cron.schedule('0 18 * * *',()=>{ //server time is 9 hours ahead
-    //   console.log('running no show engagement')
-    //     Bookings.find({trial:true,status:'delivered'}).then(trials=>{
-    //       let date = new Date();
-    //       date.setDate(date.getDate() - 30);
+    // cron.schedule('*/1 * * * *',()=>{ //server time is 9 hours ahead
+    //     let date = new Date();
+    //     date.setDate(date.getDate() - 30);
+    //     console.log('running no show engagement')
+    //     Bookings.find({trial:true,status:'reserved',date:{$gte:date,$lte:moment()}}).then(trials=>{
     //       trials.forEach((trial, i) => {
     //         let time = moment().diff(trial.date,'days')//user.lastVisit doesnt exist
     //         switch (time) {
@@ -559,6 +566,7 @@ const constants = require('../../services/constants')
     //             break;
     //           default:
     //         }
+    //         console.log('send',trial._id,time,tag,trial.date)//mailchimp.addTag(user.email,tag)
     //       });
     //       console.log(users.length,'were processed')
     //     }).catch(err=>console.log(err))

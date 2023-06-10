@@ -7,6 +7,7 @@ const express = require('express');
 const email = require('./email')
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const encrypt = require('crypto-js/md5')
+const log = require('./log')
 
 const HODAI_LIVE=''
 const PREMIUM_LIVE=''
@@ -24,7 +25,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
         event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
         console.log('try was successful')
       } catch (err) {
-        console.log('failed')
+        log.savePaymentAction('general',err)
         res.status(400).send(`Webhook Error: ${err.message}`);
         return;
       }
@@ -50,7 +51,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
               // }
           }
           identifier={email:session.email}
-          updateUser(identifier,purchased,res)
+          updateUser(identifier,purchased,res,'new cus',session.id)
           break;
 
         //NEW SUBSCRIPTION
@@ -81,8 +82,8 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
               'cb86e9b6f5',
               mailchimp_hash,
               {tags:[{name:'active',status:'active'},{name:'inactive',status:'inactive'}]}
-            ).then(()=>{updateUser(identifier,purchased,res)})
-             .catch(()=>{updateUser(identifier,purchased,res)})
+            ).then(()=>{updateUser(identifier,purchased,res,'new sub',session.customer)})
+             .catch(()=>{updateUser(identifier,purchased,res,'new sub',session.customer)})
           })
 
           break;
@@ -94,7 +95,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             units.push({value:30})
           }
           purchased = {$push:{points:{$each:units}}}
-          updateUser(identifier,purchased,res)
+          updateUser(identifier,purchased,res,'success',session.customer)
           break;
         case 'customer.subscription.updated':
           sub_type = session.items.data[0].price.product
@@ -142,7 +143,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             }
           }
           identifier={stripe:{customer_id:session.customer},'subscriptions.name':sub_type}
-          updateUser(identifier,purchased,res)
+          updateUser(identifier,purchased,res,'update',session.customer)
           break;
         case 'customer.subscription.deleted':
           purchased = {
@@ -157,7 +158,7 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
             // }
           }
           identifier={stripe:{customer_id:session.customer}}
-          updateUser(identifier,purchased,res)
+          updateUser(identifier,purchased,res,'delete',session.customer)
           break;
         case 'checkout.session.complete':
           let payment_link = stripe.paymentLinks.listLineItems(session.payment_link)
@@ -205,13 +206,14 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
       console.log(purchased)
 
 })
-const updateUser=(user,update,res)=>{
+const updateUser=(user,update,res,action,user_id)=>{
   User.findOneAndUpdate(user,update,{new:true}).then((result)=>{
           return res.status(201).json({
             message: 'Booking saved',
             success: true
           });
       }).catch((err)=>{
+        log.savePaymentAction(action,err,user_id)
         console.log('payment issue',err)
           return res.status(501).json({
             data:err,

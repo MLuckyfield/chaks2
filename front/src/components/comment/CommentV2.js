@@ -52,6 +52,22 @@ const Comment = (props) => {
         // setFeedback(err.response.data.message);
         });
   }
+  const deleteComment = (commentId, e) => {
+    e.preventDefault();
+    axios.post('/comment/deleteComment',
+      {
+        commentId:commentId,
+      })
+      .then((res) => {
+          console.log('done')
+          // setFeedback(res.data.message);
+          window.location.reload()
+          })
+      .catch((err) => {
+        console.log(err);
+        // setFeedback(err.response.data.message);
+        });
+  }
   const reassignTeacher = (teacherId, e) => {
     e.preventDefault();
     axios.post('/comment/reassignTeacher',
@@ -102,6 +118,10 @@ const Comment = (props) => {
             :'Feedback in progress - please check within 24 hours!'
           )}
         </div>
+        {user.first=='Matthew'&&checkPermission(user.role,constants.MANAGER)&&comment.status=='pending'?
+        <button onClick={(e)=>deleteComment(comment._id,e)} class="solid-first">Delete</button>
+          :''
+        }
         {comment.status=='draft'&&checkPermission(user.role,constants.MANAGER)?
         <div class='col'>
           <button onClick={(e)=>approveComment(comment._id,e)} class="solid-first">Approve</button>
