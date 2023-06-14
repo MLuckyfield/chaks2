@@ -5,7 +5,7 @@ const moment = require ('moment')
 const router = require('express').Router();
 const express = require('express');
 const email = require('./email')
-const mailchimp = require("@mailchimp/mailchimp_marketing");
+const mailchimp = require("./mailchimp");
 const encrypt = require('crypto-js/md5')
 const log = require('./log')
 
@@ -71,19 +71,14 @@ router.post('/complete', express.raw({type:'application/json'}),async (req, res)
           //update tag with active
 
           User.findOne(identifier).then((user)=>{
-            console.log('user newly subscribed',user)
-            let mailchimp_hash = encrypt(user.email.toLowerCase()).toString()
-
-            mailchimp.setConfig({
-              apiKey:process.env.MAILCHIMP_AUTH,
-              server:'us9'
+              console.log('user newly subscribed',user)
+              mailchimp.addTag(user.email,'active',
+              ()=>{
+                updateUser(identifier,purchased,res,'new sub',session.customer)
+              },
+              ()=>{
+              updateUser(identifier,purchased,res,'new sub',session.customer)
             })
-            const response = mailchimp.lists.updateListMemberTags(
-              'cb86e9b6f5',
-              mailchimp_hash,
-              {tags:[{name:'active',status:'active'},{name:'inactive',status:'inactive'}]}
-            ).then(()=>{updateUser(identifier,purchased,res,'new sub',session.customer)})
-             .catch(()=>{updateUser(identifier,purchased,res,'new sub',session.customer)})
           })
 
           break;
