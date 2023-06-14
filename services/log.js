@@ -22,7 +22,16 @@ const savePaymentAction=(action,error,stripe_cus_id)=>{
     user_id:user_id
   }).save()
 }
-
+const saveEmailAction=(action,error,first,last,user_id)=>{
+  new Log({
+    tag:'EMAIL',
+    action:action,
+    error:error,
+    first:first,
+    last:last,
+    user_id:user_id
+  }).save()
+}
 const saveCronAction=(action,error)=>{
   new Log({
     tag:'CRON',
@@ -33,4 +42,4 @@ const saveCronAction=(action,error)=>{
     user_id:user_id
   }).save()
 }
-module.exports = {saveUserAction,savePaymentAction,saveCronAction}
+module.exports = {saveUserAction,savePaymentAction,saveEmailAction,saveCronAction}

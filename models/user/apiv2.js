@@ -158,7 +158,7 @@ const log = require('../../services/log')
                           }//otherwise there was no reservation
                         },
                          (e)=>{
-                           log.saveUserAction('registration',e,user.first,user.last,user._id)
+                           log.saveEmailAction('registration',e,user.first,user.last,user._id)
                            return res.status(501).json({
                                result,
                                message: `${e}!`,
