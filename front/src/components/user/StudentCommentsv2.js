@@ -24,6 +24,11 @@ const StudentComments = () => {
       return JSON.parse(localStorage.getItem('student'))
     }else{setSource('user');return user}
   })
+  const speed = useRef();
+  const listening = useRef();
+  const likes = useRef();
+  const goals = useRef();
+
   useEffect(() => {
       socket.on('startSession',(comment)=>{
           if(target._id==comment.student){
@@ -39,6 +44,11 @@ const StudentComments = () => {
     axios.get('user/all', {params:{filter:{_id: target._id}}})
     .then(res=>{
       setTarget(res.data.data[0])
+      speed.current.value=res.data.data[0].fluency.thinking
+      listening.current.value=res.data.data[0].fluency.listening
+      likes.current.value=res.data.data[0].profile.likes
+      goals.current.value=res.data.data[0].profile.goals
+
     }).catch(err=>console.log(err))
 
     axios.get('/comment/all', {params:{filter:target._id}})
@@ -92,84 +102,211 @@ const StudentComments = () => {
       })
       .catch(error=>console.log('Gift error:',error))
   }
-const adjustPoints = (add)=>{
-  let changes = []
-  for(let i =0;i<points.current.value;i++){
-    changes.push({
-      value:30
-    })
+  const adjustPoints = (add)=>{
+    let changes = []
+    for(let i =0;i<points.current.value;i++){
+      changes.push({
+        value:30
+      })
+    }
+    axios.post('user/update',{filter:{_id:target._id},data:{'$push':{points:changes}}})
+      .then((result)=>{
+        console.log('update',result)
+        let update = JSON.parse(localStorage.getItem('student'))
+        update.points=result.data.data.points
+        localStorage.setItem('student',JSON.stringify(update))
+         window.location.reload()
+      })
+      .catch(error=>console.log('From startSession teacher:',error))
   }
-  axios.post('user/update',{filter:{_id:target._id},data:{'$push':{points:changes}}})
-    .then((result)=>{
-      console.log('update',result)
-      let update = JSON.parse(localStorage.getItem('student'))
-      update.points=result.data.data.points
-      localStorage.setItem('student',JSON.stringify(update))
-       window.location.reload()
-    })
-    .catch(error=>console.log('From startSession teacher:',error))
-}
-const manualComment = (teacherId)=>{
-  axios.post('/comment/new',
-    {
-      student: target._id,
-      author: teacherId,
-    }).then(()=>{
-      window.location.reload()
-    })
-}
-
+  const manualComment = (teacherId)=>{
+    axios.post('/comment/new',
+      {
+        student: target._id,
+        author: teacherId,
+      }).then(()=>{
+        window.location.reload()
+      })
+  }
+  const updateFluency =(tab)=>{
+    console.log('fluency values',speed.current.value,listening)
+    let action = {'$set':{'fluency.thinking':Number(speed.current.value)}}
+    if(tab=='listening'){action= {'$set':{'fluency.listening':Number(listening.current.value)}}}
+    axios.post('user/goals',{filter:{_id: target._id},data:action})
+      .then((update)=>{
+          console.log('new goals',update.data.data.goals,update)
+      })
+      .catch((err)=>{
+        console.log('oops',err)
+      })
+  }
+  const updateLikes = ()=>{
+    axios.post('user/goals',{filter:{_id: target._id},data:{'$set':{'profile.likes':likes.current.value}}})
+      .then((update)=>{
+          likes.current.value=update.data.data.profile.likes
+      })
+      .catch((err)=>{
+        console.log('oops',err)
+      })
+  }
+  const updateGoals = ()=>{
+    axios.post('user/goals',{filter:{_id: target._id},data:{'$set':{'profile.goals':goals.current.value}}})
+      .then((update)=>{
+          goals.current.value=update.data.data.profile.goals
+      })
+      .catch((err)=>{
+        console.log('oops',err)
+      })
+  }
   return(
     <div class='col'>
-        {console.log('user details',user)}
-        {user.role=='manager'?
-        <div class='row border'>
-          <div class='col'>
-          <Popup button={"Points"} num={1} content={
-            <form class='make_blog'>
-              <h2>Adjust Points</h2>
-              <input ref={points} type="number" min='1' class="form-control" placeholder='Enter number of points' required/>
-              <div class='fixed-row'>
-                <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();adjustPoints()}}>+</div>
-              </div>
-            </form>
-          }/>
-          <Popup button={"Add Comment"} num={3} content={
-            <div class='col'>
-              {Object.entries(constants.PROFILES).map((teacher, i) => {
-                if(teacher[1].active){
-                  return <button onClick={()=>manualComment(teacher[0].substring(1))} class='button'>{teacher[1].name}</button>
-                }
-              })}
-            </div>
-          }/>
-          ポイント: {target.hasOwnProperty('points')?target.points.length:"Load Error. We're fixing it now!"}
-          </div>
 
-          <div class='col'>
-          {inSession?
-            <button onClick={()=>endSession(target._id)} style={{backgroundColor:'red',width:'80%'}}>End</button>
-            :
-            <Popup button={"Start"} num={2} content={
-              <div class='col'>
-                {Object.entries(constants.PROFILES).map((teacher, i) => {
-                  if(teacher[1].active){
-                    return <button onClick={()=>startSession(teacher[0].substring(1))} class='button'>{teacher[1].name}</button>
-                  }
-                })}
-              </div>
-            }/>
-          }
-          {'gifts' in target?
-            (target.gifts.includes('1yr_anniversary')?
-            <div>1 year anniversary gift recieved</div>
-            :
-            <button onClick={(e)=>giveGift(e)} style={{backgroundColor:'green',width:'80%'}}>Give Anniversary Gift!</button>
-          ):''}
-        </div>
+        {checkPermission(user.role,constants.TEACHER)?
+          <div class='col border'>
+            <h1>{target.first} {target.last}</h1>
+            {user.first == "Matthew" && user.role=='manager'?<span>{target._id} {target.email}</span>:''}
+              <table class='hide'>
+                {checkPermission(user.role,constants.MANAGER)?
+                  <tr class='border'>
+                    <td>
+                      <div class='row'>
+                        {inSession?
+                          <button onClick={()=>endSession(target._id)} style={{backgroundColor:'red',width:'80%'}}>End</button>
+                          :
+                          <Popup button={"Start"} num={2} button_style={{backgroundColor:'blue'}} content={
+                            <div class='col'>
+                              {Object.entries(constants.PROFILES).map((teacher, i) => {
+                                if(teacher[1].active){
+                                  return <button onClick={()=>startSession(teacher[0].substring(1))} class='button'>{teacher[1].name}</button>
+                                }
+                              })}
+                            </div>
+                          }/>}
+                      </div>
+                    </td>
+                    <td>
+                      {'gifts' in target?
+                        (target.gifts.includes('1yr_anniversary')?
+                        <div>gifted!</div>
+                        :
+                        <button onClick={(e)=>giveGift(e)} style={{backgroundColor:'green',width:'80%',color:'white'}}>Gift!</button>
+                      ):''}
+                    </td>
+                    <td></td>
+                    <td>
+                      <div class='fixed-row'>
+                        <Popup button={<span class="material-icons">add_comment</span>} num={3} content={
+                          <div class='col'>
+                            {Object.entries(constants.PROFILES).map((teacher, i) => {
+                              if(teacher[1].active){
+                                return <button onClick={()=>manualComment(teacher[0].substring(1))} class='button'>{teacher[1].name}</button>
+                              }
+                            })}
+                          </div>
+                        }/>
+                        <Popup button={<span class="material-icons">data_saver_on</span>} num={1} content={
+                          <form class='make_blog'>
+                            <h2>Adjust Points</h2>
+                            <input ref={points} type="number" min='1' class="form-control" placeholder='Enter number of points' required/>
+                            <div class='fixed-row'>
+                              <div class="btn" style={{position:'relative',width:'80%',backgroundColor:'blue'}} onClick={(e)=>{e.preventDefault();adjustPoints()}}>+</div>
+                            </div>
+                          </form>
+                        }/>
+                      </div>
+                    </td>
+                  </tr>:''}
+                  {checkPermission(user.role,constants.MANAGER)?<tr>
+                    <td><h3>Points</h3></td>
+                    <td><h2>{target.points.length}</h2></td>
+                    <td>Last Visit</td>
+                    <td>{moment(target.lastVisit).format('MMM DD YYYY')}</td>
+                  </tr>:''}
+                <tr><table><tr>
+                  <td><h3>Level</h3></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Speaking</td>
+                  <td>
+                    <select class='form-control' ref={speed} onChange={()=>updateFluency('speaking')}>
+                      {Object.entries(constants.FLUENCY).map((level, i) => {
+                        return <option value={level[0].substring(1)}>{level[1].level}</option>
+                      })}
+                    </select>
+                  </td>
+                  <td><Popup title={<span class="material-icons">help</span>} num={10} style={{overflow:'auto',overflowX:'scroll'}} content={
+                    <div class='col'>
+                      <table style={{position:'relative',left:'0px',width:'200%',overflowX:'scroll'}}>
+                        <tr style={{color:'white',backgroundColor:'tomato',fontWeight:'800'}}><td>test</td><td>Level</td><td>Speaking</td><td>Listening</td><td>Unlocks</td></tr>
+                        {Object.entries(constants.FLUENCY).map((level, i) => {
+                          return <tr>
+                                    <td></td>
+                                    <td>{level[1].level}</td>
+                                    <td>{level[1].en_speaking}</td>
+                                    <td>{level[1].en_listening}</td>
+                                    <td>{level[1].en_unlock}</td>
+                                </tr>
+                        })}
+                      </table>
+                    </div>
+                  }/></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Listening</td>
+                  <td>
+                    <select class='form-control' ref={listening} onChange={()=>updateFluency('listening')}>
+                      {Object.entries(constants.FLUENCY).map((level, i) => {
+                        return <option value={level[0].substring(1)}>{level[1].level}</option>
+                      })}
+                    </select>
+                  </td>
+                  <td></td>
+                </tr></table></tr>
+                {checkPermission(user.role,constants.MANAGER)?
+                  <tr>
+                  <td><h3>Subscriptions</h3></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>:''}
+                {checkPermission(user.role,constants.MANAGER)?target.subscriptions.map(sub=> {
+                  return  <tr>
+                    <td>{sub.name}</td>
+                    <td></td>
+                    <td>{sub.status}</td>
+                    <td>{moment(sub.start).format('MMM DD YYYY')}</td>
+                  </tr>}):''}
+                  <tr>
+                    <td><h3>About</h3></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Likes</td>
+                    <td></td>
+                    <td>Goals</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan='2'><textarea ref={likes}></textarea></td>
+                    <td colspan='2'><textarea ref={goals}></textarea></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td><button onClick={()=>updateLikes()}>Update</button></td>
+                    <td></td>
+                    <td><button onClick={()=>updateGoals()}>Update</button></td>
+                  </tr>
+              </table>
           </div>
-        :''}
-
+          :''
+        }
       <h1>Feedback ({comments?comments.length:'0'})</h1>
       <div class='col'>
           {comments ? (

@@ -49,6 +49,13 @@ table {
 
   }
 }
+.hide{
+  tr{
+    &:nth-of-type(odd) {
+  		background:white;
+  	}
+  }
+}
 .cell_highlight{
   background:lightgrey;
   display:flex;
