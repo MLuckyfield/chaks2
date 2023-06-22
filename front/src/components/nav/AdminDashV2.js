@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Table from '../utilities/table'
 import Navbar from './Navbar'
 import StudentComments from '../user/StudentCommentsv2'
+import StudentHome from '../user/accountv2'
 import PerformanceView from '../manager/PerformanceView'
 import OpsView from '../manager/OpsView'
 // import { useEffect, useState} from 'react';
@@ -118,7 +119,7 @@ const Dash = ()=>{
   if (user.role=='user'){
     return(
       <div>
-        <StudentComments/>
+        <StudentHome/>
       </div>
     )
   }else if (user.role=='teacher')

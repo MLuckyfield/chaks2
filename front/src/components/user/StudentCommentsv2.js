@@ -44,6 +44,7 @@ const StudentComments = () => {
     axios.get('user/all', {params:{filter:{_id: target._id}}})
     .then(res=>{
       setTarget(res.data.data[0])
+      console.log(res.data.data[0])
       speed.current.value=res.data.data[0].fluency.thinking
       listening.current.value=res.data.data[0].fluency.listening
       likes.current.value=res.data.data[0].profile.likes
@@ -218,26 +219,12 @@ const StudentComments = () => {
                   </tr>:''}
                   {checkPermission(user.role,constants.MANAGER)?<tr>
                     <td><h3>Points</h3></td>
-                    <td><h2>{target.points.length}</h2></td>
+                    <td><h2>{'points' in target?target.points.length:'loading'}</h2></td>
                     <td>Last Visit</td>
                     <td>{moment(target.lastVisit).format('MMM DD YYYY')}</td>
                   </tr>:''}
                 <tr><table><tr>
                   <td><h3>Level</h3></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>Speaking</td>
-                  <td>
-                    <select class='form-control' ref={speed} onChange={()=>updateFluency('speaking')}>
-                      {Object.entries(constants.FLUENCY).map((level, i) => {
-                        return <option value={level[0].substring(1)}>{level[1].level}</option>
-                      })}
-                    </select>
-                  </td>
                   <td><Popup title={<span class="material-icons">help</span>} num={10} style={{overflow:'auto',overflowX:'scroll'}} content={
                     <div class='col'>
                       <table style={{position:'relative',left:'0px',width:'200%',overflowX:'scroll'}}>
@@ -254,6 +241,20 @@ const StudentComments = () => {
                       </table>
                     </div>
                   }/></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Speaking</td>
+                  <td>
+                    <select class='form-control' ref={speed} onChange={()=>updateFluency('speaking')}>
+                      {Object.entries(constants.FLUENCY).map((level, i) => {
+                        return <option value={level[0].substring(1)}>{level[1].level}</option>
+                      })}
+                    </select>
+                  </td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -274,7 +275,7 @@ const StudentComments = () => {
                   <td></td>
                   <td></td>
                 </tr>:''}
-                {checkPermission(user.role,constants.MANAGER)?target.subscriptions.map(sub=> {
+                {checkPermission(user.role,constants.MANAGER) && 'subscriptions' in target?target.subscriptions.map(sub=> {
                   return  <tr>
                     <td>{sub.name}</td>
                     <td></td>
