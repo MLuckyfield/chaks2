@@ -158,6 +158,7 @@ const log = require('../../services/log')
                           }//otherwise there was no reservation
                         },
                          (e)=>{
+                           console.log('mailchimp failed',e)
                            log.saveEmailAction('registration',e,user.first,user.last,user._id)
                            return res.status(501).json({
                                result,

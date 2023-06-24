@@ -119,7 +119,7 @@ const Dash = ()=>{
   if (user.role=='user'){
     return(
       <div>
-        <StudentHome/>
+        <StudentComments/>
       </div>
     )
   }else if (user.role=='teacher')
