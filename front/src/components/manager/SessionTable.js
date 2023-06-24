@@ -60,7 +60,7 @@ const SessionTable = ()=>{
         return (<tr>
           <td>{comment.student.first}</td>
           <td>{comment.student.last}</td>
-          <td>{comment.author.first}</td>
+          <td>{'author' in comment?comment.author.first:''}</td>
           <td>{moment(new Date(comment.createdAt)).format("MMM Do HH:mm")}</td>
           <td>{comment.hasOwnProperty('end')?comment.status:<button onClick={()=>endSession(comment.student._id)} style={{backgroundColor:'red'}}>End</button>}</td>
           <td><button onClick={()=>makeComment(comment.student)} style={{backgroundColor:'green',color:'white',borderRadius:'5px'}}>Go</button></td>

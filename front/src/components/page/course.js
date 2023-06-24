@@ -1,4 +1,4 @@
-import Signup from "../user/Signup";
+import Signup from "../user/TrialRequest";
 import background from '../../online_background.jpg'
 import environment from '../../online_environment.jpg'
 import discount from '../../discount.jpg'
@@ -77,8 +77,11 @@ const Online_Landing = () => {
         </div>
       </div>
       <CrossSell/>
-      {localStorage.getItem('user')?''
-        :<Signup redirect={'/dash'} segment={'course'} message={'CHATSHACKの最新情報を知りたい方はこちら！特別割引、キャンペーン情報、イベント招待など、お届けします！登録することで先生からのフィードバックが見れたり、予約システムの利用も可能になります！'}/>
+      {localStorage.getItem('user')?
+        <div class="btn" style={{position:'relative'}} onClick={(e)=>{e.preventDefault();window.location='/private'}}>予約!</div>
+        :<Signup redirect={'/dash'}
+                segment={'course'}
+                message={'CHATSHACKの最新情報を知りたい方はこちら！特別割引、キャンペーン情報、イベント招待など、お届けします！登録することで先生からのフィードバックが見れたり、予約システムの利用も可能になります！'}/>
       }
     </div>
 )}
