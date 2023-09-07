@@ -297,20 +297,17 @@ const Front = ()=>{
                 </div>
                 <div class='col w80 align'>
                   <p>今なら</p>
-                  <h1>初月３０％割引!</h1>
+                  <h1>初月25％割引!</h1>
                   <p style={{marginBottom:'3%'}}>期間限定 {moment().startOf('month').format('MM月DD日')}～{moment().endOf('month').format('MM月DD日')}</p>
                   <Popup button={"詳細"} num={2} content={
                     <div class='col'>
-                        <h1 style={{margin:'10% 0'}}>初月３０%割引</h1>
-                        <p>4月中にご契約されるお客様には３０％割引が適用されます！</p>
+                        <h1 style={{margin:'10% 0'}}>初月25%割引</h1>
+                        <p>4月中にご契約されるお客様には25％割引が適用されます！</p>
                         <div class='col'>
                             <div class='fixed-row'>
                                 <div class='col align'>
                                   <h2>割引例</h2>
-                                  <ul>
-                                    <li>４時間プラン：通常8,000円が3月限定で5,600円</li>
-                                    <li>８時間プラン：通常16,000円が3月限定で11,200円</li>
-                                    <li>１２時間プラン：通常24,000円が3月限定で16,800円</li>
+                                  <ul>                                    
                                   </ul>
                                 </div>
                             </div>
@@ -414,7 +411,7 @@ const Front = ()=>{
                             <h1 style={{textAlign:'left'}}>初回無料</h1>
                             <h2 style={{textAlign:'left'}}>気軽に来てください!</h2>
                             <span style={{fontSize:'20px',border:'1px solid white',padding:'1% 3%',margin:'3% 0% 5% 0%',width:'max-content'}}>
-                                通常料金: 30分￥1000<br/>
+                                通常料金: 30分￥1250<br/>
                                 サブスクスタイル!<br/>
                                 コーヒー・紅茶込み
                             </span>
