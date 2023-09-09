@@ -23,7 +23,10 @@ export const PROFILES = {
         _641129d948fed7fcee0cf312:{image:futaba,name:'Futaba',active:true},
         _62900e59f7fadacf7159f379:{image:sonja,name:'Sonja',active:false},
         _645ccb04a971b39b6c46a843:{image:'',name:'Nick',active:true},
-        _648969d9e113c60e1c124349:{image:'',name:'Michael',active:true}
+        _648969d9e113c60e1c124349:{image:'',name:'Michael',active:true},
+        _64fc33573b8fe1dba5c803f7:{image:'',name:'Karina',active:true},
+        _64e19896083ada28b408a51f:{image:'',name:'Solange',active:true},
+        
 };
 
 export const FLUENCY = {
