@@ -165,7 +165,7 @@ const StudentComments = () => {
         {checkPermission(user.role,constants.TEACHER)?
           <div class='col border'>
             <h1>{target.first} {target.last}</h1>
-            {user.first == "Matthew" && user.role=='manager'?<span>{target._id} {target.email}</span>:''}
+            {user._id == "628c7aefc378ce2a01df6ac7" || user._id=='628f3e7b8981f84051396159'?<span>{target._id} {target.email}</span>:''}
               <table class='hide'>
                 {checkPermission(user.role,constants.MANAGER)?
                   <tr class='border'>
